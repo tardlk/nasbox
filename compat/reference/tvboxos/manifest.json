@@ -1,0 +1,108 @@
+{
+  "repository": "q215613905/TVBoxOS",
+  "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+      "bytes": 34523
+    },
+    {
+      "path": "app/build.gradle",
+      "sha256": "8ab59549b40969dc089ba6ffed98f07383837f1958f04e06bfbc4a32aef2e7b9",
+      "bytes": 6847
+    },
+    {
+      "path": "pyramid/build.gradle",
+      "sha256": "062fd6090a0e6734dfb0960d7eb2f710bf48b6ae65b01dfa813ec653a85de4c6",
+      "bytes": 1697
+    },
+    {
+      "path": "quickjs/build.gradle",
+      "sha256": "2b2cb002700fab3027823700eacd63975cc41a85477a134877b88d6924421109",
+      "bytes": 676
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java",
+      "sha256": "b54072e7df16691b807f5a2b527bcbdf05a25a34a747b01f3d20aa0f50814529",
+      "bytes": 80550
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/SourceBean.java",
+      "sha256": "f293d6580eb290b4bdd3a42ea1f5c6bfbaab2cbeff517e2d5718841f9407a410",
+      "bytes": 3598
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/DefaultConfig.java",
+      "sha256": "62fec1029eace657d32d0edc96a4f337ba4799c69c8de2eaa5b846b1c19d51c7",
+      "bytes": 7128
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/Spider.java",
+      "sha256": "353720772b646372755e1ac71698bc018845ef9c54f7eda7bef29aee54c33484",
+      "bytes": 3073
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/SpiderApi.java",
+      "sha256": "d91e9fd3be2175df752468afd8a28d620741f6e2e8cdf8a86618f8e0ccf6b413",
+      "bytes": 6588
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/JarLoader.java",
+      "sha256": "7dae5314c08223e86bd2aa6082195cfc925a12416b0fad98d01f6abfc59f951d",
+      "bytes": 16674
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/js/JsSpider.java",
+      "sha256": "51d2ce02c08645cbf9a90d766e829cef1596637be4696d9aa1d467817d5032aa",
+      "bytes": 22791
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/js/Req.java",
+      "sha256": "0a7f066a7565c1697856274fc68d667456d3daddddc955868473b914df1b82d7",
+      "bytes": 2205
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/js/Connect.java",
+      "sha256": "ff70156f20591af2b6bb5cac440bfd07b1e6ff1ee30cefc06815b1e70ce0eaa4",
+      "bytes": 5975
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/js/Global.java",
+      "sha256": "aec17635747129c6f9dd085bd7afc17d32af875697bd66c2ad365999dfe81e72",
+      "bytes": 11402
+    },
+    {
+      "path": "quickjs/src/main/java/com/whl/quickjs/wrapper/UriUtil.java",
+      "sha256": "715c245716efbc689128ea1a0143ccf0905a291772beabe8b5290ddeca7fa8a2",
+      "bytes": 12311
+    },
+    {
+      "path": "pyramid/src/python/base/spider.py",
+      "sha256": "3c801426c7ceaa83a24d71c49ab8dee70e0b42362d9fbd35f4643edab2206023",
+      "bytes": 5603
+    },
+    {
+      "path": "app/src/python/java/com/undcover/freedom/pyramid/PythonSpider.java",
+      "sha256": "1c34f41f41549653e4335d9c113ca1cb1c87b9309513fe9fdcffa881bbae2b7d",
+      "bytes": 10872
+    },
+    {
+      "path": "pyramid/src/python/app.py",
+      "sha256": "d6ba9bd675752f890a7bffc928781dd68b5f7ba7d832c5205d66bf9aa514b257",
+      "bytes": 7518
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/AES.java",
+      "sha256": "374625fb7bc30c075b155259e0ea36b90dc8331f6a53fbbcbaf7b94c21cb4a92",
+      "bytes": 2408
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/OkGoHelper.java",
+      "sha256": "c6419469f440df1ff728f68fc834502af5e8972214dde0d5cd88d2a5ba77f38b",
+      "bytes": 17202
+    }
+  ],
+  "role": "Project behavior baseline candidate, not a claim about the historical version used by Win-Box",
+  "license": "GPL-3.0; see LICENSE in this snapshot"
+}

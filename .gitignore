@@ -49,3 +49,11 @@ resources/jvm/*.jar
 
 # --- 内部交付文档（含产物 SHA / 版本节奏等） ---
 docs/交付说明.md
+
+# Linux migration records are public project documentation.
+!docs/
+docs/*
+!docs/linux/
+!docs/linux/**
+.tools/
+.cache/

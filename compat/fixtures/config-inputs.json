@@ -1,0 +1,462 @@
+[
+  {
+    "id": "safe/missing",
+    "request": {
+      "operation": "safe",
+      "text": "{}"
+    }
+  },
+  {
+    "id": "safe/null",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":null}"
+    }
+  },
+  {
+    "id": "safe/boolean-true",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":true}"
+    }
+  },
+  {
+    "id": "safe/boolean-false",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":false}"
+    }
+  },
+  {
+    "id": "safe/integer",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":12}"
+    }
+  },
+  {
+    "id": "safe/fraction",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":1.5}"
+    }
+  },
+  {
+    "id": "safe/overflow-number",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":2147483648}"
+    }
+  },
+  {
+    "id": "safe/negative-overflow-number",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":-2147483649}"
+    }
+  },
+  {
+    "id": "safe/scientific-lexeme",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":1e3}"
+    }
+  },
+  {
+    "id": "safe/huge-integer",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":123456789012345678901234567890}"
+    }
+  },
+  {
+    "id": "safe/integer-string",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":\"12\"}"
+    }
+  },
+  {
+    "id": "safe/partial-integer-string",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":\"12x\"}"
+    }
+  },
+  {
+    "id": "safe/fraction-string",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":\"1.5\"}"
+    }
+  },
+  {
+    "id": "safe/space-integer-string",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":\" 12 \"}"
+    }
+  },
+  {
+    "id": "safe/overflow-string",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":\"2147483648\"}"
+    }
+  },
+  {
+    "id": "safe/ascii-trim",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":\"\\t value \\r\"}"
+    }
+  },
+  {
+    "id": "safe/unicode-trim",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":\"\\u00a0value\\u00a0\"}"
+    }
+  },
+  {
+    "id": "safe/object",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":{\"k\":1}}"
+    }
+  },
+  {
+    "id": "safe/array-primitives",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":[\"one\",2,true]}"
+    }
+  },
+  {
+    "id": "safe/array-null-middle",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":[\"one\",null,\"three\"]}"
+    }
+  },
+  {
+    "id": "safe/array-object-middle",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":[\"one\",{},\"three\"]}"
+    }
+  },
+  {
+    "id": "safe/array-singleton-array",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":[[2],\"three\"]}"
+    }
+  },
+  {
+    "id": "safe/array-empty-array",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":[\"one\",[],\"three\"]}"
+    }
+  },
+  {
+    "id": "safe/array-single",
+    "request": {
+      "operation": "safe",
+      "text": "{\"value\":[1]}"
+    }
+  },
+  {
+    "id": "sites/defaults",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/timeout-one",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"timeout\":1}]}"
+    }
+  },
+  {
+    "id": "sites/timeout-over-limit",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"timeout\":200}]}"
+    }
+  },
+  {
+    "id": "sites/timeout-negative",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"timeout\":-1}]}"
+    }
+  },
+  {
+    "id": "sites/timeout-fraction-string",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"timeout\":\"1.5\"}]}"
+    }
+  },
+  {
+    "id": "sites/ext-null",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"ext\":null}]}"
+    }
+  },
+  {
+    "id": "sites/ext-object",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"ext\":{\"key\":1}}]}"
+    }
+  },
+  {
+    "id": "sites/categories-null-middle",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"categories\":[\"one\",null,\"three\"]}]}"
+    }
+  },
+  {
+    "id": "sites/categories-singleton-array",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"categories\":[[2],\"three\"]}]}"
+    }
+  },
+  {
+    "id": "sites/empty-key",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/empty-api",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"\"}]}"
+    }
+  },
+  {
+    "id": "sites/null-key",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":null,\"type\":3,\"api\":\"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/null-name",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"name\":null}]}"
+    }
+  },
+  {
+    "id": "sites/object-name",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"name\":{\"x\":1}}]}"
+    }
+  },
+  {
+    "id": "sites/null-type",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":null,\"api\":\"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/boolean-type",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":true,\"api\":\"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/singleton-array-api",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":[\"csp_Demo\"]}]}"
+    }
+  },
+  {
+    "id": "sites/type-two",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":2,\"api\":\"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/type-four",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":4,\"api\":\"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/py-filterable",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"py_demo\",\"type\":3,\"api\":\"csp_Demo\",\"filterable\":0}]}"
+    }
+  },
+  {
+    "id": "sites/boolean-searchable",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"searchable\":true}]}"
+    }
+  },
+  {
+    "id": "sites/duplicate-keys",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\": [{\"key\": \"a\", \"type\": 3, \"api\": \"csp_Demo\"}, {\"key\": \"a\", \"type\": 3, \"api\": \"csp_Replacement\"}, {\"key\": \"b\", \"type\": 3, \"api\": \"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/missing-key",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[{\"type\":3,\"api\":\"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/partial-state-on-error",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\": [{\"key\": \"a\", \"type\": 3, \"api\": \"csp_Demo\"}, {\"key\": \"b\", \"type\": 3, \"api\": \"csp_Demo\", \"name\": null}, {\"key\": \"c\", \"type\": 3, \"api\": \"csp_Demo\"}]}"
+    }
+  },
+  {
+    "id": "sites/primitive-entry",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":[1]}"
+    }
+  },
+  {
+    "id": "sites/object-not-array",
+    "request": {
+      "operation": "sites",
+      "text": "{\"sites\":{}}"
+    }
+  },
+  {
+    "id": "trim/ascii-prefix",
+    "request": {
+      "operation": "trim",
+      "text": "  comment\n{\"sites\":[]} suffix  "
+    }
+  },
+  {
+    "id": "trim/unicode-space",
+    "request": {
+      "operation": "trim",
+      "text": " hello "
+    }
+  },
+  {
+    "id": "json/strict",
+    "request": {
+      "operation": "json",
+      "text": "{\"value\":[1,2]}"
+    }
+  },
+  {
+    "id": "json/single-quotes",
+    "request": {
+      "operation": "json",
+      "text": "{'value':'demo'}"
+    }
+  },
+  {
+    "id": "json/unquoted-keys",
+    "request": {
+      "operation": "json",
+      "text": "{value:demo}"
+    }
+  },
+  {
+    "id": "json/array-trailing-comma",
+    "request": {
+      "operation": "json",
+      "text": "{\"value\":[1,]}"
+    }
+  },
+  {
+    "id": "json/object-trailing-comma",
+    "request": {
+      "operation": "json",
+      "text": "{\"value\":1,}"
+    }
+  },
+  {
+    "id": "json/semicolon",
+    "request": {
+      "operation": "json",
+      "text": "{\"value\":1;\"other\":2}"
+    }
+  },
+  {
+    "id": "json/equals",
+    "request": {
+      "operation": "json",
+      "text": "{value=1}"
+    }
+  },
+  {
+    "id": "json/hash-comment",
+    "request": {
+      "operation": "json",
+      "text": "{#comment\nvalue:1}"
+    }
+  },
+  {
+    "id": "fix/ordinary",
+    "request": {
+      "operation": "fix",
+      "text": "{\"spider\":\"./a.jar\",\"sites\":[]}",
+      "url": "https://example.invalid/box/main.json"
+    }
+  },
+  {
+    "id": "fix/global-replacement",
+    "request": {
+      "operation": "fix",
+      "text": "{\"spider\":\"./a.jar\",\"note\":\"x../file\",\"sites\":[]}",
+      "url": "https://example.invalid/box/main.json"
+    }
+  },
+  {
+    "id": "fix/double-parent",
+    "request": {
+      "operation": "fix",
+      "text": "{\"spider\":\"../../a.jar\",\"sites\":[]}",
+      "url": "https://example.invalid/a/b/main.json"
+    }
+  },
+  {
+    "id": "fix/file",
+    "request": {
+      "operation": "fix",
+      "text": "{\"spider\":\"./a.jar\",\"sites\":[]}",
+      "url": "file:///storage/box/main.json"
+    }
+  },
+  {
+    "id": "fix/clan-remote",
+    "request": {
+      "operation": "fix",
+      "text": "{\"spider\":\"./a.jar\",\"sites\":[]}",
+      "url": "clan://192.0.2.1/box/main.json"
+    }
+  }
+]

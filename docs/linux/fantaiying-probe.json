@@ -1,0 +1,32 @@
+{
+  "sourceUrl": "http://www.xn--sss604efuw.net/tv",
+  "finalUrl": "http://www.xn--sss604efuw.net/tv",
+  "userAgent": "okhttp/3.12.11",
+  "status": 200,
+  "contentType": "image/x-ms-bmp",
+  "bytes": 19915,
+  "responseSha256": "4554067213a163d5fb5643a0a9ec6808690704e2a2dbd35313355b710a57d30c",
+  "signatureHex": "ffd8ffe000104a4649460001",
+  "envelope": "salt-base64",
+  "decodedSha256": "74466de441310ac936bb514dd2a0129a0447afc833ff1e15f085a47e1c39fc62",
+  "sourceParserAccepted": true,
+  "scope": "Read-only source-method probe on host JVM; no Android/ART or script execution",
+  "configObject": true,
+  "sourceSitesAccepted": true,
+  "sourceSites": 48,
+  "winboxSites": 48,
+  "typeCounts": {
+    "3": 48
+  },
+  "siteComparison": {
+    "equal": false,
+    "status": "different",
+    "reason": "value comparison"
+  },
+  "hasGlobalSpider": true,
+  "globalSpiderExtension": "jpg",
+  "globalSpiderMd5Tagged": true,
+  "cspSites": 45,
+  "jsSites": 3,
+  "pySites": 0
+}

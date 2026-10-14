@@ -1,0 +1,1252 @@
+{
+  "baseline": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "inputSha256": "bf9dfb9a3ab44edbb1341d9206936ae90e811e1641fb110c92e9d41207a5b190",
+  "execution": "Selected unchanged upstream Java methods on host JVM + upstream Gson 2.10.1; no Android runtime",
+  "cases": [
+    {
+      "id": "safe/missing",
+      "request": {
+        "operation": "safe",
+        "text": "{}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "fallback",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/null",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":null}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "fallback",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/boolean-true",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":true}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "true",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/boolean-false",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":false}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "false",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/integer",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":12}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "12",
+          "int": 12,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/fraction",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":1.5}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "1.5",
+          "int": 1,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/overflow-number",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":2147483648}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "2147483648",
+          "int": -2147483648,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/negative-overflow-number",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":-2147483649}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "-2147483649",
+          "int": 2147483647,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/scientific-lexeme",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":1e3}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "1e3",
+          "int": 1000,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/huge-integer",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":123456789012345678901234567890}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "123456789012345678901234567890",
+          "int": 1312754386,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/integer-string",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":\"12\"}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "12",
+          "int": 12,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/partial-integer-string",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":\"12x\"}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "12x",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/fraction-string",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":\"1.5\"}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "1.5",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/space-integer-string",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":\" 12 \"}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "12",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/overflow-string",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":\"2147483648\"}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "2147483648",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/ascii-trim",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":\"\\t value \\r\"}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "value",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/unicode-trim",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":\"\\u00a0value\\u00a0\"}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": " value ",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/object",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":{\"k\":1}}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "{\"k\":1}",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/array-primitives",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":[\"one\",2,true]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",2,true]",
+          "int": 17,
+          "list": [
+            "one",
+            "2",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-null-middle",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":[\"one\",null,\"three\"]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",null,\"three\"]",
+          "int": 17,
+          "list": [
+            "one"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-object-middle",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":[\"one\",{},\"three\"]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",{},\"three\"]",
+          "int": 17,
+          "list": [
+            "one"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-singleton-array",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":[[2],\"three\"]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "[[2],\"three\"]",
+          "int": 17,
+          "list": [
+            "2",
+            "three"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-empty-array",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":[\"one\",[],\"three\"]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",[],\"three\"]",
+          "int": 17,
+          "list": [
+            "one"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-single",
+      "request": {
+        "operation": "safe",
+        "text": "{\"value\":[1]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "string": "[1]",
+          "int": 17,
+          "list": [
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "id": "sites/defaults",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/timeout-one",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"timeout\":1}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 1,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/timeout-over-limit",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"timeout\":200}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 200,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 60
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/timeout-negative",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"timeout\":-1}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": -1,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/timeout-fraction-string",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"timeout\":\"1.5\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/ext-null",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"ext\":null}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/ext-object",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"ext\":{\"key\":1}}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "{\"key\":1}",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/categories-null-middle",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"categories\":[\"one\",null,\"three\"]}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [
+              "one"
+            ],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/categories-singleton-array",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"categories\":[[2],\"three\"]}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [
+              "2",
+              "three"
+            ],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/empty-key",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "",
+            "name": "",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/empty-api",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/null-key",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":null,\"type\":3,\"api\":\"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "sites/null-name",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"name\":null}]}"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "sites/object-name",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"name\":{\"x\":1}}]}"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "sites/null-type",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":null,\"api\":\"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "sites/boolean-type",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":true,\"api\":\"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.NumberFormatException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "sites/singleton-array-api",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":[\"csp_Demo\"]}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/type-two",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":2,\"api\":\"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 2,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/type-four",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":4,\"api\":\"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 4,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/py-filterable",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"py_demo\",\"type\":3,\"api\":\"csp_Demo\",\"filterable\":0}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "py_demo",
+            "name": "py_demo",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/boolean-searchable",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_Demo\",\"searchable\":true}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/duplicate-keys",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\": [{\"key\": \"a\", \"type\": 3, \"api\": \"csp_Demo\"}, {\"key\": \"a\", \"type\": 3, \"api\": \"csp_Replacement\"}, {\"key\": \"b\", \"type\": 3, \"api\": \"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Replacement",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          },
+          {
+            "key": "b",
+            "name": "b",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/missing-key",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[{\"type\":3,\"api\":\"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "sites/partial-state-on-error",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\": [{\"key\": \"a\", \"type\": 3, \"api\": \"csp_Demo\"}, {\"key\": \"b\", \"type\": 3, \"api\": \"csp_Demo\", \"name\": null}, {\"key\": \"c\", \"type\": 3, \"api\": \"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/primitive-entry",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":[1]}"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.ClassCastException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "sites/object-not-array",
+      "request": {
+        "operation": "sites",
+        "text": "{\"sites\":{}}"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.IllegalStateException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "trim/ascii-prefix",
+      "request": {
+        "operation": "trim",
+        "text": "  comment\n{\"sites\":[]} suffix  "
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[]}"
+      }
+    },
+    {
+      "id": "trim/unicode-space",
+      "request": {
+        "operation": "trim",
+        "text": " hello "
+      },
+      "expected": {
+        "ok": true,
+        "value": " hello "
+      }
+    },
+    {
+      "id": "json/strict",
+      "request": {
+        "operation": "json",
+        "text": "{\"value\":[1,2]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "value": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "json/single-quotes",
+      "request": {
+        "operation": "json",
+        "text": "{'value':'demo'}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "value": "demo"
+        }
+      }
+    },
+    {
+      "id": "json/unquoted-keys",
+      "request": {
+        "operation": "json",
+        "text": "{value:demo}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "value": "demo"
+        }
+      }
+    },
+    {
+      "id": "json/array-trailing-comma",
+      "request": {
+        "operation": "json",
+        "text": "{\"value\":[1,]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "value": [
+            1,
+            null
+          ]
+        }
+      }
+    },
+    {
+      "id": "json/object-trailing-comma",
+      "request": {
+        "operation": "json",
+        "text": "{\"value\":1,}"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "com.google.gson.JsonSyntaxException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "json/semicolon",
+      "request": {
+        "operation": "json",
+        "text": "{\"value\":1;\"other\":2}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "value": 1,
+          "other": 2
+        }
+      }
+    },
+    {
+      "id": "json/equals",
+      "request": {
+        "operation": "json",
+        "text": "{value=1}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "json/hash-comment",
+      "request": {
+        "operation": "json",
+        "text": "{#comment\nvalue:1}"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "fix/ordinary",
+      "request": {
+        "operation": "fix",
+        "text": "{\"spider\":\"./a.jar\",\"sites\":[]}",
+        "url": "https://example.invalid/box/main.json"
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"spider\":\"https://example.invalid/box/a.jar\",\"sites\":[]}"
+      }
+    },
+    {
+      "id": "fix/global-replacement",
+      "request": {
+        "operation": "fix",
+        "text": "{\"spider\":\"./a.jar\",\"note\":\"x../file\",\"sites\":[]}",
+        "url": "https://example.invalid/box/main.json"
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"spider\":\"https://example.invalid/box/a.jar\",\"note\":\"xhttps://example.invalid/file\",\"sites\":[]}"
+      }
+    },
+    {
+      "id": "fix/double-parent",
+      "request": {
+        "operation": "fix",
+        "text": "{\"spider\":\"../../a.jar\",\"sites\":[]}",
+        "url": "https://example.invalid/a/b/main.json"
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"spider\":\"https://example.invalid/a/https://example.invalid/a/a.jar\",\"sites\":[]}"
+      }
+    },
+    {
+      "id": "fix/file",
+      "request": {
+        "operation": "fix",
+        "text": "{\"spider\":\"./a.jar\",\"sites\":[]}",
+        "url": "file:///storage/box/main.json"
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"spider\":\"http://127.0.0.1:9978/file//storage/box/a.jar\",\"sites\":[]}"
+      }
+    },
+    {
+      "id": "fix/clan-remote",
+      "request": {
+        "operation": "fix",
+        "text": "{\"spider\":\"./a.jar\",\"sites\":[]}",
+        "url": "clan://192.0.2.1/box/main.json"
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"spider\":\"http://192.0.2.1/file/box/a.jar\",\"sites\":[]}"
+      }
+    }
+  ]
+}

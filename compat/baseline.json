@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "android": {
+    "repository": "https://github.com/q215613905/TVBoxOS",
+    "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+    "selection": "Project source baseline candidate; not an assertion about Win-Box's historical APK version",
+    "apkHash": null,
+    "androidRuntimeVerified": false,
+    "gson": "2.10.1",
+    "quickjsWrapper": "2.1.0"
+  },
+  "winbox": {
+    "repository": "https://github.com/yagami-hue/Win-box",
+    "commit": "136fadcacb2b3a9bd96320578d93e9735452d9e9"
+  },
+  "target": "linux/amd64",
+  "nasVerified": false,
+  "priority": ["subscription parsing", "script runtime parity"],
+  "deferred": ["player UI", "media decoding", "transcoding"]
+}

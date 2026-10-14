@@ -1,0 +1,2032 @@
+{
+  "baseline": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "winbox": "136fadcacb2b3a9bd96320578d93e9735452d9e9",
+  "inputSha256": "bf9dfb9a3ab44edbb1341d9206936ae90e811e1641fb110c92e9d41207a5b190",
+  "scope": "Host-JVM selected source-method comparison only; not full Android, Linux or NAS verification",
+  "total": 65,
+  "matching": 12,
+  "differences": 51,
+  "unmappedErrors": 2,
+  "rows": [
+    {
+      "id": "safe/missing",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "fallback",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "fallback",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/null",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "fallback",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "null",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/boolean-true",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "true",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "true",
+          "int": 1,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/boolean-false",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "false",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "false",
+          "int": 0,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/integer",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "12",
+          "int": 12,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "12",
+          "int": 12,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/fraction",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "1.5",
+          "int": 1,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "1.5",
+          "int": 1,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/overflow-number",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "2147483648",
+          "int": -2147483648,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "2147483648",
+          "int": 2147483648,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/negative-overflow-number",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "-2147483649",
+          "int": 2147483647,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "-2147483649",
+          "int": -2147483649,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/scientific-lexeme",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "1e3",
+          "int": 1000,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "1000",
+          "int": 1000,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/huge-integer",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "123456789012345678901234567890",
+          "int": 1312754386,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "1.2345678901234568e+29",
+          "int": 1.2345678901234568e+29,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/integer-string",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "12",
+          "int": 12,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "12",
+          "int": 12,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/partial-integer-string",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "12x",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "12x",
+          "int": 12,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/fraction-string",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "1.5",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "1.5",
+          "int": 1,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/space-integer-string",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "12",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "12",
+          "int": 12,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/overflow-string",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "2147483648",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "2147483648",
+          "int": 2147483648,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/ascii-trim",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "value",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "value",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/unicode-trim",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": " value ",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "value",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/object",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "{\"k\":1}",
+          "int": 17,
+          "list": []
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "{\"k\":1}",
+          "int": 17,
+          "list": []
+        }
+      }
+    },
+    {
+      "id": "safe/array-primitives",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",2,true]",
+          "int": 17,
+          "list": [
+            "one",
+            "2",
+            "true"
+          ]
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",2,true]",
+          "int": 17,
+          "list": [
+            "one",
+            "2",
+            "true"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-null-middle",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",null,\"three\"]",
+          "int": 17,
+          "list": [
+            "one"
+          ]
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",null,\"three\"]",
+          "int": 17,
+          "list": [
+            "one",
+            "three"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-object-middle",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",{},\"three\"]",
+          "int": 17,
+          "list": [
+            "one"
+          ]
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",{},\"three\"]",
+          "int": 17,
+          "list": [
+            "one",
+            "three"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-singleton-array",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "[[2],\"three\"]",
+          "int": 17,
+          "list": [
+            "2",
+            "three"
+          ]
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "[[2],\"three\"]",
+          "int": 17,
+          "list": [
+            "three"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-empty-array",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",[],\"three\"]",
+          "int": 17,
+          "list": [
+            "one"
+          ]
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "[\"one\",[],\"three\"]",
+          "int": 17,
+          "list": [
+            "one",
+            "three"
+          ]
+        }
+      }
+    },
+    {
+      "id": "safe/array-single",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "string": "[1]",
+          "int": 17,
+          "list": [
+            "1"
+          ]
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "string": "[1]",
+          "int": 17,
+          "list": [
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "id": "sites/defaults",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/timeout-one",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 1,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 5
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 5,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/timeout-over-limit",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 200,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 60
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 60,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 60
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/timeout-negative",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": -1,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/timeout-fraction-string",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 5,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/ext-null",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "null",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/ext-object",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "{\"key\":1}",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "{\"key\":1}",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/categories-null-middle",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [
+              "one"
+            ],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [
+              "one",
+              "three"
+            ],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/categories-singleton-array",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [
+              "2",
+              "three"
+            ],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [
+              "three"
+            ],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/empty-key",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "",
+            "name": "",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "sites/empty-api",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "sites/null-key",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": []
+      },
+      "winbox": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "sites/null-name",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": []
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "null",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/object-name",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": []
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "{\"x\":1}",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/null-type",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": []
+      },
+      "winbox": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "sites/boolean-type",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": false,
+        "errorType": "java.lang.NumberFormatException",
+        "partialSites": []
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 1,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/singleton-array-api",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "[\"csp_Demo\"]",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/type-two",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 2,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 2,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/type-four",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 4,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 4,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/py-filterable",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "py_demo",
+            "name": "py_demo",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "py_demo",
+            "name": "py_demo",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/boolean-searchable",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/duplicate-keys",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Replacement",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          },
+          {
+            "key": "b",
+            "name": "b",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          },
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Replacement",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          },
+          {
+            "key": "b",
+            "name": "b",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/missing-key",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": []
+      },
+      "winbox": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "sites/partial-state-on-error",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "partialSites": [
+          {
+            "key": "a",
+            "name": "a",
+            "api": "csp_Demo",
+            "type": 3,
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "ext": "",
+            "jar": "",
+            "categories": [],
+            "playerType": -1,
+            "timeout": 0,
+            "style": "",
+            "playUrl": "",
+            "click": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      },
+      "winbox": {
+        "ok": true,
+        "value": [
+          {
+            "key": "a",
+            "name": "a",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          },
+          {
+            "key": "b",
+            "name": "null",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          },
+          {
+            "key": "c",
+            "name": "c",
+            "type": 3,
+            "api": "csp_Demo",
+            "searchable": 1,
+            "quickSearch": 1,
+            "changeable": 1,
+            "filterable": 1,
+            "playUrl": "",
+            "ext": "",
+            "jar": "",
+            "playerType": -1,
+            "categories": [],
+            "timeout": 15,
+            "click": "",
+            "style": "",
+            "playTimeoutSeconds": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "sites/primitive-entry",
+      "equal": false,
+      "status": "unmapped-error",
+      "reason": "Both reject; error classes and partial-state semantics require Android mapping",
+      "androidSource": {
+        "ok": false,
+        "errorType": "java.lang.ClassCastException",
+        "partialSites": []
+      },
+      "winbox": {
+        "ok": false,
+        "errorType": "TypeError"
+      }
+    },
+    {
+      "id": "sites/object-not-array",
+      "equal": false,
+      "status": "unmapped-error",
+      "reason": "Both reject; error classes and partial-state semantics require Android mapping",
+      "androidSource": {
+        "ok": false,
+        "errorType": "java.lang.IllegalStateException",
+        "partialSites": []
+      },
+      "winbox": {
+        "ok": false,
+        "errorType": "Error"
+      }
+    },
+    {
+      "id": "trim/ascii-prefix",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": "{\"sites\":[]}"
+      },
+      "winbox": {
+        "ok": true,
+        "value": "{\"sites\":[]}"
+      }
+    },
+    {
+      "id": "trim/unicode-space",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": " hello "
+      },
+      "winbox": {
+        "ok": true,
+        "value": "hello"
+      }
+    },
+    {
+      "id": "json/strict",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "value": [
+            1,
+            2
+          ]
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "value": [
+            1,
+            2
+          ]
+        }
+      }
+    },
+    {
+      "id": "json/single-quotes",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "value": "demo"
+        }
+      },
+      "winbox": {
+        "ok": false,
+        "errorType": "SyntaxError"
+      }
+    },
+    {
+      "id": "json/unquoted-keys",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "value": "demo"
+        }
+      },
+      "winbox": {
+        "ok": false,
+        "errorType": "SyntaxError"
+      }
+    },
+    {
+      "id": "json/array-trailing-comma",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "value": [
+            1,
+            null
+          ]
+        }
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "value": [
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "json/object-trailing-comma",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": false,
+        "errorType": "com.google.gson.JsonSyntaxException",
+        "partialSites": []
+      },
+      "winbox": {
+        "ok": true,
+        "value": {
+          "value": 1
+        }
+      }
+    },
+    {
+      "id": "json/semicolon",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "value": 1,
+          "other": 2
+        }
+      },
+      "winbox": {
+        "ok": false,
+        "errorType": "SyntaxError"
+      }
+    },
+    {
+      "id": "json/equals",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "value": 1
+        }
+      },
+      "winbox": {
+        "ok": false,
+        "errorType": "SyntaxError"
+      }
+    },
+    {
+      "id": "json/hash-comment",
+      "equal": false,
+      "status": "different",
+      "reason": "success/error behavior differs",
+      "androidSource": {
+        "ok": true,
+        "value": {
+          "value": 1
+        }
+      },
+      "winbox": {
+        "ok": false,
+        "errorType": "SyntaxError"
+      }
+    },
+    {
+      "id": "fix/ordinary",
+      "equal": true,
+      "status": "matching",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": "{\"spider\":\"https://example.invalid/box/a.jar\",\"sites\":[]}"
+      },
+      "winbox": {
+        "ok": true,
+        "value": "{\"spider\":\"https://example.invalid/box/a.jar\",\"sites\":[]}"
+      }
+    },
+    {
+      "id": "fix/global-replacement",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": "{\"spider\":\"https://example.invalid/box/a.jar\",\"note\":\"xhttps://example.invalid/file\",\"sites\":[]}"
+      },
+      "winbox": {
+        "ok": true,
+        "value": "{\"spider\":\"https://example.invalid/box/a.jar\",\"note\":\"x../file\",\"sites\":[]}"
+      }
+    },
+    {
+      "id": "fix/double-parent",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": "{\"spider\":\"https://example.invalid/a/https://example.invalid/a/a.jar\",\"sites\":[]}"
+      },
+      "winbox": {
+        "ok": true,
+        "value": "{\"spider\":\"https://example.invalid/a/../a.jar\",\"sites\":[]}"
+      }
+    },
+    {
+      "id": "fix/file",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": "{\"spider\":\"http://127.0.0.1:9978/file//storage/box/a.jar\",\"sites\":[]}"
+      },
+      "winbox": {
+        "ok": true,
+        "value": "{\"spider\":\"./a.jar\",\"sites\":[]}"
+      }
+    },
+    {
+      "id": "fix/clan-remote",
+      "equal": false,
+      "status": "different",
+      "reason": "value comparison",
+      "androidSource": {
+        "ok": true,
+        "value": "{\"spider\":\"http://192.0.2.1/file/box/a.jar\",\"sites\":[]}"
+      },
+      "winbox": {
+        "ok": true,
+        "value": "{\"spider\":\"./a.jar\",\"sites\":[]}"
+      }
+    }
+  ]
+}

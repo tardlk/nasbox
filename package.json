@@ -6,6 +6,12 @@
   "type": "module",
   "main": "dist/main.cjs",
   "scripts": {
+    "compat:verify": "node scripts/compat/reference.mjs",
+    "compat:capture": "node scripts/compat/capture.mjs",
+    "compat:test": "node --disable-warning=ExperimentalWarning --import ./scripts/compat/typescript-loader.mjs --test compat/*.test.mjs",
+    "compat:report": "node --disable-warning=ExperimentalWarning --import ./scripts/compat/typescript-loader.mjs scripts/compat/report.mjs",
+    "compat:inspect": "node scripts/compat/inspect.mjs",
+    "compat:subscription": "node --disable-warning=ExperimentalWarning --import ./scripts/compat/typescript-loader.mjs scripts/compat/subscription-probe.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",

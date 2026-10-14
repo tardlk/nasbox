@@ -1,0 +1,14 @@
+{
+  "gson": {
+    "version": "2.10.1",
+    "url": "https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar",
+    "sha256": "4241c14a7727c34feea6507ec801318a3d4a90f070e4525681079fb94ee4c593",
+    "upstreamSha1": "b3add478d4382b78ea20b1671390a858002feb6c"
+  },
+  "localJdk": {
+    "distribution": "Eclipse Temurin",
+    "version": "17.0.20.1+1",
+    "platform": "macOS/aarch64",
+    "archiveSha256": "196d13ba5f10414bef7f6a05a9b3f00edacb18ebacef2b99485db9e2ee18f0e8"
+  }
+}
