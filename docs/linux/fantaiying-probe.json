@@ -15,6 +15,13 @@
   "sourceSitesAccepted": true,
   "sourceSites": 48,
   "winboxSites": 48,
+  "backendSites": 48,
+  "backendPathComparison": {
+    "equal": true
+  },
+  "backendSiteComparison": {
+    "equal": true
+  },
   "typeCounts": {
     "3": 48
   },

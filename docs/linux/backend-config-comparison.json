@@ -1,0 +1,271 @@
+{
+  "baseline": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "inputSha256": "bf9dfb9a3ab44edbb1341d9206936ae90e811e1641fb110c92e9d41207a5b190",
+  "scope": "Independent backend vs selected unchanged source methods on macOS ARM64 host JVM; not full Android/Linux/NAS parity",
+  "comparison": "Exact result equality, including Java error class and partial source map in the same ordered session",
+  "total": 65,
+  "matching": 65,
+  "differences": 0,
+  "rows": [
+    {
+      "id": "safe/missing",
+      "equal": true
+    },
+    {
+      "id": "safe/null",
+      "equal": true
+    },
+    {
+      "id": "safe/boolean-true",
+      "equal": true
+    },
+    {
+      "id": "safe/boolean-false",
+      "equal": true
+    },
+    {
+      "id": "safe/integer",
+      "equal": true
+    },
+    {
+      "id": "safe/fraction",
+      "equal": true
+    },
+    {
+      "id": "safe/overflow-number",
+      "equal": true
+    },
+    {
+      "id": "safe/negative-overflow-number",
+      "equal": true
+    },
+    {
+      "id": "safe/scientific-lexeme",
+      "equal": true
+    },
+    {
+      "id": "safe/huge-integer",
+      "equal": true
+    },
+    {
+      "id": "safe/integer-string",
+      "equal": true
+    },
+    {
+      "id": "safe/partial-integer-string",
+      "equal": true
+    },
+    {
+      "id": "safe/fraction-string",
+      "equal": true
+    },
+    {
+      "id": "safe/space-integer-string",
+      "equal": true
+    },
+    {
+      "id": "safe/overflow-string",
+      "equal": true
+    },
+    {
+      "id": "safe/ascii-trim",
+      "equal": true
+    },
+    {
+      "id": "safe/unicode-trim",
+      "equal": true
+    },
+    {
+      "id": "safe/object",
+      "equal": true
+    },
+    {
+      "id": "safe/array-primitives",
+      "equal": true
+    },
+    {
+      "id": "safe/array-null-middle",
+      "equal": true
+    },
+    {
+      "id": "safe/array-object-middle",
+      "equal": true
+    },
+    {
+      "id": "safe/array-singleton-array",
+      "equal": true
+    },
+    {
+      "id": "safe/array-empty-array",
+      "equal": true
+    },
+    {
+      "id": "safe/array-single",
+      "equal": true
+    },
+    {
+      "id": "sites/defaults",
+      "equal": true
+    },
+    {
+      "id": "sites/timeout-one",
+      "equal": true
+    },
+    {
+      "id": "sites/timeout-over-limit",
+      "equal": true
+    },
+    {
+      "id": "sites/timeout-negative",
+      "equal": true
+    },
+    {
+      "id": "sites/timeout-fraction-string",
+      "equal": true
+    },
+    {
+      "id": "sites/ext-null",
+      "equal": true
+    },
+    {
+      "id": "sites/ext-object",
+      "equal": true
+    },
+    {
+      "id": "sites/categories-null-middle",
+      "equal": true
+    },
+    {
+      "id": "sites/categories-singleton-array",
+      "equal": true
+    },
+    {
+      "id": "sites/empty-key",
+      "equal": true
+    },
+    {
+      "id": "sites/empty-api",
+      "equal": true
+    },
+    {
+      "id": "sites/null-key",
+      "equal": true
+    },
+    {
+      "id": "sites/null-name",
+      "equal": true
+    },
+    {
+      "id": "sites/object-name",
+      "equal": true
+    },
+    {
+      "id": "sites/null-type",
+      "equal": true
+    },
+    {
+      "id": "sites/boolean-type",
+      "equal": true
+    },
+    {
+      "id": "sites/singleton-array-api",
+      "equal": true
+    },
+    {
+      "id": "sites/type-two",
+      "equal": true
+    },
+    {
+      "id": "sites/type-four",
+      "equal": true
+    },
+    {
+      "id": "sites/py-filterable",
+      "equal": true
+    },
+    {
+      "id": "sites/boolean-searchable",
+      "equal": true
+    },
+    {
+      "id": "sites/duplicate-keys",
+      "equal": true
+    },
+    {
+      "id": "sites/missing-key",
+      "equal": true
+    },
+    {
+      "id": "sites/partial-state-on-error",
+      "equal": true
+    },
+    {
+      "id": "sites/primitive-entry",
+      "equal": true
+    },
+    {
+      "id": "sites/object-not-array",
+      "equal": true
+    },
+    {
+      "id": "trim/ascii-prefix",
+      "equal": true
+    },
+    {
+      "id": "trim/unicode-space",
+      "equal": true
+    },
+    {
+      "id": "json/strict",
+      "equal": true
+    },
+    {
+      "id": "json/single-quotes",
+      "equal": true
+    },
+    {
+      "id": "json/unquoted-keys",
+      "equal": true
+    },
+    {
+      "id": "json/array-trailing-comma",
+      "equal": true
+    },
+    {
+      "id": "json/object-trailing-comma",
+      "equal": true
+    },
+    {
+      "id": "json/semicolon",
+      "equal": true
+    },
+    {
+      "id": "json/equals",
+      "equal": true
+    },
+    {
+      "id": "json/hash-comment",
+      "equal": true
+    },
+    {
+      "id": "fix/ordinary",
+      "equal": true
+    },
+    {
+      "id": "fix/global-replacement",
+      "equal": true
+    },
+    {
+      "id": "fix/double-parent",
+      "equal": true
+    },
+    {
+      "id": "fix/file",
+      "equal": true
+    },
+    {
+      "id": "fix/clan-remote",
+      "equal": true
+    }
+  ]
+}

@@ -6,6 +6,8 @@
   "type": "module",
   "main": "dist/main.cjs",
   "scripts": {
+    "backend:config": "node backend/config-core/cli.mjs",
+    "compat:backend-report": "node scripts/compat/backend-report.mjs",
     "compat:verify": "node scripts/compat/reference.mjs",
     "compat:capture": "node scripts/compat/capture.mjs",
     "compat:test": "node --disable-warning=ExperimentalWarning --import ./scripts/compat/typescript-loader.mjs --test compat/*.test.mjs",

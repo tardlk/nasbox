@@ -3,6 +3,8 @@ import { createHash } from 'node:crypto';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isDeepStrictEqual } from 'node:util';
+import { createConfigCore } from '../../backend/config-core/index.mjs';
 import { buildOracle, queryOracle } from './oracle.mjs';
 import { queryWinbox, compareResult } from './compare.mjs';
 
@@ -58,6 +60,13 @@ export async function probeSubscription(inputUrl, options = {}) {
   const request = { operation: 'sites', text: fixed.value };
   const androidSource = queryOracle([request], built)[0];
   const winbox = queryWinbox(request);
+  const core = createConfigCore();
+  let backend, backendFixed;
+  try {
+    backendFixed = await core.query({ operation: 'fix', url: inputUrl, text: decoded.text });
+    backend = backendFixed.ok
+      ? await core.query({ operation: 'sites', text: backendFixed.value }) : backendFixed;
+  } finally { await core.close(); }
   const config = json.value;
   const sites = Array.isArray(config.sites) ? config.sites : [];
   const typeCounts = {};
@@ -68,6 +77,9 @@ export async function probeSubscription(inputUrl, options = {}) {
     ...metadata, configObject: true, sourceSitesAccepted: androidSource.ok,
     sourceSites: androidSource.ok ? androidSource.value.length : null,
     winboxSites: winbox.ok ? winbox.value.length : null,
+    backendSites: backend.ok ? backend.value.length : null,
+    backendPathComparison: { equal: isDeepStrictEqual(fixed, backendFixed) },
+    backendSiteComparison: { equal: isDeepStrictEqual(androidSource, backend) },
     typeCounts, siteComparison: compareResult(androidSource, winbox),
     hasGlobalSpider: !!config.spider, globalSpiderExtension: spiderExtension,
     globalSpiderMd5Tagged: String(config.spider || '').includes(';md5;'),

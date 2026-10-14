@@ -27,6 +27,7 @@ Commands (Node 24+; JDK 17 and Gson as documented in docs/linux/environment.md):
 
 ```sh
 node scripts/compat/reference.mjs
+node scripts/compat/backend-report.mjs
 node --import ./scripts/compat/typescript-loader.mjs --test compat/*.test.mjs
 node --import ./scripts/compat/typescript-loader.mjs scripts/compat/report.mjs
 node --import ./scripts/compat/typescript-loader.mjs scripts/compat/report.mjs --gate
@@ -40,6 +41,14 @@ successfully so observations can be inspected; that does not mean parity passed.
 intentionally using `node scripts/compat/capture.mjs`, then review its diff. It is
 not regenerated during tests. This prevents harness edits from silently changing
 expected behavior.
+
+The explicit runtime lives in backend/config-core and builds its own committed
+Java sources, independently of this extractor. backend-config.test.mjs compares
+its exact results (including error classes and partial maps) to all 65 frozen
+observations and 17 additional live-reference requests. Its separate report is
+docs/linux/backend-config-comparison.json; the existing Win-Box audit remains
+unchanged. These are selected-method results on the host JVM, not full Android
+or Linux/NAS execution evidence.
 
 Inspect method behavior using JSON lines on stdin:
 
@@ -58,7 +67,8 @@ node --import ./scripts/compat/typescript-loader.mjs scripts/compat/subscription
 ```
 
 This bounded HTTP probe handles the observed salt+base64 envelope and uses the
-source-method harness for Gson parsing and site-loop inspection. It does not
+source-method harness for Gson parsing and site-loop inspection, comparing path
+and source results with the independent backend. It does not
 execute referenced code or upload subscriptions to a remote decoder. Reports
 contain response hashes/counts, not full source definitions or payloads.
 

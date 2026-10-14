@@ -8,10 +8,11 @@ Maven and Gradle were not available on PATH.
 | --- | --- | --- | --- |
 | Existing shared Node 24.19.0 | /Users/coke/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node | Dependency-free Node tests and TypeScript loading | Unmodified shared tool |
 | Existing Python 3.9.6 / git / curl | System tools | Source fetching, checkout and inspection | Unmodified shared tools |
-| New Eclipse Temurin JDK 17.0.20.1+1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/jdk17 | Compile and execute unchanged Android reference methods | Project-scoped development environment; retained for ongoing migration |
+| New Eclipse Temurin JDK 17.0.20.1+1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/jdk17 | Compile/execute original reference methods and independent backend config core | Project-scoped development environment; retained for ongoing migration |
 | New Gson 2.10.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/gson-2.10.1.jar | Match the Android app's actual JSON library | Project-scoped development dependency; retained |
 | Public Android reference snapshot | compat/reference/tvboxos | Fixed source and license evidence | Retained project source, about 263 KB of downloaded files |
 | Generated reference classes | .cache/compat/oracle | Temporary test build | Removed after verification; rebuilt automatically |
+| Generated backend classes | .cache/backend/config-core | Temporary independent runtime build | Removed after verification; rebuilt automatically |
 
 The project-scoped tool directory occupies approximately 309 MiB. Exact runtime
 artifact versions and checksums are recorded in compat/toolchain-integrity.json.
@@ -36,7 +37,9 @@ TVBOX_GSON_JAR. The local macOS JDK is not a Linux deployment artifact.
 
 Two test-only HTTP listeners bound to 127.0.0.1 on ephemeral ports were started
 and closed by the transport tests, including their failure paths. Reference JVM
-processes exit after each batch. No persistent service was started.
+processes exit after each batch. Backend worker tests/probes create temporary JVM
+children and close them, including startup failure and response-limit failure
+paths. No persistent service was started. This batch installed no new tools.
 
 Temporary subscription response bytes/decoded content and generated Java classes
 under .cache were removed after extracting metadata and verification results.

@@ -28,6 +28,9 @@ test('subscription probe follows redirect, preserves UA, parses wrapper and repo
     const result = await probeSubscription(url, { oracle: buildOracle() });
     assert.equal(result.sourceSites, 1);
     assert.equal(result.winboxSites, 1);
+    assert.equal(result.backendSites, 1);
+    assert.equal(result.backendPathComparison.equal, true);
+    assert.equal(result.backendSiteComparison.equal, true);
     assert.equal(result.envelope, 'salt-base64');
     assert.equal(result.contentType, 'image/x-ms-bmp');
     assert.equal(result.siteComparison.status, 'different'); // raw timeout normalization differs

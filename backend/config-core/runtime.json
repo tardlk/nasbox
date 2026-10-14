@@ -1,0 +1,8 @@
+{
+  "javaRelease": 17,
+  "gson": {
+    "version": "2.10.1",
+    "sha256": "4241c14a7727c34feea6507ec801318a3d4a90f070e4525681079fb94ee4c593",
+    "url": "https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar"
+  }
+}
