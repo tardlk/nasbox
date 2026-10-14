@@ -166,6 +166,11 @@
       "path": "app/src/main/java/com/github/tvbox/osc/util/StringUtils.java",
       "sha256": "3848347be15276925d215ff1d21a0352adf1c9a25c24b136fe6e92c2932aa8c8",
       "bytes": 6780
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/SpiderDebug.java",
+      "sha256": "52bb0a40511ce3808b36beebdb111c199ecf6b8720adec811f6934829d781bd2",
+      "bytes": 459
     }
   ]
 }

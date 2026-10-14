@@ -1,0 +1,36 @@
+// SPDX-License-Identifier: GPL-3.0-only
+import android.os.*;import android.content.SharedPreferences;import android.view.*;import android.widget.*;
+import tvbox.runtime.*;import java.nio.file.*;import java.util.*;import java.util.concurrent.*;import java.util.concurrent.atomic.*;
+public class NativeHostProbe {
+ static void check(boolean value,String reason){if(!value)throw new AssertionError(reason);}
+ public static void main(String[] args)throws Exception{
+  HostServices.directory=Path.of(args[0]).toFile();
+  SharedPreferences p=NativePreferences.get("typed/../preferences");
+  if(args.length>1){check(p.getInt("int",0)==17&&p.getLong("long",0)==9007199254740993L&&p.getStringSet("set",null).equals(Set.of("a","b")),"typed disk restore");System.out.println("native-preferences-restored");return;}
+  AtomicInteger notifications=new AtomicInteger();SharedPreferences.OnSharedPreferenceChangeListener listener=(prefs,key)->notifications.incrementAndGet();p.registerOnSharedPreferenceChangeListener(listener);
+  Set<String> input=new HashSet<>(Set.of("a","b"));
+  check(p.edit().putInt("int",17).putLong("long",9007199254740993L).putBoolean("boolean",true).putFloat("float",1.5f).putString("string","中文").putStringSet("set",input).commit(),"real preference commit");
+  input.clear();check(p.getStringSet("set",null).size()==2&&notifications.get()==6,"defensive copy and notifications");p.getStringSet("set",null).clear();
+  check(p.getBoolean("boolean",false)&&p.getFloat("float",0)==1.5f&&p.getString("string","").equals("中文"),"typed reads");
+  try{p.getLong("int",0);throw new AssertionError("wrong type accepted");}catch(ClassCastException expected){}
+  p.edit().putInt("int",17).apply();check(notifications.get()==6,"unchanged write no listener callback");NativePreferences.releaseListeners();p.edit().putString("extra","x").apply();check(notifications.get()==6,"listener release");
+  check(LinearLayout.LayoutParams.class.getSuperclass()==ViewGroup.MarginLayoutParams.class,"Android layout hierarchy");
+  check(View.class.getMethod("setLayoutParams",ViewGroup.LayoutParams.class)!=null,"Android descriptor");
+  HandlerThread thread=new HandlerThread("native-host-fixture");thread.start();Looper loop=thread.getLooper();Handler handler=new Handler(loop);
+  AtomicInteger order=new AtomicInteger();CountDownLatch completed=new CountDownLatch(2);long started=System.nanoTime();
+  Runnable canceled=()->{throw new AssertionError("canceled callback dispatched");};handler.postDelayed(canceled,100);handler.removeCallbacks(canceled);check(!handler.hasCallbacks(canceled),"queued cancellation");
+  handler.post(()->{check(Looper.myLooper()==loop&&Thread.currentThread()==thread,"HandlerThread affinity");check(order.incrementAndGet()==1,"first callback");completed.countDown();});
+  handler.postDelayed(()->{check(order.incrementAndGet()==2,"delayed order");check(System.nanoTime()-started>=80_000_000L,"delay is real");completed.countDown();},100);
+  check(completed.await(5,TimeUnit.SECONDS),"callbacks completed");handler.postDelayed(canceled,10000);check(thread.quitSafely(),"safe quit");thread.join(2000);check(!thread.isAlive()&&!handler.post(()->{}),"quit stops queue and rejects messages");
+  ClassLoader owner=new java.net.URLClassLoader(new java.net.URL[0],NativeHostProbe.class.getClassLoader());Thread.currentThread().setContextClassLoader(owner);Handler owned=new Handler(Looper.getMainLooper());owned.postDelayed(canceled,10000);Looper.cancelOwned(owner);check(!owned.hasCallbacks(canceled),"plugin callback release");Thread.currentThread().setContextClassLoader(NativeHostProbe.class.getClassLoader());
+  try(var plugin=new java.net.URLClassLoader(new java.net.URL[]{Path.of(args[0],"rewritten.jar").toUri().toURL()},NativeHostProbe.class.getClassLoader())){
+   Class<?> sockets=Class.forName("fixture.PluginSockets",true,plugin);java.net.ServerSocket direct=(java.net.ServerSocket)sockets.getMethod("direct").invoke(null),factory=(java.net.ServerSocket)sockets.getMethod("factory").invoke(null);
+   check(NativeResources.count()==2,"translated constructors and factories track real listeners");
+   AtomicBoolean stopped=new AtomicBoolean();CountDownLatch accepting=new CountDownLatch(1);Thread accept=new Thread(()->{try{accepting.countDown();direct.accept();}catch(java.net.SocketException expected){stopped.set(true);}catch(Exception e){throw new RuntimeException(e);}},"plugin-listener-fixture");accept.setContextClassLoader(plugin);accept.start();accepting.await();
+   NativeResources.closeOwned(plugin);accept.join(2000);check(stopped.get()&&!accept.isAlive()&&direct.isClosed()&&factory.isClosed()&&NativeResources.count()==0,"listener closed and accept thread stopped before loader release");
+  }
+  check(((Number)NativeHost.probe()).intValue()==42,"ARM64 Unicorn2 executes machine code");
+  NativeHost.close();check(NativeHost.snapshot().get("extraLoaders").getAsInt()==0&&NativeHost.snapshot().get("backend").isJsonNull(),"native state clean");
+  System.out.println("native-host-ok");
+ }
+}

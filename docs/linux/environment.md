@@ -210,3 +210,59 @@ remote artifact cache is retained. jsoup and the previous development dependenci
 remain for further work. Caller-selected future --data/runtimeDataDir may retain
 module-cache JSON; aggregate persistent disk quota/eviction is still pending.
 Services still running: none. Autostart changes: none. System PATH changes: none.
+
+
+## ARM/JNI native JAR batch — 2026-10-15
+
+Checked existing PATH, project libraries and WinBox resources before installing.
+Reused Node 24, project JDK 17, clang, Python, curl, dex2jar/dx/baksmali, BC and
+QuickJS. Docker/Podman/QEMU/adb/Maven/Gradle remain unavailable and were not
+installed. No global PATH, shared runtime or other project's tools were changed.
+
+Added 22 Maven artifacts under
+/Users/coke/Desktop/Projects/tvbox-linux/.tools/native-runtime (69,282,171 artifact
+bytes, about 66.1 MiB; du rounds this directory to 65 MiB). This is a retained
+project development/runtime dependency environment for ARM/JNI and headless JVM
+compatibility: unidbg 0.9.9 android/api/unicorn2/dynarmic; Unicorn 1.0.15;
+Capstone 3.1.8; Keystone 0.9.7; demumble 1.0.4; Commons Codec 1.21.0;
+Fastjson 1.2.83; apk-parser 2.6.10; JNA 5.10.0; native-lib-loader 2.3.5;
+SLF4J api/simple 2.0.16; ASM 9.7; Android API 4.1.1.4;
+Commons IO 2.21.0; Commons Collections4 4.5.0; SQLite JDBC 3.46.1.0.
+The first native dependency set follows WinBox; Commons IO/Collections are
+required by the official unidbg API POM, and SQLite follows WinBox's pinned
+version. The Android jar provides symbols/throwing stubs, not an Android system.
+SQLite retains its Darwin/Linux payloads, unlike WinBox's Windows sanitizer.
+
+Official Maven SHA-1 values were checked and all sizes/SHA-256 are pinned in
+backend/spider-runtime/native-bridge/runtime.json and the integrity ledger.
+fetch-runtime.mjs first verifies/reuses installed files and downloads only missing
+ones; builds remain offline. Versioned POMs, available embedded license/notices,
+source-header attribution, source-archive hashes and WinBox MIT attribution are
+retained under native-bridge/licenses (about 400 KiB). Downloaded source archives
+were inspected in memory and discarded. Binaries stay outside Git. .tools totals
+about 404 MiB including earlier retained tools; these remain for ongoing port work.
+Distribution license/source obligations are recorded in native-bridge/NOTICE;
+no Docker/release image was produced.
+
+The pinned source inputs are checked unchanged; generated host adaptations and
+compile products are task caches. NativeLibLoader/SQLite extraction uses owned
+worker/test tmp directories. Optional workers have a 768 MiB Java heap maximum
+plus native emulator memory; no permanent OS environment was installed. Actual
+ARM64 Dynarmic and Unicorn2 plus ARM32 Unicorn2 probes ran on macOS ARM64.
+Bundled Linux x86_64 backend files were inventoried, not executed on Linux.
+
+The real subscription JAR and decoded config, decrypted runtime DEX/classes,
+extracted ARM libraries, native patches/rootfs, SQLite/preference data and raw logs
+were temporary under project .cache/native-bridge or owned tvbox-native-* worker
+folders. The source JAR started a temporary HTTP listener and plugin threads.
+Native JAR reset now exits the entire old worker before replacement; all listeners
+and remaining plugin threads disappear with that process. Default worker data and
+all task-owned test dirs are deleted in finally; explicitly selected persistent
+data is retained only at the caller's request. Only metadata/counts/hashes remain
+in docs/linux/native-runtime-probe.json. No subscribed/decrypted code is committed.
+
+365 tests passed with native integration enabled. Project .cache build/probe/test
+material was removed after final validation; no .data or remote artifact cache
+is retained. All task-owned JVMs, plugin listeners and temporary test services
+are stopped. Services still running: none. Autostart changes: none. Shared tools
+and unrelated project files were preserved.

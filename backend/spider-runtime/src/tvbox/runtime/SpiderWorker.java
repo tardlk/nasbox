@@ -22,6 +22,8 @@ public final class SpiderWorker {
   if(operation.equals("resetKeys")){router.currentPyKey="";return JsonNull.INSTANCE;}
   if(operation.equals("host")){HostServices.configure(r);return JsonNull.INSTANCE;}
   if(operation.equals("loadMain")){JsonObject v=new JsonObject();v.addProperty("loaded",jars.loadMain(Path.of(r.get("path").getAsString())));v.add("logs",HostServices.logs.deepCopy());if(!v.get("loaded").getAsBoolean()&&jars.failure()!=null)v.addProperty("failure",jars.failure());return v;}
+  if(operation.equals("nativeState"))return NativeHooks.snapshot();
+  if(operation.equals("nativeProbe"))return gson.toJsonTree(NativeHooks.probe());
   if(operation.equals("dexState")){JsonObject v=new JsonObject();v.addProperty("nestedLoaderCount",dalvik.system.BaseDexClassLoader.ownedCount());return v;}
   if(operation.equals("scanProtection"))return new JsonPrimitive(new ProtectedJarSupport().check(r.get("path").getAsString()));
   if(operation.equals("registerJar")){String signature=r.get("signature").getAsString();Path path=Path.of(r.get("path").getAsString());jars.register(signature,path);scripts.register(signature.split(";md5;")[0],path);return JsonNull.INSTANCE;}
@@ -95,6 +97,7 @@ public final class SpiderWorker {
   Exception failure=null;try{jars.close();}catch(Exception e){failure=e;}
   try{scripts.close();}catch(Exception e){failure=e;}finally{
    try{dalvik.system.BaseDexClassLoader.closeAll();}catch(Exception e){failure=e;}
+   try{NativeHooks.close();}catch(Exception e){failure=e;}
    try{DexArtifacts.close();}catch(Exception e){failure=e;}
    HostServices.close();com.github.tvbox.osc.util.FileUtils.clear();
   }
@@ -106,6 +109,7 @@ public final class SpiderWorker {
   System.setOut(new PrintStream(System.err,true,"UTF-8"));
   SpiderWorker worker=new SpiderWorker();BufferedReader input=new BufferedReader(new InputStreamReader(System.in,StandardCharsets.UTF_8));String line;
   try{while((line=input.readLine())!=null){JsonObject response=new JsonObject();try{JsonObject r=JsonParser.parseString(line).getAsJsonObject();response.add("id",r.get("id"));JsonElement value=worker.run(r);response.addProperty("ok",true);response.add("value",value);}catch(Throwable e){response.addProperty("ok",false);response.addProperty("errorType",e.getClass().getName());response.addProperty("message",e.getMessage());}output.println(response);}}
-  finally{worker.close();}
+  finally{try{worker.close();}catch(Throwable e){if(NativeHooks.enabled()){e.printStackTrace(System.err);System.exit(1);}throw e;}}
+  if(NativeHooks.enabled())System.exit(0); // Remote plugins can create non-daemon threads.
  }
 }

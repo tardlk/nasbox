@@ -1,0 +1,6 @@
+// SPDX-License-Identifier: GPL-3.0-only
+package fixture;
+public class PluginSockets {
+ public static java.net.ServerSocket direct()throws Exception{return new java.net.ServerSocket(0);}
+ public static java.net.ServerSocket factory()throws Exception{return javax.net.ServerSocketFactory.getDefault().createServerSocket(0);}
+}

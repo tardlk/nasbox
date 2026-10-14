@@ -34,6 +34,7 @@
   try{
    loader=new JvmJarClassLoader(file.toPath());
    if(!invokeInit(loader,file.getAbsolutePath())){lastFailure="PROTECTED_INIT_UNBOUND";loader.close();return false;}
+   NativeHooks.afterInit(loader);
    invokeProxy(key,loader);invokeDanmaku(key,loader);injectProxyPort(loader);loaders.put(key,loader);return true;
   }catch(Throwable e){lastFailure=e.getClass().getSimpleName()+": "+e.getMessage();try{if(loader!=null)loader.close();}catch(Exception ignored){}HostServices.log("JAR loading failed: "+e.getClass().getName());return false;}
  }

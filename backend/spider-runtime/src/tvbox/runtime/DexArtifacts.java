@@ -20,7 +20,7 @@ public final class DexArtifacts {
     if(n.startsWith("/")||n.contains("\\")||Arrays.asList(n.split("/")).contains(".."))throw new IOException("INVALID_ENTRY_NAME");
     if(e.isDirectory())continue;
     if(result.containsKey(n))throw new IOException("DUPLICATE_ENTRY");
-    String lower=n.toLowerCase(Locale.ROOT);if(lower.endsWith(".so")||lower.endsWith(".dll")||lower.endsWith(".dylib"))throw new IOException("NATIVE_PLUGIN_UNAVAILABLE");
+    String lower=n.toLowerCase(Locale.ROOT);if((lower.endsWith(".dll")||lower.endsWith(".dylib")||lower.endsWith(".so")&&!NativeHooks.enabled()))throw new IOException("NATIVE_PLUGIN_UNAVAILABLE");
     byte[] bytes;try(InputStream in=zip.getInputStream(e)){bytes=read(in);}total+=bytes.length;if(total>TOTAL)throw new IOException("ARTIFACT_EXPANSION_LIMIT");result.put(n,bytes);
    }
   }return result;
@@ -31,7 +31,7 @@ public final class DexArtifacts {
   boolean hasDex=input.keySet().stream().anyMatch(n->n.endsWith(".dex"));
   if(!hasDex){if(input.keySet().stream().noneMatch(n->n.endsWith(".class")))throw new IOException("NO_EXECUTABLE_CLASSES");return path;}
   String cp=System.getProperty("tvbox.dex.classpath","");if(cp.isEmpty())throw new IOException("DEX_CONVERTER_UNAVAILABLE");
-  String key=hash((hash(original)+System.getProperty("tvbox.dex.fingerprint","")+"dex-artifacts-v1").getBytes(java.nio.charset.StandardCharsets.UTF_8));
+  String key=hash((hash(original)+System.getProperty("tvbox.dex.fingerprint","")+System.getProperty("tvbox.native.fingerprint","")+"dex-artifacts-v2").getBytes(java.nio.charset.StandardCharsets.UTF_8));
   Path dir=HostServices.directory.toPath().resolve("dex-cache");Files.createDirectories(dir);Path target=dir.resolve(key+".jar"),digest=dir.resolve(key+".sha256");
   if(Files.isRegularFile(target)&&Files.isRegularFile(digest)&&Files.size(digest)==64&&Files.size(target)<=TOTAL&&hash(Files.readAllBytes(target)).equals(Files.readString(digest)))return target;
   Path stage=Files.createTempDirectory(dir,"convert-");
@@ -41,6 +41,7 @@ public final class DexArtifacts {
    for(Map.Entry<String,byte[]> e:input.entrySet())if(e.getKey().endsWith(".dex")){
     byte[] bytes=e.getValue();if(bytes.length<112||!dex(bytes))throw new IOException("INVALID_DEX_HEADER");Path converted=stage.resolve("part.jar");
     try{Object translator=type.getMethod("from",byte[].class).invoke(null,(Object)bytes);type.getMethod("to",Path.class).invoke(translator,converted);}catch(java.lang.reflect.InvocationTargetException ex){throw new IOException("DEX_CONVERSION_FAILED",ex.getCause());}
+    if(NativeHooks.enabled()){Path raw=stage.resolve("repair.dex");Files.write(raw,bytes);try{NativeHooks.repair(raw,converted);}finally{Files.deleteIfExists(raw);}}
     for(Map.Entry<String,byte[]> cls:entries(converted).entrySet())if(cls.getKey().endsWith(".class")){if(output.putIfAbsent(cls.getKey(),cls.getValue())!=null)throw new IOException("DUPLICATE_DEX_CLASS");total+=cls.getValue().length;}
     Files.delete(converted);
    }
@@ -53,6 +54,9 @@ public final class DexArtifacts {
    Path jar=stage.resolve("merged.jar");try(ZipOutputStream zip=new ZipOutputStream(Files.newOutputStream(jar))){for(Map.Entry<String,byte[]> e:output.entrySet()){zip.putNextEntry(new ZipEntry(e.getKey()));zip.write(e.getValue());zip.closeEntry();}}
    String sum=hash(Files.readAllBytes(jar));Files.move(jar,target,StandardCopyOption.REPLACE_EXISTING,StandardCopyOption.ATOMIC_MOVE);Path stamp=stage.resolve("digest");Files.writeString(stamp,sum);Files.move(stamp,digest,StandardCopyOption.REPLACE_EXISTING,StandardCopyOption.ATOMIC_MOVE);return target;
   }finally{try(var walk=Files.walk(stage)){for(Path p:walk.sorted(Comparator.reverseOrder()).toList())Files.deleteIfExists(p);}}
+ }
+ public static synchronized void baksmali(Path source,Path target)throws Exception{
+  if(converter==null)throw new IllegalStateException("DEX converter not initialized");Class<?> type=converter.loadClass("com.googlecode.d2j.smali.Baksmali");Object parser=type.getMethod("from",java.io.File.class).invoke(null,source.toFile());type.getMethod("to",Path.class).invoke(parser,target);
  }
  public static synchronized void close()throws IOException{if(converter!=null){converter.close();converter=null;}}
 }

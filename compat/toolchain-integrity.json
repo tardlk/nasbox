@@ -81,5 +81,12 @@
     "upstreamSha1": "9cbd867771876e35f0f3088525381d183c7f2aa9",
     "bytes": 415074,
     "filename": "jsoup-1.14.1.jar"
+  },
+  "nativeBridge": {
+    "manifest": "backend/spider-runtime/native-bridge/runtime.json",
+    "files": 22,
+    "bytes": 69282171,
+    "verification": "Official Maven Central published SHA-1 checked; all artifact SHA-256 pinned; no native JARs committed",
+    "licenses": "backend/spider-runtime/native-bridge/NOTICE"
   }
 }

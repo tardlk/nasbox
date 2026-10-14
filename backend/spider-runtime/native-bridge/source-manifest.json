@@ -1,0 +1,675 @@
+{
+  "repository": "yagami-hue/Win-box",
+  "commit": "136fadcacb2b3a9bd96320578d93e9735452d9e9",
+  "license": "Original WinBox MIT; adaptations and backend GPL-3.0-only; see NOTICE",
+  "files": [
+    {
+      "path": "resources/jvm/native-bridge/com/winbox/nativebridge/BridgeARM32Emulator.java",
+      "sha256": "a6530f87a5d8cbaa6e24651ea65c3b196b10f51827439d6084cf5b006ac86545"
+    },
+    {
+      "path": "resources/jvm/native-bridge/com/winbox/nativebridge/BridgeClassFactory.java",
+      "sha256": "7da4fea678ab2d6ceffa336bf156bde23b5cf5696dbfb889c8a477bae2f3211a"
+    },
+    {
+      "path": "resources/jvm/native-bridge/com/winbox/nativebridge/BridgeFileSystem.java",
+      "sha256": "486620bfd78af0be4983d02bf1aec762244d3fde767cfb1c5d84923302f8f313"
+    },
+    {
+      "path": "resources/jvm/native-bridge/com/winbox/nativebridge/DexJarRepair.java",
+      "sha256": "29ec7b58da7138e177e6f82ede0ff6ff96c94901dfeb1f07e052abfb9065763d"
+    },
+    {
+      "path": "resources/jvm/native-bridge/com/winbox/nativebridge/EnvJni.java",
+      "sha256": "3cfa82c9fa9627eeb0a356f180e047b3cb7325fd07cf50d986261307e9d98028"
+    },
+    {
+      "path": "resources/jvm/native-bridge/com/winbox/nativebridge/NativeBridge.java",
+      "sha256": "684a4beb42942440068686bf70b2cf90c55af3bda279a28a68fc7391f7f24494"
+    },
+    {
+      "path": "resources/jvm/native-bridge/com/winbox/nativebridge/NativeBridgeMain.java",
+      "sha256": "a6a77de79b25b0d26a07bd311439d62eb8ced3479b8a38b4f2fede48068ab426"
+    },
+    {
+      "path": "resources/jvm/native-bridge/com/winbox/nativebridge/NativePatcher.java",
+      "sha256": "2542d92c123e4eab62d2400434f88c2ae6492fd7382346ce15785ffb2fe088b9"
+    },
+    {
+      "path": "resources/jvm/native-bridge/com/winbox/nativebridge/PosixFile.java",
+      "sha256": "e6633fc38ca8529c9a8a6403cadce792d3b18c227f8d6d6b28f67db3deae1aca"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/animation/Animator.java",
+      "sha256": "a2400038241b96918fc6b09f372197a96f403b2b83633efb001fa7fa46755b26"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/animation/LayoutTransition.java",
+      "sha256": "0c08f43ea4a8e074f98b47da15e2141a6eada558c6ae9e40f4ea43476b38329a"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/animation/TimeInterpolator.java",
+      "sha256": "01a068b6a23eafbc67ebf7839fea326873a7a8ce5b41f12412a3354ace80e8d1"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/annotation/TargetApi.java",
+      "sha256": "d8bd011c537d9a4a5cb76841a5bc8ca181754b4843a8c855b33e4f5a0306a8de"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/app/Activity.java",
+      "sha256": "764c4a0f576ee0e4186ac643b7f53b4793ee1df87023455ccec4b18972c74740"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/app/ActivityManager.java",
+      "sha256": "0ec62ee2b94c5530dcae2f054506f001000d74f43c155b1ff4c08aa1c37854c8"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/app/ActivityThread.java",
+      "sha256": "204f9f7804b4ee91711fa1a28f1a7ec0ded51907a42560e8fc2f100e0b2fd8bc"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/app/AlarmManager.java",
+      "sha256": "52c19a81d8e9241b7aa29339166359e1ecab0aafdbbe36eaa8f1eb486c904930"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/app/AlertDialog.java",
+      "sha256": "5e2b55a1deb3ea42701ae8ab56ba703a5f4a7afd420708249bff42a631a39e75"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/app/Application.java",
+      "sha256": "987909b694f08a5276f2d88c2afcfd977569e46c1f6a22fdf744682e846c9e36"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/app/Dialog.java",
+      "sha256": "9d311db06bfc304ab3eca872a46cd859bf1edc98df15e1e586689d70ac29bebb"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/app/PendingIntent.java",
+      "sha256": "da8295640857e860c1af0e202d1e885e042869f3cd52c5185438018d831baae6"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/app/ProgressDialog.java",
+      "sha256": "612d05e18ea609af2989af405ef6f9d6389f6788c4282ff084401a66ee69a0ea"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/ClipData.java",
+      "sha256": "e4f2650ccdeb1fc141838f8d8a1440eebe6b2fd58bc2803e62218f4eccdfbb99"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/ClipboardManager.java",
+      "sha256": "41767872098683285cbbbc49aeaa248492c5e83004a273274bfc7c9a13686275"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/ComponentName.java",
+      "sha256": "d04ed5fc047ac7d73627928760feb3ee49dbbadf7ba29b0ea5502cd4fb29e2a5"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/ContentResolver.java",
+      "sha256": "2294b11c9a4f1960913b654ae83365d58b5881f608217ce5bc801a57544d9f25"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/ContentValues.java",
+      "sha256": "946ab22a31884e4c2455b3feb147f59723f139b8378a434aecf9260520f9b808"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/Context.java",
+      "sha256": "2dcdf2a94ffb96987847ad83407e47c991742c7ccc1f0c12c4ea9e3fded21d2c"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/DialogInterface.java",
+      "sha256": "9efda6dea8e50dd0660c2e19dd5d638c30f4da4a474717326b6866ab12afa328"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/Intent.java",
+      "sha256": "a024401f03dff1833cd7c658838d20127358ff9000a6a915abf19ea2541cc57b"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/IntentFilter.java",
+      "sha256": "11380f8bc8898bc55c3fbda4faa56287adc96ff500bfff9ffce5ba3d2ab0c322"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/IntentSender.java",
+      "sha256": "5ff880b39738011140a217d51c604c788268f1544d355bf09216855277abad4c"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/ServiceConnection.java",
+      "sha256": "f2fd2eada9b24933a60b693c23a438107005d77fd98e92923907221e7139141a"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/ActivityInfo.java",
+      "sha256": "3220274b7b6585686509486033177a1e3b2760c473dc6c810dfafbb790fcabae"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/ApplicationInfo.java",
+      "sha256": "3006cadb0497a6748a910a1c594fc0c7803aab66ea2b90a6bc2d6af31ecfd155"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/ConfigurationInfo.java",
+      "sha256": "64c167d21ee4b470f3094a07e094af756d9bb8e792ce154b913d04d09ba65833"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/FeatureInfo.java",
+      "sha256": "105194d00086391e81d59b4e057bc86e1a034f44fe8700c75a426b4c729608b6"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/InstrumentationInfo.java",
+      "sha256": "2f3a6f22a30859f2706f66779ab35d86c841868ba80c8082edbc9d728f689812"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/PackageInfo.java",
+      "sha256": "e47f7d17069122a4bf542146f9720f6dbd82ddea9a471eaaf3ed350f6b44b591"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/PackageManager.java",
+      "sha256": "5659343db9ec25b22b752ba6456aeaf6d27d19977a1bc4d79ba31bec8a3a9a83"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/PermissionInfo.java",
+      "sha256": "a25d9defd34e492304e7882004a442a3043414f06aa5069334fb42ad5034f21d"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/ProviderInfo.java",
+      "sha256": "e7c45f9ef8b2070d9395243d1e3af3d022daa0c3bf8f041eedf952df7f421532"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/ServiceInfo.java",
+      "sha256": "44ba34362420a2d6f01204315704e8f55bff6fa865584c4277d273a79c6fecd0"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/pm/Signature.java",
+      "sha256": "c063a68dd25411d8fcd83c406b19970d1c4a72f01270a48d39ce0b6f021a3eaf"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/res/AssetManager.java",
+      "sha256": "a0420c62c08e7531e9a832977f935370a2d9b4262c643a14077625a27a4bc105"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/res/Resources.java",
+      "sha256": "8485a8c50b42a81a769b6dc90266e87d7d7facd924ac541ab7cda09ea7f364a2"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/content/res/XmlResourceParser.java",
+      "sha256": "91968d8bfe46b0c2e03168d587d5473e56c129df82526c23882668f41bd559dc"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/Cursor.java",
+      "sha256": "05e7835c413b7423d7198595913179d480e1d73811a9fdfa5b72abbd3ffdf545"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/CursorWindow.java",
+      "sha256": "0d8fe354c1a9e82ff0d4c55cc5ed5c7cee96ca413c2bfe1e749e7d2251cd6909"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/DatabaseErrorHandler.java",
+      "sha256": "930041726ee24756ac02cafa497c5eff6baeba5ebffe90bc8b81989d7fa61500"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/ResultCursor.java",
+      "sha256": "a24342fd8577c3246573e8b6277a8ea5ac897a50c3fdd3dba0698ca32ee92bbf"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/SQLiteClosable.java",
+      "sha256": "9921651e9c02cd2723fa8e56831fe278400aa8b6b0c684fd69135dcc7521c9a8"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/SQLiteCursor.java",
+      "sha256": "5e888d1274bcb248c6d61fca71d4e6dc177a4d2a6548748227aebaa18551f10e"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/SQLiteCursorDriver.java",
+      "sha256": "c349f455c938eaf7d60ddf9b4a9e1fc214555f295d7cfb9331b7ae8fd16d5464"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/SQLiteDatabase.java",
+      "sha256": "06bb107d1213533a396596c78324a0df37e8dd0cc1442647a48f39768000d58d"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/SQLiteException.java",
+      "sha256": "13321d182126b48b59086536e8991dc04a12c470236b00b81857c83419fcc89a"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/SQLiteOpenHelper.java",
+      "sha256": "b9465c523ff2c7c3e5a0ba214d179c959b5b225334d999e76f24379134bf6e2a"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/SQLiteProgram.java",
+      "sha256": "5f0d1b11cb84bb8464fe79bc80207a1e59c6089ff7e4fc09cd52af430a62d5ea"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/SQLiteQuery.java",
+      "sha256": "7fb657efc28834e0b81fb6559d0c335bc2c897da93f1294b02817ebcf55eedc3"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/database/sqlite/SQLiteStatement.java",
+      "sha256": "84219d33fb3a6a06bb4bb696fe90f4fb850fa63293490bbcaee2b0881d7bac1d"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/BitmapFactory.java",
+      "sha256": "7cec83ff0b25ca047fbaa952073b24261824d8d1eef267d64b3d22ab60bae027"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/Canvas.java",
+      "sha256": "9710153f433e8cd8687db643ced7eb2fa8ab88ee0a473e762feab00be45b26e6"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/Color.java",
+      "sha256": "bda98d444eb95d29fac4290fb371c4edb4017d7aaf9523b65a544d1aac013368"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/Point.java",
+      "sha256": "b3536a464265517c729e438f948cfb727d2632905b7d8d638c098679023e3a86"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/Rect.java",
+      "sha256": "37c449646a5605c55e819a42557e5398cd9b257318fdafa1936b9604636e1e4f"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/Typeface.java",
+      "sha256": "d18dc77192d044a6dc625c1364b75dd2cac4288182e2b89d7fd1ad5706ccb7ad"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/drawable/ColorDrawable.java",
+      "sha256": "4e7635445c8082102945900045500f28e03e7217ddba23c59b813c33ea3e72e2"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/drawable/Drawable.java",
+      "sha256": "3b9c4dcf83fae077415b298cbc2fb3daedb3e130d01b2b1f44c34a6954b27955"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/drawable/GradientDrawable.java",
+      "sha256": "35894d06feb5b95e4e91dbeae3c4af4ad00a2d5606bdb9f9ba3856e25f8c93e0"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/graphics/drawable/Icon.java",
+      "sha256": "304733491bc9c269e5ec9994101d375681b3d93e60ccdabf4144a1d0b4c500ea"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/ConnectivityManager.java",
+      "sha256": "e3141a40576d03cab4b37af5f1de7a6fba6d15ebf2bc5b4a23b08937218d16d9"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/LinkProperties.java",
+      "sha256": "f0008a7516e716037dbf348dfc205d6f6b1ef897ca4071fad5be2afd5b033063"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/Network.java",
+      "sha256": "8251748d593b84c1da10b7f79f0ac0b1cd8fc2295aabeee01f558ca637956788"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/NetworkCapabilities.java",
+      "sha256": "1979cb0cb0197293c57d3159d8bc5622ae4e8b9cba61967b9cf64b222490ebf9"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/NetworkInfo.java",
+      "sha256": "a4431bdf1f62c2e84888b4c4299d56322f144614c93a25f8eed004e39eea80a9"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/Uri.java",
+      "sha256": "eeb6d4a2b8bc73612295bb4ea533bcf44a64deae62de9965b3518d1ad744eef2"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/http/SslCertificate.java",
+      "sha256": "80ab515dbaea64ddddbc8829828df5f5c1b4c5934e1d5deadb03f8946273978d"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/http/SslError.java",
+      "sha256": "3def4f2a3c817314df5d8627f968e12c7dde608fef2ca39552af52e238233d15"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/ssl/SSLSockets.java",
+      "sha256": "7fd27ccab9e60e3b8514afd7ad5181ef92af5564c0d8d0380c3cfafaede92c21"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/wifi/WifiInfo.java",
+      "sha256": "6f4bff87df180c1c651290b659f483b1e799282bf77f6f72fb4c26077372fc70"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/net/wifi/WifiManager.java",
+      "sha256": "eb66cbea862b9fe9cdb996e9a378be8b755b320a1f1b1442888849a4f9007865"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/AsyncTask.java",
+      "sha256": "f336dac6bc3cfcf22818f7a3d8f5415cf3fb49660364783fb00bf3c42fe32698"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/Binder.java",
+      "sha256": "1d7222619a91172fb250bdfd17aab531c26d1dc1f7526f9e066724fe27534265"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/Build.java",
+      "sha256": "71fd32645817b24d453a59d88417f525b7d066e9275a8ae7844ed05caa05fac1"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/Bundle.java",
+      "sha256": "43ac2194b0711e6b4581d0f2263dd64c5e1b2f100ba40d5129109ad90319924e"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/CancellationSignal.java",
+      "sha256": "d6ac594e775714ba13c9b05b12cc5396c9c73dee01dd2f793a3c8f4809f9cb0e"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/Environment.java",
+      "sha256": "3a30d516e5d47c5432ebf995eed5b7ca35cf32f0cec61bf56e537422b163afcc"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/Handler.java",
+      "sha256": "4352720af5be93c03b7339393ca8f09a1ef8991433aeaa4717851e7b5684acf5"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/HandlerThread.java",
+      "sha256": "5f36cd80c04828c150b01dfb031edca664c0f70739b79c7a67fbfa9456b78c91"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/IBinder.java",
+      "sha256": "9c58fb77c355055e13568953ef69ef672de5e87e61b1be97218b0bc29b06596a"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/IInterface.java",
+      "sha256": "f096e500ebd260fda0099da94c199a3954a3b937ddcbc8ed77fa20fffaeec804"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/Message.java",
+      "sha256": "2f4c0a4855df6758408ca912c968940b8cc1a69d988b511c7362862a8dd0b4af"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/Parcel.java",
+      "sha256": "40aa622faa28dd43dcfeb1cceace59080adc7e673c8a1b51711f441a103c940c"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/Parcelable.java",
+      "sha256": "5a3a07fc591e97348df5c293100a073fe794ad5a92414887a949b5715b4db66e"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/Process.java",
+      "sha256": "8fedc238ac338b74810d801661c2c100a346288a071326c0ecd527a6746a8c78"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/RemoteCallbackList.java",
+      "sha256": "da1ba941674c5b30b5823428136b35b01c7b9bcfa5cf44dca89176dc14721cfb"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/RemoteException.java",
+      "sha256": "93957a5fd87580c63eb7d3caa10a478139ccac072bd50be324b13a3d8bd86e85"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/StrictMode.java",
+      "sha256": "4366aa49d3dac1993d9e77415354885e0264a80bb7dcb40bc93ae0a7a65b46fa"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/os/SystemClock.java",
+      "sha256": "753002bcaf544bc469f65eb16532f541f25650393709548da36c228a29b72d57"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/preference/PreferenceManager.java",
+      "sha256": "6c49d6693c21d0c0034439beef8f242fd5b89950adb9024db828e54971402d8b"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/provider/Settings.java",
+      "sha256": "db53784193f334a1e5f0ef63834df0114ecf5e0dc269dad59a88959bbed941a5"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/security/keystore/DesktopKeyStoreProvider.java",
+      "sha256": "4cfee440a559b7e159f25404124b0403ee38b1b9bea2bbeaea2d92d481a1eca3"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/security/keystore/KeyGenParameterSpec.java",
+      "sha256": "774f2941075ee00ead0387649015c827d5931e8c0072d4bfb3abd650f9db3af8"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/text/Editable.java",
+      "sha256": "4d22a95648e58bda4b40f7a2938f0f3ae82c5ffa29a09c0804891352f3b035e7"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/text/TextPaint.java",
+      "sha256": "586b22e3f6ac3f7874b114bd255b7f023525b4e1de5f9d70f58798f417cf9e05"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/text/TextUtils.java",
+      "sha256": "f24440689140999b02f52ab76c2a2b0928bbd34f6815da114cc76047749398b7"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/text/format/Formatter.java",
+      "sha256": "1526dcbd3fb6c8f426b52c242f9e5b79013c27705d8f3fc828516cc1d3612587"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/util/AtomicFile.java",
+      "sha256": "6ef189fecfede4e7cb272b75058f13cfbae94dc92383397a588cac13db9b00b0"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/util/AttributeSet.java",
+      "sha256": "bb87e1a5951e273ce98de7d25830737f1ab815a4258cc7e7a2bcc9c1f03024e7"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/util/SparseIntArray.java",
+      "sha256": "3ddd13663b8d74226d40b57d8cfec1915729e5dbd215cf31074ac4e6e79090b7"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/util/TypedValue.java",
+      "sha256": "90022693f03e407a5b775544f7b0d850d4ef2bc53409f5786090d866213cf7e5"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/ContextMenu.java",
+      "sha256": "054ef13668a8f05a4cf378a7ac9cf4b040d68a3b61093d150a51f7d650828891"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/ContextWrapper.java",
+      "sha256": "9f7e5d53cfe4563792eda491aa7d9b7260be0e12d82613c87848f8bddbb094d2"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/Display.java",
+      "sha256": "4d36097fc93ec9dedb94bde466b3b57808b7befa6c15218c160a47f770ec4ca7"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/KeyEvent.java",
+      "sha256": "6255f87568d14901bc36857baea8e9a806d3a52df9ea82b21eea4513b10ae5c1"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/Menu.java",
+      "sha256": "15a8ea879980079256ff6d071d4a8def8289ab2a800f5d3fd501da56714af55a"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/MenuItem.java",
+      "sha256": "78ca9fd0e66bcf3263fd0db1ee285fa58e55d38b08fcf71a21971dee90549c4b"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/MotionEvent.java",
+      "sha256": "459ea1f15cb596bc140a88b3e5c2a59678562bff7867620dfff4f32d0f3bc6f1"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/SubMenu.java",
+      "sha256": "b772f89014878dc93c7e4306f1e90db3b345a33edf6ea823003b6c8f34417593"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/View.java",
+      "sha256": "72d6b3d12faa858f07f8a0b7c9aa09d908c655634fa14b9b89504533c087ff84"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/ViewGroup.java",
+      "sha256": "727f42b275478edc2893b5406c7f43e24774b91838fb7ae5709ebe96c68eb0ad"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/ViewManager.java",
+      "sha256": "5f5c6161344cee0ef948baadb5b96d9d1e224ab92da2192948f4b6a6beb76261"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/ViewParent.java",
+      "sha256": "5b331b10e4ae0519dd83ba676b793e3ac6dd2fe46c744bae8c20e25adb4392f9"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/ViewTreeObserver.java",
+      "sha256": "0e363abab9669cea434793b713ef0f0b6eea53465b815ce577a0cdd96ef49ff6"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/Window.java",
+      "sha256": "d44b53dd25174480f85a0ff85c234ea30e16fed5c921c76c4cd03e3fbbcea696"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/WindowManager.java",
+      "sha256": "beb32ea8e3be7f5e888575469723f728d911bc93d41374e00128b7d07b945ce3"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/accessibility/AccessibilityEvent.java",
+      "sha256": "fd58f5f2ce469358bdbdf97fec80f4789a214a181d3c0f77939a4b6299ab65a7"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/view/animation/Interpolator.java",
+      "sha256": "18bbae9ceb8ab201a38302495057110121166fe6cf587fe53d4b21252db33a17"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/ConsoleMessage.java",
+      "sha256": "162ede6221b3c1b093607b9c9efe19d2f80fc2b7e6685dfbcd565af65a64d31d"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/CookieManager.java",
+      "sha256": "18de5d3c281864d43393e10eb99ebd4601f3ac16af6112816d852194bd56281d"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/CookieSyncManager.java",
+      "sha256": "a7acc1fdedf7166f4ee5f68758d1c78184842327ca952e22269b93cae432d76c"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/FileChooserParams.java",
+      "sha256": "d97bd161ba08f6b605f59e00aa0a5c747e8dac224611058d2461aebadaec40aa"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/JsPromptResult.java",
+      "sha256": "ae5abb240313208020f8ed1b02af944aa2c6c0d96ab22f3251f064c73ff0f7f7"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/JsResult.java",
+      "sha256": "4f5ac26d462313d51bb2ee1723ccd53c88c1cb6e7898fa361ee9e65f503450ef"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/SslErrorHandler.java",
+      "sha256": "f43f06280eee84b49e5294d0e7f0d53a6ad294c49202cfd2f6b80d614f572b2e"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/WebChromeClient.java",
+      "sha256": "96ed5fb65bff0da6fcf6ffd234388a2ad72bedf4a8ba7424e460d721a13efa1e"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/WebResourceError.java",
+      "sha256": "b6ca488c7b6b6eb2c23aad1c46c37eb35c78b3b4137fff2604cb656a2e008cb7"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/WebResourceRequest.java",
+      "sha256": "9546d13b1342d4a39dc6eef1ed199707a3e2c1bf0005fe9ff2f26cd560afc902"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/WebResourceResponse.java",
+      "sha256": "c559a2a4babedee08d865096e9023807ef7d44722a6a20fab40802f1a6783294"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/WebSettings.java",
+      "sha256": "d36ff6bb59d4dc2b426a8e17a4a83378958f98974336c76f5fae0b6b0d1e2ba5"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/WebView.java",
+      "sha256": "2af8bc0c0d5dbfe437ca74e826dbc0dd9707df22bf71404a9f66c3a3adad9c0a"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/webkit/WebViewClient.java",
+      "sha256": "bf4026caf6100ec2dccfa24c2cae3522051dd98931ac3ab7adc50b19747a56de"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/widget/ArrayAdapter.java",
+      "sha256": "87e425413d58e1433be3b3e5331630a5c01c9d7af4b3c4317b9d1c1ea7226435"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/widget/Button.java",
+      "sha256": "442e35f8611d52ec6f2120cd26938e81c0720db123261d0c21a866fdb43848b6"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/widget/EditText.java",
+      "sha256": "2aba3c7860f799930df8c121733d570f8e588ad71f4341a9ec28632c45a512aa"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/widget/LinearLayout.java",
+      "sha256": "cf7100ec6146856023c8ca917465f46e98311046cd06e9c486cdd03e2bdb47df"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/widget/ListAdapter.java",
+      "sha256": "d7de51cb41665773bd820e0d6fa9aad963dd6f16dbae667e8039e351869bb980"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/widget/ScrollView.java",
+      "sha256": "3a45778b2128b278ca97f49fd111b4585bf6074f53f45ce83314b7a47f164cbc"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/widget/Scroller.java",
+      "sha256": "5539597166cd72aa2f1cfec69388aff0a2fc5f14d68f55baf4db619bbad41574"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/widget/TextView.java",
+      "sha256": "21060fe5b290057acc91f56a19331eb93825b22173ea9cdb0b6b237aff2a090c"
+    },
+    {
+      "path": "resources/jvm/stubs-src/android/widget/Toast.java",
+      "sha256": "984c77915843073a25188b89be22be7f61ef59538263d708adacd448820d2714"
+    },
+    {
+      "path": "resources/jvm/stubs-src/androidx/room/MultiInstanceInvalidationService.java",
+      "sha256": "7226faf9361c017e7242787479bfeb621e49684260ebab0ede89ab85a8a647d8"
+    },
+    {
+      "path": "resources/jvm/stubs-src/androidx/versionedparcelable/ParcelImpl.java",
+      "sha256": "3d89f1a4ed536aea64f7cd9989489e51b2619a5e9cd3412de209f2aac3b15b6e"
+    },
+    {
+      "path": "resources/jvm/stubs-src/com/github/catvod/Proxy.java",
+      "sha256": "2ab2b160dd6116f750198f495d0079af111f9fd2c7b8352399e9257f7fe52d04"
+    },
+    {
+      "path": "resources/jvm/stubs-src/com/github/catvod/crawler/Spider.java",
+      "sha256": "f6534fc6c5ac6979d3088633878a3365ed4714cf4acfc358f5ff2beb21e10c19"
+    },
+    {
+      "path": "resources/jvm/stubs-src/com/github/catvod/crawler/SpiderApi.java",
+      "sha256": "f6f794c52a177f76e089796e40abaa962e9642ee2c66ebf9c3d35e7c309f5f9a"
+    },
+    {
+      "path": "resources/jvm/stubs-src/com/github/catvod/crawler/SpiderDebug.java",
+      "sha256": "5a7ff927d96de399740a270353e4ba9f772513e5bd1df07db65bd0754b681146"
+    },
+    {
+      "path": "resources/jvm/stubs-src/com/github/catvod/spider/HideUtils.java",
+      "sha256": "fb3213a31ae6105e21764ae393c431951e1d13e4297b54615b97b3daf8061dbd"
+    },
+    {
+      "path": "resources/jvm/stubs-src/com/github/catvod/spider/PushAgent.java",
+      "sha256": "086ca261951bb2b0f8efb6e1d4e8900f5936723894a4f86d20b8b36758e880cd"
+    },
+    {
+      "path": "resources/jvm/stubs-src/dalvik/system/BaseDexClassLoader.java",
+      "sha256": "9923cc63cce36b995e3d1f9a7e09c12d1ee942292f90d6f5b809affb198b8e6a"
+    },
+    {
+      "path": "resources/jvm/stubs-src/dalvik/system/DexClassLoader.java",
+      "sha256": "bc0e9995e8bd91ec15cdfc63c0778f641cc1ec472c61cbbd4ad2979e8d03c357"
+    },
+    {
+      "path": "resources/jvm/stubs-src/dalvik/system/PathClassLoader.java",
+      "sha256": "e999c525fa01e5af8921cc5bbde249e508fdf2a9c39ca059cc011fa89a861d1b"
+    },
+    {
+      "path": "resources/jvm/stubs-src/dalvik/system/VMRuntime.java",
+      "sha256": "47afd9fa86b4ff72c1474006071b2adba3848d48e5161c5a0f0383d6868fede9"
+    },
+    {
+      "path": "resources/jvm/stubs-src/org/json/JSONArray.java",
+      "sha256": "03a0c68b5f0dea99886db74a5e7ad2f266924e0107cfe3d6a438068a964d83a8"
+    },
+    {
+      "path": "resources/jvm/stubs-src/org/json/JSONObject.java",
+      "sha256": "dae92541d0294ae3e8043061d8b79dbeaf3cca7cda49729496e5aae68e96e1ff"
+    },
+    {
+      "path": "resources/jvm/stubs-src/shell-shim/com/github/catvod/spider/DexNative.java",
+      "sha256": "d928b9ae6756ece68b378ae9823370af5b78c4590afea42007f8003e8d674828"
+    },
+    {
+      "path": "resources/jvm/tools/JarRewriter.java",
+      "sha256": "61d21a4f3255b9eb20994975fb2c1b6d3c0b67fdcd24fdeadb5d240b120f6970"
+    }
+  ]
+}

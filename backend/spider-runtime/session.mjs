@@ -7,7 +7,7 @@ import{RuntimeCleanup}from'../subscription/runtime-cleanup.mjs';
  */
 export async function createExecutableSubscriptionSession(options={}){
  const owned=!options.runtime;
- const runtime=options.runtime||createSpiderRuntime({dataDir:options.runtimeDataDir,timeoutMs:options.runtimeTimeoutMs??10000});
+ const runtime=options.runtime||createSpiderRuntime({dataDir:options.runtimeDataDir,timeoutMs:options.runtimeTimeoutMs??(options.nativeBridge?45000:10000),nativeBridge:options.nativeBridge??false,nativeBackend:options.nativeBackend??'dynarmic'});
  const cleanup=new RuntimeCleanup(),tracked=new Set();let mainSignature,closed=false,queue=Promise.resolve(),closing;
  let loader;
  try{loader=createFullSubscriptionLoader({...options,runtimeCleanup:cleanup,beforeRuntimeClear:()=>runtime.request({operation:'resetKeys'})});}

@@ -236,17 +236,46 @@ also match the separately verified live URL-ext results. This HTTP control is no
 a general Java sandbox. Only hashes/structure/counters are retained in the report;
 remote JAR/JS/rule bodies and worker caches are deleted in finally.
 
-Current result: three ready JS sources return nonempty class/filter data (4, 9
+Previous JS-only batch result: three ready JS sources return nonempty class/filter data (4, 9
 and 4 classes); all three match fresh source and live replay exactly. Category,
 detail, search and player behavior are not established. The 45 CSP definitions
 share one MD5-matching JAR containing ARMv7/AArch64 libraries and an opaque .guard payload;
 admission fails with NATIVE_PLUGIN_UNAVAILABLE. This is one artifact failure,
 not 45 separately executed failures, and no native payload was decrypted. The
 upstream ProtectedInitJar killProcess heuristic returns false for this artifact;
-native admission is checked independently and remains unavailable.
+native admission is checked independently and remains unavailable in the ordinary profile. The optional native profile below now executes this artifact.
 Android/ART, Linux x86_64, Docker and NAS execution remain unverified.
 
 Caller-owned data retains module-cache/qjscache_<md5>.js JSON (data/expires) and
 js.local/DEX state. Default temporary worker data is removed on close or timeout.
 Persistent module-cache aggregate disk quota/eviction is pending, like DEX cache.
 No automatic JAR resolver, HTTP listener or autostart is added.
+
+
+## ARM native JAR profile — 2026-10-15
+
+The opt-in WinBox-derived ARM/JNI profile now runs the supplied protected JAR:
+real native registration/getLoader, decrypted nested DEX translation/frame repair,
+and real getSpider/init/calls. [Native profile guide](native-bridge/README.md)
+describes provisioning, APIs, lifecycle, source adaptations and limitations.
+
+```sh
+node backend/spider-runtime/native-bridge/fetch-runtime.mjs
+node backend/spider-runtime/cli.mjs --native --jar /path/to/spider.jar --api csp_FirstAidGuard --method homeContent --args '[true]' --timeout 45000
+TVBOX_TEST_NATIVE=1 node --import ./scripts/compat/typescript-loader.mjs --test compat/*.test.mjs
+```
+
+createExecutableSubscriptionSession accepts nativeBridge: true plus explicit JAR
+artifact mappings. Its native default request deadline is 45 seconds. JAR clear
+replaces the entire native worker, invalidates JAR/JS Spider tokens and replays
+explicit host/module/artifact settings. Owned data is deleted on final close;
+caller-selected data persists. Default ordinary workers remain independent of
+native dependencies and retain existing Android-source loader behavior.
+
+The metadata-only native-runtime-probe.json records 44 ready instances out of 45
+CSP definitions and five successful home JSON results. cc references unavailable
+XPathGuard. Real registered native methods returned a DexClassLoader and 44
+underlying Spider objects. Clear/reload changes the worker PID and releases its
+listener. All 365 tests pass with native verification enabled. This is host macOS
+ARM64 evidence, not Android parity certification or Linux/NAS/Docker validation.
+Automatic production JAR retrieval, persistent quotas and full API parity remain.

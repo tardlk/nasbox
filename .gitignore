@@ -58,3 +58,6 @@ docs/*
 .tools/
 .cache/
 .data/
+
+# Preserve dependency attribution in the optional native profile.
+!backend/spider-runtime/native-bridge/licenses/**/LICENSE.txt

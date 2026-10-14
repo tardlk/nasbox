@@ -1,0 +1,28 @@
+Optional native/JVM host profile
+
+Original WinBox native bridge, Android host adapters and JarRewriter:
+Copyright (c) 2026 yagami-hue, MIT (licenses/WINBOX-MIT.txt).
+Original source paths and SHA-256 are pinned in source-manifest.json at
+WinBox commit 136fadcacb2b3a9bd96320578d93e9735452d9e9.
+Build-time adaptations and new tvbox.runtime classes: GPL-3.0-only.
+Original Android TVBoxOS source remains under its existing GPL attribution.
+
+Maven artifacts are not committed to this repository. runtime.json pins their
+official coordinates, byte sizes, published SHA-1 and locally computed SHA-256.
+The licenses directory retains available binary-JAR notices, official versioned
+POM license declarations, source-header notices and source-archive metadata.
+Missing licenses in source/binary JARs are not claimed to have been extracted.
+
+unidbg 0.9.9 modules: Apache-2.0, as declared by the retained parent POM.
+Unicorn, Keystone and demumble Java/native wrappers declare GPL V2 in their
+versioned POMs; GPL-2.0 text is included. These native bundles may include their
+own additional upstream components. Capstone declares BSD; ASM declares BSD-3;
+apk-parser and native-lib-loader declare BSD-2. Android API 4.1.1.4 and SQLite
+JDBC declare Apache-2.0. Other dependencies' original notices/POMs are retained.
+This development dependency inventory is not a completed distribution license
+manifest or corresponding-source offer. Review bundled native components and
+provide their required source/attribution when producing Docker/release images.
+
+The Android API artifact supplies symbols and throwing SDK stubs. It is not an
+Android operating system or an ART runtime. No subscribed JAR, decrypted code,
+remote scripts, credentials or runtime databases are included in source control.

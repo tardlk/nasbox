@@ -1,0 +1,3 @@
+
+# Third-party license/POM snapshots retain their original byte formatting.
+backend/spider-runtime/native-bridge/licenses/** -whitespace

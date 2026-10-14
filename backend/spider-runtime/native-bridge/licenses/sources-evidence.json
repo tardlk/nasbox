@@ -1,0 +1,62 @@
+[
+  {
+    "url": "https://repo.maven.apache.org/maven2/com/github/zhkl0228/unidbg-android/0.9.9/unidbg-android-0.9.9-sources.jar",
+    "sha256": "53efa1e89b2db5b482ceb8e9d430b5bd92b528c5c680738c12f7bdfb5069f933",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/com/github/zhkl0228/unidbg-api/0.9.9/unidbg-api-0.9.9-sources.jar",
+    "sha256": "5ff48909c439f161a5316b8b06525b3f63a061c53c3a2b320b789515d82efb46",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/com/github/zhkl0228/unidbg-unicorn2/0.9.9/unidbg-unicorn2-0.9.9-sources.jar",
+    "sha256": "30e2686d75db38b0b5cdcc4cc94c906384e997699746d345617e7b9fde736acd",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/com/github/zhkl0228/unidbg-dynarmic/0.9.9/unidbg-dynarmic-0.9.9-sources.jar",
+    "sha256": "e2a3c9a6ee9bd36cb0107951055f713f6733fe8573453b545d4968d3a4eed63e",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/com/github/zhkl0228/unicorn/1.0.15/unicorn-1.0.15-sources.jar",
+    "sha256": "37deeec70638c697f389a120dc8c1ae15cde59d43991c29fe692369ee7ae06cd",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/com/github/zhkl0228/capstone/3.1.8/capstone-3.1.8-sources.jar",
+    "sha256": "1a2e352721840183efb72e40ab959279c4bf8830d20105827e421fb847adc886",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/com/github/zhkl0228/keystone/0.9.7/keystone-0.9.7-sources.jar",
+    "sha256": "ee187eddf357652ab3f84535886dac5a08f1d6a4e526026fbed8be5b6c92e670",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/com/github/zhkl0228/demumble/1.0.4/demumble-1.0.4-sources.jar",
+    "sha256": "b81f0da573fbae2c8e227275b2325bc1e4dd12b1436c68b969720c9e279ae702",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/net/dongliu/apk-parser/2.6.10/apk-parser-2.6.10-sources.jar",
+    "sha256": "574996a2344add9eae4f53541b9f7ebb11230a8ac2a609db374ac1b0dfa9b96a",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/org/scijava/native-lib-loader/2.3.5/native-lib-loader-2.3.5-sources.jar",
+    "sha256": "be2478e323851e4ac6a74d40c8aeeaa8f627f292f42d1616cba005af0a50b3ca",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.7/asm-9.7-sources.jar",
+    "sha256": "11dfd88129204be18c0f592f8e066d0c07d8a6bc001f6c7b2cce5ff0588d5d71",
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/com/google/android/android/4.1.1.4/android-4.1.1.4-sources.jar",
+    "sha256": "eb97415c84d456012f1be6c5d1b1a35d054b7f054c5b544ee5bd12c9fce4866f",
+    "retained": []
+  }
+]
