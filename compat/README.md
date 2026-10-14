@@ -71,6 +71,16 @@ The production loader is compared against that scoped oracle. It is not a full
 ApiConfig/Android async or storage-failure equivalence test. Separate disk tests
 verify worker restart recovery, corrupt-state retention and temporary-file cleanup.
 
+VOD coverage adds 51 ordered prefix observations and 10 expanded load scenarios.
+The source authority is the original parseJson body up to its live section, plus
+selected original source/search/default-selection helpers and ParseBean methods.
+The harness adapts only the consumed reset containers/Hawk/address/logging;
+it does not execute the later live/network-rule sections or script destruction.
+Snapshots retain raw selected-object lifetime and partial state after failure.
+Capture explicitly with `node scripts/compat/capture-vod.mjs`; tests never rewrite
+goldens. Independent expectations cover duplicate home selection, stale defaults,
+push_agent, super parse insertion and original Base64/proxy URL formatting.
+
 Inspect method behavior using JSON lines on stdin:
 
 ```json

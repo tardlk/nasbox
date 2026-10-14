@@ -94,3 +94,32 @@ Validation includes 39 source-state cases, 23 original-loadConfig scenarios with
 controlled synchronous callbacks and a source-only parser substitute, real local
 HTTP collection/cache fallback, disk worker restarts and concurrent import order.
 No referenced JAR, JS or Python code has been executed by this loader.
+
+## Expanded VOD prefix
+
+```sh
+node backend/subscription/cli.mjs 'SUBSCRIPTION_URL' --vod --data /path/to/project-data
+node backend/subscription/cli.mjs --vod --cache --data /path/to/project-data
+```
+
+createVodSubscriptionLoader in vod-loader.mjs uses the same load/cache control
+flow, with the selected original ApiConfig prefix for global spider/jarCache/
+danmaku/wallpaper, site fields, home selection, flags and parses/default selection.
+Its scope is `vod-prefix`; source-only CLI behavior remains the default. getConfig
+returns the latest expanded snapshot and getSites returns that parser's map.
+The wrapper owns a core it creates, or leaves a supplied core caller-owned.
+
+The prefix ends before live/hosts/proxy/rules/DOH/ads. It does not validate those
+fields, run JAR/JS/Python, or clear executor caches. It must not be treated as full
+ApiConfig success. The raw selected home/default references intentionally retain
+upstream quirks across imports, including objects no longer in the current lists.
+The synthesized super parse, duplicate-name last selection, push_agent lookup and
+ParseBean ext/proxy URL formatting are compared to original methods.
+
+Optional homeApi/defaultParse preferences are persisted with version-1 files,
+including mutations made before a later parse failure. Older six-field files
+remain readable. The default parser hook now persists selected state in finally;
+failed expanded parses still do not overwrite cached text. 51 ordered prefix
+observations and 10 load scenarios cover these behaviors, with separate disk
+restart/failure tests. The real subscription VOD import and new-process cache
+check are recorded in docs/linux/vod-loader-smoke.json using aggregate counts only.

@@ -4,7 +4,8 @@
 package tvbox.config;
 import com.google.gson.*;
 import java.util.ArrayList;
-final class DefaultConfig {
+public final class DefaultConfig {
+static String localAddress = "http://127.0.0.1:9978/";
 public static String safeJsonString(JsonObject obj, String key, String defaultVal) {
         try {
             if (obj.has(key)){
@@ -41,5 +42,10 @@ public static ArrayList<String> safeJsonStringList(JsonObject obj, String key) {
         } catch (Throwable th) {
         }
         return result;
+    }
+public static String checkReplaceProxy(String urlOri) {
+        if (urlOri.startsWith("proxy://"))
+            return urlOri.replace("proxy://", localAddress + "proxy?");
+        return urlOri;
     }
 }

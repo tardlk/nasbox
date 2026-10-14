@@ -13,6 +13,7 @@
     "compat:capture": "node scripts/compat/capture.mjs",
     "compat:capture-subscription": "node scripts/compat/capture-subscription.mjs",
     "compat:capture-state": "node scripts/compat/capture-state.mjs",
+    "compat:capture-vod": "node scripts/compat/capture-vod.mjs",
     "compat:test": "node --disable-warning=ExperimentalWarning --import ./scripts/compat/typescript-loader.mjs --test compat/*.test.mjs",
     "compat:report": "node --disable-warning=ExperimentalWarning --import ./scripts/compat/typescript-loader.mjs scripts/compat/report.mjs",
     "compat:inspect": "node scripts/compat/inspect.mjs",

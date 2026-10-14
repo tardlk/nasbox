@@ -12,7 +12,7 @@ Maven and Gradle were not available on PATH.
 | New Gson 2.10.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/gson-2.10.1.jar | Match the Android app's actual JSON library | Project-scoped development dependency; retained |
 | New Bouncy Castle 1.78.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/bcprov-jdk18on-1.78.1.jar | Support the original AES/ECB and AES/CBC PKCS7 transformations on host JVM | Project-scoped dependency; about 7.94 MiB; retained for ongoing migration |
 | Public Android reference snapshot | compat/reference/tvboxos | Fixed source and license evidence | Retained project source, about 263 KB of downloaded files |
-| Auxiliary source snapshots | compat/reference/android-platform and compat/reference/tvboxos-extra | Android 13 JSON/Base64 and original HistoryHelper/MD5/FileUtils | Retained source, about 144 KB plus licenses; runtime helper copies are also committed |
+| Auxiliary source snapshots | compat/reference/android-platform and compat/reference/tvboxos-extra | Android 13 JSON/Base64 and original HistoryHelper/MD5/FileUtils/ParseBean | Retained source, about 146 KB plus licenses; runtime helper copies are also committed |
 | Generated reference classes | .cache/compat/oracle | Temporary test build | Removed after verification; rebuilt automatically |
 | Generated backend classes | .cache/backend/config-core | Temporary independent runtime build | Removed after verification; rebuilt automatically |
 
@@ -49,6 +49,7 @@ children and close them, including startup failure and response-limit failure
 paths. No persistent service was started. The only additional binary dependency
 in the previous decode batch was the project-local Bouncy Castle jar. The state/cache
 batch reused it and the existing JDK/Node; no additional tool was installed.
+The VOD-prefix batch likewise reused those tools and added source code only.
 
 Disk-store tests created temporary tvbox-store-* directories under the OS temp
 directory, then removed each in finally. Source loadConfig probes created
@@ -56,6 +57,10 @@ temporary synthetic cache files inside their .cache/compat/oracle build director
 and deleted them after each scenario. The real CLI import/cache restart check
 used .cache/cli-validation (about 14 KB of state and prepared subscription bytes)
 and was cleaned after verification; only aggregate counts remain in docs/linux.
+VOD restart tests similarly used tvbox-vod-* directories and removed them in
+finally. The optional --vod real CLI check used .cache/vod-cli-validation and
+removed its state/prepared payload after recording aggregate counts. No real
+subscription payload or URL/key-bearing preference file is committed.
 
 The delivered CLI defaults to .data/subscriptions for future user-run persistent
 state/cache; it is ignored by Git. No retained .data directory was created during

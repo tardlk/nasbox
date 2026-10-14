@@ -13,10 +13,11 @@ These observations describe source, not verified Android/ART execution.
 | Clan content | Original clan URL triggers clanContentFix before relative paths | `clanFix` implemented; preparation checks original URL exactly |
 | Relative paths | fixContentPath uses original subscription URL, including quirks of global string replacement and doubled file slashes | Explicit JVM `fix` operation implemented and compared |
 | Collections | switchApiCollectionIfNeeded extracts a JSON object for inspection; `urls` without `sites` can update persisted API lines/history and recursively select the first URL | Selected switching/history/clearing methods implemented with per-worker preferences and versioned host persistence; recursive source loads compared |
-| Parse/reset | parseJson clears spider cache, selected source, source/live/parse lists and search state before Gson parsing | Source map reset only; other state pending |
+| Parse/reset | parseJson clears spider cache, selected source, source/live/parse lists and search state before Gson parsing | Source-only map reset or optional VOD source/parse/search reset; live/executor side effects pending |
 | Site fields | Required fields use direct Gson getters; safe optional getters preserve fallback/partial-list semantics; LinkedHashMap overwrites duplicate keys at original insertion position | Implemented with pinned Gson and Java source methods |
-| Home source | Persisted home key wins when found; otherwise original first SourceBean is selected (may differ from a later duplicate replacement in the map) | Pending |
-| Remaining config | Global spider/jarCache/danmaku/wallpaper, flags/parses/live/proxy and other settings are processed by the full ApiConfig | Pending; not silently dropped by a claimed full loader |
+| Home source | Persisted home key wins when found; otherwise original first SourceBean is selected (may differ from a later duplicate replacement in the map) | Optional VOD prefix implemented; preserves duplicate/push_agent/stale-reference behavior |
+| Globals/flags/parses | Global spider/jarCache/danmaku/wallpaper, flags, parses and default selection precede the live section | Optional VOD prefix implemented, including ParseBean getters/mixUrl and partial state |
+| Remaining config | Live/hosts/proxy/rules/DOH/ads and other settings are processed by the rest of ApiConfig | Pending; neither loader claims full config validation |
 | Cache/failures | Network success parses before saving cache; parse failure reports a config error without fetch-error cache fallback. Fetch failure can fall back to cache | Implemented and compared within source-fields parser scope; cache write errors retain success; host atomic I/O differs from Android FileUtils |
 | Script init | Config acceptance and referenced JAR/script download/init are separate stages | Pending |
 
@@ -53,6 +54,14 @@ outcomes are not claimed identical. The host also serializes imports and imposes
 a collection hop limit. See subscription-loader-smoke.json for the real
 48-source import and new-process cache check; temporary data is removed afterward.
 
-Next: complete remaining ApiConfig field/state coverage, then controlled
+backend/subscription/vod-loader.mjs adds the selected original VOD prefix as an
+explicit optional parser. It shares subscription preferences and persists home/
+default mutations even when a later parse fails. Six-field stores remain readable.
+Its reference scope excludes all reset side effects except consumed containers,
+and excludes processing from live onward. The 51 prefix/10 load scenarios compare
+expanded partial snapshots and ordered transitions; 48-source real import/cache
+counts are in vod-loader-smoke.json. This is not a script or full-client verdict.
+
+Next: complete remaining ApiConfig network/state coverage and controlled
 Spider/SpiderApi init/method fixtures and script/JAR execution. Retain raw text
 through field conversion so JavaScript numeric parsing cannot erase Gson behavior.

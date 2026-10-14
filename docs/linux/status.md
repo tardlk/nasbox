@@ -5,16 +5,17 @@ Priority: subscription links and script execution behavior; player work deferred
 | Work | Status | Evidence |
 | --- | --- | --- |
 | Win-Box checkout and working branch | Done | baseline.json; branch codex/linux-core |
-| Android source candidate pinned | Done | TVBoxOS ab11d28: original 20-file snapshot plus HistoryHelper/MD5/FileUtils; seven auxiliary AOSP Android 13 source files pinned separately |
+| Android source candidate pinned | Done | TVBoxOS ab11d28: original 20-file snapshot plus HistoryHelper/MD5/FileUtils/ParseBean; seven auxiliary AOSP Android 13 source files pinned separately |
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
-| Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 load scenarios; crypto plaintext expectations generated independently with Node crypto |
-| Probe and backend contract tests | Done | 235 Node tests passed, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
+| Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load cases/scenarios |
+| Probe and backend contract tests | Done | 307 Node tests passed, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
 | Win-Box comparison | Initial audit done | config-comparison.json |
-| Explicit backend configuration core and source loader | Initial modules implemented | 202/202 selected-method/scenario results match; full ApiConfig and Android async execution pending |
+| Explicit backend core and scoped loaders | Initial modules implemented | 263/263 selected-method/scenario results match; full ApiConfig and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
 | Subscription preparation/decrypt | Core stages implemented | URL/key, original FindResult/AES, AOSP JSON/Base64, clan/relative paths; Android network/provider parity pending |
 | Source-scope collection/history/cache loading | Implemented and compared within stated scope | Original switching/history methods; new file store and CLI; 23 loadConfig scenarios use source-fields parse stub |
+| Expanded VOD configuration prefix | Implemented as optional mode | Globals/spider, home/search sources, flags/parses/default selection; 51 prefix + 10 load scenarios; processing from live onward pending |
 | JS/QuickJS/Python/JAR/native execution parity | Pending | Sources pinned; runtimes not ported |
 | Linux container and NAS validation | Pending | Current host is macOS ARM64; no Docker available |
 
@@ -39,7 +40,7 @@ storage, duplicate source keys, required-field failure behavior, Gson's lenient
 syntax and the upstream whole-text relative-path replacement.
 
 The independent backend uses committed Java sources and pinned Gson directly,
-without importing the reference extractor or desktop engine. The 202-case backend
+without importing the reference extractor or desktop engine. The 263-case backend
 gate passes, as do 17 additional live-reference requests covering state changes,
 numeric lexemes and path cases. This does not close the desktop audit or certify
 the rest of ApiConfig. See config-pipeline.md for the stage-by-stage boundary.
@@ -64,13 +65,25 @@ or FileUtils equivalence. Imports are serialized and collection cycles bounded.
 The development CLI imported the supplied subscription and a new CLI process
 loaded its disk cache, both returning 48 type=3 sources. The temporary data was
 removed after verification. See subscription-loader-smoke.json. All loading
-successes remain explicitly source-fields scope: globals, home selection,
-parses/live/proxy state and script initialization are not yet validated.
+successes retain their explicit parser scope. The default mode remains source-fields.
+
+The optional --vod loader now parses original global spider/jarCache/danmaku/
+wallpaper, home/search sources, flags and parses/default selection. It preserves
+upstream duplicate-home and stale-default object lifetimes and original ParseBean
+proxy/ext formatting. Optional selection fields persist through restart and even
+through later parse failures. The supplied subscription returned 48 sources, a
+global spider and a selected home in this mode; a new CLI process reproduced those
+counts from cache. No parses/flags were declared by that particular response.
+See vod-loader-smoke.json; temporary prepared payloads were removed afterward.
+
+VOD scope ends before live/hosts/proxy/rules/DOH/ads. Its reset adapter only clears
+selected containers and does not destroy or initialize executors. These sections,
+script/JAR execution and full Android behavior remain unverified.
 
 Next batch:
 
-1. Complete remaining ApiConfig globals, home-source selection and other fields
-   before treating source-scope cache success as a full config-load success.
+1. Complete remaining ApiConfig live/network rule state; neither scoped loader
+   should be treated as full-client acceptance.
 2. Initialize controlled Spider/SpiderApi init and method fixtures; investigate
    JAR/DEX and JS execution against that contract.
 3. Validate on Linux x86_64 and an Android runtime before claiming platform parity.

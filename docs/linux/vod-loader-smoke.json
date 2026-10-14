@@ -1,0 +1,30 @@
+{
+  "scope": "macOS ARM64 VOD prefix only; no live/network rule processing, executors, Android/ART or Linux/NAS execution",
+  "networkImport": {
+    "ok": true,
+    "sourceCount": 48,
+    "typeCounts": {
+      "3": 48
+    },
+    "collectionLines": 0,
+    "scope": "vod-prefix",
+    "hasGlobalSpider": true,
+    "parseCount": 0,
+    "vipFlagCount": 0,
+    "hasHomeSource": true
+  },
+  "newProcessCacheImport": {
+    "ok": true,
+    "sourceCount": 48,
+    "typeCounts": {
+      "3": 48
+    },
+    "collectionLines": 0,
+    "scope": "vod-prefix",
+    "hasGlobalSpider": true,
+    "parseCount": 0,
+    "vipFlagCount": 0,
+    "hasHomeSource": true
+  },
+  "temporaryDataDirectory": ".cache/vod-cli-validation; removed after verification"
+}

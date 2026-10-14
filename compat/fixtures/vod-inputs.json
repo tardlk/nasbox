@@ -1,0 +1,368 @@
+[
+  {
+    "id": "vod/initial",
+    "request": {
+      "operation": "vodState"
+    }
+  },
+  {
+    "id": "vod/defaults",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}]}"
+    }
+  },
+  {
+    "id": "vod/global-values",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\" ./demo.jar;md5;123 \",\"jarCache\":false,\"danmaku\":{\"key\":1},\"wallpaper\":[\"one\"],\"flags\":[\"vip\",2,null,\"ignored\"]}"
+    }
+  },
+  {
+    "id": "vod/global-nulls",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":null,\"jarCache\":null,\"danmaku\":null,\"wallpaper\":null}"
+    }
+  },
+  {
+    "id": "vod/global-large-lexeme",
+    "request": {
+      "operation": "vod",
+      "text": "{sites:[],spider:1e3,jarCache:123456789012345678901234567890}"
+    }
+  },
+  {
+    "id": "vod/state-empty-home",
+    "request": {
+      "operation": "state",
+      "state": {}
+    }
+  },
+  {
+    "id": "vod/duplicate-first-home",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"},{\"key\":\"a\",\"type\":3,\"api\":\"csp_Last\"},{\"key\":\"b\",\"type\":3,\"api\":\"csp_B\"}]}"
+    }
+  },
+  {
+    "id": "vod/duplicate-reimport-home",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"},{\"key\":\"a\",\"type\":3,\"api\":\"csp_Last\"}]}"
+    }
+  },
+  {
+    "id": "vod/state-specific-home",
+    "request": {
+      "operation": "state",
+      "state": {
+        "homeApi": "b"
+      }
+    }
+  },
+  {
+    "id": "vod/persisted-home",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"},{\"key\":\"b\",\"type\":3,\"api\":\"csp_B\"}]}"
+    }
+  },
+  {
+    "id": "vod/empty-sites-stale-home",
+    "request": {
+      "operation": "vod",
+      "text": "{sites:[]}"
+    }
+  },
+  {
+    "id": "vod/state-push-home",
+    "request": {
+      "operation": "state",
+      "state": {
+        "homeApi": "push_agent"
+      }
+    }
+  },
+  {
+    "id": "vod/push-agent-home",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}]}"
+    }
+  },
+  {
+    "id": "vod/push-agent-source",
+    "request": {
+      "operation": "vodSource",
+      "key": "push_agent"
+    }
+  },
+  {
+    "id": "vod/real-push-agent-overrides",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"push_agent\",\"type\":3,\"api\":\"csp_Push\"}]}"
+    }
+  },
+  {
+    "id": "vod/missing-source",
+    "request": {
+      "operation": "vodSource",
+      "key": "missing"
+    }
+  },
+  {
+    "id": "vod/state-empty-key",
+    "request": {
+      "operation": "state",
+      "state": {
+        "homeApi": ""
+      }
+    }
+  },
+  {
+    "id": "vod/empty-key-home",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"\",\"type\":3,\"api\":\"csp_Empty\"},{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}]}"
+    }
+  },
+  {
+    "id": "vod/search-includes-negative",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"},{\"key\":\"b\",\"type\":3,\"api\":\"csp_B\",\"searchable\":0},{\"key\":\"c\",\"type\":3,\"api\":\"csp_C\",\"searchable\":-1}]}"
+    }
+  },
+  {
+    "id": "vod/search-first",
+    "request": {
+      "operation": "vodSearch"
+    }
+  },
+  {
+    "id": "vod/search-reused",
+    "request": {
+      "operation": "vodSearch"
+    }
+  },
+  {
+    "id": "vod/state-default-parse",
+    "request": {
+      "operation": "state",
+      "state": {}
+    }
+  },
+  {
+    "id": "vod/super-default",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}]}"
+    }
+  },
+  {
+    "id": "vod/state-select-parse",
+    "request": {
+      "operation": "state",
+      "state": {
+        "defaultParse": "P"
+      }
+    }
+  },
+  {
+    "id": "vod/select-persisted-parse",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}]}"
+    }
+  },
+  {
+    "id": "vod/missing-selected-name-stale-default",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"Other\",\"url\":\"https://other.invalid/?x=1\"}]}"
+    }
+  },
+  {
+    "id": "vod/no-parses-stale-default",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}]}"
+    }
+  },
+  {
+    "id": "vod/empty-parses-stale-default",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[]}"
+    }
+  },
+  {
+    "id": "vod/state-duplicate-parse",
+    "request": {
+      "operation": "state",
+      "state": {
+        "defaultParse": "Dup"
+      }
+    }
+  },
+  {
+    "id": "vod/duplicate-parse-last-selected",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"Dup\",\"url\":\"first\"},{\"name\":\"Dup\",\"url\":\"last\"}]}"
+    }
+  },
+  {
+    "id": "vod/state-proxy-parse",
+    "request": {
+      "operation": "state",
+      "state": {
+        "defaultParse": "Proxy"
+      }
+    }
+  },
+  {
+    "id": "vod/proxy-parse-ext",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"Proxy\",\"url\":\"proxy://https://p.invalid/?id=1\",\"ext\":{\"a\":1}}]}",
+      "localAddress": "http://nas.invalid:8899/"
+    }
+  },
+  {
+    "id": "vod/mix-question-at-zero",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"Proxy\",\"url\":\"?url=x\",\"ext\":{\"a\":1}}]}"
+    }
+  },
+  {
+    "id": "vod/parse-types",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"Proxy\",\"url\":\"x\",\"type\":true},{\"name\":\"Q\",\"url\":\"x\",\"type\":\"1x\"}]}"
+    }
+  },
+  {
+    "id": "vod/partial-parse-list",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"First\",\"url\":\"x\"},{\"name\":null,\"url\":\"y\"}]}"
+    }
+  },
+  {
+    "id": "vod/ext-null-fails",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"P\",\"url\":\"x\",\"ext\":null}]}"
+    }
+  },
+  {
+    "id": "vod/ext-array-fails",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"P\",\"url\":\"x\",\"ext\":[]}]}"
+    }
+  },
+  {
+    "id": "vod/ext-string-fails",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"P\",\"url\":\"x\",\"ext\":\"{}\"}]}"
+    }
+  },
+  {
+    "id": "vod/parse-entry-primitive",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[1]}"
+    }
+  },
+  {
+    "id": "vod/parses-null",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":null}"
+    }
+  },
+  {
+    "id": "vod/parses-object",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":{}}"
+    }
+  },
+  {
+    "id": "vod/missing-parse-name",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"url\":\"x\"}]}"
+    }
+  },
+  {
+    "id": "vod/parse-url-null",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":\"P\",\"url\":null}]}"
+    }
+  },
+  {
+    "id": "vod/parse-array-singletons",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":[\"P\"],\"url\":[\"x\"]}]}"
+    }
+  },
+  {
+    "id": "vod/parse-name-object",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"parses\":[{\"name\":{\"n\":1},\"url\":\"x\"}]}"
+    }
+  },
+  {
+    "id": "vod/flags-are-raw-strings",
+    "request": {
+      "operation": "vod",
+      "text": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"flags\":[[1],\" vip \",true]}"
+    }
+  },
+  {
+    "id": "vod/site-failure-before-flags",
+    "request": {
+      "operation": "vod",
+      "text": "{\"spider\":\"changed.jar\",\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"},{\"key\":null,\"type\":3,\"api\":\"csp_Bad\"}],\"flags\":[\"new\"]}"
+    }
+  },
+  {
+    "id": "vod/malformed-json-clears-lists",
+    "request": {
+      "operation": "vod",
+      "text": "{sites:"
+    }
+  },
+  {
+    "id": "vod/null-root",
+    "request": {
+      "operation": "vod",
+      "text": "null"
+    }
+  },
+  {
+    "id": "vod/missing-sites",
+    "request": {
+      "operation": "vod",
+      "text": "{spider:\"new.jar\"}"
+    }
+  },
+  {
+    "id": "vod/final-snapshot",
+    "request": {
+      "operation": "vodState"
+    }
+  }
+]

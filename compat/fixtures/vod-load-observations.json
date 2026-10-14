@@ -1,0 +1,1877 @@
+{
+  "baseline": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "inputSha256": "074e7d945792bd77979d37d370cc936b63c98854ba064f59ebd2d86163b384c6",
+  "scope": "Original ApiConfig prefix before live/hosts/proxy/rules/DOH/ads, with selected reset/Hawk adapters; no script execution or full Android behavior",
+  "cases": [
+    {
+      "id": "vod-load/network",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_A",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": [],
+            "homeApi": "a",
+            "defaultParse": "超级解析"
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn1dLCJzcGlkZXIiOiJkZW1vLmphciIsInBhcnNlcyI6W3sibmFtZSI6IlAiLCJ1cmwiOiJodHRwczovL3BhcnNlLmludmFsaWQvP3VybD0iLCJleHQiOnsiYSI6MX19XSwiZmxhZ3MiOlsidmlwIl19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_A",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [
+              {
+                "name": "超级解析",
+                "url": "SuperParse",
+                "ext": "",
+                "type": 4,
+                "isDefault": true,
+                "effectiveUrl": "SuperParse",
+                "mixedUrl": "SuperParse"
+              },
+              {
+                "name": "P",
+                "url": "https://parse.invalid/?url=",
+                "ext": "{\"a\":1}",
+                "type": 0,
+                "isDefault": false,
+                "effectiveUrl": "https://parse.invalid/?url=",
+                "mixedUrl": "https://parse.invalid/?cat_ext=eyJhIjoxfQ==&url="
+              }
+            ],
+            "defaultParse": {
+              "name": "超级解析",
+              "url": "SuperParse",
+              "ext": "",
+              "type": 4,
+              "isDefault": true,
+              "effectiveUrl": "SuperParse",
+              "mixedUrl": "SuperParse"
+            },
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": "超级解析"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vod-load/cache-reimport",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          },
+          {
+            "useCache": true
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_A",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            },
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_A",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": [],
+            "homeApi": "a",
+            "defaultParse": "超级解析"
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn1dLCJzcGlkZXIiOiJkZW1vLmphciIsInBhcnNlcyI6W3sibmFtZSI6IlAiLCJ1cmwiOiJodHRwczovL3BhcnNlLmludmFsaWQvP3VybD0iLCJleHQiOnsiYSI6MX19XSwiZmxhZ3MiOlsidmlwIl19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_A",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [
+              {
+                "name": "超级解析",
+                "url": "SuperParse",
+                "ext": "",
+                "type": 4,
+                "isDefault": true,
+                "effectiveUrl": "SuperParse",
+                "mixedUrl": "SuperParse"
+              },
+              {
+                "name": "P",
+                "url": "https://parse.invalid/?url=",
+                "ext": "{\"a\":1}",
+                "type": 0,
+                "isDefault": false,
+                "effectiveUrl": "https://parse.invalid/?url=",
+                "mixedUrl": "https://parse.invalid/?cat_ext=eyJhIjoxfQ==&url="
+              }
+            ],
+            "defaultParse": {
+              "name": "超级解析",
+              "url": "SuperParse",
+              "ext": "",
+              "type": 4,
+              "isDefault": true,
+              "effectiveUrl": "SuperParse",
+              "mixedUrl": "SuperParse"
+            },
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": "超级解析"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vod-load/persisted-selections",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "preferences": {
+          "homeApi": "a",
+          "defaultParse": "P"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_A",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "homeApi": "a",
+            "defaultParse": "P",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn1dLCJzcGlkZXIiOiJkZW1vLmphciIsInBhcnNlcyI6W3sibmFtZSI6IlAiLCJ1cmwiOiJodHRwczovL3BhcnNlLmludmFsaWQvP3VybD0iLCJleHQiOnsiYSI6MX19XSwiZmxhZ3MiOlsidmlwIl19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_A",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [
+              {
+                "name": "超级解析",
+                "url": "SuperParse",
+                "ext": "",
+                "type": 4,
+                "isDefault": false,
+                "effectiveUrl": "SuperParse",
+                "mixedUrl": "SuperParse"
+              },
+              {
+                "name": "P",
+                "url": "https://parse.invalid/?url=",
+                "ext": "{\"a\":1}",
+                "type": 0,
+                "isDefault": true,
+                "effectiveUrl": "https://parse.invalid/?url=",
+                "mixedUrl": "https://parse.invalid/?cat_ext=eyJhIjoxfQ==&url="
+              }
+            ],
+            "defaultParse": {
+              "name": "P",
+              "url": "https://parse.invalid/?url=",
+              "ext": "{\"a\":1}",
+              "type": 0,
+              "isDefault": true,
+              "effectiveUrl": "https://parse.invalid/?url=",
+              "mixedUrl": "https://parse.invalid/?cat_ext=eyJhIjoxfQ==&url="
+            },
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": "P"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vod-load/fresh-parse-error-no-fallback",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "cache": {
+          "https://a.invalid/tv": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"Bad\",\"url\":\"x\",\"ext\":null}],\"flags\":[\"vip\"]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "配置解析失败"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": [],
+            "homeApi": "a"
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn1dLCJzcGlkZXIiOiJkZW1vLmphciIsInBhcnNlcyI6W3sibmFtZSI6IlAiLCJ1cmwiOiJodHRwczovL3BhcnNlLmludmFsaWQvP3VybD0iLCJleHQiOnsiYSI6MX19XSwiZmxhZ3MiOlsidmlwIl19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_A",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [],
+            "defaultParse": null,
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": ""
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vod-load/cache-prefix-error-falls-through",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "cache": {
+          "https://a.invalid/tv": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":null,\"flags\":[\"vip\"]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv",
+            "useCache": true
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_A",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": [],
+            "homeApi": "a",
+            "defaultParse": "超级解析"
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn1dLCJzcGlkZXIiOiJkZW1vLmphciIsInBhcnNlcyI6W3sibmFtZSI6IlAiLCJ1cmwiOiJodHRwczovL3BhcnNlLmludmFsaWQvP3VybD0iLCJleHQiOnsiYSI6MX19XSwiZmxhZ3MiOlsidmlwIl19"
+          },
+          "events": [
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_A",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [
+              {
+                "name": "超级解析",
+                "url": "SuperParse",
+                "ext": "",
+                "type": 4,
+                "isDefault": true,
+                "effectiveUrl": "SuperParse",
+                "mixedUrl": "SuperParse"
+              },
+              {
+                "name": "P",
+                "url": "https://parse.invalid/?url=",
+                "ext": "{\"a\":1}",
+                "type": 0,
+                "isDefault": false,
+                "effectiveUrl": "https://parse.invalid/?url=",
+                "mixedUrl": "https://parse.invalid/?cat_ext=eyJhIjoxfQ==&url="
+              }
+            ],
+            "defaultParse": {
+              "name": "超级解析",
+              "url": "SuperParse",
+              "ext": "",
+              "type": 4,
+              "isDefault": true,
+              "effectiveUrl": "SuperParse",
+              "mixedUrl": "SuperParse"
+            },
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": "超级解析"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vod-load/offline-cache",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "cache": {
+          "https://a.invalid/tv": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "error": "offline"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_A",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": [],
+            "homeApi": "a",
+            "defaultParse": "超级解析"
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn1dLCJzcGlkZXIiOiJkZW1vLmphciIsInBhcnNlcyI6W3sibmFtZSI6IlAiLCJ1cmwiOiJodHRwczovL3BhcnNlLmludmFsaWQvP3VybD0iLCJleHQiOnsiYSI6MX19XSwiZmxhZ3MiOlsidmlwIl19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_A",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [
+              {
+                "name": "超级解析",
+                "url": "SuperParse",
+                "ext": "",
+                "type": 4,
+                "isDefault": true,
+                "effectiveUrl": "SuperParse",
+                "mixedUrl": "SuperParse"
+              },
+              {
+                "name": "P",
+                "url": "https://parse.invalid/?url=",
+                "ext": "{\"a\":1}",
+                "type": 0,
+                "isDefault": false,
+                "effectiveUrl": "https://parse.invalid/?url=",
+                "mixedUrl": "https://parse.invalid/?cat_ext=eyJhIjoxfQ==&url="
+              }
+            ],
+            "defaultParse": {
+              "name": "超级解析",
+              "url": "SuperParse",
+              "ext": "",
+              "type": 4,
+              "isDefault": true,
+              "effectiveUrl": "SuperParse",
+              "mixedUrl": "SuperParse"
+            },
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": "超级解析"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vod-load/collection",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{urls:['https://b.invalid/tv']}"
+          },
+          {
+            "url": "https://b.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://b.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_A",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://b.invalid/tv",
+            "liveApiUrl": "https://b.invalid/tv",
+            "apiLineSource": "https://a.invalid/tv",
+            "apiLineList": [
+              "https://b.invalid/tv\thttps://b.invalid/tv"
+            ],
+            "apiHistory": [
+              "https://a.invalid/tv"
+            ],
+            "liveApiHistory": [
+              "https://b.invalid/tv"
+            ],
+            "homeApi": "a",
+            "defaultParse": "超级解析"
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "4960b152b4a4eb627f3443808e25a8ee": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn1dLCJzcGlkZXIiOiJkZW1vLmphciIsInBhcnNlcyI6W3sibmFtZSI6IlAiLCJ1cmwiOiJodHRwczovL3BhcnNlLmludmFsaWQvP3VybD0iLCJleHQiOnsiYSI6MX19XSwiZmxhZ3MiOlsidmlwIl19",
+            "b2928745da5022dcef313ce6788ab8fe": "e3VybHM6WydodHRwczovL2IuaW52YWxpZC90diddfQ=="
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "4960b152b4a4eb627f3443808e25a8ee"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_A",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [
+              {
+                "name": "超级解析",
+                "url": "SuperParse",
+                "ext": "",
+                "type": 4,
+                "isDefault": true,
+                "effectiveUrl": "SuperParse",
+                "mixedUrl": "SuperParse"
+              },
+              {
+                "name": "P",
+                "url": "https://parse.invalid/?url=",
+                "ext": "{\"a\":1}",
+                "type": 0,
+                "isDefault": false,
+                "effectiveUrl": "https://parse.invalid/?url=",
+                "mixedUrl": "https://parse.invalid/?cat_ext=eyJhIjoxfQ==&url="
+              }
+            ],
+            "defaultParse": {
+              "name": "超级解析",
+              "url": "SuperParse",
+              "ext": "",
+              "type": 4,
+              "isDefault": true,
+              "effectiveUrl": "SuperParse",
+              "mixedUrl": "SuperParse"
+            },
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": "超级解析"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vod-load/selection-updated-before-failure",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "preferences": {
+          "homeApi": "missing"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":null,\"flags\":[\"vip\"]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "配置解析失败"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "homeApi": "a",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {},
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_A",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [],
+            "defaultParse": null,
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": ""
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vod-load/stale-default-across-imports",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "preferences": {
+          "defaultParse": "P"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          },
+          {
+            "url": "https://b.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+          },
+          {
+            "url": "https://b.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"New\",\"url\":\"new\"}],\"flags\":[\"vip\"]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_A",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            },
+            {
+              "ok": true,
+              "apiUrl": "https://b.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_A",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://b.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "defaultParse": "P",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": [],
+            "homeApi": "a"
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "4960b152b4a4eb627f3443808e25a8ee": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn1dLCJzcGlkZXIiOiJkZW1vLmphciIsInBhcnNlcyI6W3sibmFtZSI6Ik5ldyIsInVybCI6Im5ldyJ9XSwiZmxhZ3MiOlsidmlwIl19",
+            "b2928745da5022dcef313ce6788ab8fe": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn1dLCJzcGlkZXIiOiJkZW1vLmphciIsInBhcnNlcyI6W3sibmFtZSI6IlAiLCJ1cmwiOiJodHRwczovL3BhcnNlLmludmFsaWQvP3VybD0iLCJleHQiOnsiYSI6MX19XSwiZmxhZ3MiOlsidmlwIl19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "4960b152b4a4eb627f3443808e25a8ee"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_A",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_A",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [
+              {
+                "name": "超级解析",
+                "url": "SuperParse",
+                "ext": "",
+                "type": 4,
+                "isDefault": false,
+                "effectiveUrl": "SuperParse",
+                "mixedUrl": "SuperParse"
+              },
+              {
+                "name": "New",
+                "url": "new",
+                "ext": "",
+                "type": 0,
+                "isDefault": false,
+                "effectiveUrl": "new",
+                "mixedUrl": "new"
+              }
+            ],
+            "defaultParse": {
+              "name": "P",
+              "url": "https://parse.invalid/?url=",
+              "ext": "{\"a\":1}",
+              "type": 0,
+              "isDefault": true,
+              "effectiveUrl": "https://parse.invalid/?url=",
+              "mixedUrl": "https://parse.invalid/?cat_ext=eyJhIjoxfQ==&url="
+            },
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": "P"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "vod-load/duplicate-home-across-imports",
+      "request": {
+        "operation": "loadSequence",
+        "parseScope": "vod-prefix",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          },
+          {
+            "useCache": true
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"},{\"key\":\"a\",\"type\":3,\"api\":\"csp_Last\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_Last",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            },
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "a",
+                  "name": "a",
+                  "api": "csp_Last",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": [],
+            "homeApi": "a",
+            "defaultParse": "超级解析"
+          },
+          "sites": [
+            {
+              "key": "a",
+              "name": "a",
+              "api": "csp_Last",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "eyJzaXRlcyI6W3sia2V5IjoiYSIsInR5cGUiOjMsImFwaSI6ImNzcF9BIn0seyJrZXkiOiJhIiwidHlwZSI6MywiYXBpIjoiY3NwX0xhc3QifV0sInNwaWRlciI6ImRlbW8uamFyIiwicGFyc2VzIjpbeyJuYW1lIjoiUCIsInVybCI6Imh0dHBzOi8vcGFyc2UuaW52YWxpZC8/dXJsPSIsImV4dCI6eyJhIjoxfX1dLCJmbGFncyI6WyJ2aXAiXX0="
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ],
+          "config": {
+            "scope": "vod-prefix",
+            "globals": {
+              "spider": "demo.jar",
+              "jarCache": "true",
+              "danmaku": "",
+              "wallpaper": ""
+            },
+            "sites": [
+              {
+                "key": "a",
+                "name": "a",
+                "api": "csp_Last",
+                "type": 3,
+                "searchable": 1,
+                "quickSearch": 1,
+                "changeable": 1,
+                "filterable": 1,
+                "ext": "",
+                "jar": "",
+                "categories": [],
+                "playerType": -1,
+                "timeout": 0,
+                "style": "",
+                "playUrl": "",
+                "click": "",
+                "playTimeoutSeconds": 15
+              }
+            ],
+            "home": {
+              "key": "a",
+              "name": "a",
+              "api": "csp_Last",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            },
+            "flags": [
+              "vip"
+            ],
+            "parses": [
+              {
+                "name": "超级解析",
+                "url": "SuperParse",
+                "ext": "",
+                "type": 4,
+                "isDefault": true,
+                "effectiveUrl": "SuperParse",
+                "mixedUrl": "SuperParse"
+              },
+              {
+                "name": "P",
+                "url": "https://parse.invalid/?url=",
+                "ext": "{\"a\":1}",
+                "type": 0,
+                "isDefault": false,
+                "effectiveUrl": "https://parse.invalid/?url=",
+                "mixedUrl": "https://parse.invalid/?cat_ext=eyJhIjoxfQ==&url="
+              }
+            ],
+            "defaultParse": {
+              "name": "超级解析",
+              "url": "SuperParse",
+              "ext": "",
+              "type": 4,
+              "isDefault": true,
+              "effectiveUrl": "SuperParse",
+              "mixedUrl": "SuperParse"
+            },
+            "selection": {
+              "homeApi": "a",
+              "defaultParse": "超级解析"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import { spawnSync } from 'node:child_process';
 import { root, reference, verifyReference, sha256 } from './reference.mjs';
 import { copyPlatformReference } from './platform-reference.mjs';
 import { stateReference } from './state-reference.mjs';
+import { vodReference } from './vod-reference.mjs';
 
 export function extractMethod(source, signature) {
   const start = source.indexOf(signature);
@@ -69,6 +70,8 @@ export function buildOracle() {
     .map(signature => extractMethod(historySource, signature));
   const extraRead = name => readFileSync(resolve(platform.extra, `app/src/main/java/com/github/tvbox/osc/util/${name}.java`), 'utf8');
   const state = stateReference(api, historySource, extraRead('MD5'), extraRead('FileUtils'), build);
+  const vod = vodReference(api);
+  const proxy = extractMethod(defaults, 'public static String checkReplaceProxy(');
   // Uri operations not used by fixContentPath are excluded; resolve and its
   // private helpers remain byte-for-byte upstream Java.
   let uri = read(uriPath);
@@ -94,14 +97,16 @@ class ControlManager {
   static ControlManager get() { return INSTANCE; }
   String getAddress(boolean local) { return address; }
 }
-class DefaultConfig { ${methods.join('\n')} }
+class DefaultConfig { ${[...methods,proxy].join('\n')} }
 class HistoryHelper { private static final String API_LINE_SPLIT = "\\t"; ${[...historyMethods,...state.historyMethods].join('\n')} }
 ${state.classes}
+${vod.source}
 
 public class AndroidOracle {
   private final Gson gson = new Gson();
   private final LinkedHashMap<String, SourceBean> sourceBeanList = new LinkedHashMap<>();
   private String TempKey = null;
+  private VodOracle vod = new VodOracle();
   private static Pattern getPattern(String pattern) { return Pattern.compile(pattern); }
   ${trim}
   ${fix}
@@ -131,7 +136,12 @@ public class AndroidOracle {
   private JsonElement run(JsonObject request) throws Throwable {
     String operation = request.get("operation").getAsString();
     String text = request.has("text") && !request.get("text").isJsonNull() ? request.get("text").getAsString() : null;
+    if (request.has("localAddress")) ControlManager.address = request.get("localAddress").getAsString();
     ${state.dispatch}
+    if(operation.equals("vod"))return vod.run(request.has("url")?request.get("url").getAsString():"",text);
+    if(operation.equals("vodState"))return vod.snapshot();
+    if(operation.equals("vodSearch"))return vod.searchSources();
+    if(operation.equals("vodSource"))return vod.source(request.get("key").getAsString());
     if (operation.equals("sites")) return sites(text);
     if (operation.equals("json")) return gson.fromJson(text, JsonElement.class);
     if (operation.equals("trim")) return new JsonPrimitive(trimJsonObject(text));
@@ -189,6 +199,9 @@ public class AndroidOracle {
   writeFileSync(resolve(build, 'SourceBean.java'), bean);
   writeFileSync(resolve(build, 'UriUtil.java'), uri);
   writeFileSync(resolve(build, 'AES.java'), read('app/src/main/java/com/github/tvbox/osc/util/AES.java'));
+  const parseBean = readFileSync(resolve(platform.extra, 'app/src/main/java/com/github/tvbox/osc/bean/ParseBean.java'), 'utf8')
+    .replace('package com.github.tvbox.osc.bean;', '').replace('import com.github.tvbox.osc.util.DefaultConfig;', '');
+  writeFileSync(resolve(build, 'ParseBean.java'), parseBean);
   const gson = process.env.TVBOX_GSON_JAR || resolve(root, '.tools/lib/gson-2.10.1.jar');
   if (!existsSync(gson)) throw new Error('Gson 2.10.1 missing; see docs/linux/environment.md');
   const integrity = JSON.parse(readFileSync(resolve(root, 'compat/toolchain-integrity.json'), 'utf8'));
@@ -196,13 +209,14 @@ public class AndroidOracle {
   const bc = process.env.TVBOX_BC_JAR || resolve(root, '.tools/lib/bcprov-jdk18on-1.78.1.jar');
   if (!existsSync(bc) || sha256(readFileSync(bc)) !== integrity.bouncyCastle.sha256) throw new Error('Bouncy Castle missing or checksum differs');
   const compile = spawnSync(command('javac'), ['-encoding', 'UTF-8', '-cp', [gson, bc].join(delimiter), '-d', build,
-    resolve(build, 'AndroidOracle.java'), resolve(build, 'SourceBean.java'), resolve(build, 'UriUtil.java'), resolve(build, 'AES.java'), ...platform.sources], { encoding: 'utf8' });
+    resolve(build, 'AndroidOracle.java'), resolve(build, 'SourceBean.java'), resolve(build, 'UriUtil.java'), resolve(build, 'AES.java'), resolve(build, 'ParseBean.java'), ...platform.sources], { encoding: 'utf8' });
   if (compile.error || compile.status !== 0) throw new Error(`Oracle compile failed: ${compile.error || compile.stderr}`);
   const extraction = { commit: manifest.commit, siteLoop: { source: apiPath, sha256: sha256(siteLoop) },
     defaultMethods: methods.map((body, i) => ({ source: defaultPath, index: i, sha256: sha256(body) })),
     platformTag: platform.manifest.tag, cryptoProvider: 'Desktop Bouncy Castle 1.78.1, not Android provider',
     extendedMethods: [configUrl, decode, collection, clanContentFix, ...historyMethods].map(body => sha256(body)),
     stateMethods: state.originals.map(body => sha256(body)),
+    vodPrefix: { sha256: sha256(vod.prefix), helpers: vod.helpers.map(body => sha256(body)), boundary: 'Before live/hosts/proxy/rules/doh/ads processing; selected reset adapter only' },
     loadScope: 'Original loadConfig with synchronous planned transport, temporary files/Hawk adapters, and source-fields parser substitute; no full ApiConfig or Android async execution',
     scope: 'Host-JVM execution of unchanged selected source methods plus fixed AOSP helpers. Not a full Android/ART execution.' };
   writeFileSync(resolve(build, 'extraction.json'), JSON.stringify(extraction, null, 2) + '\n');

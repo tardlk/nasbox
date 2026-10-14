@@ -6,7 +6,7 @@ import { MemorySubscriptionStore } from './store.mjs';
 import { fetchSubscriptionText } from './transport.mjs';
 
 export function createSourceSubscriptionLoader({ core, store = new MemorySubscriptionStore(),
-  fetchText = fetchSubscriptionText, parseConfig, onEvent = () => {}, maxHops = 32 } = {}) {
+  fetchText = fetchSubscriptionText, parseConfig, readConfig, parseScope = 'source-fields', onEvent = () => {}, maxHops = 32 } = {}) {
   const owned = !core;
   core ||= createConfigCore();
   let closed = false;
@@ -36,8 +36,13 @@ export function createSourceSubscriptionLoader({ core, store = new MemorySubscri
     await run('clearLines', { operation: 'clearLines', url: apiUrl });
     await persist();
     onEvent({ kind: 'parse', url: apiUrl });
-    const sites = await parseConfig(text, { apiUrl, core });
-    return { switched: false, sites };
+    try {
+      const sites = await parseConfig(text, { apiUrl, core });
+      return { switched: false, sites };
+    } finally {
+      // Parsing may update home/default selection even before a later failure.
+      await persist();
+    }
   }
   async function saveCache(key, text) {
     onEvent({ kind: 'cacheWrite', key });
@@ -100,7 +105,7 @@ export function createSourceSubscriptionLoader({ core, store = new MemorySubscri
     }
   }
   return {
-    scope: 'source-fields',
+    scope: parseScope,
     load({ apiUrl, useCache = false } = {}) {
       return serialize(async () => {
         if (apiUrl !== undefined) {
@@ -113,6 +118,7 @@ export function createSourceSubscriptionLoader({ core, store = new MemorySubscri
     },
     getState() { return serialize(state); },
     getSites() { return serialize(() => run('siteState', { operation: 'siteState' })); },
+    getConfig() { return readConfig ? serialize(() => readConfig(core)) : Promise.reject(new Error('This loader has no expanded config parser')); },
     async close() {
       closed = true;
       await queue;

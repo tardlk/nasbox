@@ -1,0 +1,219 @@
+[
+  {
+    "id": "vod-load/network",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vod-load/cache-reimport",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        },
+        {
+          "useCache": true
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vod-load/persisted-selections",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "preferences": {
+        "homeApi": "a",
+        "defaultParse": "P"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vod-load/fresh-parse-error-no-fallback",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "cache": {
+        "https://a.invalid/tv": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"Bad\",\"url\":\"x\",\"ext\":null}],\"flags\":[\"vip\"]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vod-load/cache-prefix-error-falls-through",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "cache": {
+        "https://a.invalid/tv": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":null,\"flags\":[\"vip\"]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv",
+          "useCache": true
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vod-load/offline-cache",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "cache": {
+        "https://a.invalid/tv": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "error": "offline"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vod-load/collection",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{urls:['https://b.invalid/tv']}"
+        },
+        {
+          "url": "https://b.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vod-load/selection-updated-before-failure",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "preferences": {
+        "homeApi": "missing"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":null,\"flags\":[\"vip\"]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vod-load/stale-default-across-imports",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "preferences": {
+        "defaultParse": "P"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        },
+        {
+          "url": "https://b.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+        },
+        {
+          "url": "https://b.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"New\",\"url\":\"new\"}],\"flags\":[\"vip\"]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "vod-load/duplicate-home-across-imports",
+    "request": {
+      "operation": "loadSequence",
+      "parseScope": "vod-prefix",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        },
+        {
+          "useCache": true
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{\"sites\":[{\"key\":\"a\",\"type\":3,\"api\":\"csp_A\"},{\"key\":\"a\",\"type\":3,\"api\":\"csp_Last\"}],\"spider\":\"demo.jar\",\"parses\":[{\"name\":\"P\",\"url\":\"https://parse.invalid/?url=\",\"ext\":{\"a\":1}}],\"flags\":[\"vip\"]}"
+        }
+      ]
+    }
+  }
+]

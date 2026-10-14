@@ -2,6 +2,7 @@
 import { createConfigCore } from '../../backend/config-core/index.mjs';
 import { createSourceSubscriptionLoader } from '../../backend/subscription/loader.mjs';
 import { MemorySubscriptionStore } from '../../backend/subscription/store.mjs';
+import { createVodSubscriptionLoader } from '../../backend/subscription/vod-loader.mjs';
 
 export async function runLoadScenario(request) {
   const core = createConfigCore();
@@ -15,7 +16,8 @@ export async function runLoadScenario(request) {
     }
     const store = new MemorySubscriptionStore({ state: request.preferences || {}, cache });
     const events = []; let fetchIndex = 0;
-    loader = createSourceSubscriptionLoader({ core, store, onEvent: event => events.push(event), fetchText: async url => {
+    const factory = request.parseScope === 'vod-prefix' ? createVodSubscriptionLoader : createSourceSubscriptionLoader;
+    loader = factory({ core, store, onEvent: event => events.push(event), fetchText: async url => {
       const plan = request.fetches?.[fetchIndex++];
       if (!plan) throw new Error('fixture exhausted');
       if (plan.url !== undefined && plan.url !== url) throw new Error('unexpected fixture URL');
@@ -27,7 +29,9 @@ export async function runLoadScenario(request) {
       try { results.push(await loader.load({ apiUrl: load.url, useCache: !!load.useCache })); }
       catch (error) { results.push({ ok: false, thrown: error.errorType || error.name }); }
     }
-    return { results, state: await loader.getState(), sites: await loader.getSites(),
+    const value = { results, state: await loader.getState(), sites: await loader.getSites(),
       cache: Object.fromEntries(Object.entries(await store.listCache()).map(([key, bytes]) => [key, bytes.toString('base64')])), events };
+    if (request.parseScope === 'vod-prefix') value.config = await loader.getConfig();
+    return value;
   } finally { if (loader) await loader.close(); await core.close(); }
 }

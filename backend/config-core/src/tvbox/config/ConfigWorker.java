@@ -10,13 +10,21 @@ public final class ConfigWorker {
     private final Gson gson = new Gson();
     private final ConfigParser parser = new ConfigParser();
     private final SubscriptionConfig subscription = new SubscriptionConfig(parser);
+    private final VodConfig vod = new VodConfig(subscription.preferences());
 
     private JsonElement run(JsonObject request) throws Exception {
         String operation = request.get("operation").getAsString();
         String text = request.has("text") && !request.get("text").isJsonNull()
                 ? request.get("text").getAsString() : null;
-        if (request.has("localAddress")) parser.localAddress = request.get("localAddress").getAsString();
+        if (request.has("localAddress")) {
+            parser.localAddress = request.get("localAddress").getAsString();
+            DefaultConfig.localAddress = parser.localAddress;
+        }
         switch (operation) {
+            case "vod": return vod.run(request.has("url") ? request.get("url").getAsString() : "", text);
+            case "vodState": return vod.snapshot();
+            case "vodSearch": return vod.searchSources();
+            case "vodSource": return vod.source(request.get("key").getAsString());
             case "fetchBody": {
                 JsonObject prepared = new JsonObject();
                 try {

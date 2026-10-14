@@ -15,6 +15,9 @@ final class PreferenceStore {
         for (String key : Arrays.asList("apiUrl", "liveApiUrl", "apiLineSource")) {
             next.put(key, input.has(key) ? input.get(key).getAsString() : "");
         }
+        for (String key : Arrays.asList("homeApi", "defaultParse")) {
+            if (input.has(key)) next.put(key, input.get(key).getAsString());
+        }
         for (String key : Arrays.asList("apiLineList", "apiHistory", "liveApiHistory")) {
             ArrayList<String> list = new ArrayList<>();
             if (input.has(key)) for (JsonElement element : input.getAsJsonArray(key)) {
@@ -28,5 +31,6 @@ final class PreferenceStore {
 }
 final class PreferenceKeys {
     static final String API_URL = "apiUrl", LIVE_API_URL = "liveApiUrl", API_LINE_SOURCE = "apiLineSource",
-        API_LINE_LIST = "apiLineList", API_HISTORY = "apiHistory", LIVE_API_HISTORY = "liveApiHistory";
+        API_LINE_LIST = "apiLineList", API_HISTORY = "apiHistory", LIVE_API_HISTORY = "liveApiHistory",
+        HOME_API = "homeApi", DEFAULT_PARSE = "defaultParse";
 }

@@ -7,7 +7,7 @@ import { createConfigCore } from '../../backend/config-core/index.mjs';
 import { runLoadScenario } from './load-runner.mjs';
 
 const built = buildOracle();
-const datasets = ['config', 'subscription', 'state', 'load'].map(name => {
+const datasets = ['config', 'subscription', 'state', 'load', 'vod', 'vod-load'].map(name => {
   const input = readFileSync(resolve(root, `compat/fixtures/${name}-inputs.json`));
   return { name, inputSha256: sha256(input), cases: JSON.parse(input) };
 });
@@ -15,7 +15,7 @@ const rows = [];
 for (const dataset of datasets) {
   const expected = queryOracle(dataset.cases.map(item => item.request), built);
   let actual;
-  if (dataset.name === 'load') {
+  if (dataset.name === 'load' || dataset.name === 'vod-load') {
     actual = [];
     for (const item of dataset.cases) actual.push({ ok: true, value: await runLoadScenario(item.request) });
   } else {
@@ -32,6 +32,7 @@ const report = {
   scope: 'Independent backend vs selected unchanged source methods and AOSP helpers on host JVM; not full Android/Linux/NAS parity',
   comparison: 'Exact result equality, including Java error class and partial source map in the same ordered session',
   loadScope: 'Original loadConfig with controlled synchronous transport, temporary filesystem/Hawk adapters and source-fields parse substitute; full ApiConfig/Android async and I/O-failure behavior not certified',
+  vodScope: 'Original parseJson prefix before live/hosts/proxy/rules/DOH/ads with selected reset/Hawk adapters; no executor clearing or script execution',
   total: rows.length, matching: rows.filter(row => row.equal).length,
   differences: rows.filter(row => !row.equal).length, rows,
 };

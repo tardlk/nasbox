@@ -20,6 +20,16 @@
       "name": "load",
       "inputSha256": "8a93e4fa5a70b60dc43750bd1e6c2807b998f2918858bc731585d39717d32eb0",
       "cases": 23
+    },
+    {
+      "name": "vod",
+      "inputSha256": "2ab54979155e5c9cd5186f63f4c594b917877e56d207bcc9c455e647530ee7d0",
+      "cases": 51
+    },
+    {
+      "name": "vod-load",
+      "inputSha256": "074e7d945792bd77979d37d370cc936b63c98854ba064f59ebd2d86163b384c6",
+      "cases": 10
     }
   ],
   "platformTag": "android-13.0.0_r1",
@@ -31,8 +41,9 @@
   "scope": "Independent backend vs selected unchanged source methods and AOSP helpers on host JVM; not full Android/Linux/NAS parity",
   "comparison": "Exact result equality, including Java error class and partial source map in the same ordered session",
   "loadScope": "Original loadConfig with controlled synchronous transport, temporary filesystem/Hawk adapters and source-fields parse substitute; full ApiConfig/Android async and I/O-failure behavior not certified",
-  "total": 202,
-  "matching": 202,
+  "vodScope": "Original parseJson prefix before live/hosts/proxy/rules/DOH/ads with selected reset/Hawk adapters; no executor clearing or script execution",
+  "total": 263,
+  "matching": 263,
   "differences": 0,
   "rows": [
     {
@@ -1043,6 +1054,311 @@
     {
       "dataset": "load",
       "id": "load/relative-path-cache-once",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/initial",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/defaults",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/global-values",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/global-nulls",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/global-large-lexeme",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/state-empty-home",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/duplicate-first-home",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/duplicate-reimport-home",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/state-specific-home",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/persisted-home",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/empty-sites-stale-home",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/state-push-home",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/push-agent-home",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/push-agent-source",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/real-push-agent-overrides",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/missing-source",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/state-empty-key",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/empty-key-home",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/search-includes-negative",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/search-first",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/search-reused",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/state-default-parse",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/super-default",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/state-select-parse",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/select-persisted-parse",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/missing-selected-name-stale-default",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/no-parses-stale-default",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/empty-parses-stale-default",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/state-duplicate-parse",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/duplicate-parse-last-selected",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/state-proxy-parse",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/proxy-parse-ext",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/mix-question-at-zero",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/parse-types",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/partial-parse-list",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/ext-null-fails",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/ext-array-fails",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/ext-string-fails",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/parse-entry-primitive",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/parses-null",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/parses-object",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/missing-parse-name",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/parse-url-null",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/parse-array-singletons",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/parse-name-object",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/flags-are-raw-strings",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/site-failure-before-flags",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/malformed-json-clears-lists",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/null-root",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/missing-sites",
+      "equal": true
+    },
+    {
+      "dataset": "vod",
+      "id": "vod/final-snapshot",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/network",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/cache-reimport",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/persisted-selections",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/fresh-parse-error-no-fallback",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/cache-prefix-error-falls-through",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/offline-cache",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/collection",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/selection-updated-before-failure",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/stale-default-across-imports",
+      "equal": true
+    },
+    {
+      "dataset": "vod-load",
+      "id": "vod-load/duplicate-home-across-imports",
       "equal": true
     }
   ]

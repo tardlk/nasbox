@@ -55,6 +55,7 @@ export class ConfigParseError extends Error {
     this.name = 'ConfigParseError';
     this.errorType = result.errorType;
     this.partialSites = result.partialSites;
+    if (result.partialConfig) this.partialConfig = result.partialConfig;
   }
 }
 
@@ -108,6 +109,13 @@ export function createConfigCore({ built = buildConfigCore(), timeoutMs = 30000,
       const result = await query({ operation: 'sites', text });
       if (!result.ok) throw new ConfigParseError(result);
       return result.value;
+    },
+    async parseVod(text, apiUrl = '') {
+      const result = await query({ operation: 'vod', text, url: apiUrl });
+      if (!result.ok) throw new ConfigParseError(result);
+      if (!result.value.accepted) throw new ConfigParseError({ errorType: result.value.errorType,
+        partialSites: result.value.config.sites, partialConfig: result.value.config });
+      return result.value.config;
     },
     async close() {
       if (!closed) { closed = true; child.stdin.end(); }

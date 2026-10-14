@@ -5,12 +5,13 @@ Win-Box desktop files retain their original license. Do not relabel the combined
 backend as MIT when packaging it.
 
 ConfigParser.java, DefaultConfig.java, SubscriptionConfig.java, HistoryHelper.java,
-AES.java and SourceBean.java derive from
+AES.java, SourceBean.java, ParseBean.java and VodConfig.java derive from
 q215613905/TVBoxOS commit ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1:
 
 - app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java
 - app/src/main/java/com/github/tvbox/osc/util/DefaultConfig.java
 - app/src/main/java/com/github/tvbox/osc/bean/SourceBean.java
+- app/src/main/java/com/github/tvbox/osc/bean/ParseBean.java
 - app/src/main/java/com/github/tvbox/osc/util/HistoryHelper.java
 - app/src/main/java/com/github/tvbox/osc/util/AES.java
 - app/src/main/java/com/github/tvbox/osc/util/MD5.java
@@ -32,6 +33,14 @@ byte array rather than a filesystem path. The Node source subscription loader
 ports original loadConfig control flow with explicit host adapters/limits; see
 ../subscription/README.md. Its FileSubscriptionStore atomically replaces files,
 rather than using Android FileUtils' delete-then-write implementation.
+
+VodConfig ports the original parseJson prefix ending before live processing,
+plus original getSource/setSourceBean/setDefaultParse/addSuperParse/search methods.
+Hawk and TextUtils calls use explicit adapters; reset clears only the selected
+containers and does not claim to destroy script runtimes. ParseBean changes only
+its DefaultConfig import. DefaultConfig is public for that import, and the original
+proxy replacement helper receives the explicit host local address. Raw selected
+home/default object snapshots are harness observations, not all ApiConfig getters.
 
 UriUtil.java derives from the same commit's quickjs module. Copyright (C) 2016
 The Android Open Source Project, licensed under Apache-2.0. Its original notice

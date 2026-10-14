@@ -6,7 +6,9 @@ conversion, source definitions, JSON parsing, object trimming and relative-path
 fixing, subscription URL/key selection, original FindResult decryption and
 collection recognition, selected collection/history state and cache utilities.
 The source-scope network/cache loader is in ../subscription. Full ApiConfig global
-fields, home-source preferences, parses/live/proxy rules and scripts are pending.
+behavior remains incomplete. The optional VOD prefix additionally covers global
+spider/jarCache/danmaku/wallpaper, home-source selection, flags and parses. Live,
+hosts/proxy/rules/DOH/ads, runtime cache clearing and scripts remain pending.
 
 Preserve the raw configuration text when passing it to this module. Parsing it
 with JavaScript first loses Gson numeric lexical values and overflow behavior.
@@ -36,7 +38,8 @@ finally { await core.close(); }
 
 `query` accepts operations `sites`, `safe`, `json`, `trim`, `fix`, `url`, `decode`,
 `collection`, `clanFix`, `state`, `collectionSwitch`, `clearLines`, `history`,
-`cacheKey`, `cacheRead`, `fetchBody`, `siteState` and returns
+`cacheKey`, `cacheRead`, `fetchBody`, `siteState`, `vod`, `vodState`, `vodSource`,
+`vodSearch` and returns
 `{ok:true,value}` or `{ok:false,errorType,partialSites}`. `safe` is a diagnostic
 operation with fixed fallback values. `parseSites` throws ConfigParseError with
 the Java error class and partial source map. Multiple pending requests use IDs
@@ -66,6 +69,23 @@ preferences. `clearLines` takes `url` and clears unmatched collection lines.
 processing and returns `{success,text}` or `{success:false,error}` with Java's
 fetch-preparation failure message. These preferences/cache operations are local;
 they do not themselves perform persistence or network requests.
+
+`vod` takes raw `text` and optional `url`, returning `{accepted,config,errorType?}`
+as the operation value. Its config snapshot includes globals, sites, raw selected
+home, flags, parses, default parse and home/default preference values. `vodState`
+returns the latest snapshot; `vodSource` takes `key` and uses original getSource
+(including the push_agent fallback); `vodSearch` uses original lazy search-source
+filtering. `parseVod(text,apiUrl)` returns the config or throws ConfigParseError
+with partialConfig and partialSites. Source-only and VOD views have separate maps.
+
+This is the original parseJson prefix ending before the live section. Reset
+adaptation clears its source/parse/search containers only; no script executor is
+cleared. Original mHomeSource/mDefaultParse lifetime is preserved, including stale
+references after empty/failed imports and duplicate source keys. ParseBean keeps
+original getter/mixUrl methods, with its DefaultConfig import adapted to this
+module. Effective proxy URLs use the explicit localAddress; mixed URLs retain raw
+proxy prefixes and Android Base64 flags. Optional homeApi/defaultParse preferences
+are restored without changing older six-field state snapshots when absent.
 
 Build products live in .cache/backend/config-core and can be deleted after use.
 Builds publish completed classes atomically to avoid partial reads by other workers.

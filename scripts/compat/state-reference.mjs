@@ -14,7 +14,8 @@ export function stateReference(api, history, md5, files, build) {
   const classes = `
 class HawkConfig {
   static final String API_URL="apiUrl", LIVE_API_URL="liveApiUrl", API_LINE_SOURCE="apiLineSource",
-    API_LINE_LIST="apiLineList", API_HISTORY="apiHistory", LIVE_API_HISTORY="liveApiHistory";
+    API_LINE_LIST="apiLineList", API_HISTORY="apiHistory", LIVE_API_HISTORY="liveApiHistory",
+    HOME_API="homeApi", DEFAULT_PARSE="defaultParse";
 }
 class Hawk {
   static final Map<String,Object> values = new LinkedHashMap<>();
@@ -23,6 +24,7 @@ class Hawk {
   static void restore(JsonObject state) {
     values.clear();
     for(String key:Arrays.asList("apiUrl","liveApiUrl","apiLineSource")) values.put(key,state.has(key)?state.get(key).getAsString():"");
+    for(String key:Arrays.asList("homeApi","defaultParse"))if(state.has(key))values.put(key,state.get(key).getAsString());
     for(String key:Arrays.asList("apiLineList","apiHistory","liveApiHistory")) {
       ArrayList<String> items=new ArrayList<>();
       if(state.has(key)) for(JsonElement item:state.getAsJsonArray(key)) items.add(item.isJsonNull()?null:item.getAsString());
@@ -61,10 +63,13 @@ class FileUtils {
   interface ConfigFetchCallback {void success(String body);void error(String error);}
   private JsonArray plannedFetches;
   private int fetchIndex;
+  private boolean vodLoading;
   private void parseJson(String url,String text) {
     Trace.add("parse","url",url);
-    sites(text); // Selected-source parser substitute: explicitly not full ApiConfig.
+    if(vodLoading)vod.apply(url,text);
+    else sites(text); // Source-only substitute, or selected VOD prefix: not full ApiConfig.
   }
+  private JsonArray loadedSources() {return vodLoading?vod.sources():snapshot();}
   private void fetchConfigAsync(String apiUrl,String requestUrl,String key,ConfigFetchCallback callback) {
     Trace.add("fetch","url",requestUrl);
     String text=null,error=null;
@@ -84,6 +89,8 @@ class FileUtils {
   private JsonElement loadSequence(JsonObject request) throws Exception {
     Hawk.restore(request.has("preferences")?request.getAsJsonObject("preferences"):new JsonObject());
     sourceBeanList.clear();
+    vodLoading=request.has("parseScope")&&request.get("parseScope").getAsString().equals("vod-prefix");
+    vod=new VodOracle();
     Trace.events=new JsonArray();
     App.directory=java.nio.file.Files.createTempDirectory(java.nio.file.Paths.get(${JSON.stringify(build)}),"load-").toFile();
     plannedFetches=request.has("fetches")?request.getAsJsonArray("fetches"):new JsonArray();fetchIndex=0;
@@ -99,7 +106,7 @@ class FileUtils {
         final JsonObject result=new JsonObject();
         try {
           loadConfig(spec.has("useCache")&&spec.get("useCache").getAsBoolean(),new LoadConfigCallback(){
-            public void success(){result.addProperty("ok",true);result.addProperty("apiUrl",Hawk.get(HawkConfig.API_URL,""));result.add("sites",snapshot());}
+            public void success(){result.addProperty("ok",true);result.addProperty("apiUrl",Hawk.get(HawkConfig.API_URL,""));result.add("sites",loadedSources());}
             public void error(String msg){result.addProperty("ok",false);result.addProperty("message",msg);}
             public void notice(String msg){}
           },new Activity());
@@ -109,7 +116,8 @@ class FileUtils {
       JsonObject caches=new JsonObject();
       File[] cachedFiles=App.directory.listFiles();Arrays.sort(cachedFiles,Comparator.comparing(File::getName));
       for(File file:cachedFiles)caches.addProperty(file.getName(),java.util.Base64.getEncoder().encodeToString(java.nio.file.Files.readAllBytes(file.toPath())));
-      JsonObject value=new JsonObject();value.add("results",results);value.add("state",Hawk.snapshot());value.add("sites",snapshot());value.add("cache",caches);value.add("events",Trace.events);
+      JsonObject value=new JsonObject();value.add("results",results);value.add("state",Hawk.snapshot());value.add("sites",loadedSources());value.add("cache",caches);value.add("events",Trace.events);
+      if(vodLoading)value.add("config",vod.snapshot());
       return value;
     } finally {
       try(java.util.stream.Stream<java.nio.file.Path> paths=java.nio.file.Files.walk(App.directory.toPath())) {
