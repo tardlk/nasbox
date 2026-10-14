@@ -1,0 +1,1372 @@
+{
+  "date": "2026-10-14T23:08:31.518Z",
+  "scope": "Same captured subscription/config/JAR on macOS ARM64 host JVM and actual Linux x86_64 NAS Docker; genuine ARM protected-JAR init and selected home calls. No Android/ART comparison.",
+  "image": {
+    "tag": "tvbox-core:linux-amd64-20261015",
+    "id": "sha256:62910f7fbcbe3503895d1ac07f5ddb29da23fb5da6fe4b819856e6f59520f907",
+    "os": "linux",
+    "architecture": "amd64",
+    "uncompressedLayerBytes": 506134455,
+    "user": "10001:10001",
+    "entrypoint": [
+      "node",
+      "/opt/tvbox/docker/cli.mjs"
+    ],
+    "command": [
+      "doctor"
+    ],
+    "proxyEmbedded": false,
+    "dockerfileSha256": "77209fea61f383ef3853cbf3003162a3d0ed7f7268393e9042eac5cd56e00d8a"
+  },
+  "constraints": {
+    "network": "Docker bridge, outbound source requests allowed, no published ports",
+    "uid": 10001,
+    "readOnlyRoot": true,
+    "tmpfs": "/tmp:rw,exec,nosuid,nodev,size=256m",
+    "capabilities": "ALL dropped",
+    "noNewPrivileges": true,
+    "pidsLimit": 256,
+    "memoryBytes": 2147483648
+  },
+  "execution": {
+    "fullProbeScriptSha256": "2873ce19181c16fabcd15c88a6149dd55525f9078a77c99e2475656ed1020ca5",
+    "deadlineProbeScriptSha256": "cf2c9f5f521403c63e29e6fa133682fa0ff77ab8ceb0f89058fa89bcb2c549ea",
+    "probeScriptReadOnlyMounted": true,
+    "imageRebuilt": false
+  },
+  "mac": {
+    "date": "2026-10-14T23:02:43.319Z",
+    "input": {
+      "url": "http://www.饭太硬.net/tv",
+      "subscriptionSha256": "607b91c0a342cc2ba4ebb925c22b662beac27d6ff8829c0c7c308d871f9ead08",
+      "configSha256": "86c944a6c2a0bb8a8152fce2c06f2eb24767e34a3c54fa832360cc78e612868b",
+      "jarSha256": "eba70fffdb728dd0657ef27b22d97de7530d96160e31bef6c08ccca21e479ab0",
+      "jarMd5": "25f4460aed52987f02865f02a1e83aa8",
+      "advertisedMd5": "25f4460aed52987f02865f02a1e83aa8",
+      "jarBytes": 1279598,
+      "sites": 48,
+      "responsesSha256": "cbd0640f5372a81a82d32311df4dc524b95bc56430ce9b1d542c9c7ecfd5efcf",
+      "configSemanticSha256": "46c10b9363047d21071f8a8e576e46a903473949ed21879b2d07efa769f9aefd"
+    },
+    "subscription": {
+      "reimported": true,
+      "configMatchesCapture": true
+    },
+    "host": {
+      "platform": "darwin",
+      "architecture": "arm64"
+    },
+    "scope": "Real protected ARM JAR registration/getLoader/nested DEX/getSpider/init/home on the reported host JVM; no Android/ART comparison",
+    "rows": [
+      {
+        "key": "点我切源",
+        "api": "csp_DouDouGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.DouDouGuard",
+        "home": {
+          "bytes": 12611,
+          "sha256": "1fb7555ed7f3422715c8527886409a75ffc2b55526657a432a94fc5ad986cc97",
+          "semanticSha256": "8c08cdfb358bf6a84c43070b549cab518737faa6071dc6849c919ba6f5450fb1",
+          "keys": [
+            "class",
+            "filters",
+            "list"
+          ],
+          "classes": 7,
+          "list": 20,
+          "classSha256": "00b8d42560c09646768e292c66adc5fd5fa0b71aa1b25810f9530bd7712abcb7",
+          "filterGroups": 7,
+          "filtersSha256": "ef122cbd7beaba996378e0540cbeb0ccd6dcedcf6bade22bf33db3f8443f400e"
+        }
+      },
+      {
+        "key": "MDrive",
+        "api": "csp_MyDriveGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.MyDriveGuard"
+      },
+      {
+        "key": "玩偶",
+        "api": "csp_WoGGGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.WoGGGuard",
+        "home": {
+          "bytes": 41867,
+          "sha256": "283424acf080ceb9d6cd320b158b531e8c65436fd0a7b90bd7cc2b881972b0ab",
+          "semanticSha256": "f7b2e3beafabc8c5ad75c17c39f3e2fbfd83ee52e4ab3a278dd81a39a0f3a2a6",
+          "keys": [
+            "class",
+            "filters",
+            "list"
+          ],
+          "classes": 8,
+          "list": 120,
+          "classSha256": "361a315a6529f95406ee5722f2ba1c8eb4fae87e42b831f839378c379a7e3da5",
+          "filterGroups": 8,
+          "filtersSha256": "b1c241b166c73ea1260bd03eefe846484e9cfe28c18b7d40f527c282003d9913"
+        }
+      },
+      {
+        "key": "YGP",
+        "api": "csp_YGPGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.YGPGuard"
+      },
+      {
+        "key": "MTV1",
+        "api": "csp_MusicGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.MusicGuard"
+      },
+      {
+        "key": "seed",
+        "api": "csp_SeedhubGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.SeedhubGuard",
+        "home": {
+          "bytes": 5033,
+          "sha256": "0ad789f802cdfc51fdd3084f0cbd5edd52a5be5773773f3e5c7152e3b6e6e03a",
+          "semanticSha256": "50b25e6f992f0b20e9286f8b7a85dd3893a07e0975dd07bb933d0c98315ae5c9",
+          "keys": [
+            "class",
+            "filters",
+            "jx",
+            "list",
+            "parse"
+          ],
+          "classes": 3,
+          "list": 0,
+          "classSha256": "bf4d3404683979eab000997146bca3834d059ba85b82b8be3e9c20b809e08c68",
+          "filterGroups": 3,
+          "filtersSha256": "5faa3395b72e6fd587e748ab00973501d3ed631049d4a278495b95cebaded84c"
+        }
+      },
+      {
+        "key": "光影",
+        "api": "csp_T4Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.T4Guard"
+      },
+      {
+        "key": "原创",
+        "api": "csp_YCyzGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.YCyzGuard"
+      },
+      {
+        "key": "厂长",
+        "api": "csp_NewCzGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.NewCzGuard"
+      },
+      {
+        "key": "立播",
+        "api": "csp_LibvioGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.LibvioGuard"
+      },
+      {
+        "key": "瓜子",
+        "api": "csp_AppgzGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AppgzGuard"
+      },
+      {
+        "key": "比特",
+        "api": "csp_BttwooGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BttwooGuard"
+      },
+      {
+        "key": "糯米",
+        "api": "csp_NmyswvGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.NmyswvGuard"
+      },
+      {
+        "key": "文采",
+        "api": "csp_JpysGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.JpysGuard"
+      },
+      {
+        "key": "奶酪",
+        "api": "csp_T4Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.T4Guard"
+      },
+      {
+        "key": "热播",
+        "api": "csp_AppTTGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AppTTGuard"
+      },
+      {
+        "key": "视界",
+        "api": "csp_App99Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.App99Guard"
+      },
+      {
+        "key": "剧圈",
+        "api": "csp_AppSxGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AppSxGuard"
+      },
+      {
+        "key": "荐片",
+        "api": "csp_JPJGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.JPJGuard"
+      },
+      {
+        "key": "奥特",
+        "api": "csp_AueteGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AueteGuard"
+      },
+      {
+        "key": "新6V",
+        "api": "csp_SixVGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.SixVGuard"
+      },
+      {
+        "key": "AiDj",
+        "api": "csp_AiDjGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AiDjGuard"
+      },
+      {
+        "key": "咕咕",
+        "api": "csp_AppSxGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AppSxGuard"
+      },
+      {
+        "key": "Dm84",
+        "api": "csp_Dm84Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.Dm84Guard"
+      },
+      {
+        "key": "看球",
+        "api": "csp_KanqiuGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.KanqiuGuard"
+      },
+      {
+        "key": "多多",
+        "api": "csp_DoubaoGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.DoubaoGuard"
+      },
+      {
+        "key": "吃瓜",
+        "api": "csp_LiveGzGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.LiveGzGuard"
+      },
+      {
+        "key": "alllive",
+        "api": "csp_AllliveGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AllliveGuard"
+      },
+      {
+        "key": "MTV",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard",
+        "home": {
+          "bytes": 21954,
+          "sha256": "b96a6aa94b64ef29ff115b4ad590c41cd7b776ceab025ebbcf1fed7ec131bc12",
+          "semanticSha256": "ea5273be6ce8c8ea9256b457f8479f1a4cda387e4aca8b641b51e8b808a90ba3",
+          "keys": [
+            "class",
+            "filters"
+          ],
+          "classes": 129,
+          "list": null,
+          "classSha256": "b217ab4bdb14fef8e8d39b37898f18616d4469b679f462efe2ddc573406a465c",
+          "filterGroups": 23,
+          "filtersSha256": "4d8448fc11972f03a9939b638932a37318cfdaee59c64789bb36826007477be1"
+        }
+      },
+      {
+        "key": "有声小说",
+        "api": "csp_Tingshu275Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.Tingshu275Guard"
+      },
+      {
+        "key": "Aid",
+        "api": "csp_FirstAidGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.FirstAidGuard",
+        "home": {
+          "bytes": 403,
+          "sha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+          "semanticSha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+          "keys": [
+            "class"
+          ],
+          "classes": 8,
+          "list": null,
+          "classSha256": "1761a114ab2ea55df4bc584166a65c79ee4430a0cd207685b685222b964a391c",
+          "filterGroups": null,
+          "filtersSha256": null
+        }
+      },
+      {
+        "key": "ZPan",
+        "api": "csp_S_zpsGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.S_zpsGuard"
+      },
+      {
+        "key": "JPan",
+        "api": "csp_S_zpsGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.S_zpsGuard"
+      },
+      {
+        "key": "YpanSo",
+        "api": "csp_YpanSoGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.YpanSoGuard"
+      },
+      {
+        "key": "BpanSo",
+        "api": "csp_BpanSoGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BpanSoGuard"
+      },
+      {
+        "key": "抠搜",
+        "api": "csp_KkSsGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.KkSsGuard"
+      },
+      {
+        "key": "UC",
+        "api": "csp_UuSsGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.UuSsGuard"
+      },
+      {
+        "key": "Bili",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "Biliych",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "少儿教育",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "小学课堂",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "初中课堂",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "高中教育",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "push_agent",
+        "api": "csp_PushGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.PushGuard"
+      },
+      {
+        "key": "cc",
+        "api": "csp_XPathGuard",
+        "ready": false,
+        "className": "com.github.catvod.crawler.SpiderNull"
+      }
+    ],
+    "diagnosticCategories": {
+      "android.database.sqlite.SQLiteException": 4,
+      "org.sqlite.SQLiteException": 4,
+      "java.lang.ClassNotFoundException": 2,
+      "java.io.IOException": 1,
+      "java.io.InterruptedIOException": 1,
+      "org.json.JSONException": 1,
+      "java.lang.NoClassDefFoundError": 1
+    },
+    "load": {
+      "loaded": true
+    },
+    "initialized": {
+      "enabled": true,
+      "workerPid": 37015,
+      "owner": "7c9ae8ae7e7f14b8ca112e2bab73482bb52f0c196c2063a1575e5f4cf63cbebd.jar",
+      "report": "原生桥就绪：ftyguard_v8.so (102440B, 64 位)，注册 native 8 个\n  - com/github/catvod/spider/DexNative → 改写 8 个方法\n  · 初始化耗时 61ms",
+      "payload": "载荷桥（32 位）就绪，耗时 32ms",
+      "loaderCalls": 1,
+      "payloadLoader": "dalvik.system.DexClassLoader",
+      "spiderCalls": 44,
+      "nullSpiderCalls": 0,
+      "spiderTypes": {
+        "com.github.catvod.spider.DouDou": 1,
+        "com.github.catvod.spider.MyDrive": 1,
+        "com.github.catvod.spider.WoGG": 1,
+        "com.github.catvod.spider.YGP": 1,
+        "com.github.catvod.spider.Music": 1,
+        "com.github.catvod.spider.Seedhub": 1,
+        "com.github.catvod.spider.T4": 2,
+        "com.github.catvod.spider.YCyz": 1,
+        "com.github.catvod.spider.NewCz": 1,
+        "com.github.catvod.spider.Libvio": 1,
+        "com.github.catvod.spider.Appgz": 1,
+        "com.github.catvod.spider.Bttwoo": 1,
+        "com.github.catvod.spider.Nmyswv": 1,
+        "com.github.catvod.spider.Jpys": 1,
+        "com.github.catvod.spider.AppTT": 1,
+        "com.github.catvod.spider.App99": 1,
+        "com.github.catvod.spider.AppSx": 2,
+        "com.github.catvod.spider.JPJ": 1,
+        "com.github.catvod.spider.Auete": 1,
+        "com.github.catvod.spider.SixV": 1,
+        "com.github.catvod.spider.AiDj": 1,
+        "com.github.catvod.spider.Dm84": 1,
+        "com.github.catvod.spider.Kanqiu": 1,
+        "com.github.catvod.spider.Doubao": 1,
+        "com.github.catvod.spider.LiveGz": 1,
+        "com.github.catvod.spider.Alllive": 1,
+        "com.github.catvod.spider.Bili": 7,
+        "com.github.catvod.spider.Tingshu275": 1,
+        "com.github.catvod.spider.FirstAid": 1,
+        "com.github.catvod.spider.S_zps": 2,
+        "com.github.catvod.spider.YpanSo": 1,
+        "com.github.catvod.spider.BpanSo": 1,
+        "com.github.catvod.spider.KkSs": 1,
+        "com.github.catvod.spider.UuSs": 1,
+        "com.github.catvod.spider.Push": 1
+      },
+      "lastSpider": "com.github.catvod.spider.Push",
+      "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64",
+      "extraLoaders": 1,
+      "dexLoaders": 1,
+      "listeners": 1
+    },
+    "cleared": {
+      "enabled": true,
+      "workerPid": 37035,
+      "owner": null,
+      "report": "",
+      "payload": "",
+      "loaderCalls": 0,
+      "payloadLoader": null,
+      "spiderCalls": 0,
+      "nullSpiderCalls": 0,
+      "spiderTypes": {},
+      "lastSpider": null,
+      "backend": null,
+      "extraLoaders": 0,
+      "dexLoaders": 0,
+      "listeners": 0
+    },
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokenRejected": true,
+      "bridgeReleased": true
+    },
+    "reload": {
+      "loaded": true,
+      "ready": true,
+      "home": {
+        "bytes": 403,
+        "sha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+        "semanticSha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+        "keys": [
+          "class"
+        ],
+        "classes": 8,
+        "list": null,
+        "classSha256": "1761a114ab2ea55df4bc584166a65c79ee4430a0cd207685b685222b964a391c",
+        "filterGroups": null,
+        "filtersSha256": null
+      }
+    },
+    "close": {
+      "ok": true,
+      "milliseconds": 1078,
+      "temporaryDataRemoved": true
+    },
+    "observations": {
+      "sites": 45,
+      "ready": 44,
+      "homes": 5,
+      "homeFailures": 0
+    }
+  },
+  "nas": {
+    "date": "2026-10-14T23:03:23.007Z",
+    "input": {
+      "url": "http://www.饭太硬.net/tv",
+      "subscriptionSha256": "607b91c0a342cc2ba4ebb925c22b662beac27d6ff8829c0c7c308d871f9ead08",
+      "configSha256": "86c944a6c2a0bb8a8152fce2c06f2eb24767e34a3c54fa832360cc78e612868b",
+      "jarSha256": "eba70fffdb728dd0657ef27b22d97de7530d96160e31bef6c08ccca21e479ab0",
+      "jarMd5": "25f4460aed52987f02865f02a1e83aa8",
+      "advertisedMd5": "25f4460aed52987f02865f02a1e83aa8",
+      "jarBytes": 1279598,
+      "sites": 48,
+      "responsesSha256": "cbd0640f5372a81a82d32311df4dc524b95bc56430ce9b1d542c9c7ecfd5efcf",
+      "configSemanticSha256": "46c10b9363047d21071f8a8e576e46a903473949ed21879b2d07efa769f9aefd"
+    },
+    "subscription": {
+      "reimported": true,
+      "configMatchesCapture": true
+    },
+    "host": {
+      "platform": "linux",
+      "architecture": "x64"
+    },
+    "scope": "Real protected ARM JAR registration/getLoader/nested DEX/getSpider/init/home on the reported host JVM; no Android/ART comparison",
+    "rows": [
+      {
+        "key": "点我切源",
+        "api": "csp_DouDouGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.DouDouGuard",
+        "home": {
+          "bytes": 12611,
+          "sha256": "1fb7555ed7f3422715c8527886409a75ffc2b55526657a432a94fc5ad986cc97",
+          "semanticSha256": "8c08cdfb358bf6a84c43070b549cab518737faa6071dc6849c919ba6f5450fb1",
+          "keys": [
+            "class",
+            "filters",
+            "list"
+          ],
+          "classes": 7,
+          "list": 20,
+          "classSha256": "00b8d42560c09646768e292c66adc5fd5fa0b71aa1b25810f9530bd7712abcb7",
+          "filterGroups": 7,
+          "filtersSha256": "ef122cbd7beaba996378e0540cbeb0ccd6dcedcf6bade22bf33db3f8443f400e"
+        }
+      },
+      {
+        "key": "MDrive",
+        "api": "csp_MyDriveGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.MyDriveGuard"
+      },
+      {
+        "key": "玩偶",
+        "api": "csp_WoGGGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.WoGGGuard",
+        "home": {
+          "bytes": 41867,
+          "sha256": "19af0bc331c28599570b51c8872cc82ca443ee4602961ef023a3a553d3f7414b",
+          "semanticSha256": "2f1d8b4e54f2ee4c9c6f01b853883655e3b682665af495acadd65b0f6bdae46c",
+          "keys": [
+            "class",
+            "filters",
+            "list"
+          ],
+          "classes": 8,
+          "list": 120,
+          "classSha256": "361a315a6529f95406ee5722f2ba1c8eb4fae87e42b831f839378c379a7e3da5",
+          "filterGroups": 8,
+          "filtersSha256": "b1c241b166c73ea1260bd03eefe846484e9cfe28c18b7d40f527c282003d9913"
+        }
+      },
+      {
+        "key": "YGP",
+        "api": "csp_YGPGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.YGPGuard"
+      },
+      {
+        "key": "MTV1",
+        "api": "csp_MusicGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.MusicGuard"
+      },
+      {
+        "key": "seed",
+        "api": "csp_SeedhubGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.SeedhubGuard",
+        "home": {
+          "bytes": 9603,
+          "sha256": "e072feb4d6f8ebb74da24e5e2f37ac18216c54e108c90374beb1e01682831b03",
+          "semanticSha256": "7ed668dc80ba2b179d410b2089081fd85b651369a91b2b9c1a64fa226eaeb5e8",
+          "keys": [
+            "class",
+            "filters",
+            "jx",
+            "list",
+            "parse"
+          ],
+          "classes": 3,
+          "list": 20,
+          "classSha256": "bf4d3404683979eab000997146bca3834d059ba85b82b8be3e9c20b809e08c68",
+          "filterGroups": 3,
+          "filtersSha256": "5faa3395b72e6fd587e748ab00973501d3ed631049d4a278495b95cebaded84c"
+        }
+      },
+      {
+        "key": "光影",
+        "api": "csp_T4Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.T4Guard"
+      },
+      {
+        "key": "原创",
+        "api": "csp_YCyzGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.YCyzGuard"
+      },
+      {
+        "key": "厂长",
+        "api": "csp_NewCzGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.NewCzGuard"
+      },
+      {
+        "key": "立播",
+        "api": "csp_LibvioGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.LibvioGuard"
+      },
+      {
+        "key": "瓜子",
+        "api": "csp_AppgzGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AppgzGuard"
+      },
+      {
+        "key": "比特",
+        "api": "csp_BttwooGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BttwooGuard"
+      },
+      {
+        "key": "糯米",
+        "api": "csp_NmyswvGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.NmyswvGuard"
+      },
+      {
+        "key": "文采",
+        "api": "csp_JpysGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.JpysGuard"
+      },
+      {
+        "key": "奶酪",
+        "api": "csp_T4Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.T4Guard"
+      },
+      {
+        "key": "热播",
+        "api": "csp_AppTTGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AppTTGuard"
+      },
+      {
+        "key": "视界",
+        "api": "csp_App99Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.App99Guard"
+      },
+      {
+        "key": "剧圈",
+        "api": "csp_AppSxGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AppSxGuard"
+      },
+      {
+        "key": "荐片",
+        "api": "csp_JPJGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.JPJGuard"
+      },
+      {
+        "key": "奥特",
+        "api": "csp_AueteGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AueteGuard"
+      },
+      {
+        "key": "新6V",
+        "api": "csp_SixVGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.SixVGuard"
+      },
+      {
+        "key": "AiDj",
+        "api": "csp_AiDjGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AiDjGuard"
+      },
+      {
+        "key": "咕咕",
+        "api": "csp_AppSxGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AppSxGuard"
+      },
+      {
+        "key": "Dm84",
+        "api": "csp_Dm84Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.Dm84Guard"
+      },
+      {
+        "key": "看球",
+        "api": "csp_KanqiuGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.KanqiuGuard"
+      },
+      {
+        "key": "多多",
+        "api": "csp_DoubaoGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.DoubaoGuard"
+      },
+      {
+        "key": "吃瓜",
+        "api": "csp_LiveGzGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.LiveGzGuard"
+      },
+      {
+        "key": "alllive",
+        "api": "csp_AllliveGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.AllliveGuard"
+      },
+      {
+        "key": "MTV",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard",
+        "home": {
+          "bytes": 21954,
+          "sha256": "b96a6aa94b64ef29ff115b4ad590c41cd7b776ceab025ebbcf1fed7ec131bc12",
+          "semanticSha256": "ea5273be6ce8c8ea9256b457f8479f1a4cda387e4aca8b641b51e8b808a90ba3",
+          "keys": [
+            "class",
+            "filters"
+          ],
+          "classes": 129,
+          "list": null,
+          "classSha256": "b217ab4bdb14fef8e8d39b37898f18616d4469b679f462efe2ddc573406a465c",
+          "filterGroups": 23,
+          "filtersSha256": "4d8448fc11972f03a9939b638932a37318cfdaee59c64789bb36826007477be1"
+        }
+      },
+      {
+        "key": "有声小说",
+        "api": "csp_Tingshu275Guard",
+        "ready": true,
+        "className": "com.github.catvod.spider.Tingshu275Guard"
+      },
+      {
+        "key": "Aid",
+        "api": "csp_FirstAidGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.FirstAidGuard",
+        "home": {
+          "bytes": 403,
+          "sha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+          "semanticSha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+          "keys": [
+            "class"
+          ],
+          "classes": 8,
+          "list": null,
+          "classSha256": "1761a114ab2ea55df4bc584166a65c79ee4430a0cd207685b685222b964a391c",
+          "filterGroups": null,
+          "filtersSha256": null
+        }
+      },
+      {
+        "key": "ZPan",
+        "api": "csp_S_zpsGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.S_zpsGuard"
+      },
+      {
+        "key": "JPan",
+        "api": "csp_S_zpsGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.S_zpsGuard"
+      },
+      {
+        "key": "YpanSo",
+        "api": "csp_YpanSoGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.YpanSoGuard"
+      },
+      {
+        "key": "BpanSo",
+        "api": "csp_BpanSoGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BpanSoGuard"
+      },
+      {
+        "key": "抠搜",
+        "api": "csp_KkSsGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.KkSsGuard"
+      },
+      {
+        "key": "UC",
+        "api": "csp_UuSsGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.UuSsGuard"
+      },
+      {
+        "key": "Bili",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "Biliych",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "少儿教育",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "小学课堂",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "初中课堂",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "高中教育",
+        "api": "csp_BiliGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.BiliGuard"
+      },
+      {
+        "key": "push_agent",
+        "api": "csp_PushGuard",
+        "ready": true,
+        "className": "com.github.catvod.spider.PushGuard"
+      },
+      {
+        "key": "cc",
+        "api": "csp_XPathGuard",
+        "ready": false,
+        "className": "com.github.catvod.crawler.SpiderNull"
+      }
+    ],
+    "diagnosticCategories": {
+      "android.database.sqlite.SQLiteException": 4,
+      "org.sqlite.SQLiteException": 4,
+      "java.lang.ClassNotFoundException": 1,
+      "java.io.InterruptedIOException": 1,
+      "org.json.JSONException": 1
+    },
+    "load": {
+      "loaded": true
+    },
+    "initialized": {
+      "enabled": true,
+      "workerPid": 46,
+      "owner": "cf48ad987b07d75525d4e62a12cf8d95999eee5543a2c70f4ef85b98256e9d41.jar",
+      "report": "原生桥就绪：ftyguard_v8.so (102440B, 64 位)，注册 native 8 个\n  - com/github/catvod/spider/DexNative → 改写 8 个方法\n  · 初始化耗时 174ms",
+      "payload": "载荷桥（32 位）就绪，耗时 59ms",
+      "loaderCalls": 1,
+      "payloadLoader": "dalvik.system.DexClassLoader",
+      "spiderCalls": 44,
+      "nullSpiderCalls": 0,
+      "spiderTypes": {
+        "com.github.catvod.spider.DouDou": 1,
+        "com.github.catvod.spider.MyDrive": 1,
+        "com.github.catvod.spider.WoGG": 1,
+        "com.github.catvod.spider.YGP": 1,
+        "com.github.catvod.spider.Music": 1,
+        "com.github.catvod.spider.Seedhub": 1,
+        "com.github.catvod.spider.T4": 2,
+        "com.github.catvod.spider.YCyz": 1,
+        "com.github.catvod.spider.NewCz": 1,
+        "com.github.catvod.spider.Libvio": 1,
+        "com.github.catvod.spider.Appgz": 1,
+        "com.github.catvod.spider.Bttwoo": 1,
+        "com.github.catvod.spider.Nmyswv": 1,
+        "com.github.catvod.spider.Jpys": 1,
+        "com.github.catvod.spider.AppTT": 1,
+        "com.github.catvod.spider.App99": 1,
+        "com.github.catvod.spider.AppSx": 2,
+        "com.github.catvod.spider.JPJ": 1,
+        "com.github.catvod.spider.Auete": 1,
+        "com.github.catvod.spider.SixV": 1,
+        "com.github.catvod.spider.AiDj": 1,
+        "com.github.catvod.spider.Dm84": 1,
+        "com.github.catvod.spider.Kanqiu": 1,
+        "com.github.catvod.spider.Doubao": 1,
+        "com.github.catvod.spider.LiveGz": 1,
+        "com.github.catvod.spider.Alllive": 1,
+        "com.github.catvod.spider.Bili": 7,
+        "com.github.catvod.spider.Tingshu275": 1,
+        "com.github.catvod.spider.FirstAid": 1,
+        "com.github.catvod.spider.S_zps": 2,
+        "com.github.catvod.spider.YpanSo": 1,
+        "com.github.catvod.spider.BpanSo": 1,
+        "com.github.catvod.spider.KkSs": 1,
+        "com.github.catvod.spider.UuSs": 1,
+        "com.github.catvod.spider.Push": 1
+      },
+      "lastSpider": "com.github.catvod.spider.Push",
+      "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64",
+      "extraLoaders": 1,
+      "dexLoaders": 1,
+      "listeners": 1
+    },
+    "cleared": {
+      "enabled": true,
+      "workerPid": 125,
+      "owner": null,
+      "report": "",
+      "payload": "",
+      "loaderCalls": 0,
+      "payloadLoader": null,
+      "spiderCalls": 0,
+      "nullSpiderCalls": 0,
+      "spiderTypes": {},
+      "lastSpider": null,
+      "backend": null,
+      "extraLoaders": 0,
+      "dexLoaders": 0,
+      "listeners": 0
+    },
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokenRejected": true,
+      "bridgeReleased": true
+    },
+    "reload": {
+      "loaded": true,
+      "ready": true,
+      "home": {
+        "bytes": 403,
+        "sha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+        "semanticSha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+        "keys": [
+          "class"
+        ],
+        "classes": 8,
+        "list": null,
+        "classSha256": "1761a114ab2ea55df4bc584166a65c79ee4430a0cd207685b685222b964a391c",
+        "filterGroups": null,
+        "filtersSha256": null
+      }
+    },
+    "close": {
+      "ok": true,
+      "milliseconds": 1069,
+      "temporaryDataRemoved": true
+    },
+    "observations": {
+      "sites": 45,
+      "ready": 44,
+      "homes": 5,
+      "homeFailures": 0
+    }
+  },
+  "deadline": {
+    "timeoutMs": 15000,
+    "loaded": true,
+    "nativeLoaderReady": true,
+    "listenersBefore": 1,
+    "ownedTcpListenersBefore": 1,
+    "timedOut": true,
+    "error": {
+      "type": "Error",
+      "category": "deadline"
+    },
+    "callMilliseconds": 15008,
+    "closed": true,
+    "temporaryDataRemoved": true,
+    "workerExited": true,
+    "ownedTcpListenersReleased": 1
+  },
+  "comparison": {
+    "inputsMatch": true,
+    "rows": [
+      {
+        "key": "点我切源",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true,
+        "homePresentBoth": true,
+        "home": {
+          "schemaEqual": true,
+          "classEqual": true,
+          "filtersEqual": true,
+          "fullJsonEqual": true
+        }
+      },
+      {
+        "key": "MDrive",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "玩偶",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true,
+        "homePresentBoth": true,
+        "home": {
+          "schemaEqual": true,
+          "classEqual": true,
+          "filtersEqual": true,
+          "fullJsonEqual": false
+        }
+      },
+      {
+        "key": "YGP",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "MTV1",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "seed",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true,
+        "homePresentBoth": true,
+        "home": {
+          "schemaEqual": true,
+          "classEqual": true,
+          "filtersEqual": true,
+          "fullJsonEqual": false
+        }
+      },
+      {
+        "key": "光影",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "原创",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "厂长",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "立播",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "瓜子",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "比特",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "糯米",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "文采",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "奶酪",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "热播",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "视界",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "剧圈",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "荐片",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "奥特",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "新6V",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "AiDj",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "咕咕",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "Dm84",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "看球",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "多多",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "吃瓜",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "alllive",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "MTV",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true,
+        "homePresentBoth": true,
+        "home": {
+          "schemaEqual": true,
+          "classEqual": true,
+          "filtersEqual": true,
+          "fullJsonEqual": true
+        }
+      },
+      {
+        "key": "有声小说",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "Aid",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true,
+        "homePresentBoth": true,
+        "home": {
+          "schemaEqual": true,
+          "classEqual": true,
+          "filtersEqual": true,
+          "fullJsonEqual": true
+        }
+      },
+      {
+        "key": "ZPan",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "JPan",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "YpanSo",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "BpanSo",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "抠搜",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "UC",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "Bili",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "Biliych",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "少儿教育",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "小学课堂",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "初中课堂",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "高中教育",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "push_agent",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      },
+      {
+        "key": "cc",
+        "presentBoth": true,
+        "readyEqual": true,
+        "classNameEqual": true
+      }
+    ],
+    "observations": {
+      "sites": 45,
+      "readinessMatches": 45,
+      "comparedHomes": 5,
+      "missingHomes": 0,
+      "classMatches": 5,
+      "filterMatches": 5,
+      "fullJsonMatches": 3
+    },
+    "limits": [
+      "Class/filter comparisons use the same captured config and JAR; source network responses are live and not replayed",
+      "Full JSON differences may include live lists/time/network behavior and are not automatically classified as implementation errors",
+      "No Android/ART execution or full-client compatibility evidence"
+    ]
+  },
+  "nasChecksPassed": true,
+  "limits": [
+    "44/45 means Spider creation, not complete functionality of 44 sources",
+    "cc/csp_XPathGuard returns SpiderNull on both hosts; unavailable class remains an explicit failure",
+    "Five home calls have matching classification/filter hashes; full JSON matches three of five; WoGG full JSON differs and Seedhub list counts are Mac 0 / NAS 20. Live responses were not replayed and cause is unresolved",
+    "Clear/reload checks replace the native worker and reject stale tokens; they do not cover every production subscription-switch effect",
+    "Deadline is triggered by a synthetic endless QuickJS callback in the worker after loading the real protected JAR; the real source itself was not observed hanging",
+    "Three real JS sources, category/detail/search/player, Android/ART, complete Android services, Python and production artifact/cache management are outside this batch"
+  ],
+  "cleanup": {
+    "newTools": [],
+    "retainedNasImageBytes": 506134455,
+    "retainedProjectToolsApproxMiB": 404,
+    "temporaryInputsAndPayloadsRemoved": true,
+    "taskServicesRunning": false,
+    "autostartChanges": false,
+    "existingContainersModified": false,
+    "sshControlMasterClosed": true,
+    "temporaryContainersRemoved": true
+  },
+  "regression": {
+    "host": "macOS ARM64",
+    "passed": 372,
+    "failed": 0,
+    "optionalNativeTestsEnabled": true
+  }
+}

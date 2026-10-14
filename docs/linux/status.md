@@ -1,4 +1,4 @@
-# Migration status — 2026-10-14
+# Migration status — 2026-10-15
 
 Priority: subscription links and script execution behavior; player work deferred.
 
@@ -9,7 +9,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 367 Node tests passed with native profile enabled, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
+| Probe and backend contract tests | Done | 372 Node tests passed with native profile enabled, including captured-input integrity, comparison failures and worker lifecycle checks |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
@@ -20,10 +20,10 @@ Priority: subscription links and script execution behavior; player work deferred
 | Spider/SpiderApi and controlled JAR/QuickJS execution | Initial executable contract slice | 136/136 fresh-source observations; actual JVM class JAR, QuickJS modules/bytecode, Java extensions, HTTP, restart and cleanup fixtures |
 | DEX and protected initialization | Controlled host slice implemented | dex-runtime-comparison.json: 155/155 observations; raw/multidex/resources/cache and synthetic Java-unpacked nested payload; optional native profile below; ART unverified |
 | Real subscription JS/module/HTML slice | Verified on host JVM | Three real JS sources init/home, exact fresh-source and live replays; original HTML globals, assets and module/cache routing |
-| ARM native protected JAR | Host executable slice | native-runtime-probe.json: genuine native getLoader, 44/45 ready CSPs, five JSON homes, JVM replacement/cleanup; Linux/ART unverified |
-| Linux x86_64 Docker core image | Delivered and verified on NAS | docker-runtime-probe.json: non-root JRE, offline/read-only engine and lifecycle checks; real protected JAR next |
-| Native/Python and complete JS host parity | Pending | Native-only protected init fails explicitly; actual Android source/runtime comparison still required |
-| Linux container and NAS validation | Pending | Current host is macOS ARM64; no Docker available |
+| ARM native protected JAR | Executed on Mac and NAS | nas-native-runtime-probe.json: same captured JAR/config, 44/45 ready CSPs, five JSON homes, clear/reload and deadline cleanup; ART unverified |
+| Linux x86_64 Docker core image | Delivered and verified on NAS | docker-runtime-probe.json plus nas-native-runtime-probe.json: non-root/read-only JRE, offline fixtures and real protected JAR |
+| Native/Python and complete JS host parity | Pending | Optional ARM/JNI profile runs this JAR; complete Android services, other native artifacts, Python and ART comparison remain open |
+| Linux container and NAS validation | Scoped validation done | Physical x86_64 NAS; genuine protected JAR init/home and timeout resource release; other architectures and full client unverified |
 
 The 65-case audit contains 12 matching observations, 51 differing observations
 and 2 cases where both sides reject but exception/state mapping is unresolved.
@@ -38,7 +38,8 @@ to an HTML homepage. Selected original-source methods accepted all 48 source
 definitions; the inventory contains 45 CSP/JAR and 3 JS sources. Source field
 values still differ from desktop Win-Box. The new explicit backend's path fixing
 and all 48 source-field results match the selected upstream methods on this
-sample. No downloaded source code was executed.
+sample. That initial import batch did not execute downloaded code; later runtime
+batches below did.
 
 The initial desktop comparison exposed null coercion, boolean/integer conversion,
 partial numeric strings, list conversion stopping at invalid entries, raw timeout
@@ -203,7 +204,7 @@ bounds/symlinks, SQLite transactions, typed preference restart, queued callbacks
 translated listener shutdown, real process replacement and stale-token rejection.
 The default suite skips the optional native integration without those dependencies.
 
-Next batch:
+Next batch planned after the Mac ARM batch (updated by subsequent batches below):
 
 1. Verify the native profile on actual Linux x86_64 and compare real Android/ART
    behavior using the same JAR/config; preserve missing classes and unsupported
@@ -239,3 +240,43 @@ real protected JAR was not executed in this container batch. Next item is the
 same-input real subscription/JAR comparison on Linux, followed by Android/ART
 comparison and automatic production artifact/cache management. Web/player work
 remains deferred.
+
+
+Real protected JAR on NAS — 2026-10-15:
+
+The subscription's JAR changed upstream. Captured the new 1,279,598-byte artifact
+once (SHA-256 eba70fffdb728dd0657ef27b22d97de7530d96160e31bef6c08ccca21e479ab0;
+MD5 25f4460aed52987f02865f02a1e83aa8 matches the advertised value), then reimported
+the same captured subscription responses on Mac and NAS without refetching config
+or JAR. This avoids comparing different upstream releases. All 48 definitions
+parse; this execution batch covers the 45 CSP definitions, not the three JS ones.
+
+The retained Linux amd64 JRE image runs the genuine native getLoader/nested DEX/
+getSpider path. Both hosts create 44/45 Spiders; cc/csp_XPathGuard returns SpiderNull
+on both. Five selected homes return JSON, with identical classification and filter
+hashes. Full JSON matches three of five: WoGG differs, and Seedhub returns zero
+list items on Mac versus 20 on NAS. Live source responses were not captured or
+replayed, so the causes of those two full-response differences remain unresolved.
+Ready is an obtained instance, not proof that every method works.
+
+Clear replaces the JVM, invalidates old tokens and releases the bridge; reloading
+the actual JAR and Aid home succeeds. A separate 15-second synthetic endless
+QuickJS call, in a worker already initialized with the real native JAR, triggers
+the deadline. Its worker exits, its one owned TCP/IPv6 listener can be rebound,
+and its temporary data disappears. This is timeout containment evidence, not an
+observation that the real source hangs. The probe reads both /proc TCP tables;
+the initial IPv4-only counter was zero and was corrected/reverified separately.
+
+nas-native-runtime-probe.json records both host reports, input hashes, comparison,
+the separate deadline run and exact executed probe hashes. The updated research
+probe was read-only mounted into the existing image; the image was not rebuilt.
+It now preserves per-source/home errors, verifies captured-input integrity, rejects
+different-input comparisons and fails its CLI gate on lifecycle/cleanup errors.
+372 host tests pass with native integration enabled; no Android/ART execution
+or category/detail/search/player compatibility is claimed.
+
+Next implementation item: production subscription artifact retrieval, MD5/SHA
+integrity, cache identity/update behavior and bounded persistent disk usage, wired
+into the existing session rather than relying on a research probe. Android/ART
+same-input validation, multiple native artifacts, Linux real JS verification and
+Web API/UI remain outstanding. Player work stays deferred.

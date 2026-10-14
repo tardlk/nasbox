@@ -71,3 +71,27 @@ JNI 库会在 worker 的临时目录解压并加载，因此 `/tmp` 的 tmpfs �
 非 root、只读根文件系统和无网络自检通过。详细结果见
 [Docker 运行报告](../docs/linux/docker-runtime-probe.json)。当前 NAS 保留的镜像标签为
 `tvbox-core:linux-amd64-20261015`；它是一次性核心运行入口，默认没有 Web 服务。
+
+该镜像随后已完成真实受保护 JAR 的 NAS 验证，见
+[同输入实测报告](../docs/linux/nas-native-runtime-probe.json)：45 个 CSP 中 44 个取得
+Spider，抽查 5 个首页成功，分类/筛选与 Mac 一致；完整 JSON 有两处待定位差异。
+清空、重新加载、旧标识失效及超时后的进程/监听释放均通过，尚无 Android/ART 对照。
+这次将新版研究探针只读挂载进旧镜像，未修改其预编译运行时。
+
+当前源码构建的新镜像支持 `--inputs /input` 和 `--deadline`。同输入对照时，先用
+`captureNativeSource(url, directory)` 显式捕获一次，再把该目录只读挂载到 `/input`：
+
+```sh
+docker run --rm --read-only --tmpfs /tmp:rw,exec,nosuid,nodev,size=256m \
+  --cap-drop ALL --security-opt no-new-privileges --pids-limit 256 --memory 2g \
+  -v "$PWD/input:/input:ro" -v tvbox-core-data:/data \
+  tvbox-core:local native-source-probe 'http://www.饭太硬.net/tv' /data/report.json \
+  --inputs /input --deadline
+```
+
+捕获目录包含原始订阅响应、配置、JAR 与校验元数据；它由调用方管理，验证后应
+删除。探针会重新解析捕获响应并校验文件哈希，源本身的 HTTP 请求仍然联网。
+默认不加 `--inputs` 时捕获数据归探针所有，退出自动删除。报告只留计数、错误类别
+和哈希，不保存首页正文或解密代码。`--deadline` 在真实 JAR 初始化后用独立的合成
+死循环触发超时；端口释放检查依赖 Linux `/proc`。清理/重载/超时检查失败会返回
+非零退出码；个别 CSP 的 ready=false 仍保留在报告中，不把它伪装成成功。

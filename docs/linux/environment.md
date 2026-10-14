@@ -317,3 +317,34 @@ were preserved.
 DEX/JARs, build caches and raw transport/probe logs were removed locally and on
 NAS; only metadata reports remain. Services still running from this task: none.
 NAS Docker and its existing containers continue running. Autostart changes: none.
+
+
+## Real protected JAR on NAS batch — 2026-10-15
+
+Reused existing SSH/SCP, Python, Node/JDK and the retained NAS Docker image;
+installed no tools, packages, VM, SDK or global environment. Local .tools still
+occupies about 404 MiB, retained for ongoing builds and compatibility work. The
+NAS image tvbox-core:linux-amd64-20261015 remains about 483 MiB in uncompressed
+layers, retained for core execution; no image rebuild or additional image was
+needed. The updated research probe was read-only mounted into that image.
+
+Capture, reports, transport credentials/control files and raw logs used the
+project's .cache/nas-source directory. Other local .cache/backend, compat and
+container outputs were recreated by the 372-test regression and removed afterward.
+The real subscription response/config/JAR, decrypted DEX and extracted libraries,
+worker rootfs/preferences and raw source stderr were temporary and were removed.
+Only metadata/hash/count reports were committed; no subscribed or decrypted code.
+
+NAS inputs/output/probe scripts and logs used one task-owned /tmp/tvbox-real-source.*
+directory, now deleted. Two --rm test containers ran as UID 10001 with read-only
+root, exec tmpfs, dropped capabilities, no-new-privileges, pids limit 256 and 2 GiB
+memory. Source HTTP requests used Docker's bridge with no published ports. The
+deadline probe observed one actual JVM-owned TCP/IPv6 listener and verified it
+could be rebound after timeout; worker exit and temporary-directory removal also
+passed. The initial IPv4-only socket inventory was corrected and reverified.
+
+Both task containers are gone, the temporary SSH shell/control master is closed,
+and no task JVM, HTTP server or proxy remains. NAS Docker and its four existing
+containers continue running unchanged. Task services still running: none.
+Autostart changes: none. No shared tool, global SSH file or NAS service setting
+was modified. Connection credentials are not retained in project files or Git.
