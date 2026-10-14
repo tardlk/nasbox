@@ -16,6 +16,27 @@ public String js2Proxy(Boolean dynamic, Integer siteType, String siteKey, String
         boolean local = dynamic == null || !dynamic;
         return getProxy(local) + "&from=catvod" + "&siteType=" + siteType + "&siteKey=" + siteKey + "&header=" + URLEncoder.encode(headers.stringify()) + "&url=" + URLEncoder.encode(url);
     }
+@Function
+public String joinUrl(String parent, String child) {
+        return HtmlParser.joinUrl(parent, child);
+    }
+@Function
+public String pd(String html, String rule, String add_url) {
+        return HtmlParser.parseDomForUrl(html, rule, add_url);
+    }
+@Function
+public String pdfh(String html, String rule) {
+        return HtmlParser.parseDomForUrl(html, rule, "");
+    }
+@Function
+public JSArray pdfa(String html, String rule) {
+
+        return new JSUtils<String>().toArray(runtime, HtmlParser.parseDomForArray(html, rule));
+    }
+@Function
+public JSArray pdfla(String html, String p1, String list_text, String list_url, String add_url) {
+        return new JSUtils<String>().toArray(runtime, HtmlParser.parseDomForList(html, p1, list_text, list_url, add_url));
+    }
 private JSObject req(String url, JSObject options) {
         try {
             Req req = Req.objectFrom(JSUtils.toJsonObject(options).toString());

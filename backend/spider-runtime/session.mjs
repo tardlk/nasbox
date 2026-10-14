@@ -7,12 +7,12 @@ import{RuntimeCleanup}from'../subscription/runtime-cleanup.mjs';
  */
 export async function createExecutableSubscriptionSession(options={}){
  const owned=!options.runtime;
- const runtime=options.runtime||createSpiderRuntime({dataDir:options.runtimeDataDir});
+ const runtime=options.runtime||createSpiderRuntime({dataDir:options.runtimeDataDir,timeoutMs:options.runtimeTimeoutMs??10000});
  const cleanup=new RuntimeCleanup(),tracked=new Set();let mainSignature,closed=false,queue=Promise.resolve(),closing;
  let loader;
  try{loader=createFullSubscriptionLoader({...options,runtimeCleanup:cleanup,beforeRuntimeClear:()=>runtime.request({operation:'resetKeys'})});}
  catch(error){if(owned)await runtime.close();throw error;}
- try{if(options.modules||options.moduleRoot)await runtime.setModules({modules:options.modules,root:options.moduleRoot});}
+ try{if(options.modules||options.moduleRoot||options.remoteModules||options.androidModules)await runtime.setModules({modules:options.modules,root:options.moduleRoot,android:!!options.androidModules||!!options.remoteModules,remote:!!options.remoteModules});}
  catch(error){try{await loader.close();}finally{if(owned)await runtime.close();}throw error;}
  const serialize=action=>{if(closed)return Promise.reject(new Error('Executable subscription session is closed'));const result=queue.then(action);queue=result.catch(()=>{});return result;};
  function track(kind){if(tracked.has(kind))return;tracked.add(kind);cleanup.register(kind,{clear:async()=>{await runtime.clear(kind);tracked.delete(kind);if(kind==='jar')mainSignature=undefined;}});}
@@ -32,7 +32,7 @@ export async function createExecutableSubscriptionSession(options={}){
   return runtime.getCSP(source);
  }
  return{
-  scope:'config-state + lazy host-jvm-class-jar/quickjs-source',
+  scope:'config-state + lazy host-jvm/dex/quickjs-source',
   load:options=>serialize(()=>loader.load(options)),
   getCSP:key=>serialize(()=>resolveSpider(key)),
   call:(key,method,args=[])=>serialize(async()=>{const spider=await resolveSpider(key);return{spider,value:await runtime.call(spider.token,method,args)};}),

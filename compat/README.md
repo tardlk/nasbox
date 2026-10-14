@@ -172,3 +172,19 @@ initialization deliberately fails. Integration tests cover multidex, resources,
 cache identity/corruption, malformed DEX, dependency pins and nested-loader cleanup.
 This is neither ART nor real native/ARM source validation. Source fixture code
 is retained under spiders/protected and spiders/payload; binaries remain temporary.
+
+
+## Real subscription JS and module/HTML boundary
+
+spider-modules.test.mjs adds source-body checks and local HTTP fixtures for original
+HTML globals, pinned Android asset aliases and FileUtils module/cache methods.
+The Android TextUtils snapshot is source-only; config-core keeps its existing nine
+full runtime copies, while the selected join body is tested in spider-runtime.
+
+real-source-probe.mjs is an opt-in network probe for the supplied Fantaiying drpy
+layout; it is not invoked by offline tests. It verifies actual init/home, inventories
+the ARM-protected JAR, and compares captured module/raw-rule replays against fresh
+source with the declared HTTP host disabled. The live URL-ext results also match.
+Only metadata is saved to docs/linux/real-source-runtime-probe.json; all remote
+code, module cache and rule bodies are temporary. This is a 3-source init/home
+observation, not a full source/client compatibility rate or Android/ART validation.

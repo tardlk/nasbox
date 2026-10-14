@@ -39,6 +39,7 @@ export function copyPlatformReference(target) {
   const verified = verifyPlatformReference();
   const sources = [];
   for (const file of verified.manifest.files) {
+    if (file.sourceOnly) continue;
     const relative = file.path.replace(/^(?:libcore|frameworks-base)\//, '');
     const path = resolve(target, relative);
     mkdirSync(dirname(path), { recursive: true });

@@ -156,6 +156,16 @@
       "path": "app/src/main/java/com/github/catvod/crawler/ProtectedInitJar.java",
       "sha256": "86a31da8a7e8e573f957a157cafe0b3c0e74b7f8af937a6aa02b133a9973a250",
       "bytes": 16123
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/js/HtmlParser.java",
+      "sha256": "4aa5ef1ea8f88e118a90948c3364cf91c17c47a483563bccd2d1789895014fb6",
+      "bytes": 11330
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/StringUtils.java",
+      "sha256": "3848347be15276925d215ff1d21a0352adf1c9a25c24b136fe6e92c2932aa8c8",
+      "bytes": 6780
     }
   ]
 }

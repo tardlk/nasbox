@@ -24,7 +24,10 @@ methods; JS API artifacts likewise use JVM class loaders. Timer ownership and
 termination waits explicitly bound host resources.
 
 Global contains selected unchanged getProxy/js2Proxy/req/_http/setTimeout/callback/
-context methods. Other Android Global APIs are not supplied. Its timers are owned,
+context and joinUrl/pd/pdfh/pdfa/pdfla methods. HtmlParser is unchanged;
+StringUtils supplies selected original empty checks. SourceModuleLoader retains
+unchanged FileUtils loadModule/getCache/setCache bodies over bounded host bindings.
+Other Android Global APIs are not supplied. Its timers are owned,
 daemon-backed and canceled on clear/close, instead of retaining unmanaged timer
 threads. Source reference probes reuse these declared host bindings while freshly
 extracting the pinned contract methods. They are not Android runtime validation.
@@ -52,3 +55,18 @@ ASM and other notices) are retained under dex/licenses (text line endings normal
 committed. The bundled dx-30.0.2.jar is used only in test fixture generation.
 Pure-Java protected fixtures and classloader/cache bindings are project code;
 they do not incorporate or emulate a proprietary native protection library.
+
+
+jsoup 1.14.1 is the exact dependency declared by the Android baseline. Maven
+Central's published SHA-1 was verified before SHA-256 pinning; its MIT license
+from META-INF/LICENSE is retained as LICENSE-JSOUP. TextUtils.join retains the
+Android 13 original body with parameter annotations omitted; its full source is
+pinned for evidence and is not compiled into config-core. Apache-2.0 attribution
+and license remain under compat/reference/android-platform and LICENSE-APACHE-2.0.
+
+assets/manifest.json records fixed Android provenance and byte identity of five
+existing resources/js-lib assets. Their original source files remain unchanged;
+the build verifies hashes before copying them to the runtime classpath. This
+manifest does not relicense upstream or embedded third-party components. No
+remotely subscribed JAR, drpy engine, rule or dependency module is committed;
+real-source-runtime-probe.json retains diagnostic metadata only.

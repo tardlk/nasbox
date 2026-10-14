@@ -1,0 +1,279 @@
+{
+  "baseline": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "host": {
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "scope": "Live subscription import, ARM/native JAR inventory and admission failure, real QuickJS JS init/home, then exact fresh-source/production replay using captured modules and raw rule ext with host HTTP disabled. No Android/ART/Linux/NAS evidence.",
+  "subscription": {
+    "url": "http://www.饭太硬.net/tv",
+    "sha256": "4554067213a163d5fb5643a0a9ec6808690704e2a2dbd35313355b710a57d30c",
+    "sites": 48,
+    "cspSites": 45,
+    "jsSites": 3
+  },
+  "globalJar": {
+    "bytes": 1254922,
+    "sha256": "b644dc3adc5f8a768938f3c09f75cf6b61530d661a83ddae8ffd2b72ddfa4979",
+    "md5": "c9024ccf34209d26eb556c728c3f07fa",
+    "advertisedMd5": "c9024ccf34209d26eb556c728c3f07fa",
+    "md5Matches": true,
+    "inventory": {
+      "entries": 5,
+      "expandedBytes": 1355953,
+      "dex": [
+        {
+          "name": "classes.dex",
+          "bytes": 36852,
+          "version": "035",
+          "classCount": 75,
+          "classes": [
+            "Lcom/github/catvod/spider/AiDjGuard;",
+            "Lcom/github/catvod/spider/AlisoGuard;",
+            "Lcom/github/catvod/spider/AllliveGuard;",
+            "Lcom/github/catvod/spider/Anime1Guard;",
+            "Lcom/github/catvod/spider/App99Guard;",
+            "Lcom/github/catvod/spider/AppSxGuard;",
+            "Lcom/github/catvod/spider/AppTTGuard;",
+            "Lcom/github/catvod/spider/AppYsV2Guard;",
+            "Lcom/github/catvod/spider/AppgzGuard;",
+            "Lcom/github/catvod/spider/AueteGuard;",
+            "Lcom/github/catvod/spider/BaseSpiderGuard;",
+            "Lcom/github/catvod/spider/BiliGuard;",
+            "Lcom/github/catvod/spider/BpanSoGuard;",
+            "Lcom/github/catvod/spider/BttwooGuard;",
+            "Lcom/github/catvod/spider/DexNative;",
+            "Lcom/github/catvod/spider/Dm84Guard;",
+            "Lcom/github/catvod/spider/DouDouGuard;",
+            "Lcom/github/catvod/spider/DoubaoGuard;",
+            "Lcom/github/catvod/spider/FirstAidGuard;",
+            "Lcom/github/catvod/spider/HmysGuard;",
+            "Lcom/github/catvod/spider/Init$1;",
+            "Lcom/github/catvod/spider/Init$Loader;",
+            "Lcom/github/catvod/spider/Init;",
+            "Lcom/github/catvod/spider/JPJGuard;",
+            "Lcom/github/catvod/spider/JpysGuard;",
+            "Lcom/github/catvod/spider/KaFeiGuard;",
+            "Lcom/github/catvod/spider/KanqiuGuard;",
+            "Lcom/github/catvod/spider/KkSsGuard;",
+            "Lcom/github/catvod/spider/LibvioGuard;",
+            "Lcom/github/catvod/spider/LiveGzGuard;",
+            "Lcom/github/catvod/spider/MusicGuard;",
+            "Lcom/github/catvod/spider/MyDriveGuard;",
+            "Lcom/github/catvod/spider/NewCzGuard;",
+            "Lcom/github/catvod/spider/NmyswvGuard;",
+            "Lcom/github/catvod/spider/Proxy;",
+            "Lcom/github/catvod/spider/PushGuard;",
+            "Lcom/github/catvod/spider/S_zpsGuard;",
+            "Lcom/github/catvod/spider/SeedhubGuard;",
+            "Lcom/github/catvod/spider/Sir88Guard;",
+            "Lcom/github/catvod/spider/SixVGuard;",
+            "Lcom/github/catvod/spider/T4Guard;",
+            "Lcom/github/catvod/spider/Tingshu275Guard;",
+            "Lcom/github/catvod/spider/UuSsGuard;",
+            "Lcom/github/catvod/spider/WebDAVGuard;",
+            "Lcom/github/catvod/spider/WoGGGuard;",
+            "Lcom/github/catvod/spider/YCyzGuard;",
+            "Lcom/github/catvod/spider/YGPGuard;",
+            "Lcom/github/catvod/spider/YoutubeGuard;",
+            "Lcom/github/catvod/spider/YpanSoGuard;",
+            "Lcom/github/catvod/spider/ZbzGuard;",
+            "Lcom/github/catvod/spider/mergeguard/OoOoO0O0o0oOoO0O/oOoOoOoOoOoOoO0o;",
+            "Lcom/github/catvod/spider/mergeguard/OoOoOo0O0o0oO0o0/oOo0oOo0Oo0oO0Oo;",
+            "Lcom/github/catvod/spider/mergeguard/OoOoOo0O0o0oO0o0/oOoOoOo0oOo0o0oO;",
+            "Lcom/github/catvod/spider/mergeguard/OoOoOo0O0o0oO0o0/oOoOoOoOoOoOoO0o;",
+            "Lcom/github/catvod/spider/mergeguard/oOo0oOo0Oo0oO0Oo/oOoOoOoOoOoOoO0o;",
+            "Lcom/github/catvod/spider/mergeguard/oOoO0o0oOo0oO0Oo/oOo0oOo0Oo0oO0Oo;",
+            "Lcom/github/catvod/spider/mergeguard/oOoO0o0oOo0oO0Oo/oOoOoOo0O0O0oO0o;",
+            "Lcom/github/catvod/spider/mergeguard/oOoO0o0oOo0oO0Oo/oOoOoOo0oOo0o0oO;",
+            "Lcom/github/catvod/spider/mergeguard/oOoO0o0oOo0oO0Oo/oOoOoOoOoOoOoO0o;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOo0O0Oo0o0OoO/oOo0oOo0Oo0oO0Oo;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOo0O0Oo0o0OoO/oOoOoOoOoOoOoO0o;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOo0O0O0oO0o/OoOoOo0O0o0oO0o0;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOo0O0O0oO0o/oOo0oOo0Oo0oO0Oo;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOo0O0O0oO0o/oOoO0o0oOo0oO0Oo;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOo0O0O0oO0o/oOoOoOo0O0O0oO0o;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOo0O0O0oO0o/oOoOoOo0oOo0o0oO;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOo0O0O0oO0o/oOoOoOoOoOoOoO0o;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOo0oOo0o0oO/oOoOoOoOoOoOoO0o;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOoOoOoOoO0o/OoOoOo0O0o0oO0o0;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOoOoOoOoO0o/oOo0oOo0Oo0oO0Oo;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOoOoOoOoO0o/oOoO0o0oOo0oO0Oo;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOoOoOoOoO0o/oOoOo0O0Oo0o0OoO;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOoOoOoOoO0o/oOoOoOo0O0O0oO0o;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOoOoOoOoO0o/oOoOoOo0oOo0o0oO;",
+            "Lcom/github/catvod/spider/mergeguard/oOoOoOoOoOoOoO0o/oOoOoOoOoOoOoO0o;"
+          ],
+          "androidTypes": [
+            "Landroid/app/Application;",
+            "Landroid/content/Context;",
+            "Landroid/content/SharedPreferences$Editor;",
+            "Landroid/content/SharedPreferences;",
+            "Landroid/content/pm/ApplicationInfo;",
+            "Landroid/os/Build$VERSION;",
+            "Landroid/os/Build;",
+            "Landroid/util/Log;"
+          ],
+          "referencesDexNativeLoader": true
+        }
+      ],
+      "native": [
+        {
+          "name": "assets/ftyguard_v7.so",
+          "bytes": 81520,
+          "bits": 32,
+          "machine": 40,
+          "architecture": "ARM"
+        },
+        {
+          "name": "assets/ftyguard_v8.so",
+          "bytes": 102440,
+          "bits": 64,
+          "machine": 183,
+          "architecture": "AArch64"
+        }
+      ],
+      "protectedPayloads": [
+        {
+          "name": "assets/ftyshinidie.guard",
+          "bytes": 1135068
+        }
+      ]
+    },
+    "protectedMarker": false,
+    "loaded": false,
+    "failure": "IOException: NATIVE_PLUGIN_UNAVAILABLE",
+    "dependentCspSites": 45
+  },
+  "assets": {
+    "repository": "q215613905/TVBoxOS",
+    "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+    "verification": "Compared fixed Android raw source byte-for-byte with existing WinBox resources; reuse exact files without modifying them.",
+    "files": [
+      {
+        "path": "js/lib/cheerio.min.js",
+        "source": "resources/js-lib/cheerio.min.js",
+        "upstreamPath": "app/src/main/assets/js/lib/cheerio.min.js",
+        "sha256": "10cf39856c496ed2c681c00b6a245b2306a119041591c35d1e31b6bf0a9e6901",
+        "bytes": 356592
+      },
+      {
+        "path": "js/lib/crypto-js.js",
+        "source": "resources/js-lib/crypto-js.js",
+        "upstreamPath": "app/src/main/assets/js/lib/crypto-js.js",
+        "sha256": "e888d4276fa167121c6fca26dbc9821a8a79b66ae9b192e5a33c6a5bb2056e53",
+        "bytes": 198120
+      },
+      {
+        "path": "js/lib/gbk.js",
+        "source": "resources/js-lib/gbk.js",
+        "upstreamPath": "app/src/main/assets/js/lib/gbk.js",
+        "sha256": "a002c29e9722e123f9ccea98e30d7207531e404f6b3351759a6b0bb4090f8f41",
+        "bytes": 56203
+      },
+      {
+        "path": "js/lib/模板.js",
+        "source": "resources/js-lib/模板.js",
+        "upstreamPath": "app/src/main/assets/js/lib/模板.js",
+        "sha256": "1da00bdcb30ab1a7875a84ee6fc82256e705330b6cc9d84144f163df68b665cb",
+        "bytes": 15300
+      },
+      {
+        "path": "js/lib/cat.js",
+        "source": "resources/js-lib/cat.js",
+        "upstreamPath": "app/src/main/assets/js/lib/cat.js",
+        "sha256": "49bcc6c6ade5fcbfce98875f51bafc010ebb015f7e8db2a9fc2e22a4575ac046",
+        "bytes": 486451
+      }
+    ]
+  },
+  "moduleState": {
+    "requests": 5,
+    "cacheHits": 10,
+    "receivedBytes": 364858,
+    "moduleBytes": 1006373,
+    "remote": true,
+    "debug": false
+  },
+  "modules": [
+    {
+      "name": "drpy2.min.js",
+      "bytes": 67381,
+      "sha256": "1fd5ecd4077f106dfd3952c208d7d0a25762ca90d1ae416dde996065e1507ab9"
+    },
+    {
+      "name": "node-rsa.js",
+      "bytes": 167481,
+      "sha256": "b2e1d9c402ce06c19d08e1659624bfbbda91994d06339300970c395977e6d37c"
+    },
+    {
+      "name": "pako.min.js",
+      "bytes": 46859,
+      "sha256": "7b7a3b8db4d7b65846b807f1309688a8955961dbde5538694862a6c5cbc932cf"
+    },
+    {
+      "name": "json5.js",
+      "bytes": 60431,
+      "sha256": "1b3d54f76b9106641e540b6561dc950ffe281590f8546b88f26fc7a91c225e10"
+    },
+    {
+      "name": "jinja.js",
+      "bytes": 22706,
+      "sha256": "6cf1781f0c32206236049d392383dbc558b530244926d93762dfa3362967bff2"
+    }
+  ],
+  "js": [
+    {
+      "key": "虎牙js",
+      "ready": true,
+      "homeBytes": 18206,
+      "homeSha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+      "classCount": 4,
+      "filterGroups": 4,
+      "ruleSha256": "efe1013ec759d66767d356f6769d79a697cb9ecdac44deb682a38b32f83e01fc",
+      "replayEqual": true,
+      "liveReplayEqual": true
+    },
+    {
+      "key": "斗鱼js",
+      "ready": true,
+      "homeBytes": 33754,
+      "homeSha256": "a17f96c8839e9eff0c9ce9a2578f2a9d90651de843d473594698e972b136fc68",
+      "classCount": 9,
+      "filterGroups": 7,
+      "ruleSha256": "114a5ec86e6d48545ce0a99b1a5552380d735998737166e8fa3887479e04d64d",
+      "replayEqual": true,
+      "liveReplayEqual": true
+    },
+    {
+      "key": "dr_兔小贝",
+      "ready": true,
+      "homeBytes": 160,
+      "homeSha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+      "classCount": 4,
+      "filterGroups": 0,
+      "ruleSha256": "7173a949be786609d3c16cd02d9797889c6086a485aeff2f29bc77c602dc4676",
+      "replayEqual": true,
+      "liveReplayEqual": true
+    }
+  ],
+  "observations": {
+    "jsInitialized": 3,
+    "nonemptyHomes": 3,
+    "replayMatching": 3,
+    "liveReplayMatching": 3
+  },
+  "diagnosticCategories": {
+    "moduleErrors": 0,
+    "templateFallbacks": 3
+  },
+  "limits": [
+    "45 CSP sites share one ARM-native protected JAR; the admission check fails once for that artifact, not 45 independent executions",
+    "No native payload decryption/emulation and no Android/ART/Linux x86_64/NAS runtime",
+    "Home classification/filter results only; category/detail/search/player/network parity not established",
+    "Replay uses captured raw rule text instead of URL ext; live URL fetch was verified separately",
+    "Host HTTP disable covers the declared OkHttp binding, not a Java security sandbox",
+    "Remote dependency/rule code is not committed or retained; metadata hashes only",
+    "No automatic JAR artifact resolver; explicit mappings still required by the executable session"
+  ]
+}

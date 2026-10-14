@@ -5,11 +5,11 @@ Priority: subscription links and script execution behavior; player work deferred
 | Work | Status | Evidence |
 | --- | --- | --- |
 | Win-Box checkout and working branch | Done | baseline.json; branch codex/linux-core |
-| Android source candidate pinned | Done | TVBoxOS ab11d28: original 20-file snapshot plus 31 auxiliary TVBoxOS files; nine auxiliary AOSP Android 13 source files pinned separately |
+| Android source candidate pinned | Done | TVBoxOS ab11d28: original 20-file snapshot plus 33 auxiliary TVBoxOS files; ten auxiliary AOSP Android 13 source files pinned separately |
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 351 Node tests passed, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
+| Probe and backend contract tests | Done | 363 Node tests passed, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
@@ -19,6 +19,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Full parseJson configuration state | Implemented as optional --config mode | 85 full-state/query results; live/hosts/proxy/rules/DOH/ads, partial reset and cleanup ownership; actual script/HTTP bindings pending |
 | Spider/SpiderApi and controlled JAR/QuickJS execution | Initial executable contract slice | 136/136 fresh-source observations; actual JVM class JAR, QuickJS modules/bytecode, Java extensions, HTTP, restart and cleanup fixtures |
 | DEX and protected initialization | Controlled host slice implemented | dex-runtime-comparison.json: 155/155 observations; raw/multidex/resources/cache and synthetic Java-unpacked nested payload; native/ART unverified |
+| Real subscription JS/module/HTML slice | Verified on host JVM | Three real JS sources init/home, exact fresh-source and live replays; original HTML globals, assets and module/cache routing |
 | Native/Python and complete JS host parity | Pending | Native-only protected init fails explicitly; actual Android source/runtime comparison still required |
 | Linux container and NAS validation | Pending | Current host is macOS ARM64; no Docker available |
 
@@ -121,7 +122,7 @@ infinite loops and unresolved Promises are bounded by a process deadline.
 136 runtime observations match a fresh source probe on the same explicit host
 bindings. The earlier 348 configuration observations remain passing, for 484
 scoped observations across the two reports; this is not a full-client compatibility
-rate. The previous batch had 337 passing tests; the current total is 351. No real subscribed JAR/JS code was downloaded or executed.
+rate. The previous batch had 337 passing tests; the current total is 351. That batch did not download or execute real subscribed code.
 See spider-runtime-comparison.json and backend/spider-runtime/README.md.
 
 A source/JVM finding remains: ordinary JS object-ext initialization invokes parsing
@@ -145,14 +146,36 @@ observations on fresh-source and production helpers sharing the declared host.
 This is not an Android compatibility rate or native-shell certification. Additional
 integration tests cover raw/disguised/multidex, resources, signatures, dependency
 integrity, cache identity/restart/rebuild, malformed/duplicate DEX and cleanup.
-All 351 tests pass. No actual subscription code was run. Worker heap is now 256 MiB;
+That batch had 351 passing tests and did not run actual subscription code. Worker heap is now 256 MiB;
 persistent caller-owned cache quota and Android/ART verification remain pending.
+
+Real subscription validation now identifies the concrete CSP blocker: the shared
+1,254,922-byte JAR matches its advertised MD5 and contains ARMv7/AArch64 native
+libraries plus an opaque 1,135,068-byte .guard payload. Admission returns
+NATIVE_PLUGIN_UNAVAILABLE. The 45 CSP definitions depend on this one artifact;
+they were not individually executed and native payload decryption is not supplied.
+The upstream killProcess-based protection heuristic returns false for this artifact;
+that does not make its independently detected native dependency executable.
+
+The three actual JS sources initially failed on missing modules and pdfh. Original
+HtmlParser + Global joinUrl/pd/pdfh/pdfa/pdfla, exact Android assets and selected
+FileUtils module/cache methods now enable init/home. Huya/Douyu/Tuxiaobei return
+4/9/4 classes. All three exact captured-input production/source replays match each
+other and the live URL-ext results. Scope is classification/filters only; no
+category/detail/search/player or full-client parity is inferred. The report records
+hashes, ELF metadata and counters without retaining subscription code.
+
+All 363 tests pass. Twelve new tests cover source bodies, HTML, aliases, real
+relative HTTP imports, cache restart/debug/expiry/corruption, HTTP status/charset,
+limits, offline host HTTP and session cleanup. Module mode is explicitly enabled;
+JAR artifacts still require mappings. Current environment remains macOS ARM64.
 
 Next batch:
 
-1. Establish Android/ART and Linux x86_64 evidence; validate actual subscribed
-   JAR/JS dependencies and address missing Android/native host APIs from failures.
-2. Complete required JS Global/module/network/persistent bindings and Python;
-   apply parsed hosts/proxy/DOH/cookies to actual runtime clients and live init.
-3. Add automatic artifact resolution/cache policy and NAS aggregate resource
-   limits before Docker/Web delivery; full TVBox behavior is still unconfirmed.
+1. Build and verify the ARM native protection execution bridge using the WinBox
+   implementation as reference; preserve failure diagnostics until real getLoader
+   and the encrypted payload can execute on the declared host.
+2. Establish Android/ART and Linux x86_64 comparisons, then broaden real JS calls
+   and fill remaining Global/network/live/Python behavior from observed failures.
+3. Add automatic JAR resolution and persistent cache/disk quotas before Docker/Web
+   delivery. Full TVBox compatibility is still unconfirmed.

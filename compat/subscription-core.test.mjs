@@ -22,7 +22,8 @@ test('subscription inputs, AOSP snapshots and committed runtime helper copies re
   assert.equal(sha256(input), observations.inputSha256);
   assert.deepEqual(JSON.parse(input), observations.cases.map(({ expected, ...item }) => item));
   const verified = verifyPlatformReference();
-  for (const file of verified.manifest.files) {
+  // Source-only snapshots are verified above; selected runtime bodies have their own tests.
+  for (const file of verified.manifest.files.filter(file => !file.sourceOnly)) {
     const path = file.path.replace(/^(?:libcore|frameworks-base)\//, '');
     assert.equal(sha256(readFileSync(resolve(root, 'backend/config-core/src', path))), file.sha256, path);
   }

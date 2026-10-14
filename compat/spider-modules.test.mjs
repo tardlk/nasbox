@@ -1,0 +1,51 @@
+import test from'node:test';import assert from'node:assert/strict';import{createServer}from'node:http';import{once}from'node:events';import{readFileSync,mkdtempSync,mkdirSync,writeFileSync,rmSync,existsSync}from'node:fs';import{join,resolve}from'node:path';import{tmpdir}from'node:os';import{createHash}from'node:crypto';
+import{createSpiderRuntime,buildSpiderRuntime}from'../backend/spider-runtime/index.mjs';import{createExecutableSubscriptionSession}from'../backend/spider-runtime/session.mjs';import{buildSpiderOracle}from'../scripts/compat/spider-oracle.mjs';import{moduleReference}from'../scripts/compat/module-reference.mjs';import{globalReference}from'../scripts/compat/js-reference.mjs';import{verifyPlatformReference}from'../scripts/compat/platform-reference.mjs';import{extractMethod}from'../scripts/compat/oracle.mjs';import{androidAssets}from'../backend/spider-runtime/assets/index.mjs';import{inspectArtifact,dexInventory,zipEntries}from'../scripts/compat/artifact-inspect.mjs';import{buildDexFixtures}from'../scripts/compat/dex-fixtures.mjs';
+const built=buildSpiderRuntime(),source=api=>({key:'module',type:3,api,ext:'',jar:''});const hash=s=>createHash('md5').update(s).digest('hex');
+async function fixture(){const seen=[];const server=createServer((req,res)=>{seen.push({url:req.url,ua:req.headers['user-agent']});const path=new URL(req.url,'http://localhost').pathname;
+ if(path==='/root.js'){res.end(`import helper from './helper.js';export default {home(){return JSON.stringify({value:helper,text:pdfh('<b>中文</b>','b&&Text')})}}`);return;}
+ if(path==='/helper.js'){res.end('export default "remote-helper"');return;}
+ if(path==='/large.js'){res.end('x'.repeat(6*1024*1024+1));return;}
+ if(path==='/error.js'){res.statusCode=500;res.end('upstream-error-body');return;}
+ if(path==='/encoded.js'){res.setHeader('Content-Type','text/plain; charset=GBK');res.end(Buffer.from('d6d0cec4','hex'));return;}
+ if(path==='/bom.js'){res.end(Buffer.concat([Buffer.from([239,187,191]),Buffer.from('bom')]));return;}
+ res.end('network-body');});server.listen(0,'127.0.0.1');await once(server,'listening');return{url:`http://127.0.0.1:${server.address().port}`,seen,async close(){server.closeAllConnections();await new Promise((resolve,reject)=>server.close(e=>e?reject(e):resolve()));}};}
+const read=(r,name)=>r.request({operation:'moduleRead',name});
+test('HTML helper and selected FileUtils/Global methods retain pinned original bodies',()=>{
+ const{extra,platform}=verifyPlatformReference();assert.equal(readFileSync('backend/spider-runtime/src/com/github/catvod/crawler/js/HtmlParser.java','utf8'),readFileSync(join(extra,'app/src/main/java/com/github/catvod/crawler/js/HtmlParser.java'),'utf8'));
+ assert.equal(readFileSync('backend/spider-runtime/src/tvbox/runtime/SourceModuleLoader.java','utf8'),moduleReference().source);assert.equal(readFileSync('backend/spider-runtime/src/com/github/catvod/crawler/js/Global.java','utf8'),globalReference().source);
+ const original=readFileSync(join(platform,'frameworks-base/android/text/TextUtils.java'),'utf8');assert.equal(extractMethod(readFileSync('backend/spider-runtime/src/android/text/TextUtils.java','utf8'),'public static String join('),extractMethod(original,'public static String join(@NonNull CharSequence delimiter, @NonNull Iterable tokens)').replaceAll('@NonNull ',''));
+});
+test('Android asset aliases match pinned bytes without network retrieval',async()=>{
+ const r=createSpiderRuntime({built});try{await r.setModules({android:true});for(const entry of androidAssets().files){assert.equal(await read(r,'assets://'+entry.path),readFileSync(entry.source,'utf8'));}assert.equal(await read(r,'https://fixture.invalid/path/模板.js'),readFileSync('resources/js-lib/模板.js','utf8'));assert.equal(await read(r,'https://fixture.invalid/gbk.js?x=1'),readFileSync('resources/js-lib/gbk.js','utf8'));assert.equal((await r.request({operation:'moduleState'})).requests,0);assert.equal(await read(r,'assets://js/lib/../secret'),'');}finally{await r.close();}
+});
+const html=`<ul><li><a href="../a">A <em>X</em></a></li><li><a href="//cdn/b">B</a></li></ul>`;
+async function htmlResults(built){const r=createSpiderRuntime({built});try{await r.setModules({modules:{'https://fixture.invalid/html.js':`export default {home(){const h=${JSON.stringify(html)};return JSON.stringify({text:pdfh(h,'li&&a&&Text'),url:pd(h,'li&&a&&href','https://base/x/'),join:joinUrl('https://base/x/','../z'),count:pdfa(h,'li').length,list:pdfla(h,'li','a&&Text','a&&href','https://base/x/')})}}`}});const s=await r.getCSP(source('https://fixture.invalid/html.js'));return JSON.parse(await r.call(s.token,'homeContent',[true]));}finally{await r.close();}}
+test('real QuickJS HTML globals parse text, lists, relative URLs and arrays',async()=>{assert.deepEqual(await htmlResults(built),{text:'A X',url:'https://base/a',join:'https://base/z',count:2,list:['A X$https://base/a','B$https://cdn/b']});});
+test('fresh pinned HTML/Global and FileUtils extraction reproduce production behavior',async()=>{const oracle=buildSpiderOracle(built);assert.deepEqual(await htmlResults(oracle),await htmlResults(built));assert.equal(oracle.extraction.moduleMethods.length,3);});
+test('remote modules are opt-in and relative imports run through actual pinned OkHttp',async()=>{
+ const f=await fixture(),r=createSpiderRuntime({built});try{assert.equal(await read(r,f.url+'/helper.js'),'');assert.equal(f.seen.length,0);await r.setModules({remote:true});const s=await r.getCSP(source(f.url+'/root.js'));assert.equal(s.ready,true);assert.deepEqual(JSON.parse(await r.call(s.token,'homeContent',[true])),{value:'remote-helper',text:'中文'});assert.equal(f.seen.length,2);assert.ok(f.seen.every(s=>s.ua==='okhttp/3.15'));}finally{await r.close();await f.close();}
+});
+test('source module cache survives worker restart and debug mode bypasses cache',async()=>{
+ const f=await fixture(),data=mkdtempSync(join(tmpdir(),'tvbox-module-cache-'));try{
+  for(let i=0;i<2;i++){const r=createSpiderRuntime({built,dataDir:data});try{await r.setModules({remote:true});assert.equal(await read(r,f.url+'/helper.js'),'export default "remote-helper"');}finally{await r.close();}}assert.equal(f.seen.length,1);
+  const r=createSpiderRuntime({built,dataDir:data});try{await r.setModules({remote:true,debug:true});await read(r,f.url+'/helper.js');await read(r,f.url+'/helper.js');assert.equal(f.seen.length,3);}finally{await r.close();}
+ }finally{rmSync(data,{recursive:true,force:true});await f.close();}
+});
+test('original expired cache returns its data once while deleting it, then refetches',async()=>{
+ const f=await fixture(),data=mkdtempSync(join(tmpdir(),'tvbox-module-expiry-')),r=createSpiderRuntime({built,dataDir:data});try{await r.setModules({remote:true});const dir=join(data,'module-cache');mkdirSync(dir,{recursive:true});const path=join(dir,'qjscache_'+hash(f.url+'/helper.js')+'.js');writeFileSync(path,JSON.stringify({expires:1,data:'expired-once'}));assert.equal(await read(r,f.url+'/helper.js'),'expired-once');assert.equal(existsSync(path),false);assert.equal(f.seen.length,0);assert.equal(await read(r,f.url+'/helper.js'),'export default "remote-helper"');assert.equal(f.seen.length,1);}finally{await r.close();rmSync(data,{recursive:true,force:true});await f.close();}
+});
+test('invalid module cache refetches and HTTP error bodies, charset and BOM retain transport semantics',async()=>{
+ const f=await fixture(),r=createSpiderRuntime({built});try{await r.setModules({remote:true});const dir=join(r.dataDirectory,'module-cache');mkdirSync(dir,{recursive:true});writeFileSync(join(dir,'qjscache_'+hash(f.url+'/helper.js')+'.js'),'invalid json');assert.equal(await read(r,f.url+'/helper.js'),'export default "remote-helper"');assert.equal(await read(r,f.url+'/error.js'),'upstream-error-body');assert.equal(await read(r,f.url+'/encoded.js'),'中文');assert.equal(await read(r,f.url+'/bom.js'),'bom');}finally{await r.close();await f.close();}
+});
+test('oversize module retrieval is bounded and does not save a partial cache',async()=>{
+ const f=await fixture(),r=createSpiderRuntime({built});try{await r.setModules({remote:true});assert.equal(await read(r,f.url+'/large.js'),null);assert.equal(existsSync(join(r.dataDirectory,'module-cache','qjscache_'+hash(f.url+'/large.js')+'.js')),false);assert.ok((await r.request({operation:'logs'})).some(s=>s.includes('MODULE_SIZE_LIMIT')));}finally{await r.close();await f.close();}
+});
+test('host HTTP can be disabled for captured-input replays',async()=>{
+ const f=await fixture(),r=createSpiderRuntime({built});try{await r.request({operation:'host',networkDisabled:true});await r.setModules({remote:true});assert.equal(await read(r,f.url+'/helper.js'),null);assert.equal(f.seen.length,0);assert.ok((await r.request({operation:'logs'})).some(s=>s.includes('HOST_NETWORK_DISABLED')));}finally{await r.close();await f.close();}
+});
+test('executable subscription session can resolve remote JS modules and reimport closes contexts',async()=>{
+ const f=await fixture(),session=await createExecutableSubscriptionSession({remoteModules:true,fetchText:async()=>JSON.stringify({sites:[{key:'remote',type:3,api:f.url+'/root.js',ext:''}]})});try{await session.load({apiUrl:'https://fixture.invalid/config'});assert.deepEqual(JSON.parse((await session.call('remote','homeContent',[true])).value),{value:'remote-helper',text:'中文'});await session.load({apiUrl:'https://fixture.invalid/config'});assert.equal((await session.getState()).runtime.js.spiderCount,0);}finally{await session.close();await f.close();}
+});
+test('static artifact diagnostics classify ARM/native payload without running it and reject malformed data',()=>{
+ const f=buildDexFixtures();try{const native=f.pack('inventory.jar',{'classes.dex':readFileSync(f.raw),'assets/payload.guard':'encrypted','assets/guard.so':Buffer.from('7f454c4601010100000000000000000003002800','hex')});const audit=inspectArtifact(readFileSync(native));assert.equal(audit.native[0].architecture,'ARM');assert.equal(audit.native[0].bits,32);assert.ok(audit.dex[0].classCount>0);assert.equal(audit.protectedPayloads[0].bytes,9);assert.throws(()=>zipEntries(Buffer.from('invalid')),/Missing ZIP/);assert.throws(()=>dexInventory(Buffer.alloc(112)),/Invalid DEX/);}finally{f.cleanup();}
+});

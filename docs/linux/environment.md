@@ -12,12 +12,13 @@ Maven and Gradle were not available on PATH.
 | New Gson 2.10.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/gson-2.10.1.jar | Match the Android app's actual JSON library | Project-scoped development dependency; retained |
 | New Bouncy Castle 1.78.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/bcprov-jdk18on-1.78.1.jar | Support the original AES/ECB and AES/CBC PKCS7 transformations on host JVM | Project-scoped dependency; about 7.94 MiB; retained for ongoing migration |
 | New dex2jar 2.4 bundle (includes dx-30.0.2.jar) | /Users/coke/Desktop/Projects/tvbox-linux/.tools/dex2jar-v2.4 | Runtime DEX translation; bundled dx only generates owned test fixtures | Project-scoped; about 19.7 MiB; retained for ongoing migration |
+| New jsoup 1.14.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/jsoup-1.14.1.jar | Original Android HtmlParser dependency | Project-scoped; about 0.40 MiB; retained for runtime development |
 | Public Android reference snapshot | compat/reference/tvboxos | Fixed source and license evidence | Retained project source, about 263 KB of downloaded files |
-| Auxiliary source snapshots | compat/reference/android-platform and compat/reference/tvboxos-extra | Android 13 JSON/Base64/Uri and original config/live/network helper sources | Retained source, about 440 KiB including licenses; runtime helper copies are also committed |
+| Auxiliary source snapshots | compat/reference/android-platform and compat/reference/tvboxos-extra | Android 13 JSON/Base64/Uri and original config/live/network helper sources | Retained source, about 628 KiB including licenses; runtime helper copies are also committed |
 | Generated reference classes | .cache/compat/oracle | Temporary test build | Removed after verification; rebuilt automatically |
 | Generated backend classes | .cache/backend/config-core | Temporary independent runtime build | Removed after verification; rebuilt automatically |
 
-The project-scoped tool directory currently occupies approximately 339 MiB. Exact runtime
+The project-scoped tool directory currently occupies approximately 340 MiB. Exact runtime
 artifact versions and checksums are recorded in compat/toolchain-integrity.json.
 The JDK archive SHA-256 was verified against the official Temurin GitHub release
 asset digest before extraction. Gson was verified against Maven Central's SHA-1,
@@ -175,3 +176,37 @@ and verification logs under this project's .cache were removed after validation.
 No .data directory remains and no actual subscription JAR/JS code was executed.
 All task-owned workers and temporary listeners are stopped. Services still running:
 none. Autostart changes: none. No tools from other projects were removed.
+
+
+## Real subscription JS/module validation batch — 2026-10-14
+
+Existing tools and .tools/lib were checked first. Docker/adb/Podman/QEMU were not
+available; no Android/Linux runtime was installed. Existing Node, JDK, Python,
+curl and the retained dex2jar/baksmali bundle handled fetching and static DEX/ELF
+inspection. Added only the Android baseline's jsoup 1.14.1 jar, 415,074 bytes
+(about 0.40 MiB), at the project-local path listed above. Its published Maven
+Central SHA-1 was verified and SHA-256 pinned in runtime.json and the integrity
+ledger. MIT license was extracted from its META-INF/LICENSE. .tools totals about
+340 MiB and remains retained for ongoing runtime work; shared tools are unchanged.
+
+Five existing resources/js-lib source assets were verified against the fixed
+Android commit and reused unchanged, with an assets manifest. No duplicate asset
+runtime or package-manager dependencies were installed. Retained additional source
+evidence is HtmlParser, StringUtils and AOSP Android 13 TextUtils; the latter is
+source-only, with selected join-body/runtime tests. These are committed source
+snapshots, not background environments. Auxiliary snapshots occupy about 628 KiB.
+
+The actual subscription/global JAR, drpy engine, four remote dependency modules,
+three rule bodies and baksmali inspection files were temporary under .cache or
+owned tvbox-real-source-* directories. They were removed after verification;
+only hashes, structure, ELF metadata and result counts remain in the report.
+Real QuickJS code was executed for three init/home calls; the native-containing
+JAR was inventoried and rejected before init, with no native execution/decryption.
+Captured-input replays matched fresh-source and production and matched live
+results. 363 tests passed; all temporary HTTP listeners and JVM workers closed.
+
+Project .cache build/test material was removed after verification. No .data or
+remote artifact cache is retained. jsoup and the previous development dependencies
+remain for further work. Caller-selected future --data/runtimeDataDir may retain
+module-cache JSON; aggregate persistent disk quota/eviction is still pending.
+Services still running: none. Autostart changes: none. System PATH changes: none.

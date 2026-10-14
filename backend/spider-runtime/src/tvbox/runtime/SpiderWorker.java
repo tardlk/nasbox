@@ -25,7 +25,12 @@ public final class SpiderWorker {
   if(operation.equals("dexState")){JsonObject v=new JsonObject();v.addProperty("nestedLoaderCount",dalvik.system.BaseDexClassLoader.ownedCount());return v;}
   if(operation.equals("scanProtection"))return new JsonPrimitive(new ProtectedJarSupport().check(r.get("path").getAsString()));
   if(operation.equals("registerJar")){String signature=r.get("signature").getAsString();Path path=Path.of(r.get("path").getAsString());jars.register(signature,path);scripts.register(signature.split(";md5;")[0],path);return JsonNull.INSTANCE;}
+  if(operation.equals("moduleRead"))return gson.toJsonTree(com.github.tvbox.osc.util.FileUtils.loadModule(r.get("name").getAsString()));
+  if(operation.equals("moduleState"))return SourceModuleLoader.snapshot();
   if(operation.equals("modules")){
+   if(r.has("android"))com.github.tvbox.osc.util.FileUtils.androidModules=r.get("android").getAsBoolean();
+   if(r.has("remote")){SourceModuleLoader.remote=r.get("remote").getAsBoolean();if(SourceModuleLoader.remote)com.github.tvbox.osc.util.FileUtils.androidModules=true;}
+   if(r.has("debug"))SourceModuleLoader.debug=r.get("debug").getAsBoolean();
    if(r.has("root"))com.github.tvbox.osc.util.FileUtils.moduleRoot=Path.of(r.get("root").getAsString()).toRealPath();
    if(r.has("modules"))for(Map.Entry<String,JsonElement> e:r.getAsJsonObject("modules").entrySet())com.github.tvbox.osc.util.FileUtils.register(e.getKey(),e.getValue().isJsonNull()?null:e.getValue().getAsString());return JsonNull.INSTANCE;
   }
@@ -44,7 +49,7 @@ public final class SpiderWorker {
   }
   if(operation.equals("proxy"))return value(r.get("kind").getAsString().equals("js")?scripts.proxyInvoke(stringMap(r.get("params"))):jars.proxyInvoke(stringMap(r.get("params"))));
   if(operation.equals("clear")){
-   String kind=r.get("kind").getAsString();if(kind.equals("jar"))jars.close();else if(kind.equals("js"))scripts.close();else throw new IllegalArgumentException("Unsupported runtime kind");
+   String kind=r.get("kind").getAsString();if(kind.equals("jar"))jars.close();else if(kind.equals("js")){scripts.close();SourceModuleLoader.resetBudget();}else throw new IllegalArgumentException("Unsupported runtime kind");
    for(String token:new ArrayList<>(references.keySet()))if(kinds.get(token).equals(kind)){identities.remove(references.remove(token));kinds.remove(token);}return snapshot();
   }
   if(operation.equals("state"))return snapshot();

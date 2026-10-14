@@ -73,6 +73,16 @@
       "upstreamPath": "core/java/android/net/UriCodec.java",
       "sha256": "19ed9a4c5fc0c1ab322cc91c09e80c8b99e1637b00ae0a2b648afd76d2c50f78",
       "bytes": 6812
+    },
+    {
+      "path": "frameworks-base/android/text/TextUtils.java",
+      "url": "https://android.googlesource.com/platform/frameworks/base/+/0d3ff311e6e80dee7fe88a2a2cfa272ce231c3c6/core/java/android/text/TextUtils.java?format=TEXT",
+      "sha256": "9cda7f24d20c1aa8ac196333bf10e173b0e9b0ab7693e08eae54b8dfe4f10e16",
+      "bytes": 92580,
+      "repository": "platform/frameworks/base",
+      "commit": "0d3ff311e6e80dee7fe88a2a2cfa272ce231c3c6",
+      "upstreamPath": "core/java/android/text/TextUtils.java",
+      "sourceOnly": true
     }
   ],
   "license": {

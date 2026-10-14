@@ -22,7 +22,7 @@ not completion of all TVBox scripts or Android host services.
 | JS source formats | Default object/factory, legacy assignment, __jsEvalReturn cat configuration, relative registered/local imports |
 | JS bytecode | Original //bb transform and //DRPY module path, exercised with engine-produced version-67 bytecode |
 | Host API | Original address/port/webParse/multiReq; headless orientation takes the original exception fallback (6) |
-| JS globals | Original getProxy/js2Proxy/_http/setTimeout/context injection; original net.js and js.local |
+| JS globals | Original getProxy/js2Proxy/joinUrl/pd/pdfh/pdfa/pdfla/_http/setTimeout/context injection; original net.js and js.local |
 | HTTP | Actual pinned OkHttp/Okio, synchronous JS HTTP and SpiderApi multiReq; local fixture behavior verified |
 | JS Java extension | JVM class-JAR/translated-DEX Function/Method constructor and original annotated method binding |
 | Ownership | Serialized process requests, registered runtime cleanup before reimport, context/classloader/process disposal |
@@ -35,8 +35,8 @@ Packaged .so/.dll/.dylib and native library search paths are explicitly unavaila
 The dalvik.system adapters implement translation and ownership only: they are not
 ART, a full Android classloader or an ARM/JNI emulator. Native-only protected init
 fails instead of returning a ready Spider. Python is unavailable. Referenced
-remote JARs/modules are not automatically fetched. Artifact lookup, Android's
-MD5/week cache behavior, full Android asset APIs, HTML/crypto globals, cookies, browser APIs,
+remote JARs are not automatically fetched; remote JS modules are fetched only in the explicit module mode below. Artifact lookup, Android's
+MD5/week cache behavior, full Android asset APIs, remaining crypto/translation globals, cookies, browser APIs,
 subscription hosts/proxy/DOH application and live-script config effects remain
 separate work. Java plugin execution uses a real JVM; it is not a security sandbox.
 
@@ -45,7 +45,7 @@ separate work. Java plugin execution uses a real JVM; it is not a security sandb
 Use existing Node 24+, JDK 17 with headers and C/C++ compilers. Set TVBOX_JAVA_HOME
 or JAVA_HOME for JNI headers, and CC/CXX when clang/clang++ are not available. This
 builder does not install tools, run Gradle/CMake, fetch dependencies or build UI.
-Provide the six SHA-256-pinned jars in runtime.json under .tools/lib or
+Provide the seven SHA-256-pinned jars in runtime.json under .tools/lib or
 TVBOX_SPIDER_LIB_DIR, plus the config-core's existing Gson/BC prerequisites.
 
 The JNI bridge is built from quickjs-wrapper tag 2.1.0, commit
@@ -127,7 +127,7 @@ try {
 ```
 
 The session parses full configuration state and initializes a selected source
-lazily. It does not implicitly download code; explicitly mapped DEX artifacts are
+lazily. Remote JS retrieval is opt-in; explicitly mapped DEX artifacts are
 converted when opened. Real JAR/JS registries
 participate in RuntimeCleanup before the next import, including imports that later
 fail JSON parsing. A supplied runtime/core remains caller-owned; do not share it
@@ -146,7 +146,7 @@ Already-resolved/rejected Promise paths work. An unresolved Promise, infinite
 loop or blocked async path is stopped by the host deadline; general asynchronous
 HTTP/timer event-loop parity is not established. No change to those upstream
 semantics is hidden as an optimization. Full Global HTML/crypto/persistent/browser
-bindings and real source validation are required before declaring JS compatibility.
+bindings and broader real source validation are required before declaring full JS compatibility.
 
 Host constraints include 256 MiB JVM heap, 64 MiB per QuickJS context, 512 KiB JS
 stack, 8 MiB protocol messages, 2 MiB proxy bodies and a default 10-second request
@@ -168,8 +168,8 @@ AES payload exercises real nested DEX loading, context/loader injection, optiona
 hooks, initApi/siteKey/ext propagation, calls and destroy/loader closure. It does
 not establish compatibility with proprietary native protection. Additional tests
 cover multidex, resource retention, cache reuse/rebuild, rejected native libraries,
-malformed/duplicate DEX classes and dependency integrity. No actual subscription
-code was executed. Android/ART and Linux x86_64/NAS comparisons remain necessary.
+malformed/duplicate DEX classes and dependency integrity. The DEX report uses owned
+fixtures; actual subscription JS evidence is documented below. Android/ART and Linux x86_64/NAS comparisons remain necessary.
 R8/obfuscated constructors, reflection and missing Android dependencies may fail;
 verification is enabled and no WinBox -noverify/blank native success is adopted.
 
@@ -183,3 +183,70 @@ plugin-created files; aggregate persistent cache quota/eviction is still pending
 Clear closes nested classloaders but does not delete caller-owned data. One runtime
 worker owns one conversion at a time. The process deadline includes conversion;
 converter work cannot outlive that JVM in a detached process.
+
+
+## Android JS modules and real subscription evidence
+
+Enable the Android module boundary with setModules({android:true}); enable remote
+HTTP(S) module retrieval with setModules({remote:true}). The default remains the
+explicit registered/local mode. Registered modules take precedence. The enabled
+mode uses unchanged pinned FileUtils.loadModule/getCache/setCache bodies with
+bounded host I/O. Original gbk.js/模板.js/cat.js aliases, URL matching, seven-day
+cache setting and debug bypass are preserved. The upstream expired-cache read
+returns old data once while deleting the file; this is deliberately tested.
+HTTP uses pinned OkHttp, closes every response, and retains response bodies for
+HTTP error statuses plus charset/BOM handling. Remote URI validation, 6 MiB per
+module, 32 MiB received/retained module budgets and atomic cache writes are host
+bounds. Explicit registered module maps remain caller-controlled. The normal
+worker request deadline covers all imports; raise runtimeTimeoutMs for a remote
+session when necessary. clear('js') closes contexts and resets module budgets.
+
+Five existing resources/js-lib assets were checked byte-for-byte against the
+fixed Android commit; assets/manifest.json pins their source paths/hashes. Offline
+builds verify them and copy them into the runtime classpath. No new copy of third
+party source was downloaded into a persistent environment. A standalone package
+must carry these manifest inputs. HtmlParser is an unchanged pinned original class,
+using the upstream's jsoup 1.14.1 (MIT; LICENSE-JSOUP). StringUtils methods and
+Android 13 TextUtils.join body are source-checked. Other Android assets/services
+and the full Global surface are still incomplete.
+
+```js
+const session = await createExecutableSubscriptionSession({
+  remoteModules: true,
+  runtimeTimeoutMs: 60000,
+});
+try {
+  await session.load({apiUrl: 'http://www.饭太硬.net/tv'});
+  const result = await session.call('虎牙js', 'homeContent', [true]);
+} finally { await session.close(); }
+```
+
+Run the explicit live probe (not part of offline tests):
+
+```sh
+node scripts/compat/real-source-probe.mjs 'http://www.饭太硬.net/tv' docs/linux/real-source-runtime-probe.json
+```
+
+This probe targets the supplied subscription's drpy dependency layout. It imports
+48 sources, inventories the shared JAR without executing native code, runs the
+three JS init/home paths, captures module/rule inputs temporarily, and compares
+fresh-source and production replays. The replay passes captured raw rule text as
+ext instead of a URL and disables the declared host OkHttp binding; both replays
+also match the separately verified live URL-ext results. This HTTP control is not
+a general Java sandbox. Only hashes/structure/counters are retained in the report;
+remote JAR/JS/rule bodies and worker caches are deleted in finally.
+
+Current result: three ready JS sources return nonempty class/filter data (4, 9
+and 4 classes); all three match fresh source and live replay exactly. Category,
+detail, search and player behavior are not established. The 45 CSP definitions
+share one MD5-matching JAR containing ARMv7/AArch64 libraries and an opaque .guard payload;
+admission fails with NATIVE_PLUGIN_UNAVAILABLE. This is one artifact failure,
+not 45 separately executed failures, and no native payload was decrypted. The
+upstream ProtectedInitJar killProcess heuristic returns false for this artifact;
+native admission is checked independently and remains unavailable.
+Android/ART, Linux x86_64, Docker and NAS execution remain unverified.
+
+Caller-owned data retains module-cache/qjscache_<md5>.js JSON (data/expires) and
+js.local/DEX state. Default temporary worker data is removed on close or timeout.
+Persistent module-cache aggregate disk quota/eviction is pending, like DEX cache.
+No automatic JAR resolver, HTTP listener or autostart is added.

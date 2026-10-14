@@ -1,0 +1,42 @@
+{
+  "repository": "q215613905/TVBoxOS",
+  "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "verification": "Compared fixed Android raw source byte-for-byte with existing WinBox resources; reuse exact files without modifying them.",
+  "files": [
+    {
+      "path": "js/lib/cheerio.min.js",
+      "source": "resources/js-lib/cheerio.min.js",
+      "upstreamPath": "app/src/main/assets/js/lib/cheerio.min.js",
+      "sha256": "10cf39856c496ed2c681c00b6a245b2306a119041591c35d1e31b6bf0a9e6901",
+      "bytes": 356592
+    },
+    {
+      "path": "js/lib/crypto-js.js",
+      "source": "resources/js-lib/crypto-js.js",
+      "upstreamPath": "app/src/main/assets/js/lib/crypto-js.js",
+      "sha256": "e888d4276fa167121c6fca26dbc9821a8a79b66ae9b192e5a33c6a5bb2056e53",
+      "bytes": 198120
+    },
+    {
+      "path": "js/lib/gbk.js",
+      "source": "resources/js-lib/gbk.js",
+      "upstreamPath": "app/src/main/assets/js/lib/gbk.js",
+      "sha256": "a002c29e9722e123f9ccea98e30d7207531e404f6b3351759a6b0bb4090f8f41",
+      "bytes": 56203
+    },
+    {
+      "path": "js/lib/模板.js",
+      "source": "resources/js-lib/模板.js",
+      "upstreamPath": "app/src/main/assets/js/lib/模板.js",
+      "sha256": "1da00bdcb30ab1a7875a84ee6fc82256e705330b6cc9d84144f163df68b665cb",
+      "bytes": 15300
+    },
+    {
+      "path": "js/lib/cat.js",
+      "source": "resources/js-lib/cat.js",
+      "upstreamPath": "app/src/main/assets/js/lib/cat.js",
+      "sha256": "49bcc6c6ade5fcbfce98875f51bafc010ebb015f7e8db2a9fc2e22a4575ac046",
+      "bytes": 486451
+    }
+  ]
+}

@@ -73,5 +73,13 @@
     "archiveBytes": 19105975,
     "verification": "HTTPS official fixed release; no independent release digest published. Archive SHA-256 and extracted jars pinned locally.",
     "filesManifest": "backend/spider-runtime/dex/toolchain.json"
+  },
+  "jsoup": {
+    "version": "1.14.1",
+    "url": "https://repo.maven.apache.org/maven2/org/jsoup/jsoup/1.14.1/jsoup-1.14.1.jar",
+    "sha256": "f54b33c552fa40ef1630686a1f6aa04f766bf85c9ffa0bd89d147b0b4e2caa38",
+    "upstreamSha1": "9cbd867771876e35f0f3088525381d183c7f2aa9",
+    "bytes": 415074,
+    "filename": "jsoup-1.14.1.jar"
   }
 }
