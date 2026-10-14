@@ -61,7 +61,7 @@ test('ordinary JSON-object JS init thread behavior remains an observation, while
   assert.equal(JSON.parse(await r.call(sp.token,'homeContent',[true])).extension,'unset');
  }finally{await r.close();}
 });
-test('DEX/native JARs are explicitly rejected, without installing converters or native emulators',async()=>{
+test('truncated DEX artifacts remain rejected before Spider initialization',async()=>{
  const directory=mkdtempSync(join(tmpdir(),'tvbox-dex-fixture-'));const r=createSpiderRuntime({built});
  try{
   writeFileSync(join(directory,'classes.dex'),Buffer.from('dex\n035\0'));

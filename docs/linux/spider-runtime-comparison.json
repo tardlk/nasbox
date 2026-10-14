@@ -4,7 +4,7 @@
     "platform": "darwin",
     "architecture": "arm64"
   },
-  "scope": "Fresh pinned Spider/SpiderApi/JsSpider and loader methods on shared explicit host bindings; actual JVM class-JAR/QuickJS execution. No Android/ART, DEX/native plugin or Linux/NAS equivalence.",
+  "scope": "Fresh pinned Spider/SpiderApi/JsSpider and loader methods on shared explicit host bindings; actual JVM class-JAR/QuickJS execution. No Android/ART, native plugin or Linux/NAS equivalence. Ordinary contract fixtures do not exercise DEX/protection; see separate DEX report.",
   "inputSha256": "767136262a964012924140d5478a0c50e308ccc19a056d15a95f639bc7c798de",
   "quickjs": {
     "wrapperVersion": "2.1.0",
@@ -565,7 +565,7 @@
   ],
   "limits": [
     "No Android/ART or Linux/NAS runtime validation",
-    "No DEX conversion, protected/native plugin or Python execution",
+    "This report uses class-JAR/QuickJS fixtures; DEX/protection observations are in dex-runtime-comparison.json; native/Python execution unavailable",
     "Only selected Global functions and explicitly supplied/local modules/artifacts; no Android module download/cache equivalence",
     "Ordinary object-ext initialization is caught outside the owning QuickJS thread on this host; Android verification pending",
     "Unresolved Promise and nonterminating calls are stopped by host process deadline",

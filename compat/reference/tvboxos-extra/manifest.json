@@ -151,6 +151,11 @@
       "path": "app/src/main/assets/js/lib/net.js",
       "sha256": "8d02daca47f0d5ac29e00ee3ecf13f7497b407117c0d802827135d388b046ad2",
       "bytes": 470
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/ProtectedInitJar.java",
+      "sha256": "86a31da8a7e8e573f957a157cafe0b3c0e74b7f8af937a6aa02b133a9973a250",
+      "bytes": 16123
     }
   ]
 }

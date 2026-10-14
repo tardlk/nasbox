@@ -2,14 +2,15 @@
 import{spawn}from'node:child_process';import{createInterface}from'node:readline';
 import{mkdtempSync,mkdirSync,rmSync}from'node:fs';import{tmpdir}from'node:os';import{join,resolve}from'node:path';
 import{buildSpiderRuntime}from'./build.mjs';
+import{dexToolchain}from'./dex/toolchain.mjs';
 export{buildSpiderRuntime}from'./build.mjs';
 export class SpiderRuntimeError extends Error{
  constructor(result){super(result.message||`Spider call failed: ${result.errorType}`);this.name='SpiderRuntimeError';this.errorType=result.errorType;}
 }
 /** Serialized JVM/QuickJS session. Always close in finally. No player or server. */
-export function createSpiderRuntime({built=buildSpiderRuntime(),timeoutMs=10000,maxBytes=8*1024*1024,dataDir}={}){
+export function createSpiderRuntime({built=buildSpiderRuntime(),timeoutMs=10000,maxBytes=8*1024*1024,dataDir,dex=dexToolchain()}={}){
  const owned=!dataDir;const directory=dataDir?resolve(dataDir):mkdtempSync(join(tmpdir(),'tvbox-spider-'));mkdirSync(directory,{recursive:true,mode:0o700});
- const child=spawn(built.java,['-Xmx192m','-Dfile.encoding=UTF-8','-cp',built.classpath,'tvbox.runtime.SpiderWorker',built.library,directory],{stdio:['pipe','pipe','pipe']});
+ const child=spawn(built.java,['-Xmx256m',...(dex?['-Dtvbox.dex.classpath='+dex.classpath,'-Dtvbox.dex.fingerprint='+dex.fingerprint]:[]),'-Dfile.encoding=UTF-8','-cp',built.classpath,'tvbox.runtime.SpiderWorker',built.library,directory],{stdio:['pipe','pipe','pipe']});
  const lines=createInterface({input:child.stdout}),pending=new Map();let nextId=0,closed=false,failure,stderr='';
  let exitCode;const exit=new Promise(done=>child.once('close',code=>{exitCode=code;done();}));
  function fail(error){failure||=error;for(const item of pending.values()){clearTimeout(item.timer);item.reject(failure);}pending.clear();if(!child.killed)child.kill('SIGKILL');}
@@ -28,7 +29,7 @@ export function createSpiderRuntime({built=buildSpiderRuntime(),timeoutMs=10000,
  async function request(spec){const result=await query(spec);if(!result.ok)throw new SpiderRuntimeError(result);return result.value;}
  let closing;
  return{
-  scope:'host-jvm-class-jar/quickjs-source',dataDirectory:directory,query,request,
+  scope:'host-jvm-class-jar/dex-translation/quickjs-source',dataDirectory:directory,query,request,
   getCSP:source=>request({operation:'get',source}),
   loadMain:path=>request({operation:'loadMain',path:resolve(path)}),
   registerJar:(signature,path)=>request({operation:'registerJar',signature,path:resolve(path)}),

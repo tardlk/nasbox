@@ -157,3 +157,18 @@ disk restarts, CLI entry points, subscription-to-executor reimport cleanup and
 CPU/unresolved-Promise deadlines. Host service/storage limits and the ordinary-JS
 object-ext thread observation are explicit in backend/spider-runtime/README.md.
 These tests are not Android/ART, DEX/native/Python or Linux/NAS validation.
+
+
+## Controlled DEX and protected initialization
+
+spider-dex.test.mjs uses the pinned dex2jar bundle's existing dx-30.0.2.jar to
+compile owned Java 8 fixtures into DEX. No Android SDK or emulator is installed.
+Run node scripts/compat/dex-report.mjs for 155/155 host observations: the existing
+mixed 136-case contract sequence with the JAR replaced by DEX, plus 19 specified
+protection results. ProtectedInitJar is copied unchanged from the immutable extra
+snapshot; a fresh copy on shared host bindings checks plain/encrypted whitelists,
+context/nested-loader binding and a synthetic pure-Java AES payload. Native-only
+initialization deliberately fails. Integration tests cover multidex, resources,
+cache identity/corruption, malformed DEX, dependency pins and nested-loader cleanup.
+This is neither ART nor real native/ARM source validation. Source fixture code
+is retained under spiders/protected and spiders/payload; binaries remain temporary.

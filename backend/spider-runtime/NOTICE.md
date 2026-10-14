@@ -6,7 +6,7 @@ Do not distribute the combined port as MIT-only.
 
 Original TVBoxOS code is pinned to q215613905/TVBoxOS commit
 ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1. Spider.java and SpiderApi.java are unchanged.
-SpiderNull, Proxy, JsSpider, Async, Json, Req, Res, Connect, local, MD5, JSUtils,
+ProtectedInitJar (unchanged), SpiderNull, Proxy, JsSpider, Async, Json, Req, Res, Connect, local, MD5, JSUtils,
 ContextSetter, Function and net.js derive from that commit, with hashes in the
 primary/extra compat manifests. JsSpider adds only native memory/stack bounds in
 createCtx. Context/platform classes, control addresses, OkHttp provider, file/
@@ -15,10 +15,11 @@ implement the full Android framework, network setup or encrypted store.
 
 JarExecutor retains selected original JarLoader initialization/cache/proxy/parser/
 destruction methods. DexClassLoader type references become JvmJarClassLoader, a
-parent-first URLClassLoader admitting ordinary JVM class JARs only. Artifact
+parent-first URLClassLoader admitting class JARs or explicitly translated DEX. Artifact
 registration/resolution, protected-loader admission and classloader closure are
-host boundaries; remote MD5/week cache and DEX/native protection are not claimed
-implemented. JsExecutor retains selected original JsLoader cache/get/proxy/clear
+host boundaries. ProtectedJarSupport exposes the unchanged upstream helper;
+Context/package identity and dalvik.system loaders use explicit host adapters.
+Remote MD5/week cache and native/ARM protection remain unimplemented. JsExecutor retains selected original JsLoader cache/get/proxy/clear
 methods; JS API artifacts likewise use JVM class loaders. Timer ownership and
 termination waits explicitly bound host resources.
 
@@ -42,3 +43,12 @@ Kotlin stdlib/common 1.4.0 and JetBrains annotations 13.0, and QuickJS wrapper-j
 LICENSE-APACHE-2.0. Artifact URLs, sizes, Maven SHA-1 verification and pinned SHA-256
 are in runtime.json and compat/toolchain-integrity.json. Gson/BC remain separately
 licensed config-core dependencies.
+
+
+Optional dex2jar 2.4 is from the official pxb1988/dex2jar fixed release; archive
+and extracted hashes/size are in dex/toolchain.json. Its Apache-2.0 LICENSE and
+NOTICE and the distribution's bundled third-party license text (including BSD,
+ASM and other notices) are retained under dex/licenses (text line endings normalized). Binary jars are not
+committed. The bundled dx-30.0.2.jar is used only in test fixture generation.
+Pure-Java protected fixtures and classloader/cache bindings are project code;
+they do not incorporate or emulate a proprietary native protection library.

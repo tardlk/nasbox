@@ -1,0 +1,141 @@
+{
+  "name": "dex2jar",
+  "version": "2.4",
+  "source": "https://github.com/pxb1988/dex2jar",
+  "archiveUrl": "https://github.com/pxb1988/dex2jar/releases/download/v2.4/dex-tools-v2.4.zip",
+  "archiveSha256": "ee7c45eb3c1d2474a6145d8d447e651a736a22d9664b6d3d3be5a5a817dda23a",
+  "archiveBytes": 19105975,
+  "verification": "HTTPS official fixed release; no independent release digest published. Archive SHA-256 and extracted jars pinned locally.",
+  "files": [
+    {
+      "path": "lib/dex-tools-v2.4.jar",
+      "sha256": "93b2adf1e39448dc1f1ba9268096f1bf3e05813f1fcbde7a883eace70cceed02",
+      "bytes": 171221
+    },
+    {
+      "path": "lib/dex-translator-v2.4.jar",
+      "sha256": "fb64bbf0eb9b37031ddeb78803d48f0826ce057cb251d28aa50e7b601a0f6f8c",
+      "bytes": 120533
+    },
+    {
+      "path": "lib/dx-30.0.2.jar",
+      "sha256": "5f37023cdab507f4f2ece1c80dabd056254e30cc9f4aef39dd84c4e0a0031615",
+      "bytes": 1038021
+    },
+    {
+      "path": "lib/d2j-smali-v2.4.jar",
+      "sha256": "21c80ff4438d47aee2b3939bea50e811570557b0f1d4363c7f68545f81dac9e6",
+      "bytes": 204542
+    },
+    {
+      "path": "lib/d2j-jasmin-v2.4.jar",
+      "sha256": "d316c9f04e9129f78c57baaeedf2de3b4f4922b36f7f7bf3b1874771207c666f",
+      "bytes": 174387
+    },
+    {
+      "path": "lib/dex-writer-v2.4.jar",
+      "sha256": "a5c03ce36f5c9bdc89ed27dc2becd542f87d94519202e91fd30ec8f9192d8e24",
+      "bytes": 112209
+    },
+    {
+      "path": "lib/d2j-base-cmd-v2.4.jar",
+      "sha256": "7ca943b6bb4d475b0d3941eab51d1ea9d6326a626572aa5ce699dda4ea52b048",
+      "bytes": 17827
+    },
+    {
+      "path": "lib/asm-util-9.5.jar",
+      "sha256": "c467f1bb3c08888f47243e2d475209b34a772d627e44fca06752e18bb038bd74",
+      "bytes": 91076
+    },
+    {
+      "path": "lib/asm-commons-9.5.jar",
+      "sha256": "72eee9fbafb9de8d9463f20dd584a48ceeb7e5152ad4c987bfbe17dd4811c9ae",
+      "bytes": 72209
+    },
+    {
+      "path": "lib/asm-analysis-9.5.jar",
+      "sha256": "39f1cf1791335701c3b02cae7b2bc21057ec9a55b2240789cb6d552b2b2c62fa",
+      "bytes": 33978
+    },
+    {
+      "path": "lib/asm-tree-9.5.jar",
+      "sha256": "3c33a648191079aeaeaeb7c19a49b153952f9e40fe86fbac5205554ddd9acd94",
+      "bytes": 51944
+    },
+    {
+      "path": "lib/dex-reader-v2.4.jar",
+      "sha256": "8a02e63f394c4a60b8c7947fdc03cf91ca6e2843fb12475e5c87896bd3551481",
+      "bytes": 72648
+    },
+    {
+      "path": "lib/dex-ir-v2.4.jar",
+      "sha256": "1e715a5bedd11cfaa53702976acf6bdb1f6b749fc03f998125cf5488964b1192",
+      "bytes": 235836
+    },
+    {
+      "path": "lib/antlr4-4.9.3.jar",
+      "sha256": "386fec520b8962fe37f448af383920ea33d7a532314b36d7ba9ccec1ba95eb37",
+      "bytes": 2640255
+    },
+    {
+      "path": "lib/antlr4-runtime-4.9.3.jar",
+      "sha256": "131a6594969bc4f321d652ea2a33bc0e378ca312685ef87791b2c60b29d01ea5",
+      "bytes": 336742
+    },
+    {
+      "path": "lib/antlr-3.5.2.jar",
+      "sha256": "5ac36c2acfb0a0f3d37dafe20b5b570f2643e2d000c648d44503c2738be643df",
+      "bytes": 1153819
+    },
+    {
+      "path": "lib/ST4-4.3.1.jar",
+      "sha256": "ebc9d9bcdb67571c0835ff441ead5c1de90a25a0d3fa840654a144e8fa0410d4",
+      "bytes": 251121
+    },
+    {
+      "path": "lib/antlr-runtime-3.5.2.jar",
+      "sha256": "ce3fc8ecb10f39e9a3cddcbb2ce350d272d9cd3d0b1e18e6fe73c3b9389c8734",
+      "bytes": 167761
+    },
+    {
+      "path": "lib/dex-reader-api-v2.4.jar",
+      "sha256": "16ffb4756fa363d9728f22a113a429933f8a9ba2ff345c14f7ff2eea444ee167",
+      "bytes": 78177
+    },
+    {
+      "path": "lib/asm-9.5.jar",
+      "sha256": "b62e84b5980729751b0458c534cf1366f727542bb8d158621335682a460f0353",
+      "bytes": 121863
+    },
+    {
+      "path": "lib/org.abego.treelayout.core-1.0.3.jar",
+      "sha256": "fa5e31395c39c2e7d46aca0f81f72060931607b2fa41bd36038eb2cb6fb93326",
+      "bytes": 26773
+    },
+    {
+      "path": "lib/javax.json-1.0.4.jar",
+      "sha256": "0e1dec40a1ede965941251eda968aeee052cc4f50378bc316cc48e8159bdbeb4",
+      "bytes": 85147
+    },
+    {
+      "path": "lib/icu4j-69.1.jar",
+      "sha256": "98286f3d538bc7bde87d70bf2cac3acc9ed7b7fe941db5e94a8c3fa13516f963",
+      "bytes": 13356812
+    },
+    {
+      "path": "lib/open-source-license.txt",
+      "sha256": "d9d1ba44f07c7f3be7d2110be34ac46d2a359293d4e15904df79ea7430ee5bdf",
+      "bytes": 3210
+    },
+    {
+      "path": "NOTICE.txt",
+      "sha256": "ae624867ea43c86c34d2ee37478194cafcf235309472dfdffa33f7c0f612dbe7",
+      "bytes": 384
+    },
+    {
+      "path": "LICENSE.txt",
+      "sha256": "f2ffa5942b316849be283deaeb2912e2e5b5b17e91012bede8210210ff3e91e7",
+      "bytes": 11562
+    }
+  ]
+}

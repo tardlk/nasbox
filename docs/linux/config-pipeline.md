@@ -19,7 +19,7 @@ These observations describe source, not verified Android/ART execution.
 | Globals/flags/parses | Global spider/jarCache/danmaku/wallpaper, flags, parses and default selection precede the live section | Optional VOD prefix implemented, including ParseBean getters/mixUrl and partial state |
 | Remaining config | Live/hosts/proxy/rules/DOH/ads are processed by the rest of parseJson | Optional config-state mode executes full original body and selected helpers; actual HTTP/DNS/script effects remain unbound |
 | Cache/failures | Network success parses before saving cache; parse failure reports a config error without fetch-error cache fallback. Fetch failure can fall back to cache | Implemented and compared within source-fields parser scope; cache write errors retain success; host atomic I/O differs from Android FileUtils |
-| Script init | Config acceptance and referenced JAR/script download/init are separate stages | Explicit executable session now initializes mapped JVM class JAR/QuickJS sources lazily; automatic download, DEX/native/Python and full host bindings pending |
+| Script init | Config acceptance and referenced JAR/script download/init are separate stages | Explicit executable session now initializes mapped JVM class JAR/translated DEX/QuickJS sources lazily; controlled protected init supported; automatic download, native/Python and full host bindings pending |
 
 The `sites` backend operation deliberately accepts raw config text after any
 caller-controlled decode/path stage. It neither trims a wrapped object implicitly

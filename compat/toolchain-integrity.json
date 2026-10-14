@@ -65,5 +65,13 @@
     "upstreamSha1": "5675ed6e62a1551f7b92b1bbb8357bfcfb1ed251",
     "bytes": 20620,
     "filename": "wrapper-java-2.1.0.jar"
+  },
+  "dex2jar": {
+    "version": "2.4",
+    "archiveUrl": "https://github.com/pxb1988/dex2jar/releases/download/v2.4/dex-tools-v2.4.zip",
+    "archiveSha256": "ee7c45eb3c1d2474a6145d8d447e651a736a22d9664b6d3d3be5a5a817dda23a",
+    "archiveBytes": 19105975,
+    "verification": "HTTPS official fixed release; no independent release digest published. Archive SHA-256 and extracted jars pinned locally.",
+    "filesManifest": "backend/spider-runtime/dex/toolchain.json"
   }
 }

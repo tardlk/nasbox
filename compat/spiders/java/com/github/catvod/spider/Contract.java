@@ -16,9 +16,10 @@ public class Contract extends Spider {
  public String action(String action){
   if(action.equals("api"))return api.getPort()+"|"+api.webParse("a",null)+"|"+api.getScreenOrientation();
   if(action.equals("initCount"))return Integer.toString(Init.calls);
-  if(action.equals("resource")){try(InputStream in=getClass().getResourceAsStream("/assets/value.txt")){return new String(in.readAllBytes(),java.nio.charset.StandardCharsets.UTF_8);}catch(Exception e){throw new RuntimeException(e);}}
+  if(action.equals("resource")){try(InputStream in=getClass().getResourceAsStream("/assets/value.txt")){return new String(read(in),java.nio.charset.StandardCharsets.UTF_8);}catch(Exception e){throw new RuntimeException(e);}}
   return result("action",action);
  }
+ private static byte[] read(InputStream in)throws IOException{ByteArrayOutputStream out=new ByteArrayOutputStream();byte[] b=new byte[1024];int n;while((n=in.read(b))!=-1)out.write(b,0,n);return out.toByteArray();}
  public boolean manualVideoCheck(){return true;}
  public boolean isVideoFormat(String url){return url.endsWith(".fixture");}
  public Object[] proxyLocal(Map<String,String> params){return new Object[]{201,"text/plain",new ByteArrayInputStream((siteKey+":"+params.get("url")).getBytes(java.nio.charset.StandardCharsets.UTF_8)),Collections.singletonMap("X-Fixture","yes")};}

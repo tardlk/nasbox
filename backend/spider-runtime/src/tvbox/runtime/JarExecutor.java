@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-only
-// Original TVBoxOS methods, explicit JVM class-JAR bindings; see NOTICE.md.
+// Original TVBoxOS methods, explicit JVM/translated-DEX bindings; see NOTICE.md.
 package tvbox.runtime;
 import com.github.catvod.crawler.*;
 import com.github.tvbox.osc.base.App;
@@ -12,6 +12,8 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONObject;
 public final class JarExecutor {
+ private String lastFailure;
+ public String failure(){return lastFailure;}
  private static final String TAG="JarLoader",MAIN_KEY="main";
  private final ConcurrentHashMap<String,JvmJarClassLoader> loaders=new ConcurrentHashMap<>();
  private final ConcurrentHashMap<String,Method> proxyMethods=new ConcurrentHashMap<>(),danmuClickMethods=new ConcurrentHashMap<>(),danmuLongClickMethods=new ConcurrentHashMap<>();
@@ -20,13 +22,10 @@ public final class JarExecutor {
  private final ConcurrentHashMap<String,String> siteJarKeys=new ConcurrentHashMap<>(),aliases=new ConcurrentHashMap<>();
  private final Map<String,Path> artifacts=new HashMap<>();
  private volatile String recent=MAIN_KEY;
- private final ProtectedInitJar protectedInitJar=new ProtectedInitJar();
+ private final ProtectedJarSupport protectedInitJar=new ProtectedJarSupport();
  static class TextUtils{static boolean isEmpty(CharSequence s){return s==null||s.length()==0;}}
  static class Log{static void i(String tag,String message){HostServices.log(message);}static void e(String tag,String message){HostServices.log(message);}}
  static class RemoteServer{static int serverPort=9978;}
- // Only ordinary JVM class JARs are admitted by the artifact boundary. Android
- // protected/DEX/native jars are rejected there, before init is considered.
- static class ProtectedInitJar{boolean check(String path){return false;}boolean init(Class<?> c){throw new UnsupportedOperationException("Protected Android initialization unavailable");}}
  public void register(String signature,Path file)throws IOException{
   if(!Files.isRegularFile(file))throw new FileNotFoundException("JAR artifact missing");
   artifacts.put(signature,file.toAbsolutePath());
@@ -42,14 +41,15 @@ public final class JarExecutor {
   load(key,file.toFile());
  }
  private boolean load(String key,File file){
+  lastFailure=null;
   if(Thread.interrupted()||!file.isFile())return false;
   if(loaders.containsKey(key))return true;
   JvmJarClassLoader loader=null;
   try{
    loader=new JvmJarClassLoader(file.toPath());
-   if(!invokeInit(loader,file.getAbsolutePath())){loader.close();return false;}
+   if(!invokeInit(loader,file.getAbsolutePath())){lastFailure="PROTECTED_INIT_UNBOUND";loader.close();return false;}
    invokeProxy(key,loader);invokeDanmaku(key,loader);injectProxyPort(loader);loaders.put(key,loader);return true;
-  }catch(Throwable e){try{if(loader!=null)loader.close();}catch(Exception ignored){}HostServices.log("JAR loading failed: "+e.getClass().getName());return false;}
+  }catch(Throwable e){lastFailure=e.getClass().getSimpleName()+": "+e.getMessage();try{if(loader!=null)loader.close();}catch(Exception ignored){}HostServices.log("JAR loading failed: "+e.getClass().getName());return false;}
  }
  public void close()throws IOException{
   List<JvmJarClassLoader> owned=new ArrayList<>(loaders.values());

@@ -21,7 +21,9 @@ public final class SpiderWorker {
   String operation=r.get("operation").getAsString();
   if(operation.equals("resetKeys")){router.currentPyKey="";return JsonNull.INSTANCE;}
   if(operation.equals("host")){HostServices.configure(r);return JsonNull.INSTANCE;}
-  if(operation.equals("loadMain")){JsonObject v=new JsonObject();v.addProperty("loaded",jars.loadMain(Path.of(r.get("path").getAsString())));v.add("logs",HostServices.logs.deepCopy());return v;}
+  if(operation.equals("loadMain")){JsonObject v=new JsonObject();v.addProperty("loaded",jars.loadMain(Path.of(r.get("path").getAsString())));v.add("logs",HostServices.logs.deepCopy());if(!v.get("loaded").getAsBoolean()&&jars.failure()!=null)v.addProperty("failure",jars.failure());return v;}
+  if(operation.equals("dexState")){JsonObject v=new JsonObject();v.addProperty("nestedLoaderCount",dalvik.system.BaseDexClassLoader.ownedCount());return v;}
+  if(operation.equals("scanProtection"))return new JsonPrimitive(new ProtectedJarSupport().check(r.get("path").getAsString()));
   if(operation.equals("registerJar")){String signature=r.get("signature").getAsString();Path path=Path.of(r.get("path").getAsString());jars.register(signature,path);scripts.register(signature.split(";md5;")[0],path);return JsonNull.INSTANCE;}
   if(operation.equals("modules")){
    if(r.has("root"))com.github.tvbox.osc.util.FileUtils.moduleRoot=Path.of(r.get("root").getAsString()).toRealPath();
@@ -86,7 +88,11 @@ public final class SpiderWorker {
  static JsonArray sorted(JsonArray a){ArrayList<String> s=new ArrayList<>();for(JsonElement v:a)s.add(v.getAsString());Collections.sort(s);JsonArray r=new JsonArray();for(String v:s)r.add(v);return r;}
  private void close()throws Exception{
   Exception failure=null;try{jars.close();}catch(Exception e){failure=e;}
-  try{scripts.close();}catch(Exception e){failure=e;}finally{HostServices.close();com.github.tvbox.osc.util.FileUtils.clear();}
+  try{scripts.close();}catch(Exception e){failure=e;}finally{
+   try{dalvik.system.BaseDexClassLoader.closeAll();}catch(Exception e){failure=e;}
+   try{DexArtifacts.close();}catch(Exception e){failure=e;}
+   HostServices.close();com.github.tvbox.osc.util.FileUtils.clear();
+  }
   if(failure!=null)throw failure;
  }
  public static void main(String[] args)throws Exception{

@@ -5,11 +5,11 @@ Priority: subscription links and script execution behavior; player work deferred
 | Work | Status | Evidence |
 | --- | --- | --- |
 | Win-Box checkout and working branch | Done | baseline.json; branch codex/linux-core |
-| Android source candidate pinned | Done | TVBoxOS ab11d28: original 20-file snapshot plus 30 auxiliary TVBoxOS files; nine auxiliary AOSP Android 13 source files pinned separately |
+| Android source candidate pinned | Done | TVBoxOS ab11d28: original 20-file snapshot plus 31 auxiliary TVBoxOS files; nine auxiliary AOSP Android 13 source files pinned separately |
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 337 Node tests passed, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
+| Probe and backend contract tests | Done | 351 Node tests passed, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
@@ -18,7 +18,8 @@ Priority: subscription links and script execution behavior; player work deferred
 | Expanded VOD configuration prefix | Implemented as optional mode | Globals/spider, home/search sources, flags/parses/default selection; 51 prefix + 10 load scenarios; VOD mode intentionally ends before live |
 | Full parseJson configuration state | Implemented as optional --config mode | 85 full-state/query results; live/hosts/proxy/rules/DOH/ads, partial reset and cleanup ownership; actual script/HTTP bindings pending |
 | Spider/SpiderApi and controlled JAR/QuickJS execution | Initial executable contract slice | 136/136 fresh-source observations; actual JVM class JAR, QuickJS modules/bytecode, Java extensions, HTTP, restart and cleanup fixtures |
-| DEX/protected/native/Python and complete JS host parity | Pending | Not supplied by the new runtime; actual Android source/runtime comparison still required |
+| DEX and protected initialization | Controlled host slice implemented | dex-runtime-comparison.json: 155/155 observations; raw/multidex/resources/cache and synthetic Java-unpacked nested payload; native/ART unverified |
+| Native/Python and complete JS host parity | Pending | Native-only protected init fails explicitly; actual Android source/runtime comparison still required |
 | Linux container and NAS validation | Pending | Current host is macOS ARM64; no Docker available |
 
 The 65-case audit contains 12 matching observations, 51 differing observations
@@ -120,7 +121,7 @@ infinite loops and unresolved Promises are bounded by a process deadline.
 136 runtime observations match a fresh source probe on the same explicit host
 bindings. The earlier 348 configuration observations remain passing, for 484
 scoped observations across the two reports; this is not a full-client compatibility
-rate. All 337 tests pass. No real subscribed JAR/JS code was downloaded or executed.
+rate. The previous batch had 337 passing tests; the current total is 351. No real subscribed JAR/JS code was downloaded or executed.
 See spider-runtime-comparison.json and backend/spider-runtime/README.md.
 
 A source/JVM finding remains: ordinary JS object-ext initialization invokes parsing
@@ -131,10 +132,27 @@ execution, full HTML/crypto globals, remote code/cache behavior and Android APIs
 remain incomplete. ready only describes an obtained instance/script object.
 Subscription hosts/proxy/DOH and scripted-live configuration effects remain unbound.
 
+Controlled DEX and protected initialization now run through an isolated pinned
+dex2jar 2.4 boundary. The unchanged upstream ProtectedInitJar checks the original
+DEX/ZIP, plain/AES package whitelists and binds Context and a real nested translated
+DexClassLoader. An owned AES fixture confirms normal init was skipped, the payload
+received siteKey/initApi/ext, optional hooks ran and clear destroyed/closed it.
+Native-only protected init remains false/SpiderNull. No -noverify was enabled.
+
+155/155 observations in dex-runtime-comparison.json are 136 mixed contract results
+with the JAR fixture replaced by DEX plus 19 explicitly specified protection
+observations on fresh-source and production helpers sharing the declared host.
+This is not an Android compatibility rate or native-shell certification. Additional
+integration tests cover raw/disguised/multidex, resources, signatures, dependency
+integrity, cache identity/restart/rebuild, malformed/duplicate DEX and cleanup.
+All 351 tests pass. No actual subscription code was run. Worker heap is now 256 MiB;
+persistent caller-owned cache quota and Android/ART verification remain pending.
+
 Next batch:
 
-1. Add controlled DEX/protected-JAR loading/conversion and establish Android/ART
-   execution evidence; ordinary JVM JAR results cannot certify those plugins.
+1. Establish Android/ART and Linux x86_64 evidence; validate actual subscribed
+   JAR/JS dependencies and address missing Android/native host APIs from failures.
 2. Complete required JS Global/module/network/persistent bindings and Python;
    apply parsed hosts/proxy/DOH/cookies to actual runtime clients and live init.
-3. Validate on Linux x86_64 and an Android runtime before claiming platform parity.
+3. Add automatic artifact resolution/cache policy and NAS aggregate resource
+   limits before Docker/Web delivery; full TVBox behavior is still unconfirmed.

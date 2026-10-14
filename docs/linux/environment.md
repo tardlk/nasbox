@@ -11,12 +11,13 @@ Maven and Gradle were not available on PATH.
 | New Eclipse Temurin JDK 17.0.20.1+1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/jdk17 | Compile/execute original reference methods and independent backend config core | Project-scoped development environment; retained for ongoing migration |
 | New Gson 2.10.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/gson-2.10.1.jar | Match the Android app's actual JSON library | Project-scoped development dependency; retained |
 | New Bouncy Castle 1.78.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/bcprov-jdk18on-1.78.1.jar | Support the original AES/ECB and AES/CBC PKCS7 transformations on host JVM | Project-scoped dependency; about 7.94 MiB; retained for ongoing migration |
+| New dex2jar 2.4 bundle (includes dx-30.0.2.jar) | /Users/coke/Desktop/Projects/tvbox-linux/.tools/dex2jar-v2.4 | Runtime DEX translation; bundled dx only generates owned test fixtures | Project-scoped; about 19.7 MiB; retained for ongoing migration |
 | Public Android reference snapshot | compat/reference/tvboxos | Fixed source and license evidence | Retained project source, about 263 KB of downloaded files |
 | Auxiliary source snapshots | compat/reference/android-platform and compat/reference/tvboxos-extra | Android 13 JSON/Base64/Uri and original config/live/network helper sources | Retained source, about 440 KiB including licenses; runtime helper copies are also committed |
 | Generated reference classes | .cache/compat/oracle | Temporary test build | Removed after verification; rebuilt automatically |
 | Generated backend classes | .cache/backend/config-core | Temporary independent runtime build | Removed after verification; rebuilt automatically |
 
-The project-scoped tool directory occupies approximately 317 MiB. Exact runtime
+The project-scoped tool directory currently occupies approximately 339 MiB. Exact runtime
 artifact versions and checksums are recorded in compat/toolchain-integrity.json.
 The JDK archive SHA-256 was verified against the official Temurin GitHub release
 asset digest before extraction. Gson was verified against Maven Central's SHA-1,
@@ -139,3 +140,38 @@ and unresolved-Promise fixtures were killed by their process deadline and their
 temporary directories removed. No actual subscribed source code was run. No
 persistent listener, daemon, global PATH change, system installation or autostart
 entry was created. Services still running: none. Autostart changes: none.
+
+
+## Controlled DEX and protected initialization batch — 2026-10-14
+
+Checked existing project lib directories, WinBox resources and PATH first: no
+usable DEX converter/dx/Android SDK/adb/Docker was present. Retained the official
+fixed dex2jar v2.4 archive's lib and LICENSE/NOTICE files under
+/Users/coke/Desktop/Projects/tvbox-linux/.tools/dex2jar-v2.4 (19.7 MiB).
+The release already includes dx-30.0.2.jar, so no duplicate D8/dx, Maven, Gradle,
+SDK, emulator or package manager was installed. Existing Node/JDK/clang tools
+were reused without changing system PATH or shared installations.
+
+Archive URL, byte size, SHA-256 and every retained file's hash are in
+backend/spider-runtime/dex/toolchain.json. The official release did not publish
+an independent digest: these are locally pinned hashes of the HTTPS fixed-release
+download, not independently authenticated upstream checksum claims. Licenses and
+notices are preserved under backend/spider-runtime/dex/licenses (about 20 KiB).
+No archive was retained. .tools now occupies about 339 MiB including the existing
+JDK/Gson/BC/HTTP/QuickJS Java libraries; these are development dependencies retained
+to continue the port. The dex2jar bundle is also needed by future Linux runtime
+packaging; dx is test-only. Binaries remain outside Git.
+
+The converter runs inside each worker's isolated classloader, so no detached
+conversion process or service is created. Worker heap increased to 256 MiB;
+input/expanded artifact limits, request deadline and staging cleanup are documented
+in the runtime README. Owned worker directories and temporary test cache/tool
+roots were removed in finally. Caller-owned persistent runtime data is retained
+only when explicitly selected; its aggregate DEX cache quota remains future work.
+
+351 tests passed; dex-runtime-comparison.json records 155 matching host observations.
+Synthetic DEX/guard payloads, source-probe classes, local native/Java build outputs
+and verification logs under this project's .cache were removed after validation.
+No .data directory remains and no actual subscription JAR/JS code was executed.
+All task-owned workers and temporary listeners are stopped. Services still running:
+none. Autostart changes: none. No tools from other projects were removed.
