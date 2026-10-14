@@ -25,6 +25,16 @@ final class PreferenceStore {
             }
             next.put(key, list);
         }
+        // Additional configuration preferences are optional. Preserve integer versus
+        // string player selections and URL-scoped live indices across restarts.
+        for (Map.Entry<String,JsonElement> entry : input.entrySet()) {
+            String key=entry.getKey(); JsonElement value=entry.getValue();
+            if (Arrays.asList("epgUrl","dohJson").contains(key)) next.put(key,value.getAsString());
+            else if (Arrays.asList("dohUrl","playType","liveConnectTimeout","liveGroupIndex").contains(key) || key.startsWith("liveGroupIndex_")) next.put(key,value.getAsInt());
+            else if(key.equals("livePlayType")) next.put(key,value.isJsonPrimitive()&&value.getAsJsonPrimitive().isString()?value.getAsString():value.getAsInt());
+            else if(key.equals("liveGroupList")) next.put(key,value.getAsJsonArray().deepCopy());
+            else if(key.equals("liveWebHeader")) next.put(key,value.isJsonNull()?null:new Gson().fromJson(value,new com.google.gson.reflect.TypeToken<HashMap<String,String>>(){}.getType()));
+        }
         values.clear(); values.putAll(next);
     }
     JsonObject snapshot() { return new Gson().toJsonTree(values).getAsJsonObject(); }

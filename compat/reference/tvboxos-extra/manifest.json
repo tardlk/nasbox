@@ -26,6 +26,71 @@
       "path": "app/src/main/java/com/github/tvbox/osc/bean/ParseBean.java",
       "sha256": "020283c2b2c8f0d97fb319371594ff8c982af116bc507acdf03504f23e61b032",
       "bytes": 1419
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/ProxyRule.java",
+      "sha256": "f4a7fcb887cb8b441dc068ecfa0bd89adaea31df018a8e62f54cfa968b2d0e17",
+      "bytes": 3433
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/VideoParseRuler.java",
+      "sha256": "2f3ed7286552e45a3e927b3186c8e4107cd8d60457645fcf2477613ed57c5c15",
+      "bytes": 6935
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/AdBlocker.java",
+      "sha256": "0a903ca2bdecb658d99765f82c9ecc5fcebaa55c53cecbcf61a6b6c519b5803c",
+      "bytes": 1003
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/M3u8.java",
+      "sha256": "f72c217c8c2c88cea5311b8231eeea2bc7d297bb4b40c204904011e5869cd51e",
+      "bytes": 39317
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/LiveChannelGroup.java",
+      "sha256": "d84b2ea4047faf2c1c6d7a20d5afa76d83c665a6e932a5cef318795631e63041",
+      "bytes": 1101
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/LiveChannelItem.java",
+      "sha256": "0b38072a1a25a19d510392b56634765e57d6f410fbb5fd121aa5feb52e91d934",
+      "bytes": 6709
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/LiveSettingGroup.java",
+      "sha256": "1ce3ecd10b3ae0be4c368ecfad4aae8662632f2027c7bd563d8bfbba27b0bef8",
+      "bytes": 776
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/LiveSettingItem.java",
+      "sha256": "3fce1fcda42547bafdcf824c8b19c4d443a6ef08630e78bf3bb7a0af7330e58d",
+      "bytes": 715
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/live/TxtSubscribe.java",
+      "sha256": "f51014570dc918b8a28a07e9d0e62a6e6cd0f14b8e4732db54f6aa538ae48612",
+      "bytes": 18639
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/Proxy.java",
+      "sha256": "0d313c6557054cc5fd32f3429d16ddbd5b18c3ea2823f7705b4ec2f90b19a4a5",
+      "bytes": 14786
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/RegexUtils.java",
+      "sha256": "5ead0288be3cba8fca6d4704d2fbc5a1c3d0f264064b542cd6c47e49a2a96d72",
+      "bytes": 773
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/net/OkProxySelector.java",
+      "sha256": "2aceac7e2f3696ad0dbc508917a2e2b1b6c532ba2ab3a398eef25a6c29165998",
+      "bytes": 2351
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/net/ProxyAuthenticator.java",
+      "sha256": "9138ab99dbc3e1227d056c8f2fe4b867d3cb7a88b975404c4a23cf632d3e9cc8",
+      "bytes": 2167
     }
   ]
 }

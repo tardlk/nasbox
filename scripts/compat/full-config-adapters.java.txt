@@ -1,0 +1,87 @@
+  // Host bindings: persistence adapter, observable empty executor lifecycle, and
+  // explicit failures for unimplemented script initialization. No source is run.
+  private final PreferenceStore preferences;
+  private final HawkAdapter Hawk;
+  private final OkGoHelper OkGoHelper = new OkGoHelper();
+  private final List<LiveChannelGroup> liveChannelGroupList = new ArrayList<>();
+  private final List<LiveSettingGroup> liveSettingGroupList = new ArrayList<>();
+  private Map<String,String> myHosts;
+  private final Set<String> warmedSearchSpiderKeys = new HashSet<>();
+  private String currentPlaySourceKey="",currentPyKey="",currentLivePyKey="",liveSpider="";
+  private String currentLiveSpider=null;
+  private final JsonArray effects = new JsonArray();
+  private String clearFailure = "";
+  private final Loader jarLoader=new Loader("jar"),pyLoader=new Loader("py"),jsLoader=new Loader("js");
+  FullConfig(PreferenceStore store){preferences=store;Hawk=new HawkAdapter();clearLoader();Hawk.put(HawkConfig.LIVE_GROUP_LIST,new JsonArray());loadDefaultConfig();}
+  class HawkAdapter {
+    <T>T get(String key,T fallback){return preferences.get(key,fallback);}
+    void put(String key,Object value){preferences.put(key,value);}
+  }
+  static class HawkConfig {
+    static final String HOME_API="homeApi",DEFAULT_PARSE="defaultParse",LIVE_API_URL="liveApiUrl",API_URL="apiUrl",
+      LIVE_GROUP_INDEX="liveGroupIndex",LIVE_GROUP_LIST="liveGroupList",LIVE_API_HISTORY="liveApiHistory",
+      EPG_URL="epgUrl",LIVE_PLAY_TYPE="livePlayType",PLAY_TYPE="playType",LIVE_CONNECT_TIMEOUT="liveConnectTimeout",
+      LIVE_WEB_HEADER="liveWebHeader",DOH_JSON="dohJson",DOH_URL="dohUrl";
+  }
+  static class TextUtils{static boolean isEmpty(CharSequence s){return s==null||s.length()==0;}}
+  static class Log{static void e(String a,String b){}}
+  static class LOG{static void i(String ignored){}static void e(String a,String b){}}
+  private void effect(String name,JsonArray args,boolean completed){
+    JsonObject e=new JsonObject();e.addProperty("operation",name);e.add("arguments",args);e.addProperty("completed",completed);effects.add(e);
+  }
+  class Loader {
+    final String kind; Loader(String kind){this.kind=kind;}
+    void clear(){boolean ok=!clearFailure.equals(kind);effect(kind+".clear",new JsonArray(),ok);if(!ok)throw new IllegalStateException("Executor clear failed: "+kind);}
+    void getSpider(String... args){JsonArray a=new JsonArray();for(String s:args)a.add(s);effect(kind+".getSpider",a,false);throw new UnsupportedOperationException("Unbound "+kind+" executor");}
+    void loadLiveJar(String url){JsonArray a=new JsonArray();a.add(url);effect("jar.loadLiveJar",a,false);throw new UnsupportedOperationException("Unbound jar executor");}
+  }
+  JsonObject snapshot(){
+    JsonObject result=vodSnapshot();result.addProperty("scope","config-state");
+    result.add("hosts",gson.toJsonTree(myHosts));result.add("dnsHosts",gson.toJsonTree(OkGoHelper.myHosts));
+    result.add("liveChannels",gson.toJsonTree(liveChannelGroupList));result.add("liveSettings",gson.toJsonTree(liveSettingGroupList));
+    result.add("dnsNames",gson.toJsonTree(OkGoHelper.dnsHttpsList));
+    JsonObject rules=new JsonObject();rules.add("rules",gson.toJsonTree(VideoParseRuler.HOSTS_RULE));rules.add("filters",gson.toJsonTree(VideoParseRuler.HOSTS_FILTER));
+    rules.add("regex",gson.toJsonTree(VideoParseRuler.HOSTS_REGEX));rules.add("scripts",gson.toJsonTree(VideoParseRuler.HOSTS_SCRIPT));result.add("rules",rules);
+    result.add("ads",gson.toJsonTree(AdBlocker.AD_HOSTS));result.add("effects",effects.deepCopy());
+    result.add("preferences",preferences.snapshot());
+    JsonObject keys=new JsonObject();keys.addProperty("play",currentPlaySourceKey);keys.addProperty("py",currentPyKey);
+    keys.addProperty("livePy",currentLivePyKey);keys.addProperty("liveSpider",currentLiveSpider);keys.addProperty("liveGlobalSpider",liveSpider);
+    keys.add("warmedSearch",gson.toJsonTree(warmedSearchSpiderKeys));result.add("runtimeKeys",keys);
+    JsonArray proxies=new JsonArray();for(ProxyRule p:OkGoHelper.selector.getProxy()){
+      if(p==null){proxies.add(JsonNull.INSTANCE);continue;}
+      JsonObject item=new JsonObject();item.addProperty("name",p.getName());item.add("hosts",gson.toJsonTree(p.getHosts()));item.add("urls",gson.toJsonTree(p.getUrls()));
+      item.add("proxies",proxyValues(p.getProxies()));proxies.add(item);
+    }result.add("proxies",proxies);return result;
+  }
+  static JsonArray proxyValues(List<java.net.Proxy> proxies){JsonArray values=new JsonArray();for(java.net.Proxy p:proxies){
+    JsonObject value=new JsonObject();value.addProperty("type",p.type().name());if(p.address() instanceof InetSocketAddress){InetSocketAddress a=(InetSocketAddress)p.address();value.addProperty("host",a.getHostString());value.addProperty("port",a.getPort());}values.add(value);
+  }return values;}
+  void resetRuntimeKeys(){currentPyKey="";currentLivePyKey="";currentLiveSpider="";}
+  JsonObject run(JsonObject request){
+    while(effects.size()>0)effects.remove(effects.size()-1);clearFailure=request.has("clearFailure")?request.get("clearFailure").getAsString():"";
+    JsonObject result=new JsonObject();try{
+      String op=request.has("action")?request.get("action").getAsString():"parse";
+      String url=request.has("url")?request.get("url").getAsString():"";
+      String text=request.has("text")&&!request.get("text").isJsonNull()?request.get("text").getAsString():null;
+      if(op.equals("parse"))parseJson(url,text);
+      else if(op.equals("liveContent"))parseLiveConfigContent(url,text);
+      else if(op.equals("lives"))loadLives(JsonParser.parseString(text).getAsJsonArray());
+      else if(op.equals("liveApi"))loadLiveApi(JsonParser.parseString(text).getAsJsonObject());
+      else if(op.equals("seedRuntime")){currentPlaySourceKey="old-play";currentPyKey="old-py";currentLivePyKey="old-live-py";currentLiveSpider="old-live";warmedSearchSpiderKeys.add("old-search");}
+      else throw new IllegalArgumentException("Unknown config action");
+      result.addProperty("accepted",true);
+    }catch(Throwable e){result.addProperty("accepted",false);result.addProperty("errorType",e.getClass().getName());}
+    finally{clearFailure="";}
+    result.add("config",snapshot());return result;
+  }
+  JsonElement inspect(JsonObject request){
+    String action=request.get("action").getAsString();
+    if(action.equals("doh"))return new JsonPrimitive(OkGoHelper.getDohUrl(request.get("index").getAsInt()));
+    if(action.equals("proxy"))return proxyValues(OkGoHelper.selector.select(URI.create(request.get("url").getAsString())));
+    if(action.equals("ad"))return new JsonPrimitive(AdBlocker.isAd(request.get("url").getAsString()));
+    if(action.equals("script"))return new JsonPrimitive(VideoParseRuler.getHostScript(request.get("url").getAsString()));
+    if(action.equals("video"))return new JsonPrimitive(VideoParseRuler.checkIsVideoForParse(request.get("webUrl").getAsString(),request.get("url").getAsString()));
+    if(action.equals("filter"))return new JsonPrimitive(VideoParseRuler.isFilter(request.get("webUrl").getAsString(),request.get("url").getAsString()));
+    if(action.equals("userInfo")){for(ProxyRule p:OkGoHelper.selector.getProxy()){String v=p.getUserInfo(request.get("host").getAsString());if(v!=null)return new JsonPrimitive(v);}return JsonNull.INSTANCE;}
+    throw new IllegalArgumentException("Unknown config query");
+  }

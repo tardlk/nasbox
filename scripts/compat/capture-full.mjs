@@ -1,0 +1,10 @@
+import { writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { root } from './reference.mjs';
+import { buildFullOracle, queryFullOracle } from './full-oracle.mjs';
+import { fullCases } from './full-cases.mjs';
+const built=buildFullOracle();
+const results=queryFullOracle(fullCases.map(c=>c.request),built);
+const output={scope:built.extraction.scope,extraction:built.extraction,cases:fullCases.map((c,i)=>({...c,expected:results[i]}))};
+writeFileSync(resolve(root,'compat/fixtures/full-observations.json'),JSON.stringify(output,null,2)+'\n');
+console.log(JSON.stringify({cases:results.length,scope:output.scope}));

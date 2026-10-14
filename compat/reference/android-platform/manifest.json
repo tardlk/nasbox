@@ -57,6 +57,22 @@
       "upstreamPath": "core/java/android/util/Base64.java",
       "sha256": "bd7b1e83953dda51fda1b96b5211cf43e375105db8f7f5a6dd678efb57fb3364",
       "bytes": 28679
+    },
+    {
+      "path": "frameworks-base/android/net/Uri.java",
+      "repository": "platform/frameworks/base",
+      "commit": "0d3ff311e6e80dee7fe88a2a2cfa272ce231c3c6",
+      "upstreamPath": "core/java/android/net/Uri.java",
+      "sha256": "71946b9e76462b64c0a81e7ec2f51178568efa3ede5ab0a6b16ee81b7723e86b",
+      "bytes": 79747
+    },
+    {
+      "path": "frameworks-base/android/net/UriCodec.java",
+      "repository": "platform/frameworks/base",
+      "commit": "0d3ff311e6e80dee7fe88a2a2cfa272ce231c3c6",
+      "upstreamPath": "core/java/android/net/UriCodec.java",
+      "sha256": "19ed9a4c5fc0c1ab322cc91c09e80c8b99e1637b00ae0a2b648afd76d2c50f78",
+      "bytes": 6812
     }
   ],
   "license": {

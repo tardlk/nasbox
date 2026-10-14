@@ -1,0 +1,48 @@
+{
+  "scope": "macOS ARM64 host-JVM full configuration state; no Android/ART, Linux/NAS, actual OkHttp rebuild/DOH/proxy or script execution",
+  "networkImport": {
+    "ok": true,
+    "sourceCount": 48,
+    "typeCounts": {
+      "3": 48
+    },
+    "collectionLines": 0,
+    "scope": "config-state",
+    "hasGlobalSpider": true,
+    "parseCount": 0,
+    "vipFlagCount": 0,
+    "hasHomeSource": true,
+    "liveGroupCount": 1,
+    "hostCount": 3,
+    "proxyRuleCount": 0,
+    "ruleHostCount": 1,
+    "dnsOptionCount": 4,
+    "adHostCount": 57,
+    "unboundEffects": [
+      "http.reset"
+    ]
+  },
+  "newProcessCacheImport": {
+    "ok": true,
+    "sourceCount": 48,
+    "typeCounts": {
+      "3": 48
+    },
+    "collectionLines": 0,
+    "scope": "config-state",
+    "hasGlobalSpider": true,
+    "parseCount": 0,
+    "vipFlagCount": 0,
+    "hasHomeSource": true,
+    "liveGroupCount": 1,
+    "hostCount": 3,
+    "proxyRuleCount": 0,
+    "ruleHostCount": 1,
+    "dnsOptionCount": 4,
+    "adHostCount": 57,
+    "unboundEffects": [
+      "http.reset"
+    ]
+  },
+  "temporaryDataDirectory": ".cache/full-cli-validation; removed after verification"
+}

@@ -110,6 +110,13 @@ export function createConfigCore({ built = buildConfigCore(), timeoutMs = 30000,
       if (!result.ok) throw new ConfigParseError(result);
       return result.value;
     },
+    async parseFull(text, apiUrl = '', options = {}) {
+      const result = await query({ operation: 'full', text, url: apiUrl, ...options });
+      if (!result.ok) throw new ConfigParseError(result);
+      if (!result.value.accepted) throw new ConfigParseError({ errorType: result.value.errorType,
+        partialSites: result.value.config.sites, partialConfig: result.value.config });
+      return result.value.config;
+    },
     async parseVod(text, apiUrl = '') {
       const result = await query({ operation: 'vod', text, url: apiUrl });
       if (!result.ok) throw new ConfigParseError(result);

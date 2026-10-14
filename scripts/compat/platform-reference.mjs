@@ -19,10 +19,18 @@ export function verifyPlatformReference() {
   return { platform, manifest, extra, additional };
 }
 
-// Annotation declarations only; no Android API behavior is mocked by these.
+// Host annotations and unreachable Android service bindings. Service APIs fail explicitly.
 const annotations = {
   'android/compat/annotation/UnsupportedAppUsage.java': 'package android.compat.annotation; public @interface UnsupportedAppUsage {}',
-  'android/annotation/SystemApi.java': 'package android.annotation; public @interface SystemApi { enum Client { MODULE_LIBRARIES } Client client(); }',
+  'android/annotation/SystemApi.java': 'package android.annotation; public @interface SystemApi { enum Client { MODULE_LIBRARIES } Client client() default Client.MODULE_LIBRARIES; }',
+  'android/annotation/NonNull.java': 'package android.annotation; public @interface NonNull {}',
+  'android/annotation/Nullable.java': 'package android.annotation; public @interface Nullable {}',
+  'android/os/Parcelable.java': 'package android.os; public interface Parcelable {int describeContents();void writeToParcel(Parcel p,int flags);interface Creator<T>{T createFromParcel(Parcel p);T[] newArray(int n);}}',
+  'android/os/Parcel.java': 'package android.os; public class Parcel {public int readInt(){throw new UnsupportedOperationException("Parcel unavailable");} public String readString8(){throw new UnsupportedOperationException("Parcel unavailable");}public void writeString8(String s){throw new UnsupportedOperationException("Parcel unavailable");}public String readString(){throw new UnsupportedOperationException("Parcel unavailable");}public void writeInt(int n){throw new UnsupportedOperationException("Parcel unavailable");}public void writeString(String s){throw new UnsupportedOperationException("Parcel unavailable");}}',
+  'android/os/Environment.java': 'package android.os; public class Environment {public static boolean isExternalStorageEmulated(){throw new UnsupportedOperationException("Android storage unavailable");}public static java.io.File getLegacyExternalStorageDirectory(){throw new UnsupportedOperationException("Android storage unavailable");}public static java.io.File getExternalStorageDirectory(){throw new UnsupportedOperationException("Android storage unavailable");}}',
+  'android/os/StrictMode.java': 'package android.os; public class StrictMode {public static void onFileUriExposed(android.net.Uri uri,String location){throw new UnsupportedOperationException("Android StrictMode unavailable");}public static void onContentUriWithoutPermission(android.net.Uri uri,String location){throw new UnsupportedOperationException("Android StrictMode unavailable");}}',
+  'android/content/Intent.java': 'package android.content; public class Intent {public static boolean isAccessUriMode(int flags){throw new UnsupportedOperationException("Android permissions unavailable");}}',
+  'android/util/Log.java': 'package android.util; public class Log {public static int w(String tag,String message,Throwable t){return 0;}}',
   'libcore/util/NonNull.java': 'package libcore.util; @java.lang.annotation.Target(java.lang.annotation.ElementType.TYPE_USE) public @interface NonNull {}',
   'libcore/util/Nullable.java': 'package libcore.util; @java.lang.annotation.Target(java.lang.annotation.ElementType.TYPE_USE) public @interface Nullable {}',
 };
@@ -40,7 +48,7 @@ export function copyPlatformReference(target) {
   for (const [relative, source] of Object.entries(annotations)) {
     const path = resolve(target, relative);
     mkdirSync(dirname(path), { recursive: true });
-    writeFileSync(path, '// Host-only annotation declaration.\n' + source + '\n');
+    writeFileSync(path, '// Host-only declaration; Android service APIs are unavailable.\n' + source + '\n');
     sources.push(path);
   }
   return { ...verified, sources };

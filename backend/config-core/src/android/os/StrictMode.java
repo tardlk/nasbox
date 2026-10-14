@@ -1,0 +1,2 @@
+// Host-only declaration; Android service APIs are unavailable.
+package android.os; public class StrictMode {public static void onFileUriExposed(android.net.Uri uri,String location){throw new UnsupportedOperationException("Android StrictMode unavailable");}public static void onContentUriWithoutPermission(android.net.Uri uri,String location){throw new UnsupportedOperationException("Android StrictMode unavailable");}}

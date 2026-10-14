@@ -12,7 +12,7 @@ Maven and Gradle were not available on PATH.
 | New Gson 2.10.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/gson-2.10.1.jar | Match the Android app's actual JSON library | Project-scoped development dependency; retained |
 | New Bouncy Castle 1.78.1 | /Users/coke/Desktop/Projects/tvbox-linux/.tools/lib/bcprov-jdk18on-1.78.1.jar | Support the original AES/ECB and AES/CBC PKCS7 transformations on host JVM | Project-scoped dependency; about 7.94 MiB; retained for ongoing migration |
 | Public Android reference snapshot | compat/reference/tvboxos | Fixed source and license evidence | Retained project source, about 263 KB of downloaded files |
-| Auxiliary source snapshots | compat/reference/android-platform and compat/reference/tvboxos-extra | Android 13 JSON/Base64 and original HistoryHelper/MD5/FileUtils/ParseBean | Retained source, about 146 KB plus licenses; runtime helper copies are also committed |
+| Auxiliary source snapshots | compat/reference/android-platform and compat/reference/tvboxos-extra | Android 13 JSON/Base64/Uri and original config/live/network helper sources | Retained source, about 440 KiB including licenses; runtime helper copies are also committed |
 | Generated reference classes | .cache/compat/oracle | Temporary test build | Removed after verification; rebuilt automatically |
 | Generated backend classes | .cache/backend/config-core | Temporary independent runtime build | Removed after verification; rebuilt automatically |
 
@@ -70,3 +70,19 @@ in aggregate; files have explicit limits and the owning user controls retention.
 Temporary subscription response bytes/decoded content and generated Java classes
 under .cache were removed after extracting metadata and verification results.
 Services still running: none. Autostart changes: none.
+
+The full-configuration batch inspected/reused the existing Node/JDK/Gson/BC tools;
+no binary, package manager environment, Android SDK or Docker was installed. Added
+source snapshots include AOSP Uri/UriCodec and original TVBoxOS live/rule/proxy
+helpers with pinned hashes/licenses. Retained auxiliary snapshot directories occupy
+about 244 KiB (Android) and 196 KiB (TVBoxOS); these are project source, not services.
+The full frozen synthetic observations occupy about 600 KiB. .tools remains about
+317 MiB for continued development. No shared tool was modified.
+
+Full-mode tests created/removed tvbox-full-* temporary directories and JVM children.
+The real --config import and separate-process cache check used
+.cache/full-cli-validation; its raw prepared payload/preferences were removed after
+aggregate counts were saved to full-loader-smoke.json. Test build/cache outputs
+were also removed. No .data directory was retained. Running services: none;
+autostart changes: none. RuntimeCleanup fixtures used in-memory resources only;
+no actual script engine or HTTP proxy service was launched.

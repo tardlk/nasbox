@@ -12,6 +12,9 @@ public final class ConfigWorker {
     private final SubscriptionConfig subscription = new SubscriptionConfig(parser);
     private final VodConfig vod = new VodConfig(subscription.preferences());
 
+    private FullConfig full;
+    private FullConfig full() {if(full==null)full=new FullConfig(subscription.preferences());return full;}
+
     private JsonElement run(JsonObject request) throws Exception {
         String operation = request.get("operation").getAsString();
         String text = request.has("text") && !request.get("text").isJsonNull()
@@ -21,6 +24,10 @@ public final class ConfigWorker {
             DefaultConfig.localAddress = parser.localAddress;
         }
         switch (operation) {
+            case "full": return full().run(request);
+            case "fullState": return full().snapshot();
+            case "fullInspect": return full().inspect(request);
+            case "fullResetKeys": full().resetRuntimeKeys();return JsonNull.INSTANCE;
             case "vod": return vod.run(request.has("url") ? request.get("url").getAsString() : "", text);
             case "vodState": return vod.snapshot();
             case "vodSearch": return vod.searchSources();

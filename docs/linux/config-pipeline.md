@@ -13,11 +13,11 @@ These observations describe source, not verified Android/ART execution.
 | Clan content | Original clan URL triggers clanContentFix before relative paths | `clanFix` implemented; preparation checks original URL exactly |
 | Relative paths | fixContentPath uses original subscription URL, including quirks of global string replacement and doubled file slashes | Explicit JVM `fix` operation implemented and compared |
 | Collections | switchApiCollectionIfNeeded extracts a JSON object for inspection; `urls` without `sites` can update persisted API lines/history and recursively select the first URL | Selected switching/history/clearing methods implemented with per-worker preferences and versioned host persistence; recursive source loads compared |
-| Parse/reset | parseJson clears spider cache, selected source, source/live/parse lists and search state before Gson parsing | Source-only map reset or optional VOD source/parse/search reset; live/executor side effects pending |
+| Parse/reset | parseJson clears spider cache, selected source, source/live/parse lists and search state before Gson parsing | Source-only/VOD resets remain scoped; config-state runs original full reset with observable empty executor bindings and ordered owned-resource cleanup |
 | Site fields | Required fields use direct Gson getters; safe optional getters preserve fallback/partial-list semantics; LinkedHashMap overwrites duplicate keys at original insertion position | Implemented with pinned Gson and Java source methods |
 | Home source | Persisted home key wins when found; otherwise original first SourceBean is selected (may differ from a later duplicate replacement in the map) | Optional VOD prefix implemented; preserves duplicate/push_agent/stale-reference behavior |
 | Globals/flags/parses | Global spider/jarCache/danmaku/wallpaper, flags, parses and default selection precede the live section | Optional VOD prefix implemented, including ParseBean getters/mixUrl and partial state |
-| Remaining config | Live/hosts/proxy/rules/DOH/ads and other settings are processed by the rest of ApiConfig | Pending; neither loader claims full config validation |
+| Remaining config | Live/hosts/proxy/rules/DOH/ads are processed by the rest of parseJson | Optional config-state mode executes full original body and selected helpers; actual HTTP/DNS/script effects remain unbound |
 | Cache/failures | Network success parses before saving cache; parse failure reports a config error without fetch-error cache fallback. Fetch failure can fall back to cache | Implemented and compared within source-fields parser scope; cache write errors retain success; host atomic I/O differs from Android FileUtils |
 | Script init | Config acceptance and referenced JAR/script download/init are separate stages | Pending |
 
@@ -62,6 +62,21 @@ and excludes processing from live onward. The 51 prefix/10 load scenarios compar
 expanded partial snapshots and ordered transitions; 48-source real import/cache
 counts are in vod-loader-smoke.json. This is not a script or full-client verdict.
 
-Next: complete remaining ApiConfig network/state coverage and controlled
-Spider/SpiderApi init/method fixtures and script/JAR execution. Retain raw text
-through field conversion so JavaScript numeric parsing cannot erase Gson behavior.
+backend/subscription/full-loader.mjs adds complete parseJson state and selected
+live/network helpers. A dedicated source extractor/probe compares 85 ordered
+observations and queries with frozen expectations; integration tests cover disk
+restart, collections, partial-state cache preservation and cleanup failures. The
+existing loadConfig oracle remains scoped to source/VOD parsing; full-mode integration
+does not claim a separately executed Android asynchronous loadConfig sequence.
+
+Empty executor clear bindings establish state order. RuntimeCleanup clears registered
+owned resources before parse and stops at the first failed kind; the Java state
+bridge replays the failed clear stage so old containers/warmed keys remain. No
+script executor is installed. Unbound getSpider/loadLiveJar calls throw within the
+original live helper's catch; an accepted parse can therefore retain incomplete
+effects. HTTP reset is likewise incomplete. hosts/proxy/DOH selection and matching
+are tested as state/helpers, not applied to Node fetch or a Linux network stack.
+
+Next: controlled Spider/SpiderApi init/method fixtures, actual JAR/JS execution and
+their required HTTP/Android bindings. Retain raw text through field conversion so
+JavaScript numeric parsing cannot erase Gson behavior.

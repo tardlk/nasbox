@@ -5,10 +5,11 @@ Android baseline's Gson 2.10.1 without Electron. It currently covers safe field
 conversion, source definitions, JSON parsing, object trimming and relative-path
 fixing, subscription URL/key selection, original FindResult decryption and
 collection recognition, selected collection/history state and cache utilities.
-The source-scope network/cache loader is in ../subscription. Full ApiConfig global
-behavior remains incomplete. The optional VOD prefix additionally covers global
-spider/jarCache/danmaku/wallpaper, home-source selection, flags and parses. Live,
-hosts/proxy/rules/DOH/ads, runtime cache clearing and scripts remain pending.
+The scoped network/cache loaders are in ../subscription. The optional VOD prefix
+covers global spider/jarCache/danmaku/wallpaper, home-source selection, flags and
+parses. The optional config-state mode extends this to the complete original
+parseJson body and selected live, host, proxy, rule, DOH and ad helpers. Actual
+script runtimes and Android HTTP client bindings remain pending.
 
 Preserve the raw configuration text when passing it to this module. Parsing it
 with JavaScript first loses Gson numeric lexical values and overflow behavior.
@@ -39,7 +40,7 @@ finally { await core.close(); }
 `query` accepts operations `sites`, `safe`, `json`, `trim`, `fix`, `url`, `decode`,
 `collection`, `clanFix`, `state`, `collectionSwitch`, `clearLines`, `history`,
 `cacheKey`, `cacheRead`, `fetchBody`, `siteState`, `vod`, `vodState`, `vodSource`,
-`vodSearch` and returns
+`vodSearch`, `full`, `fullState`, `fullInspect`, `fullResetKeys` and returns
 `{ok:true,value}` or `{ok:false,errorType,partialSites}`. `safe` is a diagnostic
 operation with fixed fallback values. `parseSites` throws ConfigParseError with
 the Java error class and partial source map. Multiple pending requests use IDs
@@ -54,7 +55,8 @@ null). `decode` takes `text` and optional `key`, returning a string or null as
 FindResult does. `collection` returns the original name-tab-url lines, not a
 persisted selection. `clanFix` takes the original clan `url` and body `text`.
 Any operation can set the worker's `localAddress`. AOSP JSON/Base64 sources are
-committed unmodified, with annotation declarations only. AES.java is the original
+committed unmodified. Uri/UriCodec are also pinned AOSP sources; host Android
+Parcel/storage/permission declarations fail explicitly if called. AES.java is the original
 TVBoxOS file; desktop Bouncy Castle 1.78.1 supplies PKCS7 (not Android's provider).
 UTF-8 is explicitly set for host byte/string conversions. JVM locale and all
 Android/provider differences are not certified by these limited source probes.
@@ -86,6 +88,34 @@ original getter/mixUrl methods, with its DefaultConfig import adapted to this
 module. Effective proxy URLs use the explicit localAddress; mixed URLs retain raw
 proxy prefixes and Android Base64 flags. Optional homeApi/defaultParse preferences
 are restored without changing older six-field state snapshots when absent.
+
+`parseFull(text,apiUrl)` executes the complete original parseJson method with host
+bindings, returning a `config-state` snapshot or ConfigParseError with partialConfig.
+`full` returns `{accepted,config,errorType?}`; `fullState` reads that state. Separate
+source-only, VOD and full-state maps share the worker's selected preferences. Use
+one mode per session. Initialization is lazy so legacy modes keep their old state.
+
+The snapshot includes live channel/settings beans, hosts and the DNS host-map
+reference, ordered proxy rules, grouped sniff/filter rules, M3U ad rules, script
+rules, DNS names, cumulative ad hosts, typed preferences, active runtime keys and
+effects. Missing rules retain previous rules; absent hosts reset hosts; ads accumulate.
+Failures preserve mutations up to the original failure boundary. Live channel
+merging and TXT/M3U/native JSON ingestion use original methods; `full` actions
+`liveContent`, `lives` and `liveApi` expose them for local integration.
+
+`fullInspect` takes `action`: `doh` with `index`; `proxy`, `ad`, `script` with `url`;
+`video`/`filter` with `webUrl` and `url`; `userInfo` with proxy `host`. These execute
+original selection/matching helpers. Proxy fallback is the host's existing Java
+ProxySelector. They do not perform network requests or apply these settings to
+Node fetch. Original live URLs can contain localhost:9978; no server is started.
+
+Executor bindings currently contain no engines. Empty registry clears are recorded
+in jar → py → js order, followed by warmed-search clearing in the original method.
+Unbound getSpider/loadLiveJar calls throw at their original caught boundary and
+remain `completed:false` effects. HTTP client reset is also an unbound effect.
+Accepted configuration state does not mean those effects ran. `fullResetKeys` and
+diagnostic `clearFailure` allow the subscription wrapper to preserve partial reset
+state around real owned-resource cleanup; this is not yet executor compatibility.
 
 Build products live in .cache/backend/config-core and can be deleted after use.
 Builds publish completed classes atomically to avoid partial reads by other workers.

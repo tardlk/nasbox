@@ -30,6 +30,11 @@
       "name": "vod-load",
       "inputSha256": "074e7d945792bd77979d37d370cc936b63c98854ba064f59ebd2d86163b384c6",
       "cases": 10
+    },
+    {
+      "name": "full",
+      "inputSha256": "b11ce172d03f5bff25b4a3640e884241873de54b1343a2b91132a56a518d33ee",
+      "cases": 85
     }
   ],
   "platformTag": "android-13.0.0_r1",
@@ -42,8 +47,9 @@
   "comparison": "Exact result equality, including Java error class and partial source map in the same ordered session",
   "loadScope": "Original loadConfig with controlled synchronous transport, temporary filesystem/Hawk adapters and source-fields parse substitute; full ApiConfig/Android async and I/O-failure behavior not certified",
   "vodScope": "Original parseJson prefix before live/hosts/proxy/rules/DOH/ads with selected reset/Hawk adapters; no executor clearing or script execution",
-  "total": 263,
-  "matching": 263,
+  "fullScope": "Host-JVM full parseJson; same pinned live/rule/proxy/DNS helpers. Empty executor clear hooks; unbound script init throws and is recorded. No Android/ART or actual OkHttp transport.",
+  "total": 348,
+  "matching": 348,
   "differences": 0,
   "rows": [
     {
@@ -1359,6 +1365,431 @@
     {
       "dataset": "vod-load",
       "id": "vod-load/duplicate-home-across-imports",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "all-sections",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-exact-priority",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-wild",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-localhost-bypass",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-auth-decoded",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "doh-custom",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "video-and-rule",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "video-and-rule-miss",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "video-wildcard",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "filter-match",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "filter-no-wildcard",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "script-first",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "ad-case-lower",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "ad-uppercase-entry",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "select-doh-and-live-index",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "same-doh-preserves-selection",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "absent-fields-retain-rules-ads-reset-hosts-proxy",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "builtin-doh",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "new-doh-resets-selection",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "empty-doh-options",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "doh-selector-too-large",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "same-empty-doh-clamps-selector",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "explicit-empty-rules-clear",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "hosts-partial-failure",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "rules-partial-failure",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "rule-invalid-regex",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "invalid-regex-caught",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "doh-name-failure",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "ads-partial-failure",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "failure-missing",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "failure-null",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "failure-syntax",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "failure-wrong",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "failure-site",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "recover-after-failures",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-scalar",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-object",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-null",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-nullItem",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-badUrls",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-wrongHosts",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-emptyProxies",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "proxy-following-invalid-recovers",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-index-negative",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-negative-index-fails",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-index-large",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-large-index-zero",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-empty-array-fails",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-null-selection-fails",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "separate-live-config",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "separate-live-url-skips-vod-live",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "same-live-url-processes",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-index-scoped",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "url-scoped-live-index",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "reset-live-preferences",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-localhost",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-unsupported",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-implicitPy",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-implicitJs",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-jar",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-cspWithoutJar",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-typeNull",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-headerNull",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-headerInvalid",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-timeoutInvalid",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-playerString",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-proxy",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-proxyEncoded",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-proxyBadBase64",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-proxySubstring",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "native-channel-merge",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "native-partial-group-failure",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-content-txt",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-content-m3u",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-content-native",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-content-embedded",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-content-bom",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-content-json",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-content-empty",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-content-null",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "live-content-malformedJson",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "runtime-seed",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "clear-fails-before-container-reset",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "runtime-cleared-before-invalid-json",
+      "equal": true
+    },
+    {
+      "dataset": "full",
+      "id": "final-recovery",
       "equal": true
     }
   ]

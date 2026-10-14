@@ -1,0 +1,2 @@
+// Host-only declaration; Android service APIs are unavailable.
+package android.os; public class Environment {public static boolean isExternalStorageEmulated(){throw new UnsupportedOperationException("Android storage unavailable");}public static java.io.File getLegacyExternalStorageDirectory(){throw new UnsupportedOperationException("Android storage unavailable");}public static java.io.File getExternalStorageDirectory(){throw new UnsupportedOperationException("Android storage unavailable");}}

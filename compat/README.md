@@ -123,3 +123,19 @@ Project Apache-2.0 notice. This directory is not claimed to be MIT-only.
 Additional AOSP JSON/Base64 sources retain their Apache-2.0 license; original
 HistoryHelper retains TVBoxOS GPL-3.0. The runtime's Bouncy Castle dependency has
 its own license, copied to backend/config-core/LICENSE-BOUNCY-CASTLE.
+
+## Full configuration state source probe
+
+`full-oracle.mjs` extracts the complete pinned parseJson body and selected reset,
+live, proxy and DNS helpers. Auxiliary original class bodies and AOSP Uri/UriCodec
+are hash checked. Host bindings supply preferences, suppressed logging and explicit
+unavailable script/HTTP effects. `capture-full.mjs` explicitly captures 85 ordered
+observations in full-observations.json; tests never rewrite that file. Runtime
+FullConfig.java is a separate committed copy consumed by an offline build.
+
+The full fixture includes rule/host/ad persistence, partial failures, proxy selection
+auth/ordering, DOH selection, ordinary/script live configuration, TXT/M3U parsing,
+native channel merging and failed cleanup. Ten additional tests compare frozen and
+fresh results, original method bodies and loader/ownership behavior. The aggregate
+backend report includes 348 cases/scenarios. These are source-method probes on host
+JVM, not an Android emulator or an actual script/HTTP transport implementation.
