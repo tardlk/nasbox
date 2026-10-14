@@ -7,17 +7,17 @@ These observations describe source, not verified Android/ART execution.
 | Stage | Upstream contract | Current backend |
 | --- | --- | --- |
 | URL selection | configUrl rewrites file/clan, supplies missing http scheme, splits `;pk;` into request URL and key | `url` operation implemented; includes malformed/empty key quirks |
-| Cache-first load | loadConfig may read cached UTF-8 lines; failed cache parsing falls through to network | Pending |
-| Network | fetchConfigAsync uses configured OkHttp client and response.body().string(); HTTP failure or missing body is a fetch error | Probe uses bounded Node fetch only; not equivalent |
+| Cache-first load | loadConfig may read cached UTF-8 lines; failed cache parsing falls through to network | Implemented for source-field parsing, using original MD5 key and Java byte/line decoding |
+| Network | fetchConfigAsync uses configured OkHttp client and response.body().string(); HTTP failure or missing body is a fetch error | Bounded Node transport implemented; HTTP collection/fallback tested; Android transport equivalence pending |
 | Decode | FindResult checks org.json object first, then eight-character salt/base64, ASCII trim, 2423 CBC envelope or configured ECB; its caught exceptions return the original input, while AES's own caught failures return null | Original FindResult/AES plus pinned AOSP helpers implemented; desktop BC supplies PKCS7; other Android/provider versions pending |
 | Clan content | Original clan URL triggers clanContentFix before relative paths | `clanFix` implemented; preparation checks original URL exactly |
 | Relative paths | fixContentPath uses original subscription URL, including quirks of global string replacement and doubled file slashes | Explicit JVM `fix` operation implemented and compared |
-| Collections | switchApiCollectionIfNeeded extracts a JSON object for inspection; `urls` without `sites` can update persisted API lines/history and recursively select the first URL | Recognition and original name-tab-url lines implemented; persistence/switching/recursion pending |
+| Collections | switchApiCollectionIfNeeded extracts a JSON object for inspection; `urls` without `sites` can update persisted API lines/history and recursively select the first URL | Selected switching/history/clearing methods implemented with per-worker preferences and versioned host persistence; recursive source loads compared |
 | Parse/reset | parseJson clears spider cache, selected source, source/live/parse lists and search state before Gson parsing | Source map reset only; other state pending |
 | Site fields | Required fields use direct Gson getters; safe optional getters preserve fallback/partial-list semantics; LinkedHashMap overwrites duplicate keys at original insertion position | Implemented with pinned Gson and Java source methods |
 | Home source | Persisted home key wins when found; otherwise original first SourceBean is selected (may differ from a later duplicate replacement in the map) | Pending |
 | Remaining config | Global spider/jarCache/danmaku/wallpaper, flags/parses/live/proxy and other settings are processed by the full ApiConfig | Pending; not silently dropped by a claimed full loader |
-| Cache/failures | Network success parses before saving cache; parse failure reports a config error without fetch-error cache fallback. Fetch failure can fall back to cache | Pending |
+| Cache/failures | Network success parses before saving cache; parse failure reports a config error without fetch-error cache fallback. Fetch failure can fall back to cache | Implemented and compared within source-fields parser scope; cache write errors retain success; host atomic I/O differs from Android FileUtils |
 | Script init | Config acceptance and referenced JAR/script download/init are separate stages | Pending |
 
 The `sites` backend operation deliberately accepts raw config text after any
@@ -39,7 +39,20 @@ HTTP probe also compares URL/decode/collection results now. Its Node transport
 still explicitly converts bytes as UTF-8; OkHttp charset/BOM, TLS/DNS/proxy/cookie
 and timeout behavior are outside current coverage.
 
-Next: extend original-source oracle coverage to persisted collection/cache
-transitions, then implement those stages. Follow with controlled
+backend/subscription/loader.mjs ports selected loadConfig control flow and uses
+the full prepared body as its cache. It validates source fields only; successful
+cache/collection tests do not certify parsing of other ApiConfig fields or script
+initialization. Its source oracle executes unchanged loadConfig with planned
+synchronous transport callbacks, temporary files and a source-fields parse stub.
+That covers decision/order/state behavior under these adapters, not Android
+Handler scheduling, concurrent cancellation, Hawk encryption or crash semantics.
+
+The file store atomically replaces state/cache files. Original FileUtils deletes
+the old cache before writing and swallows errors, so disk-failure/corrupt-file
+outcomes are not claimed identical. The host also serializes imports and imposes
+a collection hop limit. See subscription-loader-smoke.json for the real
+48-source import and new-process cache check; temporary data is removed afterward.
+
+Next: complete remaining ApiConfig field/state coverage, then controlled
 Spider/SpiderApi init/method fixtures and script/JAR execution. Retain raw text
 through field conversion so JavaScript numeric parsing cannot erase Gson behavior.

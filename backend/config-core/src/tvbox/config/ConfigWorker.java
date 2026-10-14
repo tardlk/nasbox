@@ -11,12 +11,48 @@ public final class ConfigWorker {
     private final ConfigParser parser = new ConfigParser();
     private final SubscriptionConfig subscription = new SubscriptionConfig(parser);
 
-    private JsonElement run(JsonObject request) {
+    private JsonElement run(JsonObject request) throws Exception {
         String operation = request.get("operation").getAsString();
         String text = request.has("text") && !request.get("text").isJsonNull()
                 ? request.get("text").getAsString() : null;
         if (request.has("localAddress")) parser.localAddress = request.get("localAddress").getAsString();
         switch (operation) {
+            case "fetchBody": {
+                JsonObject prepared = new JsonObject();
+                try {
+                    String apiUrl = request.get("url").getAsString();
+                    String fetchKey = request.has("key") && !request.get("key").isJsonNull() ? request.get("key").getAsString() : null;
+                    String body = SubscriptionConfig.FindResult(text, fetchKey);
+                    if (apiUrl.startsWith("clan")) body = subscription.clanContentFix(subscription.clanToAddress(apiUrl), body);
+                    body = parser.fixContentPath(apiUrl, body);
+                    prepared.addProperty("success", true); prepared.addProperty("text", body);
+                } catch (Throwable error) {
+                    String message = error.getMessage();
+                    if (message == null || message.length() == 0) message = error.toString();
+                    prepared.addProperty("success", false); prepared.addProperty("error", message);
+                }
+                return prepared;
+            }
+            case "state":
+                if (request.has("state")) subscription.preferences().restore(request.getAsJsonObject("state"));
+                return subscription.preferences().snapshot();
+            case "collectionSwitch":
+                JsonObject switched = new JsonObject();
+                switched.addProperty("switched", subscription.switchApiCollectionIfNeeded(request.get("url").getAsString(), text));
+                switched.add("state", subscription.preferences().snapshot());
+                return switched;
+            case "clearLines":
+                subscription.clearApiLinesIfUnmatched(request.get("url").getAsString());
+                return subscription.preferences().snapshot();
+            case "history":
+                HistoryHelper history = new HistoryHelper(subscription.preferences());
+                String entry = request.get("entry").isJsonNull() ? null : request.get("entry").getAsString();
+                if (request.get("kind").getAsString().equals("live")) history.setLiveApiHistory(entry);
+                else history.setApiHistory(entry);
+                return subscription.preferences().snapshot();
+            case "cacheKey": return new JsonPrimitive(CacheSupport.encode(request.get("url").getAsString()));
+            case "cacheRead": return new JsonPrimitive(CacheSupport.read(java.util.Base64.getDecoder().decode(request.get("bytes").getAsString())));
+            case "siteState": return parser.snapshot();
             case "url":
                 JsonObject selected = new JsonObject();
                 selected.addProperty("url", subscription.configUrl(request.get("url").getAsString()));

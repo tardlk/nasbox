@@ -13,14 +13,25 @@ q215613905/TVBoxOS commit ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1:
 - app/src/main/java/com/github/tvbox/osc/bean/SourceBean.java
 - app/src/main/java/com/github/tvbox/osc/util/HistoryHelper.java
 - app/src/main/java/com/github/tvbox/osc/util/AES.java
+- app/src/main/java/com/github/tvbox/osc/util/MD5.java
+- app/src/main/java/com/github/tvbox/osc/util/FileUtils.java (reference-only saveCache method)
 
 The safe-field methods and source loop retain upstream behavior. Changes isolate
 the selected methods from Android, omit the incomplete-site logging call, expose
 normalized JSON field names, and supply the local control address explicitly.
 SourceBean.java and AES.java are unchanged. SubscriptionConfig isolates original
 URL/decode/collection methods and delegates Android local-address/path helpers.
-HistoryHelper contains only original name-tab-url methods. The runtime builds these committed sources and
+HistoryHelper retains original name-tab-url methods. The runtime builds these committed sources and
 does not generate its implementation from the test oracle.
+
+HistoryHelper now also includes selected original history/clear methods with
+Hawk access replaced by a per-instance PreferenceStore. SubscriptionConfig's
+original switch/clear logic uses the same adapter. CacheSupport includes selected
+MD5.encode and readConfigFile logic; the reader's input stream is supplied as a
+byte array rather than a filesystem path. The Node source subscription loader
+ports original loadConfig control flow with explicit host adapters/limits; see
+../subscription/README.md. Its FileSubscriptionStore atomically replaces files,
+rather than using Android FileUtils' delete-then-write implementation.
 
 UriUtil.java derives from the same commit's quickjs module. Copyright (C) 2016
 The Android Open Source Project, licensed under Apache-2.0. Its original notice

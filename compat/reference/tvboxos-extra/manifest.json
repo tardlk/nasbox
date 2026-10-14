@@ -11,6 +11,16 @@
       "path": "LICENSE",
       "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
       "bytes": 34523
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/MD5.java",
+      "sha256": "a000ad302adeec878e63fc8b56467739a3e752fcef527a47f8bdbad72e2908e8",
+      "bytes": 5418
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/FileUtils.java",
+      "sha256": "05da10afd6ee92a0702d42d1bdb56b3581b4c414d85f028cdb9e2d7a9e0f9a6e",
+      "bytes": 14174
     }
   ]
 }

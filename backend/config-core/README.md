@@ -4,9 +4,9 @@ An explicit backend module for the Linux migration. It runs Java 17+ and the
 Android baseline's Gson 2.10.1 without Electron. It currently covers safe field
 conversion, source definitions, JSON parsing, object trimming and relative-path
 fixing, subscription URL/key selection, original FindResult decryption and
-collection recognition. It is not the full ApiConfig load sequence: network,
-cache/collection switching, home-source preferences, parses/live/proxy rules and
-scripts are pending. The preparation adapter is in ../subscription.
+collection recognition, selected collection/history state and cache utilities.
+The source-scope network/cache loader is in ../subscription. Full ApiConfig global
+fields, home-source preferences, parses/live/proxy rules and scripts are pending.
 
 Preserve the raw configuration text when passing it to this module. Parsing it
 with JavaScript first loses Gson numeric lexical values and overflow behavior.
@@ -35,7 +35,8 @@ finally { await core.close(); }
 ```
 
 `query` accepts operations `sites`, `safe`, `json`, `trim`, `fix`, `url`, `decode`,
-`collection`, `clanFix` and returns
+`collection`, `clanFix`, `state`, `collectionSwitch`, `clearLines`, `history`,
+`cacheKey`, `cacheRead`, `fetchBody`, `siteState` and returns
 `{ok:true,value}` or `{ok:false,errorType,partialSites}`. `safe` is a diagnostic
 operation with fixed fallback values. `parseSites` throws ConfigParseError with
 the Java error class and partial source map. Multiple pending requests use IDs
@@ -54,6 +55,17 @@ committed unmodified, with annotation declarations only. AES.java is the origina
 TVBoxOS file; desktop Bouncy Castle 1.78.1 supplies PKCS7 (not Android's provider).
 UTF-8 is explicitly set for host byte/string conversions. JVM locale and all
 Android/provider differences are not certified by these limited source probes.
+
+`state` returns the six selected preferences, or restores them from `state` when
+provided. `collectionSwitch` takes `url`/`text`, returns `switched` and the updated
+preferences. `clearLines` takes `url` and clears unmatched collection lines.
+`history` takes `kind` (api/live) and `entry`. `cacheKey` takes the configured `url`;
+`cacheRead` takes base64-encoded raw `bytes` and uses Java UTF-8/BufferedReader.
+`siteState` snapshots current source definitions without resetting them.
+`fetchBody` takes `url`, `text`, optional `key`, combines decode/clan/relative
+processing and returns `{success,text}` or `{success:false,error}` with Java's
+fetch-preparation failure message. These preferences/cache operations are local;
+they do not themselves perform persistence or network requests.
 
 Build products live in .cache/backend/config-core and can be deleted after use.
 Builds publish completed classes atomically to avoid partial reads by other workers.

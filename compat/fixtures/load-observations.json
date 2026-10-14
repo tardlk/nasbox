@@ -1,0 +1,2079 @@
+{
+  "baseline": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "inputSha256": "8a93e4fa5a70b60dc43750bd1e6c2807b998f2918858bc731585d39717d32eb0",
+  "scope": "Original loadConfig with controlled synchronous transport, filesystem/Hawk adapters and source-fields parser substitute; not full ApiConfig/Android async behavior",
+  "cases": [
+    {
+      "id": "load/empty",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {}
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "-1"
+            }
+          ],
+          "state": {
+            "apiUrl": "",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [],
+          "cache": {},
+          "events": []
+        }
+      }
+    },
+    {
+      "id": "load/network-success",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/cache-first",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv",
+            "useCache": true
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          },
+          "events": [
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/cache-newline-normalization",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}\r\n"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv",
+            "useCache": true
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19DQo="
+          },
+          "events": [
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/bad-cache-network-recovery",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv": "{sites:[{key:\"first\",type:3,api:\"csp_First\"},{key:null,type:3,api:\"csp_Bad\"}]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv",
+            "useCache": true
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          },
+          "events": [
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/network-parse-failure-no-fallback",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{sites:[{key:\"first\",type:3,api:\"csp_First\"},{key:null,type:3,api:\"csp_Bad\"}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "配置解析失败"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "first",
+              "name": "first",
+              "api": "csp_First",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/offline-cache-fallback",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "error": "offline"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/offline-invalid-cache",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv": "{sites:[{key:\"first\",type:3,api:\"csp_First\"},{key:null,type:3,api:\"csp_Bad\"}]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "error": "offline"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "拉取配置失败\noffline"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "first",
+              "name": "first",
+              "api": "csp_First",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "e3NpdGVzOlt7a2V5OiJmaXJzdCIsdHlwZTozLGFwaToiY3NwX0ZpcnN0In0se2tleTpudWxsLHR5cGU6MyxhcGk6ImNzcF9CYWQifV19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/offline-no-cache",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "error": "offline"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "拉取配置失败\noffline"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [],
+          "cache": {},
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/wrapper-cache-prepared",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          },
+          {
+            "useCache": true
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "Abc12345**e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            },
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/collection-network",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}"
+          },
+          {
+            "url": "https://b.invalid/tv",
+            "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://b.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://b.invalid/tv",
+            "liveApiUrl": "https://b.invalid/tv",
+            "apiLineSource": "https://a.invalid/tv",
+            "apiLineList": [
+              "One\thttps://b.invalid/tv",
+              "Two\thttps://c.invalid/tv"
+            ],
+            "apiHistory": [
+              "https://a.invalid/tv"
+            ],
+            "liveApiHistory": [
+              "https://b.invalid/tv"
+            ]
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "4960b152b4a4eb627f3443808e25a8ee": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19",
+            "b2928745da5022dcef313ce6788ab8fe": "e3VybHM6W3tuYW1lOidPbmUnLHVybDonaHR0cHM6Ly9iLmludmFsaWQvdHYnfSx7bmFtZTonVHdvJyx1cmw6J2h0dHBzOi8vYy5pbnZhbGlkL3R2J31dfQ=="
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "4960b152b4a4eb627f3443808e25a8ee"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/collection-cache-forces-child-network",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}",
+          "https://b.invalid/tv": "{sites:[]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv",
+            "useCache": true
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://b.invalid/tv",
+            "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://b.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://b.invalid/tv",
+            "liveApiUrl": "https://b.invalid/tv",
+            "apiLineSource": "https://a.invalid/tv",
+            "apiLineList": [
+              "One\thttps://b.invalid/tv",
+              "Two\thttps://c.invalid/tv"
+            ],
+            "apiHistory": [
+              "https://a.invalid/tv"
+            ],
+            "liveApiHistory": [
+              "https://b.invalid/tv"
+            ]
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "4960b152b4a4eb627f3443808e25a8ee": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19",
+            "b2928745da5022dcef313ce6788ab8fe": "e3VybHM6W3tuYW1lOidPbmUnLHVybDonaHR0cHM6Ly9iLmludmFsaWQvdHYnfSx7bmFtZTonVHdvJyx1cmw6J2h0dHBzOi8vYy5pbnZhbGlkL3R2J31dfQ=="
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "4960b152b4a4eb627f3443808e25a8ee"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/collection-offline-fallback",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}",
+          "https://b.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "error": "offline-root"
+          },
+          {
+            "url": "https://b.invalid/tv",
+            "error": "offline-child"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://b.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://b.invalid/tv",
+            "liveApiUrl": "https://b.invalid/tv",
+            "apiLineSource": "https://a.invalid/tv",
+            "apiLineList": [
+              "One\thttps://b.invalid/tv",
+              "Two\thttps://c.invalid/tv"
+            ],
+            "apiHistory": [
+              "https://a.invalid/tv"
+            ],
+            "liveApiHistory": [
+              "https://b.invalid/tv"
+            ]
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "4960b152b4a4eb627f3443808e25a8ee": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19",
+            "b2928745da5022dcef313ce6788ab8fe": "e3VybHM6W3tuYW1lOidPbmUnLHVybDonaHR0cHM6Ly9iLmludmFsaWQvdHYnfSx7bmFtZTonVHdvJyx1cmw6J2h0dHBzOi8vYy5pbnZhbGlkL3R2J31dfQ=="
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://b.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/nested-collections",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}"
+          },
+          {
+            "url": "https://b.invalid/tv",
+            "body": "{urls:['https://c.invalid/tv']}"
+          },
+          {
+            "url": "https://c.invalid/tv",
+            "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://c.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://c.invalid/tv",
+            "liveApiUrl": "https://c.invalid/tv",
+            "apiLineSource": "https://b.invalid/tv",
+            "apiLineList": [
+              "https://c.invalid/tv\thttps://c.invalid/tv"
+            ],
+            "apiHistory": [
+              "https://b.invalid/tv",
+              "https://a.invalid/tv"
+            ],
+            "liveApiHistory": [
+              "https://c.invalid/tv",
+              "https://b.invalid/tv"
+            ]
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "4960b152b4a4eb627f3443808e25a8ee": "e3VybHM6WydodHRwczovL2MuaW52YWxpZC90diddfQ==",
+            "b2928745da5022dcef313ce6788ab8fe": "e3VybHM6W3tuYW1lOidPbmUnLHVybDonaHR0cHM6Ly9iLmludmFsaWQvdHYnfSx7bmFtZTonVHdvJyx1cmw6J2h0dHBzOi8vYy5pbnZhbGlkL3R2J31dfQ==",
+            "ecfa11ea0cafa94c0e9283734f8bb0cc": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "4960b152b4a4eb627f3443808e25a8ee"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://c.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://c.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "ecfa11ea0cafa94c0e9283734f8bb0cc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/self-collection-rejected",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{urls:['https://a.invalid/tv']}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "配置解析失败"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [],
+          "cache": {},
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/clear-lines-before-failed-parse",
+      "request": {
+        "operation": "loadSequence",
+        "preferences": {
+          "apiLineSource": "https://b.invalid/tv",
+          "apiLineList": [
+            "Two\thttps://c.invalid/tv"
+          ]
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{sites:[{key:\"first\",type:3,api:\"csp_First\"},{key:null,type:3,api:\"csp_Bad\"}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "配置解析失败"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "first",
+              "name": "first",
+              "api": "csp_First",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {},
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/preserve-independent-live",
+      "request": {
+        "operation": "loadSequence",
+        "preferences": {
+          "liveApiUrl": "https://live.invalid/tv"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}"
+          },
+          {
+            "url": "https://b.invalid/tv",
+            "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://b.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://b.invalid/tv",
+            "liveApiUrl": "https://live.invalid/tv",
+            "apiLineSource": "https://a.invalid/tv",
+            "apiLineList": [
+              "One\thttps://b.invalid/tv",
+              "Two\thttps://c.invalid/tv"
+            ],
+            "apiHistory": [
+              "https://a.invalid/tv"
+            ],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "4960b152b4a4eb627f3443808e25a8ee": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19",
+            "b2928745da5022dcef313ce6788ab8fe": "e3VybHM6W3tuYW1lOidPbmUnLHVybDonaHR0cHM6Ly9iLmludmFsaWQvdHYnfSx7bmFtZTonVHdvJyx1cmw6J2h0dHBzOi8vYy5pbnZhbGlkL3R2J31dfQ=="
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "4960b152b4a4eb627f3443808e25a8ee"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/reimport-collection",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          },
+          {
+            "url": "https://c.invalid/tv"
+          },
+          {
+            "url": "https://a.invalid/tv",
+            "useCache": true
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}"
+          },
+          {
+            "url": "https://b.invalid/tv",
+            "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+          },
+          {
+            "url": "https://c.invalid/tv",
+            "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+          },
+          {
+            "url": "https://b.invalid/tv",
+            "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://b.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            },
+            {
+              "ok": true,
+              "apiUrl": "https://c.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            },
+            {
+              "ok": true,
+              "apiUrl": "https://b.invalid/tv",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://b.invalid/tv",
+            "liveApiUrl": "https://b.invalid/tv",
+            "apiLineSource": "https://a.invalid/tv",
+            "apiLineList": [
+              "One\thttps://b.invalid/tv",
+              "Two\thttps://c.invalid/tv"
+            ],
+            "apiHistory": [
+              "https://a.invalid/tv"
+            ],
+            "liveApiHistory": [
+              "https://b.invalid/tv"
+            ]
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "4960b152b4a4eb627f3443808e25a8ee": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19",
+            "b2928745da5022dcef313ce6788ab8fe": "e3VybHM6W3tuYW1lOidPbmUnLHVybDonaHR0cHM6Ly9iLmludmFsaWQvdHYnfSx7bmFtZTonVHdvJyx1cmw6J2h0dHBzOi8vYy5pbnZhbGlkL3R2J31dfQ==",
+            "ecfa11ea0cafa94c0e9283734f8bb0cc": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "4960b152b4a4eb627f3443808e25a8ee"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://c.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://c.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "ecfa11ea0cafa94c0e9283734f8bb0cc"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://b.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "4960b152b4a4eb627f3443808e25a8ee"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/decode-failure-cache-fallback",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv;pk;k": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv;pk;k"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "not-hex"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv;pk;k",
+              "sites": [
+                {
+                  "key": "demo",
+                  "name": "demo",
+                  "api": "csp_Demo",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 1,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 5
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv;pk;k",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "demo",
+              "name": "demo",
+              "api": "csp_Demo",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 1,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 5
+            }
+          ],
+          "cache": {
+            "d1465c745694cf3c452212604b45cc8c": "e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv;pk;k"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/decode-failure-no-cache",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv;pk;k"
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "not-hex"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "拉取配置失败\nCannot invoke \"String.contains(java.lang.CharSequence)\" because \"<parameter2>\" is null"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv;pk;k",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [],
+          "cache": {},
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/configured-key-empty-throws",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv;pk;"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "thrown": "java.lang.ArrayIndexOutOfBoundsException"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv;pk;",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [],
+          "cache": {},
+          "events": []
+        }
+      }
+    },
+    {
+      "id": "load/cache-empty-fetch-empty",
+      "request": {
+        "operation": "loadSequence",
+        "cache": {
+          "https://a.invalid/tv": ""
+        },
+        "loads": [
+          {
+            "url": "https://a.invalid/tv",
+            "useCache": true
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": ""
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": false,
+              "message": "配置解析失败"
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": ""
+          },
+          "events": [
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "load/relative-path-cache-once",
+      "request": {
+        "operation": "loadSequence",
+        "loads": [
+          {
+            "url": "https://a.invalid/tv"
+          },
+          {
+            "useCache": true
+          }
+        ],
+        "fetches": [
+          {
+            "url": "https://a.invalid/tv",
+            "body": "{sites:[{key:\"js\",type:3,api:\"./a.js\"}]}"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "results": [
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "js",
+                  "name": "js",
+                  "api": "https://a.invalid/a.js",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            },
+            {
+              "ok": true,
+              "apiUrl": "https://a.invalid/tv",
+              "sites": [
+                {
+                  "key": "js",
+                  "name": "js",
+                  "api": "https://a.invalid/a.js",
+                  "type": 3,
+                  "searchable": 1,
+                  "quickSearch": 1,
+                  "changeable": 1,
+                  "filterable": 1,
+                  "ext": "",
+                  "jar": "",
+                  "categories": [],
+                  "playerType": -1,
+                  "timeout": 0,
+                  "style": "",
+                  "playUrl": "",
+                  "click": "",
+                  "playTimeoutSeconds": 15
+                }
+              ]
+            }
+          ],
+          "state": {
+            "apiUrl": "https://a.invalid/tv",
+            "liveApiUrl": "",
+            "apiLineSource": "",
+            "apiLineList": [],
+            "apiHistory": [],
+            "liveApiHistory": []
+          },
+          "sites": [
+            {
+              "key": "js",
+              "name": "js",
+              "api": "https://a.invalid/a.js",
+              "type": 3,
+              "searchable": 1,
+              "quickSearch": 1,
+              "changeable": 1,
+              "filterable": 1,
+              "ext": "",
+              "jar": "",
+              "categories": [],
+              "playerType": -1,
+              "timeout": 0,
+              "style": "",
+              "playUrl": "",
+              "click": "",
+              "playTimeoutSeconds": 15
+            }
+          ],
+          "cache": {
+            "b2928745da5022dcef313ce6788ab8fe": "e3NpdGVzOlt7a2V5OiJqcyIsdHlwZTozLGFwaToiaHR0cHM6Ly9hLmludmFsaWQvYS5qcyJ9XX0="
+          },
+          "events": [
+            {
+              "kind": "fetch",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            },
+            {
+              "kind": "cacheWrite",
+              "key": "b2928745da5022dcef313ce6788ab8fe"
+            },
+            {
+              "kind": "parse",
+              "url": "https://a.invalid/tv"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

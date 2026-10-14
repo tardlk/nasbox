@@ -62,6 +62,15 @@ ECB/CBC cases also check independently generated plaintext expectations. Explici
 capture command: `node scripts/compat/capture-subscription.mjs`; tests never
 regenerate expected results.
 
+State/cache coverage adds 39 frozen original-method observations and 23 original
+loadConfig scenarios, captured explicitly with `node scripts/compat/capture-state.mjs`.
+The load oracle uses planned synchronous transport callbacks, temporary cache
+files and a source-fields parser substitute. Its result includes selected
+preferences, callback results, partial sources, exact cache bytes and event order.
+The production loader is compared against that scoped oracle. It is not a full
+ApiConfig/Android async or storage-failure equivalence test. Separate disk tests
+verify worker restart recovery, corrupt-state retention and temporary-file cleanup.
+
 Inspect method behavior using JSON lines on stdin:
 
 ```json

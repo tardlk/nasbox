@@ -1,0 +1,22 @@
+{
+  "scope": "macOS ARM64 source-fields loader; no scripts, Android/ART or Linux/NAS execution",
+  "networkImport": {
+    "ok": true,
+    "sourceCount": 48,
+    "typeCounts": {
+      "3": 48
+    },
+    "collectionLines": 0,
+    "scope": "source-fields"
+  },
+  "newProcessCacheImport": {
+    "ok": true,
+    "sourceCount": 48,
+    "typeCounts": {
+      "3": 48
+    },
+    "collectionLines": 0,
+    "scope": "source-fields"
+  },
+  "temporaryDataDirectory": ".cache/cli-validation; removed after verification"
+}

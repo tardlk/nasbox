@@ -10,6 +10,16 @@
       "name": "subscription",
       "inputSha256": "1b23c7056975263a0265738f7acad38a50a1d7b9977f0594f3891879f9369e77",
       "cases": 75
+    },
+    {
+      "name": "state",
+      "inputSha256": "73fb0262e7932df44df147267a6632011719a7ba216599e55f070f39be3bb369",
+      "cases": 39
+    },
+    {
+      "name": "load",
+      "inputSha256": "8a93e4fa5a70b60dc43750bd1e6c2807b998f2918858bc731585d39717d32eb0",
+      "cases": 23
     }
   ],
   "platformTag": "android-13.0.0_r1",
@@ -20,8 +30,9 @@
   },
   "scope": "Independent backend vs selected unchanged source methods and AOSP helpers on host JVM; not full Android/Linux/NAS parity",
   "comparison": "Exact result equality, including Java error class and partial source map in the same ordered session",
-  "total": 140,
-  "matching": 140,
+  "loadScope": "Original loadConfig with controlled synchronous transport, temporary filesystem/Hawk adapters and source-fields parse substitute; full ApiConfig/Android async and I/O-failure behavior not certified",
+  "total": 202,
+  "matching": 202,
   "differences": 0,
   "rows": [
     {
@@ -722,6 +733,316 @@
     {
       "dataset": "subscription",
       "id": "clanFix/local",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "state/reset",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "switch/default-live",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "switch/nested-live",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "clear/matched",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "clear/unmatched",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "state/independent-live",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "switch/preserve-live",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "switch/self",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "switch/sites-wins",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "switch/empty-first",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "switch/invalid",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "state/existing-history",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "history/existing-api-not-promoted",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "history/existing-live-not-promoted",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "history/new-api-prepended",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "history/null-live",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "state/full-history",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "history/capped-30",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "state/oversized-history",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "history/removes-only-index-30",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "state/line-trim",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "clear/line-trim-matches",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "clear/configured-url-not-trimmed",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "clear/empty-list-keeps-source",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "clear/empty-list-noop",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheKey/25",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheKey/26",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheKey/27",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheKey/28",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheKey/29",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheRead/empty",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheRead/plain",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheRead/lf",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheRead/crlf",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheRead/cr",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheRead/blank",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheRead/bom",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheRead/unicode",
+      "equal": true
+    },
+    {
+      "dataset": "state",
+      "id": "cacheRead/invalid-utf8",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/empty",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/network-success",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/cache-first",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/cache-newline-normalization",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/bad-cache-network-recovery",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/network-parse-failure-no-fallback",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/offline-cache-fallback",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/offline-invalid-cache",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/offline-no-cache",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/wrapper-cache-prepared",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/collection-network",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/collection-cache-forces-child-network",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/collection-offline-fallback",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/nested-collections",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/self-collection-rejected",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/clear-lines-before-failed-parse",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/preserve-independent-live",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/reimport-collection",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/decode-failure-cache-fallback",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/decode-failure-no-cache",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/configured-key-empty-throws",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/cache-empty-fetch-empty",
+      "equal": true
+    },
+    {
+      "dataset": "load",
+      "id": "load/relative-path-cache-once",
       "equal": true
     }
   ]

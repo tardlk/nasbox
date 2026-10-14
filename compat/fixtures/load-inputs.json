@@ -1,0 +1,458 @@
+[
+  {
+    "id": "load/empty",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {}
+      ]
+    }
+  },
+  {
+    "id": "load/network-success",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/cache-first",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv",
+          "useCache": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/cache-newline-normalization",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}\r\n"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv",
+          "useCache": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/bad-cache-network-recovery",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv": "{sites:[{key:\"first\",type:3,api:\"csp_First\"},{key:null,type:3,api:\"csp_Bad\"}]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv",
+          "useCache": true
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/network-parse-failure-no-fallback",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{sites:[{key:\"first\",type:3,api:\"csp_First\"},{key:null,type:3,api:\"csp_Bad\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/offline-cache-fallback",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "error": "offline"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/offline-invalid-cache",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv": "{sites:[{key:\"first\",type:3,api:\"csp_First\"},{key:null,type:3,api:\"csp_Bad\"}]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "error": "offline"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/offline-no-cache",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "error": "offline"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/wrapper-cache-prepared",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        },
+        {
+          "useCache": true
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "Abc12345**e3NpdGVzOlt7a2V5OidkZW1vJyx0eXBlOjMsYXBpOidjc3BfRGVtbycsdGltZW91dDoxfV19"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/collection-network",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}"
+        },
+        {
+          "url": "https://b.invalid/tv",
+          "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/collection-cache-forces-child-network",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}",
+        "https://b.invalid/tv": "{sites:[]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv",
+          "useCache": true
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://b.invalid/tv",
+          "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/collection-offline-fallback",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}",
+        "https://b.invalid/tv": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "error": "offline-root"
+        },
+        {
+          "url": "https://b.invalid/tv",
+          "error": "offline-child"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/nested-collections",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}"
+        },
+        {
+          "url": "https://b.invalid/tv",
+          "body": "{urls:['https://c.invalid/tv']}"
+        },
+        {
+          "url": "https://c.invalid/tv",
+          "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/self-collection-rejected",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{urls:['https://a.invalid/tv']}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/clear-lines-before-failed-parse",
+    "request": {
+      "operation": "loadSequence",
+      "preferences": {
+        "apiLineSource": "https://b.invalid/tv",
+        "apiLineList": [
+          "Two\thttps://c.invalid/tv"
+        ]
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{sites:[{key:\"first\",type:3,api:\"csp_First\"},{key:null,type:3,api:\"csp_Bad\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/preserve-independent-live",
+    "request": {
+      "operation": "loadSequence",
+      "preferences": {
+        "liveApiUrl": "https://live.invalid/tv"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}"
+        },
+        {
+          "url": "https://b.invalid/tv",
+          "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/reimport-collection",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        },
+        {
+          "url": "https://c.invalid/tv"
+        },
+        {
+          "url": "https://a.invalid/tv",
+          "useCache": true
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{urls:[{name:'One',url:'https://b.invalid/tv'},{name:'Two',url:'https://c.invalid/tv'}]}"
+        },
+        {
+          "url": "https://b.invalid/tv",
+          "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        },
+        {
+          "url": "https://c.invalid/tv",
+          "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        },
+        {
+          "url": "https://b.invalid/tv",
+          "body": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/decode-failure-cache-fallback",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv;pk;k": "{sites:[{key:'demo',type:3,api:'csp_Demo',timeout:1}]}"
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv;pk;k"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "not-hex"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/decode-failure-no-cache",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv;pk;k"
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "not-hex"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/configured-key-empty-throws",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv;pk;"
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/cache-empty-fetch-empty",
+    "request": {
+      "operation": "loadSequence",
+      "cache": {
+        "https://a.invalid/tv": ""
+      },
+      "loads": [
+        {
+          "url": "https://a.invalid/tv",
+          "useCache": true
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": ""
+        }
+      ]
+    }
+  },
+  {
+    "id": "load/relative-path-cache-once",
+    "request": {
+      "operation": "loadSequence",
+      "loads": [
+        {
+          "url": "https://a.invalid/tv"
+        },
+        {
+          "useCache": true
+        }
+      ],
+      "fetches": [
+        {
+          "url": "https://a.invalid/tv",
+          "body": "{sites:[{key:\"js\",type:3,api:\"./a.js\"}]}"
+        }
+      ]
+    }
+  }
+]

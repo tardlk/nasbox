@@ -11,6 +11,9 @@ final class SubscriptionConfig {
     private final Gson gson = new Gson();
     private final ConfigParser parser;
     private String TempKey = null;
+    private final PreferenceStore preferences = new PreferenceStore();
+    private final HistoryHelper history = new HistoryHelper(preferences);
+    PreferenceStore preferences() { return preferences; }
     SubscriptionConfig(ConfigParser parser) { this.parser = parser; }
     String key() { return TempKey; }
     private static Pattern getPattern(String value) { return Pattern.compile(value); }
@@ -105,5 +108,37 @@ final class SubscriptionConfig {
     String clanContentFix(String lanLink, String content) {
         String fix = lanLink.substring(0, lanLink.indexOf("/file/") + 6);
         return content.replace("clan://localhost/", fix).replace("file://", fix);
+    }
+boolean switchApiCollectionIfNeeded(String apiUrl, String jsonStr) {
+        ArrayList<String> apiLines = parseApiCollection(jsonStr);
+        if (apiLines.isEmpty()) {
+            return false;
+        }
+        String firstApi = history.getApiLineUrl(apiLines.get(0));
+        if (isEmpty(firstApi) || firstApi.equals(apiUrl)) {
+            return false;
+        }
+        preferences.put(PreferenceKeys.API_LINE_LIST, apiLines);
+        preferences.put(PreferenceKeys.API_LINE_SOURCE, apiUrl);
+        preferences.put(PreferenceKeys.API_URL, firstApi);
+        history.setApiHistory(apiUrl);
+        String liveApiUrl = preferences.get(PreferenceKeys.LIVE_API_URL, "");
+        if (isEmpty(liveApiUrl) || liveApiUrl.equals(apiUrl)) {
+            preferences.put(PreferenceKeys.LIVE_API_URL, firstApi);
+            history.setLiveApiHistory(firstApi);
+        }
+        return true;
+    }
+void clearApiLinesIfUnmatched(String apiUrl) {
+        ArrayList<String> apiLines = preferences.get(PreferenceKeys.API_LINE_LIST, new ArrayList<String>());
+        if (apiLines.isEmpty()) {
+            return;
+        }
+        for (String apiLine : apiLines) {
+            if (apiUrl.equals(history.getApiLineUrl(apiLine))) {
+                return;
+            }
+        }
+        history.clearApiLineList();
     }
 }

@@ -1,0 +1,387 @@
+[
+  {
+    "id": "state/reset",
+    "request": {
+      "operation": "state",
+      "state": {}
+    }
+  },
+  {
+    "id": "switch/default-live",
+    "request": {
+      "operation": "collectionSwitch",
+      "url": "https://a.invalid/tv",
+      "text": "{urls:[{name:'First',url:'https://b.invalid/tv'},'https://c.invalid/tv']}"
+    }
+  },
+  {
+    "id": "switch/nested-live",
+    "request": {
+      "operation": "collectionSwitch",
+      "url": "https://b.invalid/tv",
+      "text": "{urls:['https://c.invalid/tv']}"
+    }
+  },
+  {
+    "id": "clear/matched",
+    "request": {
+      "operation": "clearLines",
+      "url": "https://c.invalid/tv"
+    }
+  },
+  {
+    "id": "clear/unmatched",
+    "request": {
+      "operation": "clearLines",
+      "url": "https://a.invalid/tv"
+    }
+  },
+  {
+    "id": "state/independent-live",
+    "request": {
+      "operation": "state",
+      "state": {
+        "apiUrl": "https://a.invalid/tv",
+        "liveApiUrl": "https://live.invalid/tv",
+        "liveApiHistory": [
+          "old-live"
+        ]
+      }
+    }
+  },
+  {
+    "id": "switch/preserve-live",
+    "request": {
+      "operation": "collectionSwitch",
+      "url": "https://a.invalid/tv",
+      "text": "{urls:['https://b.invalid/tv']}"
+    }
+  },
+  {
+    "id": "switch/self",
+    "request": {
+      "operation": "collectionSwitch",
+      "url": "https://b.invalid/tv",
+      "text": "{urls:['https://b.invalid/tv','https://c.invalid/tv']}"
+    }
+  },
+  {
+    "id": "switch/sites-wins",
+    "request": {
+      "operation": "collectionSwitch",
+      "url": "https://b.invalid/tv",
+      "text": "{sites:[],urls:['https://c.invalid/tv']}"
+    }
+  },
+  {
+    "id": "switch/empty-first",
+    "request": {
+      "operation": "collectionSwitch",
+      "url": "https://b.invalid/tv",
+      "text": "{urls:['  ','https://c.invalid/tv']}"
+    }
+  },
+  {
+    "id": "switch/invalid",
+    "request": {
+      "operation": "collectionSwitch",
+      "url": "https://b.invalid/tv",
+      "text": "not-json"
+    }
+  },
+  {
+    "id": "state/existing-history",
+    "request": {
+      "operation": "state",
+      "state": {
+        "apiHistory": [
+          "one",
+          "https://a.invalid/tv",
+          "two"
+        ],
+        "liveApiHistory": [
+          "live-one",
+          "https://b.invalid/tv"
+        ]
+      }
+    }
+  },
+  {
+    "id": "history/existing-api-not-promoted",
+    "request": {
+      "operation": "history",
+      "kind": "api",
+      "entry": "https://a.invalid/tv"
+    }
+  },
+  {
+    "id": "history/existing-live-not-promoted",
+    "request": {
+      "operation": "history",
+      "kind": "live",
+      "entry": "https://b.invalid/tv"
+    }
+  },
+  {
+    "id": "history/new-api-prepended",
+    "request": {
+      "operation": "history",
+      "kind": "api",
+      "entry": "https://c.invalid/tv"
+    }
+  },
+  {
+    "id": "history/null-live",
+    "request": {
+      "operation": "history",
+      "kind": "live",
+      "entry": null
+    }
+  },
+  {
+    "id": "state/full-history",
+    "request": {
+      "operation": "state",
+      "state": {
+        "apiHistory": [
+          "item-0",
+          "item-1",
+          "item-2",
+          "item-3",
+          "item-4",
+          "item-5",
+          "item-6",
+          "item-7",
+          "item-8",
+          "item-9",
+          "item-10",
+          "item-11",
+          "item-12",
+          "item-13",
+          "item-14",
+          "item-15",
+          "item-16",
+          "item-17",
+          "item-18",
+          "item-19",
+          "item-20",
+          "item-21",
+          "item-22",
+          "item-23",
+          "item-24",
+          "item-25",
+          "item-26",
+          "item-27",
+          "item-28",
+          "item-29"
+        ]
+      }
+    }
+  },
+  {
+    "id": "history/capped-30",
+    "request": {
+      "operation": "history",
+      "kind": "api",
+      "entry": "new"
+    }
+  },
+  {
+    "id": "state/oversized-history",
+    "request": {
+      "operation": "state",
+      "state": {
+        "apiHistory": [
+          "item-0",
+          "item-1",
+          "item-2",
+          "item-3",
+          "item-4",
+          "item-5",
+          "item-6",
+          "item-7",
+          "item-8",
+          "item-9",
+          "item-10",
+          "item-11",
+          "item-12",
+          "item-13",
+          "item-14",
+          "item-15",
+          "item-16",
+          "item-17",
+          "item-18",
+          "item-19",
+          "item-20",
+          "item-21",
+          "item-22",
+          "item-23",
+          "item-24",
+          "item-25",
+          "item-26",
+          "item-27",
+          "item-28",
+          "item-29",
+          "item-30",
+          "item-31",
+          "item-32",
+          "item-33",
+          "item-34"
+        ]
+      }
+    }
+  },
+  {
+    "id": "history/removes-only-index-30",
+    "request": {
+      "operation": "history",
+      "kind": "api",
+      "entry": "new"
+    }
+  },
+  {
+    "id": "state/line-trim",
+    "request": {
+      "operation": "state",
+      "state": {
+        "apiLineSource": "https://a.invalid/tv",
+        "apiLineList": [
+          "name\t https://b.invalid/tv "
+        ]
+      }
+    }
+  },
+  {
+    "id": "clear/line-trim-matches",
+    "request": {
+      "operation": "clearLines",
+      "url": "https://b.invalid/tv"
+    }
+  },
+  {
+    "id": "clear/configured-url-not-trimmed",
+    "request": {
+      "operation": "clearLines",
+      "url": " https://b.invalid/tv "
+    }
+  },
+  {
+    "id": "clear/empty-list-keeps-source",
+    "request": {
+      "operation": "state",
+      "state": {
+        "apiLineSource": "https://a.invalid/tv"
+      }
+    }
+  },
+  {
+    "id": "clear/empty-list-noop",
+    "request": {
+      "operation": "clearLines",
+      "url": "https://b.invalid/tv"
+    }
+  },
+  {
+    "id": "cacheKey/25",
+    "request": {
+      "operation": "cacheKey",
+      "url": ""
+    },
+    "knownValue": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  {
+    "id": "cacheKey/26",
+    "request": {
+      "operation": "cacheKey",
+      "url": "https://a.invalid/tv"
+    },
+    "knownValue": "b2928745da5022dcef313ce6788ab8fe"
+  },
+  {
+    "id": "cacheKey/27",
+    "request": {
+      "operation": "cacheKey",
+      "url": "https://a.invalid/tv;pk;secret"
+    },
+    "knownValue": "710da0ac7716188397fdced829c43fe1"
+  },
+  {
+    "id": "cacheKey/28",
+    "request": {
+      "operation": "cacheKey",
+      "url": "http://www.饭太硬.net/tv"
+    },
+    "knownValue": "5044dc92305997367a3c254875bc95cb"
+  },
+  {
+    "id": "cacheKey/29",
+    "request": {
+      "operation": "cacheKey",
+      "url": " https://a.invalid/tv "
+    },
+    "knownValue": "fedb12dfa81092383bc0c66f3898b1ad"
+  },
+  {
+    "id": "cacheRead/empty",
+    "request": {
+      "operation": "cacheRead",
+      "bytes": ""
+    }
+  },
+  {
+    "id": "cacheRead/plain",
+    "request": {
+      "operation": "cacheRead",
+      "bytes": "YWJj"
+    }
+  },
+  {
+    "id": "cacheRead/lf",
+    "request": {
+      "operation": "cacheRead",
+      "bytes": "YQpiCg=="
+    }
+  },
+  {
+    "id": "cacheRead/crlf",
+    "request": {
+      "operation": "cacheRead",
+      "bytes": "YQ0KYg0K"
+    }
+  },
+  {
+    "id": "cacheRead/cr",
+    "request": {
+      "operation": "cacheRead",
+      "bytes": "YQ1i"
+    }
+  },
+  {
+    "id": "cacheRead/blank",
+    "request": {
+      "operation": "cacheRead",
+      "bytes": "Cgo="
+    }
+  },
+  {
+    "id": "cacheRead/bom",
+    "request": {
+      "operation": "cacheRead",
+      "bytes": "77u/e30="
+    }
+  },
+  {
+    "id": "cacheRead/unicode",
+    "request": {
+      "operation": "cacheRead",
+      "bytes": "5b2x6KeG4oCo6K6i6ZiF"
+    }
+  },
+  {
+    "id": "cacheRead/invalid-utf8",
+    "request": {
+      "operation": "cacheRead",
+      "bytes": "e//toIB9"
+    }
+  }
+]
