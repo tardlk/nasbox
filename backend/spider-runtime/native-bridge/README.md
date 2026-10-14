@@ -15,7 +15,7 @@ TVBOX_TEST_NATIVE=1 node --test compat/native-bridge.test.mjs
 node scripts/compat/native-source-probe.mjs 'http://www.饭太硬.net/tv' report.json
 ```
 
-`TVBOX_NATIVE_LIB_DIR` overrides `.tools/native-runtime`. All 22 artifacts are
+`TVBOX_NATIVE_LIB_DIR` overrides `.tools/native-runtime`. All 20 artifacts are
 pinned by SHA-256, size and the published Maven SHA-1 in runtime.json. Builds are
 offline, check original source hashes and stage generated adaptations atomically.
 The provisioning command is explicit; importing or running ordinary scripts never
@@ -80,6 +80,6 @@ real DexClassLoader and clear/reload. `cc` references absent XPathGuard. Remaini
 HTTP, readonly-database and background class-loading/shutdown diagnostics are
 retained in the report; they are not counted as full API parity. Home data
 is dynamic; counts/hashes describe the recorded run. Category/detail/search/player
-and every native API are not established. Android/ART, Linux x86_64, Docker and
-NAS validation remain outstanding; bundled Linux backend files are not execution
-proof. Automatic JAR resolution and persistent cache quotas remain separate work.
+and every native API are not established. The engine-only Docker doctor now passes on a physical Linux x86_64 NAS; see
+`docs/linux/docker-runtime-probe.json`. Real protected-JAR and Android/ART
+comparisons remain outstanding. Automatic JAR resolution and persistent cache quotas remain separate work.

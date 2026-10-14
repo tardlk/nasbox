@@ -219,9 +219,9 @@ Reused Node 24, project JDK 17, clang, Python, curl, dex2jar/dx/baksmali, BC and
 QuickJS. Docker/Podman/QEMU/adb/Maven/Gradle remain unavailable and were not
 installed. No global PATH, shared runtime or other project's tools were changed.
 
-Added 22 Maven artifacts under
-/Users/coke/Desktop/Projects/tvbox-linux/.tools/native-runtime (69,282,171 artifact
-bytes, about 66.1 MiB; du rounds this directory to 65 MiB). This is a retained
+Added 20 unique Maven artifacts under
+/Users/coke/Desktop/Projects/tvbox-linux/.tools/native-runtime (67,798,245 artifact
+bytes, about 64.7 MiB; du rounds this directory to 65 MiB). This is a retained
 project development/runtime dependency environment for ARM/JNI and headless JVM
 compatibility: unidbg 0.9.9 android/api/unicorn2/dynarmic; Unicorn 1.0.15;
 Capstone 3.1.8; Keystone 0.9.7; demumble 1.0.4; Commons Codec 1.21.0;
@@ -266,3 +266,54 @@ material was removed after final validation; no .data or remote artifact cache
 is retained. All task-owned JVMs, plugin listeners and temporary test services
 are stopped. Services still running: none. Autostart changes: none. Shared tools
 and unrelated project files were preserved.
+
+
+## Linux x86_64 Docker core image batch — 2026-10-15
+
+Checked local tools/apps/sockets first: no usable Docker, Podman, Colima, Lima or
+QEMU was installed. Reused existing Node 24/JDK/clang, Python, tar/scp/ssh and all
+project jars. No local container engine, VM, SDK, npm dependency or global tool
+was installed. The user supplied a NAS; confirmed physical Linux x86_64, Docker
+29.6.2, buildx 0.33.0 and four existing containers. Docker required a temporary
+sudo session. No user/group, NAS DNS, Docker daemon, registry or autostart config
+was changed. Connection address, username and password are not stored in Git.
+
+All SSH known-host/control files, source archives, probes and transport logs were
+under this project's .cache/nas-validation. NAS source/probe/DOCKER_CONFIG used
+one mktemp-owned /tmp/tvbox-core-verify.* directory. SCP used the existing SSH
+connection; the temporary control master was closed afterward. No global
+known_hosts entry was written. Docker Hub DNS failed in the NAS builder, so a
+host-side temporary registry-only CONNECT proxy, restricted to the NAS client,
+was used by the isolated builder and CLI session. No proxy was embedded in the
+runtime image. The loopback forward attempt failed and created no listener; the
+actual temporary proxy used a LAN-bound high port and was stopped after validation.
+
+A named docker-container buildx builder was created without changing the selected
+builder, using its own config and volume. Its container, 2.588 GB build cache volume and newly
+pulled 249,122,687-byte BuildKit helper image were removed after verification; no global image or
+builder prune was used. Base/build-stage data was confined to that builder.
+The four pre-existing NAS containers were left unchanged. Temporary test
+containers used --rm and started no persistent service or published port.
+
+Retained NAS artifact: tvbox-core:linux-amd64-20261015, purpose: command-line core
+runtime and next real-source validation. Docker reports 506,134,455 bytes in its
+uncompressed layers (about 483 MiB); actual physical usage depends on shared
+layers. The image includes JRE/Node, pinned dependencies, source attribution and
+prebuilt outputs. It has no javac/clang/npm and is not configured to autostart.
+The default command executes offline doctor and exits. Base image digests are in
+docker/base-images.json; this is not a fully apt-snapshot-reproducible build.
+
+Corrected a dependency ledger duplication discovered during provisioning:
+Commons IO and Commons Collections had each appeared twice in the native
+manifest, with identical binary pins and an extra purpose annotation. The actual
+20 unique retained jars total 67,798,245 bytes (about 64.7 MiB; du 65 MiB), not 22
+physical jars. No additional Maven artifact was installed in this batch. Local
+.tools remains about 404 MiB, retained for continued development; shared tools
+were preserved.
+
+367 host tests passed. Actual NAS Docker offline verification passed under UID
+10001, read-only root, no network, all capabilities dropped, pids limit 256 and
+2 GiB memory. /tmp tmpfs needs exec for JNI extraction/loading. Temporary fixture
+DEX/JARs, build caches and raw transport/probe logs were removed locally and on
+NAS; only metadata reports remain. Services still running from this task: none.
+NAS Docker and its existing containers continue running. Autostart changes: none.

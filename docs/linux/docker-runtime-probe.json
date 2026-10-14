@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-14T22:29:25.177247+00:00",
+  "scope": "Actual physical Linux x86_64 NAS Docker build and offline non-root/read-only/network-none runtime verification. No real subscription/native-protected JAR or Android/ART comparison in this batch.",
+  "host": {
+    "kind": "User-provided NAS",
+    "os": "Linux",
+    "architecture": "x86_64",
+    "kernel": "6.18.15",
+    "docker": "29.6.2",
+    "buildx": "0.33.0"
+  },
+  "image": {
+    "tag": "tvbox-core:linux-amd64-20261015",
+    "id": "sha256:62910f7fbcbe3503895d1ac07f5ddb29da23fb5da6fe4b819856e6f59520f907",
+    "os": "linux",
+    "architecture": "amd64",
+    "uncompressedLayerBytes": 506134455,
+    "user": "10001:10001",
+    "entrypoint": [
+      "node",
+      "/opt/tvbox/docker/cli.mjs"
+    ],
+    "command": [
+      "doctor"
+    ],
+    "proxyEmbedded": false,
+    "dockerfileSha256": "77209fea61f383ef3853cbf3003162a3d0ed7f7268393e9042eac5cd56e00d8a"
+  },
+  "constraints": {
+    "network": "none",
+    "readOnlyRoot": true,
+    "tmpfs": "/tmp:rw,exec,nosuid,nodev,size=256m",
+    "capabilities": "ALL dropped",
+    "noNewPrivileges": true,
+    "pidsLimit": 256,
+    "memoryBytes": 2147483648
+  },
+  "runtimeLayout": {
+    "jreOnly": true,
+    "javac": false,
+    "clang": false,
+    "npm": false,
+    "checkExitCode": 0
+  },
+  "doctor": {
+    "ok": true,
+    "platform": "linux",
+    "architecture": "x64",
+    "node": "v24.22.0",
+    "scope": "Offline synthetic config/QuickJS/DEX and actual ARM machine-code probes; no Android parity or real-source certification",
+    "config": {
+      "sites": 1
+    },
+    "quickjs": {
+      "ready": true,
+      "answer": 42
+    },
+    "dex": {
+      "ready": true,
+      "classes": 1,
+      "resource": "offline-dex-resource"
+    },
+    "arm": [
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      },
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64"
+      },
+      {
+        "value": 43,
+        "bits": 32,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      }
+    ],
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokensRejected": true,
+      "listeners": 0,
+      "dexLoaders": 0
+    },
+    "java": "openjdk version \"17.0.20.1\" 2026-08-18"
+  },
+  "regression": {
+    "host": "macOS ARM64",
+    "passed": 367,
+    "failed": 0,
+    "optionalNativeTestsEnabled": true
+  },
+  "limits": [
+    "Offline synthetic fixture proves the packaged engines and lifecycle, not every real subscription source",
+    "Real protected JAR init/home, network effects and Android/ART comparisons remain a subsequent batch",
+    "Linux x86_64 only; other NAS architectures are not established",
+    "Automatic production JAR retrieval/cache quotas and Web API/UI remain outstanding"
+  ],
+  "cleanup": {
+    "retained": [
+      "NAS core runtime image",
+      "Existing project .tools for ongoing development"
+    ],
+    "taskServicesRunning": false,
+    "autostartChanges": false,
+    "existingContainersModified": false,
+    "removedBuilderCacheBytesApprox": 2588000000,
+    "removedBuildkitImageBytes": 249122687
+  },
+  "baseImages": [
+    {
+      "image": "node:24-bookworm-slim",
+      "indexDigest": "sha256:a5f4366e834695d5f363b920c104953a535d3a9864d1bdf74566a0ebe01daee5",
+      "linuxAmd64Digest": "sha256:ec857ea6bb60cb3d0fa4d97495590c5fe7d51be8572c307b55957eeb06569cf7"
+    },
+    {
+      "image": "eclipse-temurin:17-jdk-noble",
+      "indexDigest": "sha256:fb79620c3f6ee8f1c7530a8dc4fd49e3b410bcef037694ad4858a1553bac4170",
+      "linuxAmd64Digest": "sha256:e1c09a9ee23feb81f94016547826c1e694086cd927356fb57fccc312fcc32f85"
+    },
+    {
+      "image": "eclipse-temurin:17-jre-noble",
+      "indexDigest": "sha256:900322f4cc1b9da9d730ae4bb56d8a1dabbaa9cfa32809fc8b542b600370a045",
+      "linuxAmd64Digest": "sha256:af3852c35f8339ab7beba6f17b7fc15c4aca4d72979c5f09776c9ff74385058f"
+    }
+  ],
+  "verificationScript": {
+    "path": "scripts/container/verify.sh",
+    "exitCode": 0
+  }
+}

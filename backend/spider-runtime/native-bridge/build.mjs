@@ -7,7 +7,7 @@ export function buildNativeProfile(base){
  for(const item of manifest.files)if(hash(readFileSync(join(root,item.path)))!==item.sha256)throw new Error('WinBox native reference checksum differs: '+item.path);
  const local=files(join(here,'src')),overrides=new Set(local.map(p=>p.slice(join(here,'src').length+1))),fingerprint=hash(JSON.stringify({base:base.build,tool:tool.manifest,manifest,builder:hash(readFileSync(fileURLToPath(import.meta.url))),local:local.map(p=>[p,hash(readFileSync(p))])})),build=join(root,'.cache/backend/native-profile',fingerprint);
  const cp=[base.classpath,...tool.jars,join(root,'.tools/lib/bcprov-jdk18on-1.78.1.jar')].join(delimiter);
- if(!existsSync(join(build,'complete'))){mkdirSync(dirname(build),{recursive:true});const stage=mkdtempSync(join(dirname(build),'build-')),src=join(stage,'source'),classes=join(stage,'classes');mkdirSync(src);mkdirSync(classes);const sources=[];
+ if(!existsSync(join(build,'complete'))){if(process.env.TVBOX_PREBUILT_ONLY==='1')throw new Error('Prebuilt native profile missing; rebuild the image');mkdirSync(dirname(build),{recursive:true});const stage=mkdtempSync(join(dirname(build),'build-')),src=join(stage,'source'),classes=join(stage,'classes');mkdirSync(src);mkdirSync(classes);const sources=[];
  try{
   for(const item of manifest.files){const original=join(root,item.path);let relative;
    if(item.path.includes('/native-bridge/com/'))relative=item.path.split('/native-bridge/')[1];

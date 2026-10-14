@@ -23,7 +23,7 @@ public final class SpiderWorker {
   if(operation.equals("host")){HostServices.configure(r);return JsonNull.INSTANCE;}
   if(operation.equals("loadMain")){JsonObject v=new JsonObject();v.addProperty("loaded",jars.loadMain(Path.of(r.get("path").getAsString())));v.add("logs",HostServices.logs.deepCopy());if(!v.get("loaded").getAsBoolean()&&jars.failure()!=null)v.addProperty("failure",jars.failure());return v;}
   if(operation.equals("nativeState"))return NativeHooks.snapshot();
-  if(operation.equals("nativeProbe"))return gson.toJsonTree(NativeHooks.probe());
+  if(operation.equals("nativeProbe"))return gson.toJsonTree(r.has("backend")||r.has("bits")?NativeHooks.probe(r.has("backend")?r.get("backend").getAsString():"unicorn2",r.has("bits")?r.get("bits").getAsInt():64):NativeHooks.probe());
   if(operation.equals("dexState")){JsonObject v=new JsonObject();v.addProperty("nestedLoaderCount",dalvik.system.BaseDexClassLoader.ownedCount());return v;}
   if(operation.equals("scanProtection"))return new JsonPrimitive(new ProtectedJarSupport().check(r.get("path").getAsString()));
   if(operation.equals("registerJar")){String signature=r.get("signature").getAsString();Path path=Path.of(r.get("path").getAsString());jars.register(signature,path);scripts.register(signature.split(";md5;")[0],path);return JsonNull.INSTANCE;}

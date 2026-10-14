@@ -84,8 +84,8 @@
   },
   "nativeBridge": {
     "manifest": "backend/spider-runtime/native-bridge/runtime.json",
-    "files": 22,
-    "bytes": 69282171,
+    "files": 20,
+    "bytes": 67798245,
     "verification": "Official Maven Central published SHA-1 checked; all artifact SHA-256 pinned; no native JARs committed",
     "licenses": "backend/spider-runtime/native-bridge/NOTICE"
   }

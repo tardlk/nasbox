@@ -279,3 +279,14 @@ underlying Spider objects. Clear/reload changes the worker PID and releases its
 listener. All 365 tests pass with native verification enabled. This is host macOS
 ARM64 evidence, not Android parity certification or Linux/NAS/Docker validation.
 Automatic production JAR retrieval, persistent quotas and full API parity remain.
+
+
+## Linux x86_64 Docker core image — 2026-10-15
+
+[docker/README.md](../../docker/README.md) provides the pinned multi-stage image,
+CLI commands and offline verification script. The final non-root JRE image has
+passed on a physical x86_64 NAS with read-only root, no network and no compilers.
+The synthetic doctor exercises config/QuickJS/DEX plus real ARM64 and ARM32
+machine-code backends and worker replacement. Runtime outputs must be prebuilt;
+missing outputs fail closed. See docker-runtime-probe.json for the image ID and
+limits. Real protected subscription JAR and Android comparisons remain next.

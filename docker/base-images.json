@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-14T22:08:31.856062+00:00",
+  "source": "Docker Official Images, authenticated public registry manifest lookup",
+  "images": [
+    {
+      "image": "node:24-bookworm-slim",
+      "indexDigest": "sha256:a5f4366e834695d5f363b920c104953a535d3a9864d1bdf74566a0ebe01daee5",
+      "linuxAmd64Digest": "sha256:ec857ea6bb60cb3d0fa4d97495590c5fe7d51be8572c307b55957eeb06569cf7"
+    },
+    {
+      "image": "eclipse-temurin:17-jdk-noble",
+      "indexDigest": "sha256:fb79620c3f6ee8f1c7530a8dc4fd49e3b410bcef037694ad4858a1553bac4170",
+      "linuxAmd64Digest": "sha256:e1c09a9ee23feb81f94016547826c1e694086cd927356fb57fccc312fcc32f85"
+    },
+    {
+      "image": "eclipse-temurin:17-jre-noble",
+      "indexDigest": "sha256:900322f4cc1b9da9d730ae4bb56d8a1dabbaa9cfa32809fc8b542b600370a045",
+      "linuxAmd64Digest": "sha256:af3852c35f8339ab7beba6f17b7fc15c4aca4d72979c5f09776c9ff74385058f"
+    }
+  ]
+}

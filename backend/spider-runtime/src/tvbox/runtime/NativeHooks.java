@@ -18,5 +18,6 @@ public final class NativeHooks {
  public static void repair(Path source,Path jar)throws Exception{if(enabled())invoke("repair",new Class<?>[]{Path.class,Path.class},source,jar);}
  public static com.google.gson.JsonObject snapshot()throws Exception{if(enabled())return (com.google.gson.JsonObject)invoke("snapshot",new Class<?>[0]);var value=new com.google.gson.JsonObject();value.addProperty("enabled",false);return value;}
  public static Object probe()throws Exception{if(!enabled())throw new IllegalStateException("NATIVE_PROFILE_REQUIRED");return invoke("probe",new Class<?>[0]);}
+ public static Object probe(String backend,int bits)throws Exception{if(!enabled())throw new IllegalStateException("NATIVE_PROFILE_REQUIRED");return invoke("probe",new Class<?>[]{String.class,int.class},backend,bits);}
  public static void close()throws Exception{if(enabled())invoke("close",new Class<?>[0]);}
 }

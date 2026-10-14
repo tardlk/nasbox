@@ -70,14 +70,16 @@
       "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.5.0/commons-collections4-4.5.0.jar",
       "sha256": "00f93263c267be201b8ae521b44a7137271b16688435340bf629db1bac0a5845",
       "upstreamSha1": "e5cf89f0c6e132fc970bd9a465fdcb8dbe94f75a",
-      "bytes": 898652
+      "bytes": 898652,
+      "purpose": "Declared unidbg-api transitive dependency"
     },
     {
       "filename": "commons-io-2.21.0.jar",
       "url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.21.0/commons-io-2.21.0.jar",
       "sha256": "7d643a2afea8b058b762aa6fb90e5b256f6c729739f8b3784c3370ddc609e88d",
       "upstreamSha1": "52a6f68fe5afe335cde95461dd5c3412f04996f7",
-      "bytes": 585274
+      "bytes": 585274,
+      "purpose": "Declared unidbg-api transitive dependency"
     },
     {
       "filename": "fastjson-1.2.83.jar",
@@ -135,22 +137,6 @@
       "upstreamSha1": "3fb039385e71e9aa2ba547ea9ea8caa34a4ffac7",
       "bytes": 12947757,
       "purpose": "Android API signatures and throwing platform fallbacks; not Android execution"
-    },
-    {
-      "filename": "commons-io-2.21.0.jar",
-      "url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.21.0/commons-io-2.21.0.jar",
-      "upstreamSha1": "52a6f68fe5afe335cde95461dd5c3412f04996f7",
-      "sha256": "7d643a2afea8b058b762aa6fb90e5b256f6c729739f8b3784c3370ddc609e88d",
-      "bytes": 585274,
-      "purpose": "Declared unidbg-api transitive dependency"
-    },
-    {
-      "filename": "commons-collections4-4.5.0.jar",
-      "url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-collections4/4.5.0/commons-collections4-4.5.0.jar",
-      "upstreamSha1": "e5cf89f0c6e132fc970bd9a465fdcb8dbe94f75a",
-      "sha256": "00f93263c267be201b8ae521b44a7137271b16688435340bf629db1bac0a5845",
-      "bytes": 898652,
-      "purpose": "Declared unidbg-api transitive dependency"
     },
     {
       "filename": "sqlite-jdbc-3.46.1.0.jar",

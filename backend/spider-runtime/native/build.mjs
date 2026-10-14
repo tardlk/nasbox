@@ -10,6 +10,7 @@ export function buildQuickJS(javaHome){
  const fingerprint=sha256(JSON.stringify({manifest,cc,cxx,javaHome,platform:process.platform,arch:process.arch,buildScript:readFileSync(fileURLToPath(import.meta.url),'utf8')}));
  const build=join(root,'.cache/backend/spider-native',fingerprint),library=join(build,process.platform==='darwin'?'libquickjs-java-wrapper.dylib':'libquickjs-java-wrapper.so');
  if(existsSync(join(build,'complete')))return{library,fingerprint,manifest};
+ if(process.env.TVBOX_PREBUILT_ONLY==='1')throw new Error('Prebuilt QuickJS runtime missing; rebuild the image');
  mkdirSync(dirname(build),{recursive:true});const staging=mkdtempSync(join(dirname(build),'build-'));
  const run=(command,args)=>{const r=spawnSync(command,args,{encoding:'utf8',timeout:60000,maxBuffer:1024*1024});if(r.error||r.status!==0)throw new Error('QuickJS native compile failed: '+(r.error||r.stderr));};
  try{

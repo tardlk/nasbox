@@ -9,7 +9,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 365 Node tests passed with native profile enabled, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
+| Probe and backend contract tests | Done | 367 Node tests passed with native profile enabled, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
@@ -21,6 +21,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | DEX and protected initialization | Controlled host slice implemented | dex-runtime-comparison.json: 155/155 observations; raw/multidex/resources/cache and synthetic Java-unpacked nested payload; optional native profile below; ART unverified |
 | Real subscription JS/module/HTML slice | Verified on host JVM | Three real JS sources init/home, exact fresh-source and live replays; original HTML globals, assets and module/cache routing |
 | ARM native protected JAR | Host executable slice | native-runtime-probe.json: genuine native getLoader, 44/45 ready CSPs, five JSON homes, JVM replacement/cleanup; Linux/ART unverified |
+| Linux x86_64 Docker core image | Delivered and verified on NAS | docker-runtime-probe.json: non-root JRE, offline/read-only engine and lifecycle checks; real protected JAR next |
 | Native/Python and complete JS host parity | Pending | Native-only protected init fails explicitly; actual Android source/runtime comparison still required |
 | Linux container and NAS validation | Pending | Current host is macOS ARM64; no Docker available |
 
@@ -211,3 +212,30 @@ Next batch:
    support multiple native artifacts via separate workers and expand real methods.
 3. Package Docker and build the Web API/UI after the runtime has Linux evidence.
    Player work remains deferred. Full TVBox compatibility is still unconfirmed.
+
+
+Linux x86_64 Docker core image batch — 2026-10-15:
+
+Built a minimal multi-stage core image on the user's physical x86_64 NAS, with
+pinned official Node/JDK/JRE image digests. No desktop/player/npm dependencies are
+included. Build tools stay in the builder; the final non-root JRE image uses
+prebuilt outputs and fails closed instead of recompiling on a missing cache.
+Normalized artifact permissions make root-built caches readable to the runtime UID.
+A stable provisioning layer checks/reuses dependencies and isolates source changes
+from downloads. Corrected two duplicate manifest entries: 20 unique native JARs,
+67,798,245 bytes; no duplicate physical files had been installed.
+
+The actual final image passes offline config, QuickJS, DEX/resource, ARM64
+Unicorn2/Dynarmic, ARM32 Unicorn2, worker replacement and stale-token checks with
+network disabled, read-only root, UID 10001, dropped capabilities and a 2 GiB
+memory limit. Native extraction requires exec on the owned /tmp tmpfs. javac,
+clang and npm are absent. docker-runtime-probe.json records actual image ID,
+base digests, architecture, constraints and results. Image size is about 483 MiB
+in uncompressed layers; shared physical disk use may differ.
+
+367 host tests pass, including JRE-only prebuilt-cache reuse/missing-output failure
+and the complete offline doctor with compilers removed from PATH. The supplied
+real protected JAR was not executed in this container batch. Next item is the
+same-input real subscription/JAR comparison on Linux, followed by Android/ART
+comparison and automatic production artifact/cache management. Web/player work
+remains deferred.

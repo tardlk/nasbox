@@ -12,7 +12,7 @@ export function buildSpiderRuntime(){
  const native=buildQuickJS(javaHome);const sourceFiles=files(join(here,'src'));
  const fingerprint=sha256(JSON.stringify({runtime,assets:assets.manifest,config:config.build,native:native.fingerprint,sources:sourceFiles.map(p=>[p,sha256(readFileSync(p))])}));
  const build=join(root,'.cache/backend/spider-runtime',fingerprint);
- if(!existsSync(join(build,'complete'))){mkdirSync(dirname(build),{recursive:true});const staging=mkdtempSync(join(dirname(build),'build-'));
+ if(!existsSync(join(build,'complete'))){if(process.env.TVBOX_PREBUILT_ONLY==='1')throw new Error('Prebuilt Spider runtime missing; rebuild the image');mkdirSync(dirname(build),{recursive:true});const staging=mkdtempSync(join(dirname(build),'build-'));
  try{
   const javac=existsSync(join(javaHome,'bin/javac'))?join(javaHome,'bin/javac'):'javac';
   const r=spawnSync(javac,['--release','17','-encoding','UTF-8','-cp',[config.build,config.gson,...jars].join(delimiter),'-d',staging,...sourceFiles.filter(p=>p.endsWith('.java'))],{encoding:'utf8',timeout:30000,maxBuffer:1024*1024});

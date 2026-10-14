@@ -1,0 +1,22 @@
+# Allowlist: no host tools/caches, credentials, subscriptions or desktop assets.
+**
+!backend/
+!backend/**
+!docker/
+!docker/**
+!scripts/
+!scripts/container/
+!scripts/container/**
+!scripts/compat/
+!scripts/compat/native-source-probe.mjs
+!resources/
+!resources/js-lib/
+!resources/js-lib/**
+!resources/jvm/
+!resources/jvm/native-bridge/
+!resources/jvm/native-bridge/**
+!resources/jvm/stubs-src/
+!resources/jvm/stubs-src/**
+!resources/jvm/tools/
+!resources/jvm/tools/JarRewriter.java
+!LICENSE

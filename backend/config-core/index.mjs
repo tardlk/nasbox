@@ -14,7 +14,7 @@ const sha256 = data => createHash('sha256').update(data).digest('hex');
 function javaCommand(name) {
   const home = process.env.TVBOX_JAVA_HOME || process.env.JAVA_HOME || join(root, '.tools/jdk17');
   const binary = join(home, 'bin', process.platform === 'win32' ? `${name}.exe` : name);
-  return existsSync(binary) ? binary : name;
+  return process.env.TVBOX_PREBUILT_ONLY === '1' || existsSync(binary) ? binary : name;
 }
 function javaSources(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
@@ -35,6 +35,7 @@ export function buildConfigCore() {
   const fingerprint = sha256(JSON.stringify({ runtime, javac, sources: sources.map(path => [path, sha256(readFileSync(path))]) }));
   const build = join(root, '.cache/backend/config-core', fingerprint);
   if (!existsSync(join(build, 'complete'))) {
+    if (process.env.TVBOX_PREBUILT_ONLY === '1') throw new Error('Prebuilt config runtime missing; rebuild the image');
     mkdirSync(dirname(build), { recursive: true });
     const staging = mkdtempSync(join(dirname(build), 'build-'));
     try {
