@@ -1,0 +1,574 @@
+{
+  "baseline": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "host": {
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "scope": "Fresh pinned Spider/SpiderApi/JsSpider and loader methods on shared explicit host bindings; actual JVM class-JAR/QuickJS execution. No Android/ART, DEX/native plugin or Linux/NAS equivalence.",
+  "inputSha256": "767136262a964012924140d5478a0c50e308ccc19a056d15a95f639bc7c798de",
+  "quickjs": {
+    "wrapperVersion": "2.1.0",
+    "wrapperCommit": "cba8438a941254f28be5d706ae15bf70c286d045",
+    "engineVersion": "2024-02-14",
+    "engineCommit": "c46516996da53eaf2f9aca516264870e25719d76",
+    "bytecodeVersion": 67
+  },
+  "comparison": "Exact result/error/identity/cache state equality against freshly extracted source with explicit shared host bindings",
+  "total": 136,
+  "matching": 136,
+  "differences": 0,
+  "rows": [
+    {
+      "id": "public-contract",
+      "equal": true
+    },
+    {
+      "id": "route-demo.js",
+      "equal": true
+    },
+    {
+      "id": "route-demo.js?q=1",
+      "equal": true
+    },
+    {
+      "id": "route-demo.JS",
+      "equal": true
+    },
+    {
+      "id": "route-demo.js#f",
+      "equal": true
+    },
+    {
+      "id": "route-demo.py",
+      "equal": true
+    },
+    {
+      "id": "route-demo.py?file=x.js",
+      "equal": true
+    },
+    {
+      "id": "route-demo.js?file=x.py",
+      "equal": true
+    },
+    {
+      "id": "route-x.py.js.old",
+      "equal": true
+    },
+    {
+      "id": "route-csp_Demo",
+      "equal": true
+    },
+    {
+      "id": "route-xjs",
+      "equal": true
+    },
+    {
+      "id": "route-py_demo",
+      "equal": true
+    },
+    {
+      "id": "route-",
+      "equal": true
+    },
+    {
+      "id": "api-local",
+      "equal": true
+    },
+    {
+      "id": "api-remote",
+      "equal": true
+    },
+    {
+      "id": "api-port",
+      "equal": true
+    },
+    {
+      "id": "api-headless-orientation",
+      "equal": true
+    },
+    {
+      "id": "parse-padding-1",
+      "equal": true
+    },
+    {
+      "id": "parse-padding-2",
+      "equal": true
+    },
+    {
+      "id": "parse-no-padding-needed",
+      "equal": true
+    },
+    {
+      "id": "parse-unicode",
+      "equal": true
+    },
+    {
+      "id": "parse-null",
+      "equal": true
+    },
+    {
+      "id": "parse-empty",
+      "equal": true
+    },
+    {
+      "id": "multi-null",
+      "equal": true
+    },
+    {
+      "id": "multi-empty",
+      "equal": true
+    },
+    {
+      "id": "multi-skip-non-objects",
+      "equal": true
+    },
+    {
+      "id": "multi-invalid",
+      "equal": true
+    },
+    {
+      "id": "custom-addresses",
+      "equal": true
+    },
+    {
+      "id": "custom-port",
+      "equal": true
+    },
+    {
+      "id": "custom-remote",
+      "equal": true
+    },
+    {
+      "id": "address-unavailable",
+      "equal": true
+    },
+    {
+      "id": "address-fallback",
+      "equal": true
+    },
+    {
+      "id": "port-fallback",
+      "equal": true
+    },
+    {
+      "id": "restore-address",
+      "equal": true
+    },
+    {
+      "id": "load-fixture-main",
+      "equal": true
+    },
+    {
+      "id": "construct-before-initApi-before-init",
+      "equal": true
+    },
+    {
+      "id": "jar-home",
+      "equal": true
+    },
+    {
+      "id": "jar-home-video",
+      "equal": true
+    },
+    {
+      "id": "jar-category",
+      "equal": true
+    },
+    {
+      "id": "jar-detail-all-ids",
+      "equal": true
+    },
+    {
+      "id": "jar-search",
+      "equal": true
+    },
+    {
+      "id": "jar-search-paged-base-fallback",
+      "equal": true
+    },
+    {
+      "id": "jar-player",
+      "equal": true
+    },
+    {
+      "id": "jar-live",
+      "equal": true
+    },
+    {
+      "id": "jar-sniffer",
+      "equal": true
+    },
+    {
+      "id": "jar-is-video",
+      "equal": true
+    },
+    {
+      "id": "jar-not-video",
+      "equal": true
+    },
+    {
+      "id": "jar-api-inside-init",
+      "equal": true
+    },
+    {
+      "id": "jar-static-init-once",
+      "equal": true
+    },
+    {
+      "id": "jar-resource-preserved",
+      "equal": true
+    },
+    {
+      "id": "jar-proxy-alias",
+      "equal": true
+    },
+    {
+      "id": "jar-proxy-local",
+      "equal": true
+    },
+    {
+      "id": "jar-thrown-method",
+      "equal": true
+    },
+    {
+      "id": "jar-cache-ignores-changed-api-ext",
+      "equal": true
+    },
+    {
+      "id": "jar-cached-state-retained",
+      "equal": true
+    },
+    {
+      "id": "register-site-jar",
+      "equal": true
+    },
+    {
+      "id": "same-key-another-jar-isolated",
+      "equal": true
+    },
+    {
+      "id": "isolated-jar-init",
+      "equal": true
+    },
+    {
+      "id": "jar-proxy-site-key",
+      "equal": true
+    },
+    {
+      "id": "jar-proxy-miss",
+      "equal": true
+    },
+    {
+      "id": "one-arg-init-overload",
+      "equal": true
+    },
+    {
+      "id": "one-arg-init-called",
+      "equal": true
+    },
+    {
+      "id": "defaults",
+      "equal": true
+    },
+    {
+      "id": "default-homeContent",
+      "equal": true
+    },
+    {
+      "id": "default-homeVideoContent",
+      "equal": true
+    },
+    {
+      "id": "default-categoryContent",
+      "equal": true
+    },
+    {
+      "id": "default-detailContent",
+      "equal": true
+    },
+    {
+      "id": "default-searchContent",
+      "equal": true
+    },
+    {
+      "id": "default-playerContent",
+      "equal": true
+    },
+    {
+      "id": "default-liveContent",
+      "equal": true
+    },
+    {
+      "id": "default-manualVideoCheck",
+      "equal": true
+    },
+    {
+      "id": "default-isVideoFormat",
+      "equal": true
+    },
+    {
+      "id": "default-proxy",
+      "equal": true
+    },
+    {
+      "id": "default-action",
+      "equal": true
+    },
+    {
+      "id": "failed-init-not-cached",
+      "equal": true
+    },
+    {
+      "id": "failed-api-not-cached",
+      "equal": true
+    },
+    {
+      "id": "missing-class",
+      "equal": true
+    },
+    {
+      "id": "trailing-csp-prefix",
+      "equal": true
+    },
+    {
+      "id": "empty-api",
+      "equal": true
+    },
+    {
+      "id": "destroy-throw-swallowed",
+      "equal": true
+    },
+    {
+      "id": "clear-jar",
+      "equal": true
+    },
+    {
+      "id": "cleared-token-rejected",
+      "equal": true
+    },
+    {
+      "id": "no-main-after-clear",
+      "equal": true
+    },
+    {
+      "id": "reload-main",
+      "equal": true
+    },
+    {
+      "id": "new-instance-after-clear",
+      "equal": true
+    },
+    {
+      "id": "fresh-after-clear",
+      "equal": true
+    },
+    {
+      "id": "registered-modules",
+      "equal": true
+    },
+    {
+      "id": "js-source-object",
+      "equal": true
+    },
+    {
+      "id": "js-home",
+      "equal": true
+    },
+    {
+      "id": "js-homeVod",
+      "equal": true
+    },
+    {
+      "id": "js-category",
+      "equal": true
+    },
+    {
+      "id": "js-detail-only-first-id",
+      "equal": true
+    },
+    {
+      "id": "js-detail-empty-caught",
+      "equal": true
+    },
+    {
+      "id": "js-search",
+      "equal": true
+    },
+    {
+      "id": "js-paged-search-base-fallback",
+      "equal": true
+    },
+    {
+      "id": "js-play",
+      "equal": true
+    },
+    {
+      "id": "js-live",
+      "equal": true
+    },
+    {
+      "id": "js-manual",
+      "equal": true
+    },
+    {
+      "id": "js-is-video",
+      "equal": true
+    },
+    {
+      "id": "js-error-null",
+      "equal": true
+    },
+    {
+      "id": "js-proxy-byte-array",
+      "equal": true
+    },
+    {
+      "id": "js-local-write",
+      "equal": true
+    },
+    {
+      "id": "js-cache-only-key",
+      "equal": true
+    },
+    {
+      "id": "js-cached-method",
+      "equal": true
+    },
+    {
+      "id": "js-json-object-init-observation",
+      "equal": true
+    },
+    {
+      "id": "js-object-init-same-thread-observation",
+      "equal": true
+    },
+    {
+      "id": "js-array-ext-is-string",
+      "equal": true
+    },
+    {
+      "id": "js-array-ext-observation",
+      "equal": true
+    },
+    {
+      "id": "cat-config",
+      "equal": true
+    },
+    {
+      "id": "cat-stype-key-object-ext",
+      "equal": true
+    },
+    {
+      "id": "legacy-global-assignment",
+      "equal": true
+    },
+    {
+      "id": "legacy-home",
+      "equal": true
+    },
+    {
+      "id": "async-promise",
+      "equal": true
+    },
+    {
+      "id": "async-resolved-promise",
+      "equal": true
+    },
+    {
+      "id": "async-rejected-promise",
+      "equal": true
+    },
+    {
+      "id": "return-types",
+      "equal": true
+    },
+    {
+      "id": "js-return-type-homeContent",
+      "equal": true
+    },
+    {
+      "id": "js-return-type-homeVideoContent",
+      "equal": true
+    },
+    {
+      "id": "js-return-type-manualVideoCheck",
+      "equal": true
+    },
+    {
+      "id": "js-return-type-isVideoFormat",
+      "equal": true
+    },
+    {
+      "id": "js-return-type-action",
+      "equal": true
+    },
+    {
+      "id": "js-return-type-liveContent",
+      "equal": true
+    },
+    {
+      "id": "register-js-api-jar",
+      "equal": true
+    },
+    {
+      "id": "js-java-api",
+      "equal": true
+    },
+    {
+      "id": "js-invokes-real-java-function",
+      "equal": true
+    },
+    {
+      "id": "missing-script",
+      "equal": true
+    },
+    {
+      "id": "missing-script-null",
+      "equal": true
+    },
+    {
+      "id": "html-module",
+      "equal": true
+    },
+    {
+      "id": "invalid-html-script",
+      "equal": true
+    },
+    {
+      "id": "python-explicit-unsupported",
+      "equal": true
+    },
+    {
+      "id": "clear-js",
+      "equal": true
+    },
+    {
+      "id": "cleared-js-token",
+      "equal": true
+    },
+    {
+      "id": "js-new-instance",
+      "equal": true
+    },
+    {
+      "id": "js-state-reset",
+      "equal": true
+    },
+    {
+      "id": "js-local-persists-clear",
+      "equal": true
+    },
+    {
+      "id": "js-local-delete",
+      "equal": true
+    }
+  ],
+  "limits": [
+    "No Android/ART or Linux/NAS runtime validation",
+    "No DEX conversion, protected/native plugin or Python execution",
+    "Only selected Global functions and explicitly supplied/local modules/artifacts; no Android module download/cache equivalence",
+    "Ordinary object-ext initialization is caught outside the owning QuickJS thread on this host; Android verification pending",
+    "Unresolved Promise and nonterminating calls are stopped by host process deadline",
+    "Subscription hosts/proxy/DOH and full live script effects remain unbound"
+  ]
+}

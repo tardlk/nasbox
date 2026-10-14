@@ -1,0 +1,31 @@
+ private static final ConcurrentHashMap<String,Spider> spiders=new ConcurrentHashMap<>();
+ private static final ConcurrentHashMap<String,Class<?>> classes=new ConcurrentHashMap<>();
+ private final Map<String,Path> artifacts=new HashMap<>();
+ private final List<JvmJarClassLoader> owned=new ArrayList<>();
+ private volatile String recentKey="";
+ static class Log{static void i(String tag,String value){HostServices.log(value);}}
+ public void register(String signature,Path path){artifacts.put(signature,path.toAbsolutePath());}
+ private Class<?> loadJarInternal(String jar,String md5,String key){
+  if(classes.containsKey(key))return classes.get(key);
+  Path path=artifacts.get(jar);if(path==null)throw new IllegalStateException("Unresolved JS API class-JAR");
+  try{
+   JvmJarClassLoader loader=new JvmJarClassLoader(path);owned.add(loader);Class<?> type;
+   try{type=loader.loadClass("com.github.catvod.js.Function");type.getDeclaredConstructor(com.whl.quickjs.wrapper.QuickJSContext.class);}
+   catch(ReflectiveOperationException e){type=loader.loadClass("com.github.catvod.js.Method");type.getDeclaredConstructor(com.whl.quickjs.wrapper.QuickJSContext.class);}
+   classes.put(key,type);return type;
+  }catch(Exception e){HostServices.log("JS API class loading failed: "+e.getClass().getName());return null;}
+ }
+ public void close()throws Exception{
+  List<Spider> previous=new ArrayList<>(spiders.values());
+  clear();com.github.catvod.crawler.js.Global.closeAll();
+  for(Spider spider:previous)if(spider instanceof JsSpider){
+   java.lang.reflect.Field field=JsSpider.class.getDeclaredField("executor");field.setAccessible(true);
+   ExecutorService executor=(ExecutorService)field.get(spider);if(!executor.awaitTermination(3,TimeUnit.SECONDS))throw new IllegalStateException("QuickJS executor did not stop");
+  }
+  Exception failure=null;for(JvmJarClassLoader loader:owned)try{loader.close();}catch(Exception e){failure=e;}owned.clear();if(failure!=null)throw failure;
+ }
+ public boolean ready(Spider spider)throws Exception{
+  if(!(spider instanceof JsSpider))return false;
+  java.lang.reflect.Field field=JsSpider.class.getDeclaredField("jsObject");field.setAccessible(true);java.lang.reflect.Field state=JsSpider.class.getDeclaredField("destroyed");state.setAccessible(true);return field.get(spider)!=null&&!((java.util.concurrent.atomic.AtomicBoolean)state.get(spider)).get();
+ }
+ public com.google.gson.JsonObject snapshot(){com.google.gson.JsonObject result=new com.google.gson.JsonObject();result.addProperty("recentKey",recentKey);result.addProperty("spiderCount",spiders.size());result.addProperty("apiClassCount",classes.size());return result;}

@@ -160,3 +160,14 @@ fresh-parse cache preservation and typed preference restart. A real full-mode
 import and separate-process cache restart returned the same 48 sources, one live
 group, three hosts and one rule host; see docs/linux/full-loader-smoke.json. Raw
 subscription bytes and temporary state were removed after verification.
+
+## Explicit executable session
+
+../spider-runtime/session.mjs composes this loader with lazy real VOD source
+execution. Caller-supplied ordinary JVM class JARs and registered/local QuickJS
+modules use the original getCSP route/cache/init/method contract. A beforeRuntimeClear hook synchronizes the runtime worker’s active keys at the
+original reset point, after fetch/cache preparation. Actual runtime
+registries participate in RuntimeCleanup before the next import. Source code is
+not automatically downloaded, and DEX/protected/native/Python, complete JS host
+bindings and live config effects remain pending. See ../spider-runtime/README.md
+for API use and the 136-result source-probe boundary.

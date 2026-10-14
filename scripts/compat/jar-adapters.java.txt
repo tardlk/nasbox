@@ -1,0 +1,50 @@
+ private static final String TAG="JarLoader",MAIN_KEY="main";
+ private final ConcurrentHashMap<String,JvmJarClassLoader> loaders=new ConcurrentHashMap<>();
+ private final ConcurrentHashMap<String,Method> proxyMethods=new ConcurrentHashMap<>(),danmuClickMethods=new ConcurrentHashMap<>(),danmuLongClickMethods=new ConcurrentHashMap<>();
+ private final ConcurrentHashMap<String,Spider> spiders=new ConcurrentHashMap<>();
+ private final ConcurrentHashMap<String,Object> locks=new ConcurrentHashMap<>();
+ private final ConcurrentHashMap<String,String> siteJarKeys=new ConcurrentHashMap<>(),aliases=new ConcurrentHashMap<>();
+ private final Map<String,Path> artifacts=new HashMap<>();
+ private volatile String recent=MAIN_KEY;
+ private final ProtectedInitJar protectedInitJar=new ProtectedInitJar();
+ static class TextUtils{static boolean isEmpty(CharSequence s){return s==null||s.length()==0;}}
+ static class Log{static void i(String tag,String message){HostServices.log(message);}static void e(String tag,String message){HostServices.log(message);}}
+ static class RemoteServer{static int serverPort=9978;}
+ // Only ordinary JVM class JARs are admitted by the artifact boundary. Android
+ // protected/DEX/native jars are rejected there, before init is considered.
+ static class ProtectedInitJar{boolean check(String path){return false;}boolean init(Class<?> c){throw new UnsupportedOperationException("Protected Android initialization unavailable");}}
+ public void register(String signature,Path file)throws IOException{
+  if(!Files.isRegularFile(file))throw new FileNotFoundException("JAR artifact missing");
+  artifacts.put(signature,file.toAbsolutePath());
+ }
+ public boolean loadMain(Path file)throws Exception{
+  register("",file);boolean success=load(MAIN_KEY,file.toFile());if(success)recent=MAIN_KEY;return success;
+ }
+ public void parseJar(String key,String signature){
+  if(TextUtils.isEmpty(key)||TextUtils.isEmpty(signature)||loaders.containsKey(key))return;
+  Path file=artifacts.get(signature);
+  if(file==null)throw new IllegalStateException("Unresolved JAR artifact");
+  String[] texts=signature.split(";md5;");aliases.put(jarKey(texts[0]),key);
+  load(key,file.toFile());
+ }
+ private boolean load(String key,File file){
+  if(Thread.interrupted()||!file.isFile())return false;
+  if(loaders.containsKey(key))return true;
+  JvmJarClassLoader loader=null;
+  try{
+   loader=new JvmJarClassLoader(file.toPath());
+   if(!invokeInit(loader,file.getAbsolutePath())){loader.close();return false;}
+   invokeProxy(key,loader);invokeDanmaku(key,loader);injectProxyPort(loader);loaders.put(key,loader);return true;
+  }catch(Throwable e){try{if(loader!=null)loader.close();}catch(Exception ignored){}HostServices.log("JAR loading failed: "+e.getClass().getName());return false;}
+ }
+ public void close()throws IOException{
+  List<JvmJarClassLoader> owned=new ArrayList<>(loaders.values());
+  clear();IOException failure=null;
+  for(JvmJarClassLoader loader:owned)try{loader.close();}catch(IOException e){failure=e;}
+  if(failure!=null)throw failure;
+ }
+ public com.google.gson.JsonObject snapshot(){
+  com.google.gson.Gson gson=new com.google.gson.Gson();com.google.gson.JsonObject value=new com.google.gson.JsonObject();
+  value.addProperty("recent",recent);value.addProperty("spiderCount",spiders.size());value.addProperty("loaderCount",loaders.size());
+  value.add("siteJarKeys",gson.toJsonTree(new TreeMap<>(siteJarKeys)));value.add("aliases",gson.toJsonTree(new TreeMap<>(aliases)));return value;
+ }

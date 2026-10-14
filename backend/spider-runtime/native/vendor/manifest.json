@@ -1,0 +1,139 @@
+{
+  "wrapperRepository": "https://github.com/HarlonWang/quickjs-wrapper",
+  "wrapperTag": "2.1.0",
+  "wrapperCommit": "cba8438a941254f28be5d706ae15bf70c286d045",
+  "quickjsRepository": "https://github.com/HarlonWang/quickjs",
+  "quickjsCommit": "c46516996da53eaf2f9aca516264870e25719d76",
+  "quickjsVersion": "2024-02-14",
+  "javaSourcesJarSha256": "7fc6faca05087b84d519040d3ca35bf9b2491f49a0dd3330bfe4699379d213de",
+  "matchingJavaSources": [
+    "com/whl/quickjs/wrapper/QuickJSArray.java",
+    "com/whl/quickjs/wrapper/QuickJSException.java",
+    "com/whl/quickjs/wrapper/JSObject.java",
+    "com/whl/quickjs/wrapper/JSMethod.java",
+    "com/whl/quickjs/wrapper/JSFunction.java",
+    "com/whl/quickjs/wrapper/JSArray.java",
+    "com/whl/quickjs/wrapper/QuickJSObject.java",
+    "com/whl/quickjs/wrapper/ModuleLoader.java",
+    "com/whl/quickjs/wrapper/JSCallFunction.java",
+    "com/whl/quickjs/wrapper/QuickJSFunction.java",
+    "com/whl/quickjs/wrapper/QuickJSContext.java",
+    "com/whl/quickjs/wrapper/JSObjectCreator.java"
+  ],
+  "flags": [
+    "CONFIG_BIGNUM",
+    "CONFIG_VERSION=2024-02-14"
+  ],
+  "files": [
+    {
+      "path": "LICENSE-QUICKJS-WRAPPER",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "cpp/quickjs_context_jni.cpp",
+      "sha256": "8f2c1e18db9189482370892040026d9609e3da368b5fad10f45780d37840d517",
+      "bytes": 11185
+    },
+    {
+      "path": "cpp/quickjs_extend_libraries.h",
+      "sha256": "14453420dc102d17df11b1bb1773e56406f30eb60a1ac7e151b6f78059cd0c0a",
+      "bytes": 10786
+    },
+    {
+      "path": "cpp/quickjs_wrapper.cpp",
+      "sha256": "18507a24e6edd996b63d506573ba54912ccd8dad59ad4f71c57fd18c4c65e7d2",
+      "bytes": 33527
+    },
+    {
+      "path": "cpp/quickjs_wrapper.h",
+      "sha256": "98854c4ad1d3d4bf2d0a82df25f4fe0306071336671440a30747fe63b23555b8",
+      "bytes": 2968
+    },
+    {
+      "path": "quickjs/LICENSE",
+      "sha256": "598fd7fc928e4350abce36e337ba5a1346923c5c692f5be92c3d8e29ddd7c18d",
+      "bytes": 1130
+    },
+    {
+      "path": "quickjs/VERSION",
+      "sha256": "76698a7d2f3451d40d80725e5775d851b26ffca5889a135a2c6ead6108f473e3",
+      "bytes": 11
+    },
+    {
+      "path": "quickjs/cutils.c",
+      "sha256": "c0b7815d733abd72d3ae3fcf87bbec9230e1288449922583fbdc767af58204eb",
+      "bytes": 17552
+    },
+    {
+      "path": "quickjs/cutils.h",
+      "sha256": "e512be846014ba1e35411cd640d9fe57cb04d175adb3baf84901895fb86540f4",
+      "bytes": 8619
+    },
+    {
+      "path": "quickjs/libbf.c",
+      "sha256": "7a89a3c82625f8752a7f3e798e8d36cf465f58a00b5106207141ea05970edb02",
+      "bytes": 239834
+    },
+    {
+      "path": "quickjs/libbf.h",
+      "sha256": "a611c2990b3e705063917f8f6c0a5859823b8b64965e983725113f5b6f2fe87b",
+      "bytes": 17865
+    },
+    {
+      "path": "quickjs/libregexp-opcode.h",
+      "sha256": "a7ee95fcc6cb013c9ab1a3ba9785d4a99c56e7029e30796baf9dfbd456f523f9",
+      "bytes": 2250
+    },
+    {
+      "path": "quickjs/libregexp.c",
+      "sha256": "17e5e768475e85b052eaa81d61b141c1ee7d00e7d1d01f443cecef941fc33154",
+      "bytes": 81779
+    },
+    {
+      "path": "quickjs/libregexp.h",
+      "sha256": "66486e559d306a976c591c419157c8e4de3ee02cb46ed1a9cff9ef8c3b5c9696",
+      "bytes": 2371
+    },
+    {
+      "path": "quickjs/libunicode-table.h",
+      "sha256": "c8554906ba64aef45e640895a76a4674333ad2efb2e96ee9611bdc92307ebcfc",
+      "bytes": 220564
+    },
+    {
+      "path": "quickjs/libunicode.c",
+      "sha256": "23cdac70259d5fe7dbe30ff1cede8d6a2aecf131476f5ab8acad81cb15adc840",
+      "bytes": 56291
+    },
+    {
+      "path": "quickjs/libunicode.h",
+      "sha256": "41347be83b3774bd99982c65bb7e47c47c8fb4bacd336650765893e6e2c657af",
+      "bytes": 5388
+    },
+    {
+      "path": "quickjs/list.h",
+      "sha256": "181c6b25d9d0e4853315d36a6e6fab3b2c3554271693d898a439384ba0f67c2b",
+      "bytes": 3089
+    },
+    {
+      "path": "quickjs/quickjs-atom.h",
+      "sha256": "8b04ca77924f141d363e17dc606cdaa2934533a153b05f2665f8d2d4952976c4",
+      "bytes": 7963
+    },
+    {
+      "path": "quickjs/quickjs-opcode.h",
+      "sha256": "c48b4bc7bb1db6f4fecf11cb28d3b1efa132efb6cd03443c35de13d550bd130e",
+      "bytes": 15875
+    },
+    {
+      "path": "quickjs/quickjs.c",
+      "sha256": "d1f042a31b6001dfedec27cfc81753995df8565d87aef30e60d385ffbc499710",
+      "bytes": 1822845
+    },
+    {
+      "path": "quickjs/quickjs.h",
+      "sha256": "149b69b9ef7c42cc8d41d0bfdb910ece96f5c8237785e2303285f9eb3d3c6a73",
+      "bytes": 43088
+    }
+  ]
+}

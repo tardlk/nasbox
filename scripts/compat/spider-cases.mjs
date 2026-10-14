@@ -1,0 +1,55 @@
+const cases=[];
+const add=(id,request)=>cases.push({id,request});
+const get=(id,key,api,ext='',jar='')=>add(id,{operation:'get',source:{key,type:3,api,ext,jar}});
+const call=(id,token,method,args=[])=>add(id,{operation:'call',token,method,args});
+add('public-contract',{operation:'contract'});
+for(const api of['demo.js','demo.js?q=1','demo.JS','demo.js#f','demo.py','demo.py?file=x.js','demo.js?file=x.py','x.py.js.old','csp_Demo','xjs','py_demo',''])add('route-'+api,{operation:'route',api});
+for(const [id,method,args]of[
+ ['api-local','getAddress',[true]],['api-remote','getAddress',[false]],['api-port','getPort',[]],['api-headless-orientation','getScreenOrientation',[]],
+ ['parse-padding-1','webParse',['a',null]],['parse-padding-2','webParse',['ab','f']],['parse-no-padding-needed','webParse',['abc','a&b']],['parse-unicode','webParse',['https://例子.invalid/电影?a=1','中文']],['parse-null','webParse',[null,null]],['parse-empty','webParse',['','x']],
+ ['multi-null','multiReq',[null]],['multi-empty','multiReq',[[]]],['multi-skip-non-objects','multiReq',[[null,1,'x',false]]],['multi-invalid','multiReq',[[{}, {url:'not-a-url'}, {url:null}]]],
+])add(id,{operation:'api',method,args});
+add('custom-addresses',{operation:'host',localAddress:'http://127.0.0.1:9988/',remoteAddress:'http://nas.invalid:9988/'});
+add('custom-port',{operation:'api',method:'getPort'});add('custom-remote',{operation:'api',method:'getAddress',args:[false]});
+add('address-unavailable',{operation:'host',addressUnavailable:true});add('address-fallback',{operation:'api',method:'getAddress',args:[true]});add('port-fallback',{operation:'api',method:'getPort'});add('restore-address',{operation:'host',addressUnavailable:false});
+add('load-fixture-main',{operation:'loadMain',path:'@fixture'});
+get('construct-before-initApi-before-init','one','csp_Contract',' raw ext ');
+call('jar-home','spider-1','homeContent',[true]);call('jar-home-video','spider-1','homeVideoContent');call('jar-category','spider-1','categoryContent',['movie','2',true,{x:'value',a:'first'}]);
+call('jar-detail-all-ids','spider-1','detailContent',[['one','two']]);call('jar-search','spider-1','searchContent',['电影',false]);call('jar-search-paged-base-fallback','spider-1','searchContent',['movie',true,'3']);
+call('jar-player','spider-1','playerContent',['line','episode',['vip1','vip2']]);call('jar-live','spider-1','liveContent',['http://live.invalid/list']);
+call('jar-sniffer','spider-1','manualVideoCheck');call('jar-is-video','spider-1','isVideoFormat',['video.fixture']);call('jar-not-video','spider-1','isVideoFormat',['video.mp4']);
+call('jar-api-inside-init','spider-1','action',['api']);call('jar-static-init-once','spider-1','action',['initCount']);call('jar-resource-preserved','spider-1','action',['resource']);
+call('jar-proxy-alias','spider-1','proxy',[{url:'payload'}]);call('jar-proxy-local','spider-1','proxyLocal',[{url:'payload'}]);call('jar-thrown-method','spider-1','searchContent',['throw',false]);
+get('jar-cache-ignores-changed-api-ext','one','csp_Defaults','changed');call('jar-cached-state-retained','spider-1','homeContent',[false]);
+add('register-site-jar',{operation:'registerJar',signature:'fixture-site',path:'@fixture'});
+get('same-key-another-jar-isolated','one','csp_Contract','other','fixture-site');call('isolated-jar-init','spider-2','homeContent',[true]);
+add('jar-proxy-site-key',{operation:'proxy',kind:'jar',params:{siteKey:'one',url:'ok'}});add('jar-proxy-miss',{operation:'proxy',kind:'jar',params:{siteKey:'one',url:'miss'}});
+get('one-arg-init-overload','one-arg','csp_OneArg');call('one-arg-init-called','spider-3','homeContent',[true]);
+get('defaults','defaults','Defaults');
+for(const[method,args]of[['homeContent',[true]],['homeVideoContent',[]],['categoryContent',['a','1',true,{}]],['detailContent',[[]]],['searchContent',['a',false,'2']],['playerContent',['a','b',[]]],['liveContent',['a']],['manualVideoCheck',[]],['isVideoFormat',['a']],['proxy',[{}]],['action',['a']]])call('default-'+method,'spider-4',method,args);
+get('failed-init-not-cached','failure','csp_InitFailure');get('failed-api-not-cached','api-failure','csp_ApiFailure');get('missing-class','missing','csp_Missing');get('trailing-csp-prefix','trailing','csp_');get('empty-api','empty','');
+get('destroy-throw-swallowed','destroy-failure','csp_DestroyFailure');
+add('clear-jar',{operation:'clear',kind:'jar'});call('cleared-token-rejected','spider-1','homeContent',[true]);
+get('no-main-after-clear','not-loaded','csp_Contract');
+add('reload-main',{operation:'loadMain',path:'@fixture'});get('new-instance-after-clear','one','csp_Contract','fresh');call('fresh-after-clear','spider-12','homeContent',[true]);
+add('registered-modules',{operation:'modules',modules:'@modules'});
+get('js-source-object','js','https://fixture.invalid/contract.js','raw');
+call('js-home','spider-13','homeContent',[true]);call('js-homeVod','spider-13','homeVideoContent');call('js-category','spider-13','categoryContent',['movie','2',true,{a:'first'}]);
+call('js-detail-only-first-id','spider-13','detailContent',[['first','ignored']]);call('js-detail-empty-caught','spider-13','detailContent',[[]]);call('js-search','spider-13','searchContent',['电影',false]);call('js-paged-search-base-fallback','spider-13','searchContent',['movie',true,'9']);
+call('js-play','spider-13','playerContent',['a','b',['flag']]);call('js-live','spider-13','liveContent',['live']);call('js-manual','spider-13','manualVideoCheck');call('js-is-video','spider-13','isVideoFormat',['video.fixture']);call('js-error-null','spider-13','searchContent',['throw',false]);
+call('js-proxy-byte-array','spider-13','proxyLocal',[{url:'test'}]);call('js-local-write','spider-13','action',['store']);
+get('js-cache-only-key','js','https://fixture.invalid/cat.js','changed');call('js-cached-method','spider-13','homeContent',[false]);
+get('js-json-object-init-observation','object-ext','https://fixture.invalid/contract.js','{"a":1}');call('js-object-init-same-thread-observation','spider-14','homeContent',[true]);
+get('js-array-ext-is-string','array-ext','https://fixture.invalid/contract.js','[1,2]');call('js-array-ext-observation','spider-15','homeContent',[true]);
+get('cat-config','cat','https://fixture.invalid/cat.js','{"a":1}');call('cat-stype-key-object-ext','spider-16','homeContent',[true]);
+get('legacy-global-assignment','legacy','https://fixture.invalid/legacy.js','legacy-ext');call('legacy-home','spider-17','homeContent',[true]);
+get('async-promise','promise','https://fixture.invalid/promises.js');call('async-resolved-promise','spider-18','homeContent',[true]);call('async-rejected-promise','spider-18','searchContent',['reject',false]);
+get('return-types','types','https://fixture.invalid/return-types.js');
+for(const[method,args]of[['homeContent',[true]],['homeVideoContent',[]],['manualVideoCheck',[]],['isVideoFormat',['url']],['action',['null']],['liveContent',['missing']]])call('js-return-type-'+method,'spider-19',method,args);
+add('register-js-api-jar',{operation:'registerJar',signature:'jsapi',path:'@fixture'});get('js-java-api','jsapi','https://fixture.invalid/contract.js','','jsapi');call('js-invokes-real-java-function','spider-20','action',['java']);
+get('missing-script','missing-js','https://fixture.invalid/missing.js');call('missing-script-null','spider-21','homeContent',[true]);
+add('html-module',{operation:'modules',modules:{'https://fixture.invalid/html.js':'<!doctype html>error'}});get('invalid-html-script','html','https://fixture.invalid/html.js');
+get('python-explicit-unsupported','py','https://fixture.invalid/demo.py');
+add('clear-js',{operation:'clear',kind:'js'});call('cleared-js-token','spider-13','homeContent',[true]);
+get('js-new-instance','js','https://fixture.invalid/contract.js','new');call('js-state-reset','spider-23','homeContent',[true]);call('js-local-persists-clear','spider-23','action',['read']);call('js-local-delete','spider-23','action',['erase']);
+export{cases as spiderCases};

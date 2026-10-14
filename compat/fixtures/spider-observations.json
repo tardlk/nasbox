@@ -1,0 +1,2513 @@
+{
+  "extraction": {
+    "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+    "copies": [
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/Spider.java",
+        "sha256": "353720772b646372755e1ac71698bc018845ef9c54f7eda7bef29aee54c33484"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/SpiderApi.java",
+        "sha256": "d91e9fd3be2175df752468afd8a28d620741f6e2e8cdf8a86618f8e0ccf6b413"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/js/JsSpider.java",
+        "sha256": "51d2ce02c08645cbf9a90d766e829cef1596637be4696d9aa1d467817d5032aa"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/js/Req.java",
+        "sha256": "0a7f066a7565c1697856274fc68d667456d3daddddc955868473b914df1b82d7"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/js/Connect.java",
+        "sha256": "ff70156f20591af2b6bb5cac440bfd07b1e6ff1ee30cefc06815b1e70ce0eaa4"
+      },
+      {
+        "path": "quickjs/src/main/java/com/whl/quickjs/wrapper/UriUtil.java",
+        "sha256": "715c245716efbc689128ea1a0143ccf0905a291772beabe8b5290ddeca7fa8a2"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/SpiderNull.java",
+        "sha256": "61fb3824885135eb1428149ec30b2f4959fed0c085d881a9ffc1d42ce40cc95d"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/js/Async.java",
+        "sha256": "258c447c50cbb17b2b220660c6d9a7dcab8b6ed400670cfb435764459294281f"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/js/Json.java",
+        "sha256": "140d490584322b8c88305972ceb6f853f9ca936ba4cb57960fb4e347df00258b"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/js/Res.java",
+        "sha256": "d7f5de1b5391e698a89d8cefdb00c8b0f6ac5b9dc5d1586c04dadf55ba44c398"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/js/local.java",
+        "sha256": "cf4d8d99af8856512351d0be0ce37b3fb0702d46a06126e9a97988277e11d423"
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/Proxy.java",
+        "sha256": "fa45a938840cdce9e6dc4b8310887496ddcbfaea8d915491a1404e0c2fe38ec7"
+      },
+      {
+        "path": "app/src/main/java/com/github/tvbox/osc/util/MD5.java",
+        "sha256": "a000ad302adeec878e63fc8b56467739a3e752fcef527a47f8bdbad72e2908e8"
+      },
+      {
+        "path": "quickjs/src/main/java/com/whl/quickjs/wrapper/JSUtils.java",
+        "sha256": "f728923e91592eb29302620ad84a1f71b3f97a67311c9a85b0a7bea0f37a580b"
+      },
+      {
+        "path": "quickjs/src/main/java/com/whl/quickjs/wrapper/ContextSetter.java",
+        "sha256": "6edf60401e51ce744fd02ffbe6381c370f9e63ffaec57b7885c88fb1e2362025"
+      },
+      {
+        "path": "quickjs/src/main/java/com/whl/quickjs/wrapper/Function.java",
+        "sha256": "22fe20d8f974614b9f62cc3d347c8a4d32aca07972721934b0817fde7985c7be"
+      }
+    ],
+    "jarMethods": [
+      {
+        "signature": "public Spider getSpider(",
+        "sha256": "21848f1cf1ff7d5d659fee56e77296938bc4cde7a67b0ca33b6dd92924e7b4e5"
+      },
+      {
+        "signature": "public void clear(",
+        "sha256": "aef8bd4df092e66a11479010a99a5e0c10fdb3556b30095ce949f43a6b7e9208"
+      },
+      {
+        "signature": "public void setRecentJarKey(",
+        "sha256": "3020d6d2f6080c73d2194643a48037904ee5bb36f5252263c77aeef500e960da"
+      },
+      {
+        "signature": "public void loadLiveJar(",
+        "sha256": "c06eea0a42f1d1250d8b94bd49977689f68b4edddb7b79042c4d34d9e5c848e7"
+      },
+      {
+        "signature": "private boolean invokeInit(",
+        "sha256": "7146b00806347da2ea8d26c5d271ae0cd480a4086a752ef0f46be12a76eb5216"
+      },
+      {
+        "signature": "private void invokeProxy(",
+        "sha256": "1a49019f2e064f2354ef073a2ff942ae62b1f991c61fa3bfc6bba0cbadad90ab"
+      },
+      {
+        "signature": "private void invokeDanmaku(",
+        "sha256": "480cfcb08778ab710880e1f01c2e1cab594ed21b889481390fab044c7333bb5d"
+      },
+      {
+        "signature": "public void searchDanmuUi(",
+        "sha256": "c495ce5e8f47b7381968fce0a61525fe0c049f46e47f06f32007cd00a42d5d53"
+      },
+      {
+        "signature": "public boolean hasDanmuSearchUi(",
+        "sha256": "ce5ea027ea309cb1d962e6102656b7b8edde35f511b4fdbb78f0579f5493eb7b"
+      },
+      {
+        "signature": "public JSONObject jsonExt(",
+        "sha256": "aa328a6e6416f0b851936857dccdb5510a1f08e5e92b220c4951fb25f2b6ec84"
+      },
+      {
+        "signature": "public JSONObject jsonExtMix(",
+        "sha256": "69400b77bc7e3fe568ae276f4def799e6748feff97da3ae48b9fbd5d39e255a4"
+      },
+      {
+        "signature": "public Object[] proxyInvoke(",
+        "sha256": "e77259bb1ab487211522a7f69d9fe9c0dcc96ec926693a38c081117eb81e88a7"
+      },
+      {
+        "signature": "private Object[] proxyInvoke(",
+        "sha256": "e4e0d5d3d6371f9994750cf4c061585b9da8e2d2e85c8bc2e4685794215b8e3b"
+      },
+      {
+        "signature": "private DexClassLoader requireRecentLoader(",
+        "sha256": "a4ff85c5d040d404aeae3a7d574e3b60c583a7a20bf9477d35ce72589bd830f8"
+      },
+      {
+        "signature": "private Class<?> loadParserClass(",
+        "sha256": "d4dc42d6f17e59beaa1caf53882bb844aa7daddf40cac614aa71ef04d765148c"
+      },
+      {
+        "signature": "private String jarKey(",
+        "sha256": "d5996e55d0309d2459ea42796b057561108423b052acd19c1ee3790c0cf19aa2"
+      },
+      {
+        "signature": "private String realKey(",
+        "sha256": "f5a78414d0c434334c1544942b6ca8bab1de9bbba9ee0f6235dc532d1d783276"
+      },
+      {
+        "signature": "private String className(",
+        "sha256": "1af59bb9b83a6ac0f26ff6c1aa38b4e58f094ac400b21a04602faa7aee7e9e65"
+      },
+      {
+        "signature": "private void injectProxyPort(",
+        "sha256": "6b2aecf9f950bb5017db630d5090c1cee7b2f9fa140e996e8e7859e6d85e3aa3"
+      },
+      {
+        "signature": "private int getServerPort(",
+        "sha256": "00fcec3c6716dda8ed34486791f980a3a4c55e181bb5b95ccbc0463e17361bab"
+      }
+    ],
+    "jsLoaderMethods": [
+      {
+        "signature": "public synchronized Spider getSpider(",
+        "sha256": "0d5dc6c86264d26c02f25e48108fbbce4afeecd58cfdbdc755fa2d92596cb5f2"
+      },
+      {
+        "signature": "public synchronized void clear(",
+        "sha256": "718deb73fd8aa85c7a46d5a516ed65dd9488eaa7d337acbc0faddd757782dfdf"
+      },
+      {
+        "signature": "public Object[] proxyInvoke(",
+        "sha256": "7aa8ca024cbf5df5a82642b088161afa4f26c89eb4e7203b9ce6951e8be670ff"
+      },
+      {
+        "signature": "public static void stopAll(",
+        "sha256": "fd71f630dcde514b8cfb4bff92d674bae4c1681c2904d54c528dc750af3d6b24"
+      }
+    ],
+    "globalMethods": [
+      {
+        "signature": "public String getProxy(",
+        "sha256": "4bde4d0280a5d7773c7b16ce99de7b1ee9cdd83e02b33dfb87a740d87553b3e5"
+      },
+      {
+        "signature": "public String js2Proxy(",
+        "sha256": "47b8a8e33980fe4ffba18466378c92a24a122d1e983b02341be854d2627ce1b6"
+      },
+      {
+        "signature": "private JSObject req(",
+        "sha256": "6f7a88f7f9ced6656cfd158788f3452d7544fffeed544b6b5a9cf7b3526e499d"
+      },
+      {
+        "signature": "public JSObject _http(",
+        "sha256": "6bbbe7c7c59954fd3efb1f73cc66a2821c223de37a79ed6627e4fe56e4807d8c"
+      },
+      {
+        "signature": "public void setTimeout(",
+        "sha256": "1de486c898291e1b2a91cdc229ab4e5d9549da9c5b57cf3d2cdca083441fb75e"
+      },
+      {
+        "signature": "private Callback getCallback(",
+        "sha256": "d0dd9d2976d4d6986bfab91dd036be22e63d38cbea9aa87963b87842af0ec85b"
+      },
+      {
+        "signature": "public void setJSContext(",
+        "sha256": "41b5b4d9752815cbb7a2a9df2fe2f4c8a138d3919110509d08ff51b03fa10c4d"
+      }
+    ],
+    "cspDispatchSha256": "fbbe1c836df41695eaa66567c759e1f013b0ff331245da119218a22ab3cf5f18",
+    "quickjs": "2.1.0",
+    "nativeCommit": "c46516996da53eaf2f9aca516264870e25719d76",
+    "scope": "Fresh pinned Spider/SpiderApi/JsSpider and loader methods on shared explicit host bindings; actual JVM class-JAR/QuickJS execution. No Android/ART, DEX/native plugin or Linux/NAS equivalence."
+  },
+  "cases": [
+    {
+      "id": "public-contract",
+      "request": {
+        "operation": "contract"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "spiderMethods": [
+            "action(java.lang.String):java.lang.String",
+            "cancelByTag():void",
+            "categoryContent(java.lang.String,java.lang.String,boolean,java.util.HashMap):java.lang.String",
+            "client():okhttp3.OkHttpClient",
+            "destroy():void",
+            "detailContent(java.util.List):java.lang.String",
+            "homeContent(boolean):java.lang.String",
+            "homeVideoContent():java.lang.String",
+            "init(android.content.Context):void",
+            "init(android.content.Context,java.lang.String):void",
+            "initApi(com.github.catvod.crawler.SpiderApi):void",
+            "isVideoFormat(java.lang.String):boolean",
+            "liveContent(java.lang.String):java.lang.String",
+            "manualVideoCheck():boolean",
+            "playerContent(java.lang.String,java.lang.String,java.util.List):java.lang.String",
+            "proxy(java.util.Map):[Ljava.lang.Object;",
+            "proxyLocal(java.util.Map):[Ljava.lang.Object;",
+            "safeDns():okhttp3.Dns",
+            "searchContent(java.lang.String,boolean):java.lang.String",
+            "searchContent(java.lang.String,boolean,java.lang.String):java.lang.String"
+          ],
+          "spiderFields": [
+            "empty:org.json.JSONObject",
+            "mContext:android.content.Context",
+            "siteKey:java.lang.String"
+          ],
+          "apiMethods": [
+            "getAddress(boolean):java.lang.String",
+            "getPort():java.lang.String",
+            "getScreenOrientation():int",
+            "log(java.lang.String):void",
+            "multiReq(com.google.gson.JsonArray):java.lang.String",
+            "webParse(java.lang.String,java.lang.String):java.lang.String"
+          ]
+        }
+      }
+    },
+    {
+      "id": "route-demo.js",
+      "request": {
+        "operation": "route",
+        "api": "demo.js"
+      },
+      "expected": {
+        "ok": true,
+        "value": "js"
+      }
+    },
+    {
+      "id": "route-demo.js?q=1",
+      "request": {
+        "operation": "route",
+        "api": "demo.js?q=1"
+      },
+      "expected": {
+        "ok": true,
+        "value": "js"
+      }
+    },
+    {
+      "id": "route-demo.JS",
+      "request": {
+        "operation": "route",
+        "api": "demo.JS"
+      },
+      "expected": {
+        "ok": true,
+        "value": "jar"
+      }
+    },
+    {
+      "id": "route-demo.js#f",
+      "request": {
+        "operation": "route",
+        "api": "demo.js#f"
+      },
+      "expected": {
+        "ok": true,
+        "value": "jar"
+      }
+    },
+    {
+      "id": "route-demo.py",
+      "request": {
+        "operation": "route",
+        "api": "demo.py"
+      },
+      "expected": {
+        "ok": true,
+        "value": "py"
+      }
+    },
+    {
+      "id": "route-demo.py?file=x.js",
+      "request": {
+        "operation": "route",
+        "api": "demo.py?file=x.js"
+      },
+      "expected": {
+        "ok": true,
+        "value": "js"
+      }
+    },
+    {
+      "id": "route-demo.js?file=x.py",
+      "request": {
+        "operation": "route",
+        "api": "demo.js?file=x.py"
+      },
+      "expected": {
+        "ok": true,
+        "value": "js"
+      }
+    },
+    {
+      "id": "route-x.py.js.old",
+      "request": {
+        "operation": "route",
+        "api": "x.py.js.old"
+      },
+      "expected": {
+        "ok": true,
+        "value": "py"
+      }
+    },
+    {
+      "id": "route-csp_Demo",
+      "request": {
+        "operation": "route",
+        "api": "csp_Demo"
+      },
+      "expected": {
+        "ok": true,
+        "value": "jar"
+      }
+    },
+    {
+      "id": "route-xjs",
+      "request": {
+        "operation": "route",
+        "api": "xjs"
+      },
+      "expected": {
+        "ok": true,
+        "value": "jar"
+      }
+    },
+    {
+      "id": "route-py_demo",
+      "request": {
+        "operation": "route",
+        "api": "py_demo"
+      },
+      "expected": {
+        "ok": true,
+        "value": "jar"
+      }
+    },
+    {
+      "id": "route-",
+      "request": {
+        "operation": "route",
+        "api": ""
+      },
+      "expected": {
+        "ok": true,
+        "value": "jar"
+      }
+    },
+    {
+      "id": "api-local",
+      "request": {
+        "operation": "api",
+        "method": "getAddress",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "http://127.0.0.1:9978/"
+      }
+    },
+    {
+      "id": "api-remote",
+      "request": {
+        "operation": "api",
+        "method": "getAddress",
+        "args": [
+          false
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "http://127.0.0.1:9978/"
+      }
+    },
+    {
+      "id": "api-port",
+      "request": {
+        "operation": "api",
+        "method": "getPort",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": "9978"
+      }
+    },
+    {
+      "id": "api-headless-orientation",
+      "request": {
+        "operation": "api",
+        "method": "getScreenOrientation",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "id": "parse-padding-1",
+      "request": {
+        "operation": "api",
+        "method": "webParse",
+        "args": [
+          "a",
+          null
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "proxy://go=SuperParse&flag=&url=YQ=="
+      }
+    },
+    {
+      "id": "parse-padding-2",
+      "request": {
+        "operation": "api",
+        "method": "webParse",
+        "args": [
+          "ab",
+          "f"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "proxy://go=SuperParse&flag=f&url=YWI="
+      }
+    },
+    {
+      "id": "parse-no-padding-needed",
+      "request": {
+        "operation": "api",
+        "method": "webParse",
+        "args": [
+          "abc",
+          "a&b"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "proxy://go=SuperParse&flag=a&b&url=YWJj"
+      }
+    },
+    {
+      "id": "parse-unicode",
+      "request": {
+        "operation": "api",
+        "method": "webParse",
+        "args": [
+          "https://例子.invalid/电影?a=1",
+          "中文"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "proxy://go=SuperParse&flag=中文&url=aHR0cHM6Ly_kvovlrZAuaW52YWxpZC_nlLXlvbE_YT0x"
+      }
+    },
+    {
+      "id": "parse-null",
+      "request": {
+        "operation": "api",
+        "method": "webParse",
+        "args": [
+          null,
+          null
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "parse-empty",
+      "request": {
+        "operation": "api",
+        "method": "webParse",
+        "args": [
+          "",
+          "x"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "multi-null",
+      "request": {
+        "operation": "api",
+        "method": "multiReq",
+        "args": [
+          null
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "multi-empty",
+      "request": {
+        "operation": "api",
+        "method": "multiReq",
+        "args": [
+          []
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "multi-skip-non-objects",
+      "request": {
+        "operation": "api",
+        "method": "multiReq",
+        "args": [
+          [
+            null,
+            1,
+            "x",
+            false
+          ]
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "[]"
+      }
+    },
+    {
+      "id": "multi-invalid",
+      "request": {
+        "operation": "api",
+        "method": "multiReq",
+        "args": [
+          [
+            {},
+            {
+              "url": "not-a-url"
+            },
+            {
+              "url": null
+            }
+          ]
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "[\"\",\"\",\"\"]"
+      }
+    },
+    {
+      "id": "custom-addresses",
+      "request": {
+        "operation": "host",
+        "localAddress": "http://127.0.0.1:9988/",
+        "remoteAddress": "http://nas.invalid:9988/"
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "custom-port",
+      "request": {
+        "operation": "api",
+        "method": "getPort"
+      },
+      "expected": {
+        "ok": true,
+        "value": "9988"
+      }
+    },
+    {
+      "id": "custom-remote",
+      "request": {
+        "operation": "api",
+        "method": "getAddress",
+        "args": [
+          false
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "http://nas.invalid:9988/"
+      }
+    },
+    {
+      "id": "address-unavailable",
+      "request": {
+        "operation": "host",
+        "addressUnavailable": true
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "address-fallback",
+      "request": {
+        "operation": "api",
+        "method": "getAddress",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "port-fallback",
+      "request": {
+        "operation": "api",
+        "method": "getPort"
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "restore-address",
+      "request": {
+        "operation": "host",
+        "addressUnavailable": false
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "load-fixture-main",
+      "request": {
+        "operation": "loadMain",
+        "path": "@fixture"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "loaded": true,
+          "logs": []
+        }
+      }
+    },
+    {
+      "id": "construct-before-initApi-before-init",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "one",
+          "type": 3,
+          "api": "csp_Contract",
+          "ext": " raw ext ",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-1",
+          "kind": "jar",
+          "className": "com.github.catvod.spider.Contract",
+          "siteKey": "one",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "jar-home",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"home\",\"args\":[true],\"siteKey\":\"one\",\"ext\":\" raw ext \",\"calls\":1,\"trace\":[\"construct:null\",\"initApi:one\",\"init: raw ext \"]}"
+      }
+    },
+    {
+      "id": "jar-home-video",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "homeVideoContent",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"homeVideo\",\"args\":[],\"siteKey\":\"one\",\"ext\":\" raw ext \",\"calls\":2,\"trace\":[\"construct:null\",\"initApi:one\",\"init: raw ext \"]}"
+      }
+    },
+    {
+      "id": "jar-category",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "categoryContent",
+        "args": [
+          "movie",
+          "2",
+          true,
+          {
+            "x": "value",
+            "a": "first"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"category\",\"args\":[\"movie\",\"2\",true,{\"a\":\"first\",\"x\":\"value\"}],\"siteKey\":\"one\",\"ext\":\" raw ext \",\"calls\":3,\"trace\":[\"construct:null\",\"initApi:one\",\"init: raw ext \"]}"
+      }
+    },
+    {
+      "id": "jar-detail-all-ids",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "detailContent",
+        "args": [
+          [
+            "one",
+            "two"
+          ]
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"detail\",\"args\":[[\"one\",\"two\"]],\"siteKey\":\"one\",\"ext\":\" raw ext \",\"calls\":4,\"trace\":[\"construct:null\",\"initApi:one\",\"init: raw ext \"]}"
+      }
+    },
+    {
+      "id": "jar-search",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "searchContent",
+        "args": [
+          "电影",
+          false
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"search\",\"args\":[\"电影\",false],\"siteKey\":\"one\",\"ext\":\" raw ext \",\"calls\":5,\"trace\":[\"construct:null\",\"initApi:one\",\"init: raw ext \"]}"
+      }
+    },
+    {
+      "id": "jar-search-paged-base-fallback",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "searchContent",
+        "args": [
+          "movie",
+          true,
+          "3"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"search\",\"args\":[\"movie\",true],\"siteKey\":\"one\",\"ext\":\" raw ext \",\"calls\":6,\"trace\":[\"construct:null\",\"initApi:one\",\"init: raw ext \"]}"
+      }
+    },
+    {
+      "id": "jar-player",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "playerContent",
+        "args": [
+          "line",
+          "episode",
+          [
+            "vip1",
+            "vip2"
+          ]
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"player\",\"args\":[\"line\",\"episode\",[\"vip1\",\"vip2\"]],\"siteKey\":\"one\",\"ext\":\" raw ext \",\"calls\":7,\"trace\":[\"construct:null\",\"initApi:one\",\"init: raw ext \"]}"
+      }
+    },
+    {
+      "id": "jar-live",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "liveContent",
+        "args": [
+          "http://live.invalid/list"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"live\",\"args\":[\"http://live.invalid/list\"],\"siteKey\":\"one\",\"ext\":\" raw ext \",\"calls\":8,\"trace\":[\"construct:null\",\"initApi:one\",\"init: raw ext \"]}"
+      }
+    },
+    {
+      "id": "jar-sniffer",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "manualVideoCheck",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": true
+      }
+    },
+    {
+      "id": "jar-is-video",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "isVideoFormat",
+        "args": [
+          "video.fixture"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": true
+      }
+    },
+    {
+      "id": "jar-not-video",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "isVideoFormat",
+        "args": [
+          "video.mp4"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": false
+      }
+    },
+    {
+      "id": "jar-api-inside-init",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "action",
+        "args": [
+          "api"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "9988|proxy://go=SuperParse&flag=&url=YQ==|6"
+      }
+    },
+    {
+      "id": "jar-static-init-once",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "action",
+        "args": [
+          "initCount"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "1"
+      }
+    },
+    {
+      "id": "jar-resource-preserved",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "action",
+        "args": [
+          "resource"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "fixture-resource"
+      }
+    },
+    {
+      "id": "jar-proxy-alias",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "proxy",
+        "args": [
+          {
+            "url": "payload"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          201,
+          "text/plain",
+          {
+            "encoding": "base64",
+            "bytes": "b25lOnBheWxvYWQ=",
+            "length": 11
+          },
+          {
+            "X-Fixture": "yes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jar-proxy-local",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "proxyLocal",
+        "args": [
+          {
+            "url": "payload"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          201,
+          "text/plain",
+          {
+            "encoding": "base64",
+            "bytes": "b25lOnBheWxvYWQ=",
+            "length": 11
+          },
+          {
+            "X-Fixture": "yes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jar-thrown-method",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "searchContent",
+        "args": [
+          "throw",
+          false
+        ]
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.IllegalArgumentException",
+        "message": "fixture search failure"
+      }
+    },
+    {
+      "id": "jar-cache-ignores-changed-api-ext",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "one",
+          "type": 3,
+          "api": "csp_Defaults",
+          "ext": "changed",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-1",
+          "kind": "jar",
+          "className": "com.github.catvod.spider.Contract",
+          "siteKey": "one",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "jar-cached-state-retained",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "homeContent",
+        "args": [
+          false
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"home\",\"args\":[false],\"siteKey\":\"one\",\"ext\":\" raw ext \",\"calls\":9,\"trace\":[\"construct:null\",\"initApi:one\",\"init: raw ext \"]}"
+      }
+    },
+    {
+      "id": "register-site-jar",
+      "request": {
+        "operation": "registerJar",
+        "signature": "fixture-site",
+        "path": "@fixture"
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "same-key-another-jar-isolated",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "one",
+          "type": 3,
+          "api": "csp_Contract",
+          "ext": "other",
+          "jar": "fixture-site"
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-2",
+          "kind": "jar",
+          "className": "com.github.catvod.spider.Contract",
+          "siteKey": "one",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "isolated-jar-init",
+      "request": {
+        "operation": "call",
+        "token": "spider-2",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"home\",\"args\":[true],\"siteKey\":\"one\",\"ext\":\"other\",\"calls\":1,\"trace\":[\"construct:null\",\"initApi:one\",\"init:other\"]}"
+      }
+    },
+    {
+      "id": "jar-proxy-site-key",
+      "request": {
+        "operation": "proxy",
+        "kind": "jar",
+        "params": {
+          "siteKey": "one",
+          "url": "ok"
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          202,
+          "text/plain",
+          {
+            "encoding": "base64",
+            "bytes": "amFyLXByb3h5",
+            "length": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "jar-proxy-miss",
+      "request": {
+        "operation": "proxy",
+        "kind": "jar",
+        "params": {
+          "siteKey": "one",
+          "url": "miss"
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "one-arg-init-overload",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "one-arg",
+          "type": 3,
+          "api": "csp_OneArg",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-3",
+          "kind": "jar",
+          "className": "com.github.catvod.spider.OneArg",
+          "siteKey": "one-arg",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "one-arg-init-called",
+      "request": {
+        "operation": "call",
+        "token": "spider-3",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "one-arg:1"
+      }
+    },
+    {
+      "id": "defaults",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "defaults",
+          "type": 3,
+          "api": "Defaults",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-4",
+          "kind": "jar",
+          "className": "com.github.catvod.spider.Defaults",
+          "siteKey": "defaults",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "default-homeContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "default-homeVideoContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "homeVideoContent",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "default-categoryContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "categoryContent",
+        "args": [
+          "a",
+          "1",
+          true,
+          {}
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "default-detailContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "detailContent",
+        "args": [
+          []
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "default-searchContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "searchContent",
+        "args": [
+          "a",
+          false,
+          "2"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "default-playerContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "playerContent",
+        "args": [
+          "a",
+          "b",
+          []
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "default-liveContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "liveContent",
+        "args": [
+          "a"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "default-manualVideoCheck",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "manualVideoCheck",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": false
+      }
+    },
+    {
+      "id": "default-isVideoFormat",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "isVideoFormat",
+        "args": [
+          "a"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": false
+      }
+    },
+    {
+      "id": "default-proxy",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "proxy",
+        "args": [
+          {}
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "default-action",
+      "request": {
+        "operation": "call",
+        "token": "spider-4",
+        "method": "action",
+        "args": [
+          "a"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "failed-init-not-cached",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "failure",
+          "type": 3,
+          "api": "csp_InitFailure",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-5",
+          "kind": "jar",
+          "className": "com.github.catvod.crawler.SpiderNull",
+          "siteKey": null,
+          "ready": false
+        }
+      }
+    },
+    {
+      "id": "failed-api-not-cached",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "api-failure",
+          "type": 3,
+          "api": "csp_ApiFailure",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-6",
+          "kind": "jar",
+          "className": "com.github.catvod.crawler.SpiderNull",
+          "siteKey": null,
+          "ready": false
+        }
+      }
+    },
+    {
+      "id": "missing-class",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "missing",
+          "type": 3,
+          "api": "csp_Missing",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-7",
+          "kind": "jar",
+          "className": "com.github.catvod.crawler.SpiderNull",
+          "siteKey": null,
+          "ready": false
+        }
+      }
+    },
+    {
+      "id": "trailing-csp-prefix",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "trailing",
+          "type": 3,
+          "api": "csp_",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-8",
+          "kind": "jar",
+          "className": "com.github.catvod.crawler.SpiderNull",
+          "siteKey": null,
+          "ready": false
+        }
+      }
+    },
+    {
+      "id": "empty-api",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "empty",
+          "type": 3,
+          "api": "",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-9",
+          "kind": "jar",
+          "className": "com.github.catvod.crawler.SpiderNull",
+          "siteKey": null,
+          "ready": false
+        }
+      }
+    },
+    {
+      "id": "destroy-throw-swallowed",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "destroy-failure",
+          "type": 3,
+          "api": "csp_DestroyFailure",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-10",
+          "kind": "jar",
+          "className": "com.github.catvod.spider.DestroyFailure",
+          "siteKey": "destroy-failure",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "clear-jar",
+      "request": {
+        "operation": "clear",
+        "kind": "jar"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "jar": {
+            "recent": "main",
+            "spiderCount": 0,
+            "loaderCount": 0,
+            "siteJarKeys": {},
+            "aliases": {}
+          },
+          "js": {
+            "recentKey": "",
+            "spiderCount": 0,
+            "apiClassCount": 0
+          },
+          "currentPyKey": "",
+          "referenceCount": 0
+        }
+      }
+    },
+    {
+      "id": "cleared-token-rejected",
+      "request": {
+        "operation": "call",
+        "token": "spider-1",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.IllegalStateException",
+        "message": "Unknown or cleared Spider token"
+      }
+    },
+    {
+      "id": "no-main-after-clear",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "not-loaded",
+          "type": 3,
+          "api": "csp_Contract",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-11",
+          "kind": "jar",
+          "className": "com.github.catvod.crawler.SpiderNull",
+          "siteKey": null,
+          "ready": false
+        }
+      }
+    },
+    {
+      "id": "reload-main",
+      "request": {
+        "operation": "loadMain",
+        "path": "@fixture"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "loaded": true,
+          "logs": [
+            "getSpider success key=mainone",
+            "getSpider cached key=mainone",
+            "getSpider success key=579518de156f049b33973c3445d8a91aone",
+            "getSpider success key=mainone-arg",
+            "getSpider success key=maindefaults",
+            "getSpider error key=mainfailure, msg=fixture init failure",
+            "getSpider error key=mainapi-failure, msg=fixture api failure",
+            "getSpider error key=mainmissing, msg=com.github.catvod.spider.Missing",
+            "getSpider error key=maintrailing, msg=Index 1 out of bounds for length 0",
+            "getSpider success key=maindestroy-failure",
+            "destroy:one",
+            "destroy:one"
+          ]
+        }
+      }
+    },
+    {
+      "id": "new-instance-after-clear",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "one",
+          "type": 3,
+          "api": "csp_Contract",
+          "ext": "fresh",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-12",
+          "kind": "jar",
+          "className": "com.github.catvod.spider.Contract",
+          "siteKey": "one",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "fresh-after-clear",
+      "request": {
+        "operation": "call",
+        "token": "spider-12",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"home\",\"args\":[true],\"siteKey\":\"one\",\"ext\":\"fresh\",\"calls\":1,\"trace\":[\"construct:null\",\"initApi:one\",\"init:fresh\"]}"
+      }
+    },
+    {
+      "id": "registered-modules",
+      "request": {
+        "operation": "modules",
+        "modules": "@modules"
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "js-source-object",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "js",
+          "type": 3,
+          "api": "https://fixture.invalid/contract.js",
+          "ext": "raw",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-13",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "js",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "js-home",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"home\",\"args\":[true],\"extension\":\"raw\",\"calls\":1,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-homeVod",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "homeVideoContent",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"homeVod\",\"args\":[],\"extension\":\"raw\",\"calls\":2,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-category",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "categoryContent",
+        "args": [
+          "movie",
+          "2",
+          true,
+          {
+            "a": "first"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"category\",\"args\":[\"movie\",\"2\",true,{\"a\":\"first\"}],\"extension\":\"raw\",\"calls\":3,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-detail-only-first-id",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "detailContent",
+        "args": [
+          [
+            "first",
+            "ignored"
+          ]
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"detail\",\"args\":[\"first\"],\"extension\":\"raw\",\"calls\":4,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-detail-empty-caught",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "detailContent",
+        "args": [
+          []
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "js-search",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "searchContent",
+        "args": [
+          "电影",
+          false
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"search\",\"args\":[\"电影\",false],\"extension\":\"raw\",\"calls\":5,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-paged-search-base-fallback",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "searchContent",
+        "args": [
+          "movie",
+          true,
+          "9"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"search\",\"args\":[\"movie\",true],\"extension\":\"raw\",\"calls\":6,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-play",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "playerContent",
+        "args": [
+          "a",
+          "b",
+          [
+            "flag"
+          ]
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"play\",\"args\":[\"a\",\"b\",[\"flag\"]],\"extension\":\"raw\",\"calls\":7,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-live",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "liveContent",
+        "args": [
+          "live"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"live\",\"args\":[\"live\"],\"extension\":\"raw\",\"calls\":8,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-manual",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "manualVideoCheck",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": true
+      }
+    },
+    {
+      "id": "js-is-video",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "isVideoFormat",
+        "args": [
+          "video.fixture"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": true
+      }
+    },
+    {
+      "id": "js-error-null",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "searchContent",
+        "args": [
+          "throw",
+          false
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "js-proxy-byte-array",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "proxyLocal",
+        "args": [
+          {
+            "url": "test"
+          }
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          206,
+          "application/octet-stream",
+          {
+            "encoding": "base64",
+            "bytes": "AID/",
+            "length": 3
+          },
+          {
+            "X-Fixture": "yes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "js-local-write",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "action",
+        "args": [
+          "store"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "persisted"
+      }
+    },
+    {
+      "id": "js-cache-only-key",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "js",
+          "type": 3,
+          "api": "https://fixture.invalid/cat.js",
+          "ext": "changed",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-13",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "js",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "js-cached-method",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "homeContent",
+        "args": [
+          false
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"home\",\"args\":[false],\"extension\":\"raw\",\"calls\":9,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-json-object-init-observation",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "object-ext",
+          "type": 3,
+          "api": "https://fixture.invalid/contract.js",
+          "ext": "{\"a\":1}",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-14",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "object-ext",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "js-object-init-same-thread-observation",
+      "request": {
+        "operation": "call",
+        "token": "spider-14",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"home\",\"args\":[true],\"extension\":\"unset\",\"calls\":1,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-array-ext-is-string",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "array-ext",
+          "type": 3,
+          "api": "https://fixture.invalid/contract.js",
+          "ext": "[1,2]",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-15",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "array-ext",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "js-array-ext-observation",
+      "request": {
+        "operation": "call",
+        "token": "spider-15",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"home\",\"args\":[true],\"extension\":\"[1,2]\",\"calls\":1,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "cat-config",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "cat",
+          "type": 3,
+          "api": "https://fixture.invalid/cat.js",
+          "ext": "{\"a\":1}",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-16",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "cat",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "cat-stype-key-object-ext",
+      "request": {
+        "operation": "call",
+        "token": "spider-16",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"config\":{\"stype\":3,\"skey\":\"cat\",\"ext\":{\"a\":1}},\"filter\":true,\"cat\":true}"
+      }
+    },
+    {
+      "id": "legacy-global-assignment",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "legacy",
+          "type": 3,
+          "api": "https://fixture.invalid/legacy.js",
+          "ext": "legacy-ext",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-17",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "legacy",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "legacy-home",
+      "request": {
+        "operation": "call",
+        "token": "spider-17",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"legacy\":true,\"ext\":\"legacy-ext\"}"
+      }
+    },
+    {
+      "id": "async-promise",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "promise",
+          "type": 3,
+          "api": "https://fixture.invalid/promises.js",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-18",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "promise",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "async-resolved-promise",
+      "request": {
+        "operation": "call",
+        "token": "spider-18",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"filter\":true,\"promise\":true}"
+      }
+    },
+    {
+      "id": "async-rejected-promise",
+      "request": {
+        "operation": "call",
+        "token": "spider-18",
+        "method": "searchContent",
+        "args": [
+          "reject",
+          false
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "return-types",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "types",
+          "type": 3,
+          "api": "https://fixture.invalid/return-types.js",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-19",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "types",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "js-return-type-homeContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-19",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "js-return-type-homeVideoContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-19",
+        "method": "homeVideoContent",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "js-return-type-manualVideoCheck",
+      "request": {
+        "operation": "call",
+        "token": "spider-19",
+        "method": "manualVideoCheck",
+        "args": []
+      },
+      "expected": {
+        "ok": true,
+        "value": false
+      }
+    },
+    {
+      "id": "js-return-type-isVideoFormat",
+      "request": {
+        "operation": "call",
+        "token": "spider-19",
+        "method": "isVideoFormat",
+        "args": [
+          "url"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": false
+      }
+    },
+    {
+      "id": "js-return-type-action",
+      "request": {
+        "operation": "call",
+        "token": "spider-19",
+        "method": "action",
+        "args": [
+          "null"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "js-return-type-liveContent",
+      "request": {
+        "operation": "call",
+        "token": "spider-19",
+        "method": "liveContent",
+        "args": [
+          "missing"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "register-js-api-jar",
+      "request": {
+        "operation": "registerJar",
+        "signature": "jsapi",
+        "path": "@fixture"
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "js-java-api",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "jsapi",
+          "type": 3,
+          "api": "https://fixture.invalid/contract.js",
+          "ext": "",
+          "jar": "jsapi"
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-20",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "jsapi",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "js-invokes-real-java-function",
+      "request": {
+        "operation": "call",
+        "token": "spider-20",
+        "method": "action",
+        "args": [
+          "java"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "java:hello:{\"java\":true}"
+      }
+    },
+    {
+      "id": "missing-script",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "missing-js",
+          "type": 3,
+          "api": "https://fixture.invalid/missing.js",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-21",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "missing-js",
+          "ready": false
+        }
+      }
+    },
+    {
+      "id": "missing-script-null",
+      "request": {
+        "operation": "call",
+        "token": "spider-21",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "html-module",
+      "request": {
+        "operation": "modules",
+        "modules": {
+          "https://fixture.invalid/html.js": "<!doctype html>error"
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "invalid-html-script",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "html",
+          "type": 3,
+          "api": "https://fixture.invalid/html.js",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-22",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "html",
+          "ready": false
+        }
+      }
+    },
+    {
+      "id": "python-explicit-unsupported",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "py",
+          "type": 3,
+          "api": "https://fixture.invalid/demo.py",
+          "ext": "",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.UnsupportedOperationException",
+        "message": "Python execution is not implemented in this runtime"
+      }
+    },
+    {
+      "id": "clear-js",
+      "request": {
+        "operation": "clear",
+        "kind": "js"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "jar": {
+            "recent": "main",
+            "spiderCount": 1,
+            "loaderCount": 1,
+            "siteJarKeys": {
+              "not-loaded": "main",
+              "one": "main"
+            },
+            "aliases": {}
+          },
+          "js": {
+            "recentKey": "",
+            "spiderCount": 0,
+            "apiClassCount": 0
+          },
+          "currentPyKey": "py",
+          "referenceCount": 2
+        }
+      }
+    },
+    {
+      "id": "cleared-js-token",
+      "request": {
+        "operation": "call",
+        "token": "spider-13",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.IllegalStateException",
+        "message": "Unknown or cleared Spider token"
+      }
+    },
+    {
+      "id": "js-new-instance",
+      "request": {
+        "operation": "get",
+        "source": {
+          "key": "js",
+          "type": 3,
+          "api": "https://fixture.invalid/contract.js",
+          "ext": "new",
+          "jar": ""
+        }
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "token": "spider-23",
+          "kind": "js",
+          "className": "com.github.catvod.crawler.js.JsSpider",
+          "siteKey": "js",
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "js-state-reset",
+      "request": {
+        "operation": "call",
+        "token": "spider-23",
+        "method": "homeContent",
+        "args": [
+          true
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"method\":\"home\",\"args\":[true],\"extension\":\"new\",\"calls\":1,\"marker\":\"relative-module\"}"
+      }
+    },
+    {
+      "id": "js-local-persists-clear",
+      "request": {
+        "operation": "call",
+        "token": "spider-23",
+        "method": "action",
+        "args": [
+          "read"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": "persisted"
+      }
+    },
+    {
+      "id": "js-local-delete",
+      "request": {
+        "operation": "call",
+        "token": "spider-23",
+        "method": "action",
+        "args": [
+          "erase"
+        ]
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+// SPDX-License-Identifier: GPL-3.0-only
+package android.util;public class Log {public static int i(String t,String m){tvbox.runtime.HostServices.log(m);return 0;}public static int e(String t,String m){tvbox.runtime.HostServices.log(m);return 0;}public static int w(String t,String m,Throwable error){return 0;}}

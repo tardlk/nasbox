@@ -19,7 +19,7 @@ These observations describe source, not verified Android/ART execution.
 | Globals/flags/parses | Global spider/jarCache/danmaku/wallpaper, flags, parses and default selection precede the live section | Optional VOD prefix implemented, including ParseBean getters/mixUrl and partial state |
 | Remaining config | Live/hosts/proxy/rules/DOH/ads are processed by the rest of parseJson | Optional config-state mode executes full original body and selected helpers; actual HTTP/DNS/script effects remain unbound |
 | Cache/failures | Network success parses before saving cache; parse failure reports a config error without fetch-error cache fallback. Fetch failure can fall back to cache | Implemented and compared within source-fields parser scope; cache write errors retain success; host atomic I/O differs from Android FileUtils |
-| Script init | Config acceptance and referenced JAR/script download/init are separate stages | Pending |
+| Script init | Config acceptance and referenced JAR/script download/init are separate stages | Explicit executable session now initializes mapped JVM class JAR/QuickJS sources lazily; automatic download, DEX/native/Python and full host bindings pending |
 
 The `sites` backend operation deliberately accepts raw config text after any
 caller-controlled decode/path stage. It neither trims a wrapped object implicitly
@@ -80,3 +80,17 @@ are tested as state/helpers, not applied to Node fetch or a Linux network stack.
 Next: controlled Spider/SpiderApi init/method fixtures, actual JAR/JS execution and
 their required HTTP/Android bindings. Retain raw text through field conversion so
 JavaScript numeric parsing cannot erase Gson behavior.
+
+backend/spider-runtime/session.mjs composes the full configuration loader with
+real JAR/JS runtime ownership. It resolves only caller-supplied artifacts/modules
+or allowed local module files. Explicit VOD getCSP/method calls use original
+routing, init ordering, cache identity and return mappings. Successful config
+imports do not imply every source initialized, and script calls do not fulfill
+unbound live/HTTP-reset config effects. HTTP fixture coverage of SpiderApi/selected
+QuickJS globals does not certify subscription transport or parsed DNS/proxy rules.
+
+The new 136-case runtime report is separate from the 348-case configuration report.
+Fresh source probes share explicit host bindings with the independent committed
+runtime, using actual JVM classes and pinned native QuickJS. Neither side runs
+Android/ART. The ordinary-JS object-ext thread observation and asynchronous event
+loop limits are documented rather than silently corrected from desktop assumptions.

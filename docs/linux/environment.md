@@ -86,3 +86,56 @@ aggregate counts were saved to full-loader-smoke.json. Test build/cache outputs
 were also removed. No .data directory was retained. Running services: none;
 autostart changes: none. RuntimeCleanup fixtures used in-memory resources only;
 no actual script engine or HTTP proxy service was launched.
+
+
+## Spider runtime batch
+
+Existing tools were checked first: the project Temurin JDK and shared Node were
+reused, and Apple clang/clang++ 21.0.0 was already installed under
+/Library/Developer/CommandLineTools/usr/bin. make was available; qjs, CMake, Docker,
+adb, Maven and Gradle were not on PATH. No compiler, Node package, Electron,
+Android SDK, DEX converter, Python environment or package-manager tool was installed.
+The dependency's own native QuickJS source was compiled directly with the existing
+compiler and JDK JNI headers; no standalone qjs executable was installed.
+
+Six new project-local jars were downloaded from the exact Maven Central coordinates
+in backend/spider-runtime/runtime.json, verified against published SHA-1 before
+retention, and pinned by SHA-256 for every runtime/reference build:
+
+| Added dependency | Retained path under /Users/coke/Desktop/Projects/tvbox-linux | Purpose |
+| --- | --- | --- |
+| OkHttp 3.12.11 | .tools/lib/okhttp-3.12.11.jar | Original SpiderApi and selected JS HTTP calls |
+| Okio 2.8.0 | .tools/lib/okio-2.8.0.jar | Android baseline's OkHttp I/O dependency |
+| Kotlin stdlib 1.4.0 | .tools/lib/kotlin-stdlib-1.4.0.jar | Okio runtime dependency |
+| Kotlin common 1.4.0 | .tools/lib/kotlin-stdlib-common-1.4.0.jar | Declared Kotlin dependency |
+| JetBrains annotations 13.0 | .tools/lib/annotations-13.0.jar | Declared Kotlin dependency |
+| QuickJS wrapper-java 2.1.0 | .tools/lib/wrapper-java-2.1.0.jar | Exact source dependency's JNI-facing Java wrapper |
+
+These jars total about 2.28 MiB. The retained .tools development directory now
+occupies approximately 320 MiB (JDK/Gson/BC plus these jars). Binaries are ignored
+by Git and retained for ongoing contract/runtime work. Existing shared tools were
+not modified or removed. Licenses and attributions are in backend/spider-runtime.
+
+Unmodified QuickJS wrapper 2.1.0 C++ and its exact QuickJS 2024-02-14 submodule
+sources/licenses are retained under backend/spider-runtime/native/vendor (about
+2.5 MiB) to reproduce macOS/Linux native builds without replacing the engine.
+The source manifest records commits, file hashes and matching Maven Java sources.
+This is source code, not a new background environment. Local native library and
+Java products in .cache/backend/spider-native and spider-runtime are temporary;
+the built library is macOS ARM64 and is not a Linux distribution artifact.
+
+Native-source archives/checksum inspection material and extracted wrapper sources
+were kept only under .cache and removed after verification. Synthetic JAR/class
+builds and source-probe classes under .cache/compat/spider-* were removed as well.
+The temporary worker directories tvbox-spider-* and test-owned tvbox-spider-store-*
+/ tvbox-dex-fixture-* were cleaned by their owning tests. No .data directory was
+retained. User-selected future --data/runtimeDataDir directories retain only
+explicit runtime state, with size/ownership described in the module README.
+
+Three additional test HTTP listeners used 127.0.0.1 ephemeral ports and closed in
+finally. Runtime tests started JVM children, original per-spider Java executors,
+managed daemon timers and the host OkHttp client; all were closed. Infinite-loop
+and unresolved-Promise fixtures were killed by their process deadline and their
+temporary directories removed. No actual subscribed source code was run. No
+persistent listener, daemon, global PATH change, system installation or autostart
+entry was created. Services still running: none. Autostart changes: none.

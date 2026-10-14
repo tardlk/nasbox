@@ -1,0 +1,3 @@
+import{writeFileSync}from'node:fs';import{resolve}from'node:path';import{root}from'./reference.mjs';import{buildSpiderFixtures}from'./spider-fixtures.mjs';import{buildSpiderOracle}from'./spider-oracle.mjs';import{spiderCases}from'./spider-cases.mjs';import{runSpiderCases}from'./spider-runner.mjs';
+const fixtures=buildSpiderFixtures();const built=buildSpiderOracle(fixtures.built);const values=await runSpiderCases(spiderCases,fixtures,built);
+writeFileSync(resolve(root,'compat/fixtures/spider-observations.json'),JSON.stringify({extraction:built.extraction,cases:spiderCases.map((c,i)=>({...c,expected:values[i]}))},null,2)+'\n');console.log(JSON.stringify({cases:values.length,scope:built.extraction.scope}));

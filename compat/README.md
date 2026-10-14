@@ -139,3 +139,21 @@ native channel merging and failed cleanup. Ten additional tests compare frozen a
 fresh results, original method bodies and loader/ownership behavior. The aggregate
 backend report includes 348 cases/scenarios. These are source-method probes on host
 JVM, not an Android emulator or an actual script/HTTP transport implementation.
+
+## Spider and real runtime contract
+
+`spider-oracle.mjs` freshly copies pinned Spider/SpiderApi/JsSpider/Async/helpers,
+extracts original JarLoader/JsLoader/Global methods and recompiles against declared
+host bindings. JVM class JARs and the exact dependency's native QuickJS engine are
+executed, rather than a JS engine substitute. `spider-cases.mjs` has 136 ordered
+ABI/dispatch/default/init/cache/method/error/proxy/local/clear observations;
+`capture-spider.mjs` explicitly writes frozen expectations. Tests never regenerate
+them. Synthetic JAR/JS fixtures are source-controlled under spiders; builds stay
+in .cache/compat/spider-fixtures.
+
+Run `node scripts/compat/spider-report.mjs` for a fresh 136/136 equality report.
+Additional tests use real local HTTP fixtures, engine-produced bb/DRPY bytecode,
+disk restarts, CLI entry points, subscription-to-executor reimport cleanup and
+CPU/unresolved-Promise deadlines. Host service/storage limits and the ordinary-JS
+object-ext thread observation are explicit in backend/spider-runtime/README.md.
+These tests are not Android/ART, DEX/native/Python or Linux/NAS validation.

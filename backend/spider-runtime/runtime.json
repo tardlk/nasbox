@@ -1,0 +1,53 @@
+{
+  "javaRelease": 17,
+  "dependencies": {
+    "okhttp": {
+      "version": "3.12.11",
+      "url": "https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/3.12.11/okhttp-3.12.11.jar",
+      "sha256": "e32657ffc5cecb535623e768e31fe30b9c99de5d4def672736a313db8f0f1780",
+      "upstreamSha1": "301adbdad6ff9d613a2ba4772443560d25df5538",
+      "bytes": 427481,
+      "filename": "okhttp-3.12.11.jar"
+    },
+    "okio": {
+      "version": "2.8.0",
+      "url": "https://repo.maven.apache.org/maven2/com/squareup/okio/okio/2.8.0/okio-2.8.0.jar",
+      "sha256": "4496b06e73982fcdd8a5393f46e5df2ce2fa4465df5895454cac68a32f09bbc8",
+      "upstreamSha1": "49b64e09d81c0cc84b267edd0c2fd7df5a64c78c",
+      "bytes": 243179,
+      "filename": "okio-2.8.0.jar"
+    },
+    "kotlin": {
+      "version": "1.4.0",
+      "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/1.4.0/kotlin-stdlib-1.4.0.jar",
+      "sha256": "616a13e6e6e9058f179a16f1e2887c7d50d83b7b4d543a0de58a49ce81ed7eb1",
+      "upstreamSha1": "63e75298e93d4ae0b299bb869cf0c627196f8843",
+      "bytes": 1487084,
+      "filename": "kotlin-stdlib-1.4.0.jar"
+    },
+    "kotlinCommon": {
+      "version": "1.4.0",
+      "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-common/1.4.0/kotlin-stdlib-common-1.4.0.jar",
+      "sha256": "8601e004d74d4be5e871f6c43a730b482ce4dff45082b08924d5d69d33c9f7d1",
+      "upstreamSha1": "1c752cce0ead8d504ccc88a4fed6471fd83ab0dd",
+      "bytes": 191212,
+      "filename": "kotlin-stdlib-common-1.4.0.jar"
+    },
+    "annotations": {
+      "version": "13.0",
+      "url": "https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0.jar",
+      "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478",
+      "upstreamSha1": "919f0dfe192fb4e063e7dacadee7f8bb9a2672a9",
+      "bytes": 17536,
+      "filename": "annotations-13.0.jar"
+    },
+    "quickjs": {
+      "version": "2.1.0",
+      "url": "https://repo.maven.apache.org/maven2/wang/harlon/quickjs/wrapper-java/2.1.0/wrapper-java-2.1.0.jar",
+      "sha256": "2b67c900379334b1c3ae24505e070df39af8282dc856429ac7b4cd07073ebfc4",
+      "upstreamSha1": "5675ed6e62a1551f7b92b1bbb8357bfcfb1ed251",
+      "bytes": 20620,
+      "filename": "wrapper-java-2.1.0.jar"
+    }
+  }
+}

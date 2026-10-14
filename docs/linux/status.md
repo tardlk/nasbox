@@ -5,11 +5,11 @@ Priority: subscription links and script execution behavior; player work deferred
 | Work | Status | Evidence |
 | --- | --- | --- |
 | Win-Box checkout and working branch | Done | baseline.json; branch codex/linux-core |
-| Android source candidate pinned | Done | TVBoxOS ab11d28: original 20-file snapshot plus 18 auxiliary TVBoxOS files; nine auxiliary AOSP Android 13 source files pinned separately |
+| Android source candidate pinned | Done | TVBoxOS ab11d28: original 20-file snapshot plus 30 auxiliary TVBoxOS files; nine auxiliary AOSP Android 13 source files pinned separately |
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 317 Node tests passed, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
+| Probe and backend contract tests | Done | 337 Node tests passed, including temporary HTTP fixtures, disk restarts, serialized imports and worker lifecycle/failure checks |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
@@ -17,7 +17,8 @@ Priority: subscription links and script execution behavior; player work deferred
 | Source-scope collection/history/cache loading | Implemented and compared within stated scope | Original switching/history methods; new file store and CLI; 23 loadConfig scenarios use source-fields parse stub |
 | Expanded VOD configuration prefix | Implemented as optional mode | Globals/spider, home/search sources, flags/parses/default selection; 51 prefix + 10 load scenarios; VOD mode intentionally ends before live |
 | Full parseJson configuration state | Implemented as optional --config mode | 85 full-state/query results; live/hosts/proxy/rules/DOH/ads, partial reset and cleanup ownership; actual script/HTTP bindings pending |
-| JS/QuickJS/Python/JAR/native execution parity | Pending | Sources pinned; runtimes not ported |
+| Spider/SpiderApi and controlled JAR/QuickJS execution | Initial executable contract slice | 136/136 fresh-source observations; actual JVM class JAR, QuickJS modules/bytecode, Java extensions, HTTP, restart and cleanup fixtures |
+| DEX/protected/native/Python and complete JS host parity | Pending | Not supplied by the new runtime; actual Android source/runtime comparison still required |
 | Linux container and NAS validation | Pending | Current host is macOS ARM64; no Docker available |
 
 The 65-case audit contains 12 matching observations, 51 differing observations
@@ -97,10 +98,43 @@ HTTP client rebuild remained an explicit incomplete effect. Node fetch does not 
 apply parsed hosts/proxy/DOH state; script initialization effects also remain unbound.
 Successful config-state acceptance must not be interpreted as a runnable client.
 
+The new backend/spider-runtime now executes controlled ordinary JVM JARs and the
+actual QuickJS wrapper/engine used by the source dependency. Original Spider and
+SpiderApi classes, selected JarLoader/JsLoader lifecycle and full JsSpider/Async
+methods are compiled independently of the Win-Box runtime. JAR initApi precedes
+init; webParse retains Base64 padding. Win-Box's reverse init order and padding
+removal are not adopted. Cache identity follows Android's key behavior, including
+same-key API/ext reuse until clear. This remains a host contract, not a port of
+all Android services or plugins.
+
+QuickJS wrapper-java 2.1.0 is pinned to its matching source tag and exact QuickJS
+2024-02-14 submodule. Native version-67 bytecode tests cover bb and DRPY paths;
+relative modules, cat cfg, legacy/default source modules, Promise return paths,
+Java extensions and proxy streams run for real. Real local HTTP fixtures cover
+SpiderApi multiReq ordering/six workers, forms, headers, error bodies, charset/BOM
+and synchronous QuickJS HTTP/signed-byte/Base64 handling. A session composes
+subscription import with lazy real VOD source calls and clears both actual runtime
+registries before reimport. Java classloader/context/process resources are closed;
+infinite loops and unresolved Promises are bounded by a process deadline.
+
+136 runtime observations match a fresh source probe on the same explicit host
+bindings. The earlier 348 configuration observations remain passing, for 484
+scoped observations across the two reports; this is not a full-client compatibility
+rate. All 337 tests pass. No real subscribed JAR/JS code was downloaded or executed.
+See spider-runtime-comparison.json and backend/spider-runtime/README.md.
+
+A source/JVM finding remains: ordinary JS object-ext initialization invokes parsing
+outside the owning QuickJS thread and is silently caught, while cat cfg works.
+The fixture preserves this observation; an Android APK/device comparison is needed
+before drawing conclusions or changing behavior. General asynchronous HTTP/timer
+execution, full HTML/crypto globals, remote code/cache behavior and Android APIs
+remain incomplete. ready only describes an obtained instance/script object.
+Subscription hosts/proxy/DOH and scripted-live configuration effects remain unbound.
+
 Next batch:
 
-1. Establish controlled Spider/SpiderApi init and method fixtures, then implement
-   and compare JAR/DEX and JS execution against that contract.
-2. Bind HTTP/DNS/proxy/cookies and required Android APIs used by those scripts;
-   inspect outstanding config effects rather than treating them as fulfilled.
+1. Add controlled DEX/protected-JAR loading/conversion and establish Android/ART
+   execution evidence; ordinary JVM JAR results cannot certify those plugins.
+2. Complete required JS Global/module/network/persistent bindings and Python;
+   apply parsed hosts/proxy/DOH/cookies to actual runtime clients and live init.
 3. Validate on Linux x86_64 and an Android runtime before claiming platform parity.

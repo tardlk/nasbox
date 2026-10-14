@@ -91,6 +91,66 @@
       "path": "app/src/main/java/com/github/tvbox/osc/util/net/ProxyAuthenticator.java",
       "sha256": "9138ab99dbc3e1227d056c8f2fe4b867d3cb7a88b975404c4a23cf632d3e9cc8",
       "bytes": 2167
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/JsLoader.java",
+      "sha256": "204479bd7f25e211be0ef480339e41decfa4e624ccd1c8d0f1d783ce771aba2f",
+      "bytes": 6118
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/SpiderNull.java",
+      "sha256": "61fb3824885135eb1428149ec30b2f4959fed0c085d881a9ffc1d42ce40cc95d",
+      "bytes": 79
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/js/Async.java",
+      "sha256": "258c447c50cbb17b2b220660c6d9a7dcab8b6ed400670cfb435764459294281f",
+      "bytes": 2880
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/js/Json.java",
+      "sha256": "140d490584322b8c88305972ceb6f853f9ca936ba4cb57960fb4e347df00258b",
+      "bytes": 2151
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/net/OkHttp.java",
+      "sha256": "c58a9669775e085a7271d90fbb5a6de735d2911530cc3a1def8d47866bc54c00",
+      "bytes": 7483
+    },
+    {
+      "path": "quickjs/src/main/java/com/whl/quickjs/wrapper/JSUtils.java",
+      "sha256": "f728923e91592eb29302620ad84a1f71b3f97a67311c9a85b0a7bea0f37a580b",
+      "bytes": 3479
+    },
+    {
+      "path": "quickjs/src/main/java/com/whl/quickjs/wrapper/ContextSetter.java",
+      "sha256": "6edf60401e51ce744fd02ffbe6381c370f9e63ffaec57b7885c88fb1e2362025",
+      "bytes": 1029
+    },
+    {
+      "path": "quickjs/src/main/java/com/whl/quickjs/wrapper/Function.java",
+      "sha256": "22fe20d8f974614b9f62cc3d347c8a4d32aca07972721934b0817fde7985c7be",
+      "bytes": 1223
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/js/local.java",
+      "sha256": "cf4d8d99af8856512351d0be0ce37b3fb0702d46a06126e9a97988277e11d423",
+      "bytes": 861
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/crawler/js/Res.java",
+      "sha256": "d7f5de1b5391e698a89d8cefdb00c8b0f6ac5b9dc5d1586c04dadf55ba44c398",
+      "bytes": 1679
+    },
+    {
+      "path": "app/src/main/java/com/github/catvod/Proxy.java",
+      "sha256": "fa45a938840cdce9e6dc4b8310887496ddcbfaea8d915491a1404e0c2fe38ec7",
+      "bytes": 702
+    },
+    {
+      "path": "app/src/main/assets/js/lib/net.js",
+      "sha256": "8d02daca47f0d5ac29e00ee3ecf13f7497b407117c0d802827135d388b046ad2",
+      "bytes": 470
     }
   ]
 }

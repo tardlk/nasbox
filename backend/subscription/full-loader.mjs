@@ -13,6 +13,7 @@ export function createFullSubscriptionLoader(options = {}) {
       // Source clearSpiderCache empties active keys before destroying loaders.
       const reset = await core.query({ operation: 'fullResetKeys' });
       if (!reset.ok) throw new ConfigParseError(reset);
+      if (options.beforeRuntimeClear) await options.beforeRuntimeClear();
       const cleared = await runtimeCleanup.clearForImport();
       // Replay the failed stage into the state parser so containers and warmed keys
       // retain the same partial state. No new configuration is parsed after failure.
