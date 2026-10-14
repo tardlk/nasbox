@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 import { createHash } from 'node:crypto';
-import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, mkdirSync, mkdtempSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, resolve, delimiter, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn, spawnSync } from 'node:child_process';
@@ -28,18 +28,25 @@ export function buildConfigCore() {
   const gson = process.env.TVBOX_GSON_JAR || join(root, '.tools/lib/gson-2.10.1.jar');
   if (!existsSync(gson)) throw new Error('Gson 2.10.1 missing; set TVBOX_GSON_JAR (see backend/config-core/README.md)');
   if (sha256(readFileSync(gson)) !== runtime.gson.sha256) throw new Error('Gson checksum differs from runtime pin');
+  const bc = process.env.TVBOX_BC_JAR || join(root, '.tools/lib/bcprov-jdk18on-1.78.1.jar');
+  if (!existsSync(bc) || sha256(readFileSync(bc)) !== runtime.bouncyCastle.sha256) throw new Error('Bouncy Castle missing or checksum differs from runtime pin');
   const sources = javaSources(join(here, 'src'));
   const java = javaCommand('java'), javac = javaCommand('javac');
   const fingerprint = sha256(JSON.stringify({ runtime, javac, sources: sources.map(path => [path, sha256(readFileSync(path))]) }));
   const build = join(root, '.cache/backend/config-core', fingerprint);
   if (!existsSync(join(build, 'complete'))) {
-    mkdirSync(build, { recursive: true });
-    const compile = spawnSync(javac, ['--release', String(runtime.javaRelease), '-encoding', 'UTF-8',
-      '-cp', gson, '-d', build, ...sources], { encoding: 'utf8', timeout: 30000, maxBuffer: 1024 * 1024 });
-    if (compile.error || compile.status !== 0) throw new Error(`Config core compile failed: ${compile.error || compile.stderr}`);
-    writeFileSync(join(build, 'complete'), fingerprint);
+    mkdirSync(dirname(build), { recursive: true });
+    const staging = mkdtempSync(join(dirname(build), 'build-'));
+    try {
+      const compile = spawnSync(javac, ['--release', String(runtime.javaRelease), '-encoding', 'UTF-8',
+        '-cp', [gson, bc].join(delimiter), '-d', staging, ...sources], { encoding: 'utf8', timeout: 30000, maxBuffer: 1024 * 1024 });
+      if (compile.error || compile.status !== 0) throw new Error(`Config core compile failed: ${compile.error || compile.stderr}`);
+      writeFileSync(join(staging, 'complete'), fingerprint);
+      try { renameSync(staging, build); }
+      catch (error) { if (!existsSync(join(build, 'complete'))) throw error; }
+    } finally { rmSync(staging, { recursive: true, force: true }); }
   }
-  return { java, gson, build };
+  return { java, gson, bc, build };
 }
 
 export class ConfigParseError extends Error {
@@ -53,7 +60,7 @@ export class ConfigParseError extends Error {
 
 /** One serialized configuration session per worker; always close in finally. */
 export function createConfigCore({ built = buildConfigCore(), timeoutMs = 30000, maxBytes = 8 * 1024 * 1024 } = {}) {
-  const child = spawn(built.java, ['-Xmx128m', '-cp', [built.build, built.gson].join(delimiter), 'tvbox.config.ConfigWorker'],
+  const child = spawn(built.java, ['-Xmx128m', '-Dfile.encoding=UTF-8', '-cp', [built.build, built.gson, built.bc].join(delimiter), 'tvbox.config.ConfigWorker'],
     { stdio: ['pipe', 'pipe', 'pipe'] });
   const lines = createInterface({ input: child.stdout });
   const pending = new Map();

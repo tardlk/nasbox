@@ -1,0 +1,945 @@
+{
+  "baseline": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "platformTag": "android-13.0.0_r1",
+  "cryptoProvider": "Desktop Bouncy Castle 1.78.1, not Android provider",
+  "inputSha256": "1b23c7056975263a0265738f7acad38a50a1d7b9977f0594f3891879f9369e77",
+  "scope": "Selected original TVBoxOS methods and AOSP helpers on host JVM; not Android/ART or full client execution",
+  "cases": [
+    {
+      "id": "url/http",
+      "request": {
+        "operation": "url",
+        "url": "http://example.invalid/tv"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://example.invalid/tv",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/https",
+      "request": {
+        "operation": "url",
+        "url": "https://example.invalid/tv?key=1"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "https://example.invalid/tv?key=1",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/schemeless",
+      "request": {
+        "operation": "url",
+        "url": "example.invalid/tv"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://example.invalid/tv",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/local",
+      "request": {
+        "operation": "url",
+        "url": "clan://localhost/a/tv"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://127.0.0.1:9978/file/a/tv",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/remote",
+      "request": {
+        "operation": "url",
+        "url": "clan://192.0.2.5/a/tv"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://192.0.2.5/file/a/tv",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/file",
+      "request": {
+        "operation": "url",
+        "url": "file:///box/tv"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://127.0.0.1:9978/file//box/tv",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/pk",
+      "request": {
+        "operation": "url",
+        "url": "https://example.invalid/tv;pk;secret"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "https://example.invalid/tv",
+          "key": "secret"
+        }
+      }
+    },
+    {
+      "id": "url/emptyPk",
+      "request": {
+        "operation": "url",
+        "url": "https://example.invalid/tv;pk;"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.ArrayIndexOutOfBoundsException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "url/doublePk",
+      "request": {
+        "operation": "url",
+        "url": "example.invalid/tv;pk;first;pk;second"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://example.invalid/tv",
+          "key": "first"
+        }
+      }
+    },
+    {
+      "id": "url/emptyFirstPk",
+      "request": {
+        "operation": "url",
+        "url": "example.invalid/tv;pk;;pk;second"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://example.invalid/tv",
+          "key": ""
+        }
+      }
+    },
+    {
+      "id": "url/empty",
+      "request": {
+        "operation": "url",
+        "url": ""
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/spaces",
+      "request": {
+        "operation": "url",
+        "url": " example.invalid/tv "
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http:// example.invalid/tv ",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/upper",
+      "request": {
+        "operation": "url",
+        "url": "HTTPS://example.invalid/tv"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://HTTPS://example.invalid/tv",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/prefixHttp",
+      "request": {
+        "operation": "url",
+        "url": "httpcustom://example.invalid/tv"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "httpcustom://example.invalid/tv",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "url/missingClanPath",
+      "request": {
+        "operation": "url",
+        "url": "clan://example.invalid"
+      },
+      "expected": {
+        "ok": false,
+        "errorType": "java.lang.StringIndexOutOfBoundsException",
+        "partialSites": []
+      }
+    },
+    {
+      "id": "url/local-custom",
+      "request": {
+        "operation": "url",
+        "url": "clan://localhost/box/tv;pk;x",
+        "localAddress": "http://nas.invalid:8899/"
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "http://nas.invalid:8899/file/box/tv",
+          "key": "x"
+        }
+      }
+    },
+    {
+      "id": "url/key-reset",
+      "request": {
+        "operation": "url",
+        "url": "https://example.invalid/new"
+      },
+      "knownValue": {
+        "url": "https://example.invalid/new",
+        "key": null
+      },
+      "expected": {
+        "ok": true,
+        "value": {
+          "url": "https://example.invalid/new",
+          "key": null
+        }
+      }
+    },
+    {
+      "id": "decode/strict",
+      "request": {
+        "operation": "decode",
+        "text": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/spaces",
+      "request": {
+        "operation": "decode",
+        "text": "  {\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}  "
+      },
+      "expected": {
+        "ok": true,
+        "value": "  {\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}  "
+      }
+    },
+    {
+      "id": "decode/lenient",
+      "request": {
+        "operation": "decode",
+        "text": "{sites:[],ext:'Abc12345**e30='}"
+      },
+      "expected": {
+        "ok": true,
+        "value": "{sites:[],ext:'Abc12345**e30='}"
+      }
+    },
+    {
+      "id": "decode/comment",
+      "request": {
+        "operation": "decode",
+        "text": "/*note*/{sites:[]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": "/*note*/{sites:[]}"
+      }
+    },
+    {
+      "id": "decode/trailing",
+      "request": {
+        "operation": "decode",
+        "text": "{sites:[]} Abc12345**e30="
+      },
+      "expected": {
+        "ok": true,
+        "value": "{sites:[]} Abc12345**e30="
+      }
+    },
+    {
+      "id": "decode/bom",
+      "request": {
+        "operation": "decode",
+        "text": "﻿{sites:[]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": "﻿{sites:[]}"
+      }
+    },
+    {
+      "id": "decode/objectComma",
+      "request": {
+        "operation": "decode",
+        "text": "{sites:[],}"
+      },
+      "expected": {
+        "ok": true,
+        "value": "{sites:[],}"
+      }
+    },
+    {
+      "id": "decode/array",
+      "request": {
+        "operation": "decode",
+        "text": "[]"
+      },
+      "expected": {
+        "ok": true,
+        "value": "[]"
+      }
+    },
+    {
+      "id": "decode/empty",
+      "request": {
+        "operation": "decode",
+        "text": ""
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "decode/null",
+      "request": {
+        "operation": "decode",
+        "text": null
+      },
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "decode/ascii",
+      "request": {
+        "operation": "decode",
+        "text": " \t hello \n"
+      },
+      "expected": {
+        "ok": true,
+        "value": "hello"
+      }
+    },
+    {
+      "id": "decode/unicode",
+      "request": {
+        "operation": "decode",
+        "text": " hello "
+      },
+      "expected": {
+        "ok": true,
+        "value": " hello "
+      }
+    },
+    {
+      "id": "decode/shortMarker",
+      "request": {
+        "operation": "decode",
+        "text": "Abc1234**e30="
+      },
+      "expected": {
+        "ok": true,
+        "value": "Abc1234**e30="
+      }
+    },
+    {
+      "id": "decode/invalidPadding",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**e==="
+      },
+      "expected": {
+        "ok": true,
+        "value": "Abc12345**e==="
+      }
+    },
+    {
+      "id": "decode/oneChar",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**a"
+      },
+      "expected": {
+        "ok": true,
+        "value": "Abc12345**a"
+      }
+    },
+    {
+      "id": "decode/trailingAfterPadding",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**e30=AAAA"
+      },
+      "expected": {
+        "ok": true,
+        "value": "Abc12345**e30=AAAA"
+      }
+    },
+    {
+      "id": "decode/emptyWrapper",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**"
+      },
+      "expected": {
+        "ok": true,
+        "value": ""
+      }
+    },
+    {
+      "id": "decode/invalidHexEnvelope",
+      "request": {
+        "operation": "decode",
+        "text": "2423x"
+      },
+      "expected": {
+        "ok": true,
+        "value": "2423x"
+      }
+    },
+    {
+      "id": "decode/nonWrapper",
+      "request": {
+        "operation": "decode",
+        "text": "anything"
+      },
+      "expected": {
+        "ok": true,
+        "value": "anything"
+      }
+    },
+    {
+      "id": "decode/base64",
+      "request": {
+        "operation": "decode",
+        "text": "image-prefixAbc12345**eyJzaXRlcyI6W3sia2V5IjoiZGVtbyIsInR5cGUiOjMsImFwaSI6ImNzcF9EZW1vIn1dfQ=="
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/base64-unpadded",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**eyJzaXRlcyI6W3sia2V5IjoiZGVtbyIsInR5cGUiOjMsImFwaSI6ImNzcF9EZW1vIn1dfQ"
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/base64-lines",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**eyJzaXRlcy\r\nI6W3sia2V5\r\nIjoiZGVtby\r\nIsInR5cGUi\r\nOjMsImFwaS\r\nI6ImNzcF9E\r\nZW1vIn1dfQ\r\n=="
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/base64-skipped-symbols",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**eyJzaXRlcy!@I6W3sia2V5!@IjoiZGVtby!@IsInR5cGUi!@OjMsImFwaS!@I6ImNzcF9E!@ZW1vIn1dfQ!@=="
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/base64-first-marker",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**e30=Abc12345**eyJzaXRlcyI6W3sia2V5IjoiZGVtbyIsInR5cGUiOjMsImFwaSI6ImNzcF9EZW1vIn1dfQ=="
+      },
+      "expected": {
+        "ok": true,
+        "value": "Abc12345**e30=Abc12345**eyJzaXRlcyI6W3sia2V5IjoiZGVtbyIsInR5cGUiOjMsImFwaSI6ImNzcF9EZW1vIn1dfQ=="
+      }
+    },
+    {
+      "id": "decode/ecb",
+      "request": {
+        "operation": "decode",
+        "text": "15b2f812860c151208eff4d5d57749bfa3aee48e247ca4898c6a46c3d737f5758aef657242566a44d22f5c84b2c79430ffbd9185034c2b00ca49b9356e20c0ca",
+        "key": "mykey"
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/ecb-upper-hex",
+      "request": {
+        "operation": "decode",
+        "text": "15B2F812860C151208EFF4D5D57749BFA3AEE48E247CA4898C6A46C3D737F5758AEF657242566A44D22F5C84B2C79430FFBD9185034C2B00CA49B9356E20C0CA",
+        "key": "mykey"
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/ecb-odd-last-nibble",
+      "request": {
+        "operation": "decode",
+        "text": "15b2f812860c151208eff4d5d57749bfa3aee48e247ca4898c6a46c3d737f5758aef657242566a44d22f5c84b2c79430ffbd9185034c2b00ca49b9356e20c0caf",
+        "key": "mykey"
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/ecb-space-key",
+      "request": {
+        "operation": "decode",
+        "text": "15b2f812860c151208eff4d5d57749bfa3aee48e247ca4898c6a46c3d737f5758aef657242566a44d22f5c84b2c79430ffbd9185034c2b00ca49b9356e20c0ca",
+        "key": "  mykey  "
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/ecb-wrong-key",
+      "request": {
+        "operation": "decode",
+        "text": "15b2f812860c151208eff4d5d57749bfa3aee48e247ca4898c6a46c3d737f5758aef657242566a44d22f5c84b2c79430ffbd9185034c2b00ca49b9356e20c0ca",
+        "key": "wrong"
+      },
+      "knownValue": null,
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "decode/ecb-invalid-hex",
+      "request": {
+        "operation": "decode",
+        "text": "not-hex",
+        "key": "mykey"
+      },
+      "knownValue": null,
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "decode/ecb-invalid-length",
+      "request": {
+        "operation": "decode",
+        "text": "00",
+        "key": "mykey"
+      },
+      "knownValue": null,
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "decode/json-key-bypass",
+      "request": {
+        "operation": "decode",
+        "text": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+        "key": "wrong"
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/array-with-key",
+      "request": {
+        "operation": "decode",
+        "text": "[]",
+        "key": "mykey"
+      },
+      "knownValue": null,
+      "expected": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "id": "decode/base64-ecb",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**MTViMmY4MTI4NjBjMTUxMjA4ZWZmNGQ1ZDU3NzQ5YmZhM2FlZTQ4ZTI0N2NhNDg5OGM2YTQ2YzNkNzM3ZjU3NThhZWY2NTcyNDI1NjZhNDRkMjJmNWM4NGIyYzc5NDMwZmZiZDkxODUwMzRjMmIwMGNhNDliOTM1NmUyMGMwY2E=",
+        "key": "mykey"
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/cbc",
+      "request": {
+        "operation": "decode",
+        "text": "24236d796b65792324dea07514697f4e113e5f89072eac03c7afbc3687e33957554c4d45b11b7e284bda880fe95d620b58843bc2629ed7e5f2d8f414c4dbdbe50662df432466e4feb030313233343536373839616263"
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/cbc-whitespace",
+      "request": {
+        "operation": "decode",
+        "text": "24236d796b65792324de \na07514697f4e113e5f89 \n072eac03c7afbc3687e3 \n3957554c4d45b11b7e28 \n4bda880fe95d620b5884 \n3bc2629ed7e5f2d8f414 \nc4dbdbe50662df432466 \ne4feb030313233343536 \n373839616263"
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/cbc-upper-key-lowercased",
+      "request": {
+        "operation": "decode",
+        "text": "24234d594b45592324dea07514697f4e113e5f89072eac03c7afbc3687e33957554c4d45b11b7e284bda880fe95d620b58843bc2629ed7e5f2d8f414c4dbdbe50662df432466e4feb030313233343536373839616263"
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/base64-cbc",
+      "request": {
+        "operation": "decode",
+        "text": "Abc12345**MjQyMzZkNzk2YjY1NzkyMzI0ZGVhMDc1MTQ2OTdmNGUxMTNlNWY4OTA3MmVhYzAzYzdhZmJjMzY4N2UzMzk1NzU1NGM0ZDQ1YjExYjdlMjg0YmRhODgwZmU5NWQ2MjBiNTg4NDNiYzI2MjllZDdlNWYyZDhmNDE0YzRkYmRiZTUwNjYyZGY0MzI0NjZlNGZlYjAzMDMxMzIzMzM0MzUzNjM3MzgzOTYxNjI2Mw=="
+      },
+      "knownValue": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[{\"key\":\"demo\",\"type\":3,\"api\":\"csp_Demo\"}]}"
+      }
+    },
+    {
+      "id": "decode/ecb-utf8",
+      "request": {
+        "operation": "decode",
+        "text": "c97c79ad65929251a4a82a58d9ccc2667d6cabc38b17d964e5cbcb4bdb2dde660d7e241d409b13100884003a9783b091",
+        "key": "mykey"
+      },
+      "knownValue": "{\"sites\":[],\"note\":\"影视订阅\"}",
+      "expected": {
+        "ok": true,
+        "value": "{\"sites\":[],\"note\":\"影视订阅\"}"
+      }
+    },
+    {
+      "id": "decode/ecb-full-padding-block",
+      "request": {
+        "operation": "decode",
+        "text": "15a6d077767b6d8693b941dfd215abfda7bb54aada3ddc29054d32145769a36b",
+        "key": "mykey"
+      },
+      "knownValue": "1234567890123456",
+      "expected": {
+        "ok": true,
+        "value": "1234567890123456"
+      }
+    },
+    {
+      "id": "collection/basic",
+      "request": {
+        "operation": "collection",
+        "text": "{\"urls\":[{\"name\":\" One \",\"url\":\" https://a.invalid/tv \"},{\"api\":\"https://b.invalid/tv\"},\"https://c.invalid/tv\"]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "One\thttps://a.invalid/tv",
+          "https://b.invalid/tv\thttps://b.invalid/tv",
+          "https://c.invalid/tv\thttps://c.invalid/tv"
+        ]
+      }
+    },
+    {
+      "id": "collection/sitesWins",
+      "request": {
+        "operation": "collection",
+        "text": "{sites:[],urls:[\"https://a.invalid/tv\"]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "collection/nullSitesWins",
+      "request": {
+        "operation": "collection",
+        "text": "{sites:null,urls:[\"https://a.invalid/tv\"]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "collection/missing",
+      "request": {
+        "operation": "collection",
+        "text": "{}"
+      },
+      "expected": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "collection/notArray",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:{url:\"x\"}}"
+      },
+      "expected": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "collection/empty",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "collection/primitiveValues",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[1,true,null,[],{}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "1\t1",
+          "true\ttrue"
+        ]
+      }
+    },
+    {
+      "id": "collection/whitespace",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[\"  \"]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "\t"
+        ]
+      }
+    },
+    {
+      "id": "collection/nameTab",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[{name:\"a\\tb\",url:\"https://a.invalid\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "a\tb\thttps://a.invalid"
+        ]
+      }
+    },
+    {
+      "id": "collection/nullFields",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[{name:null,url:null,api:\"next\"}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "next\tnext"
+        ]
+      }
+    },
+    {
+      "id": "collection/extObject",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[{name:{a:1},url:{value:2}}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "{\"a\":1}\t{\"value\":2}"
+        ]
+      }
+    },
+    {
+      "id": "collection/arrayUrl",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[{url:[1,2]}]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "[1,2]\t[1,2]"
+        ]
+      }
+    },
+    {
+      "id": "collection/wrapped",
+      "request": {
+        "operation": "collection",
+        "text": "prefix {urls:[\"https://a.invalid\"]} suffix"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "https://a.invalid\thttps://a.invalid"
+        ]
+      }
+    },
+    {
+      "id": "collection/unclosed",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[\"https://a.invalid\""
+      },
+      "expected": {
+        "ok": true,
+        "value": []
+      }
+    },
+    {
+      "id": "collection/trailingComma",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[\"https://a.invalid\",]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "https://a.invalid\thttps://a.invalid"
+        ]
+      }
+    },
+    {
+      "id": "collection/negativeNumber",
+      "request": {
+        "operation": "collection",
+        "text": "{urls:[-12,1e3]}"
+      },
+      "expected": {
+        "ok": true,
+        "value": [
+          "-12\t-12",
+          "1e3\t1e3"
+        ]
+      }
+    },
+    {
+      "id": "clanFix/remote",
+      "request": {
+        "operation": "clanFix",
+        "url": "clan://192.0.2.5/box/tv",
+        "text": "{\"api\":\"file://a.js\",\"ext\":\"clan://localhost/b.txt\"}"
+      },
+      "expected": {
+        "ok": true,
+        "value": "{\"api\":\"http://192.0.2.5/file/a.js\",\"ext\":\"http://192.0.2.5/file/b.txt\"}"
+      }
+    },
+    {
+      "id": "clanFix/local",
+      "request": {
+        "operation": "clanFix",
+        "url": "clan://localhost/box/tv",
+        "text": "file://a.js clan://localhost/b.txt",
+        "localAddress": "http://nas.invalid:8899/"
+      },
+      "expected": {
+        "ok": true,
+        "value": "http://nas.invalid:8899/file/a.js http://nas.invalid:8899/file/b.txt"
+      }
+    }
+  ]
+}

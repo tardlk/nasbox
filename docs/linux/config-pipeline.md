@@ -6,13 +6,13 @@ These observations describe source, not verified Android/ART execution.
 
 | Stage | Upstream contract | Current backend |
 | --- | --- | --- |
-| URL selection | configUrl rewrites file/clan, supplies missing http scheme, splits `;pk;` into request URL and key | Pending |
+| URL selection | configUrl rewrites file/clan, supplies missing http scheme, splits `;pk;` into request URL and key | `url` operation implemented; includes malformed/empty key quirks |
 | Cache-first load | loadConfig may read cached UTF-8 lines; failed cache parsing falls through to network | Pending |
 | Network | fetchConfigAsync uses configured OkHttp client and response.body().string(); HTTP failure or missing body is a fetch error | Probe uses bounded Node fetch only; not equivalent |
-| Decode | FindResult checks org.json object first, then eight-character salt/base64, ASCII trim, 2423 CBC envelope or configured ECB; caught exceptions return the original input | Only observed salt/base64 transport probe; full behavior pending |
-| Clan content | Original clan URL triggers clanContentFix before relative paths | Pending |
+| Decode | FindResult checks org.json object first, then eight-character salt/base64, ASCII trim, 2423 CBC envelope or configured ECB; its caught exceptions return the original input, while AES's own caught failures return null | Original FindResult/AES plus pinned AOSP helpers implemented; desktop BC supplies PKCS7; other Android/provider versions pending |
+| Clan content | Original clan URL triggers clanContentFix before relative paths | `clanFix` implemented; preparation checks original URL exactly |
 | Relative paths | fixContentPath uses original subscription URL, including quirks of global string replacement and doubled file slashes | Explicit JVM `fix` operation implemented and compared |
-| Collections | switchApiCollectionIfNeeded extracts a JSON object for inspection; `urls` without `sites` can update persisted API lines/history and recursively select the first URL | Pending; do not pass collections to parseSites as a completed load |
+| Collections | switchApiCollectionIfNeeded extracts a JSON object for inspection; `urls` without `sites` can update persisted API lines/history and recursively select the first URL | Recognition and original name-tab-url lines implemented; persistence/switching/recursion pending |
 | Parse/reset | parseJson clears spider cache, selected source, source/live/parse lists and search state before Gson parsing | Source map reset only; other state pending |
 | Site fields | Required fields use direct Gson getters; safe optional getters preserve fallback/partial-list semantics; LinkedHashMap overwrites duplicate keys at original insertion position | Implemented with pinned Gson and Java source methods |
 | Home source | Persisted home key wins when found; otherwise original first SourceBean is selected (may differ from a later duplicate replacement in the map) | Pending |
@@ -32,7 +32,14 @@ separate from the unchanged desktop Win-Box audit: desktop differences remain in
 config-comparison.json, while the explicit backend is in
 backend-config-comparison.json. Neither report is a full-client compatibility rate.
 
-Next: extend original-source oracle coverage to URL selection, decode and
-collection/cache transitions, then implement those stages. Follow with controlled
+backend/subscription/prepare.mjs composes URL/key selection, decode, conditional
+clan rewriting, relative fixing and collection recognition in upstream order.
+It takes raw body text and performs no HTTP request or cache lookup. The development
+HTTP probe also compares URL/decode/collection results now. Its Node transport
+still explicitly converts bytes as UTF-8; OkHttp charset/BOM, TLS/DNS/proxy/cookie
+and timeout behavior are outside current coverage.
+
+Next: extend original-source oracle coverage to persisted collection/cache
+transitions, then implement those stages. Follow with controlled
 Spider/SpiderApi init/method fixtures and script/JAR execution. Retain raw text
 through field conversion so JavaScript numeric parsing cannot erase Gson behavior.

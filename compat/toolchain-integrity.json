@@ -10,5 +10,12 @@
     "version": "17.0.20.1+1",
     "platform": "macOS/aarch64",
     "archiveSha256": "196d13ba5f10414bef7f6a05a9b3f00edacb18ebacef2b99485db9e2ee18f0e8"
+  },
+  "bouncyCastle": {
+    "version": "1.78.1",
+    "url": "https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk18on/1.78.1/bcprov-jdk18on-1.78.1.jar",
+    "sha256": "add5915e6acfc6ab5836e1fd8a5e21c6488536a8c1f21f386eeb3bf280b702d7",
+    "upstreamSha1": "39e9e45359e20998eb79c1828751f94a818d25f8",
+    "bytes": 8324412
   }
 }

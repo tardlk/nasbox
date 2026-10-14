@@ -1,0 +1,16 @@
+{
+  "repository": "q215613905/TVBoxOS",
+  "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "files": [
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/util/HistoryHelper.java",
+      "sha256": "d2d6d61789378949fe8048f07a76012ec20c42efe889ba8960366bc18d097b8d",
+      "bytes": 3801
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+      "bytes": 34523
+    }
+  ]
+}

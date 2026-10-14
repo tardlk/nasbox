@@ -1,270 +1,727 @@
 {
   "baseline": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
-  "inputSha256": "bf9dfb9a3ab44edbb1341d9206936ae90e811e1641fb110c92e9d41207a5b190",
-  "scope": "Independent backend vs selected unchanged source methods on macOS ARM64 host JVM; not full Android/Linux/NAS parity",
+  "datasets": [
+    {
+      "name": "config",
+      "inputSha256": "bf9dfb9a3ab44edbb1341d9206936ae90e811e1641fb110c92e9d41207a5b190",
+      "cases": 65
+    },
+    {
+      "name": "subscription",
+      "inputSha256": "1b23c7056975263a0265738f7acad38a50a1d7b9977f0594f3891879f9369e77",
+      "cases": 75
+    }
+  ],
+  "platformTag": "android-13.0.0_r1",
+  "cryptoProvider": "Desktop Bouncy Castle 1.78.1, not Android provider",
+  "host": {
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "scope": "Independent backend vs selected unchanged source methods and AOSP helpers on host JVM; not full Android/Linux/NAS parity",
   "comparison": "Exact result equality, including Java error class and partial source map in the same ordered session",
-  "total": 65,
-  "matching": 65,
+  "total": 140,
+  "matching": 140,
   "differences": 0,
   "rows": [
     {
+      "dataset": "config",
       "id": "safe/missing",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/null",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/boolean-true",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/boolean-false",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/integer",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/fraction",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/overflow-number",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/negative-overflow-number",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/scientific-lexeme",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/huge-integer",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/integer-string",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/partial-integer-string",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/fraction-string",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/space-integer-string",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/overflow-string",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/ascii-trim",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/unicode-trim",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/object",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/array-primitives",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/array-null-middle",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/array-object-middle",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/array-singleton-array",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/array-empty-array",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "safe/array-single",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/defaults",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/timeout-one",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/timeout-over-limit",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/timeout-negative",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/timeout-fraction-string",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/ext-null",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/ext-object",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/categories-null-middle",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/categories-singleton-array",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/empty-key",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/empty-api",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/null-key",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/null-name",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/object-name",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/null-type",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/boolean-type",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/singleton-array-api",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/type-two",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/type-four",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/py-filterable",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/boolean-searchable",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/duplicate-keys",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/missing-key",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/partial-state-on-error",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/primitive-entry",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "sites/object-not-array",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "trim/ascii-prefix",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "trim/unicode-space",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "json/strict",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "json/single-quotes",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "json/unquoted-keys",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "json/array-trailing-comma",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "json/object-trailing-comma",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "json/semicolon",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "json/equals",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "json/hash-comment",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "fix/ordinary",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "fix/global-replacement",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "fix/double-parent",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "fix/file",
       "equal": true
     },
     {
+      "dataset": "config",
       "id": "fix/clan-remote",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/http",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/https",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/schemeless",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/local",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/remote",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/file",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/pk",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/emptyPk",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/doublePk",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/emptyFirstPk",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/empty",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/spaces",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/upper",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/prefixHttp",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/missingClanPath",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/local-custom",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "url/key-reset",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/strict",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/spaces",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/lenient",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/comment",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/trailing",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/bom",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/objectComma",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/array",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/empty",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/null",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ascii",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/unicode",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/shortMarker",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/invalidPadding",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/oneChar",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/trailingAfterPadding",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/emptyWrapper",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/invalidHexEnvelope",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/nonWrapper",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/base64",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/base64-unpadded",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/base64-lines",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/base64-skipped-symbols",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/base64-first-marker",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ecb",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ecb-upper-hex",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ecb-odd-last-nibble",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ecb-space-key",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ecb-wrong-key",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ecb-invalid-hex",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ecb-invalid-length",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/json-key-bypass",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/array-with-key",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/base64-ecb",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/cbc",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/cbc-whitespace",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/cbc-upper-key-lowercased",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/base64-cbc",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ecb-utf8",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "decode/ecb-full-padding-block",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/basic",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/sitesWins",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/nullSitesWins",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/missing",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/notArray",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/empty",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/primitiveValues",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/whitespace",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/nameTab",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/nullFields",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/extObject",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/arrayUrl",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/wrapped",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/unclosed",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/trailingComma",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "collection/negativeNumber",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "clanFix/remote",
+      "equal": true
+    },
+    {
+      "dataset": "subscription",
+      "id": "clanFix/local",
       "equal": true
     }
   ]

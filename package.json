@@ -8,8 +8,9 @@
   "scripts": {
     "backend:config": "node backend/config-core/cli.mjs",
     "compat:backend-report": "node scripts/compat/backend-report.mjs",
-    "compat:verify": "node scripts/compat/reference.mjs",
+    "compat:verify": "node scripts/compat/verify-all.mjs",
     "compat:capture": "node scripts/compat/capture.mjs",
+    "compat:capture-subscription": "node scripts/compat/capture-subscription.mjs",
     "compat:test": "node --disable-warning=ExperimentalWarning --import ./scripts/compat/typescript-loader.mjs --test compat/*.test.mjs",
     "compat:report": "node --disable-warning=ExperimentalWarning --import ./scripts/compat/typescript-loader.mjs scripts/compat/report.mjs",
     "compat:inspect": "node scripts/compat/inspect.mjs",

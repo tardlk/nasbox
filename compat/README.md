@@ -27,6 +27,7 @@ Commands (Node 24+; JDK 17 and Gson as documented in docs/linux/environment.md):
 
 ```sh
 node scripts/compat/reference.mjs
+node scripts/compat/verify-all.mjs
 node scripts/compat/backend-report.mjs
 node --import ./scripts/compat/typescript-loader.mjs --test compat/*.test.mjs
 node --import ./scripts/compat/typescript-loader.mjs scripts/compat/report.mjs
@@ -50,6 +51,17 @@ docs/linux/backend-config-comparison.json; the existing Win-Box audit remains
 unchanged. These are selected-method results on the host JVM, not full Android
 or Linux/NAS execution evidence.
 
+The report also includes 75 frozen subscription observations from original
+configUrl, FindResult, parseApiCollection and clanContentFix, with original AES
+and HistoryHelper methods. Seven Android 13 AOSP JSON/Base64 sources are separately
+pinned and verified, and desktop Bouncy Castle supplies PKCS7. Snapshot metadata
+explicitly distinguishes this auxiliary baseline from a real Android device.
+The runtime uses separate unmodified copies of these helpers with host annotation
+declarations. subscription-core.test.mjs verifies their hashes and the results;
+ECB/CBC cases also check independently generated plaintext expectations. Explicit
+capture command: `node scripts/compat/capture-subscription.mjs`; tests never
+regenerate expected results.
+
 Inspect method behavior using JSON lines on stdin:
 
 ```json
@@ -66,15 +78,17 @@ service. Only public synthetic inputs are stored in the fixture dataset.
 node --import ./scripts/compat/typescript-loader.mjs scripts/compat/subscription-probe.mjs 'SUBSCRIPTION_URL' --report docs/linux/subscription-probe.json
 ```
 
-This bounded HTTP probe handles the observed salt+base64 envelope and uses the
-source-method harness for Gson parsing and site-loop inspection, comparing path
-and source results with the independent backend. It does not
+This bounded HTTP probe uses the Java core for URL/key selection and decoding,
+including the observed salt+base64 envelope, AES and AOSP org.json/Base64. The
+source-method harness independently checks URL/decode/path/collection/site results.
+It does not
 execute referenced code or upload subscriptions to a remote decoder. Reports
 contain response hashes/counts, not full source definitions or payloads.
 
-Transport uses Node fetch, not Android OkHttp. AES, complete org.json/Gson detection
-equivalence, malformed Base64 handling, charset/BOM and Android network-state
-parity remain unverified. This diagnostic is not a claim that C1 is complete.
+Transport uses Node fetch and explicit UTF-8 response byte conversion, not Android
+OkHttp. HTTP charset/BOM, TLS/DNS/proxy/cookie/cache, other Android OS/provider
+versions and Android runtime-state parity remain unverified. This diagnostic is
+not a claim that C1 is complete.
 
 The user-provided Fantaiying subscription returned an image-like wrapper; its
 configuration decoded to 48 type=3 sources (45 CSP/JAR and 3 JS references).
@@ -87,3 +101,6 @@ Win-Box's existing source retains its original MIT license. The Android referenc
 snapshot and extracted reference code retain their upstream GPL-3.0 license;
 see `reference/tvboxos/LICENSE`. UriUtil retains its original Android Open Source
 Project Apache-2.0 notice. This directory is not claimed to be MIT-only.
+Additional AOSP JSON/Base64 sources retain their Apache-2.0 license; original
+HistoryHelper retains TVBoxOS GPL-3.0. The runtime's Bouncy Castle dependency has
+its own license, copied to backend/config-core/LICENSE-BOUNCY-CASTLE.

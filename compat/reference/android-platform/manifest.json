@@ -1,0 +1,66 @@
+{
+  "tag": "android-13.0.0_r1",
+  "selection": "Auxiliary source baseline matching compileSdk 33; not an assertion about the user device OS or ART execution.",
+  "files": [
+    {
+      "path": "libcore/org/json/JSON.java",
+      "repository": "platform/libcore",
+      "commit": "7267082c39a25fb5afbc4eeb5752c1b276d29344",
+      "upstreamPath": "json/src/main/java/org/json/JSON.java",
+      "sha256": "a2cc5e4bf64bfe3edd73c6a14409f3200640454051d9947ee79f16a2396a19b1",
+      "bytes": 3884
+    },
+    {
+      "path": "libcore/org/json/JSONArray.java",
+      "repository": "platform/libcore",
+      "commit": "7267082c39a25fb5afbc4eeb5752c1b276d29344",
+      "upstreamPath": "json/src/main/java/org/json/JSONArray.java",
+      "sha256": "24f10dbe57a9228b8aec8a891355c26285e7fc4e070a2f826a080300e3ca4180",
+      "bytes": 20699
+    },
+    {
+      "path": "libcore/org/json/JSONException.java",
+      "repository": "platform/libcore",
+      "commit": "7267082c39a25fb5afbc4eeb5752c1b276d29344",
+      "upstreamPath": "json/src/main/java/org/json/JSONException.java",
+      "sha256": "26e10aae9c209dabbc8f15b4156fe9fdc87f5d9d2cb2d2f078b475a61ba0df7d",
+      "bytes": 1824
+    },
+    {
+      "path": "libcore/org/json/JSONObject.java",
+      "repository": "platform/libcore",
+      "commit": "7267082c39a25fb5afbc4eeb5752c1b276d29344",
+      "upstreamPath": "json/src/main/java/org/json/JSONObject.java",
+      "sha256": "4d3ce46839c56c6b4ec650aa983ed40fbda9fdf07895372f6c27bcc8cf0cca85",
+      "bytes": 30517
+    },
+    {
+      "path": "libcore/org/json/JSONStringer.java",
+      "repository": "platform/libcore",
+      "commit": "7267082c39a25fb5afbc4eeb5752c1b276d29344",
+      "upstreamPath": "json/src/main/java/org/json/JSONStringer.java",
+      "sha256": "8772ac80610cd62e906330152b09864c471a0921f199f4b9d670d98050e3d86c",
+      "bytes": 13540
+    },
+    {
+      "path": "libcore/org/json/JSONTokener.java",
+      "repository": "platform/libcore",
+      "commit": "7267082c39a25fb5afbc4eeb5752c1b276d29344",
+      "upstreamPath": "json/src/main/java/org/json/JSONTokener.java",
+      "sha256": "da4841221e26bcf2f8205905eadb702328d5a45af73cc3318917df73e56f4466",
+      "bytes": 20899
+    },
+    {
+      "path": "frameworks-base/android/util/Base64.java",
+      "repository": "platform/frameworks/base",
+      "commit": "0d3ff311e6e80dee7fe88a2a2cfa272ce231c3c6",
+      "upstreamPath": "core/java/android/util/Base64.java",
+      "sha256": "bd7b1e83953dda51fda1b96b5211cf43e375105db8f7f5a6dd678efb57fb3364",
+      "bytes": 28679
+    }
+  ],
+  "license": {
+    "path": "LICENSE",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  }
+}

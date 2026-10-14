@@ -5,18 +5,28 @@ import { root, sha256 } from './reference.mjs';
 import { buildOracle, queryOracle } from './oracle.mjs';
 import { createConfigCore } from '../../backend/config-core/index.mjs';
 
-const input = readFileSync(resolve(root, 'compat/fixtures/config-inputs.json'));
-const cases = JSON.parse(input);
 const built = buildOracle();
-const expected = queryOracle(cases.map(item => item.request), built);
+const datasets = ['config', 'subscription'].map(name => {
+  const input = readFileSync(resolve(root, `compat/fixtures/${name}-inputs.json`));
+  return { name, inputSha256: sha256(input), cases: JSON.parse(input) };
+});
 const core = createConfigCore();
-let actual;
-try { actual = await Promise.all(cases.map(item => core.query(item.request))); }
+const rows = [];
+try {
+  for (const dataset of datasets) {
+    // Separate sessions reset their source maps explicitly before observations.
+    await core.query({ operation: 'sites', text: '{sites:[]}' });
+    const expected = queryOracle(dataset.cases.map(item => item.request), built);
+    const actual = await Promise.all(dataset.cases.map(item => core.query(item.request)));
+    rows.push(...dataset.cases.map((item, index) => ({ dataset: dataset.name, id: item.id, equal: isDeepStrictEqual(actual[index], expected[index]) })));
+  }
+}
 finally { await core.close(); }
-const rows = cases.map((item, index) => ({ id: item.id, equal: isDeepStrictEqual(actual[index], expected[index]) }));
 const report = {
-  baseline: built.extraction.commit, inputSha256: sha256(input),
-  scope: 'Independent backend vs selected unchanged source methods on macOS ARM64 host JVM; not full Android/Linux/NAS parity',
+  baseline: built.extraction.commit, datasets: datasets.map(({ cases, ...item }) => ({ ...item, cases: cases.length })),
+  platformTag: built.extraction.platformTag, cryptoProvider: built.extraction.cryptoProvider,
+  host: { platform: process.platform, architecture: process.arch },
+  scope: 'Independent backend vs selected unchanged source methods and AOSP helpers on host JVM; not full Android/Linux/NAS parity',
   comparison: 'Exact result equality, including Java error class and partial source map in the same ordered session',
   total: rows.length, matching: rows.filter(row => row.equal).length,
   differences: rows.filter(row => !row.equal).length, rows,

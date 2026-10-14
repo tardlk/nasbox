@@ -9,12 +9,25 @@ import java.nio.charset.StandardCharsets;
 public final class ConfigWorker {
     private final Gson gson = new Gson();
     private final ConfigParser parser = new ConfigParser();
+    private final SubscriptionConfig subscription = new SubscriptionConfig(parser);
 
     private JsonElement run(JsonObject request) {
         String operation = request.get("operation").getAsString();
         String text = request.has("text") && !request.get("text").isJsonNull()
                 ? request.get("text").getAsString() : null;
+        if (request.has("localAddress")) parser.localAddress = request.get("localAddress").getAsString();
         switch (operation) {
+            case "url":
+                JsonObject selected = new JsonObject();
+                selected.addProperty("url", subscription.configUrl(request.get("url").getAsString()));
+                selected.add("key", subscription.key() == null ? JsonNull.INSTANCE : new JsonPrimitive(subscription.key()));
+                return selected;
+            case "decode":
+                String configKey = request.has("key") && !request.get("key").isJsonNull() ? request.get("key").getAsString() : null;
+                String decoded = SubscriptionConfig.FindResult(text, configKey);
+                return decoded == null ? JsonNull.INSTANCE : new JsonPrimitive(decoded);
+            case "collection": return gson.toJsonTree(subscription.parseApiCollection(text));
+            case "clanFix": return new JsonPrimitive(subscription.clanContentFix(subscription.clanToAddress(request.get("url").getAsString()), text));
             case "sites": return parser.parseSites(text);
             case "json": return gson.fromJson(text, JsonElement.class);
             case "trim": return new JsonPrimitive(parser.trimJsonObject(text));
@@ -36,6 +49,7 @@ public final class ConfigWorker {
     }
 
     public static void main(String[] args) throws IOException {
+        java.security.Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         ConfigWorker worker = new ConfigWorker();
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
         PrintWriter output = new PrintWriter(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), true);

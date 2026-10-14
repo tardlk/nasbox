@@ -5,30 +5,39 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import { createConfigCore } from '../../backend/config-core/index.mjs';
+import { prepareSubscription } from '../../backend/subscription/prepare.mjs';
 import { buildOracle, queryOracle } from './oracle.mjs';
 import { queryWinbox, compareResult } from './compare.mjs';
 
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 
-export function unwrapSubscriptionBytes(bytes) {
+export async function unwrapSubscriptionBytes(bytes, { core, key = null } = {}) {
+  const owned = !core;
+  core ||= createConfigCore();
   const text = bytes.toString('utf8');
-  // Android FindResult checks a plain JSON object before looking for a wrapper.
-  // Preserve that order for strict JSON; lenient org.json-specific detection
-  // remains outside this transport probe's documented coverage.
   try {
-    const plain = JSON.parse(text);
-    if (plain && typeof plain === 'object' && !Array.isArray(plain)) return { text, envelope: 'unwrapped-text' };
-  } catch {}
-  const marker = /[A-Za-z0-9]{8}\*\*/.exec(text);
-  // This probe covers the visible salt+base64 branch. AES, charset/BOM handling
-  // and malformed Android Base64 semantics still need dedicated reference tests.
-  if (marker) return { text: Buffer.from(text.slice(marker.index + 10), 'base64').toString('utf8').trim(),
-    envelope: 'salt-base64', markerOffset: marker.index };
-  return { text, envelope: 'unwrapped-text' };
+    const result = await core.query({ operation: 'decode', text, key });
+    if (!result.ok) throw new Error(`Subscription decode failed: ${result.errorType}`);
+    const marker = /[A-Za-z0-9]{8}\*\*/.exec(text);
+    // Envelope is diagnostic metadata only; the Java result controls decoding.
+    const envelope = result.value === null ? 'decode-null' : result.value === text ? 'unwrapped-text'
+      : marker ? 'salt-base64' : key !== null || /^\s*2423/.test(text) ? 'aes-or-normalized-text' : 'normalized-text';
+    return { text: result.value, envelope };
+  } finally { if (owned) await core.close(); }
 }
 
 export async function probeSubscription(inputUrl, options = {}) {
-  const url = new URL(inputUrl);
+  const built = options.oracle || buildOracle();
+  const core = createConfigCore();
+  try { return await probeWithCore(inputUrl, options, core, built); }
+  finally { await core.close(); }
+}
+
+async function probeWithCore(inputUrl, options, core, built) {
+  const selected = await core.query({ operation: 'url', url: inputUrl });
+  if (!selected.ok) throw new Error(`Subscription URL failed: ${selected.errorType}`);
+  const sourceSelected = queryOracle([{ operation: 'url', url: inputUrl }], built)[0];
+  const url = new URL(selected.value.url);
   if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Probe accepts HTTP(S) subscription URLs');
   const ua = options.userAgent || 'okhttp/3.12.11';
   const timeoutMs = options.timeoutMs || 25000, maxBytes = options.maxBytes || 8 * 1024 * 1024;
@@ -42,31 +51,38 @@ export async function probeSubscription(inputUrl, options = {}) {
     if (size > maxBytes) throw new Error('Subscription exceeds probe size limit');
     chunks.push(Buffer.from(chunk));
   }
-  const bytes = Buffer.concat(chunks), decoded = unwrapSubscriptionBytes(bytes);
-  const built = options.oracle || buildOracle();
-  const json = queryOracle([{ operation: 'json', text: decoded.text }], built)[0];
+  const bytes = Buffer.concat(chunks);
+  const raw = bytes.toString('utf8');
+  const decoded = await unwrapSubscriptionBytes(bytes, { core, key: selected.value.key });
+  const sourceDecoded = queryOracle([{ operation: 'decode', text: raw, key: sourceSelected.value?.key }], built)[0];
+  const json = queryOracle([{ operation: 'json', text: sourceDecoded.value }], built)[0];
   const metadata = {
     sourceUrl: url.href, finalUrl: response.url, userAgent: ua, status: response.status,
     contentType: response.headers.get('content-type'), bytes: bytes.length,
     responseSha256: digest(bytes), signatureHex: bytes.subarray(0, 12).toString('hex'),
-    envelope: decoded.envelope, decodedSha256: digest(decoded.text),
-    sourceParserAccepted: json.ok,
+    envelope: decoded.envelope, decodedSha256: decoded.text === null ? null : digest(decoded.text),
+    backendUrlComparison: { equal: isDeepStrictEqual(sourceSelected, selected) },
+    backendDecodeComparison: { equal: isDeepStrictEqual(sourceDecoded, { ok: true, value: decoded.text }) },
+    sourceParserAccepted: typeof sourceDecoded.value === 'string' && json.ok,
     scope: 'Read-only source-method probe on host JVM; no Android/ART or script execution',
   };
   if (!json.ok) return { ...metadata, sourceErrorType: json.errorType };
   if (!json.value || typeof json.value !== 'object' || Array.isArray(json.value)) return { ...metadata, configObject: false };
-  const fixed = queryOracle([{ operation: 'fix', url: inputUrl, text: decoded.text }], built)[0];
+  let sourceText = sourceDecoded.value;
+  if (inputUrl.startsWith('clan')) {
+    const clanFixed = queryOracle([{ operation: 'clanFix', url: inputUrl, text: sourceText }], built)[0];
+    if (!clanFixed.ok) return { ...metadata, sourceErrorType: clanFixed.errorType };
+    sourceText = clanFixed.value;
+  }
+  const fixed = queryOracle([{ operation: 'fix', url: inputUrl, text: sourceText }], built)[0];
   if (!fixed.ok) return { ...metadata, sourceErrorType: fixed.errorType };
   const request = { operation: 'sites', text: fixed.value };
   const androidSource = queryOracle([request], built)[0];
   const winbox = queryWinbox(request);
-  const core = createConfigCore();
-  let backend, backendFixed;
-  try {
-    backendFixed = await core.query({ operation: 'fix', url: inputUrl, text: decoded.text });
-    backend = backendFixed.ok
-      ? await core.query({ operation: 'sites', text: backendFixed.value }) : backendFixed;
-  } finally { await core.close(); }
+  const prepared = await prepareSubscription(inputUrl, raw, { core });
+  const backendFixed = { ok: true, value: prepared.text };
+  const backend = await core.query({ operation: 'sites', text: prepared.text });
+  const sourceCollection = queryOracle([{ operation: 'collection', text: fixed.value }], built)[0];
   const config = json.value;
   const sites = Array.isArray(config.sites) ? config.sites : [];
   const typeCounts = {};
@@ -80,6 +96,8 @@ export async function probeSubscription(inputUrl, options = {}) {
     backendSites: backend.ok ? backend.value.length : null,
     backendPathComparison: { equal: isDeepStrictEqual(fixed, backendFixed) },
     backendSiteComparison: { equal: isDeepStrictEqual(androidSource, backend) },
+    collectionLines: prepared.collectionLines.length,
+    backendCollectionComparison: { equal: isDeepStrictEqual(sourceCollection, { ok: true, value: prepared.collectionLines }) },
     typeCounts, siteComparison: compareResult(androidSource, winbox),
     hasGlobalSpider: !!config.spider, globalSpiderExtension: spiderExtension,
     globalSpiderMd5Tagged: String(config.spider || '').includes(';md5;'),

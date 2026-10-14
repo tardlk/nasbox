@@ -9,6 +9,12 @@
   "signatureHex": "ffd8ffe000104a4649460001",
   "envelope": "salt-base64",
   "decodedSha256": "74466de441310ac936bb514dd2a0129a0447afc833ff1e15f085a47e1c39fc62",
+  "backendUrlComparison": {
+    "equal": true
+  },
+  "backendDecodeComparison": {
+    "equal": true
+  },
   "sourceParserAccepted": true,
   "scope": "Read-only source-method probe on host JVM; no Android/ART or script execution",
   "configObject": true,
@@ -20,6 +26,10 @@
     "equal": true
   },
   "backendSiteComparison": {
+    "equal": true
+  },
+  "collectionLines": 0,
+  "backendCollectionComparison": {
     "equal": true
   },
   "typeCounts": {
