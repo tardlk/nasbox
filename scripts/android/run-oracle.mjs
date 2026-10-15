@@ -12,7 +12,7 @@ const label=value=>{
  const text=String(value??'');
  return text.length>160||/(?:https?:|:\/\/|[?=&\r\n]|bearer\s|token[:\s])/i.test(text)?'sha256:'+sha(text):text;
 };
-const allowed=new Set(['homeContent','homeVideoContent','categoryContent','detailContent','searchContent']);
+const allowed=new Set(['homeContent','homeVideoContent','categoryContent','detailContent','searchContent','playerContent']);
 const target='com.github.tvbox.osc.jun',instrument='com.github.tvbox.parity.oracle/com.github.tvbox.parity.oracle.OracleInstrumentation';
 
 export function oracleBudgetsOf(plan = {}) {

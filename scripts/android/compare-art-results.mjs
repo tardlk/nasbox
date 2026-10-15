@@ -12,7 +12,7 @@ import {replayBudgetsOf} from './replay-nas.mjs';
 const sha=value=>createHash('sha256').update(value).digest('hex');
 const hashPattern=/^[a-f0-9]{64}$/;
 const classPattern=/^(?:[A-Za-z_$][\w$]*\.)*[A-Za-z_$][\w$]*$/;
-const methods=new Set(['homeContent','homeVideoContent','categoryContent','detailContent','searchContent']);
+const methods=new Set(['homeContent','homeVideoContent','categoryContent','detailContent','searchContent','playerContent']);
 const categories=new Set(['execution','artifact-timeout','timeout','invalid-json','missing-class-or-member','native-binding','network','invalid-result','input','environment','spider-not-ready']);
 export function canonical(value){
  if(Array.isArray(value))return value.map(canonical);
@@ -73,17 +73,26 @@ function expectedBudgets(plan,host){
 }
 function summarizeValue(call){
  if(!call)return {state:'not-replayed'};
+ if(call.metadata?.status==='not-tested')return {state:'not-tested',status:'not-tested',reason:/^[a-z][a-z0-9-]{0,80}$/.test(call.metadata.reason||'')?call.metadata.reason:'unrecorded'};
  const error=call.error||call.metadata?.error;
- if(typeof call.value!=='string')return {state:error?'failed':'unknown',error:safeError(error)};
+ const provenance=call.metadata?.methodProvenance;
+ const methodProvenance=provenance?{declaringClass:safeClass(provenance.declaringClass),baseSpiderClass:safeClass(provenance.baseSpiderClass),
+  inheritedBaseDefault:provenance.inheritedBaseDefault===true,baseDelegatingOverload:provenance.baseDelegatingOverload===true}:undefined;
+ const status=call.metadata?.status;
+ const extras={...(methodProvenance?{methodProvenance}:{}),...(['nonempty','empty','not-implemented','invalid-json','network','failed','timeout'].includes(status)?{status}:{})};
+ if(typeof call.value!=='string')return {...extras,state:error?'failed':'unknown',error:safeError(error)};
  const raw={bytes:Buffer.byteLength(call.value),sha256:sha(call.value)};
+ if(status==='not-implemented'&&methodProvenance?.inheritedBaseDefault&&methodProvenance.declaringClass===methodProvenance.baseSpiderClass&&methodProvenance.baseSpiderClass)return {...raw,...extras,state:'not-implemented'};
+ if(status==='empty'&&call.value.trim()==='')return {...raw,...extras,state:'empty-response',status:'empty',hasContent:false};
  let value;
- try{value=JSON.parse(call.value);}catch{return {...raw,state:'invalid-json',error:safeError(error)};}
- if(!value||typeof value!=='object'||Array.isArray(value))return {...raw,state:'invalid-json-object',error:safeError(error)};
+ try{value=JSON.parse(call.value);}catch{return {...raw,...extras,state:'invalid-json',status:'invalid-json',error:safeError(error)};}
+ if(!value||typeof value!=='object'||Array.isArray(value))return {...raw,...extras,state:'invalid-json-object',status:'invalid-json',error:safeError(error)};
  const classes=Array.isArray(value.class)?value.class.length:null,list=Array.isArray(value.list)?value.list.length:null;
  const filterGroups=value.filters&&typeof value.filters==='object'&&!Array.isArray(value.filters)?Object.keys(value.filters).length:null;
- return {...raw,state:error||call.metadata?.success===false?'failed-with-json':'json',semanticSha256:semantic(value),
+ const hasContent=(classes||0)>0||(list||0)>0||typeof value.url==='string'&&value.url.length>0;
+ return {...raw,...extras,state:error||call.metadata?.success===false?'failed-with-json':'json',status:error?'failed':hasContent?'nonempty':'empty',semanticSha256:semantic(value),
   fields:Object.keys(value).length,emptyObject:Object.keys(value).length===0,classes,list,filterGroups,
-  hasContent:(classes||0)>0||(list||0)>0,
+  hasContent,playbackUrlPresent:typeof value.url==='string'&&value.url.length>0,
   ...(Object.hasOwn(value,'class')?{classSha256:semantic(value.class)}:{}),
   ...(Object.hasOwn(value,'filters')?{filtersSha256:semantic(value.filters)}:{}),
   ...(error?{error:safeError(error)}:{})};
@@ -184,13 +193,17 @@ export function compareArtResults(plan,artResults,nasResults,{manifestSha256,rep
    const other=nas?.privateCalls[index];
    if(other&&(other.method!==call.method||semantic(other.params)!==semantic(call.params)))throw identityError('method or exact params');
    const a=summarizeValue(call),b=summarizeValue(other);
-   const comparison={index,method:call.method,paramsSha256:semantic(call.params),art:a,nas:b};
+   const comparison={index,method:call.method,paramsSha256:semantic(call.params),art:a,nas:b,
+    ...(typeof call.metadata?.discoveryStep==='string'&&/^[a-z][a-z0-9-]{0,80}$/.test(call.metadata.discoveryStep)?{discoveryStep:call.metadata.discoveryStep}:{})};
    if(a.state==='json'&&b.state==='json'){
     comparison.rawEqual=a.sha256===b.sha256;comparison.semanticEqual=a.semanticSha256===b.semanticSha256;
     comparison.classesEqual=a.classSha256===undefined&&b.classSha256===undefined?null:a.classSha256===b.classSha256;
     comparison.filtersEqual=a.filtersSha256===undefined&&b.filtersSha256===undefined?null:a.filtersSha256===b.filtersSha256;
     comparison.observation=comparison.semanticEqual?'same-json':'live-response-difference';
-   }else if(['invalid-json','invalid-json-object'].includes(a.state)&&['invalid-json','invalid-json-object'].includes(b.state)){
+   }else if(a.state==='not-tested'||b.state==='not-tested')comparison.observation='not-tested';
+   else if(a.state==='not-implemented'||b.state==='not-implemented')comparison.observation='method-not-implemented';
+   else if(a.state==='empty-response'&&b.state==='empty-response'){comparison.observation='both-empty-response';comparison.rawEqual=a.sha256===b.sha256;}
+   else if(['invalid-json','invalid-json-object'].includes(a.state)&&['invalid-json','invalid-json-object'].includes(b.state)){
     comparison.observation='both-invalid-json';comparison.invalidRawEqual=a.sha256===b.sha256;
    }else if(a.state==='failed'&&b.state==='failed')comparison.observation='both-failed';
    else comparison.observation=a.state==='not-replayed'||b.state==='not-replayed'?'unknown-not-replayed':'execution-or-result-difference';
@@ -202,7 +215,7 @@ export function compareArtResults(plan,artResults,nasResults,{manifestSha256,rep
   else if(row.art.init==='ready'&&row.nas.init==='ready')row.observation=row.calls.length===0?'ready-no-compared-calls':
    row.calls.every(call=>call.semanticEqual===true)?'matched-tested-methods':
    row.calls.some(call=>call.observation==='execution-or-result-difference')?'method-results-need-diagnosis':
-   row.calls.some(call=>call.observation==='unknown-not-replayed')?'unknown-method-coverage':
+   row.calls.some(call=>['unknown-not-replayed','not-tested'].includes(call.observation))?'unknown-method-coverage':
    row.calls.some(call=>call.observation==='live-response-difference')?'live-response-difference':'same-successful-or-failed-behavior';
   else if([row.art.init,row.nas.init].includes('unknown'))row.observation='unknown-execution';
   else row.observation='init-difference-needs-diagnosis';
@@ -226,7 +239,9 @@ export function compareArtResults(plan,artResults,nasResults,{manifestSha256,rep
    bothLoadFailed:cases.filter(row=>row.art.load==='failed'&&row.nas.load==='failed').length,
    artReady:cases.filter(row=>row.art.init==='ready').length,nasReady:cases.filter(row=>row.nas.init==='ready').length,
    bothReady:cases.filter(row=>row.art.init==='ready'&&row.nas.init==='ready').length,bothInitFailed:cases.filter(row=>row.observation==='both-init-failed').length,
-   testedCalls:calls.length,pairedSuccessfulJsonCalls:calls.filter(row=>row.art.state==='json'&&row.nas.state==='json').length,
+   testedCalls:calls.filter(row=>row.art.state!=='not-tested').length,notTestedCalls:calls.filter(row=>row.art.state==='not-tested').length,
+   artMethodStatuses:counts(calls.map(row=>row.art.status||row.art.state)),nasMethodStatuses:counts(calls.map(row=>row.nas.status||row.nas.state)),
+   pairedSuccessfulJsonCalls:calls.filter(row=>row.art.state==='json'&&row.nas.state==='json').length,
    semanticMatches:calls.filter(row=>row.semanticEqual===true).length,rawMatches:calls.filter(row=>row.rawEqual===true).length,
    nonemptySemanticMatches:calls.filter(row=>row.semanticEqual===true&&row.art.hasContent&&row.nas.hasContent).length,
    emptyObjectSemanticMatches:calls.filter(row=>row.semanticEqual===true&&row.art.emptyObject&&row.nas.emptyObject).length,

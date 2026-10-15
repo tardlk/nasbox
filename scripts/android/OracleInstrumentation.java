@@ -49,6 +49,8 @@ public final class OracleInstrumentation extends Instrumentation {
     private boolean timedOut;
     private String phase = "start";
     private JSONObject symbols;
+    private Class<?> baseSpiderClass;
+    private String discoveryStep;
 
     @Override public void onCreate(Bundle args) {
         super.onCreate(args);
@@ -224,15 +226,21 @@ public final class OracleInstrumentation extends Instrumentation {
             if (spider == null || spider.getClass().getName().endsWith(".SpiderNull")) throw new IllegalStateException("SPIDER_NOT_READY");
             report.put("initSuccess", true);
             report.put("loaderState", loaderState(loaderClass, originalLoader));
+            baseSpiderClass = appLoader.loadClass("com.github.catvod.crawler.Spider");
 
             JSONArray explicitCalls = site.optJSONArray("calls");
             if (explicitCalls == null) explicitCalls = artifact.optJSONArray("calls");
             if (explicitCalls != null) {
                 if (explicitCalls.length() > 20) throw new IllegalArgumentException("Too many calls");
                 for (int i = 0; i < explicitCalls.length(); i++) {
+                    if (timedOut) break;
                     JSONObject call = explicitCalls.getJSONObject(i);
                     runCall(spider, call.getString("method"), call.optJSONArray("params"));
                 }
+            } else if (site.optBoolean("businessDiscovery", artifact.optBoolean("businessDiscovery", plan.optBoolean("businessDiscovery", false)))) {
+                report.put("businessDiscovery", true);
+                String keyword = site.optString("businessSearchKeyword", artifact.optString("businessSearchKeyword", plan.optString("businessSearchKeyword", "")));
+                discoverBusiness(spider, keyword);
             } else {
                 String home = runCall(spider, "homeContent", new JSONArray().put(true));
                 JSONObject homeJson = objectOrNull(home);
@@ -290,6 +298,118 @@ public final class OracleInstrumentation extends Instrumentation {
 
     private boolean enabled(String name) { return !"false".equalsIgnoreCase(arguments.getString(name, "true")); }
 
+    // Every parameter comes from this source's ART responses, or an explicit test word.
+    // The exact calls/values stay private and are replayed verbatim on NAS.
+    private void discoverBusiness(Object spider, String keyword) throws Exception {
+        JSONObject home = objectOrNull(businessCall(spider, "home", "homeContent", new JSONArray().put(true)));
+        if (timedOut) return;
+        JSONObject videos = objectOrNull(businessCall(spider, "home-video", "homeVideoContent", new JSONArray()));
+        if (timedOut) return;
+        JSONArray classes = home == null ? null : home.optJSONArray("class");
+        JSONObject category = null;
+        if (classes != null && classes.length() > 0 && classes.optJSONObject(0) != null && classes.optJSONObject(0).has("type_id")) {
+            String tid = classes.getJSONObject(0).getString("type_id");
+            category = objectOrNull(businessCall(spider, "category-page1", "categoryContent", new JSONArray().put(tid).put("1").put(true).put(new JSONObject())));
+            if (timedOut) return;
+            businessCall(spider, "category-page2", "categoryContent", new JSONArray().put(tid).put("2").put(true).put(new JSONObject()));
+            if (timedOut) return;
+            JSONObject filterValues = filterValues(home, tid);
+            if (filterValues.length() > 0) businessCall(spider, "category-filter", "categoryContent", new JSONArray().put(tid).put("1").put(true).put(filterValues));
+            else skipBusiness("category-filter", "categoryContent", "no-derived-filter-values");
+        } else {
+            for (String step : new String[]{"category-page1", "category-page2", "category-filter"}) skipBusiness(step, "categoryContent", "no-derived-category");
+        }
+        if (timedOut) return;
+        JSONObject item = firstVideo(category, videos, home);
+        JSONObject detail = null;
+        if (item != null && item.has("vod_id")) detail = objectOrNull(businessCall(spider, "detail", "detailContent", new JSONArray().put(new JSONArray().put(item.getString("vod_id")))));
+        else skipBusiness("detail", "detailContent", "no-derived-video-id");
+        if (timedOut) return;
+        if (keyword.trim().length() == 0 && item != null) keyword = item.optString("vod_name", "").trim();
+        JSONObject search = null, searchPage = null;
+        if (keyword.length() > 0) {
+            search = objectOrNull(businessCall(spider, "search", "searchContent", new JSONArray().put(keyword).put(false)));
+            if (timedOut) return;
+            searchPage = objectOrNull(businessCall(spider, "search-page1", "searchContent", new JSONArray().put(keyword).put(false).put("1")));
+        } else {
+            skipBusiness("search", "searchContent", "no-derived-search-keyword");
+            skipBusiness("search-page1", "searchContent", "no-derived-search-keyword");
+        }
+        if (timedOut) return;
+        // A separate search-derived detail also tests IDs produced by search.
+        JSONObject searched = firstVideo(search, searchPage);
+        JSONObject searchedDetail = null;
+        if (searched != null && searched.has("vod_id")) searchedDetail = objectOrNull(businessCall(spider, "search-detail", "detailContent", new JSONArray().put(new JSONArray().put(searched.getString("vod_id")))));
+        else skipBusiness("search-detail", "detailContent", "no-derived-search-video-id");
+        if (timedOut) return;
+        JSONArray player = playerParameters(detail);
+        if (player == null) player = playerParameters(searchedDetail);
+        if (player != null) businessCall(spider, "player", "playerContent", player);
+        else skipBusiness("player", "playerContent", "no-derived-playback-entry");
+    }
+
+    private String businessCall(Object spider, String step, String method, JSONArray params) throws Exception {
+        discoveryStep = step;
+        try { return runCall(spider, method, params); } finally { discoveryStep = null; }
+    }
+
+    private void skipBusiness(String step, String method, String reason) throws Exception {
+        JSONArray params = new JSONArray();
+        JSONObject metadata = new JSONObject().put("method", method).put("paramsSha256", sha256(canonical(params).getBytes(UTF8)))
+            .put("discoveryStep", step).put("status", "not-tested").put("reason", reason).put("success", false).put("elapsedMs", 0);
+        privateCalls.put(new JSONObject().put("method", method).put("params", params).put("metadata", metadata));
+        publicCalls.put(metadata);
+    }
+
+    private static JSONObject firstVideo(JSONObject... responses) {
+        for (JSONObject response : responses) {
+            JSONArray list = response == null ? null : response.optJSONArray("list");
+            if (list != null) for (int i = 0; i < list.length(); i++) {
+                JSONObject item = list.optJSONObject(i);
+                if (item != null && item.optString("vod_id", "").length() > 0) return item;
+            }
+        }
+        return null;
+    }
+
+    private static JSONObject filterValues(JSONObject home, String tid) throws Exception {
+        JSONObject values = new JSONObject(), filters = home == null ? null : home.optJSONObject("filters");
+        JSONArray groups = filters == null ? null : filters.optJSONArray(tid);
+        if (groups != null) for (int i = 0; i < groups.length(); i++) {
+            JSONObject group = groups.optJSONObject(i);
+            if (group == null || group.optString("key", "").length() == 0) continue;
+            JSONArray options = group.optJSONArray("value");
+            if (options == null) continue;
+            for (int j = 0; j < options.length(); j++) {
+                JSONObject option = options.optJSONObject(j);
+                if (option != null && option.has("v") && option.optString("v", "").length() > 0) {
+                    values.put(group.getString("key"), option.getString("v"));
+                    break;
+                }
+            }
+        }
+        return values;
+    }
+
+    private static JSONArray playerParameters(JSONObject detail) throws Exception {
+        JSONArray list = detail == null ? null : detail.optJSONArray("list");
+        if (list == null) return null;
+        for (int itemIndex = 0; itemIndex < list.length(); itemIndex++) {
+            JSONObject item = list.optJSONObject(itemIndex);
+            if (item == null) continue;
+            String[] flags = item.optString("vod_play_from", "").split("\\$\\$\\$", -1);
+            String[] groups = item.optString("vod_play_url", "").split("\\$\\$\\$", -1);
+            for (int i = 0; i < flags.length && i < groups.length; i++) {
+                if (flags[i].length() == 0) continue;
+                for (String episode : groups[i].split("#", -1)) {
+                    int separator = episode.indexOf('$');
+                    if (separator >= 0 && separator < episode.length() - 1) return new JSONArray().put(flags[i]).put(episode.substring(separator + 1)).put(new JSONArray());
+                }
+            }
+        }
+        return null;
+    }
+
     private Object within(Callable<Object> operation) throws Exception {
         return within(operation, callTimeoutMs);
     }
@@ -312,6 +432,7 @@ public final class OracleInstrumentation extends Instrumentation {
         final JSONArray params = suppliedParams == null ? new JSONArray() : suppliedParams;
         JSONObject metadata = new JSONObject();
         metadata.put("method", name);
+        if (discoveryStep != null) metadata.put("discoveryStep", discoveryStep);
         metadata.put("paramsSha256", sha256(canonical(params).getBytes(UTF8)));
         JSONObject privateCall = new JSONObject().put("method", name).put("params", params);
         long started = System.currentTimeMillis();
@@ -344,19 +465,37 @@ public final class OracleInstrumentation extends Instrumentation {
             } else if ("searchContent".equals(name) && params.length() == 3) {
                 method = spider.getClass().getMethod(name, String.class, boolean.class, String.class);
                 values = new Object[]{params.getString(0), params.getBoolean(1), params.getString(2)};
+            } else if ("playerContent".equals(name)) {
+                method = spider.getClass().getMethod(name, String.class, String.class, List.class);
+                JSONArray array = params.getJSONArray(2);
+                List<String> flags = new ArrayList<String>();
+                for (int i = 0; i < array.length(); i++) flags.add(array.getString(i));
+                values = new Object[]{params.getString(0), params.getString(1), flags};
             } else throw new IllegalArgumentException("Unsupported method or signature");
+            boolean inherited = method.getDeclaringClass() == baseSpiderClass;
+            boolean delegates = inherited && "searchContent".equals(name) && params.length() == 3;
+            if (delegates) inherited = spider.getClass().getMethod(name, String.class, boolean.class).getDeclaringClass() == baseSpiderClass;
+            metadata.put("methodProvenance", new JSONObject().put("declaringClass", method.getDeclaringClass().getName())
+                .put("baseSpiderClass", baseSpiderClass.getName()).put("inheritedBaseDefault", inherited).put("baseDelegatingOverload", delegates && !inherited));
             Object returned = within(new Callable<Object>() {
                 @Override public Object call() throws Exception { return method.invoke(spider, values); }
             });
             if (!(returned instanceof String)) throw new IllegalStateException("INVALID_RESULT");
             value = (String) returned;
             privateCall.put("value", value);
-            metadata.put("response", summarize(value));
-            metadata.put("success", true);
+            JSONObject response = summarize(value);
+            metadata.put("response", response);
+            boolean valid = response.optBoolean("jsonValid", false);
+            boolean empty = value.trim().length() == 0;
+            metadata.put("success", (valid || empty) && !inherited);
+            metadata.put("status", inherited ? "not-implemented" : empty ? "empty" : !valid ? "invalid-json" : response.optBoolean("hasContent", false) ? "nonempty" : "empty");
         } catch (Throwable error) {
             metadata.put("success", false);
-            metadata.put("error", errorMetadata(error).put("stage", name));
-            privateCall.put("error", errorMetadata(error).put("stage", name));
+            JSONObject failure = errorMetadata(error).put("stage", name);
+            String type = failure.optString("type", "");
+            metadata.put("status", timedOut ? "timeout" : type.matches(".*(UnknownHost|ConnectException|SSL|Socket|HttpRetry).*?") ? "network" : "failed");
+            metadata.put("error", failure);
+            privateCall.put("error", failure);
         } finally {
             metadata.put("elapsedMs", System.currentTimeMillis() - started);
             privateCall.put("metadata", metadata);
@@ -373,9 +512,12 @@ public final class OracleInstrumentation extends Instrumentation {
         JSONObject result = new JSONObject();
         result.put("bytes", value.getBytes(UTF8).length);
         result.put("sha256", sha256(value.getBytes(UTF8)));
-        Object parsed = new JSONTokener(value).nextValue();
-        if (!(parsed instanceof JSONObject)) throw new IllegalStateException("INVALID_JSON_OBJECT");
+        Object parsed;
+        try { parsed = new JSONTokener(value).nextValue(); }
+        catch (Exception error) { return result.put("jsonValid", false); }
+        if (!(parsed instanceof JSONObject)) return result.put("jsonValid", false);
         JSONObject json = (JSONObject) parsed;
+        result.put("jsonValid", true);
         result.put("semanticSha256", sha256(canonical(json).getBytes(UTF8)));
         result.put("fields", json.length());
         result.put("emptyObject", json.length() == 0);
@@ -385,7 +527,8 @@ public final class OracleInstrumentation extends Instrumentation {
         result.put("classes", classes == null ? JSONObject.NULL : classes.length());
         result.put("list", list == null ? JSONObject.NULL : list.length());
         result.put("filterGroups", filters == null ? JSONObject.NULL : filters.length());
-        result.put("hasContent", classes != null && classes.length() > 0 || list != null && list.length() > 0);
+        result.put("hasContent", classes != null && classes.length() > 0 || list != null && list.length() > 0 || json.optString("url", "").length() > 0);
+        result.put("playbackUrlPresent", json.optString("url", "").length() > 0);
         for (String field : new String[]{"class", "filters"}) {
             if (json.has(field)) result.put(field + "Sha256", sha256(canonical(json.get(field)).getBytes(UTF8)));
         }

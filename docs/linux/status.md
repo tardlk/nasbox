@@ -595,3 +595,45 @@ Original settings imported a controlled one-source, hash-pinned Aid fixture. The
 The refreshed catalogue captured 114 exact SHA artifacts and ran 228 adjacent old/new NAS attempts. Four confirmed load regressions were repaired and all four replayed on the final image. The combined evidence across the complete earlier matrix and later subsets shows 93 loaded artifacts and 609 ready API/ext entries; these are different units, and this is not a complete 114-artifact run on the final image. Independent timeout checks recovered four previously hidden anime entries and Ddyy; XBPQ remains an unresolved timeout even under a separately labelled 30-second diagnostic.
 
 The original ART comparison covers 12 cases across five JAR families and 26 observed methods. Its initial NAS replay had 17 paired successful JSON calls, of which 15 were byte/semantic identical; failures, invalid JSON and unreplayed methods are separately counted. The one confirmed executed-method blocker, PanConfigGuard.categoryContent, is repaired: final NAS home/category/detail all return JSON, including 12 category rows. Java2D logo PNGs differ from Android Skia, two status remarks and one detail content field also differ, so exact method equivalence remains unverified. The release-specific ProtectedInitJar change explains two additional initialization differences without changing the pinned Android default policy. See android-panconfig-repair-probe.json and post-repair-catalog-comparison.json.
+
+## Configured scripts inside eight working-media JARs — 2026-10-16
+
+Completed all 25 frozen configured scenarios across eight selected artifacts and
+ten API classes on final image `808d15d8…`; no core or image change. Fifteen retain
+their original main/site context: ART15 ready, NAS10 ready, nine with nonempty
+business responses. Ten lack original main bytes and are separately labelled
+standalone diagnostics: both hosts10 ready, NAS eight with nonempty responses.
+All250 planned business slots remain visible, including12 not reached after ART
+timeout. Main NAS observations are96 nonempty,29 empty,3 method timeouts and122
+not-tested; default/unimplemented ART methods are separately identified.
+
+Golden/SP33 is the sole original-context sample with all10 steps nonempty and
+ART/NAS semantic JSON equality. Nmvod has eight implemented, parameterized steps
+nonempty and equal; its recommendation method is unimplemented and filters lack
+input. TuXiaoBei and Kugou have working subsets. BuKa/XBPQ has10 nonempty steps
+only as a missing-main standalone diagnostic. Other variants have empty results,
+timeouts or untested later calls. Player validation inspects return data only.
+
+Five original-blocked cases additionally run with main deliberately omitted;
+all are ready, with36 nonempty/8 empty/6 not-tested methods. They never replace
+original coexistence failures. Nineteen independent remaining-method cases add
+8 nonempty/1 empty/10 timeouts. Five earlier guard rejections happened before JAR
+execution due to missing plan metadata, remain harness failures, and were rerun
+under a new corrected plan. All49 accepted NAS cases closed/exited cleanly;
+all54 task containers including rejected attempts were removed.
+
+Static inspection lists354 structural Spider candidates, only ten configured;
+the other344 have unknown ext and remain untested. See
+`working-sources-summary-20261016.md`,
+`working-sources-business-20261015.{json,md}`,
+`working-sources-supplemental-20261015.{json,md}` and
+`working-sources-static-inventory.json`. Resume from these exact private inputs
+and responses for coexistence and method-timeout fixes; do not refetch or treat
+nonempty data as proof that every embedded script or media URL works.
+
+646 native-enabled host tests pass without skips. Task emulator/ADB/HTTP/NAS
+containers/SSH and caches are removed; original services and shared tools remain.
+Exact evidence is retained privately under
+`.data/jar-working-sources-evidence-20261016` (12,447,337 logical bytes) until the
+remaining fixes and final verification finish; both public reports rebuild
+exactly from it. See `working-sources-cleanup-20261016.json` and environment.md.

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sourceInputBatch": "20261015",
+  "taskServicesStillRunning": [],
+  "originalNasServicesStillRunning": [
+    "Docker",
+    "moviepilot",
+    "qbittorrent",
+    "emby",
+    "dockge-dockge-1"
+  ],
+  "originalContainersUnchanged": true,
+  "temporaryNasRootRemoved": "/tmp/tvbox-working-sources.XmTr2h",
+  "temporaryNasAllocatedKiBBeforeRemoval": 525924,
+  "acceptedNasCases": 49,
+  "acceptedCasesContainerZeroExitAndWorkerCleanup": 49,
+  "harnessInputRejectedBeforeJarExecution": 5,
+  "all54TaskContainersRemoved": true,
+  "scopedSshClosed": true,
+  "emulatorStopped": true,
+  "adbServerStopped": true,
+  "fixtureHttpStopped": true,
+  "temporaryAndroidRemoved": {
+    ".cache/working-sources/art/avd": 7119967915,
+    ".cache/working-sources/art/android-user": 7714,
+    ".cache/working-sources/art/TVBoxOSC.jks": 2258,
+    "/tmp/android-coke/emu-crash-37.2.12.db": 40
+  },
+  "sharedAndroidFileSetAndHashesUnchanged": true,
+  "autostartChanges": [],
+  "newToolsInstalled": [],
+  "nativeEnabledTests": {
+    "tests": 646,
+    "pass": 646,
+    "fail": 0,
+    "skipped": 0
+  },
+  "taskCachesAndDuplicatePlansRemovedLogicalBytes": {
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/working-sources": 258951218,
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/compat": 25907673,
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/backend": 3228765,
+    "/Users/coke/Desktop/Projects/tvbox-linux/.data/jar-working-sources-20261015-plan": 133412
+  },
+  "cacheRemovalComplete": true,
+  "retainedInputs": [
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/jar-round1-20261015",
+      "logicalBytes": 282973218,
+      "allocatedKiB": 277836
+    },
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/jar-round2-evidence-20261015",
+      "logicalBytes": 25517472,
+      "allocatedKiB": 25532
+    },
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/jar-working-sources-evidence-20261016",
+      "logicalBytes": 12447337,
+      "allocatedKiB": 13384
+    }
+  ],
+  "retainedEnvironment": {
+    "path": "/Users/coke/Desktop/Projects/tvbox-linux/.tools",
+    "logicalBytes": 5431419735,
+    "allocatedKiB": 5338792
+  },
+  "newPrivateEvidencePins": 585,
+  "newPrivateEvidenceRetentionSha256": "664f1e1d616ef0981ed0c37f0535c846dcd07c255b728c8de1b98a9c137a3958",
+  "retainedEvidenceRebuildsPublicPrimaryAndSupplementExactly": true,
+  "priorFreezeAnd237EvidencePinsUnchanged": true,
+  "retentionPurpose": "Exact source/context/parameter/response evidence for unresolved coexistence and method-timeout fixes, kept until those fixes and final verification finish. Existing frozen inputs and old reports preserved.",
+  "retainedFinalImage": {
+    "tag": "tvbox-core:linux-amd64-zxing-20261015",
+    "id": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+    "bytes": 516639457,
+    "changedThisTask": false
+  },
+  "reports": [
+    "working-sources-summary-20261016.md",
+    "working-sources-business-20261015.json",
+    "working-sources-supplemental-20261015.json",
+    "working-sources-static-inventory.json"
+  ]
+}

@@ -12,7 +12,7 @@ import {extractMissingSymbols} from '../container/jar-failure-diagnostics.mjs';
 import {assertLoaderIdentity,loaderContextOf,officialOracleApkSha256} from './loader-context.mjs';
 
 const digest=value=>createHash('sha256').update(value).digest('hex');
-const allowed=new Set(['homeContent','homeVideoContent','categoryContent','detailContent','searchContent']);
+const allowed=new Set(['homeContent','homeVideoContent','categoryContent','detailContent','searchContent','playerContent']);
 const label=value=>{
  const text=String(value??'');
  return text.length>160||/(?:https?:|:\/\/|[?=&\r\n]|bearer\s|token[:\s])/i.test(text)?'sha256:'+digest(text):text;
@@ -143,17 +143,29 @@ export async function replayCase({caseId,artifact,site,androidPrivatePath,androi
   await collectEvidence(stage,stageMark);
   for(const call of android.privateCalls){
    if(fatal)break;
+   if(call.metadata?.status==='not-tested'){
+    const row={method:call.method,paramsSha256:digest(JSON.stringify(canonical(call.params))),success:false,status:'not-tested',reason:call.metadata.reason,elapsedMs:0,
+     ...(call.metadata.discoveryStep?{discoveryStep:call.metadata.discoveryStep}:{})};
+    report.calls.push(row);privateCalls.push({method:call.method,params:call.params,metadata:row});continue;
+   }
    beginStage(call.method);started=Date.now();
-   const row={method:call.method,paramsSha256:digest(JSON.stringify(canonical(call.params)))};const privateRow={method:call.method,params:call.params};
+   const row={method:call.method,paramsSha256:digest(JSON.stringify(canonical(call.params))),
+    ...(call.metadata?.discoveryStep?{discoveryStep:call.metadata.discoveryStep}:{}),
+    ...(call.metadata?.methodProvenance?{androidMethodProvenance:call.metadata.methodProvenance}:{})};const privateRow={method:call.method,params:call.params};
    try{
     const value=await bounded(()=>runtime.call(spider.token,call.method,call.params));
     privateRow.value=value;
-    const {metadata}=summarizeResponse(value);
+    const {json,metadata}=typeof value==='string'&&value.trim()===''?{json:{},metadata:{bytes:Buffer.byteLength(value),sha256:digest(value),emptyResponse:true,hasContent:false}}:summarizeResponse(value);
+    metadata.playbackUrlPresent=typeof json.url==='string'&&json.url.length>0;
+    if(metadata.playbackUrlPresent)metadata.hasContent=true;
     row.response=metadata;row.success=true;
+    row.status=metadata.hasContent||metadata.playbackUrlPresent?'nonempty':'empty';
     row.elapsedMs=Date.now()-started;
    }catch(error){
     row.elapsedMs=Date.now()-started;
     row.success=false;row.error={stage,...classify(error)};privateRow.error=row.error;
+    if(error.responseMetadata)row.response=error.responseMetadata;
+    row.status=['timeout','artifact-timeout'].includes(row.error.category)?'timeout':row.error.category==='network'?'network':row.error.category==='invalid-json'||error.responseMetadata?'invalid-json':'failed';
     if(['timeout','artifact-timeout'].includes(row.error.category)||/worker exited|runtime is closed/i.test(String(error?.message)))fatal=true;
     await collectEvidence(stage,stageMark,errorText(error),!fatal);
    }

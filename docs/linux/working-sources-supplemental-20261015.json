@@ -1,0 +1,2969 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T22:03:18.494Z",
+  "scope": "Supplemental independent observations; primary report and primary counts remain immutable",
+  "controlScope": "Available original main intentionally omitted only in controls; results cannot replace original coexistence results",
+  "diagnosticScope": "Original-main-missing standalone observations never certify original subscription coexistence",
+  "playerScope": "playerContent return data only; no media download, decoding, rendering or playback",
+  "responseScope": "Live network responses; different values or outcomes across times do not independently establish a runtime defect",
+  "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+  "probeSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+  "inputSetSha256": "8e9c80c557c5703ff70f8c44fb5a71aaaf3c89d3e0e0d39cdba94cbdaa42a3d3",
+  "freezeSha256": "2815fc1890c3a14df8cdd1317332d3b5bdfd56244bdd6cb56caf7093267e4a2f",
+  "validation": {
+    "reproducedPlanAndParentParameters": true,
+    "collectionAndPrivateHashes": true,
+    "sourceAndLoaderContext": true,
+    "exactNASParameters": true,
+    "imageUIDCommandMountsExitCleanup": true,
+    "executedSourcePins": [
+      {
+        "file": "scripts/container/working-source-probe.mjs",
+        "sha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814"
+      },
+      {
+        "file": "scripts/container/jar-matrix-probe.mjs",
+        "sha256": "df53c8f20d0c33e2d6ccfbcee1201440de40c89d196b288854ff27aaf4cc98af"
+      },
+      {
+        "file": "scripts/android/loader-context.mjs",
+        "sha256": "2375f711f8781258ee1d38fb8892e3345e40d6844779ed949f4bea6db2224cb4"
+      },
+      {
+        "file": "scripts/android/run-oracle.mjs",
+        "sha256": "ad6189f44014dfc6d239bd1927e06d9236228b1a9ce5105de8c81ede832ed67c"
+      },
+      {
+        "file": "scripts/compat/prepare-working-source-plan.mjs",
+        "sha256": "b92bb0ae984b066e8aca666eeb59d6623876e2d822ca64b150298bf0aab9cb48"
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "tag": "controls",
+      "planSha256": "3b3d1fac733e6c6cb33892a42bc408155384c726404d7fa5785bef9a385ceb7d",
+      "launchSha256": "d571e0e14796ef58bcc42dc7b624feeef80d8019786ae97faef411925e7e4709",
+      "mode": "discover",
+      "diagnostic": false,
+      "control": true,
+      "cases": [
+        {
+          "caseId": "0-0",
+          "parentCaseId": "0-0",
+          "jarSha256": "53628417aa7bd3e18c0526d690fab4cc340c4e1e87b8e679e9f5ccad80289961",
+          "sourceKeySha256": "ada737ab86115dfd17b7488f95d233db053cfff533e0674320bc423f4d441d2e",
+          "api": "csp_SP360",
+          "sourceScenarioSha256": "1a2296d1c1d986fa6ea082843bb847d397ff7afe69022f1488135169cb7a3d57",
+          "loaderMode": "site",
+          "jarSignatureSha256": "123346646eb88b2a885c363676036664759fea88115d0ba1d8ca94a85f2404e1",
+          "jarLoadKey": "95c0dd03472bcbaee7ee52133ec8942d",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "intentionally-omitted-main-control",
+          "parentEvidence": {
+            "mainArtifactSha256": "d9e77852563eb609bff49158e698fbf895764d78ce176bab1cac06b6148f7840",
+            "mainSignatureSha256": "7c86a3b999e0e8c3aa71afeaef597fbbd33846dc829f752583ea9a59ce19333f",
+            "parentLoaderContextSha256": "5b204039a85f4ae64dfc9f722ec7e51036e3d0bbd1727524c493b9c8b2dc6441",
+            "parentCaseIdentitySha256": "657e9ab7eafd656ae1f0c7e62b4c312e06f22582d067ea73b4a57d0e96c0fba7",
+            "parentCase": "0-0",
+            "parentManifestSha256": "fa25801c1faf34f21dbdbdc76429cca23825493345c60f177ef942c63e1ecfd9",
+            "reason": "original-main-intentionally-omitted"
+          },
+          "nasPrivateSha256": "2b3b5b63bf570fd348666d6c749b520709bfa66ac7517e84e77a67485cde4ea4",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "33d648bbad2e09105f570b36ae1171bc1debca2eeaf7806c94241ac081cba057",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "5ff4354e29aa54f26c8ef6401b029fb084eb61f030dd1a9414ffc270d91bb587"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeContent",
+                "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+                "discoveryStep": "home",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 6485,
+                  "sha256": "f9524ad68ba05a240872863f88da58dfe29a4d48a658b9f29db47cf888d243ea",
+                  "semanticSha256": "9d295b051db154c5b7094c6bfca28084d1c1bad83cddbaf4454d24afdfa3a019",
+                  "fields": 2,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": 4,
+                  "list": null,
+                  "filterGroups": 4,
+                  "classSha256": "9a6093a25899203c15c2093d25b1f55895a15bd7411bfc74e50d859029b84f34",
+                  "filtersSha256": "0f97c59688b86fcb28169dec2ee0c9e045b1255f28363510afbf3fbecc3cde1f"
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "home-video",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 4798,
+                  "sha256": "88d5bcb212418b7f4e60b1bd311a23f0acdfeed22286df771adf91d4cab7d125",
+                  "semanticSha256": "9b2a6b24fafe7b1ab51cda6d951d02b0bc548b8cd44374e0bac6f5a937075784",
+                  "fields": 1,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 30,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "553e16dcb8801e4b83c05dabe199615eaf2e67ca7550b2768c9313adf3853e84",
+                "discoveryStep": "category-page1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 3387,
+                  "sha256": "88ce73f87401613488a8d8a6f1f237a3a7ff738e49f0cd6e9cfd4595d0e26757",
+                  "semanticSha256": "6b45281051cff7e1bed08f9528ba042d5dd300b2143ebbb60eae6e7a5589ab4a",
+                  "fields": 5,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "575650d4375ce5af2539ed6d2a46ff1c6245433ea4c0ec3b8c1c0f674e972e34",
+                "discoveryStep": "category-page2",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 3079,
+                  "sha256": "73ad014dc1e45c375c28262b56058a2542b73dbfd621da4462adfe71802ce3b4",
+                  "semanticSha256": "49fd3096658bf413e1c96dc7e89f2e8650bed296361b68bd72ffc123b0dfa735",
+                  "fields": 5,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "3e24288a49dc5d299f2e747c010361b7ebc5003ec2b5eef8346dd1196163f9c1",
+                "discoveryStep": "category-filter",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 3189,
+                  "sha256": "e4ac29f2ce5bdf08f04ce2cbfeb0359761641cc9c6a03e25d9efbaa5db3d27b8",
+                  "semanticSha256": "60955ef6f1d7507b86c15a1878efa148c48b4d43536003188df991778dec3751",
+                  "fields": 5,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "d47dc38851db571d8a8175c1b180a1fe0e3e98f73e70cf3147bddca12154c94d",
+                "discoveryStep": "detail",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 1333,
+                  "sha256": "cb53b5fb8f2cb3b90a0604e796a95039b3d76e6094aa783a1d697ab9746b187b",
+                  "semanticSha256": "1ee2e92189a4947e442f442a0c353db5c0f12e7ec513421fdca7833c05a6e32e",
+                  "fields": 1,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 1,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "d226fac4298afef9ea7170ddbe6cdd3cb0e2aa0f1d94f6aa1d485820dab6c131",
+                "discoveryStep": "search",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 519,
+                  "sha256": "e0ed8fa3f317b99ebe862ee097f405c54e70c40d259176cafdf3668dee9d2287",
+                  "semanticSha256": "48732ae004b3cf10a7dc60aa7b278b51c1024992062fc126c7d7b4ec69d17521",
+                  "fields": 1,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 3,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "150769f508c768043a04f6c9ea4586ad371055e63745d73d62cb5d24c87680c9",
+                "discoveryStep": "search-page1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 519,
+                  "sha256": "e0ed8fa3f317b99ebe862ee097f405c54e70c40d259176cafdf3668dee9d2287",
+                  "semanticSha256": "48732ae004b3cf10a7dc60aa7b278b51c1024992062fc126c7d7b4ec69d17521",
+                  "fields": 1,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 3,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "d47dc38851db571d8a8175c1b180a1fe0e3e98f73e70cf3147bddca12154c94d",
+                "discoveryStep": "search-detail",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 1333,
+                  "sha256": "cb53b5fb8f2cb3b90a0604e796a95039b3d76e6094aa783a1d697ab9746b187b",
+                  "semanticSha256": "1ee2e92189a4947e442f442a0c353db5c0f12e7ec513421fdca7833c05a6e32e",
+                  "fields": 1,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 1,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "playerContent",
+                "paramsSha256": "ef58e609864aac99859ac9450b817fd396b92a69785b29ae4f29cd953add7cfa",
+                "discoveryStep": "player",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 84,
+                  "sha256": "9499f22825fb45cf62d42d66aae6493b79a5e0342c88622c2e84e2678e4b5d37",
+                  "semanticSha256": "c82f3291e3ec171a830c7ffc9b06da667bcaf78f996e4f4aa90b1fde92d10421",
+                  "fields": 4,
+                  "emptyObject": false,
+                  "hasContent": false,
+                  "classes": null,
+                  "list": null,
+                  "filterGroups": null
+                },
+                "playbackUrlPresent": true
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "1-0",
+          "parentCaseId": "1-0",
+          "jarSha256": "522f5fb49d914102833f3f4814dc83b1785417ff0decc43729b79d96421c591f",
+          "sourceKeySha256": "d442cd087c0f307ca189c278ca5468caf4caf1f86f80c2c203d512596f4b84d6",
+          "api": "csp_Douban",
+          "sourceScenarioSha256": "461e771ad0979491618588a30a30e9b82a6bf15fad3613712a79222e8e147401",
+          "loaderMode": "site",
+          "jarSignatureSha256": "44d49997b3ac3c0c312542581f0972414436e30c32b07ac1cf40c2070b0a1f5a",
+          "jarLoadKey": "a20f33163bb43e77c4793dfa2f14c585",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "intentionally-omitted-main-control",
+          "parentEvidence": {
+            "mainArtifactSha256": "2ff484674c512cc9ea6e9d52f54e7154de113e7aee83230e493259655f71b3ec",
+            "mainSignatureSha256": "15ea06f0d36c9b7e188858418ca8d3c8b0d900224354c31e7cecbaf77c57b77b",
+            "parentLoaderContextSha256": "c6f136eaa3d9cee01fae813f9e838e66a00bd5fb81340d76d761c0267371c132",
+            "parentCaseIdentitySha256": "0f3c8d1050c6f9d77f50441ba8fdac3588767a6f30d08413c01d4ed4f77df539",
+            "parentCase": "1-0",
+            "parentManifestSha256": "fa25801c1faf34f21dbdbdc76429cca23825493345c60f177ef942c63e1ecfd9",
+            "reason": "original-main-intentionally-omitted"
+          },
+          "nasPrivateSha256": "70e1f8f8e9068112acf6d784d554e552bc019a212e6797fc505b500f711daec1",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "60c8ae28ddd21a020ff9eb5f10ce21922ffa2886fea1dcfd4860c78f62428086",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "9ab8b6adf7d68794ed78d3882a149fef5de1847d5a1174bbf868f6011463dde1"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeContent",
+                "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+                "discoveryStep": "home",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 13071,
+                  "sha256": "7068b5548d268b6ff5249699dda7b3d263bf53032bbede0a74f6e59e7121c57d",
+                  "semanticSha256": "6b984eefcda3750d82fce37cf8455b7fabf727674ae73708bf4826fce6f50389",
+                  "fields": 5,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": 7,
+                  "list": 20,
+                  "filterGroups": 7,
+                  "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+                  "filtersSha256": "6034fb2f66587bcc6c82be4acfc4f2396b542991454aa88cbca2bef019f46ebf"
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "home-video",
+                "status": "empty",
+                "response": {
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                "implementation": "unknown-default-compatible"
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+                "discoveryStep": "category-page1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 6706,
+                  "sha256": "6f2f00e32b93a3ef376bb4f1bb3393f03443e77344c0db54de02c3ed56ec5ba3",
+                  "semanticSha256": "736955603174d71f4f9396bc27764f67a8f9ada7704eaba87a14a4926e8573c5",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "5598bb1ee957b7c524eaf30c0fef109559383829a8e74ccea4db96e4a50001df",
+                "discoveryStep": "category-page2",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 6649,
+                  "sha256": "54e1b6e71d4bd264848ebbc208e417119a5fad64330412656a905868faece271",
+                  "semanticSha256": "7e6f4788e63c848804f809913e209b8b60ea9aee92364935e5818b94eca4e03c",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "c424f4d702986e796b1f55b3de2e88a21fd88704159f307bf7254b6157a5abab",
+                "discoveryStep": "category-filter",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 6706,
+                  "sha256": "6f2f00e32b93a3ef376bb4f1bb3393f03443e77344c0db54de02c3ed56ec5ba3",
+                  "semanticSha256": "736955603174d71f4f9396bc27764f67a8f9ada7704eaba87a14a4926e8573c5",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "f7598d4397421b0499ad2eb84e0b4fec97bc487b7ef2018b94017350c40835d8",
+                "discoveryStep": "detail",
+                "status": "empty",
+                "response": {
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                "implementation": "unknown-default-compatible"
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "c9bb15f66659a8425e97d02637d1f1aef50d0f492b249010ac241b157e76df20",
+                "discoveryStep": "search",
+                "status": "empty",
+                "response": {
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                "implementation": "unknown-default-compatible"
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "cf60d1c06d8def5645c405ab815b44fbeeeabec5c9b65991fca4622fee26c753",
+                "discoveryStep": "search-page1",
+                "status": "empty",
+                "response": {
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                "implementation": "unknown-default-compatible"
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "search-detail",
+                "status": "not-tested",
+                "reason": "art-or-plan-argument-not-derived"
+              },
+              "paramsVerified": false
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "playerContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "player",
+                "status": "not-tested",
+                "reason": "art-or-plan-argument-not-derived"
+              },
+              "paramsVerified": false
+            }
+          ]
+        },
+        {
+          "caseId": "2-0",
+          "parentCaseId": "2-1",
+          "jarSha256": "6e673a1cfd39c7d1c895fd19d8ef1811792fd469e0b62597187c3b8af5f99903",
+          "sourceKeySha256": "f54ffed6d068e1ada8ef8a882682ab15365cd6b64111f8dbff84da8ffd64e4e6",
+          "api": "csp_Kugou",
+          "sourceScenarioSha256": "6903ea8fa4e55b2aa6889b37b2940e6f1e6f1488e7e3c2ed0b431e25531632de",
+          "loaderMode": "site",
+          "jarSignatureSha256": "b39b16a3cc6be1ea3c51ca7c651e08902e8da2dffa1278d844bf6c9d2df1580f",
+          "jarLoadKey": "ee31b05abf6faf41d441708d4608bf34",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "intentionally-omitted-main-control",
+          "parentEvidence": {
+            "mainArtifactSha256": "2ff484674c512cc9ea6e9d52f54e7154de113e7aee83230e493259655f71b3ec",
+            "mainSignatureSha256": "15ea06f0d36c9b7e188858418ca8d3c8b0d900224354c31e7cecbaf77c57b77b",
+            "parentLoaderContextSha256": "d5c0784288f812bdc1b521d03860b439cf4955bf5901eca2a643d7c9420bb201",
+            "parentCaseIdentitySha256": "d1c7ba87af6d9ad0b344a4dfcfa151a9873f03d58e1cc854fe49a4159050534e",
+            "parentCase": "2-1",
+            "parentManifestSha256": "fa25801c1faf34f21dbdbdc76429cca23825493345c60f177ef942c63e1ecfd9",
+            "reason": "original-main-intentionally-omitted"
+          },
+          "nasPrivateSha256": "0274c6d4ec42a2d3e8f8b6046e2481e477f39de70ca993d6ce7cdb3216f5a1f0",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "4130f3a82e1e14ca1d16d3e0ef08e7562ed3bdb7dae48758ab1cc7ee2b447d1c",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "fd94c4c968e40f23bd7e2a19c5b6a85d1daf618257eeabbf0c627c222057cfb0"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeContent",
+                "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+                "discoveryStep": "home",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 171,
+                  "sha256": "b4b9c82f8949b10ed360ef1fbab9a72f6d896db2faf7bdfa770f8b19b976f4ed",
+                  "semanticSha256": "a76d32bf8c5ad6a35730c03aba132913a9fc1c89c1ebb8afa6f23e54f9e06cc7",
+                  "fields": 4,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": 3,
+                  "list": 0,
+                  "filterGroups": null,
+                  "classSha256": "a12405ad44e0e5181c4514223172f64de3649e2278b04b7733d425642345bd01"
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "home-video",
+                "status": "empty",
+                "response": {
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                "implementation": "unknown-default-compatible"
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "b34324caafbaec4e263364fcf006e9b948bb408a2ccf635f4db6c9214ae45184",
+                "discoveryStep": "category-page1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 2951,
+                  "sha256": "4dcd836409e18d01fdeae43db6b75433ec228574638a6f252057ecca6b4c2aba",
+                  "semanticSha256": "ef4064e92d976e6ca4c766b4bb53a3509bffd991e5dd878711013f5e74243584",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 22,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "342d5e1b244e651c52a43b221640f9889778a3c7274492f677aaf241f3ec2f69",
+                "discoveryStep": "category-page2",
+                "status": "empty",
+                "response": {
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                "implementation": "unknown-default-compatible"
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "category-filter",
+                "status": "not-tested",
+                "reason": "art-or-plan-argument-not-derived"
+              },
+              "paramsVerified": false
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "feea5c4d66c92025c2a5591cd7008ccd4b78258e670b743d3b4c1811ac6ac6fd",
+                "discoveryStep": "detail",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 27519,
+                  "sha256": "d15deff4fa10b6a09472db5335ea44476a547bd9a0937c7853d9c0ef489b8e28",
+                  "semanticSha256": "27f56d879e3b38c9990c4ebdd29569b432ca2f4b29fca62eb0eef645078dc12f",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 1,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "95eeed64e98a9e6b4a84cb2869f82da7d80316280226979b69ab7298540b9672",
+                "discoveryStep": "search",
+                "status": "empty",
+                "response": {
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                "implementation": "unknown-default-compatible"
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "cc743c688ee1d773fb9ae5fe9733268167c22c4ceca0ec1a53ee4a454bf75a1d",
+                "discoveryStep": "search-page1",
+                "status": "empty",
+                "response": {
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                "implementation": "unknown-default-compatible"
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "search-detail",
+                "status": "not-tested",
+                "reason": "art-or-plan-argument-not-derived"
+              },
+              "paramsVerified": false
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "playerContent",
+                "paramsSha256": "cd7df74b77999a77dec49368416dabc7ba8feea1096e9f465810131253aa7af7",
+                "discoveryStep": "player",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 175,
+                  "sha256": "6833805160b5b417d8908f4979aac4ccc9e62733f00cb24a2b713ce89f2e098a",
+                  "semanticSha256": "febe34422ecd7a5e0963d82bc2bf94310e9b5e2e2ab480dcbe6bb64bf0ac3a69",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": false,
+                  "classes": null,
+                  "list": null,
+                  "filterGroups": null
+                },
+                "playbackUrlPresent": true
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "3-0",
+          "parentCaseId": "5-0",
+          "jarSha256": "33a5113b5ecefe33ad0dc7eb980f231a57ec195a0843117c728aec625a63267d",
+          "sourceKeySha256": "0251d092c8e3c739d9ef48790986f8da015bf699997fa5b085d9c20f085a03c2",
+          "api": "csp_Bili",
+          "sourceScenarioSha256": "8e56a837a093a8090b3ed42a1433f535d7fd9617207c236a7f274beff252e2b4",
+          "loaderMode": "site",
+          "jarSignatureSha256": "03a9faabe32cfc9f283c9846b7a2312043dfb4cb1b3e7d8144cd33686942d9ec",
+          "jarLoadKey": "873a3130f89c8a45083d9152b9e4f2b7",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "intentionally-omitted-main-control",
+          "parentEvidence": {
+            "mainArtifactSha256": "2ff484674c512cc9ea6e9d52f54e7154de113e7aee83230e493259655f71b3ec",
+            "mainSignatureSha256": "15ea06f0d36c9b7e188858418ca8d3c8b0d900224354c31e7cecbaf77c57b77b",
+            "parentLoaderContextSha256": "88a914df87e04a28d9b3877ffd43a3cb500e6122f3bc98ca4655217ba16decdb",
+            "parentCaseIdentitySha256": "de9db5d324fb12ad642763b23b8f280cda838581fa09bf62eee16a316b757140",
+            "parentCase": "5-0",
+            "parentManifestSha256": "fa25801c1faf34f21dbdbdc76429cca23825493345c60f177ef942c63e1ecfd9",
+            "reason": "original-main-intentionally-omitted"
+          },
+          "nasPrivateSha256": "b4543a0a23effaa4afe9a6970477ec4760e3bddc0af92134ff5386a0ee1eab4e",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "53acf1786c98193c4fff8ed809d58b3cffaf0434de1a6a478dce5d3cd4e40d82",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "7b05872b101dc7b484a9f9e0c434cdd0517110c3b09225303df5bb67786f54a3"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeContent",
+                "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+                "discoveryStep": "home",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 124,
+                  "sha256": "0b4d2dd82cc05a0aec6e39d853159cee4cd0da7c7e52044719b6e70c3bd15ca5",
+                  "semanticSha256": "ecb924a19832f856993b8b95228344567788991626072743fbc6cf35eef6b105",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": 2,
+                  "list": null,
+                  "filterGroups": null,
+                  "classSha256": "5d632c009f9eb9d93ae9455430766545535e2112552d09321acf7dad5bd90f15"
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "home-video",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 4415,
+                  "sha256": "1a7129f20709947c6851d08c9c2b68cbac8baa4690595eecbe2d60ae1e3ec277",
+                  "semanticSha256": "e3fe696ae9dd6bb6e35dd6da01ac02ffa77b8294897366f384d7c100237089fe",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "f1195e0273e6e83e2ca0c281cd70ac5113f21664f06ad544341d3efd23918b02",
+                "discoveryStep": "category-page1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 8203,
+                  "sha256": "6a124142666c4aa91a4aed1300741febdad0e596a704b1c048eb4362033d7b13",
+                  "semanticSha256": "c5ad93f00cd63305849910f73aab1e327404b8387e3e1cc39b84ac299e9f22ae",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "57f578aac7ca35ad144f39d6cbab0594e5b949cd4cda3aabb2e22a46f1629195",
+                "discoveryStep": "category-page2",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 6638,
+                  "sha256": "4614c5def9a27ca031a50fcd0637ba198decb17d67e6780bd163f4c0a73801b7",
+                  "semanticSha256": "92f88da1dfdf6acaf4fc93e945068606f7557f619ebf9730715d32d9f4c3c195",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "category-filter",
+                "status": "not-tested",
+                "reason": "art-or-plan-argument-not-derived"
+              },
+              "paramsVerified": false
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "da9f6f3c47671ecea5d9e0885d0dbc7e521eb7dc8b864bd20cc1e555146f1e93",
+                "discoveryStep": "detail",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 618,
+                  "sha256": "7bce951811be56d2853b7d86d31e5f58d014a1d4e2732bb8779761e46675b8d3",
+                  "semanticSha256": "488f815f8c2c7eb0461b7145d37d4f75cd0999f0d9b0bfc9cad43ce47750811c",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 1,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "71920c16602884545faf1e84e042aa57cd7dea62cae9c322f0d015afd5bfd65b",
+                "discoveryStep": "search",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 6617,
+                  "sha256": "979f17c73395ee66755e1055a648b10be76ee8cc42e2ad679bd9fce1aaf3698b",
+                  "semanticSha256": "913db28579ad5fe986c91fd32947ffc910e868b0931cbf2078753c036228e2d4",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "0299e6c946687887b2716a1dd562452ffa4ffe8c9b86e17b6f3758a0687fda3d",
+                "discoveryStep": "search-page1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 6617,
+                  "sha256": "979f17c73395ee66755e1055a648b10be76ee8cc42e2ad679bd9fce1aaf3698b",
+                  "semanticSha256": "913db28579ad5fe986c91fd32947ffc910e868b0931cbf2078753c036228e2d4",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "cd495f49072e3231cce5b0fbdff04946b6caf07f5c4dd7f731ca68949e2cd449",
+                "discoveryStep": "search-detail",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 552,
+                  "sha256": "df13f9ed378954418141657b1eebb755c6faf4909df4f07cbb4d2d2ddd78d822",
+                  "semanticSha256": "46e932b6f6087a0488d64322bc4803ec9a868b4c737981c1b5821b232bb4d3d4",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 1,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "playerContent",
+                "paramsSha256": "794206466b2f9d347ce46e03fe7cde42a1da306f530f21b9c32772465fbe60a6",
+                "discoveryStep": "player",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 1259,
+                  "sha256": "fda0d3e5bcdc4632eac6ce41bbdbb0fc351bd848a33f4367aef06271f06d49ca",
+                  "semanticSha256": "1826a938311e324935d69f311b3e9c059868feb0adc85ea6c2ae7307334c6fa9",
+                  "fields": 4,
+                  "emptyObject": false,
+                  "hasContent": false,
+                  "classes": null,
+                  "list": null,
+                  "filterGroups": null
+                },
+                "playbackUrlPresent": true
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "3-1",
+          "parentCaseId": "5-1",
+          "jarSha256": "33a5113b5ecefe33ad0dc7eb980f231a57ec195a0843117c728aec625a63267d",
+          "sourceKeySha256": "d336867f96f85953c131c44a2ee655549d2cc2ba646305669c16fbc26eb3f3c8",
+          "api": "csp_Bili",
+          "sourceScenarioSha256": "841165ff92a31f37db71da3ab901b5df7ec75517cb5f05f089ea27186ab4d5cf",
+          "loaderMode": "site",
+          "jarSignatureSha256": "03a9faabe32cfc9f283c9846b7a2312043dfb4cb1b3e7d8144cd33686942d9ec",
+          "jarLoadKey": "873a3130f89c8a45083d9152b9e4f2b7",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "intentionally-omitted-main-control",
+          "parentEvidence": {
+            "mainArtifactSha256": "2ff484674c512cc9ea6e9d52f54e7154de113e7aee83230e493259655f71b3ec",
+            "mainSignatureSha256": "15ea06f0d36c9b7e188858418ca8d3c8b0d900224354c31e7cecbaf77c57b77b",
+            "parentLoaderContextSha256": "88a914df87e04a28d9b3877ffd43a3cb500e6122f3bc98ca4655217ba16decdb",
+            "parentCaseIdentitySha256": "e7208d1ea427b508933faebf5718dada259c4107a518b66c1450e6408af15d1f",
+            "parentCase": "5-1",
+            "parentManifestSha256": "fa25801c1faf34f21dbdbdc76429cca23825493345c60f177ef942c63e1ecfd9",
+            "reason": "original-main-intentionally-omitted"
+          },
+          "nasPrivateSha256": "acd6be316b94f24a80417633beefefb18f15d2f0e2c8f81349232ce60aa2011f",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "b7618006d2d9ea8ef2bfcda5b6deca753f24f710b7f2b22a6a703bad5a57ff06",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "addb0519e579935f8df0ba8e607c1f25755c33d7565363f42387ec48e9bf20dd"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeContent",
+                "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+                "discoveryStep": "home",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 1102,
+                  "sha256": "2b3f7155c625c3e5f56fce772d61b489c3fff6c7f54b50fd62669e760c8bc8e7",
+                  "semanticSha256": "8e80d37a0f2fa668479cc6378c8e53897a59b5921f1e28f597c8c3ad134351e7",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": 19,
+                  "list": null,
+                  "filterGroups": null,
+                  "classSha256": "53c0e6537bf9036ef5043fd284989f18453e80a464942925dcd1a251bb232b73"
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "home-video",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 4415,
+                  "sha256": "1a7129f20709947c6851d08c9c2b68cbac8baa4690595eecbe2d60ae1e3ec277",
+                  "semanticSha256": "e3fe696ae9dd6bb6e35dd6da01ac02ffa77b8294897366f384d7c100237089fe",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "90f0a576bc2b563eb735a336d55f4d72338d0205f2a3df9c4d760118ff779362",
+                "discoveryStep": "category-page1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 7706,
+                  "sha256": "43d9ed8d79f0bad5e2d07148226e07260ffbd863de6d4d1db74b19b17d19f9dd",
+                  "semanticSha256": "b8bca4a62fc3848cf3ec3031385876f3a32642522aed6e78f2a22e759c7552ab",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "ddcde1e90a257e8025806f2e699530afda22f3b97541f96c9d8e040021d86890",
+                "discoveryStep": "category-page2",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 6888,
+                  "sha256": "43f593b75df9f3a91085781a27dcaaaa3624540d30eba731f27d66ff557b3668",
+                  "semanticSha256": "a467006591dad69ddbfd7e18f39ad4d6366701dc29051fe600323b4fe9c62549",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "category-filter",
+                "status": "not-tested",
+                "reason": "art-or-plan-argument-not-derived"
+              },
+              "paramsVerified": false
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "ff620f61e8b0b6cd66a7c21bac2f172d45043561fffbeb214f8da346db935147",
+                "discoveryStep": "detail",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 938,
+                  "sha256": "2cf799532043d434106d40a2062ae21141358ab42fc5ca3552f192628c5b787f",
+                  "semanticSha256": "4621ed91c7fb05ae680ab68c101be56214f4d969a42d2d77dedd8e8d39f85ee8",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 1,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "8c49d0a4d20c1a6f23993208e38d170b0a8577a01f8f6eba0dc38e51b1a7d57f",
+                "discoveryStep": "search",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 8332,
+                  "sha256": "abaaabf2bd3eab7053053175c57de994470683299c18059d7f504dc016dd17d7",
+                  "semanticSha256": "181877324fc5bdb1ecab0abd4d9174a12f86947c3d2d43e0a6489bb5498e43ef",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "a08bfe23a9a23cbab98cda60722f401f6aaa6aec9081749e4faabcef9c8cc396",
+                "discoveryStep": "search-page1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 8332,
+                  "sha256": "f5d343c646c120de03ff1dfb893a700270f994b3e12cff95cce4218ac5571ce0",
+                  "semanticSha256": "f9dc0013b5f1c12e5637a1ca0b35245b8d7d5d23141ffb0a22448a641b0d87d3",
+                  "fields": 7,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 20,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "a20a5890bdd9161aaed55df32835d2f7918fd112ce24c2825db7cdefc73a1490",
+                "discoveryStep": "search-detail",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 631,
+                  "sha256": "f6d34d615899216cf9d56b22233aabd39e162c704be2a56c51e8060a90f76fe6",
+                  "semanticSha256": "8addc37791c3dc9ea74c5524f32837c3cbf7b36fbda453ba6f279209900ec7d5",
+                  "fields": 3,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 1,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "playerContent",
+                "paramsSha256": "0859d8f7cb5de92626a0c3dd96e43b6de4838b1fefbbcbc5217ac16fd63807fe",
+                "discoveryStep": "player",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 1224,
+                  "sha256": "88bb740018209fdbb56416403f2188fa29fb7ddefaec5bf182a1d1387281ed9c",
+                  "semanticSha256": "0ab00034761a512aebad80d2d2256c1d2d28158b9f9ea9984d296c2755cb627c",
+                  "fields": 4,
+                  "emptyObject": false,
+                  "hasContent": false,
+                  "classes": null,
+                  "list": null,
+                  "filterGroups": null
+                },
+                "playbackUrlPresent": true
+              },
+              "paramsVerified": true
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "cases": 5,
+        "ready": 5,
+        "nas": {
+          "nonempty": 36,
+          "empty": 8,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 0,
+          "not-tested": 6
+        },
+        "art": {
+          "nonempty": 0,
+          "empty": 0,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 0,
+          "not-tested": 0
+        },
+        "cleanupPassed": 5,
+        "containerZeroExit": 5
+      }
+    },
+    {
+      "tag": "nasfollow-original",
+      "planSha256": "9620926f790069da75c9b8ccb0e5472fd9e18a18b1ab393276f04a955aae67d7",
+      "launchSha256": "00d6f864f796f33a2062e9a11c7536a6de85b4e30a1bcb2568aa7a3057158cc6",
+      "mode": "discover",
+      "diagnostic": false,
+      "control": false,
+      "cases": [
+        {
+          "caseId": "0-0",
+          "parentCaseId": "4-2",
+          "jarSha256": "90583683bd79fe45e9ff161e38441a45e9bb0d7520274b55bb51cf4eb8e70289",
+          "sourceKeySha256": "36c33150482c67e7894259d3748f89282439ff74dd45764c8a31501733df1f10",
+          "api": "csp_XYQHiker",
+          "sourceScenarioSha256": "7826ab77a6b50a9d076db16eeed2666537083bcd8845d189570cc50744c1c97f",
+          "loaderMode": "site",
+          "jarSignatureSha256": "fe9d35f70f4eed5f8283356df08a4854abe1b0977c2e876f585900fafe418818",
+          "jarLoadKey": "d3752cd8d27227d1c394da50745b38f6",
+          "mainJarSha256": "8a894c42f2968a3651e3974694a944586eec38d2caa9f147454dfa6cad5a95ad",
+          "mainSignatureSha256": "dd290f5b9095e50a09f838051568b26f20d8d7267ff57b4c93683576cbfc7410",
+          "scope": "original-loader-context",
+          "parentEvidence": {
+            "discoveryStep": "home-video",
+            "parentCaseId": "4-2",
+            "parentManifestSha256": "fa25801c1faf34f21dbdbdc76429cca23825493345c60f177ef942c63e1ecfd9",
+            "parentARTPrivateResultSha256": "27c23a5e59f384c1807d0d09d0112c2a820963dcb877359b24d69099d0f259c9",
+            "parentNASBundleSha256": "279ba305350978f9e278d8d402f2f744d1f17d0742ddf5018139926dd298bee3",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7826ab77a6b50a9d076db16eeed2666537083bcd8845d189570cc50744c1c97f",
+            "originalLoaderContextSha256": "33d871cb215d77eaf53337ef22bc46a8202c69ec4ebbafe399760104a28019a3",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "original-loader-context",
+            "parentARTParamsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "nasPrivateSha256": "a714e0c6272979ae0716c3109cc2c5d2515635d3d3d683531ef784fa6b75dc59",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "c5cd2c4c1f1130befb71d2f414e67eefec7b596ef65349d9d9b6ed0a371410e9",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "3a27d08c1d87c95b8a871497f19258f32632487620c8665365a52d87fd6a8df0"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "home-video",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "0-1",
+          "parentCaseId": "4-2",
+          "jarSha256": "90583683bd79fe45e9ff161e38441a45e9bb0d7520274b55bb51cf4eb8e70289",
+          "sourceKeySha256": "36c33150482c67e7894259d3748f89282439ff74dd45764c8a31501733df1f10",
+          "api": "csp_XYQHiker",
+          "sourceScenarioSha256": "7826ab77a6b50a9d076db16eeed2666537083bcd8845d189570cc50744c1c97f",
+          "loaderMode": "site",
+          "jarSignatureSha256": "fe9d35f70f4eed5f8283356df08a4854abe1b0977c2e876f585900fafe418818",
+          "jarLoadKey": "d3752cd8d27227d1c394da50745b38f6",
+          "mainJarSha256": "8a894c42f2968a3651e3974694a944586eec38d2caa9f147454dfa6cad5a95ad",
+          "mainSignatureSha256": "dd290f5b9095e50a09f838051568b26f20d8d7267ff57b4c93683576cbfc7410",
+          "scope": "original-loader-context",
+          "parentEvidence": {
+            "discoveryStep": "category-page1",
+            "parentCaseId": "4-2",
+            "parentManifestSha256": "fa25801c1faf34f21dbdbdc76429cca23825493345c60f177ef942c63e1ecfd9",
+            "parentARTPrivateResultSha256": "27c23a5e59f384c1807d0d09d0112c2a820963dcb877359b24d69099d0f259c9",
+            "parentNASBundleSha256": "279ba305350978f9e278d8d402f2f744d1f17d0742ddf5018139926dd298bee3",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7826ab77a6b50a9d076db16eeed2666537083bcd8845d189570cc50744c1c97f",
+            "originalLoaderContextSha256": "33d871cb215d77eaf53337ef22bc46a8202c69ec4ebbafe399760104a28019a3",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "original-loader-context",
+            "parentARTParamsSha256": "3d9b17054c769782a7a996c0e9ed072834525208d46e4dd844f78d8faddb4911"
+          },
+          "nasPrivateSha256": "631ea884386b59d65df70b07d577e23ac7f32d47eb0d979003ebfe651261fa60",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "e4e043122cb0c532922d31906a6f5c36f57e1d7b97b921ea88d8561db2123b2c",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "c0f0ddc7f2c256d515004dd0aeb2ebe976238839c3856672d61f94a4b55ddb1e"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "3d9b17054c769782a7a996c0e9ed072834525208d46e4dd844f78d8faddb4911",
+                "discoveryStep": "category-page1",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "0-2",
+          "parentCaseId": "4-2",
+          "jarSha256": "90583683bd79fe45e9ff161e38441a45e9bb0d7520274b55bb51cf4eb8e70289",
+          "sourceKeySha256": "36c33150482c67e7894259d3748f89282439ff74dd45764c8a31501733df1f10",
+          "api": "csp_XYQHiker",
+          "sourceScenarioSha256": "7826ab77a6b50a9d076db16eeed2666537083bcd8845d189570cc50744c1c97f",
+          "loaderMode": "site",
+          "jarSignatureSha256": "fe9d35f70f4eed5f8283356df08a4854abe1b0977c2e876f585900fafe418818",
+          "jarLoadKey": "d3752cd8d27227d1c394da50745b38f6",
+          "mainJarSha256": "8a894c42f2968a3651e3974694a944586eec38d2caa9f147454dfa6cad5a95ad",
+          "mainSignatureSha256": "dd290f5b9095e50a09f838051568b26f20d8d7267ff57b4c93683576cbfc7410",
+          "scope": "original-loader-context",
+          "parentEvidence": {
+            "discoveryStep": "category-page2",
+            "parentCaseId": "4-2",
+            "parentManifestSha256": "fa25801c1faf34f21dbdbdc76429cca23825493345c60f177ef942c63e1ecfd9",
+            "parentARTPrivateResultSha256": "27c23a5e59f384c1807d0d09d0112c2a820963dcb877359b24d69099d0f259c9",
+            "parentNASBundleSha256": "279ba305350978f9e278d8d402f2f744d1f17d0742ddf5018139926dd298bee3",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7826ab77a6b50a9d076db16eeed2666537083bcd8845d189570cc50744c1c97f",
+            "originalLoaderContextSha256": "33d871cb215d77eaf53337ef22bc46a8202c69ec4ebbafe399760104a28019a3",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "original-loader-context",
+            "parentARTParamsSha256": "b6d71c191574f8a574166a683a0346d915cbc17c62c87e99e5f01876454cc58c"
+          },
+          "nasPrivateSha256": "6eace10899b23715947fd81971a08a1e4dd530a539ac5dce626024b4f93fcdb1",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "ca10a50320581b73150ab746eb2e589ffaf5eb2bc0423ad1b489b9559a3f9a41",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "2808219cb0f346dbba2cca493aa208c8d5f517997dfb6e05c75d346d272f6b8e"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "b6d71c191574f8a574166a683a0346d915cbc17c62c87e99e5f01876454cc58c",
+                "discoveryStep": "category-page2",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "cases": 3,
+        "ready": 3,
+        "nas": {
+          "nonempty": 0,
+          "empty": 0,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 3,
+          "not-tested": 0
+        },
+        "art": {
+          "nonempty": 0,
+          "empty": 0,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 0,
+          "not-tested": 0
+        },
+        "cleanupPassed": 3,
+        "containerZeroExit": 3
+      }
+    },
+    {
+      "tag": "nasfollow-standalone",
+      "planSha256": "3be3ebf9e45833a650dc4b245966971906ee593f45fbbc846752dcd0d5381c8d",
+      "launchSha256": "b882b0b995d457e708733101e239150226d44ec41f2342acf82112775a8613e3",
+      "mode": "discover",
+      "diagnostic": true,
+      "control": false,
+      "cases": [
+        {
+          "caseId": "0-0",
+          "parentCaseId": "0-5",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "51862ea995edb74dec7606a286cefe2f13f6d2e07253e2320da787a12c598a9d",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "home-video",
+            "parentCaseId": "0-5",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "53f389bcbdafa09aad7ff4177706e173a6497ff17f098b8ccefa616f2e4f6b0a",
+            "parentNASBundleSha256": "47d6eb42787c8d3db27be93e84cfdaba7b4815048d3bf965f3a49f267f2b41b1",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "nasPrivateSha256": "2a8628e3cbc2a6c1ec05db7f007eb252fc6a37e3a873594dd0d30deddd9b73fc",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "76cbcaaa929b1b5a90acc17d2e31fdb6161f4dc134ce61342c5e2614c7632359",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "9b9354a51648b1aace3da421bfb3b9e64172c80ae86a26186d5d0bd77dd6ca80"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "home-video",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 14369,
+                  "sha256": "a06651bbdfb66c336566106875642a15dcc477850e3fa9b83bf6b097cf014fc0",
+                  "semanticSha256": "91e5e0f0f7a57deb0e6184c5451098ede688505700966d6704014f0de57ccf73",
+                  "fields": 5,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 40,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "0-1",
+          "parentCaseId": "0-5",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "51862ea995edb74dec7606a286cefe2f13f6d2e07253e2320da787a12c598a9d",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "category-page1",
+            "parentCaseId": "0-5",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "53f389bcbdafa09aad7ff4177706e173a6497ff17f098b8ccefa616f2e4f6b0a",
+            "parentNASBundleSha256": "47d6eb42787c8d3db27be93e84cfdaba7b4815048d3bf965f3a49f267f2b41b1",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "553e16dcb8801e4b83c05dabe199615eaf2e67ca7550b2768c9313adf3853e84"
+          },
+          "nasPrivateSha256": "54d0ac25bc420f1dc0ef1286bab4f6aafd553eaf7752e3adc3bba991f592c99c",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "1e66925dd961ba6a3f641ab96481c0a653f7dbbd417c4e11e4e5a93e61a82a6a",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "5d4d7f597890f2eac16ca3418cc8eb056758782cf6f57e25fb4b09e392f3a58d"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "553e16dcb8801e4b83c05dabe199615eaf2e67ca7550b2768c9313adf3853e84",
+                "discoveryStep": "category-page1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 25680,
+                  "sha256": "46ced142cbe4f9224d9abc0c451fe4c74c1c0be9efcb4176e3ab4985034d2b96",
+                  "semanticSha256": "f90aa5e9e7de2407d041250cdcfe98f926e41ffd65808d5269919c873692b4cd",
+                  "fields": 5,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 73,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "0-2",
+          "parentCaseId": "0-5",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "51862ea995edb74dec7606a286cefe2f13f6d2e07253e2320da787a12c598a9d",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "category-page2",
+            "parentCaseId": "0-5",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "53f389bcbdafa09aad7ff4177706e173a6497ff17f098b8ccefa616f2e4f6b0a",
+            "parentNASBundleSha256": "47d6eb42787c8d3db27be93e84cfdaba7b4815048d3bf965f3a49f267f2b41b1",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "575650d4375ce5af2539ed6d2a46ff1c6245433ea4c0ec3b8c1c0f674e972e34"
+          },
+          "nasPrivateSha256": "9ef5a0410a550222ac2d8a066ed7df32d8ee05e67cb26f71c3a789cf91fc3331",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "34fa823bb6d2968657e8654890eb1efe0a424f032731b11dd0c72fa4635d2906",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "dffaba0a72b33bc31b693f7a35aaf110c5bede59981a7a47ca3b450a54cec096"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "575650d4375ce5af2539ed6d2a46ff1c6245433ea4c0ec3b8c1c0f674e972e34",
+                "discoveryStep": "category-page2",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "0-3",
+          "parentCaseId": "0-5",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "51862ea995edb74dec7606a286cefe2f13f6d2e07253e2320da787a12c598a9d",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "detail",
+            "parentCaseId": "0-5",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "53f389bcbdafa09aad7ff4177706e173a6497ff17f098b8ccefa616f2e4f6b0a",
+            "parentNASBundleSha256": "47d6eb42787c8d3db27be93e84cfdaba7b4815048d3bf965f3a49f267f2b41b1",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "f2b2f1fc93e027e7045e3be1e212c72a635e0c8e31d71af21f519a0d81b73b22"
+          },
+          "nasPrivateSha256": "58517576d886affee27c5ca58c8d6ef2b406dbf42deb28d7d7f7c95f864de060",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "6b958d83132b016f1464d8780b52fce64c6cf941d0dd057cb8f5e5579261c40e",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "e5f04de49bc9043139a41fdcf504c5cf044405130112804be3941db665d6da1d"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "detailContent",
+                "paramsSha256": "f2b2f1fc93e027e7045e3be1e212c72a635e0c8e31d71af21f519a0d81b73b22",
+                "discoveryStep": "detail",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 565,
+                  "sha256": "721ecc9421b8ebf373d0b84b226fa4cefce0c97b6ca02b397f792be35e65f793",
+                  "semanticSha256": "38ccd289c3ea62ce5e057dc17605cb5a2c04fd8026591ce3c1655fc7d9194a97",
+                  "fields": 1,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 1,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "0-4",
+          "parentCaseId": "0-5",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "51862ea995edb74dec7606a286cefe2f13f6d2e07253e2320da787a12c598a9d",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "search",
+            "parentCaseId": "0-5",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "53f389bcbdafa09aad7ff4177706e173a6497ff17f098b8ccefa616f2e4f6b0a",
+            "parentNASBundleSha256": "47d6eb42787c8d3db27be93e84cfdaba7b4815048d3bf965f3a49f267f2b41b1",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "b7d521ad7db82fbdbebca86c88012ce986ce65574e4fe210574ed466e93c47e1"
+          },
+          "nasPrivateSha256": "8d68b634f4a6eb0db2e3096f3ba4d360069ce81383ac97c7bc0e4d767a128e18",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "2e1194db673ee402620ad3908436f889752e1c791489a7611555d0ddbda6112f",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "c777dacad4217902f138c0514c1815850b3df04fc14d4a2705baacc40fc59b1c"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "b7d521ad7db82fbdbebca86c88012ce986ce65574e4fe210574ed466e93c47e1",
+                "discoveryStep": "search",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "0-5",
+          "parentCaseId": "0-5",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "51862ea995edb74dec7606a286cefe2f13f6d2e07253e2320da787a12c598a9d",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "search-page1",
+            "parentCaseId": "0-5",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "53f389bcbdafa09aad7ff4177706e173a6497ff17f098b8ccefa616f2e4f6b0a",
+            "parentNASBundleSha256": "47d6eb42787c8d3db27be93e84cfdaba7b4815048d3bf965f3a49f267f2b41b1",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "e1abe1f4f29a26535890be8dd3fbcaf29ff0ca275750b7d641071412da85fd4d"
+          },
+          "nasPrivateSha256": "60c115a27b4778a7a2ee2b945e3bc82388c65ca00406c7eef1f18f1dda7c60a2",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "babbf7d42135068a47f87ed8e91ce2bde1e8e454f38fcafca3f2fc000ccfe035",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "b44d619cb623970daee15da318fff88f9b67699d8bfa0b1c71b7ba6f0e531824"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "e1abe1f4f29a26535890be8dd3fbcaf29ff0ca275750b7d641071412da85fd4d",
+                "discoveryStep": "search-page1",
+                "status": "empty",
+                "response": {
+                  "bytes": 0,
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                },
+                "implementation": "unknown-default-compatible"
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "0-6",
+          "parentCaseId": "0-5",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "51862ea995edb74dec7606a286cefe2f13f6d2e07253e2320da787a12c598a9d",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "player",
+            "parentCaseId": "0-5",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "53f389bcbdafa09aad7ff4177706e173a6497ff17f098b8ccefa616f2e4f6b0a",
+            "parentNASBundleSha256": "47d6eb42787c8d3db27be93e84cfdaba7b4815048d3bf965f3a49f267f2b41b1",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "7bde0f9b4d0128958c6a3bafbdf64d9e419418804b6a48cb5d6733dbd01d4049",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "ddd2c52a7574f4d06544ba9c908920bf0246226ae2849ed4b8cd8acc0a668f1f"
+          },
+          "nasPrivateSha256": "ffe3ebbd6a6ab4b796b0d8ffcf01ad66d55acabdf8774925146dc43fdb965a46",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "1e25efb5f0feaa0d8215d935fbc45ec4d1000bd4e825fc0c39a2d4d85551445e",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "efe68baf1310bac16c82dc68975da7ad07431a43ceb15cab4ce18236f3b1411e"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "playerContent",
+                "paramsSha256": "ddd2c52a7574f4d06544ba9c908920bf0246226ae2849ed4b8cd8acc0a668f1f",
+                "discoveryStep": "player",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 67,
+                  "sha256": "9f97fa3fd271c32fca0b9337d66824ec5fe413e1849d988c03f8edb6033d0813",
+                  "semanticSha256": "e8b2d9011928f015e26714f94a7bea2bb1204560b2ebe161613fb3ae030c5ff7",
+                  "fields": 2,
+                  "emptyObject": false,
+                  "hasContent": false,
+                  "classes": null,
+                  "list": null,
+                  "filterGroups": null
+                },
+                "playbackUrlPresent": true
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "1-0",
+          "parentCaseId": "0-7",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "99572385c3de1ded4265a3f23ef11b58ea98568886cd3f0f8d439798672737b8",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "33ad93d8b46a89db02ce0d80b86a208ed26c61d87c823c7e4e947cc337ffe466",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "home-video",
+            "parentCaseId": "0-7",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "ce95f49e7d33ded8aa81eb23ab988de26310c154d8e8b14c7c4de1bdb7a72600",
+            "parentNASBundleSha256": "17f914ed0600d9b4454da1497fd0c6e3050975530fe74dc489a0fdc2ba3012e8",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "33ad93d8b46a89db02ce0d80b86a208ed26c61d87c823c7e4e947cc337ffe466",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "nasPrivateSha256": "23de3fd11fb0584cfacdb10e3dbc48babf536b71713b326429658796779a8bff",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "9b8e8e2763270b55f18aa5e60ea39633aa14f15acea50b4bef700d2021d18b15",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "36ca228ab1d7f9a14738bbfe8bdedbe01744089bf4deb6aad7a2422cc26afa4a"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "home-video",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "1-1",
+          "parentCaseId": "0-7",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "99572385c3de1ded4265a3f23ef11b58ea98568886cd3f0f8d439798672737b8",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "33ad93d8b46a89db02ce0d80b86a208ed26c61d87c823c7e4e947cc337ffe466",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "category-page1",
+            "parentCaseId": "0-7",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "ce95f49e7d33ded8aa81eb23ab988de26310c154d8e8b14c7c4de1bdb7a72600",
+            "parentNASBundleSha256": "17f914ed0600d9b4454da1497fd0c6e3050975530fe74dc489a0fdc2ba3012e8",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "33ad93d8b46a89db02ce0d80b86a208ed26c61d87c823c7e4e947cc337ffe466",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "95c8eece097d0645fa001f3b1fecfb40f5570d8fa33316cd84652a8759191ef2"
+          },
+          "nasPrivateSha256": "ece8b045c0d371353faff898a47d950c03e11a14cb4141327043316097c5260f",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "0fbb60d5f95fe9244c589ae5e80bd7d231a181937b347309cb93d47aea4c6326",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "57fc21663e6bcc408cba6d9a0eeb1400d5d333cc4a7376e60712bdbbcb25c9c5"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "95c8eece097d0645fa001f3b1fecfb40f5570d8fa33316cd84652a8759191ef2",
+                "discoveryStep": "category-page1",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "1-2",
+          "parentCaseId": "0-7",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "99572385c3de1ded4265a3f23ef11b58ea98568886cd3f0f8d439798672737b8",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "33ad93d8b46a89db02ce0d80b86a208ed26c61d87c823c7e4e947cc337ffe466",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "category-page2",
+            "parentCaseId": "0-7",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "ce95f49e7d33ded8aa81eb23ab988de26310c154d8e8b14c7c4de1bdb7a72600",
+            "parentNASBundleSha256": "17f914ed0600d9b4454da1497fd0c6e3050975530fe74dc489a0fdc2ba3012e8",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "33ad93d8b46a89db02ce0d80b86a208ed26c61d87c823c7e4e947cc337ffe466",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "9c7eaaf95d35d24db8eca7e3faa0eee14c08b2b44390a8153d842ed1c23ea025"
+          },
+          "nasPrivateSha256": "5a474fb8f7e83e737321f6d8a53f7dd53a8e5b8b35ab207fea697a431ec473ea",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "6b44b58a8c9ec128e5ce66dab643f48db436c166cf222f4c3d71e93c858189d1",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "3ae809f81e77d0ca5265ac4a9772a458f482cfdaaa4d9431d3c31936103e3bab"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "9c7eaaf95d35d24db8eca7e3faa0eee14c08b2b44390a8153d842ed1c23ea025",
+                "discoveryStep": "category-page2",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        },
+        {
+          "caseId": "1-3",
+          "parentCaseId": "0-7",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "99572385c3de1ded4265a3f23ef11b58ea98568886cd3f0f8d439798672737b8",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "33ad93d8b46a89db02ce0d80b86a208ed26c61d87c823c7e4e947cc337ffe466",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "category-filter",
+            "parentCaseId": "0-7",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentARTPrivateResultSha256": "ce95f49e7d33ded8aa81eb23ab988de26310c154d8e8b14c7c4de1bdb7a72600",
+            "parentNASBundleSha256": "17f914ed0600d9b4454da1497fd0c6e3050975530fe74dc489a0fdc2ba3012e8",
+            "parentNASRunnerSha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814",
+            "sourceCaseIdentitySha256": "33ad93d8b46a89db02ce0d80b86a208ed26c61d87c823c7e4e947cc337ffe466",
+            "originalLoaderContextSha256": "7041c6a397cc975155a2f4c818a692c9c2fc2653e523785cd1c2fd9b53166314",
+            "outstandingReason": "nas-timeout-left-method-unexecuted",
+            "parameterSource": "exact-parent-art-call",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parentARTParamsSha256": "fa479cee9745089defd888970622903f4b5f2e72be06ea3b7813fa429c014d3a"
+          },
+          "nasPrivateSha256": "3f9e171bc4a32c741c9dc9963585d0d3ec3e67231e830e294d00d2b1bdf962c2",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "19fa00c30501a5e3876454abaa7be84a6efbfbfbc91bd51c226ea449d828021c",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "da3bf1f680ef68dbc49b0ed669e47c0ed430ed54327794ce2256d14c8347956e"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "categoryContent",
+                "paramsSha256": "fa479cee9745089defd888970622903f4b5f2e72be06ea3b7813fa429c014d3a",
+                "discoveryStep": "category-filter",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "cases": 11,
+        "ready": 11,
+        "nas": {
+          "nonempty": 4,
+          "empty": 1,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 6,
+          "not-tested": 0
+        },
+        "art": {
+          "nonempty": 0,
+          "empty": 0,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 0,
+          "not-tested": 0
+        },
+        "cleanupPassed": 11,
+        "containerZeroExit": 11
+      }
+    },
+    {
+      "tag": "artfollow-v2",
+      "planSha256": "71f224ff53110b6b42dc78395df2382d243a32f086554b006531a5c87f6db2db",
+      "launchSha256": "c95cde6f6ea88192d357ba03c888e2cd9a32dafca458af4b3ffe4442776f42f4",
+      "mode": "replay",
+      "diagnostic": true,
+      "control": false,
+      "cases": [
+        {
+          "caseId": "0-0",
+          "parentCaseId": "0-1",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "ecab89fd68b2879583a9dc295d6cb6012066a7b87c6c5479e9a0bfe0d17e7a44",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "f8ead3a70adae5dda727032cf1e85d12c649bd559e0f4afbacee87d70f5bffbd",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "search-page1",
+            "parentCaseId": "0-1",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentPrivateResultSha256": "ea6bcf60e39c280b187a14f687d381d73502c2b9f6a94fc6ea44a8168c761699",
+            "sourceCaseIdentitySha256": "f8ead3a70adae5dda727032cf1e85d12c649bd559e0f4afbacee87d70f5bffbd",
+            "outstandingReason": "parent-timeout-left-method-unexecuted",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parameterSource": "parent-art-search-argument"
+          },
+          "nasPrivateSha256": "eb7f5fa77e7bf564506cf4f474c0a6c1431e9460d06c143dc2117e89af8ad8b3",
+          "artPrivateSha256": "b0b785d4f0fc9fedccb10b2c721a8ec916139fc0ced594a007708b879b15a95b",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "59d1a4ede91000eb0ffef544dd7ee32b6d72debe58687e06759a73f19157a6b0",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "d523184cf1d9cae9325b7ea6458b4c52c31bf53f2ef2f8faeb1b42cbbea82bdf"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true,
+            "forcedWorkerKill": true
+          },
+          "calls": [
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "150769f508c768043a04f6c9ea4586ad371055e63745d73d62cb5d24c87680c9",
+                "discoveryStep": "searchContent-1",
+                "status": "timeout",
+                "error": {
+                  "type": "Error",
+                  "fingerprint": "e38877ebbec5de9ee4e987b247e6f72fd5cef04ca8b91890b3ef7bf4bb313045",
+                  "category": "timeout"
+                }
+              },
+              "paramsVerified": true,
+              "art": {
+                "method": "searchContent",
+                "paramsSha256": "150769f508c768043a04f6c9ea4586ad371055e63745d73d62cb5d24c87680c9",
+                "methodProvenance": {
+                  "declaringClass": "com.github.catvod.crawler.Spider",
+                  "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                  "inheritedBaseDefault": false,
+                  "baseDelegatingOverload": true
+                },
+                "status": "timeout",
+                "error": {
+                  "type": "java.util.concurrent.TimeoutException",
+                  "fingerprint": "46f723433f47aa577104dd914b3a003bc2eafbc00b13a2e8239a2776f30682df",
+                  "category": "timeout",
+                  "stage": "searchContent"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "caseId": "0-1",
+          "parentCaseId": "0-1",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "ecab89fd68b2879583a9dc295d6cb6012066a7b87c6c5479e9a0bfe0d17e7a44",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "f8ead3a70adae5dda727032cf1e85d12c649bd559e0f4afbacee87d70f5bffbd",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "player",
+            "parentCaseId": "0-1",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentPrivateResultSha256": "ea6bcf60e39c280b187a14f687d381d73502c2b9f6a94fc6ea44a8168c761699",
+            "sourceCaseIdentitySha256": "f8ead3a70adae5dda727032cf1e85d12c649bd559e0f4afbacee87d70f5bffbd",
+            "outstandingReason": "parent-timeout-left-method-unexecuted",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parameterSource": "parent-art-detail-playback-entry"
+          },
+          "nasPrivateSha256": "72933e34e01b5ca79b3de05460f0ef699024eb1e45c7fe0dac5e99e043426011",
+          "artPrivateSha256": "86e66f03b00307c61110c1e621614dc2819a5a4bb217ea6bd89b77734ea618d3",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "a90339c3d9f28be60e56c6d4fbe098028f6d3c2f90f749ee2f98b7d35091f885",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "7f6a2accb9d21d7748e7563aba96e24bd051a3c351b7241744d1790d578d53d9"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "playerContent",
+                "paramsSha256": "78b65f1b9e4902fbd5e306bd011122ac254e729ad3c83a23951a38c742317009",
+                "discoveryStep": "playerContent-1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 82,
+                  "sha256": "d38dbc8f5dacbd939ff9003d72fe31758c64f67d29ae2c9e2ccacb439618f7c3",
+                  "semanticSha256": "b2bb94a3d38e87d17239eac0578510dd58c62f07ab40ee5aafe10d7f9bb73a28",
+                  "fields": 2,
+                  "emptyObject": false,
+                  "hasContent": false,
+                  "classes": null,
+                  "list": null,
+                  "filterGroups": null
+                },
+                "playbackUrlPresent": true
+              },
+              "paramsVerified": true,
+              "art": {
+                "method": "playerContent",
+                "paramsSha256": "78b65f1b9e4902fbd5e306bd011122ac254e729ad3c83a23951a38c742317009",
+                "methodProvenance": {
+                  "declaringClass": "com.github.catvod.spider.XBPQ",
+                  "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                  "inheritedBaseDefault": false,
+                  "baseDelegatingOverload": false
+                },
+                "status": "nonempty",
+                "response": {
+                  "bytes": 82,
+                  "sha256": "d38dbc8f5dacbd939ff9003d72fe31758c64f67d29ae2c9e2ccacb439618f7c3",
+                  "semanticSha256": "b2bb94a3d38e87d17239eac0578510dd58c62f07ab40ee5aafe10d7f9bb73a28",
+                  "fields": 2,
+                  "emptyObject": false,
+                  "hasContent": false,
+                  "classes": null,
+                  "list": null,
+                  "filterGroups": null
+                },
+                "playbackUrlPresent": true
+              },
+              "semanticEqual": true
+            }
+          ]
+        },
+        {
+          "caseId": "1-0",
+          "parentCaseId": "0-2",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "6228c19a2088f3bb447de875551d72945f955ec3b61ec0e4239365c8cbf77e2b",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "a6d7ce93605bd171a7eda880df4de6e097fc8b9ca4618446b5781ac6d5848174",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "home-video",
+            "parentCaseId": "0-2",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentPrivateResultSha256": "d9fadb9e4400e5a70a332e41cccc633f436abb665df74af6dd30e2b51bd995c4",
+            "sourceCaseIdentitySha256": "a6d7ce93605bd171a7eda880df4de6e097fc8b9ca4618446b5781ac6d5848174",
+            "outstandingReason": "parent-timeout-left-method-unexecuted",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parameterSource": "no-arguments"
+          },
+          "nasPrivateSha256": "49cf60b2dc1409fbbca4995bf59022cc921a0620da64a81dc1958a8eab4d55d8",
+          "artPrivateSha256": "eb779f1c9da8e2fe3c433dca02860ebf55a29077d90a199bef5fd7ebf2b85dfe",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "a832e98bcdbdd0e2f722b576199b8b66be87cdb48f078f892976e67acabb23ef",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "a3a1c34205134d1db1e533448d5d222392c558e492a717d21359682bafa89758"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "discoveryStep": "homeVideoContent-1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 18611,
+                  "sha256": "9f6afa3b63673035e69f01a58aaeab7eee436d0255ec8598a381cbf0266f2d5d",
+                  "semanticSha256": "a7e0eb66db9b8b4de0e462b6997c09d0ee399d93b3ddfef194368cf40465179b",
+                  "fields": 5,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 40,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true,
+              "art": {
+                "method": "homeVideoContent",
+                "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+                "methodProvenance": {
+                  "declaringClass": "com.github.catvod.spider.XBPQ",
+                  "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                  "inheritedBaseDefault": false,
+                  "baseDelegatingOverload": false
+                },
+                "status": "timeout",
+                "error": {
+                  "type": "java.util.concurrent.TimeoutException",
+                  "fingerprint": "46f723433f47aa577104dd914b3a003bc2eafbc00b13a2e8239a2776f30682df",
+                  "category": "timeout",
+                  "stage": "homeVideoContent"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "caseId": "1-1",
+          "parentCaseId": "0-2",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "6228c19a2088f3bb447de875551d72945f955ec3b61ec0e4239365c8cbf77e2b",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "a6d7ce93605bd171a7eda880df4de6e097fc8b9ca4618446b5781ac6d5848174",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "search",
+            "parentCaseId": "0-2",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentPrivateResultSha256": "d9fadb9e4400e5a70a332e41cccc633f436abb665df74af6dd30e2b51bd995c4",
+            "sourceCaseIdentitySha256": "a6d7ce93605bd171a7eda880df4de6e097fc8b9ca4618446b5781ac6d5848174",
+            "outstandingReason": "parent-timeout-left-method-unexecuted",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parameterSource": "controlled-test-keyword"
+          },
+          "nasPrivateSha256": "e3f0d941ab9e0603e5d7202fd5be46e62c6b330c080816013536a6133dac7cb9",
+          "artPrivateSha256": "21552eaf75790594c66456b5436a2456dc04527102650086a16148a90e950e5d",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "d2698863c156ff0e32de60d3cd5b2c65b17904ac3bb3ee174cf0e22e294ec42c",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "8b2ec0fd92140af465fa7e7b9fd450fd401a9ef026fab114b3b281267387551c"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "8e4902e9f73856b4867021b26872982643d34a615287164f07437d179112a199",
+                "discoveryStep": "searchContent-1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 2270,
+                  "sha256": "4b0251a5648cb11aaa0d51ea66c7c32118f75bd2c3251f754fedca2bc741a1be",
+                  "semanticSha256": "80487962b77cf7e2514514cfd86d998b14225b41741e8d356b2889cd81cc2faf",
+                  "fields": 1,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 5,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true,
+              "art": {
+                "method": "searchContent",
+                "paramsSha256": "8e4902e9f73856b4867021b26872982643d34a615287164f07437d179112a199",
+                "methodProvenance": {
+                  "declaringClass": "com.github.catvod.spider.XBPQ",
+                  "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                  "inheritedBaseDefault": false,
+                  "baseDelegatingOverload": false
+                },
+                "status": "timeout",
+                "error": {
+                  "type": "java.util.concurrent.TimeoutException",
+                  "fingerprint": "46f723433f47aa577104dd914b3a003bc2eafbc00b13a2e8239a2776f30682df",
+                  "category": "timeout",
+                  "stage": "searchContent"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "caseId": "1-2",
+          "parentCaseId": "0-2",
+          "jarSha256": "9a742d08c655879c6173d68e29c73d2979e685100a95115497209cc61e81cbad",
+          "sourceKeySha256": "6228c19a2088f3bb447de875551d72945f955ec3b61ec0e4239365c8cbf77e2b",
+          "api": "csp_XBPQ",
+          "sourceScenarioSha256": "a6d7ce93605bd171a7eda880df4de6e097fc8b9ca4618446b5781ac6d5848174",
+          "loaderMode": "site",
+          "jarSignatureSha256": "242c503d053acf163258534700ab8a761887aae1e63d2f1af693c59bd8af45a7",
+          "jarLoadKey": "3a24d1d1ecbf0a2421fc320f97fb57ac",
+          "mainJarSha256": null,
+          "mainSignatureSha256": null,
+          "scope": "original-main-missing-standalone-diagnostic",
+          "parentEvidence": {
+            "discoveryStep": "search-page1",
+            "parentCaseId": "0-2",
+            "parentManifestSha256": "94915057d1f82a9bd1065c6c0ed673497f9287f70864c507f7cadc4f8d9d2cc6",
+            "parentPrivateResultSha256": "d9fadb9e4400e5a70a332e41cccc633f436abb665df74af6dd30e2b51bd995c4",
+            "sourceCaseIdentitySha256": "a6d7ce93605bd171a7eda880df4de6e097fc8b9ca4618446b5781ac6d5848174",
+            "outstandingReason": "parent-timeout-left-method-unexecuted",
+            "contextScope": "standalone-diagnostic-original-main-missing",
+            "parameterSource": "controlled-test-keyword"
+          },
+          "nasPrivateSha256": "1e74d7253465a2d47981f0f39ed1b45b1c46ae1d259d6211ef4f98b5e541e96b",
+          "artPrivateSha256": "47e6f2c68e1865c69db5f5b0cfa3597eae60e4347af7d640f01175ca484616b3",
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "running": false,
+            "status": "exited",
+            "containerId": "30dad887aaaa495612aa90034a7405bdb96ac4e9d1d81c7633723e20242d99a0",
+            "oomKilled": false,
+            "errorPresent": false,
+            "inspectSha256": "42b03724f8603c53a58377fe2dc23ca20521ea7f1be670ddba0f9e8bee6d9308"
+          },
+          "ready": true,
+          "loaded": true,
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "calls": [
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "slotSource": "explicit-plan",
+              "nas": {
+                "method": "searchContent",
+                "paramsSha256": "c8037ab492f643d21608256dd23f2542abb8384e07f192980f1d9d142bf4a9b8",
+                "discoveryStep": "searchContent-1",
+                "status": "nonempty",
+                "response": {
+                  "bytes": 2270,
+                  "sha256": "4b0251a5648cb11aaa0d51ea66c7c32118f75bd2c3251f754fedca2bc741a1be",
+                  "semanticSha256": "80487962b77cf7e2514514cfd86d998b14225b41741e8d356b2889cd81cc2faf",
+                  "fields": 1,
+                  "emptyObject": false,
+                  "hasContent": true,
+                  "classes": null,
+                  "list": 5,
+                  "filterGroups": null
+                }
+              },
+              "paramsVerified": true,
+              "art": {
+                "method": "searchContent",
+                "paramsSha256": "c8037ab492f643d21608256dd23f2542abb8384e07f192980f1d9d142bf4a9b8",
+                "methodProvenance": {
+                  "declaringClass": "com.github.catvod.crawler.Spider",
+                  "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                  "inheritedBaseDefault": false,
+                  "baseDelegatingOverload": true
+                },
+                "status": "timeout",
+                "error": {
+                  "type": "java.util.concurrent.TimeoutException",
+                  "fingerprint": "46f723433f47aa577104dd914b3a003bc2eafbc00b13a2e8239a2776f30682df",
+                  "category": "timeout",
+                  "stage": "searchContent"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "cases": 5,
+        "ready": 5,
+        "nas": {
+          "nonempty": 4,
+          "empty": 0,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 1,
+          "not-tested": 0
+        },
+        "art": {
+          "nonempty": 1,
+          "empty": 0,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 4,
+          "not-tested": 0
+        },
+        "cleanupPassed": 5,
+        "containerZeroExit": 5
+      }
+    }
+  ],
+  "harnessRejectedAttempts": [
+    {
+      "caseId": "0-0",
+      "planSha256": "849b28c8be4b218738526ea6941de2f895793e4824e63a128d0cf80293340160",
+      "logSha256": "47c7c96af6a07cedc088089e92464780ec9c76c584a21473adb4dce76c278651",
+      "status": "harness-input-guard-rejected",
+      "jarExecution": "not-reached",
+      "providerFailure": false,
+      "reason": "standalone-followup-plan-missing-frozen-input-metadata",
+      "container": {
+        "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+        "user": "10001:10001",
+        "exitCode": 1,
+        "running": false,
+        "status": "exited",
+        "containerId": "a5818e9db3dc9b181147d57ec99f3ca649405b952d19d943012a34e3dc013f47",
+        "oomKilled": false,
+        "errorPresent": false,
+        "inspectSha256": "b53e8b6faa6202d149fe6ffdec27cc515f3581e2f908298b7fc6f2d008e5da04"
+      }
+    },
+    {
+      "caseId": "0-1",
+      "planSha256": "849b28c8be4b218738526ea6941de2f895793e4824e63a128d0cf80293340160",
+      "logSha256": "47c7c96af6a07cedc088089e92464780ec9c76c584a21473adb4dce76c278651",
+      "status": "harness-input-guard-rejected",
+      "jarExecution": "not-reached",
+      "providerFailure": false,
+      "reason": "standalone-followup-plan-missing-frozen-input-metadata",
+      "container": {
+        "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+        "user": "10001:10001",
+        "exitCode": 1,
+        "running": false,
+        "status": "exited",
+        "containerId": "2ee0c30ea2035d39e57c75478e34288241795685f1bf35d9adb705ed46f48a66",
+        "oomKilled": false,
+        "errorPresent": false,
+        "inspectSha256": "ccf85ca2e34e21e265d28c6dcfe69b6e19d3217f4f7705a33e6c502b4e5e00e3"
+      }
+    },
+    {
+      "caseId": "1-0",
+      "planSha256": "849b28c8be4b218738526ea6941de2f895793e4824e63a128d0cf80293340160",
+      "logSha256": "47c7c96af6a07cedc088089e92464780ec9c76c584a21473adb4dce76c278651",
+      "status": "harness-input-guard-rejected",
+      "jarExecution": "not-reached",
+      "providerFailure": false,
+      "reason": "standalone-followup-plan-missing-frozen-input-metadata",
+      "container": {
+        "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+        "user": "10001:10001",
+        "exitCode": 1,
+        "running": false,
+        "status": "exited",
+        "containerId": "882218801cafb341379f96538d516c00996717ad4c998392c765f1790605fade",
+        "oomKilled": false,
+        "errorPresent": false,
+        "inspectSha256": "2d89e9d8615c023a038f3da15b15c390378aebb14e1dac57112937784badcbdc"
+      }
+    },
+    {
+      "caseId": "1-1",
+      "planSha256": "849b28c8be4b218738526ea6941de2f895793e4824e63a128d0cf80293340160",
+      "logSha256": "47c7c96af6a07cedc088089e92464780ec9c76c584a21473adb4dce76c278651",
+      "status": "harness-input-guard-rejected",
+      "jarExecution": "not-reached",
+      "providerFailure": false,
+      "reason": "standalone-followup-plan-missing-frozen-input-metadata",
+      "container": {
+        "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+        "user": "10001:10001",
+        "exitCode": 1,
+        "running": false,
+        "status": "exited",
+        "containerId": "7183113e2e4ca901484c241810881a9f413f896004e0b313a099ff44fcc12f2f",
+        "oomKilled": false,
+        "errorPresent": false,
+        "inspectSha256": "0938d57ea7b07a4a9b9ebcf160c78f495cc594d85025fe8cda0106236cf4dac7"
+      }
+    },
+    {
+      "caseId": "1-2",
+      "planSha256": "849b28c8be4b218738526ea6941de2f895793e4824e63a128d0cf80293340160",
+      "logSha256": "47c7c96af6a07cedc088089e92464780ec9c76c584a21473adb4dce76c278651",
+      "status": "harness-input-guard-rejected",
+      "jarExecution": "not-reached",
+      "providerFailure": false,
+      "reason": "standalone-followup-plan-missing-frozen-input-metadata",
+      "container": {
+        "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+        "user": "10001:10001",
+        "exitCode": 1,
+        "running": false,
+        "status": "exited",
+        "containerId": "92584570ffd0f09255530dfec698c2d3abe9174c812d8edb0470b8e973af1ffd",
+        "oomKilled": false,
+        "errorPresent": false,
+        "inspectSha256": "d6c5d31dc44ede92679f4f2ad9447df1d4b0e80a7320c65f2f03043dbb352b8b"
+      }
+    }
+  ],
+  "reportDependencies": [
+    {
+      "file": "scripts/compat/working-source-report.mjs",
+      "sha256": "324d5a6ab0284393a6c7679633aceb5cfabc45250193961fbca158c66015acff"
+    },
+    {
+      "file": "scripts/compat/prepare-working-followups.mjs",
+      "sha256": "1cc42ca1eab2ea2a01e8403405547279e611fe1d285df8aedd85f9fb25f29d29"
+    },
+    {
+      "file": "scripts/compat/prepare-working-standalone-controls.mjs",
+      "sha256": "8bff849763d9b28be1f4ea43c77186e51090cbd785cc8dc34e10c31551672922"
+    }
+  ],
+  "reporterSha256": "8836d9183a43a32a2aed4f9af38851de645af57b8eba8e8b1fb29e4db25c1d8e"
+}

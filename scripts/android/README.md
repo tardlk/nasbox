@@ -90,8 +90,44 @@ artifact:
 ```
 
 Allowed methods are homeContent, homeVideoContent, categoryContent,
-detailContent, and both Spider searchContent signatures. At most 20 calls are
+detailContent, both Spider searchContent signatures, and
+`playerContent(String flag, String id, List<String> vipFlags)`. At most 20 calls are
 accepted. A timeout stops further calls; the host must then force-stop the app.
+
+Set `businessDiscovery: true` on a site, artifact, or plan (in that precedence
+order) to opt into a broader business probe. Explicit `calls` still take
+precedence, and omitted discovery preserves the historical three-call sequence.
+The discovery sequence has ten named steps: `home`, `home-video`,
+`category-page1`, `category-page2`, `category-filter`, `detail`, `search`,
+`search-page1`, `search-detail`, and `player`. The first real home category is
+used for pages 1 and 2; the filter probe selects the first nonempty `v` in each
+reported filter group for that category. An absent category or filter produces
+a `not-tested` entry rather than an invented argument. Detail uses a real
+returned video ID, prioritizing the category, then home video and home results.
+Search uses `businessSearchKeyword` from the same site/artifact/plan precedence,
+or the selected real video's name. Both `(keyword,false)` and
+`(keyword,false,"1")` signatures run independently, followed by a real
+search-result detail when available. The player step splits a real detail's
+`vod_play_from` and `vod_play_url` at `$$$`, then selects the first valid
+`episode$ID` within `#` entries, preserving the complete ID after the first `$`.
+It calls `(flag,ID,[])` and records the returned JSON; it does not download or
+play media. Missing detail playback entries remain `not-tested`.
+
+Each private call records `metadata.discoveryStep` and a status of `nonempty`,
+`empty`, `not-implemented`, `invalid-json`, `network`, `failed`, `timeout`, or
+`not-tested`. Public reports retain counts, hashes and these statuses, while
+exact derived arguments and returned values remain private. `not-implemented`
+requires reflection evidence that the method is the installed base Spider's
+default; an overridden method returning a blank string or empty JSON remains
+`empty`, while other malformed strings are `invalid-json`. The inherited three-argument search overload is recorded as a
+delegating overload when it invokes an overridden two-argument method, rather
+than being mislabeled as absent. This provenance does not establish that a
+wrapper's native implementation works. Non-timeout exceptions leave the other
+independent methods eligible to run; a timeout ends the case. Exact NAS replay
+keeps `not-tested` slots aligned and does not invoke their empty argument lists.
+Those slots never count as tested or successful business calls. Probe success
+describes only the returned data for the tested source and parameters.
+
 Legacy plans without a loader context use the captured artifact as the main JAR.
 New plans preserve the original role and complete signature on each site:
 

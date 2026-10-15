@@ -899,3 +899,74 @@ the pre-test inventory. Task services still running:none. The one earlier
 ART-replay worker-cleanup failure remains a failure bounded by its removed
 container. See `jar-final-cleanup.json`, `jar-final-execution-evidence.json` and
 `jar-continuation-delivery-20261015.md` for the retained scope and unresolved work.
+
+## Working-media JAR script coverage — completed 2026-10-16
+
+User requested testing the scripts inside the eight previously demonstrated
+media JARs. Rechecked the retained Node/JDK17/SDK, verified all frozen input
+bytes and the 237 retained original ART/NAS evidence pins. No duplicate tools,
+SDK, JDK, player or package installation. Original NAS image `808d15d8…` and
+the four existing application containers were re-inventoried before tests.
+
+Temporary task transport, build and logs use `.cache/working-sources`; scoped
+SSH control/known-host files stay there. NAS task root is
+`/tmp/tvbox-working-sources.XmTr2h`. Original signatures, actual ext/source keys
+and main/site coexistence remain frozen. Fifteen configured scenarios have
+their original main artifact available; ten lack that main and remain blocked
+in original context. Separately labelled site-only diagnostic cases will test
+those ten without claiming original coexistence. Inputs are not refetched.
+
+The upstream public test signing key is a temporary checksum-verified copy
+under `.cache/working-sources/art/TVBoxOSC.jks`; only separate instrumentation
+is signed, the retained original APK remains unchanged. Temporary AVD/ADB/HTTP
+and NAS containers will be stopped after this batch. Exact retained input/output
+footprints and final service inventory will be recorded after verification.
+
+Completed on 2026-10-16 Asia/Shanghai, using the original20261015 frozen input
+batch. Main25 and accepted supplemental24 NAS cases all exited0 with worker
+close/exit/temporary-data checks passing. The five earlier plan-input guard
+rejections exited1 before runtime/JAR execution and remain harness errors.
+All54 task containers are removed. Exact NAS root
+`/tmp/tvbox-working-sources.XmTr2h` (525,924KiB allocated before removal) was
+removed after collection. Its bounded shard scripts ended; the scoped SSH master
+is explicitly closed. Pre-existing four application container IDs/images,
+StartedAt/RestartCount/running state match the initial inventory.
+
+Instrumentation was uninstalled; the official application stopped; adbd returned
+to non-root before emulator shutdown. Emulator, ADB and127.0.0.1:18765 fixture
+HTTP are stopped. Task AVD/Android user-home/crash database and the public signing
+key copy are removed (7,119,977,927 logical bytes, including sparse image lengths).
+Shared `~/.android` file set and all prior regular-file hashes match. No package,
+JDK, SDK, background daemon, registry push or autostart was installed or changed.
+
+646 native-enabled host tests passed, zero failures/skips. Both public business
+reports were rebuilt from the retained private evidence and matched exactly,
+including all per-call evidence. Original656 frozen input files and237 older
+ART/NAS evidence pins were verified unchanged. The new report-generator
+invalid-JSON classification correction changed no observed main-round counts;
+the initial report revision and first rejected plans/results remain separately
+retained, with the corrected fresh runs.
+
+New private `.data/jar-working-sources-evidence-20261016` holds585 pinned files,
+12,447,337 logical bytes /13,384KiB allocated. It retains exact plans, signatures,
+ext, arguments, ART/NAS responses, container evidence and executed script snapshot
+for the remaining coexistence/timeouts and final verification. Its retention
+manifest SHA256 is
+`664f1e1d616ef0981ed0c37f0535c846dcd07c255b728c8de1b98a9c137a3958`.
+No NAS transport credentials, SSH state, signing key or duplicate frozen JAR tree
+was retained.
+Delete this test evidence after those fixes and final verification complete.
+
+Existing private frozen inputs remain282,973,218 logical bytes /277,836KiB;
+earlier ART/NAS evidence remains25,517,472 logical bytes /25,532KiB. Existing
+`.tools` remains5,431,419,735 logical bytes /5,338,792KiB allocated, about5.1GiB,
+for ongoing SDK/JDK/DEX/native development. Final NAS image808d15d8 is unchanged,
+516,639,457 uncompressed bytes; rollback images remain.
+
+Removed288,221,068 logical bytes of task transport/build/test caches and duplicate
+private staging plans after evidence verification. All new task caches are gone;
+shared tools and other projects were untouched. Services still running: only
+pre-existing NAS Docker, moviepilot, qbittorrent, emby and dockge-dockge-1.
+Task services still running:none. Exact cleanup/footprint evidence is
+`working-sources-cleanup-20261016.json`; scope and results are in
+`working-sources-summary-20261016.md` and the separate primary/supplemental reports.
