@@ -2,6 +2,10 @@
 
 Priority: subscription links and script execution behavior; player work deferred.
 
+Next execution plan: [JAR compatibility continuation](jar-next-phase-plan.md).
+The plan starts with a fresh frozen input batch and a complete current-image
+matrix, then Android failure diagnosis, shared fixes and full method coverage.
+
 | Work | Status | Evidence |
 | --- | --- | --- |
 | Win-Box checkout and working branch | Done | baseline.json; branch codex/linux-core |
