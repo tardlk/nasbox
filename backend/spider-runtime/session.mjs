@@ -8,12 +8,13 @@ import { JarArtifactCache } from './artifact-cache.mjs';
 export async function createExecutableSubscriptionSession(options = {}) {
   const owned = !options.runtime;
   if (!owned && options.remoteJars && !options.artifactCache) throw new Error('Borrowed runtime requires a caller-owned artifactCache for remote JARs');
-  const runtime = options.runtime || createSpiderRuntime({ dataDir: options.runtimeDataDir, timeoutMs: options.runtimeTimeoutMs ?? (options.nativeBridge ? 45000 : 10000), nativeBridge: options.nativeBridge ?? false, nativeBackend: options.nativeBackend ?? 'dynarmic' });
+  const runtime = options.runtime || createSpiderRuntime({ dataDir: options.runtimeDataDir, timeoutMs: options.runtimeTimeoutMs ?? (options.nativeBridge ? 45000 : 10000), nativeBridge: options.nativeBridge ?? false, nativeBackend: options.nativeBackend ?? 'dynarmic', cacheMaxBytes: options.runtimeCacheMaxBytes });
   const cleanup = new RuntimeCleanup(), tracked = new Set(), resolved = new Map(), registrations = new Set();
   let cache, loader, mainSignature, closed = false, queue = Promise.resolve(), closing, jarUseCache = false;
   const ownedCache = !options.artifactCache;
   try {
     cache = options.artifactCache || (options.remoteJars ? new JarArtifactCache({ ...options.jarCacheOptions, directory: options.artifactCacheDir }) : null);
+    if (cache) { await cache.getState(); await runtime.request({operation:'artifactLease',guard:cache.guardPath}); }
     loader = createFullSubscriptionLoader({ ...options, runtimeCleanup: cleanup, beforeRuntimeClear: () => runtime.request({ operation: 'resetKeys' }) });
     if (options.modules || options.moduleRoot || options.remoteModules || options.androidModules) await runtime.setModules({ modules: options.modules, root: options.moduleRoot, android: !!options.androidModules || !!options.remoteModules, remote: !!options.remoteModules });
   } catch (error) {
@@ -93,7 +94,7 @@ export async function createExecutableSubscriptionSession(options = {}) {
     getCSP: key => serialize(() => resolveSpider(key)),
     call: (key, method, args = []) => serialize(async () => { const spider = await resolveSpider(key); return { spider, value: await runtime.call(spider.token, method, args) }; }),
     getConfig: () => serialize(() => loader.getConfig()),
-    getState: () => serialize(async () => ({ subscription: await loader.getState(), runtime: await runtime.getState(), ...(cache ? { artifacts: await cache.getState() } : {}) })),
+    getState: () => serialize(async () => ({ subscription: await loader.getState(), runtime: await runtime.getState(), ...(cache ? { artifacts: await cache.getState() } : {}), runtimeCache: await runtime.request({operation:'cacheState'}) })),
     close() {
       closing ||= (async () => {
         closed = true; await queue;

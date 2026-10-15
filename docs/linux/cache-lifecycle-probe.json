@@ -1,0 +1,312 @@
+{
+  "date": "2026-10-15T01:27:46.044Z",
+  "scope": "Kernel directory ownership/crash recovery and aggregate managed translated-DEX/JS-module cache limits on macOS and actual Linux NAS Docker. No Android/ART/full-client certification.",
+  "regression": {
+    "host": "macOS ARM64",
+    "passed": 393,
+    "failed": 0,
+    "nativeEnabled": true
+  },
+  "image": {
+    "tag": "tvbox-core:linux-amd64-cache-20261015",
+    "id": "sha256:74c75480ee1f1a92cf3974b853af17f3a3f3338b31d39d5b973f4338c540511a",
+    "size": 511597437,
+    "parent": "sha256:0ecfc269a233b3293749fabcbe00ba96e5c0d4323fb240ff29bae8a1deb06f1d",
+    "user": "10001:10001",
+    "incrementalUncompressedLayerBytes": 5436672,
+    "architecture": "linux/amd64",
+    "compilerAbsent": true,
+    "sources": [
+      {
+        "path": "backend/config-core/src/tvbox/config/DirectoryLease.java",
+        "sha256": "49318bc96c8d8e60d6005dafc731753e596910cbb3e197cda27dfe8a90151620"
+      },
+      {
+        "path": "backend/spider-runtime/artifact-cache.mjs",
+        "sha256": "03f4ea81c5ef847a6d688eb60ad81d2c735b4c26219b4f85e5a3f4880eeba0e6"
+      },
+      {
+        "path": "backend/spider-runtime/directory-lease.mjs",
+        "sha256": "7208ab215828b687aee8fceaa903c16a90feb38d5d53e143482db347fb34dafd"
+      },
+      {
+        "path": "backend/spider-runtime/index.mjs",
+        "sha256": "a6329eaffa0d18b28155e22f0260372cac76e0f75aa1786da4a78e1203b95257"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/session.mjs",
+        "sha256": "213066a3c53cd616220e4fa92e8cdc6d4b2405f2c66a98f02686cf844ba5b351"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/src/tvbox/runtime/NativeHost.java",
+        "sha256": "5c105a6ccd6742516c272861908b62a5aa723a5cb8f314161a76abbaa2eaf595"
+      },
+      {
+        "path": "backend/spider-runtime/session.mjs",
+        "sha256": "d84084a33f081d32e517705199e71f6454143ed65dda45e524351cea7f9da7d4"
+      },
+      {
+        "path": "backend/spider-runtime/src/tvbox/runtime/DexArtifacts.java",
+        "sha256": "8fef62580db18a5128d20820914202d3cecdec31343c0c7b623312c239dba275"
+      },
+      {
+        "path": "backend/spider-runtime/src/tvbox/runtime/RuntimeCache.java",
+        "sha256": "b7e92d280631d4126f173e02c8a4904d0b06255484789329387e11e573e6747c"
+      },
+      {
+        "path": "backend/spider-runtime/src/tvbox/runtime/SourceModuleLoader.java",
+        "sha256": "f763c685e0940d219b1abcac02368b4090c65e58766b84c0d49a4607ebb64a90"
+      },
+      {
+        "path": "backend/spider-runtime/src/tvbox/runtime/SpiderWorker.java",
+        "sha256": "ae1ccc9ded4be1064c240dab13e3b6ba60c4a83599c43de55a29245d5091731c"
+      },
+      {
+        "path": "backend/spider-runtime/subscription-cli.mjs",
+        "sha256": "4c9a969f42ea3440433a0e98e623156ba041726291b7bb3c640d62c4fbaa228a"
+      }
+    ],
+    "method": "Rebuilt portable Java17 classes on NAS using temporary verified ECJ and existing JRE; assembled only updated sources and three prebuilt class directories on previous image; no compiler/library duplication in final layer"
+  },
+  "compiler": {
+    "url": "https://repo.maven.apache.org/maven2/org/eclipse/jdt/ecj/3.38.0/ecj-3.38.0.jar",
+    "sha1": "86b2e4ab1d6aef91cb21f4d2ec364afb75d05b2c",
+    "sha256": "97c566b120009c203a2fc8b291f4a9adbc171cf1ccb70f06f6b4e1828c00ce8e",
+    "bytes": 3285717,
+    "purpose": "Temporary NAS Java17 rebuild using existing JRE; removed before final image commit",
+    "retained": false
+  },
+  "constraints": {
+    "user": "10001:10001",
+    "readOnlyRoot": true,
+    "tmpfs": "/tmp:rw,exec,nosuid,nodev,size=256m",
+    "capabilities": "ALL dropped",
+    "noNewPrivileges": true,
+    "pidsLimit": 256,
+    "memoryBytes": 2147483648,
+    "noPublishedPorts": true
+  },
+  "crossContainerPidNamespaces": {
+    "owner": {
+      "pid": 1
+    },
+    "contender": {
+      "pid": 1,
+      "blocked": true
+    },
+    "afterKill": {
+      "pid": 1,
+      "recovered": true
+    }
+  },
+  "nas": {
+    "date": "2026-10-15T01:22:34.648Z",
+    "host": {
+      "platform": "linux",
+      "architecture": "x64"
+    },
+    "cacheCrash": {
+      "blockedLive": true,
+      "recovered": true,
+      "stagingRemoved": true
+    },
+    "workerCrash": {
+      "killedDuringInfiniteCall": true,
+      "workerExited": true,
+      "recovered": true
+    },
+    "aggregate": {
+      "maxBytes": 2048,
+      "bytes": 1964,
+      "dexBytes": 764,
+      "moduleBytes": 1200,
+      "entries": 3,
+      "pinnedDexEntries": 1,
+      "evictedEntries": 1,
+      "rejectedWrites": 1
+    },
+    "module": {
+      "maxBytes": 1024,
+      "bytes": 632,
+      "dexBytes": 0,
+      "moduleBytes": 632,
+      "entries": 1,
+      "pinnedDexEntries": 0,
+      "evictedEntries": 1,
+      "rejectedWrites": 1
+    },
+    "dex": {
+      "loaded": false,
+      "failure": "IOException: RUNTIME_CACHE_QUOTA",
+      "state": {
+        "maxBytes": 1,
+        "bytes": 0,
+        "dexBytes": 0,
+        "moduleBytes": 0,
+        "entries": 0,
+        "pinnedDexEntries": 0,
+        "evictedEntries": 0,
+        "rejectedWrites": 1
+      }
+    },
+    "real": [
+      {
+        "sources": 48,
+        "ready": true,
+        "classes": 8,
+        "cache": {
+          "maxBytes": 268435456,
+          "bytes": 3724410,
+          "dexBytes": 3724410,
+          "moduleBytes": 0,
+          "entries": 2,
+          "pinnedDexEntries": 2,
+          "evictedEntries": 0,
+          "rejectedWrites": 0
+        }
+      },
+      {
+        "sources": 48,
+        "ready": true,
+        "classes": 8,
+        "cache": {
+          "maxBytes": 268435456,
+          "bytes": 3724410,
+          "dexBytes": 3724410,
+          "moduleBytes": 0,
+          "entries": 2,
+          "pinnedDexEntries": 2,
+          "evictedEntries": 0,
+          "rejectedWrites": 0
+        }
+      }
+    ],
+    "passed": true
+  },
+  "doctor": {
+    "ok": true,
+    "platform": "linux",
+    "architecture": "x64",
+    "node": "v24.22.0",
+    "scope": "Offline synthetic config/QuickJS/DEX and actual ARM machine-code probes; no Android parity or real-source certification",
+    "config": {
+      "sites": 1
+    },
+    "quickjs": {
+      "ready": true,
+      "answer": 42
+    },
+    "dex": {
+      "ready": true,
+      "classes": 1,
+      "resource": "offline-dex-resource"
+    },
+    "arm": [
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      },
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64"
+      },
+      {
+        "value": 43,
+        "bits": 32,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      }
+    ],
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokensRejected": true,
+      "listeners": 0,
+      "dexLoaders": 0
+    },
+    "java": "openjdk version \"17.0.20.1\" 2026-08-18"
+  },
+  "probeScriptSha256": "2d41ec8de4525739d2b4f5f432c0161c23fca8c1d8b2e5209aac61c8129682a4",
+  "quotaFixtureSourceSha256": "b326a39fab7b08732468bcc2b7962979f65172ba6c9681f62eb90d7691c8332c",
+  "defaults": {
+    "downloadedJarBytes": 134217728,
+    "combinedDexModuleBytes": 268435456,
+    "leaseHelperMaxHeapBytes": 16777216
+  },
+  "limits": [
+    "Kernel native advisory locking verified on macOS and this NAS local Docker bind mount; distributed/network filesystem locking not certified",
+    "Legacy v1 PID-only .lock requires cold migration with all old clients stopped; new-format crashes recover without unlinking lock inodes",
+    "Managed translated DEX pins conservatively last for JVM lifetime; native clear replaces JVM, ordinary clear does not remove those pins",
+    "Combined quota includes managed DEX jar/digest and module JSON entries plus incoming persistent writes, not converter workspace/native patches/rootfs/plugin data/entire NAS disk",
+    "Converter workspaces are root-specific and separate under OS tmp; Docker tmpfs provides a separate 256 MiB bound",
+    "Original FileUtils catches optional module-cache write failures; current fetched data remains usable while persistence is rejected",
+    "Live validation covers Aid init/home across cache restart; other sources/methods and Android ART equivalence remain open"
+  ],
+  "cleanup": {
+    "temporaryFilesRemoved": true,
+    "taskServicesRunning": false,
+    "autostartChanges": false,
+    "existingNasContainersModified": false,
+    "retainedProjectToolsApproxMiB": 404,
+    "retainedNasImageTag": "tvbox-core:linux-amd64-cache-20261015",
+    "newPermanentTools": [],
+    "notes": "Cache-lifecycle local transport/compiler/log bundle and exact NAS temporary directory removed on resumption; build/reference caches regenerate during subsequent development. Temporary SSH master is scoped to active work and closed at task end."
+  },
+  "resumptionVerification": {
+    "date": "2026-10-15T02:10:44.837539+00:00",
+    "regression": {
+      "passed": 393,
+      "failed": 0,
+      "skipped": 0,
+      "nativeEnabled": true,
+      "logSha256": "6d094be16b99ff609248f7fbd882d80d72a44897421be91f80d81ac34fcdc81a"
+    },
+    "nasOfflineDoctor": {
+      "ok": true,
+      "platform": "linux",
+      "architecture": "x64",
+      "node": "v24.22.0",
+      "scope": "Offline synthetic config/QuickJS/DEX and actual ARM machine-code probes; no Android parity or real-source certification",
+      "config": {
+        "sites": 1
+      },
+      "quickjs": {
+        "ready": true,
+        "answer": 42
+      },
+      "dex": {
+        "ready": true,
+        "classes": 1,
+        "resource": "offline-dex-resource"
+      },
+      "arm": [
+        {
+          "value": 42,
+          "bits": 64,
+          "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+        },
+        {
+          "value": 42,
+          "bits": 64,
+          "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64"
+        },
+        {
+          "value": 43,
+          "bits": 32,
+          "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+        }
+      ],
+      "lifecycle": {
+        "workerReplaced": true,
+        "oldTokensRejected": true,
+        "listeners": 0,
+        "dexLoaders": 0
+      },
+      "java": "openjdk version \"17.0.20.1\" 2026-08-18"
+    },
+    "nasExistingContainers": 4,
+    "nasTaskContainers": 0,
+    "nasTemporaryDirectoryRemoved": true,
+    "notes": "Rechecked exact retained image and source pins; no live-source network replay performed during resumption."
+  }
+}

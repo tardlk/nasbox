@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-only
-import { mkdir, open, readFile, writeFile, rename, unlink, readdir, lstat, utimes, rm, mkdtemp } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, rename, unlink, readdir, lstat, utimes, rm, mkdtemp } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { createHash, randomUUID } from 'node:crypto';
+import { acquireDirectoryLease } from './directory-lease.mjs';
 
 export const JAR_CACHE_AGE_MS = 3 * 24 * 60 * 60 * 1000; // Pinned FileUtils.isWeekAgo, despite its name.
 const hash = (bytes, algorithm = 'sha256') => createHash(algorithm).update(bytes).digest('hex');
@@ -58,10 +59,10 @@ export async function fetchArtifactBytes(url, { timeoutMs = 25000, maxBytes = 64
 
 /** One owner per directory; immutable pinned files cannot be evicted while loaded. */
 export class JarArtifactCache {
-  #ready; #queue = Promise.resolve(); #closed = false; #closing; #locked = false;
+  #ready; #queue = Promise.resolve(); #closed = false; #closing; #lease;
   #pins = new Set(); #controller = new AbortController(); #root; #owned;
   constructor({ directory, maxBytes = 128 * 1024 * 1024, maxArtifactBytes = 64 * 1024 * 1024,
-    timeoutMs = 25000, integrity = 'android', fetchBytes = fetchArtifactBytes, now = Date.now } = {}) {
+    timeoutMs = 25000, integrity = 'android', fetchBytes = fetchArtifactBytes, now = Date.now, recoverLegacyLock = false } = {}) {
     for (const value of [maxBytes, maxArtifactBytes, timeoutMs]) if (!Number.isSafeInteger(value) || value <= 0) throw new ArtifactError('INVALID_JAR_LIMIT');
     if (!['android', 'strict'].includes(integrity)) throw new ArtifactError('INVALID_JAR_INTEGRITY_POLICY');
     Object.assign(this, { maxBytes, maxArtifactBytes, timeoutMs, integrity, fetchBytes, now });
@@ -69,18 +70,19 @@ export class JarArtifactCache {
     this.#ready = (async () => {
       this.#root = directory ? resolve(directory, 'jar-artifacts-v1') : await mkdtemp(join(tmpdir(), 'tvbox-jar-cache-'));
       await mkdir(this.#root, { recursive: true, mode: 0o700 });
-      const lock = await open(join(this.#root, '.lock'), 'wx', 0o600).catch(error => { if (error.code === 'EEXIST') throw new ArtifactError('JAR_CACHE_ALREADY_OWNED'); throw error; });
-      this.#locked = true;
-      try { await lock.writeFile(String(process.pid)); } finally { await lock.close(); }
+      this.#lease = await acquireDirectoryLease(this.#root).catch(error => { if(error.code==='CACHE_ALREADY_OWNED')throw new ArtifactError('JAR_CACHE_ALREADY_OWNED');throw error; });
+      const legacy=await lstat(join(this.#root,'.lock')).catch(error=>{ignoreMissing(error);return null;});
+      if(legacy){if(!recoverLegacyLock||!legacy.isFile())throw new ArtifactError('LEGACY_JAR_LOCK_REQUIRES_MIGRATION');await unlink(join(this.#root,'.lock'));}
       for (const name of await readdir(this.#root)) if (/^pending-[a-f0-9-]+\.(jar|json)$/.test(name)) await unlink(join(this.#root, name));
       await this.#reserve(0);
     })();
     this.#ready.catch(() => {});
   }
   get directory() { return this.#root; }
+  get guardPath() { return this.#lease?.guard; }
   #serialize(action) {
     if (this.#closed) return Promise.reject(new ArtifactError('JAR_CACHE_CLOSED'));
-    const pending = this.#queue.then(async () => { await this.#ready; return action(); });
+    const pending = this.#queue.then(async () => { await this.#ready; this.#lease.assertAlive(); return action(); });
     this.#queue = pending.catch(() => {}); return pending;
   }
   async #entries() {
@@ -178,7 +180,7 @@ export class JarArtifactCache {
       this.#closed = true; this.#controller.abort();
       await this.#queue;
       try { await this.#ready; } catch { /* Initialization failures are returned to operations. */ }
-      if (this.#locked) await unlink(join(this.#root, '.lock')).catch(ignoreMissing);
+      if (this.#lease) await this.#lease.close();
       if (this.#owned && this.#root) await rm(this.#root, { recursive: true, force: true });
     })(); return this.#closing;
   }

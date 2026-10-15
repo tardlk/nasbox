@@ -10,7 +10,7 @@ public final class NativeHost {
   if(owner!=null&&!owner.equals(jar))throw new IllegalStateException("NATIVE_WORKER_SINGLE_ARTIFACT");
   if(!nativeJar(jar))return new URL[]{jar.toUri().toURL()};owner=jar;
   Path directory=HostServices.directory.toPath().resolve("native"),work=directory.resolve("work"),patched=directory.resolve("patched");Files.createDirectories(work);Files.createDirectories(patched);
-  System.setProperty("tvbox.d2j.cache",HostServices.directory.toPath().resolve("dex-cache").toString());
+  System.setProperty("tvbox.d2j.cache",HostServices.directory.toPath().resolve("native/payload-cache").toString());
   java.security.Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
   try(URLClassLoader resolver=new URLClassLoader(new URL[]{jar.toUri().toURL()},NativeHost.class.getClassLoader())){
    HostServices.log(NativeBridgeMain.prepare(jar.toFile(),work.toFile(),patched.toFile(),resolver));

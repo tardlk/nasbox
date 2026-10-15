@@ -311,3 +311,17 @@ checks its JAR, executes Aid home, then reproduces it from disk cache in a new
 session with one total JAR fetch. See jar-artifact-cache-probe.json. This does not
 certify other source methods, unsupported schemes, aggregate runtime cache quotas
 or Android/ART behavior.
+
+
+## Crash recovery and aggregate runtime cache — 2026-10-15
+
+[Cache ownership and limits](CACHE.md) describes kernel leases, JVM usage guards,
+parent-death containment, legacy migration and the combined 256 MiB translated
+DEX/module budget. The 128 MiB downloaded-JAR budget remains separate. Native
+payload patch files are kept outside the managed translated-DEX namespace.
+
+393 tests pass with native integration enabled. New tests kill real owners/JVM
+loops, block live takeover, recover abandoned staging, exercise combined quota
+eviction/pins and run actual module/DEX quota rejection. The physical NAS passes
+the same boundaries, cross-container PID-1 contention/kill recovery, real protected
+Aid home across restart and offline doctor. See cache-lifecycle-probe.json.

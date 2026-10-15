@@ -14,7 +14,16 @@
     "commit": "136fadcacb2b3a9bd96320578d93e9735452d9e9"
   },
   "target": "linux/amd64",
-  "nasVerified": false,
-  "priority": ["subscription parsing", "script runtime parity"],
-  "deferred": ["player UI", "media decoding", "transcoding"]
+  "nasVerified": true,
+  "priority": [
+    "subscription parsing",
+    "script runtime parity"
+  ],
+  "deferred": [
+    "player UI",
+    "media decoding",
+    "transcoding"
+  ],
+  "nasVerificationScope": "Linux amd64 Docker core, native/DEX/QuickJS fixtures and selected real JAR init/home; not complete Android/ART parity",
+  "nasVerificationReport": "docs/linux/cache-lifecycle-probe.json"
 }

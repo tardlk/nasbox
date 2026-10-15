@@ -124,7 +124,7 @@ test('serialized concurrent acquisition downloads once; second owner fails witho
     await other.close();
     const [a, b] = await Promise.all([cache.acquire('http://fixture.invalid/a'), cache.acquire('http://fixture.invalid/a')]);
     assert.equal(a.sha256, b.sha256); assert.equal(count, 1);
-    assert.equal((await readdir(cache.directory)).includes('.lock'), true);
+    assert.equal((await readdir(cache.directory)).includes('.lease'), true);
   } finally { await other.close(); await cache.close(); await rm(directory, { recursive: true, force: true }); }
 });
 

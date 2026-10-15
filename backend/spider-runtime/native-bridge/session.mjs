@@ -22,8 +22,9 @@ export function createNativeSession(options,createWorker,RuntimeError){
    }
    const result=await worker.query(captured);
    if(result.ok){
+    if(captured.operation==='artifactLease')for(let i=settings.length-1;i>=0;i--)if(settings[i].operation==='artifactLease'&&settings[i].guard===captured.guard)settings.splice(i,1);
     if(captured.operation==='registerJar')for(let i=settings.length-1;i>=0;i--)if(settings[i].operation==='registerJar'&&settings[i].signature===captured.signature)settings.splice(i,1);
-    if(['host','modules','registerJar'].includes(captured.operation))settings.push(captured);
+    if(['host','modules','registerJar','artifactLease'].includes(captured.operation))settings.push(captured);
     if(captured.operation==='get')result.value.token='native-'+generation+':'+result.value.token;
    }return result;
   };

@@ -22,6 +22,8 @@ public final class SpiderWorker {
   if(operation.equals("resetKeys")){router.currentPyKey="";return JsonNull.INSTANCE;}
   if(operation.equals("host")){HostServices.configure(r);return JsonNull.INSTANCE;}
   if(operation.equals("loadMain")){JsonObject v=new JsonObject();v.addProperty("loaded",jars.loadMain(Path.of(r.get("path").getAsString())));v.add("logs",HostServices.logs.deepCopy());if(!v.get("loaded").getAsBoolean()&&jars.failure()!=null)v.addProperty("failure",jars.failure());return v;}
+  if(operation.equals("cacheState"))return RuntimeCache.snapshot();
+  if(operation.equals("artifactLease")){RuntimeCache.holdGuard(Path.of(r.get("guard").getAsString()));return JsonNull.INSTANCE;}
   if(operation.equals("nativeState"))return NativeHooks.snapshot();
   if(operation.equals("nativeProbe"))return gson.toJsonTree(r.has("backend")||r.has("bits")?NativeHooks.probe(r.has("backend")?r.get("backend").getAsString():"unicorn2",r.has("bits")?r.get("bits").getAsInt():64):NativeHooks.probe());
   if(operation.equals("dexState")){JsonObject v=new JsonObject();v.addProperty("nestedLoaderCount",dalvik.system.BaseDexClassLoader.ownedCount());return v;}
@@ -99,12 +101,14 @@ public final class SpiderWorker {
    try{dalvik.system.BaseDexClassLoader.closeAll();}catch(Exception e){failure=e;}
    try{NativeHooks.close();}catch(Exception e){failure=e;}
    try{DexArtifacts.close();}catch(Exception e){failure=e;}
-   HostServices.close();com.github.tvbox.osc.util.FileUtils.clear();
+   RuntimeCache.close();HostServices.close();com.github.tvbox.osc.util.FileUtils.clear();
   }
   if(failure!=null)throw failure;
  }
  public static void main(String[] args)throws Exception{
-  System.load(args[0]);HostServices.directory=Path.of(args[1]).toFile();com.orhanobut.hawk.Hawk.restore();
+  long owner=Long.getLong("tvbox.owner.pid",-1L);
+  if(owner>0){var parent=ProcessHandle.current().parent();if(parent.isEmpty()||parent.get().pid()!=owner)Runtime.getRuntime().halt(143);parent.get().onExit().thenRun(()->Runtime.getRuntime().halt(143));}
+  System.load(args[0]);HostServices.directory=Path.of(args[1]).toFile();RuntimeCache.initialize();com.orhanobut.hawk.Hawk.restore();
   PrintWriter output=new PrintWriter(new OutputStreamWriter(new FileOutputStream(FileDescriptor.out),StandardCharsets.UTF_8),true);
   System.setOut(new PrintStream(System.err,true,"UTF-8"));
   SpiderWorker worker=new SpiderWorker();BufferedReader input=new BufferedReader(new InputStreamReader(System.in,StandardCharsets.UTF_8));String line;

@@ -26,15 +26,16 @@ public final class DexArtifacts {
   }return result;
  }
  public static synchronized Path prepare(Path path)throws Exception{
+  RuntimeCache.initialize();
   if(Files.size(path)>LIMIT)throw new IOException("ARTIFACT_SIZE_LIMIT");
   byte[] original=Files.readAllBytes(path);Map<String,byte[]> input=dex(original)?new LinkedHashMap<>(Map.of("classes.dex",original)):entries(path);
   boolean hasDex=input.keySet().stream().anyMatch(n->n.endsWith(".dex"));
   if(!hasDex){if(input.keySet().stream().noneMatch(n->n.endsWith(".class")))throw new IOException("NO_EXECUTABLE_CLASSES");return path;}
   String cp=System.getProperty("tvbox.dex.classpath","");if(cp.isEmpty())throw new IOException("DEX_CONVERTER_UNAVAILABLE");
   String key=hash((hash(original)+System.getProperty("tvbox.dex.fingerprint","")+System.getProperty("tvbox.native.fingerprint","")+"dex-artifacts-v2").getBytes(java.nio.charset.StandardCharsets.UTF_8));
-  Path dir=HostServices.directory.toPath().resolve("dex-cache");Files.createDirectories(dir);Path target=dir.resolve(key+".jar"),digest=dir.resolve(key+".sha256");
-  if(Files.isRegularFile(target)&&Files.isRegularFile(digest)&&Files.size(digest)==64&&Files.size(target)<=TOTAL&&hash(Files.readAllBytes(target)).equals(Files.readString(digest)))return target;
-  Path stage=Files.createTempDirectory(dir,"convert-");
+  Path dir=HostServices.directory.toPath().toRealPath().resolve("dex-cache");Files.createDirectories(dir);Path target=dir.resolve(key+".jar"),digest=dir.resolve(key+".sha256");
+  if(Files.isRegularFile(target,LinkOption.NOFOLLOW_LINKS)&&Files.isRegularFile(digest,LinkOption.NOFOLLOW_LINKS)&&Files.size(digest)==64&&Files.size(target)<=TOTAL&&hash(Files.readAllBytes(target)).equals(Files.readString(digest))){RuntimeCache.pinDex(target);return target;}
+  Path stage=RuntimeCache.createWorkspace();
   try{
    if(converter==null){String[] paths=cp.split(java.util.regex.Pattern.quote(File.pathSeparator));URL[] urls=new URL[paths.length];for(int i=0;i<paths.length;i++)urls[i]=Path.of(paths[i]).toUri().toURL();converter=new URLClassLoader(urls,ClassLoader.getPlatformClassLoader());}
    Class<?> type=converter.loadClass("com.googlecode.d2j.dex.Dex2jar");Map<String,byte[]> output=new LinkedHashMap<>();long total=0;
@@ -52,7 +53,7 @@ public final class DexArtifacts {
    }
    if(total>TOTAL||output.size()>ENTRIES)throw new IOException("CONVERTED_ARTIFACT_LIMIT");
    Path jar=stage.resolve("merged.jar");try(ZipOutputStream zip=new ZipOutputStream(Files.newOutputStream(jar))){for(Map.Entry<String,byte[]> e:output.entrySet()){zip.putNextEntry(new ZipEntry(e.getKey()));zip.write(e.getValue());zip.closeEntry();}}
-   String sum=hash(Files.readAllBytes(jar));Files.move(jar,target,StandardCopyOption.REPLACE_EXISTING,StandardCopyOption.ATOMIC_MOVE);Path stamp=stage.resolve("digest");Files.writeString(stamp,sum);Files.move(stamp,digest,StandardCopyOption.REPLACE_EXISTING,StandardCopyOption.ATOMIC_MOVE);return target;
+   String sum=hash(Files.readAllBytes(jar));RuntimeCache.writeDex(jar,target,sum);return target;
   }finally{try(var walk=Files.walk(stage)){for(Path p:walk.sorted(Comparator.reverseOrder()).toList())Files.deleteIfExists(p);}}
  }
  public static synchronized void baksmali(Path source,Path target)throws Exception{

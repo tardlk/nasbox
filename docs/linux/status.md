@@ -9,7 +9,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 386 Node tests passed with native profile enabled, including automatic artifact/cache/session tests |
+| Probe and backend contract tests | Done | 393 Node tests passed with native profile enabled, including crash ownership and aggregate cache limits |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
@@ -25,6 +25,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Native/Python and complete JS host parity | Pending | Optional ARM/JNI profile runs this JAR; complete Android services, other native artifacts, Python and ART comparison remain open |
 | Linux container and NAS validation | Scoped validation done | Physical x86_64 NAS; genuine protected JAR init/home and timeout resource release; other architectures and full client unverified |
 | Automatic subscription JAR retrieval/cache | HTTP(S) slice implemented and verified on NAS | jar-artifact-cache-probe.json: 19 fresh-source cache/identity cases; real automatic init/home plus restart with one JAR download; managed JAR quota |
+| Crash recovery and combined DEX/module cache quota | Implemented and verified on NAS | cache-lifecycle-probe.json: kernel leases, active-JVM guards, parent-death containment, cross-container PID-1 recovery, quota/pin/eviction checks |
 
 The 65-case audit contains 12 matching observations, 51 differing observations
 and 2 cases where both sides reject but exception/state mapping is unresolved.
@@ -326,3 +327,55 @@ Next runtime item: robust crash/restart cache ownership and aggregate DEX/module
 cache limits, then the remaining artifact schemes and isolated native-artifact
 workers. Android/ART same-input evidence, Linux real JS and broader source calls
 remain necessary before full TVBox parity; Web API/UI and player are still pending.
+
+
+Kernel ownership and aggregate runtime caches — 2026-10-15:
+
+DirectoryLease uses native Java FileChannel locks, with permanent .lease/.users
+inodes, rather than PID-only lock files. A tiny JRE helper owns the directory and
+the executing JVM holds a shared usage guard. Live owners and surviving users
+block takeover; process exit releases locks automatically. Workers monitor their
+actual Node parent and halt when it exits, including during an endless call.
+Old PID-only v1 files require explicit cold migration; new-format recovery does
+not unlink/recreate lock files or guess that a PID is stale.
+
+Translated DEX jar/digest pairs and original JS module-cache JSON share a default
+256 MiB persistent budget, separate from the 128 MiB downloaded-JAR cache. LRU
+reservation includes incoming persistent writes and protects active DEX files.
+DEX pins conservatively last for the JVM lifetime. Optional module cache writes
+retain original caught-failure semantics; fetched values remain usable and quota
+rejections are observable. Conversion staging moved to root-specific OS temporary
+directories, under Docker's separate /tmp tmpfs; native payload patches use their
+own native/payload-cache namespace. Native rootfs/patches, plugin and other user
+data remain outside these managed-cache budgets.
+
+393 tests pass with native enabled. NAS verifies real SIGKILL/restart, orphan JVM
+exit during an infinite callback, shared 2 KiB fixture budget with pinned DEX,
+actual module eviction/write rejection and actual DEX quota failure without a
+partial cache entry. Independent containers with Node PID 1 cannot steal a live
+directory; after container SIGKILL a new PID-1 owner takes over. The final non-root,
+read-only JRE image also passes offline doctor and imports/runs Aid home twice from
+the supplied subscription, returning eight classes with 3,724,410 managed DEX
+bytes, within the 256 MiB budget. See cache-lifecycle-probe.json.
+
+NAS image tvbox-core:linux-amd64-cache-20261015 contains rebuilt Java17 classes
+and the source changes. A temporary pinned ECJ compiler reused the existing JRE
+for the NAS build; no compiler is retained. Only source and three prebuilt class
+directories were assembled on the previous image, avoiding duplicate library
+layers. Twelve executed source hashes match the checkout. Player/Web and complete
+Android/ART compatibility remain unimplemented/unverified.
+
+Next item: implement the remaining img+/assets/file/clan artifact routes with
+original-source comparisons, then separate workers for multiple native artifacts
+and expand real source/Android ART verification. Cache policies are host bounds,
+not Android storage equivalence or a complete NAS disk quota.
+
+
+Interrupted-batch resumption — 2026-10-15:
+
+Rechecked the twelve current runtime source hashes and quota fixture. All 393
+native-enabled host tests pass again, and the exact retained NAS JRE image passes
+its offline doctor. Corrected the stale nasVerified flag with a bounded scope;
+Android/ART remains unverified. Removed the interrupted batch's local ECJ/log
+bundle and exact 19 MiB NAS temporary directory. The original four NAS containers
+remain running, with no task container. See the report's resumptionVerification.

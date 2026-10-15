@@ -50,7 +50,7 @@ JNI 库会在 worker 的临时目录解压并加载，因此 `/tmp` 的 tmpfs �
 
 原生 worker 最大 Java 堆为 768 MiB，另有模拟器、QuickJS 和 Node 内存，建议
 验证时给容器至少 2 GiB 内存上限。无服务端口、自动启动策略或持续后台服务。
-容器停止会结束其全部进程；原生 JAR 清空也会完整更换 JVM。缓存总配额与多
+容器停止会结束其全部进程；原生 JAR 清空也会完整更换 JVM。当前缓存限额见文末；多
 原生制品调度仍待后续实现。
 
 基础镜像标签和 OCI 摘要固定在 `base-images.json`；Java 依赖沿用项目现有哈希，
@@ -116,4 +116,18 @@ JAR仅下载一次；严格MD5、SHA缓存校验及退出解锁通过。
 该NAS镜像是基于已验证核心镜像，仅复制5个Node模块生成的本地增量镜像；
 JRE、原生依赖和预编译运行时没有改变，也没有公共推送。正常从当前源码构建
 Dockerfile同样包含这些模块。此配额仅约束下载JAR及其元数据，运行时DEX/模块/
-插件数据另存于 `/data/session/runtime`，尚无统一总额限制。命名卷由用户长期保留。
+插件数据另存于 `/data/session/runtime`；当前 DEX/模块限额见文末，插件数据不在该限额内。命名卷由用户长期保留。
+
+最新 NAS 镜像为 `tvbox-core:linux-amd64-cache-20261015`，加入崩溃恢复和默认256MiB
+的 DEX/模块合计缓存限额。沿用上面的 `session` 命令并替换镜像标签，可用
+`--runtime-cache-bytes BYTES` 调整；JAR下载缓存仍单独默认128MiB。
+
+文件锁随进程退出自动释放，已验证不同容器均为PID1时的互斥与强杀恢复。`.lease`
+和`.users`是持续保留的锁文件，不能凭“文件存在”判断存活或直接删除。v1旧版
+PID锁需先停止旧客户端，再显式使用一次 `--recover-legacy-lock` 迁移。
+[所有权、指标及配额说明](../backend/spider-runtime/CACHE.md) 列出完整边界。
+
+此256MiB限额约束转换DEX及JS模块持久缓存，包含写入暂存空间；正在使用的DEX
+保留到JVM退出。转换工作目录位于 `/tmp`，另受256MiB tmpfs约束。原生补丁、
+rootfs、插件文件及NAS全盘不在上述配额中。[实测记录](../docs/linux/cache-lifecycle-probe.json)
+包含最终镜像、崩溃/限额/真实首页和离线自检结果。新版仍无常驻Web服务或自启动项。

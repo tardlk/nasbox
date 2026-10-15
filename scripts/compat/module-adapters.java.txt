@@ -18,10 +18,10 @@
   try(InputStream in=SourceModuleLoader.class.getResourceAsStream("/android-assets/"+name)){if(in==null)return "";return new String(in.readNBytes(LIMIT),java.nio.charset.StandardCharsets.UTF_8);}catch(Exception e){return "";}
  }
  public static File open(String name){if(!name.matches("[a-fA-F0-9]{32}"))throw new IllegalArgumentException("Invalid module cache key");File dir=new File(tvbox.runtime.HostServices.directory,"module-cache");dir.mkdirs();return new File(dir,"qjscache_"+name+".js");}
- public static byte[] readSimple(File file)throws IOException{if(file.length()>LIMIT*2L)throw new IOException("MODULE_CACHE_LIMIT");hits++;return java.nio.file.Files.readAllBytes(file.toPath());}
+ public static byte[] readSimple(File file)throws IOException{if(java.nio.file.Files.isSymbolicLink(file.toPath())||file.length()>LIMIT*2L)throw new IOException("MODULE_CACHE_LIMIT");hits++;byte[] bytes=java.nio.file.Files.readAllBytes(file.toPath());tvbox.runtime.RuntimeCache.touch(file.toPath());return bytes;}
  public static void recursiveDelete(File file)throws IOException{java.nio.file.Files.deleteIfExists(file.toPath());}
  public static void writeSimple(byte[] bytes,File file)throws IOException{
-  if(bytes.length>LIMIT*2L)throw new IOException("MODULE_CACHE_LIMIT");var temporary=java.nio.file.Files.createTempFile(file.toPath().getParent(),"module-",".tmp");try{java.nio.file.Files.write(temporary,bytes);java.nio.file.Files.move(temporary,file.toPath(),java.nio.file.StandardCopyOption.REPLACE_EXISTING,java.nio.file.StandardCopyOption.ATOMIC_MOVE);}finally{java.nio.file.Files.deleteIfExists(temporary);}
+  if(bytes.length>LIMIT*2L)throw new IOException("MODULE_CACHE_LIMIT");tvbox.runtime.RuntimeCache.writeModule(bytes,file.toPath());
  }
  public static String get(String url){
   if(!remote){tvbox.runtime.HostServices.log("MODULE_REMOTE_DISABLED "+url);return null;}

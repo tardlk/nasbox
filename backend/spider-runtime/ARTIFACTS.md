@@ -59,11 +59,10 @@ URL or replace a trusted digest. MD5 is retained for upstream compatibility.
 
 Cache files live only under `artifactCacheDir/jar-artifacts-v1` (or an owned
 `tvbox-jar-cache-*` temporary directory). Sidecars retain hashes, size and download
-time, without URL credentials. Per-cache exclusive `.lock` ownership prevents
-concurrent writers. Close removes the lock; after SIGKILL/power loss it can remain.
-Do not remove a lock while its owner might still run. After confirming all owners
-of that cache have stopped, remove only that cache's `.lock` before reopening.
-Automatic stale-lock recovery across container PID namespaces is not implemented.
+time, without URL credentials. Kernel-backed directory leases prevent concurrent
+writers and recover after crashes. Lock inodes remain; no PID/TTL guessing or
+manual deletion is needed for new-format locks. Existing old-version PID-only
+locks require explicit cold migration. See [ownership and runtime quota](CACHE.md).
 
 Defaults: 64 MiB per artifact, 128 MiB per cache, 25 seconds per HTTP request,
 4 KiB for a remote digest. The LRU quota includes managed JAR/JSON pairs and
@@ -88,6 +87,7 @@ Automatic retrieval currently supports HTTP(S) binary JAR/DEX only. `img+`, asse
 file and clan artifacts still require explicit mappings and fail clearly otherwise.
 Dynamically requested helper JARs from inside scripts are not intercepted. Multiple
 protected native artifacts still need independent-worker design. The quota covers
-this downloaded-JAR cache, **not** runtime DEX/module caches, native rootfs, plugin
-files or the entire NAS data volume. Those need a separate aggregate policy.
+this downloaded-JAR cache. A separate 256 MiB aggregate DEX/module budget is now
+implemented in CACHE.md. Native rootfs/patches, plugin files and the entire NAS
+data volume remain outside these policies.
 Android/ART and complete TVBox parity remain unverified.
