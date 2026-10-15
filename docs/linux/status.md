@@ -1,10 +1,15 @@
-# Migration status — 2026-10-15
+# Migration status — 2026-10-16
 
 Priority: subscription links and script execution behavior; player work deferred.
 
-Next execution plan: [JAR compatibility continuation](jar-next-phase-plan.md).
-The plan starts with a fresh frozen input batch and a complete current-image
-matrix, then Android failure diagnosis, shared fixes and full method coverage.
+Current user direction: pause JAR compatibility work and continue non-JAR
+sources. [Non-JAR status and next work](non-jar-status-20261016.md) distinguishes
+implemented JS execution from the missing real-source NAS business validation,
+unimplemented Python, and CMS/type4 execution not wired into the Linux backend.
+Start with real JS source/module/ext freezing and NAS business calls. Preserve
+all JAR reports/private inputs and resume those repairs only when requested.
+
+Historical JAR execution plan: [JAR compatibility continuation](jar-next-phase-plan.md).
 
 Round 1 is complete: fresh capture/freeze (87 subscriptions, 204 role/signature
 retrievals, 114 SHA artifacts: 111 valid and 3 invalid content) and 228 adjacent
