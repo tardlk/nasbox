@@ -133,3 +133,19 @@ this downloaded-JAR cache. A separate 256 MiB aggregate DEX/module budget is now
 implemented in CACHE.md. Native rootfs/patches, plugin files and the entire NAS
 data volume remain outside these policies.
 Android/ART and complete TVBox parity remain unverified.
+
+## Explicit initializer policy
+
+`jarInitPolicy:'android'` is the default. It retains the fixed Android loader's
+protection scanner and init method body. Some ordinary JARs include app-restart
+code using killProcess and are therefore classified as protected despite having
+no usable protected-loader contract. The captured 1ac653… input demonstrates this:
+the unchanged default fails with PROTECTED_INIT_UNBOUND.
+
+`createExecutableSubscriptionSession({jarInitPolicy:'declared', ...})` or
+`session --jar-init-policy declared` explicitly enables the tested alternative.
+It calls the JAR's real public static void Init.init(Context) when the scanner
+matches and recognized DexNative/DexClassLoader bindings are absent. A failed
+initializer remains a failure. It does not forge a package/whitelist, skip native
+business code or manufacture a Spider. Actual calls still need verification.
+This is a separate host policy; it must not be reported as Android-equivalent.

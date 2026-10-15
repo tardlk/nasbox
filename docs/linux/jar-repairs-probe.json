@@ -1,0 +1,1108 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15T06:35:17.555051+00:00",
+  "scope": "Fixed captured original JAR repairs on physical Linux amd64 NAS, owned semantic/JVM/native lifecycle regressions and real Aid session restart; no complete TVBox/Android ART parity claim",
+  "codeCommit": "3ff2c81",
+  "baseline": [
+    {
+      "id": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "input": {
+        "sha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+        "bytes": 1001068
+      },
+      "load": {
+        "loaded": false,
+        "error": {
+          "category": "native-binding",
+          "type": "Error",
+          "fingerprint": "dd03c174fea93ec8926f5f4870fcd270ccc37dc1525f2895a033ba996eacbb1f",
+          "failureCodes": [
+            "NATIVE_GET_LOADER_NOT_READY"
+          ]
+        },
+        "evidence": {
+          "exceptionTypes": [
+            "java.lang.NoSuchMethodError",
+            "java.lang.UnsupportedOperationException",
+            "java.lang.VerifyError"
+          ],
+          "missingSymbols": [
+            {
+              "kind": "method",
+              "owner": "android.app.Activity",
+              "name": "isFinishing",
+              "parameters": [],
+              "returns": "boolean"
+            },
+            {
+              "kind": "verify-class",
+              "name": "com.github.catvod.spider.merge.x0.e"
+            }
+          ]
+        }
+      },
+      "targets": [],
+      "baselineImage": "sha256:b6e3df0f9f7a9e2fa71bd040551899b1cfebe811dc1034d69a2a133ddbaf534a",
+      "reference": "docs/linux/catalog-matrix-probe.json"
+    },
+    {
+      "id": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+      "input": {
+        "sha256": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+        "bytes": 22582
+      },
+      "load": {
+        "loaded": true,
+        "evidence": {
+          "exceptionTypes": [
+            "java.lang.NullPointerException",
+            "java.lang.RuntimeException",
+            "java.lang.VerifyError",
+            "java.util.concurrent.ExecutionException"
+          ],
+          "missingSymbols": [
+            {
+              "kind": "verify-class",
+              "name": "com.github.catvod.spider.merge.l1lIl1l1IlIlIl1l1I.Il1I1Il1lIlIlIlIl1"
+            }
+          ]
+        }
+      },
+      "targets": [
+        {
+          "api": "csp_DoubanAmns",
+          "sourceKeySha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+          "ready": false,
+          "className": "com.github.catvod.crawler.SpiderNull",
+          "evidence": {
+            "exceptionTypes": [
+              "java.lang.ExceptionInInitializerError",
+              "java.lang.NoClassDefFoundError",
+              "java.lang.NullPointerException",
+              "java.lang.RuntimeException"
+            ],
+            "missingSymbols": []
+          }
+        },
+        {
+          "api": "csp_Y360Amns",
+          "sourceKeySha256": "7a49b045dbfa0f8427a0d1cbf67835028778f5a90c8f08b86b5f495cdec31bfd",
+          "ready": false,
+          "className": "com.github.catvod.crawler.SpiderNull",
+          "evidence": {
+            "exceptionTypes": [
+              "java.lang.ExceptionInInitializerError",
+              "java.lang.NoClassDefFoundError",
+              "java.lang.NullPointerException",
+              "java.lang.RuntimeException"
+            ],
+            "missingSymbols": []
+          }
+        },
+        {
+          "api": "csp_HgdhAmns",
+          "sourceKeySha256": "e47f059aaef9ebc6a6defedd0aab2eef79f859fa64f5790ff14cdcea33fa6aaa",
+          "ready": false,
+          "className": "com.github.catvod.crawler.SpiderNull",
+          "evidence": {
+            "exceptionTypes": [
+              "java.lang.ExceptionInInitializerError",
+              "java.lang.NoClassDefFoundError",
+              "java.lang.NullPointerException",
+              "java.lang.RuntimeException"
+            ],
+            "missingSymbols": []
+          }
+        }
+      ],
+      "baselineImage": "sha256:b6e3df0f9f7a9e2fa71bd040551899b1cfebe811dc1034d69a2a133ddbaf534a",
+      "reference": "docs/linux/catalog-matrix-probe.json"
+    },
+    {
+      "id": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+      "input": {
+        "sha256": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+        "bytes": 875104
+      },
+      "load": {
+        "loaded": false,
+        "error": {
+          "category": "native-binding",
+          "type": "Error",
+          "fingerprint": "b0482d1bc653d4a42304c16e439b6aa495005b639064ef9cf92118b25907b41c",
+          "failureCodes": [
+            "PROTECTED_INIT_UNBOUND"
+          ]
+        },
+        "evidence": {
+          "exceptionTypes": [],
+          "missingSymbols": []
+        }
+      },
+      "targets": [],
+      "baselineImage": "sha256:b6e3df0f9f7a9e2fa71bd040551899b1cfebe811dc1034d69a2a133ddbaf534a",
+      "reference": "docs/linux/catalog-matrix-probe.json"
+    },
+    {
+      "id": "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317",
+      "input": {
+        "sha256": "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317",
+        "bytes": 286996
+      },
+      "load": {
+        "loaded": false,
+        "error": {
+          "category": "execution",
+          "type": "Error",
+          "fingerprint": "dc5c2de46d25a5982ea95343d625b91d0bb3509e4c45903f41a484a45e2e3397",
+          "failureCodes": [
+            "DEX_CONVERSION_FAILED"
+          ]
+        },
+        "evidence": {
+          "exceptionTypes": [],
+          "missingSymbols": []
+        }
+      },
+      "targets": [],
+      "baselineImage": "sha256:b6e3df0f9f7a9e2fa71bd040551899b1cfebe811dc1034d69a2a133ddbaf534a",
+      "reference": "docs/linux/catalog-matrix-probe.json"
+    }
+  ],
+  "input": {
+    "manifestSha256": "bee06f94efe5a0c249f46e2b273ad34bff78d704ec2cb7a9e5aa9748a3c94136",
+    "unchangedOriginalJarSha256": [
+      "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+      "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+      "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317"
+    ],
+    "metadataNote": "The three retained Amns ext values are the original captured initialization inputs. Other artifacts use explicitly marked entrypoint probes with empty ext; missing provider/user setup skips relevant homes."
+  },
+  "changes": [
+    {
+      "area": "DEX boolean/reference branch",
+      "behavior": "Retry only the pinned converter L/Z type-merge failure, inserting an identical zero constant on a single-predecessor proven-zero branch; rejects alternative/switch/handler paths",
+      "cacheVersion": "dex-artifacts-v3-zero-branch",
+      "ownedTests": 6
+    },
+    {
+      "area": "Constructor verifier",
+      "behavior": "Track exact NEW and uninitialized-this provenance inside one block, repair ancestor targets and synthesize only proven forwarding chains; retain resources and strict JVM verification",
+      "ownedSemanticCases": 18
+    },
+    {
+      "area": "Android host ABI",
+      "behavior": "Activity finish state and actual view-tree findViewById; TextPaint extends a limited Paint adapter; no invented views or Android font metrics",
+      "ownedTests": 2
+    },
+    {
+      "area": "Dynamic ARM ELF",
+      "behavior": "Patch captured direct System/Runtime.load(path) before defining classes, validate worker-owned ARM ELF snapshots and execute real unidbg JNI; strict initialization failure, unsupported instance native/name loads fail explicitly",
+      "ownedTests": 9
+    },
+    {
+      "area": "Native shutdown",
+      "behavior": "Count native execution/loads and wait without holding either VM lock; close admission atomically only at zero, then destroy; original independent guard/payload locks retained; finite timeout fails before unsafe destroy",
+      "ownedCrossVmRegression": 1
+    },
+    {
+      "area": "Original protection heuristic",
+      "behavior": "Default Android path/method body unchanged. Explicit declared policy calls real static Init.init(Context) only when recognized protected-loader contracts are absent; successful source invocation remains required",
+      "scope": "Opt-in host policy, not Android behavioral parity"
+    }
+  ],
+  "image": {
+    "tag": "tvbox-core:linux-amd64-jarfix-20261015",
+    "id": "sha256:5360eb501bc10ec76fa41c5023484bfc0514d9cc70cea2a495d6d06a95aa93b6",
+    "size": 513806227,
+    "user": "10001:10001",
+    "architecture": "linux/amd64",
+    "base": "sha256:b6e3df0f9f7a9e2fa71bd040551899b1cfebe811dc1034d69a2a133ddbaf534a",
+    "incrementalUncompressedBytes": 2151925,
+    "compilerAbsent": true,
+    "sources": [
+      {
+        "path": "backend/spider-runtime/native-bridge/src/tvbox/runtime/NativeHost.java",
+        "sha256": "703cef989ada530dd863930cc4b7f3c75708a5ba4955ecc29bbfcd26d0546ff4"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/src/tvbox/runtime/VerifiedJarRepair.java",
+        "sha256": "14cfae0598a4c89c4e8051e0d8b5c5f632fd755b0a8f61e309dea2f269acf4d9"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/src/android/app/Activity.java",
+        "sha256": "fa03fc0e7865c773a6f8a0da15bee2f1e65b53d261381e64c4c20822aa7d3aad"
+      },
+      {
+        "path": "backend/spider-runtime/src/tvbox/runtime/DexArtifacts.java",
+        "sha256": "28cf07794d52a702c6aaa02be3fe5f2c3e7b6eea778fb485dbc4b23771f79958"
+      },
+      {
+        "path": "backend/spider-runtime/src/tvbox/runtime/HostServices.java",
+        "sha256": "cfa0bc3d0ed969dbb58ef2d2d636f557bba5c2fe39b8c9806b177fa6f4345667"
+      },
+      {
+        "path": "backend/spider-runtime/src/tvbox/runtime/JarExecutor.java",
+        "sha256": "4f6753c54e81db75dd2d830eab1b49aa724e3fd597784d34c88b4e62b99de168"
+      },
+      {
+        "path": "backend/spider-runtime/session.mjs",
+        "sha256": "f4ebb3a48f81cc699dd6981a7f0235b9619b04be64ad6fb9b130ea026c37d46c"
+      },
+      {
+        "path": "backend/spider-runtime/subscription-cli.mjs",
+        "sha256": "8b7dfce4a9f104d127822cbdf9adf9f3a8620f406746cfc6e70a394327b5ca9f"
+      },
+      {
+        "path": "scripts/container/jar-matrix-probe.mjs",
+        "sha256": "2248164816796c2aaecbc6cd6ab1a07b6780cc0693b6f9669af492568c7bca49"
+      },
+      {
+        "path": "scripts/container/jar-failure-diagnostics.mjs",
+        "sha256": "50438522251c5194594eee9712418f76fdcc41f990fce4cdbc137373c4836b07"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/src/tvbox/runtime/DynamicNativeSupport.java",
+        "sha256": "95e9e11c4884216c3f215a9fa2a2104ed7ad483f5ad66c310a50152a33b6916c"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/build.mjs",
+        "sha256": "ef1880c054540474afc1ef8116752cb88f74e6939072ca6ac909613d5a79b812"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/src/tvbox/runtime/NativeLifecycle.java",
+        "sha256": "183d1adb02bbcdfb99f1c27c78917ef8e027b7b3a1a93e71f69c50f9a855b531"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/src/android/text/TextPaint.java",
+        "sha256": "1f153d3937e5719117d20b68d0e6958328e282a0b89b6e071a5e04b1c1987a22"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/src/android/graphics/Paint.java",
+        "sha256": "fad79c0eb92269f08974ccafa4119b863cdcbbdee0754472e4df8278f9cac2f1"
+      },
+      {
+        "path": "backend/spider-runtime/index.mjs",
+        "sha256": "d52b47d77739222accb0275dc815882c755776df44aa976ed8090ba817127d99"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/session.mjs",
+        "sha256": "4c94313d350b49aa46b2ff348f1d2ecccfb594df226593354b8a6beadba9036b"
+      },
+      {
+        "path": "scripts/container/jar-repair-probe.mjs",
+        "sha256": "c58b542e9bf1b0c0e2d6ce1966be1b8a5669b38c715d50d5dc302a584c9f0356"
+      }
+    ],
+    "method": "Rebuilt portable Java17 class directories with temporary pinned ECJ on the existing NAS JRE; copied updated source and new prebuilt Spider/native directories onto prior runtime. No library duplication or compiler in the final image. Local derivative, not reproducible/public release."
+  },
+  "regression": {
+    "host": "macOS ARM64",
+    "passed": 445,
+    "failed": 0,
+    "skipped": 0,
+    "nativeEnabled": true,
+    "logSha256": "54a55e36f9c02227a866f8e9bfaa28d454e000011723b13273f57c0d769c9385"
+  },
+  "doctor": {
+    "ok": true,
+    "platform": "linux",
+    "architecture": "x64",
+    "node": "v24.22.0",
+    "scope": "Offline synthetic config/QuickJS/DEX and actual ARM machine-code probes; no Android parity or real-source certification",
+    "config": {
+      "sites": 1
+    },
+    "quickjs": {
+      "ready": true,
+      "answer": 42
+    },
+    "dex": {
+      "ready": true,
+      "classes": 1,
+      "resource": "offline-dex-resource"
+    },
+    "arm": [
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      },
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64"
+      },
+      {
+        "value": 43,
+        "bits": 32,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      }
+    ],
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokensRejected": true,
+      "listeners": 0,
+      "dexLoaders": 0
+    },
+    "java": "openjdk version \"17.0.20.1\" 2026-08-18"
+  },
+  "nas": [
+    {
+      "id": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "input": {
+        "sha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+        "bytes": 1001068
+      },
+      "policy": "android",
+      "backend": "dynarmic",
+      "sourceInputScope": "JAR entrypoint probes with empty ext; original provider configuration was not retained",
+      "rows": [
+        {
+          "api": "csp_MarketGuard",
+          "sourceKeySha256": "b4879898121cf420e55012c9ee62f0a9c61c8eb07e3f0a896100350d4f012edb",
+          "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready": true,
+          "className": "com.github.catvod.spider.MarketGuard",
+          "homeSkipped": "Needs original provider/user configuration; empty ext is only an initialization probe"
+        },
+        {
+          "api": "csp_BiliGuard",
+          "sourceKeySha256": "8e0cb6b3a244f0e243b6c90c3d3b6c2bd332a4af3681d32a79c31a3b25e55514",
+          "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready": true,
+          "className": "com.github.catvod.spider.BiliGuard",
+          "homeSkipped": "Needs original provider/user configuration; empty ext is only an initialization probe"
+        },
+        {
+          "api": "csp_LocalGuard",
+          "sourceKeySha256": "e56fe827c11d8d478a11f14fe22dafb1931db21c530d179cf477048311ccee20",
+          "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready": true,
+          "className": "com.github.catvod.spider.LocalGuard",
+          "home": {
+            "bytes": 136,
+            "sha256": "d12237feffd489e88fccb6e16c25bdc3d60278d004471801b84dd777810271f8",
+            "semanticSha256": "aaea8c6eb91f653642b328eb1a46993388a1be4b9f5425fca19674d6cc589d3b",
+            "fields": 3,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": 1,
+            "list": null,
+            "filterGroups": null,
+            "classSha256": "00227e1701f80e07164e38885da236cc511262caf4020b57bd715366441300c8"
+          }
+        }
+      ],
+      "cleanup": {
+        "closed": true,
+        "exitCode": 0,
+        "exitSignal": null,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "load": {
+        "loaded": true
+      },
+      "native": {
+        "enabled": true,
+        "loaderCalls": 1,
+        "spiderCalls": 0,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 1,
+        "dexLoaders": 1,
+        "listeners": 0,
+        "payloadLoader": "dalvik.system.DexClassLoader",
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64",
+        "lastSpider": null,
+        "spiderTypes": {},
+        "reportSha256": "536ac2c27c8f5feeba27d202d16a46a3a4e5609b6fa3c2c12f6a8e1ac5dc74b3",
+        "payloadSha256": "3b3a4b30676af16bda0b3ddeeeb4b446f020c0d509f5413e4e1413aea9302577"
+      },
+      "nativeAfter": {
+        "enabled": true,
+        "loaderCalls": 1,
+        "spiderCalls": 3,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 1,
+        "dexLoaders": 1,
+        "listeners": 0,
+        "payloadLoader": "dalvik.system.DexClassLoader",
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64",
+        "lastSpider": "com.github.catvod.spider.Local",
+        "spiderTypes": {
+          "com.github.catvod.spider.Market": 1,
+          "com.github.catvod.spider.Bili": 1,
+          "com.github.catvod.spider.Local": 1
+        },
+        "reportSha256": "536ac2c27c8f5feeba27d202d16a46a3a4e5609b6fa3c2c12f6a8e1ac5dc74b3",
+        "payloadSha256": "3b3a4b30676af16bda0b3ddeeeb4b446f020c0d509f5413e4e1413aea9302577"
+      },
+      "evidence": {
+        "exceptionTypes": [],
+        "missingSymbols": []
+      },
+      "observations": {
+        "ready": 3,
+        "homeJson": 1,
+        "homesWithContent": 1,
+        "categoriesWithContent": 0
+      },
+      "publicNames": [
+        "王二小",
+        "王二小2线"
+      ],
+      "reportSha256": "7ba117fc1af52953ed97b6604adffbef66c90e725040070c3620578e5aa10530"
+    },
+    {
+      "id": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+      "input": {
+        "sha256": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+        "bytes": 22582
+      },
+      "policy": "android",
+      "backend": "dynarmic",
+      "sourceInputScope": "original captured three-site ext",
+      "rows": [
+        {
+          "api": "csp_DoubanAmns",
+          "sourceKeySha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+          "extSha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+          "ready": true,
+          "className": "com.github.catvod.spider.DoubanAmns",
+          "home": {
+            "bytes": 13405,
+            "sha256": "2be7ba8bd1a9672147a12933224d2dd466021f8afca10cf3111b81ad33ad0ca0",
+            "semanticSha256": "61d6af4634699874fc5499c5ae65469c6aae0cf0c232fe47bf66fa5eb837462f",
+            "fields": 5,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+            "filtersSha256": "d885a8b11da99bdc601a1466478b833ea5be81c481e0bc51d051e178dc7c2f63"
+          },
+          "category": {
+            "bytes": 6986,
+            "sha256": "eccbe9464d5d6872d921dbacd416393cdae6c95a5a4e100ebbe3b2dc3a989ab4",
+            "semanticSha256": "53add35b5d816019e2cb8b24f765179866d7c87798e670084360cf856711f360",
+            "fields": 7,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null
+          }
+        },
+        {
+          "api": "csp_Y360Amns",
+          "sourceKeySha256": "7a49b045dbfa0f8427a0d1cbf67835028778f5a90c8f08b86b5f495cdec31bfd",
+          "extSha256": "7a49b045dbfa0f8427a0d1cbf67835028778f5a90c8f08b86b5f495cdec31bfd",
+          "ready": true,
+          "className": "com.github.catvod.spider.Y360Amns",
+          "home": {
+            "bytes": 6485,
+            "sha256": "97affca938a665d15014c9a3587d0a33d9f4ef3298b8de4cf6899cebfec3b4bb",
+            "semanticSha256": "97affca938a665d15014c9a3587d0a33d9f4ef3298b8de4cf6899cebfec3b4bb",
+            "fields": 2,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": 4,
+            "list": null,
+            "filterGroups": 4,
+            "classSha256": "bd27c2c72c65cb0dec78a3b4615753494d092ff52f46c4865cd574115c755b4d",
+            "filtersSha256": "bb6b48699a1831ffbf5c4d8ddb72153cba3f42d29d3abeb8789ce10ab9733dc3"
+          },
+          "category": {
+            "bytes": 5883,
+            "sha256": "bd1475d2d0434758be94a589c08aafe29f7efc2e87d1a36d19b7414319aac705",
+            "semanticSha256": "5a571cbc9003281b336071ea136f1770d8e93e7a6705cf81bc2c9873fa9fc6cf",
+            "fields": 7,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": null,
+            "list": 35,
+            "filterGroups": null
+          }
+        },
+        {
+          "api": "csp_HgdhAmns",
+          "sourceKeySha256": "e47f059aaef9ebc6a6defedd0aab2eef79f859fa64f5790ff14cdcea33fa6aaa",
+          "extSha256": "e47f059aaef9ebc6a6defedd0aab2eef79f859fa64f5790ff14cdcea33fa6aaa",
+          "ready": true,
+          "className": "com.github.catvod.spider.HgdhAmns",
+          "home": {
+            "bytes": 1513,
+            "sha256": "86e0dcbf409dc91fc39dbcc7b30b3246a74101fb3ea04b156cd6072902ed0263",
+            "semanticSha256": "c99edd6dcf79d47909a837d4081f41582495e0deacb2eb956163a72a0d4fc57d",
+            "fields": 2,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": 6,
+            "list": null,
+            "filterGroups": 5,
+            "classSha256": "2dab5ef2042efae4ca4e114a7984eb8f2bd325a14462fbb659b482d48a05e098",
+            "filtersSha256": "9a9321a3547671bf0091cfeb835d6a6bb5bebffdda4c6d1763e3fbb60cfa40c6"
+          },
+          "category": {
+            "bytes": 2044,
+            "sha256": "c3c2facdcf29618ca1a276fc5202207755193046079e1db8029371d65697142e",
+            "semanticSha256": "e327384050817489208e2c2bb82262546bfa3877288f794698e79b114847755e",
+            "fields": 7,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": null,
+            "list": 10,
+            "filterGroups": null
+          }
+        }
+      ],
+      "cleanup": {
+        "closed": true,
+        "exitCode": 0,
+        "exitSignal": null,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "load": {
+        "loaded": true
+      },
+      "native": {
+        "enabled": true,
+        "loaderCalls": 1,
+        "spiderCalls": 0,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 1,
+        "dexLoaders": 1,
+        "listeners": 0,
+        "payloadLoader": "dalvik.system.DexClassLoader",
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend32",
+        "lastSpider": null,
+        "spiderTypes": {},
+        "reportSha256": "35780d07d097a8e54029bb4c122c5256a2efd1162a1c656994a020e8abc9e3f4",
+        "payloadSha256": "62ce61ecf790859e210b60061ca4bd94c37a7c740c3aa0d271a99ee08fad904b"
+      },
+      "nativeAfter": {
+        "enabled": true,
+        "loaderCalls": 1,
+        "spiderCalls": 3,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 1,
+        "dexLoaders": 1,
+        "listeners": 0,
+        "payloadLoader": "dalvik.system.DexClassLoader",
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend32",
+        "lastSpider": "com.github.catvod.spider.Hgdh",
+        "spiderTypes": {
+          "com.github.catvod.spider.Douban": 1,
+          "com.github.catvod.spider.Y360": 1,
+          "com.github.catvod.spider.Hgdh": 1
+        },
+        "reportSha256": "35780d07d097a8e54029bb4c122c5256a2efd1162a1c656994a020e8abc9e3f4",
+        "payloadSha256": "62ce61ecf790859e210b60061ca4bd94c37a7c740c3aa0d271a99ee08fad904b"
+      },
+      "evidence": {
+        "exceptionTypes": [],
+        "missingSymbols": []
+      },
+      "observations": {
+        "ready": 3,
+        "homeJson": 3,
+        "homesWithContent": 3,
+        "categoriesWithContent": 3
+      },
+      "publicNames": [
+        "嗷呜",
+        "嗷呜2线",
+        "嗷呜3线",
+        "南风",
+        "南风2线",
+        "周J"
+      ],
+      "reportSha256": "e770166d565c2758fb9c82cee4d1ce1219eca0287cb29d01167ffcd85af01636"
+    },
+    {
+      "id": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+      "input": {
+        "sha256": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+        "bytes": 875104
+      },
+      "policy": "android",
+      "backend": "dynarmic",
+      "sourceInputScope": "JAR entrypoint probes with empty ext; original provider configuration was not retained",
+      "rows": [],
+      "cleanup": {
+        "closed": true,
+        "exitCode": 0,
+        "exitSignal": null,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "load": {
+        "loaded": false,
+        "error": {
+          "category": "native-binding",
+          "type": "Error",
+          "fingerprint": "b0482d1bc653d4a42304c16e439b6aa495005b639064ef9cf92118b25907b41c",
+          "failureCodes": [
+            "PROTECTED_INIT_UNBOUND"
+          ]
+        }
+      },
+      "native": {
+        "enabled": true,
+        "loaderCalls": 0,
+        "spiderCalls": 0,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 0,
+        "dexLoaders": 0,
+        "listeners": 0,
+        "payloadLoader": null,
+        "backend": null,
+        "lastSpider": null,
+        "spiderTypes": {},
+        "reportSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "payloadSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+      },
+      "nativeAfter": {
+        "enabled": true,
+        "loaderCalls": 0,
+        "spiderCalls": 0,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 0,
+        "dexLoaders": 0,
+        "listeners": 0,
+        "payloadLoader": null,
+        "backend": null,
+        "lastSpider": null,
+        "spiderTypes": {},
+        "reportSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "payloadSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+      },
+      "evidence": {
+        "exceptionTypes": [],
+        "missingSymbols": []
+      },
+      "observations": {
+        "ready": 0,
+        "homeJson": 0,
+        "homesWithContent": 0,
+        "categoriesWithContent": 0
+      },
+      "publicNames": [
+        "宝盒2线"
+      ],
+      "reportSha256": "430d0186788b7aceb161d9c3ee81c9555b423d907d125d72e5bd8c786eaf7ac8"
+    },
+    {
+      "id": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+      "input": {
+        "sha256": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+        "bytes": 875104
+      },
+      "policy": "declared",
+      "backend": "dynarmic",
+      "sourceInputScope": "JAR entrypoint probes with empty ext; original provider configuration was not retained",
+      "rows": [
+        {
+          "api": "csp_Market",
+          "sourceKeySha256": "5238d9bd03d543e62fff76cbea6a2392a95f42110e36c282e4c919991f607daf",
+          "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready": true,
+          "className": "com.github.catvod.spider.Market",
+          "homeSkipped": "Needs original provider/user configuration; empty ext is only an initialization probe"
+        },
+        {
+          "api": "csp_Douban",
+          "sourceKeySha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+          "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready": true,
+          "className": "com.github.catvod.spider.Douban",
+          "home": {
+            "bytes": 6954,
+            "sha256": "59e4c35e30176d74efea374cfc090fa33b70f79ad20cb98a1fd5c6d084ebaa88",
+            "semanticSha256": "062eada2a066c737f5acc1826393193f61197a9c3e7ca92794f3c08e18987927",
+            "fields": 4,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": null,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39"
+          },
+          "category": {
+            "bytes": 6706,
+            "sha256": "d4208b55d98f8a13a5f091f809addb7cec7109b350cf630a2b07f773263485d3",
+            "semanticSha256": "d659e7531b2cbd3f7122c929cb0c0782c08b69b1d3cbfd60a799bb09e9ebc395",
+            "fields": 7,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null
+          }
+        },
+        {
+          "api": "csp_Local",
+          "sourceKeySha256": "8c31e6e7223097e2e4847773c47a4efab6aaf79deeecc92a7759891c74976dde",
+          "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready": true,
+          "className": "com.github.catvod.spider.Local",
+          "home": {
+            "bytes": 136,
+            "sha256": "3ac10e6dc2aeec499ba09c95c5b33dd26b1201b35394aa3858967e00e1feccb3",
+            "semanticSha256": "ce3af5ba66b8694974632dbc353d78f66fb8bbae3c956d51adc9c4679e09192a",
+            "fields": 3,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": 1,
+            "list": null,
+            "filterGroups": null,
+            "classSha256": "26f9621edbd562ac30fa458336621899290194c246111aeb9f6f7c8430ef7303"
+          }
+        }
+      ],
+      "cleanup": {
+        "closed": true,
+        "exitCode": 0,
+        "exitSignal": null,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "load": {
+        "loaded": true
+      },
+      "native": {
+        "enabled": true,
+        "loaderCalls": 0,
+        "spiderCalls": 0,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 0,
+        "dexLoaders": 0,
+        "listeners": 1,
+        "payloadLoader": null,
+        "backend": null,
+        "lastSpider": null,
+        "spiderTypes": {},
+        "reportSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "payloadSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+      },
+      "nativeAfter": {
+        "enabled": true,
+        "loaderCalls": 0,
+        "spiderCalls": 0,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 0,
+        "dexLoaders": 0,
+        "listeners": 1,
+        "payloadLoader": null,
+        "backend": null,
+        "lastSpider": null,
+        "spiderTypes": {},
+        "reportSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "payloadSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+      },
+      "evidence": {
+        "exceptionTypes": [],
+        "missingSymbols": []
+      },
+      "observations": {
+        "ready": 3,
+        "homeJson": 2,
+        "homesWithContent": 2,
+        "categoriesWithContent": 1
+      },
+      "publicNames": [
+        "宝盒2线"
+      ],
+      "reportSha256": "70e6829a2ca03fde4f7fd6484429f20ba9029f62cb52a15290e51b1f189737bb"
+    },
+    {
+      "id": "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317",
+      "input": {
+        "sha256": "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317",
+        "bytes": 286996
+      },
+      "policy": "android",
+      "backend": "dynarmic",
+      "sourceInputScope": "JAR entrypoint probes with empty ext; original provider configuration was not retained",
+      "rows": [
+        {
+          "api": "csp_Config",
+          "sourceKeySha256": "87e89abb4c1c551fe08d355d097f18b8de78edca5f556997085681662fce8eed",
+          "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready": true,
+          "className": "com.github.catvod.spider.Config",
+          "home": {
+            "bytes": 667,
+            "sha256": "860d803445838b783568b06ab955ef6b9b9916a3d627beceb525fc463fc4fa11",
+            "semanticSha256": "63af8c744385f41b57b1476427662747d0046e286592597b8317814c3dc74aea",
+            "fields": 4,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": 12,
+            "list": 0,
+            "filterGroups": null,
+            "classSha256": "553c56a6d1b9932dda3da35b76fc3654ade95f2961d653de0c63463bf25e1f5b"
+          }
+        },
+        {
+          "api": "csp_Douban",
+          "sourceKeySha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+          "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready": true,
+          "className": "com.github.catvod.spider.Douban",
+          "home": {
+            "bytes": 6954,
+            "sha256": "6ef6272a3bba4c2148457da713eed0937bfbc22a9f37c38174cdec8e64c5f9d6",
+            "semanticSha256": "52bd099a5e0a3681287c70b1319fc2da6fb941b9c9e17e9add56fdebe330d05a",
+            "fields": 4,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": null,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39"
+          },
+          "category": {
+            "bytes": 6706,
+            "sha256": "671579ab4c38bfa964d5fb916af6cc874a89f861851bf520a3795836af76c50b",
+            "semanticSha256": "013ce45b0f942a57a8efa328941ae77162211516d156984d592120b94f522773",
+            "fields": 7,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null
+          }
+        },
+        {
+          "api": "csp_Hongguo",
+          "sourceKeySha256": "46818a6edb0cb2fd977b7f5f364ac5a510f5e6afb15d641a6e265ccd91536b07",
+          "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "ready": true,
+          "className": "com.github.catvod.spider.Hongguo",
+          "home": {
+            "bytes": 659,
+            "sha256": "301fac9dad02b0098a7f665edac921f0583b4ba89a269ad764145e19dbc74a40",
+            "semanticSha256": "5e630e1ec32d36a90f7afcbb2be8c26830280327549d3b219564c7248d957f1e",
+            "fields": 4,
+            "emptyObject": false,
+            "hasContent": true,
+            "classes": 12,
+            "list": 0,
+            "filterGroups": null,
+            "classSha256": "7e1bbcc795f3d5ec4bea9c1103a269efb928df57e1528a6242f0bd6f2dbd5cc1"
+          },
+          "category": {
+            "bytes": 84,
+            "sha256": "0af16b54b5ad3fdca336058db01c1c99cee0fc291172b33174a139faff29f7a6",
+            "semanticSha256": "6e4158a134d390dba2e8332ccab6997bc59dba077253932a866c8b0680f763f5",
+            "fields": 7,
+            "emptyObject": false,
+            "hasContent": false,
+            "classes": null,
+            "list": 0,
+            "filterGroups": null
+          }
+        }
+      ],
+      "cleanup": {
+        "closed": true,
+        "exitCode": 0,
+        "exitSignal": null,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "load": {
+        "loaded": true
+      },
+      "native": {
+        "enabled": true,
+        "loaderCalls": 0,
+        "spiderCalls": 0,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 0,
+        "dexLoaders": 0,
+        "listeners": 0,
+        "payloadLoader": null,
+        "backend": null,
+        "lastSpider": null,
+        "spiderTypes": {},
+        "reportSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "payloadSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+      },
+      "nativeAfter": {
+        "enabled": true,
+        "loaderCalls": 0,
+        "spiderCalls": 0,
+        "nullSpiderCalls": 0,
+        "extraLoaders": 0,
+        "dexLoaders": 0,
+        "listeners": 0,
+        "payloadLoader": null,
+        "backend": null,
+        "lastSpider": null,
+        "spiderTypes": {},
+        "reportSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "payloadSha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+      },
+      "evidence": {
+        "exceptionTypes": [
+          "java.lang.ClassNotFoundException"
+        ],
+        "missingSymbols": [
+          {
+            "kind": "class",
+            "name": "com.github.catvod.spider.Proxy"
+          }
+        ]
+      },
+      "observations": {
+        "ready": 3,
+        "homeJson": 3,
+        "homesWithContent": 3,
+        "categoriesWithContent": 1
+      },
+      "publicNames": [
+        "夏夏影视"
+      ],
+      "reportSha256": "bea3ff05e4f272565a7513681acd7c7f129db438c61bcc59a0e5398f9794f4b6"
+    }
+  ],
+  "aidSessionRestart": [
+    {
+      "iteration": 1,
+      "cachedSubscription": false,
+      "ready": true,
+      "classificationCount": 8,
+      "classSha256": "d451fafd5fd1e76d662ce0810c13ae745f813e3a69b3be19606c48bd9f81b4b2",
+      "homeSha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+      "artifacts": {
+        "scope": "downloaded JAR pairs only; excludes runtime DEX/module/plugin data",
+        "integrity": "strict",
+        "maxBytes": 134217728,
+        "bytes": 1279773,
+        "entries": 1,
+        "pinned": 1,
+        "persistent": true
+      },
+      "runtimeCache": {
+        "maxBytes": 268435456,
+        "bytes": 3724289,
+        "dexBytes": 3724289,
+        "moduleBytes": 0,
+        "entries": 2,
+        "pinnedDexEntries": 2,
+        "evictedEntries": 0,
+        "rejectedWrites": 0
+      }
+    },
+    {
+      "iteration": 2,
+      "cachedSubscription": true,
+      "ready": true,
+      "classificationCount": 8,
+      "classSha256": "d451fafd5fd1e76d662ce0810c13ae745f813e3a69b3be19606c48bd9f81b4b2",
+      "homeSha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+      "artifacts": {
+        "scope": "downloaded JAR pairs only; excludes runtime DEX/module/plugin data",
+        "integrity": "strict",
+        "maxBytes": 134217728,
+        "bytes": 1279773,
+        "entries": 1,
+        "pinned": 1,
+        "persistent": true
+      },
+      "runtimeCache": {
+        "maxBytes": 268435456,
+        "bytes": 3724289,
+        "dexBytes": 3724289,
+        "moduleBytes": 0,
+        "entries": 2,
+        "pinnedDexEntries": 2,
+        "evictedEntries": 0,
+        "rejectedWrites": 0
+      }
+    }
+  ],
+  "constraints": {
+    "uid": "10001:10001",
+    "readOnlyRoot": true,
+    "tmpfs": "/tmp:rw,exec,nosuid,nodev,size=384m (256m doctor/Aid)",
+    "pidsLimit": 256,
+    "memoryBytes": 2147483648,
+    "capabilities": "ALL dropped",
+    "noNewPrivileges": true,
+    "noPublishedPorts": true,
+    "inputMount": "read-only original JAR and minimal manifest",
+    "network": "normal Docker networking for authorized real source calls, disabled for offline doctor"
+  },
+  "compiler": {
+    "name": "ECJ 3.38.0",
+    "bytes": 3285717,
+    "sha256": "97c566b120009c203a2fc8b291f4a9adbc171cf1ccb70f06f6b4e1828c00ce8e",
+    "temporary": true,
+    "retained": false
+  },
+  "limits": [
+    "Original JARs are fixed by SHA; providers and dynamic native-library downloads remain live, so this does not compare identical remote response bodies.",
+    "Only three Amns variants retained original ext; other APIs are controlled entrypoint probes. Market/Bili requiring missing configuration are explicitly not counted as homepage success.",
+    "No generic ZIP/native/static-scan success is treated as full source compatibility. Optional absent Proxy on the repaired 402 artifact is an upstream caught optional hook, not a failed homepage.",
+    "Paint/TextPaint preserve old headless properties/width estimates and limited hierarchy contracts; complete Android rendering, conflicting unimplemented SDK signatures and UI lifecycle remain outside scope.",
+    "Dynamic native support covers direct path-loading and static native signatures; reflective/method-handle loading, name-based loadLibrary and instance native are not certified.",
+    "The explicit declared initializer changes the false-positive protection path; Android default remains false for this particular JAR and is regression-tested.",
+    "Native shutdown waits for current execution/callbacks without merging VM locks. Unending native calls cause a bounded explicit failure and worker containment, not unsafe emulator destruction.",
+    "Full 115-artifact matrix, untested ext/method variants and Android/ART same-input comparison have not been rerun/completed by this repair batch.",
+    "Multiple native artifacts still require independent production-worker scheduling; this batch isolates fixed artifacts during validation."
+  ],
+  "cleanup": {
+    "temporaryFilesRemoved": true,
+    "taskServicesRunning": false,
+    "autostartChanges": false,
+    "newPermanentTools": [],
+    "existingNasContainersModified": false,
+    "retainedProjectToolsApproxMiB": 404,
+    "retainedNasImageTag": "tvbox-core:linux-amd64-jarfix-20261015",
+    "nasTemporaryDirectoryRemoved": true,
+    "nasTaskContainersRemoved": 17,
+    "temporaryCompilerRemoved": true,
+    "discardedImageTagsRemoved": [
+      "tvbox-core:linux-amd64-fixes-candidate-20261015",
+      "tvbox-core:linux-amd64-fixes-20261015"
+    ],
+    "nasExistingContainers": [
+      "dockge-dockge-1",
+      "emby",
+      "moviepilot",
+      "qbittorrent"
+    ],
+    "retainedNasImageId": "sha256:5360eb501bc10ec76fa41c5023484bfc0514d9cc70cea2a495d6d06a95aa93b6",
+    "sshMasterStopped": true,
+    "localProjectCacheRemoved": true,
+    "originalRegressionInputsRemoved": true,
+    "removedOriginalInputs": [
+      {
+        "sha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+        "bytes": 1001068
+      },
+      {
+        "sha256": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+        "bytes": 22582
+      },
+      {
+        "sha256": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+        "bytes": 875104
+      },
+      {
+        "sha256": "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317",
+        "bytes": 286996
+      }
+    ],
+    "removedOriginalInputDirectory": "/Users/coke/Desktop/Projects/tvbox-linux/.data/compat-regressions/catalog-20261015",
+    "verifiedAt": "2026-10-15T06:43:45.027986+00:00",
+    "notes": "All task containers, temporary compiler/wrapper, intermediate image tags, exact NAS directory, SSH master and local build/raw-response caches removed. Four captured original regression JARs and minimal manifest were verified against report hashes and deleted after scoped repairs and regression verification. Existing tools and NAS rollback images remain."
+  }
+}

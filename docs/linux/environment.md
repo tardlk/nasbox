@@ -562,3 +562,62 @@ metadata-only catalogue/review reports. 425 native-enabled local tests pass;
 115 real captured artifacts and the corrected follow-up ran on the physical NAS.
 Task services still running: none. Original NAS Docker/four containers continue.
 Autostart changes: none. Local project .cache is absent after final verification.
+
+
+## Fixed-input JAR repairs — completed, 2026-10-15
+
+Checked existing tools and reused shared Node, project JDK/dex2jar/ASM/libraries,
+system Python/curl/SSH/SCP/tar and the existing NAS routes JRE image. No package,
+global tool, VM, Android SDK, daemon or autostart was installed. For temporary
+Java17 compilation on the NAS's existing JRE, fetched ECJ 3.38.0 (3,285,717 bytes)
+from official Maven Central and verified the already-recorded SHA256
+97c566b120009c203a2fc8b291f4a9adbc171cf1ccb70f06f6b4e1828c00ce8e.
+It lived only under .cache/jar-fixes and /tmp/tvbox-jar-fixes.eUS4N8 on the NAS;
+the temporary javac wrapper was removed before packaging the runtime image.
+
+Private retained four regression JARs are read-only inputs. Host analysis only
+reads/converts bytecode; original source initializers execute in non-root Docker
+containers with read-only root, dropped capabilities, no-new-privileges,
+pids256, memory2GiB and exec /tmp tmpfs384MiB. Raw provider/exception output is
+temporary, never committed. Owned synthetic Java/DEX/ARM ELF fixtures reproduce
+the issues without executing provider code on the host. The original four NAS
+app containers remain untouched.
+
+Retained final NAS artifact: tvbox-core:linux-amd64-jarfix-20261015,
+sha256:5360eb501bc10ec76fa41c5023484bfc0514d9cc70cea2a495d6d06a95aa93b6,
+513,806,227 uncompressed bytes (about490MiB). Purpose: execute the repaired
+subscription/JAR core and continue migration. It shares the existing routes
+image layers and adds2,151,925 bytes (about2.05MiB), containing only updated source,
+the two newly fingerprinted prebuilt Java class directories and the metadata
+probe. ECJ/javac/clang/npm and provider JARs/data are absent. This is a tested local
+derivative, not a public/reproducible release. The Dockerfile builds these sources
+through the normal multi-stage workflow; no shared dependency was replaced.
+
+Final cleanup removed17 named probe/compiler containers:3 baseline,4 first candidate,3 dynamic candidate,
+1 comparison with Unicorn2,1 temporary compiler and5 final probes. Stopped
+packaging containers were removed immediately. All17 remaining task containers
+exited and were removed by exact name. Two candidate image tags were removed;
+pre-existing core/route/cache/artifact images remain for rollback. No shared
+image/builder/cache prune was used. The exact NAS task directory, compiler, build
+products and raw reports/JARs/dynamic libraries were deleted. Aid cache/restart
+used a task-owned bind directory beneath that same temporary root and --rm
+containers; no named persistent data volume was created. No port was published.
+
+445 native-enabled tests pass; all5 final recorded JAR probe workers return
+exitCode0/exitSignal:null, exit and remove their temporary data. Offline doctor
+and the two real automatic strict-MD5 Aid cache sessions pass on the final image.
+Eighteen executed source hashes match the checkout. Build/transport/log/raw
+material under project .cache reached about47MiB at inspection and was removed
+after validation. Tests clean their owned OS-temp fixtures in finally hooks.
+
+The previously retained .data/compat-regressions/catalog-20261015 inputs (four
+original JARs plus a minimal manifest, about2.09MiB) were SHA-verified again and
+removed now that the scoped fixes/regressions completed. Synthetic fixtures and
+metadata hashes remain; no subscribed original or decrypted code is committed.
+The private directory no longer exists. This supersedes the earlier catalogue
+batch's temporary retention entry. No unrelated project data was removed.
+
+The SSH control master and its host-key/script files were stopped/removed; local
+project .cache is absent. NAS final inventory is exactly moviepilot, qbittorrent,
+emby and dockge-dockge-1, plus the retained images. Task services still running:
+none. Autostart changes:none. .tools remains about404MiB for continued development.

@@ -70,3 +70,13 @@ the build verifies hashes before copying them to the runtime classpath. This
 manifest does not relicense upstream or embedded third-party components. No
 remotely subscribed JAR, drpy engine, rule or dependency module is committed;
 real-source-runtime-probe.json retains diagnostic metadata only.
+
+Captured catalogue repairs (2026-10-15): new constructor provenance repair,
+bounded zero-branch DEX inference, dynamic direct-path ARM loading and native
+lifecycle coordination are project GPL-3.0-only adapters. Activity/TextPaint
+local overrides preserve the existing pinned WinBox stub ABI while correcting
+observed host contracts; original reference files and manifest hashes remain
+unchanged. The default JarLoader invokeInit body is still source-identical;
+the explicit declared initializer is a separately tested host policy wrapper.
+No captured provider JAR, decrypted payload, response body or native library is
+included in committed source or the runtime image.

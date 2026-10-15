@@ -84,4 +84,32 @@ and every native API are not established. The engine-only Docker doctor now pass
 `docs/linux/docker-runtime-probe.json`. The real protected JAR now also runs on
 NAS; see nas-native-runtime-probe.json. Automatic HTTP JAR resolution and bounded
 download caching are documented in ../ARTIFACTS.md and jar-artifact-cache-probe.json.
-Android/ART and aggregate runtime cache quotas remain outstanding.
+Android/ART remains outstanding. Managed runtime cache quotas are described in
+../CACHE.md; native/plugin data remains outside those budgets.
+
+## Captured failure repairs — 2026-10-15
+
+The current profile adds VerifiedJarRepair for provable constructor ancestry,
+Activity finish/query contracts and TextPaint's Paint superclass. It keeps JVM
+verification enabled and the original reference snapshots immutable. Frame and
+constructor repairs preserve uncertain/custom-constructor cases for explicit
+failure rather than guessing new behavior.
+
+DynamicNativeSupport detects direct System/Runtime.load(path) and static native
+declarations before defining an outer JAR without embedded libraries. Actual
+worker-owned ARM ELF content is snapshotted, validated and handed to the bridge;
+the host JVM never loads those captured direct paths. Initialization failure is
+propagated. Unknown name-based loaders, instance native signatures and indirect/
+reflective paths are not certified. Normal Java JARs remain outside this path.
+
+NativeLifecycle tracks active execution and loading in build-time adaptations.
+Close first cancels owned callbacks/listeners, then waits for active work to finish
+without holding a VM lock. At zero, new entries are atomically rejected before
+emulator destruction. The guard and ARM32 payload retain independent locks: a
+guard can await a payload call on another Java thread. Deadline exhaustion is an
+explicit close failure; it never destroys a JIT that is still executing.
+
+See docs/linux/jar-repairs-probe.json for fixed-input NAS evidence and the default
+Android versus explicit declared initializer policy. The final recorded workers
+exit with code0 and no signal. Complete Android rendering and general SDK/ART
+semantics remain open. Managed cache budgets are described in ../CACHE.md.

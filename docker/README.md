@@ -157,3 +157,13 @@ clan 本地文件服务时可传 `--local-address http://服务地址/`，CLI �
 NAS 已验证五种路径的实际 Spider 调用、重导入与缓存重启，及真实 Aid 首页。
 该增量镜像约488MiB，仅新增约56KiB共享层；没有加入编译器、发布端口或常驻服务。
 [路径实测报告](../docs/linux/artifact-routes-probe.json) 保留镜像、源码哈希与验证边界。
+
+已修复目录实测中明确定位的 DEX 转换、构造器校验、动态 ARM 库与原生关闭问题。
+最新验证镜像为 `tvbox-core:linux-amd64-jarfix-20261015`，约490MiB，共享既有层，
+新增约2.05MiB源代码与预编译类。可替换上方 session 命令的镜像标签。
+
+默认保留固定安卓初始化规则。对于被 killProcess 启发式误判的普通 JAR，可显式
+加 `--jar-init-policy declared`，执行真实 `Init.init(Context)`；这属于宿主兼容选项，
+不代表安卓行为一致。不要把它当作所有初始化失败的通用修复。无需此选项的订阅
+继续使用默认值。详细前后结果及边界见
+[固定输入修复报告](../docs/linux/jar-repairs-probe.json)。

@@ -9,7 +9,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 425 Node tests passed with native profile enabled, including isolated matrix, coverage accounting and metadata/privacy gates |
+| Probe and backend contract tests | Done | 445 Node tests passed with native profile enabled, including DEX/constructor/Android ABI/dynamic ARM and cross-VM shutdown regressions |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
@@ -479,3 +479,61 @@ Next compatibility work should target these reproducible protection/verification
 missing-API/DEX failures, then the remaining variants and Android/ART same-input
 runs. Production multi-native-artifact worker scheduling, dynamic helper jars,
 real Linux JS/Python and Web/API remain open. Player work stays deferred.
+
+
+Fixed-input JAR repair results — 2026-10-15:
+
+Committed 3ff2c81 addresses the four explicitly retained failure inputs. The
+converter's boolean/reference conflict now retries only proven-zero single-entry
+branches, with six owned semantic/control-flow regressions and a new cache version.
+VerifiedJarRepair tracks exact NEW and constructor-this provenance and restores
+provable ancestor forwarding chains before frame calculation. Eighteen synthetic
+cases pass with -Xverify:all; custom/unknown/cross-branch cases remain untouched.
+No JVM verification, source crypto/native call or failing method is skipped.
+
+Observed Android host contracts now include Activity.isFinishing/finish and
+findViewById over actual trees, and TextPaint's Paint superclass. No View is
+invented when the host has no UI. The existing headless text-width approximation
+is preserved; this is not Android rendering or a complete Paint SDK contract.
+
+The small Amns JAR materializes an ARM library without embedding .so. Direct
+System/Runtime.load(path) is now patched before class definition and passed to
+unidbg using validated worker-owned ELF snapshots. Initialization exceptions stay
+failures; unsupported name/instance native patterns fail explicitly. Native calls
+and loads have lifecycle accounting. Close waits without holding either VM lock,
+allowing guard→Java-thread→payload callbacks to finish; it atomically prevents new
+calls at zero before destroying emulators. This fixed the observed Dynarmic
+destruction race while keeping the separate VM locks required to avoid deadlock.
+
+Final physical NAS image tvbox-core:linux-amd64-jarfix-20261015:
+
+- 402f95 (夏夏影视): original DEX conversion failure is gone; three entrypoints
+  initialize and return nonempty homes, with one nonempty category response.
+- 198d4d (嗷呜/南风): three retained original-ext entrypoints now initialize and
+  return nonempty homes/categories; process exits code0 with no signal.
+- 0e0158 (王二小): genuine native getLoader/nested DEX is ready; three controlled
+  entrypoints initialize, Local home works. Market/Bili homes remain untested
+  because original provider/user ext was not retained; empty setup is not counted
+  as homepage compatibility or an engine failure.
+- 1ac653 (宝盒2线): unchanged Android heuristic still rejects its ordinary app-
+  restart killProcess marker. Explicit jarInitPolicy:'declared' calls the real
+  Init.init(Context), yielding three entrypoints/two homes/one category. Default
+  and opt-in results are both retained; the opt-in is not Android-equivalent.
+
+All five final probe workers close with exitCode0, exitSignal:null and verified
+process/temporary-data removal. The exact image passes offline doctor and two
+automatic strict-MD5 Aid sessions (second cached), each with the same eight
+classifications. Eighteen executed source hashes match the checkout. 445 native-
+enabled host tests pass. Reports are jar-repairs-probe.md and jar-repairs-probe.json.
+
+The final JRE-only image is 513,806,227 uncompressed bytes (about490MiB), sharing
+the routes image layers plus2,151,925 bytes of new source/classes. Temporary ECJ,
+all17 task containers, two discarded candidate image tags, exact NAS directory,
+SSH and local caches are removed. The four original regression JARs/minimal input
+were SHA-verified and removed after these scoped repairs. No new service or
+autostart was retained; existing development tools and rollback images remain.
+
+The full115-artifact matrix has not been repeated after these fixes. Remaining
+API/ext combinations, original provider configuration, indirect/native patterns,
+formal multi-artifact workers and Android/ART same-input coverage remain necessary.
+This records fixed causes and actual calls, not universal TVBox compatibility.

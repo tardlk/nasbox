@@ -342,3 +342,32 @@ download once, all five old tokens fail and no old automatic registration surviv
 The same image's real strict-MD5 subscription CLI obtains Aid home with eight
 classes; its offline doctor also passes. See artifact-routes-probe.json.
 These are route and selected-call checks, not Android/ART or complete source parity.
+
+
+## Fixed captured JAR repairs — 2026-10-15
+
+The four failure inputs from the public catalogue now have positive runtime
+evidence on the NAS. DEX boolean/reference zero-branch inference is repaired only
+after the pinned converter reports that exact conflict. Proven NEW/ancestor and
+constructor-this calls are repaired before frame calculation, preserving strict
+JVM verification. The Android host supplies Activity finish/query contracts and
+the TextPaint/Paint hierarchy needed by the captured code. Headless font metrics
+remain the previous approximation, not Android rendering.
+
+JARs with direct path-based native library loading can prepare their patch before
+defining classes even without embedded .so files. Worker-owned ARM ELF snapshots
+execute through unidbg; original initialization exceptions propagate. Name-based
+loadLibrary and instance native signatures fail explicitly. Native shutdown now
+waits for active calls/loads without merging the guard and payload VM locks,
+allowing cross-thread JNI callbacks to finish before destruction.
+
+The unchanged Android protection heuristic can reject an ordinary Init merely
+because another method restarts the app via killProcess. Default behavior stays
+Android-compatible. Explicit `jarInitPolicy:'declared'` (CLI `--jar-init-policy
+declared`) calls the real Init.init(Context) for the tested ordinary contract
+without recognized shell-loader bindings; this is a host opt-in, not parity.
+
+445 native-enabled tests pass. Fixed-input NAS results, exact image/source hashes,
+default-versus-opt-in comparisons and two automatic Aid cache sessions are in
+docs/linux/jar-repairs-probe.json. They establish scoped loading/call/cleanup
+repairs, not a rerun or certification of every catalogue source.
