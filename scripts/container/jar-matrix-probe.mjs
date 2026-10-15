@@ -31,11 +31,33 @@ function label(value, fallback = '') {
   return text;
 }
 const classLabel = value => typeof value === 'string' && /^[\w.$]+$/.test(value) && value.length <= 240 ? value : undefined;
+// Match SpiderWorker.route exactly: everything except JS/Python is a JAR route.
+export const isJarSource = source => !!source && (source.type === undefined || source.type === 3) && typeof source.api === 'string' && !source.api.endsWith('.js') && !source.api.includes('.js?') && !source.api.includes('.py');
+const extHashOf = source => digest(typeof source.ext === 'string' ? source.ext : JSON.stringify(source.ext ?? ''));
+
+function planSources(sites = []) {
+  const representatives = new Map(), variants = new Map();
+  let eligible = 0;
+  for (const source of sites) {
+    if (!isJarSource(source)) continue;
+    eligible++;
+    const key = source.api + '\0' + extHashOf(source);
+    if (variants.has(key)) continue;
+    variants.set(key, source);
+    if (!representatives.has(source.api)) representatives.set(source.api, source);
+  }
+  return { representatives, variants, duplicateSources: eligible - variants.size, skippedNonJarSources: sites.length - eligible };
+}
 
 /** No exception messages or diagnostic text leave this boundary. */
 export function classifyFailure(error, diagnosticText = '') {
   const message = String(error?.message ?? error ?? '');
   const text = [error?.errorType, error?.code, message, diagnosticText].join('\n');
+  const failureCodes = [];
+  for (const code of ['DUPLICATE_DEX_CLASS', 'ZIP_INVALID', 'PROTECTED_INIT_UNBOUND', 'NATIVE_GET_LOADER_NOT_READY', 'JAR_LOAD_FAILED', 'INPUT_CHECKSUM', 'INPUT_PATH', 'INPUT_SIZE', 'INPUT_SCHEMA']) if (new RegExp('\\b' + code + '\\b').test(text)) failureCodes.push(code);
+  if (/ZipException|zip END header not found|invalid (?:CEN|LOC) header/i.test(text) && !failureCodes.includes('ZIP_INVALID')) failureCodes.push('ZIP_INVALID');
+  if (/Dex(?:Convert|Conversion)|dex2jar|DEX_CONVERSION_FAILED/.test(text)) failureCodes.push('DEX_CONVERSION_FAILED');
+  if (/UnsatisfiedLinkError/.test(text)) failureCodes.push('NATIVE_LINK_ERROR');
   let category = 'execution';
   if (error?.code === 'ARTIFACT_DEADLINE') category = 'artifact-timeout';
   else if (error?.code === 'CALL_DEADLINE' || /Spider worker timed out|shutdown timed out/i.test(text)) category = 'timeout';
@@ -52,6 +74,7 @@ export function classifyFailure(error, diagnosticText = '') {
     category,
     type: classLabel(error?.errorType) || classLabel(error?.name) || 'Error',
     fingerprint: digest([error?.errorType ?? '', error?.code ?? '', message].join('\n')),
+    ...(failureCodes.length ? { failureCodes } : {}),
   };
 }
 
@@ -159,6 +182,7 @@ export async function probeJarArtifact(artifact, {
 } = {}) {
   const limits = limitsOf({ ...artifact.limits, ...overrides });
   const started = Date.now(), end = started + limits.artifactMs;
+  const plan = planSources(artifact.sites);
   const report = {
     id: label(artifact.id), role: label(artifact.role, 'main'),
     chosenRole: artifact.role === 'site' ? 'site' : 'main',
@@ -166,6 +190,9 @@ export async function probeJarArtifact(artifact, {
     scope: 'Captured artifact; independent host JVM/DEX/ARM bridge; live source calls; no Android/ART parity claim',
     limits, sites: [], selected: { homes: 0, category: 0, detail: 0, search: 0 },
     sourceCount: artifact.sites?.length ?? 0, unattempted: [], cleanup: {},
+    uniqueApis: plan.representatives.size, uniqueVariants: plan.variants.size,
+    duplicateSources: plan.duplicateSources, skippedNonJarSources: plan.skippedNonJarSources,
+    skippedNonCspSources: plan.skippedNonJarSources, // Legacy output key; means non-JAR routes.
   };
   let runtime, directory, workerPid, fatal = false, stage = 'input';
   const diagnostics = {};
@@ -246,22 +273,8 @@ export async function probeJarArtifact(artifact, {
     report.nativeLoaded = await readState();
     if (admitted) {
       await bounded(() => runtime.setModules({ remote: true }), limits.initMs);
-      const representatives = new Map();
-      const variants = new Map();
-      for (const source of artifact.sites) {
-        if (!source || source.type !== undefined && source.type !== 3 || typeof source.api !== 'string' || !source.api.startsWith('csp_')) continue;
-        const extHash = digest(typeof source.ext === 'string' ? source.ext : JSON.stringify(source.ext ?? ''));
-        const variant = source.api + '\0' + extHash;
-        if (variants.has(variant)) continue;
-        variants.set(variant, source);
-        if (!representatives.has(source.api)) representatives.set(source.api, source);
-        else report.unattempted.push({ sourceKey: label(source.key), api: label(source.api), extSha256: extHash, reason: 'variant-budget' });
-      }
-      report.uniqueApis = representatives.size;
-      report.uniqueVariants = variants.size;
-      report.duplicateSources = artifact.sites.filter(source => source && (source.type === undefined || source.type === 3) && typeof source.api === 'string' && source.api.startsWith('csp_')).length - variants.size;
-      report.skippedNonCspSources = artifact.sites.length - variants.size - report.duplicateSources;
-      report.variantBudgetSkipped = variants.size - representatives.size;
+      const representatives = plan.representatives;
+      report.variantBudgetSkipped = plan.variants.size - representatives.size;
       const ready = [];
       for (const source of representatives.values()) {
         if (fatal || remaining() <= 0) {
@@ -272,13 +285,15 @@ export async function probeJarArtifact(artifact, {
         report.sites.push(row);
         stage = 'init';
         const before = getDiagnosticText(), begin = Date.now();
+        const includesArtifactLoad = report.load.deferred === true && report.load.loaded === null;
+        const usedBudgetMs = includesArtifactLoad ? limits.loadMs : limits.initMs;
         try {
           // Only one captured artifact is admitted; preserve its loader role.
-          const spider = await bounded(() => runtime.getCSP({ ...source, type: 3, jar: report.chosenRole === 'site' ? siteAlias : '' }), limits.initMs);
-          row.init = { ok: spider?.ready === true, milliseconds: Date.now() - begin, ...(classLabel(spider?.className) ? { className: spider.className } : {}) };
+          const spider = await bounded(() => runtime.getCSP({ ...source, type: 3, jar: report.chosenRole === 'site' ? siteAlias : '' }), usedBudgetMs);
+          row.init = { ok: spider?.ready === true, milliseconds: Date.now() - begin, includesArtifactLoad, usedBudgetMs, ...(classLabel(spider?.className) ? { className: spider.className } : {}) };
           if (row.init.ok) ready.push({ row, token: spider.token });
           else row.init.error = classifyFailure(new Error('SPIDER_NOT_READY: SpiderNull'), diagnosticSince(before));
-        } catch (error) { row.init = { ...failed(error, diagnosticSince(before)), milliseconds: Date.now() - begin }; }
+        } catch (error) { row.init = { ...failed(error, diagnosticSince(before)), milliseconds: Date.now() - begin, includesArtifactLoad, usedBudgetMs }; }
         if (report.load.deferred && report.load.loaded === null && !fatal && remaining() > 0) {
           const state = await bounded(() => runtime.getState(), limits.callMs);
           report.load.loaderCount = Number.isSafeInteger(state?.jar?.loaderCount) ? state.jar.loaderCount : null;
@@ -307,8 +322,6 @@ export async function probeJarArtifact(artifact, {
           await execute(row, token, 'detailContent', [[String(item.vod_id)]]);
         }
       }
-      report.unattemptedApis = representatives.size - report.sites.length;
-      report.budgetSkipped = report.variantBudgetSkipped + report.unattemptedApis;
     }
     if (!fatal && remaining() > 0) { stage = 'state'; report.nativeAfter = await readState(); }
     if (remaining() <= 0 && !report.error) report.error = classifyFailure(deadlineError('artifact'));
@@ -337,6 +350,18 @@ export async function probeJarArtifact(artifact, {
     }
   }
   report.diagnostics = diagnostics;
+  const attempted = new Set(report.sites.map(site => site.api + '\0' + site.extSha256));
+  const exhausted = ['timeout', 'artifact-timeout'].includes(report.error?.category);
+  const loadFailed = report.load?.loaded === false || (!report.sites.length && stage === 'load' && !exhausted);
+  report.unattempted = [...plan.variants.values()].filter(source => !attempted.has(label(source.api) + '\0' + extHashOf(source))).map(source => ({
+    sourceKey: label(source.key), api: label(source.api), extSha256: extHashOf(source),
+    reason: exhausted ? 'artifact-budget' : loadFailed ? 'load-failure' : plan.representatives.get(source.api) !== source ? 'variant-budget' : report.error ? 'artifact-failure' : 'artifact-budget',
+  }));
+  report.unattemptedApis = plan.representatives.size - report.sites.length;
+  report.allUnattemptedVariants = report.unattempted.length;
+  report.unattemptedLoadFailure = report.unattempted.filter(row => row.reason === 'load-failure').length;
+  report.variantBudgetSkipped = report.unattempted.filter(row => row.reason === 'variant-budget').length;
+  report.budgetSkipped = report.unattempted.filter(row => row.reason === 'artifact-budget' || row.reason === 'variant-budget').length;
   report.milliseconds = Date.now() - started;
   report.observations = {
     attemptedApis: report.sites.length, readyApis: report.sites.filter(site => site.init?.ok).length,
@@ -347,6 +372,8 @@ export async function probeJarArtifact(artifact, {
     details: report.sites.filter(site => site.detailContent?.ok).length,
     detailsWithContent: report.sites.filter(site => site.detailContent?.ok && site.detailContent.hasContent).length,
     budgetSkipped: report.budgetSkipped || 0,
+    allUnattemptedVariants: report.allUnattemptedVariants,
+    unattemptedLoadFailure: report.unattemptedLoadFailure,
   };
   return report;
 }
@@ -359,7 +386,7 @@ function stopChild(child) {
 function unrunVariantCount(sites = []) {
   const variants = new Set();
   for (const source of sites) {
-    if (source && (source.type === undefined || source.type === 3) && typeof source.api === 'string' && source.api.startsWith('csp_')) variants.add(source.api + '\0' + semanticHash(source.ext ?? ''));
+    if (isJarSource(source)) variants.add(source.api + '\0' + extHashOf(source));
   }
   return variants.size;
 }
@@ -400,8 +427,9 @@ async function isolatedArtifact(manifestPath, index, artifact, { inputRoot, work
         milliseconds: Date.now() - started,
         partialProgress: true,
         unattemptedVariants: Math.max(0, unrunVariantCount(artifact.sites) - initialized),
+        allUnattemptedVariants: Math.max(0, unrunVariantCount(artifact.sites) - initialized),
         budgetSkipped: timedOut ? Math.max(0, unrunVariantCount(artifact.sites) - initialized) : 0,
-        observations: { attemptedApis: initialized, budgetSkipped: timedOut ? Math.max(0, unrunVariantCount(artifact.sites) - initialized) : 0 },
+        observations: { attemptedApis: initialized, allUnattemptedVariants: Math.max(0, unrunVariantCount(artifact.sites) - initialized), budgetSkipped: timedOut ? Math.max(0, unrunVariantCount(artifact.sites) - initialized) : 0 },
         cleanup: { closed: false, processGroupKilled: true },
         exit: { code, signal },
       };
@@ -411,13 +439,13 @@ async function isolatedArtifact(manifestPath, index, artifact, { inputRoot, work
 }
 
 export function summarizeMatrix(artifacts) {
-  const result = { artifacts: artifacts.length, loaded: 0, attemptedApis: 0, readyApis: 0, homes: 0, homesWithContent: 0, categories: 0, categoriesWithContent: 0, details: 0, detailsWithContent: 0, budgetSkipped: 0, artifactErrors: 0, failureCategories: {} };
+  const result = { artifacts: artifacts.length, loaded: 0, attemptedApis: 0, readyApis: 0, homes: 0, homesWithContent: 0, categories: 0, categoriesWithContent: 0, details: 0, detailsWithContent: 0, budgetSkipped: 0, allUnattemptedVariants: 0, unattemptedLoadFailure: 0, artifactErrors: 0, failureCategories: {} };
   const count = failure => { if (failure?.category) result.failureCategories[failure.category] = (result.failureCategories[failure.category] || 0) + 1; };
   for (const artifact of artifacts) {
     if (artifact.load?.loaded) result.loaded++;
     if (artifact.error) result.artifactErrors++;
     count(artifact.error); count(artifact.load?.error); count(artifact.cleanup?.error);
-    for (const key of ['attemptedApis', 'readyApis', 'homes', 'homesWithContent', 'categories', 'categoriesWithContent', 'details', 'detailsWithContent', 'budgetSkipped']) result[key] += artifact.observations?.[key] || 0;
+    for (const key of ['attemptedApis', 'readyApis', 'homes', 'homesWithContent', 'categories', 'categoriesWithContent', 'details', 'detailsWithContent', 'budgetSkipped', 'allUnattemptedVariants', 'unattemptedLoadFailure']) result[key] += artifact.observations?.[key] || 0;
     for (const site of artifact.sites || []) for (const key of ['init', 'homeContent', 'categoryContent', 'detailContent']) count(site[key]?.error);
   }
   return result;
