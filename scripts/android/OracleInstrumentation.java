@@ -11,10 +11,12 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -24,6 +26,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -40,7 +43,12 @@ public final class OracleInstrumentation extends Instrumentation {
     private final JSONArray publicCalls = new JSONArray();
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private long callTimeoutMs = 30000;
+    private long loadTimeoutMs = 30000;
+    private long initTimeoutMs = 30000;
+    private long caseDeadline = Long.MAX_VALUE;
     private boolean timedOut;
+    private String phase = "start";
+    private JSONObject symbols;
 
     @Override public void onCreate(Bundle args) {
         super.onCreate(args);
@@ -52,7 +60,7 @@ public final class OracleInstrumentation extends Instrumentation {
         Bundle result = new Bundle();
         report = new JSONObject();
         int code = -1; // Activity.RESULT_OK, as expected by Android instrumentation.
-        File jar = null;
+        final List<File> jarFiles = new ArrayList<File>();
         Object loader = null;
         try {
             Context context = getTargetContext();
@@ -60,15 +68,36 @@ public final class OracleInstrumentation extends Instrumentation {
             report.put("schemaVersion", 1);
             report.put("scope", "Independent same-signature instrumentation in unchanged official APK on Android/ART; direct original JarLoader and Spider calls, not UI end-to-end parity");
             report.put("targetPackage", context.getPackageName());
+            report.put("applicationUid", android.os.Process.myUid());
+            report.put("applicationPid", android.os.Process.myPid());
             report.put("vmName", System.getProperty("java.vm.name"));
             report.put("vmVersion", System.getProperty("java.vm.version"));
             report.put("androidSdk", Build.VERSION.SDK_INT);
             report.put("androidRelease", Build.VERSION.RELEASE);
             report.put("abi", Build.CPU_ABI);
-            report.put("loaderMode", "main");
+            String appDataPolicy = arguments.getString("appDataPolicy", "cold-process-preserve-data");
+            if (!"fresh-app-data".equals(appDataPolicy) && !"cold-process-preserve-data".equals(appDataPolicy)) throw new IllegalArgumentException("Invalid application state policy");
+            report.put("applicationStatePolicy", appDataPolicy);
             callTimeoutMs = Long.parseLong(arguments.getString("callTimeoutMs", "30000"));
-            if (callTimeoutMs < 100 || callTimeoutMs > 180000) throw new IllegalArgumentException("Invalid call timeout");
+            loadTimeoutMs = Long.parseLong(arguments.getString("loadTimeoutMs", String.valueOf(callTimeoutMs)));
+            initTimeoutMs = Long.parseLong(arguments.getString("initTimeoutMs", String.valueOf(callTimeoutMs)));
+            long caseTimeoutMs = Long.parseLong(arguments.getString("caseTimeoutMs", "240000"));
+            for (long budget : new long[]{callTimeoutMs, loadTimeoutMs, initTimeoutMs}) if (budget < 100 || budget > 180000) throw new IllegalArgumentException("Invalid stage timeout");
+            if (caseTimeoutMs < 100 || caseTimeoutMs > 3600000) throw new IllegalArgumentException("Invalid case timeout");
+            caseDeadline = System.currentTimeMillis() + caseTimeoutMs;
+            report.put("budgets", new JSONObject().put("caseMs", caseTimeoutMs).put("loadMs", loadTimeoutMs).put("initMs", initTimeoutMs).put("callMs", callTimeoutMs));
+            phase = "symbol-binding";
+            InputStream mapInput = getContext().getAssets().open("jar-loader-symbol-map.json");
+            byte[] symbolBytes;
+            try { symbolBytes = readAll(mapInput, 1024 * 1024); } finally { mapInput.close(); }
+            symbols = new JSONObject(new String(symbolBytes, UTF8));
+            String installedSha256 = fileSha256(new File(context.getApplicationInfo().sourceDir));
+            if (!installedSha256.equals(symbols.getString("apkSha256"))) throw new IllegalArgumentException("Installed APK differs from audited loader map");
+            report.put("targetApkSha256", installedSha256);
+            report.put("symbolMapSha256", sha256(symbolBytes));
+            report.put("knownVersionDifference", symbols.getString("knownVersionDifference"));
 
+            phase = "manifest";
             String manifestUrl = arguments.getString("manifestUrl");
             if (manifestUrl == null) throw new IllegalArgumentException("manifestUrl is required");
             byte[] planBytes = download(manifestUrl, 16 * 1024 * 1024);
@@ -99,45 +128,102 @@ public final class OracleInstrumentation extends Instrumentation {
             report.put("api", safeLabel(site.getString("api")));
             report.put("extSha256", extSha256);
             if (artifact.has("configSha256")) report.put("configSha256", artifact.getString("configSha256"));
-            byte[] jarBytes = download(artifact.getString("jarUrl"), MAX_BYTES);
-            String jarSha256 = sha256(jarBytes);
-            if (!jarSha256.equals(artifact.getString("sha256"))) throw new IllegalArgumentException("JAR checksum differs");
-            report.put("jarSha256", jarSha256);
-            report.put("jarBytes", jarBytes.length);
-            File cache = new File(context.getCacheDir(), "parity-oracle");
-            if (!cache.isDirectory() && !cache.mkdirs()) throw new IllegalStateException("Cannot create oracle cache");
-            jar = new File(cache, jarSha256 + ".jar");
-            if (jar.exists() && !jar.delete()) throw new IllegalStateException("Cannot replace oracle cache");
-            write(jar, jarBytes);
-            jarBytes = null;
-            jar.setReadOnly();
-            final Class<?> loaderClass = appLoader.loadClass("com.github.catvod.crawler.JarLoader");
+            if (site.has("configSha256")) report.put("configSha256", site.getString("configSha256"));
+            final JSONObject contextPlan = site.optJSONObject("loaderContext");
+            if (site.has("loaderContext") && contextPlan == null) throw new IllegalArgumentException("Invalid loader context object");
+            final String role = contextPlan == null ? "main" : contextPlan.getString("role");
+            final String signature = contextPlan == null ? "" : contextPlan.getString("signature");
+            if (!"main".equals(role) && !"site".equals(role)) throw new IllegalArgumentException("Invalid loader role");
+            final String sourceJar = "site".equals(role) ? signature : "";
+            if (contextPlan != null && (!(site.opt("jar") instanceof String) || !sourceJar.equals(site.getString("jar")))) throw new IllegalArgumentException("Original site signature differs");
+            if ("site".equals(role) && signature.length() == 0) throw new IllegalArgumentException("Missing site signature");
+            JSONObject mainPlan = contextPlan == null ? null : contextPlan.optJSONObject("main");
+            if (contextPlan != null && contextPlan.has("main") && mainPlan == null) throw new IllegalArgumentException("Invalid main artifact object");
+            if (mainPlan != null && !"site".equals(role)) throw new IllegalArgumentException("Main role has secondary main artifact");
+            final Class<?> loaderClass = appLoader.loadClass(symbols.getString("loaderClass"));
             loader = loaderClass.newInstance();
             final Object originalLoader = loader;
-            final String jarPath = jar.getAbsolutePath();
+            final Method jarKeyMethod = declared(loaderClass, symbols.getJSONObject("methods").getString("jarKey"), String.class);
+            final String loadKey = "main".equals(role) ? "main" : (String) jarKeyMethod.invoke(originalLoader, signature);
+            report.put("loaderMode", role);
+            report.put("jarSignatureSha256", sha256(signature.getBytes(UTF8)));
+            report.put("jarLoadKey", loadKey);
+            report.put("mainJarSha256", mainPlan == null ? JSONObject.NULL : mainPlan.getString("sha256"));
+            report.put("mainSignatureSha256", mainPlan == null ? JSONObject.NULL : sha256(mainPlan.getString("signature").getBytes(UTF8)));
+            JSONObject expectedIdentity = site.optJSONObject("expectedLoaderIdentity");
+            if (site.has("expectedLoaderIdentity") && expectedIdentity == null) throw new IllegalArgumentException("Invalid planned loader identity");
+            if (expectedIdentity != null) for (String field : new String[]{"loaderMode", "jarSignatureSha256", "jarLoadKey", "mainJarSha256", "mainSignatureSha256"}) {
+                if (!expectedIdentity.has(field) || !expectedIdentity.get(field).equals(report.get(field))) throw new IllegalArgumentException("Loader identity differs: " + field);
+            }
+            report.put("jarSha256", artifact.getString("sha256"));
+            File cache = new File(context.getCacheDir(), "parity-oracle");
+            if (!cache.isDirectory() && !cache.mkdirs()) throw new IllegalStateException("Cannot create oracle cache");
+            phase = "jar-download";
+            final File jar = capturedJar(artifact, cache, "selected-", jarFiles);
+            report.put("jarBytes", jar.length());
+            report.put("jarBytesVerified", true);
+            File mainJar = null;
+            if (mainPlan != null) {
+                phase = "main-download";
+                mainJar = capturedJar(mainPlan, cache, "main-", jarFiles);
+                report.put("mainJarBytes", mainJar.length());
+                report.put("mainJarBytesVerified", true);
+            }
+            // Verify both frozen artifacts before either can execute.
+            if (mainJar != null) {
+                phase = "main-load";
+                final String mainPath = mainJar.getAbsolutePath();
+                JSONObject observation = new JSONObject().put("attempted", true);
+                report.put("mainLoad", observation);
+                long started = System.currentTimeMillis();
+                Object loadedMain = within(new Callable<Object>() {
+                    @Override public Object call() throws Exception {
+                        return loaderClass.getMethod(symbols.getJSONObject("methods").getString("loadMain"), String.class).invoke(originalLoader, mainPath);
+                    }
+                }, loadTimeoutMs);
+                observation.put("milliseconds", System.currentTimeMillis() - started).put("loaded", Boolean.TRUE.equals(loadedMain));
+                if (!Boolean.TRUE.equals(loadedMain)) throw new IllegalStateException("MAIN_JAR_LOAD_FAILED");
+            }
+            phase = "site".equals(role) ? "site-load" : "load";
+            if ("site".equals(role)) {
+                // Match parseJar's alias assignment before original initialization.
+                String[] pieces = signature.split(";md5;");
+                String source = pieces.length > 1 ? pieces[0] : signature;
+                Field aliases = loaderClass.getDeclaredField(symbols.getJSONObject("fields").getString("aliases"));
+                aliases.setAccessible(true);
+                @SuppressWarnings("unchecked") Map<String, String> values = (Map<String, String>) aliases.get(originalLoader);
+                values.put((String) jarKeyMethod.invoke(originalLoader, source), loadKey);
+            }
+            final JSONObject selectedLoad = new JSONObject().put("attempted", true);
+            report.put("selectedLoad", selectedLoad);
             long loadStarted = System.currentTimeMillis();
             Object loaded = within(new Callable<Object>() {
                 @Override public Object call() throws Exception {
-                    return loaderClass.getMethod("load", String.class).invoke(originalLoader, jarPath);
+                    if ("main".equals(role)) return loaderClass.getMethod(symbols.getJSONObject("methods").getString("loadMain"), String.class).invoke(originalLoader, jar.getAbsolutePath());
+                    return declared(loaderClass, symbols.getJSONObject("methods").getString("loadKeyed"), String.class, File.class).invoke(originalLoader, loadKey, jar);
                 }
-            });
+            }, loadTimeoutMs);
             report.put("loadMs", System.currentTimeMillis() - loadStarted);
             report.put("loadSuccess", Boolean.TRUE.equals(loaded));
+            selectedLoad.put("milliseconds", System.currentTimeMillis() - loadStarted).put("loaded", Boolean.TRUE.equals(loaded));
             if (!Boolean.TRUE.equals(loaded)) throw new IllegalStateException("JAR_LOAD_FAILED");
+            report.put("loaderState", loaderState(loaderClass, originalLoader));
             final String key = site.optString("key", "site-" + siteIndex);
             final String api = site.getString("api");
             final String finalExt = ext;
+            phase = "init";
             long initStarted = System.currentTimeMillis();
             final Object spider = within(new Callable<Object>() {
                 @Override public Object call() throws Exception {
-                    return loaderClass.getMethod("getSpider", String.class, String.class, String.class, String.class)
-                        .invoke(originalLoader, key, api, finalExt, "");
+                    return loaderClass.getMethod(symbols.getJSONObject("methods").getString("getSpider"), String.class, String.class, String.class, String.class)
+                        .invoke(originalLoader, key, api, finalExt, sourceJar);
                 }
-            });
+            }, initTimeoutMs);
             report.put("initMs", System.currentTimeMillis() - initStarted);
             report.put("spiderClass", spider == null ? JSONObject.NULL : spider.getClass().getName());
             if (spider == null || spider.getClass().getName().endsWith(".SpiderNull")) throw new IllegalStateException("SPIDER_NOT_READY");
             report.put("initSuccess", true);
+            report.put("loaderState", loaderState(loaderClass, originalLoader));
 
             JSONArray explicitCalls = site.optJSONArray("calls");
             if (explicitCalls == null) explicitCalls = artifact.optJSONArray("calls");
@@ -166,7 +252,7 @@ public final class OracleInstrumentation extends Instrumentation {
             if (timedOut) code = 0;
         } catch (Throwable error) {
             code = 0;
-            try { report.put("error", errorMetadata(error)); } catch (Exception ignored) { }
+            try { report.put("error", errorMetadata(error).put("stage", phase)); } catch (Exception ignored) { }
         } finally {
             // A timed-out native call may ignore interruption: do not race clear()/delete().
             if (!timedOut) {
@@ -174,12 +260,12 @@ public final class OracleInstrumentation extends Instrumentation {
                     final Object finalLoader = loader;
                     within(new Callable<Object>() {
                         @Override public Object call() throws Exception {
-                            finalLoader.getClass().getMethod("clear").invoke(finalLoader);
+                            finalLoader.getClass().getMethod(symbols.getJSONObject("methods").getString("clear")).invoke(finalLoader);
                             return null;
                         }
                     });
                 } catch (Throwable ignored) { }
-                if (!timedOut && jar != null) jar.delete();
+                if (!timedOut) for (File jarFile : jarFiles) jarFile.delete();
             }
             executor.shutdownNow();
             try {
@@ -205,8 +291,14 @@ public final class OracleInstrumentation extends Instrumentation {
     private boolean enabled(String name) { return !"false".equalsIgnoreCase(arguments.getString(name, "true")); }
 
     private Object within(Callable<Object> operation) throws Exception {
+        return within(operation, callTimeoutMs);
+    }
+
+    private Object within(Callable<Object> operation, long timeoutMs) throws Exception {
+        long remaining = caseDeadline - System.currentTimeMillis();
+        if (remaining <= 0) { timedOut = true; throw new TimeoutException("Case deadline exceeded"); }
         Future<Object> future = executor.submit(operation);
-        try { return future.get(callTimeoutMs, TimeUnit.MILLISECONDS); }
+        try { return future.get(Math.min(timeoutMs, remaining), TimeUnit.MILLISECONDS); }
         catch (TimeoutException error) {
             timedOut = true;
             future.cancel(true);
@@ -216,6 +308,7 @@ public final class OracleInstrumentation extends Instrumentation {
 
     private String runCall(final Object spider, final String name, JSONArray suppliedParams) throws Exception {
         if (timedOut) throw new IllegalStateException("Previous call timed out");
+        phase = name;
         final JSONArray params = suppliedParams == null ? new JSONArray() : suppliedParams;
         JSONObject metadata = new JSONObject();
         metadata.put("method", name);
@@ -262,8 +355,8 @@ public final class OracleInstrumentation extends Instrumentation {
             metadata.put("success", true);
         } catch (Throwable error) {
             metadata.put("success", false);
-            metadata.put("error", errorMetadata(error));
-            privateCall.put("error", errorMetadata(error));
+            metadata.put("error", errorMetadata(error).put("stage", name));
+            privateCall.put("error", errorMetadata(error).put("stage", name));
         } finally {
             metadata.put("elapsedMs", System.currentTimeMillis() - started);
             privateCall.put("metadata", metadata);
@@ -311,10 +404,69 @@ public final class OracleInstrumentation extends Instrumentation {
             .put("fingerprint", sha256((error.getClass().getName() + "\n" + message).getBytes(UTF8)));
     }
 
-    private static byte[] download(String address, int maxBytes) throws Exception {
+    private static Method declared(Class<?> type, String name, Class<?>... parameters) throws Exception {
+        Method method = type.getDeclaredMethod(name, parameters);
+        method.setAccessible(true);
+        return method;
+    }
+
+    private JSONObject loaderState(Class<?> type, Object loader) throws Exception {
+        JSONObject fields = symbols.getJSONObject("fields"), result = new JSONObject();
+        for (String name : new String[]{"loaders", "aliases", "siteJarKeys"}) {
+            Field field = type.getDeclaredField(fields.getString(name));
+            field.setAccessible(true);
+            Map<?, ?> values = (Map<?, ?>) field.get(loader);
+            result.put(name + "Count", values.size());
+            if ("loaders".equals(name)) {
+                List<String> keys = new ArrayList<String>();
+                for (Object key : values.keySet()) keys.add(sha256(String.valueOf(key).getBytes(UTF8)));
+                Collections.sort(keys);
+                result.put("loaderKeysSha256", new JSONArray(keys));
+            }
+        }
+        Field recent = type.getDeclaredField(fields.getString("recent"));
+        recent.setAccessible(true);
+        return result.put("recentKeySha256", sha256(String.valueOf(recent.get(loader)).getBytes(UTF8)));
+    }
+
+    private File capturedJar(JSONObject input, File cache, String prefix, List<File> owned) throws Exception {
+        String expected = input.getString("sha256");
+        if (!expected.matches("[a-f0-9]{64}")) throw new IllegalArgumentException("Invalid JAR hash");
+        byte[] bytes = download(input.getString("jarUrl"), MAX_BYTES);
+        if (!expected.equals(sha256(bytes))) throw new IllegalArgumentException("JAR checksum differs");
+        File file = new File(cache, prefix + expected + ".jar");
+        if (file.exists() && !file.delete()) throw new IllegalStateException("Cannot replace oracle cache");
+        owned.add(file);
+        write(file, bytes);
+        if (!file.setReadOnly()) throw new IllegalStateException("Cannot protect oracle cache");
+        return file;
+    }
+
+    private static byte[] readAll(InputStream stream, int maxBytes) throws Exception {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        byte[] buffer = new byte[8192];
+        int count;
+        while ((count = stream.read(buffer)) >= 0) {
+            if (bytes.size() + count > maxBytes) throw new IllegalArgumentException("Input too large");
+            bytes.write(buffer, 0, count);
+        }
+        return bytes.toByteArray();
+    }
+
+    private static String fileSha256(File path) throws Exception {
+        FileInputStream stream = new FileInputStream(path);
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        try { byte[] buffer = new byte[8192]; int count; while ((count = stream.read(buffer)) >= 0) digest.update(buffer, 0, count); }
+        finally { stream.close(); }
+        return hex(digest.digest());
+    }
+
+    private byte[] download(String address, int maxBytes) throws Exception {
+        long remaining = caseDeadline - System.currentTimeMillis();
+        if (remaining <= 0) { timedOut = true; throw new TimeoutException("Case deadline exceeded"); }
         HttpURLConnection connection = (HttpURLConnection) new URL(address).openConnection();
-        connection.setConnectTimeout(15000);
-        connection.setReadTimeout(45000);
+        connection.setConnectTimeout((int) Math.min(15000, remaining));
+        connection.setReadTimeout((int) Math.min(45000, remaining));
         connection.setRequestProperty("User-Agent", "TVBox-ART-Parity/1");
         connection.setInstanceFollowRedirects(true);
         try {
@@ -326,6 +478,7 @@ public final class OracleInstrumentation extends Instrumentation {
                 byte[] buffer = new byte[8192];
                 int count;
                 while ((count = stream.read(buffer)) >= 0) {
+                    if (System.currentTimeMillis() >= caseDeadline) { timedOut = true; throw new TimeoutException("Case deadline exceeded"); }
                     if (bytes.size() + count > maxBytes) throw new IllegalStateException("Input too large");
                     bytes.write(buffer, 0, count);
                 }
@@ -340,7 +493,10 @@ public final class OracleInstrumentation extends Instrumentation {
     }
 
     private static String sha256(byte[] value) throws Exception {
-        byte[] bytes = MessageDigest.getInstance("SHA-256").digest(value);
+        return hex(MessageDigest.getInstance("SHA-256").digest(value));
+    }
+
+    private static String hex(byte[] bytes) {
         StringBuilder result = new StringBuilder();
         for (byte b : bytes) result.append(String.format(java.util.Locale.US, "%02x", b & 255));
         return result.toString();

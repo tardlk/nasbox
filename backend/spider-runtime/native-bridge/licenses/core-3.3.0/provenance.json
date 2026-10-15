@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "coordinate": "com.google.zxing:core:3.3.0",
+  "artifact": {
+    "filename": "core-3.3.0.jar",
+    "url": "https://repo.maven.apache.org/maven2/com/google/zxing/core/3.3.0/core-3.3.0.jar",
+    "sha256": "bba7724e02a997cec38213af77133ee8e24b0d5cf5fa7ecbc16a4fa93f11ee0d",
+    "upstreamSha1": "73c49077166faa4c3c0059c5f583d1d7bd1475fe",
+    "bytes": 541078,
+    "purpose": "Original fixed TVBoxOS app/build.gradle declares com.google.zxing:core:3.3.0. Supplies real barcode codecs and ChecksumException for observed Wogg initialization; no no-op host stub."
+  },
+  "license": "Apache-2.0",
+  "versionSource": "compat/reference/tvboxos/app/build.gradle:154",
+  "verification": "Official Maven Central HTTPS artifact and published SHA-1 verified; local SHA-256 and bytes pinned. Repository SHA-1 shares the download origin, not an independent signature.",
+  "pom": {
+    "file": "../poms/core-3.3.0.pom",
+    "url": "https://repo.maven.apache.org/maven2/com/google/zxing/core/3.3.0/core-3.3.0.pom",
+    "sha256": "ca1c3e4c4848773d4e5afa301c12bc18aa4b26d2475ff6961ce026f2d940aabf",
+    "upstreamSha1": "1ddcd08882c0da8e917d92087e5651e234b5c79f",
+    "bytes": 2064
+  },
+  "parentPom": {
+    "file": "../poms/zxing-parent-3.3.0.pom",
+    "url": "https://repo.maven.apache.org/maven2/com/google/zxing/zxing-parent/3.3.0/zxing-parent-3.3.0.pom",
+    "sha256": "7c6951b21684f68ac4f6983d26e0f0b01ab5e7066f8b74b4acaff6f638ed1ff6",
+    "upstreamSha1": "c69d8576d8ec725cd091d25cbae2f276d44667db",
+    "bytes": 27675
+  },
+  "licenseSource": {
+    "url": "https://raw.githubusercontent.com/zxing/zxing/zxing-3.3.0/LICENSE",
+    "sha256": "3f62881f0566227a24b12e5a754cc79f39aaa94883038e95c94812e1f50af42f",
+    "bytes": 13320
+  }
+}

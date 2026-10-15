@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 1,
+  "image": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+  "runPlanSha256": "98f6c9da3ef038b1bc04f95081c679c678f75f74dd0b8b37e22a2ac24e1dd146",
+  "sourcePins": {
+    "scripts/android/replay-nas.mjs": "306e55a40a7f4a6af4ade23e1a5ee9e77833a0f52b239db8b8cf8f43e7a96e13",
+    "scripts/android/loader-context.mjs": "2375f711f8781258ee1d38fb8892e3345e40d6844779ed949f4bea6db2224cb4",
+    "scripts/container/jar-failure-diagnostics.mjs": "50438522251c5194594eee9712418f76fdcc41f990fce4cdbc137373c4836b07",
+    "scripts/container/jar-matrix-probe.mjs": "df53c8f20d0c33e2d6ccfbcee1201440de40c89d196b288854ff27aaf4cc98af"
+  },
+  "budgets": {
+    "caseMs": 150000,
+    "loadMs": 90000,
+    "initMs": 10000,
+    "callMs": 10000
+  },
+  "outerSeconds": 175,
+  "oraclePlanSha256": "fd59dd25afbf06b6aadb1c3556c302eb822b9af416ae09b375eda40c7253bc9b",
+  "all23ContainersExitedCode0": true,
+  "workerCleanupIncomplete": [
+    "16-0"
+  ],
+  "containerBoundaryContainsRemainingProcesses": true,
+  "cases": [
+    {
+      "caseId": "0-0",
+      "index": 0,
+      "sha256": "d8517c4cac6ed751c7fab1fe7746629c6f439e37b45fdec533cb7a6da4ada7bc",
+      "privateResultSha256": "8a11cab48fa5fd5d0965f479a6a38c6849a1636cf78f8eb827490227cc24366e",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "94a765925ec2cd1cf38c1f5155bdf38ddfd2dea5a864f26ff8af6c708c366b50",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "load",
+          "exceptionTypes": [
+            "java.lang.ClassFormatError"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "1-0",
+      "index": 1,
+      "sha256": "65be8df8bfa60f59aecb3c170d5cc0fd3feeaa96daad531faa97d49aff81eab4",
+      "privateResultSha256": "8fbaf79b5baa6402e880c869c74a3353e7b4fbaa6ee8574a2b3ea733024bf078",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "94f344c7acb94559e953494200548023cd9ce3a7e08b1d5c258842a0f3997d14",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": []
+    },
+    {
+      "caseId": "2-0",
+      "index": 2,
+      "sha256": "19ca20400ffa9c32fd31d63ba91b1ac2d9809dabfa7b1288b33fe0bfc98625aa",
+      "privateResultSha256": "9e70580b8492bdd951f94b4e7102248d638e890b81c910eab665527335d4d255",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "56921133260364f67b5f33b7a0bf9b1d6fd57e30058ad13afce8068247c886a1",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "site-load-init",
+          "exceptionTypes": [
+            "java.net.UnknownHostException",
+            "org.json.JSONException"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "3-0",
+      "index": 3,
+      "sha256": "a9dce1158db8c7d469399917468f91fcc9dbdd8260d56f32aa5c1e7a5f293ed6",
+      "privateResultSha256": "d83d0c1fb1492d952f1146a2e5f80e6004e08c56a1b8781e910c56f197892e0f",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "02b7c49944d1f4d7128ace2760d13be2fc032b6f09dbef3d3cc797bb87275d2d",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": []
+    },
+    {
+      "caseId": "4-0",
+      "index": 4,
+      "sha256": "59ca73d4d12758285ad7ce00ba07c4fbf1bf4f3c7e8fca642181f82bc6b68dc5",
+      "privateResultSha256": "14c47e1b7731cc408e01ecc94ab9a83801f6c96a8dc44d4763b6beac18473d9e",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "d3dc018e113ef841bad330b8ca159e4a99d559b698ca80d529fd5e59d9cfb2d7",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "main-load",
+          "exceptionTypes": [
+            "java.lang.ClassFormatError"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "5-0",
+      "index": 5,
+      "sha256": "41d3771d1d06f2b9e733df903c2a39726bfab69818636d9302a1a0f94bbc1663",
+      "privateResultSha256": "b99a4d158fa18f78e76b89e8347c630d9816c64e1a3f4b9732a391756b7693fa",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "d0267bc9f8c0ea650d1a8fe3487ba293a3beb1b9babab91be3be01657574b3fa",
+      "cleanup": {
+        "forcedWorkerKill": true,
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "main-load",
+          "exceptionTypes": [
+            "java.lang.ClassFormatError"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "6-0",
+      "index": 6,
+      "sha256": "8adcedbd51c3ba467fd16ee3b127224dab0ee904c7975607453f64f5d77b138c",
+      "privateResultSha256": "fa9f4378206d49a3673c258a5f989972f7bb4c44d475b55490d8dbbd26a17335",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "69ec2c75682c045705e69245a0759e9b6c9442992406809520dfdd074705b728",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "load",
+          "exceptionTypes": [
+            "java.lang.ExceptionInInitializerError",
+            "java.lang.NoClassDefFoundError",
+            "java.lang.VerifyError"
+          ],
+          "missingSymbols": [
+            {
+              "kind": "verify-class",
+              "name": "com.github.catvod.spider.merge.u.z"
+            }
+          ]
+        },
+        {
+          "stage": "init",
+          "exceptionTypes": [
+            "java.lang.ExceptionInInitializerError",
+            "java.lang.NoClassDefFoundError",
+            "java.lang.VerifyError"
+          ],
+          "missingSymbols": [
+            {
+              "kind": "verify-class",
+              "name": "com.github.catvod.spider.merge.u.z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "7-0",
+      "index": 7,
+      "sha256": "2ff484674c512cc9ea6e9d52f54e7154de113e7aee83230e493259655f71b3ec",
+      "privateResultSha256": "62e439c26ef108b99dcad8ecfefc0ae20751d4e84279bdabb2a50c1949c37326",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "a5446b24400d7fc0bcef9b95e963cb17d6f03a893216749399daa4a729e76ca7",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": []
+    },
+    {
+      "caseId": "8-0",
+      "index": 8,
+      "sha256": "cf928d08730247746293ce5878d9d876c4edde9118b5fbd0d6400618cb934cb1",
+      "privateResultSha256": "ad4789efbee54830e31770bb00482d3f941427ec38e35cbd84ec494cdb5aa33a",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "6694c269eba4be836ff95b3b143a103a5ced5aad86d0bec893df8f2593ff809d",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "load",
+          "exceptionTypes": [
+            "java.lang.ArrayIndexOutOfBoundsException",
+            "java.lang.UnsupportedOperationException"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "9-0",
+      "index": 9,
+      "sha256": "ee9ff15d1093e999828fabf2a9281cd13646ef17db0d684578388530cf987f61",
+      "privateResultSha256": "e242b2139b5112bbd66f7c98c144872508958cf56d742a8ce1cf1ab1de6a1bf7",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "904fef83a5de180286eb5e1396b618ef74866a25a3fc1001274c708381c15d8a",
+      "cleanup": {
+        "forcedWorkerKill": true,
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": []
+    },
+    {
+      "caseId": "10-0",
+      "index": 10,
+      "sha256": "a41f11e12267d0840eb8c949a59e5709d6a6f8fc42c86d845a7dad4be51a4fa1",
+      "privateResultSha256": "d15b2f9e4bb08c45fc306a01494f69370b3e0f666bad70a1a452dd058bc747c0",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "67337f392b1cfff63badde82b9c0d6056ed70a27f0ae8b646c122eceb7aa50a8",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": []
+    },
+    {
+      "caseId": "11-0",
+      "index": 11,
+      "sha256": "76c7d225a47bea03d2b54203593fe211209122db1b298b2329b7808e7a07b416",
+      "privateResultSha256": "ab7fe8954e70ea552e7ee19ac7eba0f615d8fe2e16b898d768833c35439af4fe",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "c30c17585a59df5e40fadfad4701d749d65ab8e0508ac1c6cddad767df99a612",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": []
+    },
+    {
+      "caseId": "12-0",
+      "index": 12,
+      "sha256": "92b6747fd42c4bc42fbc06094655ea5ae150d5eef283026d8238f46fb73a88ca",
+      "privateResultSha256": "250e51b5ac13216ee2989c3f7717e56bb6b26c75e2465904b0f613aaad34705d",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "5e4be52ed8299e000e2d4e100e339aa3023d53135e623d3c6c58b68a2116be1a",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": []
+    },
+    {
+      "caseId": "13-0",
+      "index": 13,
+      "sha256": "713a2c84b2700c25cc8abcc30b76b6c48c641d08b7a0bf2c558ab530e0e22352",
+      "privateResultSha256": "5f22a0cba69516cfe53d5e29cc0ac1606b491563e77dff7078ad744384e9d3f7",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "57d681e54f4a9913aa240481faef47232b840d266a53a6e1ec26b91f73f3701e",
+      "cleanup": {
+        "forcedWorkerKill": true,
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": []
+    },
+    {
+      "caseId": "14-0",
+      "index": 14,
+      "sha256": "b644dc3adc5f8a768938f3c09f75cf6b61530d661a83ddae8ffd2b72ddfa4979",
+      "privateResultSha256": "0128f2b67ab9a3b1c34ec1e22321c5d7c2f5a5acf6d6156b7b3d5177ab6d0742",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "9e6d45e8b429d5881e76cf3ba56e04bacbc616e78cdcc28a82aef01b8c19ffbc",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "load",
+          "exceptionTypes": [
+            "android.database.sqlite.SQLiteException",
+            "org.sqlite.SQLiteException"
+          ],
+          "missingSymbols": []
+        },
+        {
+          "stage": "categoryContent",
+          "exceptionTypes": [
+            "java.lang.StringIndexOutOfBoundsException"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "15-0",
+      "index": 15,
+      "sha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "privateResultSha256": "9bf84c33e75a0baa77b7faa60cabee42b4ef07b7c8c32502e40953f183c23e11",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "a2c4fa9adff4c8b028098004f71803bee15dd197e3788ec2775ef89dd369a9e9",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "homeContent",
+          "exceptionTypes": [
+            "java.io.InterruptedIOException"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "15-1",
+      "index": 16,
+      "sha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "privateResultSha256": "9d6c3beefb74e3b98f8109c4fcb8c2eb0dd1c19175105967e01ca7bef528a2c7",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "429f72cda2071939e80ee509a7913412079b2c8656fc949e6527a099cce7dd5e",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "categoryContent",
+          "exceptionTypes": [
+            "java.io.InterruptedIOException"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "16-0",
+      "index": 17,
+      "sha256": "ed56f35b679419275085e89a3c541dadcd404a501b5831dcedc1f09afea04701",
+      "privateResultSha256": "c7d85e15b139f76432599e4a2e72aae132a40ca35d9a775e4ed55e7eab7d2113",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "811b4e412e2c4818da4f7f61e53f3977f7f0ed67d8545dd45c3d354902c8e8fc",
+      "cleanup": {
+        "forcedWorkerKill": true,
+        "closed": false,
+        "error": {
+          "category": "timeout",
+          "type": "Error",
+          "fingerprint": "273b512cf19d6bd654b4cd3f12ffdb6decc7e250ea9dc6be0db322026a652ad9"
+        },
+        "workerExited": false,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "cleanup",
+          "exceptionTypes": [
+            "java.lang.ClassNotFoundException",
+            "java.lang.InterruptedException",
+            "java.lang.NoClassDefFoundError"
+          ],
+          "missingSymbols": [
+            {
+              "kind": "class",
+              "name": "com.github.catvod.spider.merge.OoOo0O0O0oOoO0oOoO.o0OoO0o0Oo0o0o0OoO"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "17-0",
+      "index": 18,
+      "sha256": "6db260446185b55d42251a253f05c2b3e593340ca131d8c6df85b685181e0732",
+      "privateResultSha256": "c7a2d629515c1c02f45e826826a3d4671183d3f70c8912854dd7c908d2061447",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "527adb02733b6a63e565b37d4ab88d7c566655ae2a73c678522f5bdf51946f49",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "site-load-init",
+          "exceptionTypes": [
+            "java.net.UnknownHostException",
+            "org.json.JSONException"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "18-0",
+      "index": 19,
+      "sha256": "62aec35b3a4c3db8346b78404c00bb5eb53dbfd478f30f7697acafbef135340b",
+      "privateResultSha256": "705ab5d35d2fb8ca8b4af19bd9313c7e54445c4e53a14336efb17b38a9926308",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "c0db250055504a94728d96be8e7977d171568108673d894855c716f284581d26",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "main-load",
+          "exceptionTypes": [
+            "java.lang.ClassFormatError"
+          ],
+          "missingSymbols": []
+        },
+        {
+          "stage": "site-load-init",
+          "exceptionTypes": [
+            "java.lang.ClassNotFoundException",
+            "java.lang.NoClassDefFoundError"
+          ],
+          "missingSymbols": [
+            {
+              "kind": "class",
+              "name": "com.google.zxing.ChecksumException"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "19-0",
+      "index": 20,
+      "sha256": "d8982109de0bc20436012c4dc847401bdddc2595b5888c93ae2482cbb6eda6e1",
+      "privateResultSha256": "3ec6b2bc8b5a6ab1d798bea96a6c5a3da198afe9d689f15dfc930484d8323521",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "ea99b40d06584cf80d26fd3052f35a2b232dea2c7462db0dc510778df3c9ab6e",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "main-load",
+          "exceptionTypes": [
+            "java.lang.ClassFormatError"
+          ],
+          "missingSymbols": []
+        },
+        {
+          "stage": "homeContent",
+          "exceptionTypes": [
+            "java.lang.ClassFormatError"
+          ],
+          "missingSymbols": []
+        },
+        {
+          "stage": "categoryContent",
+          "exceptionTypes": [
+            "java.lang.ClassFormatError"
+          ],
+          "missingSymbols": []
+        },
+        {
+          "stage": "detailContent",
+          "exceptionTypes": [
+            "java.lang.ClassFormatError"
+          ],
+          "missingSymbols": []
+        }
+      ]
+    },
+    {
+      "caseId": "20-0",
+      "index": 21,
+      "sha256": "0e622ce7b053bedfd476705c2883b608344117c6beac9b3e0dfbea3868c17e2b",
+      "privateResultSha256": "a8e318f1eda64dd4ecbb7e6f39b2b5759d2386cf8e75b8d21f45a8e8245ad449",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "be649e951580d3cd6b9cb8bf5404aaa90602897a03a73c35e3dc088844f9fac3",
+      "cleanup": {
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "load",
+          "exceptionTypes": [
+            "java.lang.ClassNotFoundException",
+            "java.lang.NoClassDefFoundError"
+          ],
+          "missingSymbols": [
+            {
+              "kind": "class",
+              "name": "com.tencent.smtt.sdk.TbsListener"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "20-1",
+      "index": 22,
+      "sha256": "0e622ce7b053bedfd476705c2883b608344117c6beac9b3e0dfbea3868c17e2b",
+      "privateResultSha256": "bc17a418d607d3f338c5d4506e11a33e112f65f9e7d11139391c205728b460b6",
+      "dockerImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "containerExit": 0,
+      "oomKilled": false,
+      "inspectSha256": "f72556be54b91a9c0faf719178c3f323ff1b3221bd655b16401549b6110ae89e",
+      "cleanup": {
+        "forcedWorkerKill": true,
+        "closed": true,
+        "workerExited": true,
+        "temporaryDataRemoved": true
+      },
+      "controlledEvidence": [
+        {
+          "stage": "load",
+          "exceptionTypes": [
+            "java.lang.ClassNotFoundException",
+            "java.lang.NoClassDefFoundError"
+          ],
+          "missingSymbols": [
+            {
+              "kind": "class",
+              "name": "com.tencent.smtt.sdk.TbsListener"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

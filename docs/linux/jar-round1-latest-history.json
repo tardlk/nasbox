@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact SHA identity against the latest 114-artifact comparison; distinct from historical union116 mapping",
+  "sourceReport": "docs/linux/post-repair-catalog-comparison.json",
+  "sourceReportSha256": "8bb91fb47e756faea461afead0ddc25f9242472fa37d9ee5cc71530697e9a690",
+  "currentInputSetSha256": "8e9c80c557c5703ff70f8c44fb5a71aaaf3c89d3e0e0d39cdba94cbdaa42a3d3",
+  "historicalArtifacts": 114,
+  "currentArtifacts": 114,
+  "exactShaMatches": 113,
+  "currentOnlySha256": [
+    "f9c5795cd16c41d0102c332ea1c17bea1cd6e4650ce7a6f723673dcca527f815"
+  ],
+  "missingSha256": [
+    "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c"
+  ],
+  "notes": [
+    "Current-only SHA existed in an earlier catalogue, hence historical union records zero globally new SHA.",
+    "Missing bytes are acquisition observations, never an inferred new execution failure."
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "taskServicesStillRunning": [],
+  "originalNasServicesStillRunning": [
+    "Docker",
+    "moviepilot",
+    "qbittorrent",
+    "emby",
+    "dockge-dockge-1"
+  ],
+  "originalContainersUnchanged": true,
+  "sourceEvidence": "jar-final-execution-evidence.json",
+  "temporaryNasRootsRemoved": [
+    "/tmp/tvbox-frozen-round1.LWyPp6",
+    "/tmp/tvbox-frozen-round1.RhIwSi"
+  ],
+  "allTaskContainersRemoved": true,
+  "scopedSshControlMasterClosed": true,
+  "emulatorStopped": true,
+  "adbServerStopped": true,
+  "fixtureHttpStopped": true,
+  "taskAvdAndAndroidHomeRemoved": true,
+  "publicSigningKeyCopyRemoved": true,
+  "temporaryCompilerRemoved": true,
+  "sharedAndroidFileHashesUnchanged": true,
+  "autostartChanges": [],
+  "taskCacheLogicalBytesRemoved": {
+    "compat": 51815346,
+    "backend": 3906511,
+    "jar-final-20261015": 266143409,
+    "container": 2016,
+    "jar-round1": 173468287
+  },
+  "cacheRemovalComplete": true,
+  "retainedInputs": [
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/jar-round1-20261015",
+      "logicalBytes": 282973218,
+      "purpose": "Frozen exact JAR/config/ext/role inputs for unresolved compatibility fixes and final verification"
+    },
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/jar-round2-evidence-20261015",
+      "logicalBytes": 25517472,
+      "purpose": "Exact original ART/NAS responses/params, pinned original APK and controlled technical evidence for the remaining fixes"
+    }
+  ],
+  "retainedEnvironments": [
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.tools",
+      "logicalBytes": 5431419735,
+      "allocatedKiB": 5338792,
+      "purpose": "Existing SDK/JDK/DEX/native development dependencies plus 541078-byte ZXing core3.3.0"
+    }
+  ],
+  "retainedFinalImage": {
+    "tag": "tvbox-core:linux-amd64-zxing-20261015",
+    "id": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+    "bytes": 516639457,
+    "purpose": "Last fully retested Linux/NAS runtime; old rollback/reference images preserved"
+  },
+  "unresolvedWorkerCleanupFailure": {
+    "caseId": "16-0",
+    "report": "jar-round2-nas-execution.json",
+    "scope": "Worker close failed in ART replay; exited and removed container contained remaining processes. Not reclassified as a worker-cleanup pass."
+  }
+}

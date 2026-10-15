@@ -15,12 +15,19 @@ TVBOX_TEST_NATIVE=1 node --test compat/native-bridge.test.mjs
 node scripts/compat/native-source-probe.mjs 'http://www.饭太硬.net/tv' report.json
 ```
 
-`TVBOX_NATIVE_LIB_DIR` overrides `.tools/native-runtime`. All 20 artifacts are
+`TVBOX_NATIVE_LIB_DIR` overrides `.tools/native-runtime`. All 23 artifacts are
 pinned by SHA-256, size and the published Maven SHA-1 in runtime.json. Builds are
 offline, check original source hashes and stage generated adaptations atomically.
 The provisioning command is explicit; importing or running ordinary scripts never
 downloads native dependencies. It adds no service, PATH change or autostart item.
 See NOTICE and licenses for upstream attribution and release packaging boundaries.
+
+The host classpath now includes the original Gradle coordinate
+`com.google.zxing:core:3.3.0` after an exact-role ART/NAS replay reached Wogg's
+missing `ChecksumException`. Genuine QR encoding/decoding, error correction and
+irrecoverable checksum failures are tested. The repaired NAS entry initializes
+and returns the same empty home as ART; this does not imply nonempty business
+content. See `docs/linux/jar-round2-zxing-repair.json`.
 
 ```js
 const runtime = createSpiderRuntime({nativeBridge: true, timeoutMs: 45000});

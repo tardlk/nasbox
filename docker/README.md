@@ -3,6 +3,15 @@
 本阶段交付命令行后端镜像：订阅配置解析、QuickJS、DEX 转换和 ARM/JNI 执行。
 默认命令是一次性离线自检，执行成功后容器退出。Web 服务和播放器后续开发。
 
+2026-10-15 本轮最新实测镜像为 `tvbox-core:linux-amd64-zxing-20261015`，
+ID `sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7`。
+同一冻结集合的 114 份制品已在此镜像完整运行：111 份有效输入实际进入加载，
+96 加载成功、12 失败、3 超时，另 3 份内容无效。640 个 API/ext 入口 ready，
+2431 个变体尚未初始化；每 SHA 只选择一个角色，不能称全面兼容率。
+[同输入完整回测](../docs/linux/jar-round1-zxing-full-matrix.md) 与
+[原角色 ART/NAS 对照](../docs/linux/jar-round2-art-nas-comparison.md) 分别保留。
+下文旧标签和报告是各历史阶段的记录，不能代替本轮最终镜像结果。
+
 在仓库根目录构建：
 
 ```sh

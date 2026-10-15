@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "scope": "Original official APK ART observations; direct methods, no player execution, no exact pinned-source certification",
+  "apkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+  "instrumentationSha256": "c6b6a497ef3950d0d3113ea3d29a30e3ce7687930edabd3a9153bd4cd848a56e",
+  "planSha256": "fd59dd25afbf06b6aadb1c3556c302eb822b9af416ae09b375eda40c7253bc9b",
+  "runnerSha256": "0943bdee08b82f01959a044dc3e558b6857c6b8b52cdd426819c5e9573828dec",
+  "budgets": {
+    "caseMs": 150000,
+    "loadMs": 90000,
+    "initMs": 10000,
+    "callMs": 10000
+  },
+  "applicationStatePolicy": "fresh-app-data",
+  "allOrdinaryApplicationUid": true,
+  "applicationUids": [
+    10166
+  ],
+  "selectedCases": 23,
+  "loaded": 23,
+  "ready": 23,
+  "privateResultsAllVerified": true,
+  "transportTimeouts": 0,
+  "methods": {
+    "attempted": 61,
+    "successfulJson": 49,
+    "unsuccessful": 12
+  },
+  "temporaryServicesStoppedAfterCollection": true,
+  "sharedAndroidFilesUnchanged": true,
+  "rawBusinessResponsesPrivate": true
+}

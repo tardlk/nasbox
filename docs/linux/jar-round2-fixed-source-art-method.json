@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 1,
+  "scope": "Real Android/ART: checksum-pinned fixed-source bindDexLoader with owned isolated DEX classes, versus the unchanged installed official APK private method. Captured JAR inputs are scanned as bytes only; no captured class or native code is executed.",
+  "planSha256": "56b5236c21903611f52ea25eb351995cbed07f45bb83a1bfb3c20b49f8e87125",
+  "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+  "instrumentationApkSha256": "7737c592bc01d77ca04d9b760be068e9d37ad55c2d3a410bcbdcd71b0ad8fa79",
+  "source": {
+    "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+    "path": "app/src/main/java/com/github/catvod/crawler/ProtectedInitJar.java",
+    "sourceSha256": "86a31da8a7e8e573f957a157cafe0b3c0e74b7f8af937a6aa02b133a9973a250",
+    "transformedSourceSha256": "8cd153137cdca73cb8c578a0593c54fd05bb4315f41836323e2dcbb9a6bf85b2",
+    "transform": "Only class namespaces are rebound: package com.github.catvod.crawler -> com.github.tvbox.parity.fixed; class ProtectedInitJar -> FixedProtectedInitJar; App import com.github.tvbox.osc.base.App -> com.github.tvbox.parity.fixed.binding.App. Fields, method signatures and complete method bodies remain byte-identical. The App namespace bridge returns the unchanged target process Application instance because R8 removed the official App.getInstance method.",
+    "methods": {
+      "bindDexLoader": {
+        "signature": "private boolean bindDexLoader(Class<?> clz, Object init)",
+        "sourceSha256": "8bd5eb5213d074a0272732d3e2c277b3c18e8e12fb81f2fb7ceefaad65a3344b",
+        "sourceBytes": 1011,
+        "copiedMethodUnchanged": true
+      },
+      "scan": {
+        "signature": "private static boolean scan(String jar, String packageName)",
+        "sourceSha256": "d30b870ea59d9d77e13961cb4af9f6c13763f5625b350b24c0bb14c9908765c6",
+        "sourceBytes": 1272,
+        "copiedMethodUnchanged": true
+      }
+    },
+    "licenseSha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+    "appBinding": {
+      "officialGetInstanceOptimizedOut": true,
+      "officialAppMethods": [
+        "<init>()V",
+        "a()Lcom/p2p/P2PClass;",
+        "getCurrentActivity()Landroid/app/Activity;",
+        "onCreate()V",
+        "onTerminate()V"
+      ],
+      "strategy": "The only App class change is import namespace rebinding. Owned App.getInstance returns the exact target Application supplied by instrumentation; each fixture getLoader argument is checked against that same instance on both fixed and official paths."
+    }
+  },
+  "officialMethodEvidence": {
+    "bindDexLoaderBodySha256": "1935a6a7f2375d5ff9432b58c08a97552f55a5bdde15a49c91dcd9c360874e31",
+    "scanBodySha256": "94d233aaa1bdc5805f44eec69671b7c055cddf4a6b2a3c6bf5d6bd15fbcc4715",
+    "staticOnly": true,
+    "apkHashBound": true,
+    "classNotFoundCatchReturnsTrue": true
+  },
+  "applicationPid": 4896,
+  "applicationUid": 10166,
+  "androidSdk": 30,
+  "androidRelease": "11",
+  "abi": "arm64-v8a",
+  "vmName": "Dalvik",
+  "vmVersion": "2.1.0",
+  "applicationStatePolicy": "cold-process-preserve-data",
+  "fixedAppBinding": "Namespace bridge to the unchanged target process Application instance; original App.getInstance was removed by R8.",
+  "targetApplication": {
+    "class": "com.github.tvbox.osc.base.App",
+    "packageName": "com.github.tvbox.osc.jun",
+    "uid": 10166,
+    "classloaderMatchesTarget": true,
+    "sameInstanceForBothMethodPaths": true
+  },
+  "targetDexNativeAbsentBefore": true,
+  "bindings": [
+    {
+      "id": "init-null",
+      "fixtureSha256": "ecbc77cd44fb82b6d831d865449c8c6a44e3af00760d4f4d5841aee9775ae386",
+      "fixed": false,
+      "official": false,
+      "expectedFixed": false,
+      "expectedOfficial": false,
+      "fixedFieldBound": false,
+      "officialFieldBound": false,
+      "fixedContextMatchesTargetApplication": true,
+      "officialContextMatchesTargetApplication": true,
+      "classloaderIsolated": true,
+      "nativeExecuted": false,
+      "pass": true
+    },
+    {
+      "id": "missing-dex-native",
+      "fixtureSha256": "ecbc77cd44fb82b6d831d865449c8c6a44e3af00760d4f4d5841aee9775ae386",
+      "fixed": false,
+      "official": true,
+      "expectedFixed": false,
+      "expectedOfficial": true,
+      "fixedFieldBound": false,
+      "officialFieldBound": false,
+      "fixedContextMatchesTargetApplication": true,
+      "officialContextMatchesTargetApplication": true,
+      "classloaderIsolated": true,
+      "nativeExecuted": false,
+      "pass": true
+    },
+    {
+      "id": "loader-null",
+      "fixtureSha256": "19b83d71d4d93456da5061fa8605e13f5e692e03c35711a90c70f743ad4f84fb",
+      "fixed": false,
+      "official": false,
+      "expectedFixed": false,
+      "expectedOfficial": false,
+      "fixedFieldBound": false,
+      "officialFieldBound": false,
+      "fixedContextMatchesTargetApplication": true,
+      "officialContextMatchesTargetApplication": true,
+      "classloaderIsolated": true,
+      "nativeExecuted": false,
+      "pass": true
+    },
+    {
+      "id": "loader-field",
+      "fixtureSha256": "0f8e0eb01efba1e943ea7d299f4813171aabb620f35a11998c8e84fb66db4e73",
+      "fixed": true,
+      "official": true,
+      "expectedFixed": true,
+      "expectedOfficial": true,
+      "fixedFieldBound": true,
+      "officialFieldBound": true,
+      "fixedContextMatchesTargetApplication": true,
+      "officialContextMatchesTargetApplication": true,
+      "classloaderIsolated": true,
+      "nativeExecuted": false,
+      "pass": true
+    },
+    {
+      "id": "loader-no-field",
+      "fixtureSha256": "1b25b7ba7533e678a4d43100d043003f7af1cc0019551ffd644ba0d8c5d6dd59",
+      "fixed": false,
+      "official": false,
+      "expectedFixed": false,
+      "expectedOfficial": false,
+      "fixedFieldBound": false,
+      "officialFieldBound": false,
+      "fixedContextMatchesTargetApplication": true,
+      "officialContextMatchesTargetApplication": true,
+      "classloaderIsolated": true,
+      "nativeExecuted": false,
+      "pass": true
+    }
+  ],
+  "targetDexNativeAbsentAfter": true,
+  "scanDirectory": {
+    "canonicalPathSha256": "73b73950d335d302279aa3ea6241c948b123f3e9e7e3d6162f3732c1c1976fce",
+    "exists": true,
+    "directory": true,
+    "readable": true,
+    "searchable": true,
+    "targetInternalFilesDirectory": true
+  },
+  "scanInputChecks": [
+    {
+      "jarSha256": "65be8df8bfa60f59aecb3c170d5cc0fd3feeaa96daad531faa97d49aff81eab4",
+      "exists": true,
+      "file": true,
+      "readable": true,
+      "expectedBytes": 1863956,
+      "actualBytes": 1863956,
+      "actualSha256": "65be8df8bfa60f59aecb3c170d5cc0fd3feeaa96daad531faa97d49aff81eab4"
+    },
+    {
+      "jarSha256": "a9dce1158db8c7d469399917468f91fcc9dbdd8260d56f32aa5c1e7a5f293ed6",
+      "exists": true,
+      "file": true,
+      "readable": true,
+      "expectedBytes": 2372060,
+      "actualBytes": 2372060,
+      "actualSha256": "a9dce1158db8c7d469399917468f91fcc9dbdd8260d56f32aa5c1e7a5f293ed6"
+    },
+    {
+      "jarSha256": "a41f11e12267d0840eb8c949a59e5709d6a6f8fc42c86d845a7dad4be51a4fa1",
+      "exists": true,
+      "file": true,
+      "readable": true,
+      "expectedBytes": 1909530,
+      "actualBytes": 1909530,
+      "actualSha256": "a41f11e12267d0840eb8c949a59e5709d6a6f8fc42c86d845a7dad4be51a4fa1"
+    }
+  ],
+  "scans": [
+    {
+      "jarSha256": "65be8df8bfa60f59aecb3c170d5cc0fd3feeaa96daad531faa97d49aff81eab4",
+      "bytes": 1863956,
+      "fixedProtected": true,
+      "officialProtected": true,
+      "classLoaded": false,
+      "pass": true
+    },
+    {
+      "jarSha256": "a9dce1158db8c7d469399917468f91fcc9dbdd8260d56f32aa5c1e7a5f293ed6",
+      "bytes": 2372060,
+      "fixedProtected": true,
+      "officialProtected": true,
+      "classLoaded": false,
+      "pass": true
+    },
+    {
+      "jarSha256": "a41f11e12267d0840eb8c949a59e5709d6a6f8fc42c86d845a7dad4be51a4fa1",
+      "bytes": 1909530,
+      "fixedProtected": true,
+      "officialProtected": true,
+      "classLoaded": false,
+      "pass": true
+    }
+  ],
+  "completed": true,
+  "passed": true,
+  "cleanup": {
+    "ownedTemporaryFilesRemoved": true,
+    "capturedInputsUnmodified": true,
+    "artifactClassesLoaded": false,
+    "thirdPartyNativeExecuted": false
+  },
+  "runner": {
+    "sha256": "1bc02d1715605ca579210d51f05436e94f745af614e08cab9db48c224f70d3db",
+    "metadataSha256": "829ab16dcb0b61833ddd04e955f3043d19962ff9c2c443e0a41763617193a7c5",
+    "verifiedSummary": {
+      "ok": true,
+      "bindingCases": 5,
+      "staticScanCases": 3,
+      "missingDexNativeFixed": false,
+      "missingDexNativeOfficial": true
+    }
+  },
+  "executionEvidence": {
+    "sourceResultSha256": "3a6b568564dc96b875b657f0bf9d54abf98b3c51543c2d219e95761bfab54b16",
+    "scope": "Fixed-source ART method probe with explicit namespace rebinding and real target Application binding; separate from original-product and Linux parser tests",
+    "failedHarnessAttemptsRetained": [
+      {
+        "attempt": 1,
+        "stage": "scan-input-byte-identity",
+        "scanMethodExecuted": false,
+        "result": "failed-harness-input",
+        "partialBindingCasesPassed": 5
+      },
+      {
+        "attempt": 2,
+        "stage": "scan-input-file-readability",
+        "scanMethodExecuted": false,
+        "result": "failed-harness-input",
+        "partialBindingCasesPassed": 5
+      }
+    ],
+    "transport": "ADB root copies only to task internal appfiles; target UID ownership and restorecon verified, then ordinary app UID instrumentation",
+    "sourceBodiesUnchanged": true,
+    "noCapturedClassOrNativeExecuted": true
+  }
+}

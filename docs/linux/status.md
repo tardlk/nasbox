@@ -6,6 +6,49 @@ Next execution plan: [JAR compatibility continuation](jar-next-phase-plan.md).
 The plan starts with a fresh frozen input batch and a complete current-image
 matrix, then Android failure diagnosis, shared fixes and full method coverage.
 
+Round 1 is complete: fresh capture/freeze (87 subscriptions, 204 role/signature
+retrievals, 114 SHA artifacts: 111 valid and 3 invalid content) and 228 adjacent
+old/final NAS executions are fully verified. Every valid input entered loading.
+Primary baseline image f2f6208a (before ZXing repair): 95 loaded, 12 load failures, 4 load timeouts; 911 initialization
+attempts, 644 ready and 2448 API/ext variants uninitialized. Old image: 93 loaded.
+No definite failed-load regression; one old loaded / final timeout is unknown.
+This is complete per-artifact execution on one selected role, not exhaustive
+roles/ext or full business compatibility. See `jar-round1-baseline.md`,
+`jar-round1-failure-priority.md`, `jar-round1-methodology.md`,
+`jar-round1-freeze-v3.json`, `jar-round1-history.json` and the separate
+latest-114 mapping `jar-round1-latest-history.json`.
+
+Round 2 is active: original main/site signatures and configured main JARs are
+preserved. Twenty-three fixed-input original-product ART cases completed with
+23 loaded and 23 ready under ordinary application UID 10166; methods still have
+empty/invalid JSON/business failures. Two selected artifacts lack their original
+main JAR, and two are helper-only without an original CSP, explicitly unexecuted.
+The original APK remains unchanged; official-version differences remain separate
+from pinned-source parity. ART/ADB/fixture services stopped after collection;
+NAS replay completed: 8 loaded and 6 ready out of those 23 failure-biased cases;
+12 observed load failures (two with network causes unresolved), three without
+observed completed load. Seven of nine paired successful JSON calls match;
+invalid JSON, errors and unexecuted calls are separate. One worker-cleanup
+failure is retained despite container-level process containment.
+
+Fixed-source ART probe passed five owned binding cases and three byte scans:
+missing DexNative returns false on pinned source and true in the official APK.
+Three protection samples have corresponding static structure; no provider
+runtime branch trace is claimed. Native constructor admission for d851 is a
+confirmed unrepaired Linux gap. ZXing3.3.0 repairs the observed Wogg init blocker;
+the same ART parameters return an equal empty home on the new derivative image.
+Final repair image `808d15d8…` now has a complete adjacent 114/114-artifact rerun
+against `f2f6208a…`: both 96 loaded, 12 failures and 3 timeouts among 111 valid
+inputs; three invalid contents remain separate. Final image: 928 initialization
+attempts, 640 ready, 2431 variants uninitialized. Repeated old image: 979/663.
+Two previous ready entries timed out and left 22 later entries unexecuted. One
+ready-to-failed candidate independently reproduces the same missing three-argument
+Log.e ABI on both images, so is an unresolved conditional existing gap, not a
+confirmed new-image regression. Original mismatches are retained. Wogg/Mogg
+initialization improved. See `jar-round1-zxing-full-matrix.md`,
+`jar-final-init-transitions.json` and `jar-final-init74-diagnostic.md`.
+588/588 native-enabled host tests pass, no skipped tests.
+
 | Work | Status | Evidence |
 | --- | --- | --- |
 | Win-Box checkout and working branch | Done | baseline.json; branch codex/linux-core |
@@ -13,7 +56,7 @@ matrix, then Android failure diagnosis, shared fixes and full method coverage.
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 497 Node tests passed with native profile enabled, including DEX/constructor/Android ABI/dynamic ARM and cross-VM shutdown regressions |
+| Probe and backend contract tests | Done within tested scope | 586 native-enabled Node tests passed at the fixed-method-tool checkpoint; earlier 497-test result retained below as historical evidence |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Bounded original-product validation complete | android-runtime-probe.json: unchanged official ARM64 APK on Android 11 ART; 6 parser and 12 JAR cases plus UI import/category smoke; exact pinned APK unavailable |
@@ -30,7 +73,7 @@ matrix, then Android failure diagnosis, shared fixes and full method coverage.
 | Linux container and NAS validation | Scoped validation done | Physical x86_64 NAS; genuine protected JAR init/home and timeout resource release; other architectures and full client unverified |
 | Automatic subscription JAR retrieval/cache | Original-role routes implemented and verified on NAS | artifact-routes-probe.json: HTTP/image/assets/file/clan, cache identity/integrity/quota, real automatic init/home |
 | Crash recovery and combined DEX/module cache quota | Implemented and verified on NAS | cache-lifecycle-probe.json: kernel leases, active-JVM guards, parent-death containment, cross-container PID-1 recovery, quota/pin/eviction checks |
-| Broad real JAR catalogue matrix | First bounded matrix complete on NAS | catalog-matrix-probe.json: 115 captured SHA artifacts, 112 valid ZIP, 91 loaded, 74 with at least one Spider; partial call/variant coverage, not a compatibility percentage |
+| Broad real JAR catalogue matrix | Fresh baseline and final ZXing-image full rerun complete | jar-round1-zxing-full-matrix.json: 114 captured SHA artifacts, 111 valid, 96 loaded, 12 load failures, 3 load timeouts; one selected role per SHA, other role/ext and method coverage explicit |
 
 The 65-case audit contains 12 matching observations, 51 differing observations
 and 2 cases where both sides reject but exception/state mapping is unresolved.

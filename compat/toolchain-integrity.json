@@ -84,8 +84,8 @@
   },
   "nativeBridge": {
     "manifest": "backend/spider-runtime/native-bridge/runtime.json",
-    "files": 22,
-    "bytes": 68312801,
+    "files": 23,
+    "bytes": 68853879,
     "verification": "Per-artifact HTTPS repository SHA-1 and local SHA-256 pins. Maven Central artifacts retain published SHA-1; the host Sardine AAR uses JitPack-published SHA-1 (same trust origin, not an independent authenticity signature), pinned whole-archive SHA-256 and separately pinned extracted classes.jar.",
     "licenses": "backend/spider-runtime/native-bridge/NOTICE",
     "hostWebDav": {
@@ -105,6 +105,17 @@
           "bytes": 413197
         }
       ]
+    },
+    "zxing": {
+      "version": "3.3.0",
+      "filename": "core-3.3.0.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/google/zxing/core/3.3.0/core-3.3.0.jar",
+      "sha256": "bba7724e02a997cec38213af77133ee8e24b0d5cf5fa7ecbc16a4fa93f11ee0d",
+      "upstreamSha1": "73c49077166faa4c3c0059c5f583d1d7bd1475fe",
+      "bytes": 541078,
+      "purpose": "Original fixed TVBoxOS app/build.gradle declares com.google.zxing:core:3.3.0. Supplies real barcode codecs and ChecksumException for observed Wogg initialization; no no-op host stub.",
+      "sourceDeclaration": "compat/reference/tvboxos/app/build.gradle",
+      "license": "Apache-2.0"
     }
   }
 }

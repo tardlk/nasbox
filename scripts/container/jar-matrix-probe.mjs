@@ -3,7 +3,7 @@
 // Stdout/outputs contain metadata only; inputs and live response bodies stay private.
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { closeSync, openSync, writeSync } from 'node:fs';
+import { closeSync, openSync, readFileSync, writeSync } from 'node:fs';
 import { mkdir, mkdtemp, readFile, realpath, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
@@ -12,6 +12,7 @@ import { createSpiderRuntime } from '../../backend/spider-runtime/index.mjs';
 
 const SELF = fileURLToPath(import.meta.url);
 const digest = value => createHash('sha256').update(value).digest('hex');
+const RUNNER_SHA256 = digest(readFileSync(SELF));
 const DEFAULT_LIMITS = Object.freeze({
   loadMs: 45000, initMs: 20000, callMs: 20000, artifactMs: 180000,
   closeMs: 5000, jvmMs: 45000, maxHomeSites: 3, maxJarBytes: 128 * 1024 * 1024,
@@ -34,6 +35,41 @@ const classLabel = value => typeof value === 'string' && /^[\w.$]+$/.test(value)
 // Match SpiderWorker.route exactly: everything except JS/Python is a JAR route.
 export const isJarSource = source => !!source && (source.type === undefined || source.type === 3) && typeof source.api === 'string' && !source.api.endsWith('.js') && !source.api.includes('.js?') && !source.api.includes('.py');
 const extHashOf = source => digest(typeof source.ext === 'string' ? source.ext : JSON.stringify(source.ext ?? ''));
+
+function helperValidationOf(value = false) {
+  if (typeof value !== 'boolean') throw new Error('INPUT_SCHEMA: helperLoadValidation must be boolean');
+  return value;
+}
+
+function executionIdentityOf(artifact, limits) {
+  return {
+    runnerSha256: RUNNER_SHA256,
+    inputSha256: semanticHash({
+      expectedJarSha256: artifact.sha256 ?? artifact.jarSha256 ?? null,
+      role: artifact.role === 'site' ? 'site' : 'main',
+      helperLoadValidation: helperValidationOf(artifact.helperLoadValidation), sites: artifact.sites,
+    }),
+    limitsSha256: semanticHash(limits),
+  };
+}
+
+function finishLoadValidation(report) {
+  const validation = report.loadValidation;
+  if (!validation.attempted) {
+    validation.status = 'not-tested';
+    validation.reason = report.error?.stage === 'input' ? 'input-rejected'
+      : report.error?.stage === 'load' ? 'registration-failed'
+      : report.error ? 'runtime-not-ready' : validation.reason;
+    return;
+  }
+  if (report.load?.loaded === true) { validation.status = 'loaded'; delete validation.error; return; }
+  const failure = report.load?.error || report.error || validation.error
+    || report.sites.find(row => row.init?.includesArtifactLoad)?.init?.error;
+  validation.status = ['timeout', 'artifact-timeout'].includes(failure?.category) ? 'timeout'
+    : (report.load?.loaded === false || failure && !['input', 'environment', 'network'].includes(failure.category)) ? 'failed' : 'unknown';
+  if (failure) validation.error = failure;
+  delete validation.reason;
+}
 
 function planSources(sites = []) {
   const representatives = new Map(), variants = new Map();
@@ -99,11 +135,13 @@ export function normalizeManifest(manifest, { manifestPath, inputRoot } = {}) {
   const base = dirname(resolve(manifestPath || 'manifest.json'));
   const root = inputRoot ? resolve(inputRoot) : resolve(base, manifest.inputRoot || '.');
   const limits = limitsOf(manifest.limits);
+  const helperLoadValidation = helperValidationOf(manifest.helperLoadValidation);
   return {
     schemaVersion: 1, inputRoot: root, limits,
     artifacts: artifacts.map((artifact, index) => {
       if (!artifact || typeof artifact.jarPath !== 'string' || !Array.isArray(artifact.sites)) throw new Error('INPUT_SCHEMA: invalid artifact');
-      return { ...artifact, id: label(artifact.id, 'artifact-' + index), jarPath: resolve(root, artifact.jarPath), limits: limitsOf({ ...limits, ...artifact.limits }), sites: artifact.sites };
+      return { ...artifact, id: label(artifact.id, 'artifact-' + index), jarPath: resolve(root, artifact.jarPath), limits: limitsOf({ ...limits, ...artifact.limits }), sites: artifact.sites,
+        helperLoadValidation: helperValidationOf(artifact.helperLoadValidation ?? helperLoadValidation) };
     }),
   };
 }
@@ -181,6 +219,7 @@ export async function probeJarArtifact(artifact, {
   inputRoot, limits: overrides, runtimeFactory = createSpiderRuntime, onProgress = () => {}, workRoot,
 } = {}) {
   const limits = limitsOf({ ...artifact.limits, ...overrides });
+  const helperLoadValidation = helperValidationOf(artifact.helperLoadValidation);
   const started = Date.now(), end = started + limits.artifactMs;
   const plan = planSources(artifact.sites);
   const report = {
@@ -193,6 +232,9 @@ export async function probeJarArtifact(artifact, {
     uniqueApis: plan.representatives.size, uniqueVariants: plan.variants.size,
     duplicateSources: plan.duplicateSources, skippedNonJarSources: plan.skippedNonJarSources,
     skippedNonCspSources: plan.skippedNonJarSources, // Legacy output key; means non-JAR routes.
+    executionIdentity: executionIdentityOf(artifact, limits),
+    loadValidation: { attempted: false, status: 'not-tested', trigger: artifact.role === 'site' ? 'site-source-init' : 'main-load',
+      reason: artifact.role === 'site' && !plan.representatives.size ? 'helper-only-not-triggered' : 'not-reached' },
   };
   let runtime, directory, workerPid, fatal = false, stage = 'input';
   const diagnostics = {};
@@ -245,6 +287,7 @@ export async function probeJarArtifact(artifact, {
   try {
     const checked = await checkArtifact(artifact, inputRoot || dirname(artifact.jarPath), limits);
     report.input = { bytes: checked.bytes, sha256: checked.sha256 };
+    progress({ stage: 'input', input: report.input, executionIdentity: report.executionIdentity });
     directory = await mkdtemp(join(workRoot || tmpdir(), 'tvbox-jar-probe-'));
     stage = 'start';
     runtime = runtimeFactory({
@@ -264,18 +307,42 @@ export async function probeJarArtifact(artifact, {
       report.load = { loaded: null, deferred: true, registered: true, milliseconds: Date.now() - loadStart };
       admitted = true;
     } else {
+      report.loadValidation = { attempted: true, status: 'unknown', trigger: 'main-load' };
+      progress({ stage: 'load-attempt', loadValidation: report.loadValidation });
       const loaded = await bounded(() => runtime.loadMain(checked.path), limits.loadMs);
       report.load = { loaded: loaded?.loaded === true, milliseconds: Date.now() - loadStart };
       if (!report.load.loaded) report.load.error = classifyFailure(new Error(String(loaded?.failure || 'JAR_LOAD_FAILED')), getDiagnosticText());
       admitted = report.load.loaded;
     }
-    progress({ stage: 'load', loaded: report.load.loaded, deferred: !!report.load.deferred, ...(report.load.error ? { category: report.load.error.category } : {}) });
+    finishLoadValidation(report);
+    progress({ stage: 'load', loaded: report.load.loaded, deferred: !!report.load.deferred, load: report.load, loadValidation: report.loadValidation, ...(report.load.error ? { category: report.load.error.category } : {}) });
     report.nativeLoaded = await readState();
     if (admitted) {
       await bounded(() => runtime.setModules({ remote: true }), limits.initMs);
       const representatives = plan.representatives;
       report.variantBudgetSkipped = plan.variants.size - representatives.size;
       const ready = [];
+      if (report.chosenRole === 'site' && !representatives.size && helperLoadValidation) {
+        // Trigger parseJar without counting an invented Spider as a captured API.
+        // The sentinel contains '/' so no legal JVM class can be instantiated.
+        stage = 'helper-load';
+        report.loadValidation = { attempted: true, status: 'unknown', trigger: 'site-helper-synthetic-class' };
+        progress({ stage: 'load-attempt', loadValidation: report.loadValidation });
+        const begin = Date.now(), before = getDiagnosticText();
+        try {
+          await bounded(() => runtime.getCSP({ key: 'matrix-helper-load', type: 3, api: 'csp_/matrix-loader-validation', ext: '', jar: siteAlias }), limits.loadMs);
+        } catch (error) { report.loadValidation.error = failed(error, diagnosticSince(before)).error; }
+        report.loadValidation.milliseconds = Date.now() - begin;
+        if (!fatal && remaining() > 0) {
+          const state = await bounded(() => runtime.getState(), limits.callMs);
+          report.load.loaderCount = Number.isSafeInteger(state?.jar?.loaderCount) ? state.jar.loaderCount : null;
+          report.load.loaded = report.load.loaderCount === null ? null : report.load.loaderCount > 0;
+          if (report.load.loaded === false) report.load.error = classifyFailure(new Error('JAR_LOAD_FAILED'), diagnosticSince(before));
+          report.nativeLoaded = await readState();
+        }
+        finishLoadValidation(report);
+        progress({ stage: 'helper-load', loaded: report.load.loaded, load: report.load, loadValidation: report.loadValidation });
+      }
       for (const source of representatives.values()) {
         if (fatal || remaining() <= 0) {
           report.unattempted.push({ sourceKey: label(source.key), api: label(source.api), reason: 'artifact-budget' });
@@ -287,6 +354,11 @@ export async function probeJarArtifact(artifact, {
         const before = getDiagnosticText(), begin = Date.now();
         const includesArtifactLoad = report.load.deferred === true && report.load.loaded === null;
         const usedBudgetMs = includesArtifactLoad ? limits.loadMs : limits.initMs;
+        if (includesArtifactLoad) {
+          report.loadValidation = { attempted: true, status: 'unknown', trigger: 'site-source-init' };
+          progress({ stage: 'load-attempt', loadValidation: report.loadValidation });
+        }
+        progress({ stage: 'init-attempt', site: { ...row, init: { attempted: true } } });
         try {
           // Only one captured artifact is admitted; preserve its loader role.
           const spider = await bounded(() => runtime.getCSP({ ...source, type: 3, jar: report.chosenRole === 'site' ? siteAlias : '' }), usedBudgetMs);
@@ -300,9 +372,10 @@ export async function probeJarArtifact(artifact, {
           report.load.loaded = report.load.loaderCount === null ? null : report.load.loaderCount > 0;
           if (!report.load.loaded) report.load.error = classifyFailure(new Error('JAR_LOAD_FAILED'), getDiagnosticText());
           report.nativeLoaded = await readState();
-          progress({ stage: 'deferred-load', loaded: report.load.loaded, loaderCount: report.load.loaderCount });
+          finishLoadValidation(report);
+          progress({ stage: 'deferred-load', loaded: report.load.loaded, loaderCount: report.load.loaderCount, load: report.load, loadValidation: report.loadValidation });
         }
-        progress({ stage: 'init', sourceKey: row.sourceKey, api: row.api, ready: row.init.ok, ...(row.init.error ? { category: row.init.error.category } : {}) });
+        progress({ stage: 'init', sourceKey: row.sourceKey, api: row.api, ready: row.init.ok, site: row, ...(row.init.error ? { category: row.init.error.category } : {}) });
       }
       let categoryCandidate;
       for (const entry of ready.slice(0, limits.maxHomeSites)) {
@@ -350,6 +423,7 @@ export async function probeJarArtifact(artifact, {
     }
   }
   report.diagnostics = diagnostics;
+  finishLoadValidation(report);
   const attempted = new Set(report.sites.map(site => site.api + '\0' + site.extSha256));
   const exhausted = ['timeout', 'artifact-timeout'].includes(report.error?.category);
   const loadFailed = report.load?.loaded === false || (!report.sites.length && stage === 'load' && !exhausted);
@@ -397,7 +471,8 @@ async function isolatedArtifact(manifestPath, index, artifact, { inputRoot, work
     const child = spawn(process.execPath, [SELF, '--manifest', manifestPath, '--worker-index', String(index), '--input-root', inputRoot, '--work-root', workRoot], {
       detached: process.platform !== 'win32', stdio: ['ignore', 'pipe', 'ignore'],
     });
-    let buffered = '', report, timedOut = false, spawnError, initialized = 0;
+    let buffered = '', report, timedOut = false, spawnError, input, load, loadValidation;
+    const sites = [];
     const timer = setTimeout(() => { timedOut = true; stopChild(child); }, artifact.limits.artifactMs + artifact.limits.closeMs + 2000);
     child.stdout.on('data', chunk => {
       buffered += chunk.toString();
@@ -412,7 +487,16 @@ async function isolatedArtifact(manifestPath, index, artifact, { inputRoot, work
             report = event.artifact;
             if (!report.cleanup?.closed) stopChild(child);
           }
-          else if (event.event === 'stage') { if (event.stage === 'init') initialized++; onProgress(event); }
+          else if (event.event === 'stage') {
+            if (event.stage === 'input') input = event.input;
+            if (event.load) load = event.load;
+            if (event.loadValidation) loadValidation = event.loadValidation;
+            if (['init-attempt', 'init'].includes(event.stage) && event.site) {
+              const index = sites.findIndex(site => site.api === event.site.api && site.extSha256 === event.site.extSha256);
+              if (index < 0) sites.push(event.site); else sites[index] = event.site;
+            }
+            onProgress(event);
+          }
         } catch { stopChild(child); }
       }
     });
@@ -421,18 +505,25 @@ async function isolatedArtifact(manifestPath, index, artifact, { inputRoot, work
       clearTimeout(timer);
       // Catch descendants if an interrupted worker exited before its JVM did.
       stopChild(child);
-      if (!report || timedOut) report = {
-        id: artifact.id, role: label(artifact.role, 'main'), sites: [],
+      if (!report || timedOut) {
+        const initialized = sites.length;
+        report = {
+        id: artifact.id, role: label(artifact.role, 'main'), chosenRole: artifact.role === 'site' ? 'site' : 'main', sites,
+        limits: artifact.limits, executionIdentity: executionIdentityOf(artifact, artifact.limits),
+        ...(input ? { input } : {}), ...(load ? { load } : {}),
+        loadValidation: loadValidation || { attempted: false, status: 'not-tested', trigger: artifact.role === 'site' ? 'site-source-init' : 'main-load', reason: 'runtime-not-ready' },
         error: { stage: 'isolated-worker', ...classifyFailure(timedOut ? deadlineError('artifact') : spawnError || new Error('Probe worker exited')) },
         milliseconds: Date.now() - started,
         partialProgress: true,
         unattemptedVariants: Math.max(0, unrunVariantCount(artifact.sites) - initialized),
         allUnattemptedVariants: Math.max(0, unrunVariantCount(artifact.sites) - initialized),
         budgetSkipped: timedOut ? Math.max(0, unrunVariantCount(artifact.sites) - initialized) : 0,
-        observations: { attemptedApis: initialized, allUnattemptedVariants: Math.max(0, unrunVariantCount(artifact.sites) - initialized), budgetSkipped: timedOut ? Math.max(0, unrunVariantCount(artifact.sites) - initialized) : 0 },
+        observations: { attemptedApis: initialized, readyApis: sites.filter(site => site.init?.ok).length, allUnattemptedVariants: Math.max(0, unrunVariantCount(artifact.sites) - initialized), budgetSkipped: timedOut ? Math.max(0, unrunVariantCount(artifact.sites) - initialized) : 0 },
         cleanup: { closed: false, processGroupKilled: true },
         exit: { code, signal },
-      };
+        };
+        finishLoadValidation(report);
+      }
       done(report);
     });
   });
@@ -440,9 +531,14 @@ async function isolatedArtifact(manifestPath, index, artifact, { inputRoot, work
 
 export function summarizeMatrix(artifacts) {
   const result = { artifacts: artifacts.length, loaded: 0, attemptedApis: 0, readyApis: 0, homes: 0, homesWithContent: 0, categories: 0, categoriesWithContent: 0, details: 0, detailsWithContent: 0, budgetSkipped: 0, allUnattemptedVariants: 0, unattemptedLoadFailure: 0, artifactErrors: 0, failureCategories: {} };
+  result.loadValidation = { attempted: 0, loaded: 0, failed: 0, timeout: 0, unknown: 0, notTested: 0 };
   const count = failure => { if (failure?.category) result.failureCategories[failure.category] = (result.failureCategories[failure.category] || 0) + 1; };
   for (const artifact of artifacts) {
     if (artifact.load?.loaded) result.loaded++;
+    const validation = artifact.loadValidation;
+    if (validation?.attempted) result.loadValidation.attempted++;
+    const status = validation?.status === 'not-tested' ? 'notTested' : validation?.status;
+    if (['loaded', 'failed', 'timeout', 'unknown', 'notTested'].includes(status)) result.loadValidation[status]++;
     if (artifact.error) result.artifactErrors++;
     count(artifact.error); count(artifact.load?.error); count(artifact.cleanup?.error);
     for (const key of ['attemptedApis', 'readyApis', 'homes', 'homesWithContent', 'categories', 'categoriesWithContent', 'details', 'detailsWithContent', 'budgetSkipped', 'allUnattemptedVariants', 'unattemptedLoadFailure']) result[key] += artifact.observations?.[key] || 0;
@@ -458,12 +554,20 @@ export async function probeJarMatrix(manifest, {
   const normalized = normalizeManifest(manifest, { manifestPath, inputRoot });
   if (isolate && !manifestPath) throw new Error('INPUT_SCHEMA: isolation requires a saved manifest');
   if (isolate && runtimeFactory) throw new Error('INPUT_SCHEMA: injected runtime requires isolate:false');
+  let manifestBytesSha256;
+  if (manifestPath) {
+    const bytes = await readFile(manifestPath);
+    if (semanticHash(JSON.parse(bytes)) !== semanticHash(manifest)) throw new Error('INPUT_CHECKSUM: saved manifest differs from requested inputs');
+    manifestBytesSha256 = digest(bytes);
+  }
   const started = Date.now(), artifacts = [];
   const directory = await mkdtemp(join(tmpdir(), 'tvbox-jar-matrix-'));
   const report = {
     schemaVersion: 1, date: new Date().toISOString(), host: { platform: process.platform, architecture: process.arch },
     scope: 'Independent captured JAR compatibility probes; no Android/ART equivalence certification',
     manifestSha256: semanticHash(manifest), artifacts, cleanup: {},
+    runnerSha256: RUNNER_SHA256, ...(manifestBytesSha256 ? { manifestBytesSha256 } : {}),
+    limitsSha256: semanticHash(normalized.limits),
   };
   try {
     for (const [index, artifact] of normalized.artifacts.entries()) {

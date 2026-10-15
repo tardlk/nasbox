@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Current continuation source/test/attribution pins; execution snapshots retain their own earlier exact runner hashes in phase reports",
+  "branch": "codex/linux-core",
+  "baseCommit": "12faf43",
+  "nativeEnabledTests": {
+    "total": 588,
+    "passed": 588,
+    "failed": 0,
+    "skipped": 0,
+    "command": "TVBOX_TEST_NATIVE=1 node --disable-warning=ExperimentalWarning --import ./scripts/compat/typescript-loader.mjs --test --test-reporter=spec compat/*.test.mjs"
+  },
+  "files": [
+    {
+      "path": "backend/spider-runtime/native-bridge/NOTICE",
+      "bytes": 3427,
+      "sha256": "fbc419871a10f51456d2178f6b5b6c1e0a2bd5ef5025318add1777fb71065e74"
+    },
+    {
+      "path": "backend/spider-runtime/native-bridge/README.md",
+      "bytes": 10186,
+      "sha256": "7649784ff554aec88a35ee78fbbf9d8c0e0d2413fbeb2b599bc586b0ed87f884"
+    },
+    {
+      "path": "backend/spider-runtime/native-bridge/licenses/core-3.3.0/LICENSE",
+      "bytes": 13320,
+      "sha256": "3f62881f0566227a24b12e5a754cc79f39aaa94883038e95c94812e1f50af42f"
+    },
+    {
+      "path": "backend/spider-runtime/native-bridge/licenses/core-3.3.0/provenance.json",
+      "bytes": 1741,
+      "sha256": "1a5343dba717e01809f7b62b223d6c9380fc7ed6e4807e409a5440430e1522b1"
+    },
+    {
+      "path": "backend/spider-runtime/native-bridge/licenses/poms/core-3.3.0.pom",
+      "bytes": 2064,
+      "sha256": "ca1c3e4c4848773d4e5afa301c12bc18aa4b26d2475ff6961ce026f2d940aabf"
+    },
+    {
+      "path": "backend/spider-runtime/native-bridge/licenses/poms/zxing-parent-3.3.0.pom",
+      "bytes": 27675,
+      "sha256": "7c6951b21684f68ac4f6983d26e0f0b01ab5e7066f8b74b4acaff6f638ed1ff6"
+    },
+    {
+      "path": "backend/spider-runtime/native-bridge/runtime.json",
+      "bytes": 9202,
+      "sha256": "460095742b07189333468b590b7f6fd62e2c2e89a0f6b9d82702e35d316acfcf"
+    },
+    {
+      "path": "compat/android-comparison.test.mjs",
+      "bytes": 16860,
+      "sha256": "7f297b4fc3da3ef0ab55b5988735233783c9980a1543c84b2b6c2a7f2a3fcf98"
+    },
+    {
+      "path": "compat/android-fixed-method-probe.test.mjs",
+      "bytes": 8180,
+      "sha256": "15e641b7e4ae6d7690ee17363bacfc3d6aee5f19c1e1ab9f408861fc73ca4b56"
+    },
+    {
+      "path": "compat/android-loader-context.test.mjs",
+      "bytes": 17279,
+      "sha256": "74828644c366b7a976ac312c93d26eab257e61e317d46b64950926373220abb5"
+    },
+    {
+      "path": "compat/android-oracle-collection.test.mjs",
+      "bytes": 8410,
+      "sha256": "a935cc44e22f5e7c25d5633ef06f7f8d4a6a635b5c3e6b85252fb948369c18a9"
+    },
+    {
+      "path": "compat/android-role-fixtures.test.mjs",
+      "bytes": 13297,
+      "sha256": "d18e80feb83144f776fea953530826b3f3c940b4a9cd77fc86de9a423ff5787c"
+    },
+    {
+      "path": "compat/catalog-capture.test.mjs",
+      "bytes": 7768,
+      "sha256": "dd4ba1cedd7d2c17716d36687cff14f6606b1afec0a3b957161fdf17adf33cad"
+    },
+    {
+      "path": "compat/freeze-catalog.test.mjs",
+      "bytes": 25813,
+      "sha256": "69119ab0f2a6bb3f07254df912d6af4b61c5265250e2feb4e1b83d001a24b7f9"
+    },
+    {
+      "path": "compat/jar-matrix-probe.test.mjs",
+      "bytes": 23274,
+      "sha256": "6ec0dff49679aa9bc64b80f0ba7ca9019de2203c188c0b7843b5c796a3755fa0"
+    },
+    {
+      "path": "compat/native-constructor-format.test.mjs",
+      "bytes": 3615,
+      "sha256": "15f943eb499efd99751d75aac625c9cdf80ad72dbd5e55a4c3df12fd85f3b3c2"
+    },
+    {
+      "path": "compat/prepare-baseline-run.test.mjs",
+      "bytes": 11967,
+      "sha256": "efb78eeae2ad97efb8576e84997420a701770cf8c9341cde56a9c3d06b0dc2b4"
+    },
+    {
+      "path": "compat/protected-init-static.test.mjs",
+      "bytes": 5655,
+      "sha256": "54e6c11bcaef1aa81d5052e3bc62f665e88fc37937234ccd080772b1d1b4cee8"
+    },
+    {
+      "path": "compat/round-baseline-report.test.mjs",
+      "bytes": 28240,
+      "sha256": "30052bd2c500a392d000a95295c91efc42050a37026b696d35f09037c3abf502"
+    },
+    {
+      "path": "compat/toolchain-integrity.json",
+      "bytes": 5610,
+      "sha256": "da6106a7e5840fb90d44e7801d468c91f7463253851609a30d9c1f96dbd2a1bb"
+    },
+    {
+      "path": "compat/zxing-host.test.mjs",
+      "bytes": 6709,
+      "sha256": "980779924a0050d824e71654a25a92b3e38db7e44dd9b89070f1ac6e327ef39d"
+    },
+    {
+      "path": "scripts/android/AndroidFixedMethodManifest.xml",
+      "bytes": 613,
+      "sha256": "2175a7b0127d84e1910d9dcd03e710b538e2e7db4a86c62393d6ec6bd92030b1"
+    },
+    {
+      "path": "scripts/android/FixedMethodInstrumentation.java",
+      "bytes": 18162,
+      "sha256": "4a47dcd4b6b2981671622198dc94f30893345acdf6a16ee3cfb9e065e15a392c"
+    },
+    {
+      "path": "scripts/android/OracleInstrumentation.java",
+      "bytes": 32760,
+      "sha256": "706da827b4f53c39d1e6f8042a32c6edde1be4240f3f9ddd504316d1453195b8"
+    },
+    {
+      "path": "scripts/android/README.md",
+      "bytes": 14605,
+      "sha256": "7acf2d3489e3dd6ce443bcc3d4bab4fa794425f2c0145850087dafb5ae2d8e5c"
+    },
+    {
+      "path": "scripts/android/apk-symbol-map.mjs",
+      "bytes": 11727,
+      "sha256": "bce358b3ebe25b78656f8b3f3a0d70a8094b0176a44b815aadf8b92bfece00ef"
+    },
+    {
+      "path": "scripts/android/build-fixed-method-probe.mjs",
+      "bytes": 17339,
+      "sha256": "64e7d2ea2743e6d4c65f526e77eadf1730ee2bb9eb0a49887d50b52ee460cacf"
+    },
+    {
+      "path": "scripts/android/build-oracle.mjs",
+      "bytes": 6872,
+      "sha256": "a5baed6eae63b4e50daa6bf03d80cd863a96cc0e8718ac89995b7827ba323c80"
+    },
+    {
+      "path": "scripts/android/compare-art-results.mjs",
+      "bytes": 20652,
+      "sha256": "45ff10d5fa60d822e8a767aecb2ea3e8195d9a142f9ea2996c12ca82a230ee5d"
+    },
+    {
+      "path": "scripts/android/loader-context.mjs",
+      "bytes": 3034,
+      "sha256": "2375f711f8781258ee1d38fb8892e3345e40d6844779ed949f4bea6db2224cb4"
+    },
+    {
+      "path": "scripts/android/prepare-role-fixtures.mjs",
+      "bytes": 15749,
+      "sha256": "4aa2f868c93914ffde2268d777ecbcefbcf43a2bd571e90101d31fd0058514f5"
+    },
+    {
+      "path": "scripts/android/replay-nas.mjs",
+      "bytes": 16996,
+      "sha256": "306e55a40a7f4a6af4ade23e1a5ee9e77833a0f52b239db8b8cf8f43e7a96e13"
+    },
+    {
+      "path": "scripts/android/run-fixed-method-probe.mjs",
+      "bytes": 12438,
+      "sha256": "1bc02d1715605ca579210d51f05436e94f745af614e08cab9db48c224f70d3db"
+    },
+    {
+      "path": "scripts/android/run-oracle.mjs",
+      "bytes": 10357,
+      "sha256": "0943bdee08b82f01959a044dc3e558b6857c6b8b52cdd426819c5e9573828dec"
+    },
+    {
+      "path": "scripts/android/serve-fixtures.mjs",
+      "bytes": 2488,
+      "sha256": "7b6ca912b68d9b9e357a36a02d458b6e8db21200bfbf093ddccc08084156927b"
+    },
+    {
+      "path": "scripts/compat/capture-catalog.mjs",
+      "bytes": 26450,
+      "sha256": "161e0b15abdd4e51fc0f92d7d004843747a98c8d1fb6cb85fd1a0d238375c83d"
+    },
+    {
+      "path": "scripts/compat/freeze-catalog.mjs",
+      "bytes": 31634,
+      "sha256": "8f6c35f15dc17ab3cb060e2a11256318c78e33b1cabe41931a3260d38367394b"
+    },
+    {
+      "path": "scripts/compat/prepare-baseline-run.mjs",
+      "bytes": 15314,
+      "sha256": "15e632e171be169718a0368ce3884d075bee681fe3cca260690771a3f2ff4e67"
+    },
+    {
+      "path": "scripts/compat/protected-init-static.mjs",
+      "bytes": 21603,
+      "sha256": "fe6234edf55dbbdf0d5c76de347a449e4613a6332089bc9f155abcaa1c4689ee"
+    },
+    {
+      "path": "scripts/compat/round-baseline-report.mjs",
+      "bytes": 32503,
+      "sha256": "83b2e614a0662ae773575dba6666d0bc3c16b1fa29078096a682b6339618577e"
+    },
+    {
+      "path": "scripts/container/jar-matrix-probe.mjs",
+      "bytes": 38615,
+      "sha256": "df53c8f20d0c33e2d6ccfbcee1201440de40c89d196b288854ff27aaf4cc98af"
+    }
+  ],
+  "noTaskCacheRemains": true
+}

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "scope": "Same frozen Wogg site/main/signature/ext and exact ART home parameters; one targeted real NAS repair verification, not whole-image acceptance",
+  "artifactSha256": "62aec35b3a4c3db8346b78404c00bb5eb53dbfd478f30f7697acafbef135340b",
+  "mainJarSha256": "4073c52fd60d9e6c12070577effd4dc1d50a4e5897f535c65d2998485bdae6e2",
+  "extSha256": "ee6ae6a3629976b222c4adcb412da7c8ab40c72724702e67f567f8d31a0671c1",
+  "oraclePlanSha256": "fd59dd25afbf06b6aadb1c3556c302eb822b9af416ae09b375eda40c7253bc9b",
+  "image": {
+    "tag": "tvbox-core:linux-amd64-zxing-20261015",
+    "id": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+    "bytes": 516639457,
+    "user": "10001:10001",
+    "parent": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+    "addedBytes": 1280127
+  },
+  "dependency": {
+    "coordinate": "com.google.zxing:core:3.3.0",
+    "bytes": 541078,
+    "sha256": "bba7724e02a997cec38213af77133ee8e24b0d5cf5fa7ecbc16a4fa93f11ee0d",
+    "path": ".tools/native-runtime/core-3.3.0.jar",
+    "source": "Pinned original app/build.gradle:154"
+  },
+  "before": {
+    "load": true,
+    "ready": false,
+    "evidence": [
+      {
+        "stage": "main-load",
+        "exceptionTypes": [
+          "java.lang.ClassFormatError"
+        ],
+        "missingSymbols": []
+      },
+      {
+        "stage": "site-load-init",
+        "exceptionTypes": [
+          "java.lang.ClassNotFoundException",
+          "java.lang.NoClassDefFoundError"
+        ],
+        "missingSymbols": [
+          {
+            "kind": "class",
+            "name": "com.google.zxing.ChecksumException"
+          }
+        ]
+      }
+    ]
+  },
+  "after": {
+    "load": true,
+    "ready": true,
+    "home": {
+      "bytes": 39,
+      "sha256": "fd6b0c3805a0795038550ed3030cff756207e5240ad48183c311a6a82bc9b0bb",
+      "semanticSha256": "7965d6e93e8c369d1b74287b2a7272721c7c375e106a1bdaab35034a935ca4a4",
+      "fields": 4,
+      "emptyObject": false,
+      "hasContent": false,
+      "classes": 0,
+      "list": 0,
+      "filterGroups": null,
+      "classSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "homeRawEqualART": true,
+    "homeSemanticEqualART": true,
+    "businessContent": "empty class/list returned on both; not nonempty-source success",
+    "cleanup": {
+      "closed": true,
+      "workerExited": true,
+      "temporaryDataRemoved": true
+    }
+  },
+  "nativeProfileFingerprint": "32ba6b8fef98765933e015f353086180c7cef10629d8deb041f340438b439130",
+  "offlineDoctor": {
+    "ok": true,
+    "platform": "linux",
+    "architecture": "x64",
+    "node": "v24.22.0",
+    "scope": "Offline synthetic config/QuickJS/DEX and actual ARM machine-code probes; no Android parity or real-source certification",
+    "config": {
+      "sites": 1
+    },
+    "quickjs": {
+      "ready": true,
+      "answer": 42
+    },
+    "dex": {
+      "ready": true,
+      "classes": 1,
+      "resource": "offline-dex-resource"
+    },
+    "arm": [
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      },
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64"
+      },
+      {
+        "value": 43,
+        "bits": 32,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      }
+    ],
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokensRejected": true,
+      "listeners": 0,
+      "dexLoaders": 0
+    },
+    "java": "openjdk version \"17.0.20.1\" 2026-08-18"
+  },
+  "tests": {
+    "nativeEnabled": 583,
+    "passed": 583,
+    "failed": 0
+  },
+  "wholeImageMatrix": "Completed separately: jar-round1-zxing-full-matrix.json, 114/114 each image; final 96 loaded,12 failures,3 timeouts among111 valid,3 invalid contents separate"
+}

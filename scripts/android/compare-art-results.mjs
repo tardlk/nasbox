@@ -5,6 +5,9 @@ import {createHash} from 'node:crypto';
 import {readFile,readdir,writeFile} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {assertLoaderIdentity,loaderContextOf,officialOracleApkSha256} from './loader-context.mjs';
+import {oracleBudgetsOf} from './run-oracle.mjs';
+import {replayBudgetsOf} from './replay-nas.mjs';
 
 const sha=value=>createHash('sha256').update(value).digest('hex');
 const hashPattern=/^[a-f0-9]{64}$/;
@@ -35,6 +38,7 @@ export const readARTResults=readPrivateResults;
 function safeError(value){
  if(!value)return null;
  return {type:safeClass(value.type)||'UnknownError',fingerprint:hashPattern.test(value.fingerprint)?value.fingerprint:null,
+  ...(['input','start','manifest','symbol-binding','jar-download','main-download','main-load','load','site-register','site-load','site-load-init','init','cleanup',...methods].includes(value.stage)?{stage:value.stage}:{}),
   category:categories.has(value.category)?value.category:/Timeout/.test(value.type||'')?'timeout':/UnknownHost|ConnectException|SSL|Socket/.test(value.type||'')?'network':'execution'};
 }
 function failureComparison(a,b){
@@ -47,6 +51,7 @@ function reportState(result,kind){
  if(!result)return 'unknown';
  const report=result.report;
  if(report[kind+'Success']===true)return kind==='load'?'loaded':'ready';
+ if(report.mainLoad?.loaded===false)return 'not-reached';
  const error=safeError(report.error);
  if(report.timedOut||['timeout','artifact-timeout','network','environment','input'].includes(error?.category))return 'unknown';
  if(report[kind+'Success']===false)return 'failed';
@@ -54,6 +59,17 @@ function reportState(result,kind){
  if(kind==='init'&&report.loadSuccess===true&&report.error?.stage==='init')return 'failed';
  if(kind==='init'&&report.loadSuccess===false)return 'not-reached';
  return 'unknown';
+}
+function observedLoad(result){
+ if(!result)return 'unobserved';
+ const report=result.report;
+ const observed=typeof report.loadSuccess==='boolean'?report.loadSuccess:report.selectedLoad?.loaded;
+ return observed===true?'loaded':observed===false?'failed':'unobserved';
+}
+function expectedBudgets(plan,host){
+ if(host==='ART')return oracleBudgetsOf(plan);
+ const value=replayBudgetsOf(plan);
+ return {caseMs:value.caseTimeoutMs,loadMs:value.loadTimeoutMs,initMs:value.initTimeoutMs,callMs:value.callTimeoutMs};
 }
 function summarizeValue(call){
  if(!call)return {state:'not-replayed'};
@@ -83,13 +99,14 @@ function inputProvenance(result){
   source:missing?'captured-launch-input':'execution-report',
   ...(missing?{manifestSha256:result.executionProvenance.manifestSha256,runnerSha256:result.executionProvenance.runnerSha256}:{})};
 }
-function indexResults(rows,expected,host,manifestSha256,replayProvenance){
+function indexResults(rows,expected,host,manifestSha256,replayProvenance,plan){
  const map=new Map();
  for(const result of rows){
   const meta=result?.report,caseId=result.caseId??(Number.isSafeInteger(meta?.artifactIndex)&&Number.isSafeInteger(meta?.siteIndex)?meta.artifactIndex+'-'+meta.siteIndex:undefined);
   const entry=expected.get(caseId);
   if(!entry||map.has(caseId))throw identityError(host+' unknown or duplicate case');
   const {artifact,site,artifactIndex,siteIndex}=entry;
+  if(host==='ART'&&entry.applicationStatePolicy!==undefined&&meta.applicationStatePolicy!==entry.applicationStatePolicy)throw identityError('ART application state policy');
   if(meta?.manifestSha256===undefined){
    // An early runner validated its input before execution but omitted the hash
    // from output. Recovery needs a separate caller-verified launch pin AND an
@@ -105,7 +122,14 @@ function indexResults(rows,expected,host,manifestSha256,replayProvenance){
   if(meta?.artifactIndex!==artifactIndex||meta?.siteIndex!==siteIndex||meta.jarSha256!==artifact.sha256||
    meta.extSha256!==sha(site.ext)||meta.api!==originalLabel(site.api)||meta.siteKey!==originalLabel(site.key)||
    meta.id!==originalLabel(artifact.id))throw identityError(host+' manifest/JAR/API/ext/site');
-  if(meta.loaderMode!=='main')throw identityError(host+' loader mode');
+  try{
+   const context=assertLoaderIdentity(meta,artifact,site);
+   if(!context.legacy&&(meta.targetApkSha256!==officialOracleApkSha256||host==='ART'&&!hashPattern.test(meta.symbolMapSha256)))throw identityError('APK/map provenance');
+   if(!context.legacy){
+    if(!meta.budgets||semantic(meta.budgets)!==semantic(expectedBudgets(plan,host)))throw identityError(host+' stage budgets');
+    if(host==='NAS'&&meta.initPolicy!=='android')throw identityError('NAS initialization policy');
+   }
+  }catch(error){if(error?.code==='INPUT_CHECKSUM')throw error;throw identityError(host+' loader context');}
   if(!Array.isArray(result.privateCalls)||result.privateCalls.length>20)throw identityError(host+' malformed calls');
   if(result.privateCalls.some(call=>!methods.has(call.method)||!Array.isArray(call.params)))throw identityError(host+' unsupported method');
   map.set(caseId,result);
@@ -116,23 +140,40 @@ function indexResults(rows,expected,host,manifestSha256,replayProvenance){
 export function compareArtResults(plan,artResults,nasResults,{manifestSha256,replayProvenance,generatedAt=new Date().toISOString()}={}){
  if(!hashPattern.test(manifestSha256)||plan?.schemaVersion!==1||!Array.isArray(plan.artifacts))throw new Error('Expected exact oracle plan and manifestSha256');
  const trustedReplayProvenance=replayProvenance===undefined?undefined:validateReplayProvenance(replayProvenance,manifestSha256);
+ if(plan.artStatePolicy!==undefined&&!['fresh-app-data','cold-process-preserve-data'].includes(plan.artStatePolicy))throw identityError('malformed ART application state policy');
  const expected=new Map();
  plan.artifacts.forEach((artifact,artifactIndex)=>{
   if(!hashPattern.test(artifact.sha256)||!Array.isArray(artifact.sites))throw new Error('Malformed captured artifact');
   artifact.sites.forEach((site,siteIndex)=>{
    if(typeof site.ext!=='string'||typeof site.api!=='string'||typeof site.key!=='string'||site.extSha256&&site.extSha256!==sha(site.ext))throw identityError('malformed captured site');
-   expected.set(artifactIndex+'-'+siteIndex,{artifact,site,artifactIndex,siteIndex});
+   loaderContextOf(artifact,site);
+   expected.set(artifactIndex+'-'+siteIndex,{artifact,site,artifactIndex,siteIndex,applicationStatePolicy:plan.artStatePolicy});
   });
  });
- const arts=indexResults(artResults,expected,'ART',manifestSha256),nases=indexResults(nasResults,expected,'NAS',manifestSha256,trustedReplayProvenance);
+ const arts=indexResults(artResults,expected,'ART',manifestSha256,undefined,plan),nases=indexResults(nasResults,expected,'NAS',manifestSha256,trustedReplayProvenance,plan);
  const cases=[];
  for(const [caseId,{artifact,site,artifactIndex,siteIndex}]of expected){
   const art=arts.get(caseId),nas=nases.get(caseId);
-  const row={caseId,artifactIndex,siteIndex,jarSha256:artifact.sha256,api:apiLabel(site.api),siteKeySha256:sha(site.key),extSha256:sha(site.ext),
+  const context=loaderContextOf(artifact,site);
+  const row={caseId,artifactIndex,siteIndex,jarSha256:artifact.sha256,api:apiLabel(site.api),siteKeySha256:sha(site.key),extSha256:sha(site.ext),...context.identity,
    art:{present:!!art,load:reportState(art,'load'),init:reportState(art,'init')},
    nas:{present:!!nas,load:reportState(nas,'load'),init:reportState(nas,'init')},calls:[]};
   if(art){row.art.spiderClass=safeClass(art.report.spiderClass);row.art.inputProvenance=inputProvenance(art);}
   if(nas){row.nas.spiderClass=safeClass(nas.report.spiderClass);row.nas.inputProvenance=inputProvenance(nas);}
+  for(const [host,result]of [['art',art],['nas',nas]])if(result){
+   const meta=result.report;
+   row[host].loadObserved=observedLoad(result);
+   row[host].loadCausalCategory=safeError(meta.selectedLoad?.error||meta.error)?.category??null;
+   row[host].loadCauseResolved=!['network','environment','input','timeout','artifact-timeout'].includes(row[host].loadCausalCategory);
+   if(host==='nas'&&meta.initPolicy==='android')row[host].initPolicy='android';
+   row[host].budgets=meta.budgets?Object.fromEntries(['caseMs','loadMs','initMs','callMs'].filter(key=>Number.isSafeInteger(meta.budgets[key])&&meta.budgets[key]>0).map(key=>[key,meta.budgets[key]])):null;
+   row[host].selectedLoad=meta.selectedLoad?Object.fromEntries(['attempted','loaded','includesSpiderInit','usedBudgetMs','milliseconds','loaderCount','loadStateObservedAfterInitError'].filter(key=>['boolean','number'].includes(typeof meta.selectedLoad[key])||meta.selectedLoad[key]===null).map(key=>[key,meta.selectedLoad[key]])):null;
+   row[host].mainLoad=meta.mainLoad?Object.fromEntries(['attempted','loaded','milliseconds'].filter(key=>['boolean','number'].includes(typeof meta.mainLoad[key])).map(key=>[key,meta.mainLoad[key]])):null;
+   row[host].error=safeError(meta.error);
+   row[host].applicationStatePolicy=['fresh-app-data','cold-process-preserve-data','fresh-runtime-data'].includes(meta.applicationStatePolicy)?meta.applicationStatePolicy:'unrecorded';
+   if(hashPattern.test(meta.targetApkSha256))row[host].targetApkSha256=meta.targetApkSha256;
+   if(hashPattern.test(meta.symbolMapSha256))row[host].symbolMapSha256=meta.symbolMapSha256;
+  }
   if(art&&nas){
    row.spiderClassEqual=row.art.spiderClass&&row.nas.spiderClass?row.art.spiderClass===row.nas.spiderClass:null;
    row.spiderClassNote='Wrapper and payload class names can differ; class-name equality is not a compatibility gate.';
@@ -171,6 +212,9 @@ export function compareArtResults(plan,artResults,nasResults,{manifestSha256,rep
  return {schemaVersion:1,generatedAt,manifestSha256,
   scope:'Captured JAR and exact ext/API/method inputs; original official APK on real Android/ART versus NAS JVM/DEX/ARM bridge. This compares tested methods, not every source or Android API.',
   responseScope:'Business HTTP responses were live, not frozen. Response differences require diagnosis and do not automatically identify runtime defects. Empty JSON success and nonempty content are counted separately.',
+  loaderScope:'New role contexts preserve original signatures and main/site coexistence over frozen bytes. ART keyed loading and init are separate; NAS site-load-init combines them. Stage timeouts are not directly equivalent causes. Legacy plans default to main.',
+  applicationStateScope:'Each host records its own applicationStatePolicy. Fresh Android app data and fresh NAS runtime data describe different hosts; equal state or preferences are not inferred. Missing historical state metadata stays unrecorded.',
+  knownVersionDifference:'Official d5f5006 ProtectedInitJar accepts absent DexNative where pinned ab11d289 returns false; original-product execution does not certify pinned-source ART parity.',
   hashScope:'All response and argument hashes are recomputed from private raw files in one Node implementation; producer Java/JS semantic hashes are not trusted as directly comparable.',
   ...(trustedReplayProvenance?{replayProvenance:{...trustedReplayProvenance,
    validationScope:'Caller separately verified the captured launch manifest and executed runner hashes. Missing NAS output metadata is recovered from that launch evidence; original reports and response values remain unchanged.'}}:{}),
@@ -178,6 +222,7 @@ export function compareArtResults(plan,artResults,nasResults,{manifestSha256,rep
    recoveredNASManifestMetadata:cases.filter(row=>row.nas.inputProvenance?.recoveredMetadataFromVerifiedInput).length,
    missingART:cases.filter(row=>!row.art.present).map(row=>row.caseId),missingNAS:cases.filter(row=>!row.nas.present).map(row=>row.caseId),
    artLoaded:cases.filter(row=>row.art.load==='loaded').length,nasLoaded:cases.filter(row=>row.nas.load==='loaded').length,
+   artLoadObserved:counts(cases.map(row=>row.art.loadObserved||'unobserved')),nasLoadObserved:counts(cases.map(row=>row.nas.loadObserved||'unobserved')),
    bothLoadFailed:cases.filter(row=>row.art.load==='failed'&&row.nas.load==='failed').length,
    artReady:cases.filter(row=>row.art.init==='ready').length,nasReady:cases.filter(row=>row.nas.init==='ready').length,
    bothReady:cases.filter(row=>row.art.init==='ready'&&row.nas.init==='ready').length,bothInitFailed:cases.filter(row=>row.observation==='both-init-failed').length,

@@ -6,7 +6,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { createFullSubscriptionLoader } from '../../backend/subscription/full-loader.mjs';
 import { createConfigCore } from '../../backend/config-core/index.mjs';
-import { JarArtifactCache, fetchArtifactBytes } from '../../backend/spider-runtime/artifact-cache.mjs';
+import { ArtifactError, JarArtifactCache } from '../../backend/spider-runtime/artifact-cache.mjs';
 import { inspectArtifact, zipEntries } from './artifact-inspect.mjs';
 
 const MiB = 1024 * 1024;
@@ -39,6 +39,54 @@ async function boundedText(url, { timeoutMs = 15000, maxBytes = 6 * MiB } = {}) 
     }
     return { bytes: Buffer.concat(chunks), status: response.status, responseUrl: response.url, contentType: response.headers.get('content-type') };
   } finally { await response.body?.cancel().catch(() => {}); }
+}
+
+// Capture-only transport preserves fetchArtifactBytes' Buffer/string contract and
+// error/charset semantics. These are fetch response bytes (HTTP content encoding
+// may already be decompressed), before TextDecoder and img+ Base64 decoding.
+async function captureArtifactBytes(root, responses, url, { timeoutMs = 25000, maxBytes = 64 * MiB,
+  signal, allowEmpty = false, responseText = false, userAgent = 'okhttp/3.12.11' } = {}) {
+  const captured = { requestedUrl: url, capturedAt: new Date().toISOString(),
+    kind: allowEmpty ? 'remote-md5' : responseText ? 'image-jar' : 'jar',
+    requestHeaders: { 'User-Agent': userAgent }, responseText, bodyCaptured: false, complete: false };
+  responses.push(captured);
+  let response, readStarted = false;
+  const chunks = []; let size = 0;
+  try {
+    let parsed;
+    try { parsed = new URL(url); } catch { throw new ArtifactError('JAR_URL_INVALID'); }
+    if (!['http:', 'https:'].includes(parsed.protocol)) throw new ArtifactError('JAR_SCHEME_UNAVAILABLE');
+    const deadline = AbortSignal.timeout(timeoutMs);
+    response = await fetch(parsed, { headers: captured.requestHeaders, signal: signal ? AbortSignal.any([signal, deadline]) : deadline });
+    Object.assign(captured, { responseUrl: response.url, status: response.status, headers: Object.fromEntries(response.headers),
+      byteRepresentation: 'fetch-response-body-before-text-and-image-decoding' });
+    if (!response.ok) throw new ArtifactError('JAR_HTTP_' + response.status);
+    if (Number(response.headers.get('content-length')) > maxBytes) throw new ArtifactError('JAR_SIZE_LIMIT');
+    readStarted = true;
+    for await (const chunk of response.body || []) {
+      size += chunk.length;
+      if (size > maxBytes) throw new ArtifactError('JAR_SIZE_LIMIT');
+      chunks.push(Buffer.from(chunk));
+    }
+    captured.complete = true;
+    if (!size && !allowEmpty) throw new ArtifactError('EMPTY_JAR');
+    const bytes = Buffer.concat(chunks);
+    if (!responseText) return bytes;
+    let encoding = /charset\s*=\s*["']?([^\s;"']+)/i.exec(response.headers.get('content-type') || '')?.[1] || 'utf-8';
+    if (bytes[0] === 0xef && bytes[1] === 0xbb && bytes[2] === 0xbf) encoding = 'utf-8';
+    else if (bytes[0] === 0xff && bytes[1] === 0xfe) encoding = 'utf-16le';
+    else if (bytes[0] === 0xfe && bytes[1] === 0xff) encoding = 'utf-16be';
+    try { return new TextDecoder(encoding).decode(bytes); }
+    catch { return new TextDecoder('utf-8').decode(bytes); }
+  } catch (error) { captured.error = describeError(error); throw error; }
+  finally {
+    await response?.body?.cancel().catch(() => {});
+    if (readStarted) {
+      const bytes = Buffer.concat(chunks), file = 'artifact-responses/' + randomUUID() + '.bin';
+      await writeFile(join(root, file), bytes, { flag: 'wx', mode: 0o600 });
+      Object.assign(captured, { bodyCaptured: true, bytes: bytes.length, sha256: sha(bytes), file, observedBytes: size });
+    }
+  }
 }
 
 function summarizeConfig(config) {
@@ -224,10 +272,14 @@ async function capturePartial(root, inventory) {
 
 async function downloadArtifacts(root, inventory, { retryFailures = false } = {}) {
   const artifactDirectory = join(root, 'artifacts'); await mkdir(artifactDirectory, { recursive: true, mode: 0o700 });
+  await mkdir(join(root, 'artifact-responses'), { recursive: true, mode: 0o700 });
+  let activeResponses;
   const cache = new JarArtifactCache({ directory: join(root, 'download-cache'), maxBytes: 1024 * MiB, maxArtifactBytes: 64 * MiB,
-    timeoutMs: 15000, fetchBytes: (url, options) => fetchArtifactBytes(url, { ...options, timeoutMs: 15000 }) });
+    timeoutMs: 15000, fetchBytes: (url, options) => captureArtifactBytes(root, activeResponses, url, { ...options, timeoutMs: 15000 }) });
   const previous = await exists(join(root, 'artifact-inventory.json')) ? await readJson(join(root, 'artifact-inventory.json')) : null;
   const previousRetrievals = new Map((previous?.retrievals || []).map(item => [item.role + '\0' + item.signature, item]));
+  const responsesByCacheKey = new Map((previous?.retrievals || []).filter(item => item.cacheKey && item.ok)
+    .map(item => [item.cacheKey, (item.responses || []).filter(response => response.kind !== 'remote-md5' && response.complete && response.bodyCaptured)]));
   const bySha = new Map(), requests = new Map();
   const request = (signature, role, reference, site, jarCache) => {
     const key = role + '\0' + signature;
@@ -249,19 +301,30 @@ async function downloadArtifacts(root, inventory, { retryFailures = false } = {}
   const manifest = { schemaVersion: 1, inputRoot: '/input', limits: { loadMs: 45000, initMs: 12000, callMs: 15000, artifactMs: 180000, maxHomeSites: 3 }, artifacts: [] };
   try {
     for (const item of requests.values()) {
-      const record = { signature: item.signature, role: item.role, references: item.references, siteReferences: item.sites.length };
+      const record = { signature: item.signature, role: item.role, references: item.references, siteReferences: item.sites.length, responses: [] };
+      activeResponses = record.responses;
       try {
         if (!item.signature) throw new Error('No JAR configured');
         const prior = previousRetrievals.get(item.role + '\0' + item.signature);
-        if (prior && !prior.ok && !retryFailures) throw Object.assign(new Error(prior.error.message), { code: prior.error.code });
+        if (prior && !prior.ok && !retryFailures) {
+          record.responses = prior.responses || [];
+          throw Object.assign(new Error(prior.error.message), { code: prior.error.code });
+        }
         let downloaded;
         if (prior?.ok && await exists(join(root, 'artifacts', prior.sha256 + '.jar'))) {
           const path = join(root, 'artifacts', prior.sha256 + '.jar'), bytes = await readFile(path);
           if (sha(bytes) !== prior.sha256) throw new Error('Previously captured JAR checksum differs');
-          downloaded = { ...prior, path, origin: 'capture' };
+          record.responses = prior.responses || [];
+          downloaded = { ...prior, key: prior.cacheKey, path, origin: 'capture' };
         } else downloaded = await cache.resolve(item.signature, { role: item.role, jarCache: item.jarCache });
+        if (['cache', 'fallback'].includes(downloaded.origin)) {
+          record.responses.push(...(responsesByCacheKey.get(downloaded.key) || []).map(response => ({ ...response, reusedFromCache: true })));
+        }
+        if (downloaded.key && ['download', 'capture'].includes(downloaded.origin)) {
+          responsesByCacheKey.set(downloaded.key, record.responses.filter(response => response.kind !== 'remote-md5' && response.complete && response.bodyCaptured));
+        }
         const bytes = await readFile(downloaded.path), digest = sha(bytes), artifactPath = 'artifacts/' + digest + '.jar';
-        Object.assign(record, { ok: true, sha256: digest, md5: downloaded.md5, md5Matches: downloaded.md5Matches, bytes: bytes.length, retrieval: downloaded.retrieval, cacheOrigin: downloaded.origin });
+        Object.assign(record, { ok: true, sha256: digest, md5: downloaded.md5, md5Matches: downloaded.md5Matches, bytes: bytes.length, retrieval: downloaded.retrieval, cacheOrigin: downloaded.origin, cacheKey: downloaded.key });
         if (!bySha.has(digest)) {
           if (resolve(downloaded.path) !== resolve(root, artifactPath)) await copyFile(downloaded.path, join(root, artifactPath));
           const artifact = { id: digest, jarPath: artifactPath, sha256: digest, bytes: bytes.length, role: item.role, roles: [], sites: [], references: [], inspection: await inspectJar(bytes) };

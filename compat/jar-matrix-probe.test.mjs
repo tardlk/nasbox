@@ -93,6 +93,99 @@ test('matrix preserves main/site loader roles and creates an independent worker 
   assert.equal(report.cleanup.temporaryDataRemoved, true);
 });
 
+test('site helper registration stays untested until optional real load validation runs', async t => {
+  const { directory, artifact } = capture(t), records = [];
+  const helper = artifact('helper', [], { role: 'site' });
+  const before = await probeJarArtifact(helper, { inputRoot: directory, runtimeFactory: fakeFactory({ records }) });
+  assert.equal(before.load.registered, true);
+  assert.equal(before.load.loaded, null);
+  assert.equal(before.loadValidation.attempted, false);
+  assert.equal(before.loadValidation.status, 'not-tested');
+  assert.equal(before.loadValidation.reason, 'helper-only-not-triggered');
+  assert.equal(records[0].gets.length, 0);
+  const after = await probeJarArtifact({ ...helper, helperLoadValidation: true }, { inputRoot: directory, runtimeFactory: fakeFactory({ records }) });
+  assert.equal(records[1].gets.length, 1);
+  assert.match(records[1].gets[0].api, /\//);
+  assert.equal(after.load.loaded, true);
+  assert.equal(after.loadValidation.attempted, true);
+  assert.equal(after.loadValidation.status, 'loaded');
+  assert.equal(after.loadValidation.trigger, 'site-helper-synthetic-class');
+  assert.equal(after.sites.length, 0);
+  assert.equal(after.observations.attemptedApis, 0);
+  assert.equal(after.observations.readyApis, 0);
+  assert.equal(after.observations.homes, 0);
+  assert.deepEqual(summarizeMatrix([before, after]).loadValidation, { attempted: 1, loaded: 1, failed: 0, timeout: 0, unknown: 0, notTested: 1 });
+});
+
+test('helper load failures and timeouts cannot become ready APIs or successful loads', async t => {
+  const { directory, artifact } = capture(t);
+  const helper = artifact('helper-error', [], { role: 'site', helperLoadValidation: true, limits: { ...fastLimits, loadMs: 20 } });
+  const factory = ({ timeout = false } = {}) => options => {
+    const value = fakeFactory()(options);
+    return { ...value, getCSP: timeout ? () => new Promise(() => {}) : async () => ({ ready: false }), getState: async () => ({ jar: { loaderCount: 0 } }) };
+  };
+  const failed = await probeJarArtifact(helper, { inputRoot: directory, runtimeFactory: factory() });
+  assert.equal(failed.loadValidation.attempted, true);
+  assert.equal(failed.loadValidation.status, 'failed');
+  assert.equal(failed.load.loaded, false);
+  const timedOut = await probeJarArtifact(helper, { inputRoot: directory, runtimeFactory: factory({ timeout: true }) });
+  assert.equal(timedOut.loadValidation.attempted, true);
+  assert.equal(timedOut.loadValidation.status, 'timeout');
+  assert.equal(timedOut.loadValidation.error.category, 'timeout');
+  assert.equal(timedOut.load.loaded, null);
+  assert.equal(timedOut.cleanup.closed, true);
+  for (const value of [failed, timedOut]) {
+    assert.equal(value.sites.length, 0);
+    assert.equal(value.observations.attemptedApis, 0);
+    assert.equal(value.observations.readyApis, 0);
+  }
+});
+
+test('main load result, exception, timeout and rejected input keep distinct attempt evidence', async t => {
+  const { directory, artifact } = capture(t);
+  const input = artifact('main-attempt', [], { limits: { ...fastLimits, loadMs: 20 } });
+  const withLoad = loadMain => options => ({ ...fakeFactory()(options), loadMain });
+  for (const loadMain of [async () => ({ loaded: false, failure: 'PROTECTED_INIT_UNBOUND' }), async () => { throw new Error('JAR_LOAD_FAILED'); }]) {
+    const value = await probeJarArtifact(input, { inputRoot: directory, runtimeFactory: withLoad(loadMain) });
+    assert.equal(value.loadValidation.attempted, true);
+    assert.equal(value.loadValidation.status, 'failed');
+  }
+  const progress = [];
+  const timeout = await probeJarArtifact(input, { inputRoot: directory, runtimeFactory: withLoad(() => new Promise(() => {})), onProgress: row => progress.push(structuredClone(row)) });
+  assert.equal(timeout.loadValidation.attempted, true);
+  assert.equal(timeout.loadValidation.status, 'timeout');
+  assert.equal(progress.find(row => row.stage === 'input').input.sha256, input.sha256);
+  assert.equal(progress.find(row => row.stage === 'load-attempt').loadValidation.attempted, true);
+  assert.equal(progress.find(row => row.stage === 'load-attempt').loadValidation.status, 'unknown');
+  const rejected = await probeJarArtifact({ ...input, sha256: '0'.repeat(64) }, { inputRoot: directory, runtimeFactory: () => { throw new Error('must not start'); } });
+  assert.equal(rejected.loadValidation.attempted, false);
+  assert.equal(rejected.loadValidation.status, 'not-tested');
+  assert.equal(rejected.loadValidation.reason, 'input-rejected');
+});
+
+test('execution identity pins actual runner bytes, captured inputs and resolved budgets', async t => {
+  const { directory, artifact } = capture(t);
+  const input = artifact('identity', [source('first', 'csp_First', 'secret ext')]);
+  const manifestPath = join(directory, 'manifest.json');
+  const manifest = { helperLoadValidation: true, artifacts: [input] };
+  const manifestBytes = JSON.stringify(manifest, null, 2) + '\n';
+  writeFileSync(manifestPath, manifestBytes);
+  const report = await probeJarMatrix(manifest, { manifestPath, inputRoot: directory, isolate: false, runtimeFactory: fakeFactory() });
+  const row = report.artifacts[0], runnerSha256 = sha256(readFileSync(new URL('../scripts/container/jar-matrix-probe.mjs', import.meta.url)));
+  assert.equal(report.runnerSha256, runnerSha256);
+  assert.equal(row.executionIdentity.runnerSha256, runnerSha256);
+  assert.equal(report.manifestBytesSha256, sha256(manifestBytes));
+  assert.match(row.executionIdentity.inputSha256, /^[a-f0-9]{64}$/);
+  assert.match(row.executionIdentity.limitsSha256, /^[a-f0-9]{64}$/);
+  assert.equal(row.loadValidation.status, 'loaded');
+  assert.equal(JSON.stringify(report).includes('secret ext'), false);
+  const changed = await probeJarArtifact({ ...input, sites: [source('first', 'csp_First', 'different ext')], limits: { ...fastLimits, initMs: 900 } }, { inputRoot: directory, runtimeFactory: fakeFactory() });
+  assert.notEqual(changed.executionIdentity.inputSha256, row.executionIdentity.inputSha256);
+  assert.notEqual(changed.executionIdentity.limitsSha256, row.executionIdentity.limitsSha256);
+  await assert.rejects(probeJarMatrix({ ...manifest, helperLoadValidation: false }, { manifestPath, inputRoot: directory, isolate: false, runtimeFactory: fakeFactory() }), /saved manifest differs/);
+  assert.throws(() => normalizeManifest({ artifacts: [], helperLoadValidation: 'true' }), /helperLoadValidation/);
+});
+
 test('outer load success with SpiderNull is never counted as an executed source', async t => {
   const { directory, artifact } = capture(t), records = [];
   const report = await probeJarArtifact(artifact('null'), {
@@ -278,6 +371,17 @@ public class MatrixFixture extends Contract {
     assert.equal(report.cleanup.closed, true);
     assert.equal(report.cleanup.temporaryDataRemoved, true);
     assert.ok(sessions.every(runtime => !existsSync(runtime.dataDirectory)));
+    const helper = await probeJarArtifact({
+      id: 'owned-site-helper', role: 'site', helperLoadValidation: true, jarPath: fixtures.jar, sha256: sha256(readFileSync(fixtures.jar)), sites: [],
+      limits: { ...fastLimits, artifactMs: 30000, loadMs: 15000, initMs: 10000, callMs: 10000 },
+    }, { inputRoot: fixtures.build, workRoot: directory, runtimeFactory });
+    assert.equal(helper.error, undefined);
+    assert.equal(helper.load.loaded, true);
+    assert.equal(helper.loadValidation.status, 'loaded');
+    assert.equal(helper.load.loaderCount, 1);
+    assert.equal(helper.sites.length, 0);
+    assert.equal(helper.observations.attemptedApis, 0);
+    assert.equal(helper.cleanup.closed, true);
   } finally {
     await Promise.allSettled(sessions.map(runtime => runtime.close()));
     rmSync(fixtures.build, { recursive: true, force: true });

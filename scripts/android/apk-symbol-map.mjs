@@ -88,3 +88,45 @@ export async function inspectParserSymbols({ apk, java, output }) {
     return map;
   } finally { await rm(temporary, { recursive: true, force: true }); }
 }
+
+/** Private loader names are used only after checking the exact installed APK. */
+export async function inspectJarLoaderSymbols({ apk, java, output }) {
+  if (hash(await readFile(apk)) !== expectedApkSha256) throw new Error('No audited JAR loader symbol map exists for this APK SHA-256');
+  const toolchain = dexToolchain({ required: true });
+  const temporary = await mkdtemp(join(output, 'jar-symbol-inspect-'));
+  const descriptor = 'Lcom/github/catvod/crawler/JarLoader;';
+  const run = (program, args) => {
+    const result = spawnSync(join(java, 'bin', program), args, { encoding: 'utf8', timeout: 60000, maxBuffer: 1024 * 1024 });
+    if (result.error || result.status !== 0) throw new Error('Static JAR loader inspection failed: ' + (result.error?.message || result.stderr));
+  };
+  try {
+    const source = join(temporary, 'DumpParserSymbols.java');
+    await writeFile(source, helper);
+    run('javac', ['--release', '17', '-cp', toolchain.classpath, '-d', temporary, source]);
+    run('java', ['-cp', [temporary, toolchain.classpath].join(delimiter), 'DumpParserSymbols', apk, temporary, descriptor]);
+    const text = await readFile(join(temporary, 'com_github_catvod_crawler_JarLoader.smali'), 'utf8');
+    const bodies = [...text.matchAll(/^\.method ([^\n]+)\n([\s\S]*?)^\.end method/gm)].map(match => ({ signature: match[1], body: match[2] }));
+    const exact = (signature, required) => {
+      const matches = bodies.filter(method => method.signature === signature);
+      if (matches.length !== 1 || required.some(token => !matches[0].body.includes(token))) throw new Error('Audited JAR loader method differs: ' + signature);
+      return hash(matches[0].body);
+    };
+    const evidence = {
+      loadMain: exact('public load(Ljava/lang/String;)Z', ['"main"', '->load(Ljava/lang/String;Ljava/io/File;)Z', '->recent:Ljava/lang/String;']),
+      loadKeyed: exact('private load(Ljava/lang/String;Ljava/io/File;)Z', ['Ldalvik/system/DexClassLoader;-><init>', '->invokeInit(', '->loaders:', '"load success key="', 'protected jar loader not bound']),
+      jarKey: exact('private jarKey(Ljava/lang/String;)Ljava/lang/String;', ['Landroidx/base/yv;->c(Ljava/lang/String;)Ljava/lang/String;', '"main"']),
+      parseJar: exact('public parseJar(Ljava/lang/String;Ljava/lang/String;)V', ['";md5;"', '->aliases:', '->jarKey(', '->load(Ljava/lang/String;Ljava/io/File;)Z']),
+      getSpider: exact('public getSpider(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/github/catvod/crawler/Spider;', ['->jarKey(Ljava/lang/String;)', '->parseJar(Ljava/lang/String;Ljava/lang/String;)V', '->siteJarKeys:', '->recent:', '"main"']),
+      clear: exact('public clear()V', ['->loaders:', '->siteJarKeys:', '->aliases:', '->recent:', '"main"']),
+    };
+    const fields = { aliases: 'aliases', loaders: 'loaders', siteJarKeys: 'siteJarKeys', recent: 'recent' };
+    for (const field of Object.values(fields)) if (!new RegExp('^\\.field [^\\n]*\\b' + field + ':' + (field === 'recent' ? 'Ljava/lang/String;' : 'Ljava/util/concurrent/ConcurrentHashMap;'), 'm').test(text)) throw new Error('Audited JAR loader field differs: ' + field);
+    return {
+      schemaVersion: 1, apkSha256: expectedApkSha256, loaderClass: 'com.github.catvod.crawler.JarLoader',
+      methods: { loadMain: 'load', loadKeyed: 'load', jarKey: 'jarKey', parseJar: 'parseJar', getSpider: 'getSpider', clear: 'clear' }, fields,
+      scope: 'Exact APK only; original keyed loader and alias preparation over frozen JAR bytes, acquisition bypassed; no original subscription transport claim.',
+      knownVersionDifference: 'Official d5f5006 ProtectedInitJar accepts absent DexNative where pinned ab11d289 returns false; product results do not certify pinned-source ART parity.',
+      evidence: { methodBodySha256: evidence, disassemblySha256: hash(text), staticOnly: true, artifactClassesLoaded: false, dexToolchainFingerprint: toolchain.fingerprint },
+    };
+  } finally { await rm(temporary, { recursive: true, force: true }); }
+}

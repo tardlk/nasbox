@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "originalContainersUnchanged": true,
+  "containers": [
+    {
+      "name": "/dockge-dockge-1",
+      "id": "1434d8807ff98107eb6c65a377161565f689d4b4f49906db14c620ce2ec95e16",
+      "image": "sha256:e85d511b2a8b883da8a1ac2fde39ecddacdc011734e9f89a14b7798d82d5a0d3",
+      "startedAt": "2026-10-12T08:26:19.966740746Z",
+      "restartCount": 0,
+      "running": true
+    },
+    {
+      "name": "/emby",
+      "id": "e7e607d0d1017befb9d0ae482d98d574071b1f302f7e56bfe2143d4259e1eda8",
+      "image": "sha256:3bd1f2ea0b6fd12159467d15b09a78f7605e1a1d143385539d0ee418a4830ef1",
+      "startedAt": "2026-10-12T09:03:09.93328131Z",
+      "restartCount": 0,
+      "running": true
+    },
+    {
+      "name": "/moviepilot",
+      "id": "b943f8f0732592d5b0bed516df83931253ccca6c2eb97f2e39489b185aedf66b",
+      "image": "sha256:d9511187e90725fa8c408ad296eb5f0dbfa8b262cadd6a06b0a49d1b40175d61",
+      "startedAt": "2026-10-14T09:21:29.775684641Z",
+      "restartCount": 0,
+      "running": true
+    },
+    {
+      "name": "/qbittorrent",
+      "id": "921dd7ca2e7196cf81a13928eec4991ec473450633e664cab73ae7b86c03869f",
+      "image": "sha256:3cf724864a09993bc0aaf0d1c6d7e6a60824c098f00c7813b85a64a8bcbceeb6",
+      "startedAt": "2026-10-12T08:28:22.496138741Z",
+      "restartCount": 0,
+      "running": true
+    }
+  ],
+  "taskPrimaryContainersRemaining": [],
+  "imageFinalOfflineDoctor": {
+    "ok": true,
+    "platform": "linux",
+    "architecture": "x64",
+    "node": "v24.22.0",
+    "scope": "Offline synthetic config/QuickJS/DEX and actual ARM machine-code probes; no Android parity or real-source certification",
+    "config": {
+      "sites": 1
+    },
+    "quickjs": {
+      "ready": true,
+      "answer": 42
+    },
+    "dex": {
+      "ready": true,
+      "classes": 1,
+      "resource": "offline-dex-resource"
+    },
+    "arm": [
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      },
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64"
+      },
+      {
+        "value": 43,
+        "bits": 32,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      }
+    ],
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokensRejected": true,
+      "listeners": 0,
+      "dexLoaders": 0
+    },
+    "java": "openjdk version \"17.0.20.1\" 2026-08-18"
+  },
+  "sourcePins": {
+    "backend/spider-runtime/native-bridge/build.mjs": "42857d0c4f08d0f69a1f1c3a4abd2315cc58cfc65db4c8da231db53a38987ef4",
+    "backend/spider-runtime/native-bridge/runtime.json": "42d12649974d96cd71a9e6f96bb0f1f8e4e05abe9a23ba3adb3a00add0337262",
+    "backend/spider-runtime/native-bridge/src/tvbox/runtime/VerifiedJarRepair.java": "3d842caa0d9eb72a245f229aeb0408d134cbbe01724c2ca00bf37fc9c689f83c",
+    "backend/spider-runtime/native-bridge/src/tvbox/runtime/DynamicNativeSupport.java": "3a530dbb2ec9943d4167f911919a7ef5c6c917a5967c3b8d4d9ca164b9aa8f40",
+    "backend/spider-runtime/native-bridge/src/android/graphics/Bitmap.java": "c36aef2683118b3baac7e9c4f6d3806368cd69ec1adb7923880cf77eaf5728a6",
+    "backend/spider-runtime/native-bridge/src/android/graphics/Canvas.java": "f81b944a4de1045c6105e9b3f2cef8710d00f3931c565f8bdcbd988d908f425d",
+    "backend/spider-runtime/native-bridge/src/android/graphics/Paint.java": "2596fc9ae80d40c6ea5b0753def988e0fe0cbd5374c21dbd44647a3a2616f88b",
+    "backend/spider-runtime/native-bridge/src/android/graphics/Path.java": "545945f2f7269ca008807acae3ffb1aae9954c85fdb66368bffa4cf21ae74d3e",
+    "backend/spider-runtime/native-bridge/src/android/graphics/RectF.java": "95111877a6db560ef167cc92c6ed582475280fb44b719412b096f6d1bb8d5822",
+    "backend/spider-runtime/native-bridge/src/android/graphics/Shader.java": "747d1d89975309e0a4be4810bbeacf2f5c564e9d27df669502bfba33c454b346",
+    "backend/spider-runtime/native-bridge/src/android/graphics/LinearGradient.java": "2a932af8a6b2c28a821dec394b23d4a60de9ad0ae30591ea51bc5c4877de3917",
+    "backend/spider-runtime/native-bridge/src/android/text/TextPaint.java": "7f846a29811cd73d34cc2cdd857296e82242fa4e9e57a965aa74b763d4700e3a"
+  },
+  "primaryRunnerSha256": "df53c8f20d0c33e2d6ccfbcee1201440de40c89d196b288854ff27aaf4cc98af",
+  "baselineReportSha256": "83553b9604bfeafbc3b6238c287d617b9aeb2c321277d1e223610a32fcd3cc61",
+  "all228ContainersExitedCode0": true,
+  "all228WorkersClosedAndExited": true,
+  "all228TemporaryDataRemoved": true,
+  "inputRetention": ".data/jar-round1-20261015 retained for subsequent ART diagnosis and final rerun"
+}

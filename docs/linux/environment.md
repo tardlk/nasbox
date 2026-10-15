@@ -734,3 +734,168 @@ qbittorrent, emby and dockge-dockge-1. Their full IDs, images, StartedAt,
 RestartCount and running state equal the pre-test inventory. Task services still
 running: none. Autostart changes: none. Retained environments: project `.tools`
 for continued development and the final/earlier rollback NAS images only.
+
+## Frozen baseline round 1 and scoped continuation — completed, 2026-10-15
+
+Resumed from commit `12faf43` on `codex/linux-core` after reading the next-phase
+plan, status, environment ledger and post-repair comparison. Checked and reused
+the existing shared Node 24, project JDK17, SDK, dex2jar/native libraries and
+system Python/curl/SSH/SCP. No installation, global PATH change or autostart
+change. NAS image IDs were rechecked: final `f2f6208a…` (515,359,330 bytes), routes
+comparison `b6e3df0f…` (511,654,302 bytes). The four pre-existing containers were
+inventoried before testing; their configuration/lifecycle must remain unchanged.
+
+Fresh inputs are task-owned private test data under
+`.data/jar-round1-20261015`. Raw catalogue/config/JAR transport bodies, decoded
+JARs, exact API/ext values and original main/site associations are retained until
+Android diagnosis, fixes and the final complete rerun finish. They are not a new
+tool installation and are excluded from Git. Occupancy will be measured after
+capture/freeze. Do not delete these bytes between phase deliveries. Public
+reports retain metadata/hashes only, and historical reports remain immutable.
+
+Temporary local transport/build/log material and scoped SSH control/known-host
+files use `.cache/jar-round1`. Authentication reuses previously supplied access
+without committing or copying credentials into reports. The scoped SSH control
+master is temporary (120-second idle expiry) and will be explicitly closed.
+No Android AVD/ADB or fixture HTTP service has been started in this round.
+
+Capture/freeze completed: 656 pinned files total 271,023,814 bytes, plus the
+11,949,404-byte private freeze manifest; 282,973,218 logical bytes / 277,836 KiB
+allocated (about 271.3 MiB). The redundant `download-cache` was removed only after
+all 114 decoded-artifact hashes/sizes matched their manifest, before freezing.
+The freeze has 5,323 original associations, including failed retrievals and
+helper-only references; 3,359 captured executable API/ext variants versus 3,986
+role/context variants including unavailable inputs. These units are not JARs.
+Metadata-only freeze and history summaries are saved in `docs/linux/jar-round1-*`.
+
+NAS task root: `/tmp/tvbox-frozen-round1.LWyPp6`, with read-only inputs and runner,
+three task shell shards and adjacent old/final per-artifact containers named
+`tvbox-frozen-r1-{old,final}-NNN`. Each container has UID10001, read-only root,
+dropped capabilities, no-new-privileges, pids256, 2 GiB memory, 1 CPU and an owned
+384 MiB exec /tmp tmpfs; no ports or persistent user volume. Inspect/exit records
+are saved before exact-name container removal. The final image's offline doctor
+passed with network disabled and its task container exited/was removed.
+
+The same previously audited official APK was reacquired as temporary static ART
+tooling input at `.cache/jar-round1/art/official-original.apk`, 20,771,782 bytes,
+SHA256 `5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657`.
+This is a pinned repeat, not a new-version or exact-source-baseline claim.
+
+Primary matrix completed: 228/228 adjacent old/final containers exited code0,
+all workers closed/exited and their temporary data was removed. All 111 valid
+artifacts actually entered loading on both images. Final image: 95 loaded,
+12 failed, 4 timeouts; 3 invalid-content files are separate. Original budgets
+are unchanged. `jar-round1-baseline.json` and `.md` are the complete same-image
+primary records; they do not exhaust every role/ext or establish ART parity.
+571/571 native-enabled local tests passed at this checkpoint.
+
+Round 2 ART diagnosis now active. Reused the retained SDK/JDK and the same
+official APK after apksigner v1/v2/v3 verification. Separate same-certificate
+instrumentation was built with the existing tools and public upstream test key;
+the original APK remains unchanged. The task AVD `TVBoxRound1`, emulator PID
+67638 (5554), task adb server (5037) and explicit loopback fixture server (18765)
+are temporary, under `.cache/jar-round1/art`. The fixture server exposes only
+the hash-checked selected JAR/main-JAR and plan routes. No host media playback.
+Every ART case uses a cold process and `pm clear` with checked success; NAS
+replay creates a fresh runtime/data directory. Default app preferences and no
+user account data are used. Original user Android regular-file hashes were
+saved before startup and will be compared at shutdown. No autostart change.
+
+2026-10-15 ZXing dependency follow-up: checked existing project tools and runtime
+first; no ZXing artifact was already installed. Reused the bundled Node runtime,
+`.tools/jdk17` and `native-bridge/fetch-runtime.mjs`; its 22 existing libraries
+were reused unchanged. The only added environment artifact is
+`.tools/native-runtime/core-3.3.0.jar`, 541,078 logical bytes (about 528.4 KiB;
+532 KiB allocated), retained for continued provider execution and the next NAS
+image. Version 3.3.0 is the immutable reference Gradle declaration. Maven Central
+published SHA-1 `73c49077166faa4c3c0059c5f583d1d7bd1475fe` was verified; SHA-256
+`bba7724e02a997cec38213af77133ee8e24b0d5cf5fa7ecbc16a4fa93f11ee0d`
+and size are pinned in runtime/toolchain manifests. Versioned POMs, the upstream
+LICENSE and source/download provenance are retained as small public records.
+No Maven, Gradle, global package, JDK, background service or autostart was added.
+Owned Java QR/ABI test directories were removed. The genuine WebDAV regression's
+owned loopback HTTP server and executor stopped in its finally block. The new
+native profile build cache `90d5a6964d7047ca16492b546d05663e11a03f05d7542c22dbcc91415fb98996`
+occupies 1,528 KiB allocated and is task build output for the pending NAS image;
+clean it with task caches after
+that image and exact-parameter validation finish. This dependency change itself
+does not modify the already-tested final NAS image or any frozen ART input.
+
+ART role batch completed: 23/23 cases loaded/ready under application UID10166,
+all private results pulled with identity/response-byte checks. Adbd root was used
+only for private-result transport; instrumentation recorded the ordinary app UID.
+Adbd returned to non-root before emulator shutdown. Emulator/ADB/fixture HTTP are
+stopped after collection, and pre-existing `~/.android` regular-file hashes match.
+NAS exact-parameter replay completed in 23 exited/removed containers. One case
+(`16-0`, main+site coexistence) reported worker close timeout/workerExited=false;
+it is a worker-cleanup failure, although its exited/deleted container bounds all
+remaining processes. Other workers closed/exited. Do not call this whole batch a
+clean worker-lifecycle pass. All raw ART/NAS responses remain private test evidence.
+
+For NAS Java17 compilation the previously pinned temporary ECJ3.38.0 was
+reacquired (3,285,717 bytes, SHA256
+`97c566b120009c203a2fc8b291f4a9adbc171cf1ccb70f06f6b4e1828c00ce8e`)
+under `.cache/jar-round1/zxing-build`. No host compiler/Java/package was installed.
+Compiler and stopped packaging containers were removed. Two discarded task
+image IDs were deleted by exact ID; no shared image/cache prune. Compiler/archive
+inputs and temporary builds will be removed after the final rerun; the runtime
+image has no ECJ/javac. Final derivative tag `tvbox-core:linux-amd64-zxing-20261015`,
+ID `sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7`,
+516,639,457 uncompressed bytes (about492.7MiB), adds 1,280,127 bytes above the
+prior final image. Default UID10001/JRE-only/offline doctor passed. Same frozen
+Wogg/main/ext/API/ART home parameters now initialize and return exactly the same
+empty response; no nonempty-business success is inferred.
+
+The final repair-image complete rerun uses a second owned NAS root
+`/tmp/tvbox-frozen-round1.RhIwSi`, generated by `prepare-baseline-run.mjs`.
+All 656 frozen files plus private freeze metadata were checksum-verified after
+transport, and the exact runner/manifests were verified before dispatch. Three
+bounded shards compare the prior final and ZXing derivative under the same
+historical budgets; task containers use generated names beginning
+`tvbox-frozen-0979f3f4f6b4-`. This is temporary execution, not a new daemon or
+autostart. Original four NAS application containers remain untouched.
+
+Final verification and cleanup completed. The last image's adjacent full rerun
+completed 114/114 inputs on each image, all 111 valid files actually entering
+loading. Both images loaded96, failed12 and timed out3; invalid-content3 are
+separate. Final image has928 initialized API/ext attempts,640 ready and2431
+uninitialized variants. Two init timeouts hid22 previously ready later entries;
+one ready-to-failed candidate independently reproduces the same three-argument
+Log.e ABI gap on both images. No primary mismatch was overwritten. All228 final
+workers closed/exited and removed temporary data. See final matrix and exact
+init-transition diagnostics; this is no full role/ext or business-parity claim.
+
+The fixed-source ART method probe passed5 owned binding cases and3 captured-byte
+scans under ordinary application UID10166, with an explicit namespace bridge to
+the actual target Application. Missing DexNative returns false on pinned source
+and true in the official method. Two prior harness attempts failed before scan
+due to external-storage file readability; they remain failed records. The
+successful run used task-only internal application input copies with exact hash,
+UID ownership and context restoration. No third-party class/native was executed
+by that method probe. Emulator/ADB were shut down again, test packages uninstalled,
+and task AVD/user-home/crash database removed. Shared Android file set/hashes match.
+
+588/588 native-enabled host tests pass, no skipped tests. Both exact NAS task
+roots (first about247MiB, last about530MiB allocated) were removed after the
+public reports and private retained evidence were checked. Task compiler,
+packaging, matrix, replay, diagnostic and doctor containers are absent. The SSH
+control master is explicitly closed. All project task `.cache` roots were removed;
+no cache/environment/service from another project was touched.
+
+Final retained private inputs: `.data/jar-round1-20261015`,282,973,218 logical
+bytes /277,836KiB allocated; `.data/jar-round2-evidence-20261015`,25,517,472
+logical bytes /25,532KiB allocated. The latter keeps exact ART/NAS call arguments,
+responses, fixed APK and controlled native-constructor evidence for the remaining
+JNI/coexistence/ABI fixes. They remain test inputs until those repairs and final
+verification complete, with per-file hashes and retention purposes; no private
+input is committed. Existing `.tools` is5,431,419,735 logical bytes /5,338,792KiB
+allocated (about5.1GiB), including the sole541,078-byte added ZXing dependency.
+It is retained for continued development. The final image and prior rollback
+images remain; no public image push, registry or autostart change.
+
+Services still running: only the pre-existing NAS Docker, moviepilot, qbittorrent,
+emby and dockge-dockge-1. Their IDs/images/StartedAt/RestartCount/running state match
+the pre-test inventory. Task services still running:none. The one earlier
+ART-replay worker-cleanup failure remains a failure bounded by its removed
+container. See `jar-final-cleanup.json`, `jar-final-execution-evidence.json` and
+`jar-continuation-delivery-20261015.md` for the retained scope and unresolved work.

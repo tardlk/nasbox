@@ -1,0 +1,3005 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T10:53:16.118Z",
+  "inputSetSha256": "8e9c80c557c5703ff70f8c44fb5a71aaaf3c89d3e0e0d39cdba94cbdaa42a3d3",
+  "scope": "Static JAR/DEX and trusted fixed-source byte scanner only. No captured class loading, initialization, native invocation, runtime branch trace, or ART parity claim.",
+  "verifiedSources": {
+    "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+    "primaryFiles": 20,
+    "extraFiles": 34,
+    "platformFiles": 10,
+    "protectedInitSha256": "86a31da8a7e8e573f957a157cafe0b3c0e74b7f8af937a6aa02b133a9973a250"
+  },
+  "toolchain": {
+    "dexFingerprint": "08f26fef504209640719e5ea99391d49f027b24c1d322c76ab56c4ce60cb3418",
+    "javaVersion": "",
+    "probeSha256": "6b6a7fed2bd65236886bb14dd772e9f179c261783c6c5a7316191211fe9c505d",
+    "ownedHarnessSha256": "0016b19f9e1e3f910c97f0a7ebb954d38cbb44b99ee359fa22187ea6e2f2ffbd"
+  },
+  "fixedSourceOwnedHostControl": {
+    "bindDexLoaderWithAbsentDexNative": false,
+    "scope": "Host-JVM execution of checksum-verified upstream method against owned classes/stubs only. This is not Android/ART and does not invoke any captured JAR class."
+  },
+  "artifacts": [
+    {
+      "sha256": "65be8df8bfa60f59aecb3c170d5cc0fd3feeaa96daad531faa97d49aff81eab4",
+      "bytes": 1863956,
+      "dex": [
+        {
+          "name": "classes.dex",
+          "sha256": "ec3c15928964f87a3bf5b83d4ce3f3d373335c57459c9e103f1dbcdf913acc67",
+          "bytes": 4811412,
+          "classCount": 3774,
+          "allNativeMethods": 0,
+          "nativeMethodDeclarations": [],
+          "hasExactInit": true,
+          "hasKillProcess": true,
+          "whitelistAccepted": false,
+          "heuristicProtected": true,
+          "initClasses": [
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$1;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65536,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "9f1e462fac7fd1af62c64e626c04704d1e6cc8aba0a3237911550d203813682f"
+                },
+                {
+                  "signature": "a(Ljava/io/File;)V",
+                  "access": 2,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "0462f772dc7e81e334850339a18887d831268ac70be0297154629c37c25613b3"
+                },
+                {
+                  "signature": "unzip(Ljava/io/File;Ljava/io/File;)V",
+                  "access": 2,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "3bc1d3846248ac12505c5ff8ca8999498a232920c75a126241879ed27fa1a346"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "b96802e5e52f2b3b6a5a25ecfc63e5dc195e3eef814237ec934dd3d739c12a5b"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$2;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65536,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "9f1e462fac7fd1af62c64e626c04704d1e6cc8aba0a3237911550d203813682f"
+                },
+                {
+                  "signature": "a(Ljava/io/File;)V",
+                  "access": 2,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "24f6875060f07110f7e8e9976ef037b9aacf5a1f45ac81e4586cb75a0df4ca52"
+                },
+                {
+                  "signature": "unzip(Ljava/io/File;Ljava/io/File;)V",
+                  "access": 2,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "3bc1d3846248ac12505c5ff8ca8999498a232920c75a126241879ed27fa1a346"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "fddae0e79a551b844ddc8b109955d9ba638188b978f07b40f1a587b7e68e708f"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$3;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65537,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "9f1e462fac7fd1af62c64e626c04704d1e6cc8aba0a3237911550d203813682f"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "a3706c6e434b278acda526952055721064300a6fa7a43759d8ed57ad6be0e50f"
+                }
+              ],
+              "killMatches": [
+                {
+                  "method": "run()V",
+                  "codeUnitOffset": 14,
+                  "opcode": 113,
+                  "target": "Landroid/os/Process;->killProcess(I)V"
+                }
+              ],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$Loader;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [
+                {
+                  "name": "a",
+                  "type": "Lcom/github/catvod/spider/Init;",
+                  "access": 72,
+                  "static": true
+                }
+              ],
+              "methods": [
+                {
+                  "signature": "<clinit>()V",
+                  "access": 65544,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "270040705a11ab90ecaf9eb41499842cbe55a6d1b5bb9a0b93d119613c55b30b"
+                },
+                {
+                  "signature": "<init>()V",
+                  "access": 65538,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "9f1e462fac7fd1af62c64e626c04704d1e6cc8aba0a3237911550d203813682f"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$UP;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [
+                {
+                  "name": "val$context",
+                  "type": "Landroid/content/Context;",
+                  "access": 4112,
+                  "static": false
+                }
+              ],
+              "methods": [
+                {
+                  "signature": "<init>(Landroid/content/Context;)V",
+                  "access": 65536,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "4090894a5d8a83541aff5c5554ad612fc2da041b7e22a206a88aa26139717be8"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "d92905ba07f5b8c378dcd25a122b7730385caff27637d3f8ec50ec67ddf95fd3"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [
+                {
+                  "name": "v",
+                  "type": "Ljava/lang/String;",
+                  "access": 9,
+                  "static": true
+                },
+                {
+                  "name": "a",
+                  "type": "Ljava/util/concurrent/ExecutorService;",
+                  "access": 18,
+                  "static": false
+                },
+                {
+                  "name": "b",
+                  "type": "Landroid/os/Handler;",
+                  "access": 18,
+                  "static": false
+                },
+                {
+                  "name": "c",
+                  "type": "Landroid/app/Application;",
+                  "access": 2,
+                  "static": false
+                }
+              ],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65537,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "c4693c14ec5ae930f0655e494545aa701dd95431c79b7eb2333cc8e8078b0a40"
+                },
+                {
+                  "signature": "a(Landroid/content/Context;)Z",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "8c7b4c4330ab1c8ceec944076af8427f9cd56955a926acdbce63287f19136a13"
+                },
+                {
+                  "signature": "b(Landroid/content/Context;)Z",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "0e573537c32e70ad8519ced4c444a4cc7ad1546ed613c790f96e7bbd750fbf25"
+                },
+                {
+                  "signature": "c(Landroid/content/Context;)Z",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "89d97d600f329a59940faa37d11b1b1789dcc44511b0d9d11325fdb68d3904de"
+                },
+                {
+                  "signature": "checkPermission()V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "6bbcb5c96c5091a316d9bab3ab69046a71c7f1aedab72179fa9b353fe7fa3d55"
+                },
+                {
+                  "signature": "context()Landroid/app/Application;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "f969a8049d47c280406f307b29a102dc55f7b1e77b8dd46f1459808f1218e375"
+                },
+                {
+                  "signature": "d(Ljava/io/File;)Ljava/lang/String;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "8af9f4ad55d927fbd0d51c29544cea99c456d48c6fc76da678dd9331bde88be6"
+                },
+                {
+                  "signature": "execute(Ljava/lang/Runnable;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "ee0ad0aea8421ccdfd6279138bcf6e193b51ddb0322eb27f7271533549f41663"
+                },
+                {
+                  "signature": "get()Lcom/github/catvod/spider/Init;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "6b643b90f8c8cd199cb7c48f8af86ab6843420c06addbca56c5725800b0c9ffb"
+                },
+                {
+                  "signature": "getActivity()Landroid/app/Activity;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "433e43bb7e57c5a566c5bbdbabb55c6178e34442a81a73b850e3910027e6200c"
+                },
+                {
+                  "signature": "getConfigActivity()Landroid/app/Activity;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "7790691aaaf8cc76108d65daa7fa30a74966cf92fd5c37a7e5abe0a5bb651ba6"
+                },
+                {
+                  "signature": "i(Ljava/lang/String;)Ljava/io/InputStream;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "00a588629514586fcd1b8a65995dfbd2ed3c9c3105cdd8e8b12a7200efad6242"
+                },
+                {
+                  "signature": "init(Landroid/content/Context;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "1917b471770ca85d6ee43098067bf25c8cd9177f5672ae560acd18794fb28c26"
+                },
+                {
+                  "signature": "interceptActivityStart()V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "ba30a6b4bc2947e610ff5ca1d7f069a492762f62cf2edb37f439a22b656f1f73"
+                },
+                {
+                  "signature": "post(Ljava/lang/Runnable;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "5d5eafcd05c1046c53cf182fc487457c5eb721be128de089ec1a75034177a729"
+                },
+                {
+                  "signature": "run(Ljava/lang/Runnable;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "5d5eafcd05c1046c53cf182fc487457c5eb721be128de089ec1a75034177a729"
+                },
+                {
+                  "signature": "run(Ljava/lang/Runnable;I)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "2d7fbd25c3251a56cd237a44d9a05cb9cd9787351a663b40316dcf0dd6e34a13"
+                },
+                {
+                  "signature": "saveConfig()V",
+                  "access": 10,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "7537153099cca808162580b951e3fa79364526f1eb5989c0a3e2ebd9fb9ed21e"
+                },
+                {
+                  "signature": "startFloatBall()V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "2f3805edc161f10c54dce5b9ee95b8524396e7fdc41a4eee3145d325bd040885"
+                },
+                {
+                  "signature": "startGoProxy(Landroid/content/Context;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "d9873bf3d7e9804b517e16e0ce0649caf95727b35635dff798ddec11b559fb94"
+                },
+                {
+                  "signature": "write(Ljava/io/File;Ljava/io/InputStream;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "be6ae6ba7d47f8bf4d8ee32438c944f2d7df42cc708ad2d2c92d537490079aac"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            }
+          ],
+          "dexNativeDefined": false,
+          "nativeClasses": [],
+          "scope": "Static fixed-scanner heuristic. A killProcess match does not prove shell protection or that the instruction executes."
+        }
+      ],
+      "fixedSourceScanProtected": true,
+      "parser": [
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$1;",
+          "sha256": "a76636287c83200371d16019099a054517351067984c6138207274197a117a87",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "7c8ce828e3db786559e9ba8f729cc95b507a0fbafc9911f701d4f3b4bd4d46cf",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "a(Ljava/io/File;)V",
+              "declarationSha256": "65c55743deabe60f043d945fdd14e65330e06c6289c51c290adef81775f9f056",
+              "bodySha256": "8e4e88e6341804a52c02145715e5fe336f51d7f7042c27ceb9d19a475d08a2e0",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "unzip(Ljava/io/File;Ljava/io/File;)V",
+              "declarationSha256": "4516d4aa9252d5fbbc157fc2b7feebc67cf3b3e634035e2f9fa6f9bd7fbc05d1",
+              "bodySha256": "ee01badf9c450ebdd47aa250c9e4655bd04728a22589b92e46794b4d85d2b2ac",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "d51bda9462b31c7d6241ebf0168d072a6e758479ef871b1eaa1d7083379a1ddb",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Lorg/json/JSONException;",
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$2;",
+          "sha256": "000ef952ea19edf22989997bf27ac2e91bec00aa6766e1aef6515e66508769b3",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "7c8ce828e3db786559e9ba8f729cc95b507a0fbafc9911f701d4f3b4bd4d46cf",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "a(Ljava/io/File;)V",
+              "declarationSha256": "65c55743deabe60f043d945fdd14e65330e06c6289c51c290adef81775f9f056",
+              "bodySha256": "be5b947eb0b43ae13e3dc264ae58e35e11d02a5356b374f9fe769c9edb8bc3a8",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "unzip(Ljava/io/File;Ljava/io/File;)V",
+              "declarationSha256": "4516d4aa9252d5fbbc157fc2b7feebc67cf3b3e634035e2f9fa6f9bd7fbc05d1",
+              "bodySha256": "ee01badf9c450ebdd47aa250c9e4655bd04728a22589b92e46794b4d85d2b2ac",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "c2dc23386d50b43e6a601023958d24fa5c0595e1f66a3d108b236d3500a6d4f4",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Lorg/json/JSONException;",
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$3;",
+          "sha256": "27298152e4d76d4b07b99ef20f01cc35b2e454e31fac912ba35b44f4fc17c16c",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "4542805672d8552ebb38c513c6368aeaa3fafed218bb545a1294f2544b9ebb25",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "b11bfcacec0a8c9d0bfdb36a746548122168b5eff8cab9b4c67edf65bc2885b5",
+              "killProcessInvokes": 1,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/InterruptedException;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 1
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$Loader;",
+          "sha256": "9863aeea94c572a7cc61a14e429c7f907136e8e0753d5420eac3d20212030ec4",
+          "methods": [
+            {
+              "signature": "<clinit>()V",
+              "declarationSha256": "4de5bdc23b22f6f3ee2bdddb6d721926ba040d9c7c5179543af3aeb7b3735eaa",
+              "bodySha256": "555d428cbb20568b12e167aead0969bea2c3870bae4661c0ee724d925ff6bd90",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "1007a7ef994a120aaa5502d8aee78d6a2d9ddba375b2ab210a8345f76e640634",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$UP;",
+          "sha256": "7de5ed4abeedd6acb50bcbd892d8268472549280685f4f90441bbe9196d4e9e4",
+          "methods": [
+            {
+              "signature": "<init>(Landroid/content/Context;)V",
+              "declarationSha256": "421296265b0754fab4403de99492bd5ad76b022bcb4a0c44f29ec5ac4ef70656",
+              "bodySha256": "4cafa1589450ce2aa1580601468b8328cbf06f6531a989eb896a7a8c77c12011",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "68896ddfda8840398a9ede735e85f32c98d2fbe0e146affe8d6ceb5db4310cc1",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init;",
+          "sha256": "91668273395ebf9182974a423a37b60d26077db414d5d2301c9013ab7dfe3891",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "4542805672d8552ebb38c513c6368aeaa3fafed218bb545a1294f2544b9ebb25",
+              "bodySha256": "799f6fff3c23a0e6b2cb3e71c408848127b3367c4c6545e1a93167427df6fee5",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "a(Landroid/content/Context;)Z",
+              "declarationSha256": "d160257ef6591a3e7a1af5d33b5e6b5ab55c834126e3d27af4a57b71c18a79a8",
+              "bodySha256": "0ef5eefbaba7e8417418fb3fffa66daa5d1aad8ba5558002fcc3dd89d9d516c5",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "b(Landroid/content/Context;)Z",
+              "declarationSha256": "bce08f8bb77db4779efde6804abd90eb482a0d0c359eea9606ac199076342463",
+              "bodySha256": "285444f9f8e4c7efa02d60bcb5b39182fb77b494b4735970412087a4c7994b76",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "c(Landroid/content/Context;)Z",
+              "declarationSha256": "b95771e449b0abcaa6c3764278f99bd50d00d7edd21285c5bb89ec31b4028615",
+              "bodySha256": "0e9667dc277b8dd92e9ed626c94ad7ff239dc22a2da20c50d6048adfb294f824",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "checkPermission()V",
+              "declarationSha256": "9f2fe05605a603affdacfee3fe28d480c8cecf7c18e7298519d764f9140f51a3",
+              "bodySha256": "068d9bb7c0218243e6ac008f85b2118abddf7738a8378a597b204a3b8a9e85e4",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "context()Landroid/app/Application;",
+              "declarationSha256": "f5fc21c8e45c1d073f009588f16f8451024d32cd738e48cead56ab812feda25d",
+              "bodySha256": "719f12e8dbac594fb5b85f2c2c618e64d503470cf1a48dd1b512d8be906960b3",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "d(Ljava/io/File;)Ljava/lang/String;",
+              "declarationSha256": "7f3da748ebc15ca5d34895929fdf33c259034021f31e74ee4ffc7eb8489d1978",
+              "bodySha256": "fb7aa50469d8cdaa35f60e14fc919aafec009bc393aef6869e0717a6b733b355",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "execute(Ljava/lang/Runnable;)V",
+              "declarationSha256": "2a613ab882a64549e08d92672545928d1fd6096c818cf7f41e96d14e26b89c90",
+              "bodySha256": "90de05c0a1c2fa30fde89805eaf46409db402c34d5b88ae16b71b041803ed965",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "get()Lcom/github/catvod/spider/Init;",
+              "declarationSha256": "fc49d95b7b170e84108fab8fe5a423f1c0d48ada9c01a43f11a219052f364399",
+              "bodySha256": "6ffbb68626a98221b61b745fc7b02ca488e6cabc8b18993a22a571e1f7a77d4f",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "getActivity()Landroid/app/Activity;",
+              "declarationSha256": "585b041cbd14ef39560e4598f94765e1ff1b13d26d53e533002540303d5c6587",
+              "bodySha256": "f85131d4f58420139731477f749b1c77894304603c68d9d78fc3d0b653a856c0",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "getConfigActivity()Landroid/app/Activity;",
+              "declarationSha256": "e44e1bdec1c71dda56f32e9efa4e1414c996c5365eeb9ae6255477d19e7e774a",
+              "bodySha256": "41838565db0720199dfd1e499fac7e28a5a395f31a9adc0122bb85d33b6903df",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "i(Ljava/lang/String;)Ljava/io/InputStream;",
+              "declarationSha256": "86c127ad99066b8edaffdb55061a19b28e463a059fe06f3cb78f4bfa8b275f7a",
+              "bodySha256": "9b6e41aabc556c4f76f30b89503ac6dcf0ea5329b65c2c9fb975839cb7daf72f",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "init(Landroid/content/Context;)V",
+              "declarationSha256": "55ff1e315c5a3e5f432056293a53d0486d94c41e54a7123efea946745f65e449",
+              "bodySha256": "69475f81fe18ad89d227342424a1f862026e7a9ebcb6fd177146b7f74784f2f6",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "interceptActivityStart()V",
+              "declarationSha256": "88965a3a03873aaf9b955b99665ae334a1f65b125c919ec9f29af27b2405aac5",
+              "bodySha256": "c13ad5370847e12564e7297587c96163d7da05ae3051e5cef37cb76f3d2e6542",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "post(Ljava/lang/Runnable;)V",
+              "declarationSha256": "7ef8269a3942f6cedaa9e6a81645c8e8fe708117a1489926b3fc5c3ec6993c44",
+              "bodySha256": "cc77fd8a34c4239b95758d4428c9268252e6bfb4376971888a3d81bff354c1fc",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run(Ljava/lang/Runnable;)V",
+              "declarationSha256": "bbea7a57a9289c317596045ec4766b4ddd24f7519046a75d364ea792dc0b567e",
+              "bodySha256": "cc77fd8a34c4239b95758d4428c9268252e6bfb4376971888a3d81bff354c1fc",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run(Ljava/lang/Runnable;I)V",
+              "declarationSha256": "c020277ea0129711de464a0d21137944dade91bef8fb680f95e141dc38919a14",
+              "bodySha256": "dcb04b2dea3d4700730d7260110afb15cce8192ac5f4188ae9a970e89b1762c2",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "saveConfig()V",
+              "declarationSha256": "09646cfbc14c641e20a0d799671ae5ccbd493fa2fb12d243a5328ef1b8ed34c8",
+              "bodySha256": "bafa731f358e245080e5f5784ee1036ba8e259fcf914fc289797c39215d1ffcb",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "startFloatBall()V",
+              "declarationSha256": "a27a48febd5220e754e77d6f044b5e210716c852af2bf97994fff7ec1bed7a55",
+              "bodySha256": "0bd5530e5f7eda078f84234932153ac8819861c60f3911ab884ff8b9bc69d860",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "startGoProxy(Landroid/content/Context;)V",
+              "declarationSha256": "c3c10ca5ce99eab605b2d0d6cf120380ea1203a98a8047972872e25618aededf",
+              "bodySha256": "8cf5a39c417cc9d6ff49246391cee8a69493fce5cb6e030dbd2d1ffab13d7127",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "write(Ljava/io/File;Ljava/io/InputStream;)V",
+              "declarationSha256": "194bb4ceb267f4e50c4b70435bb826288932a10fa4a9ec7f704366607bffb2a4",
+              "bodySha256": "15cd496a180ae7c7c7661e050cb4d03e0dd2235e842848b95b4525fb112a4114",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        }
+      ],
+      "nativeLibraries": []
+    },
+    {
+      "sha256": "a9dce1158db8c7d469399917468f91fcc9dbdd8260d56f32aa5c1e7a5f293ed6",
+      "bytes": 2372060,
+      "dex": [
+        {
+          "name": "classes.dex",
+          "sha256": "40c740dc8860a3bb1cc3a74ce6c6913165b21cd22bfaa202e569960e56064ea8",
+          "bytes": 4784920,
+          "classCount": 3779,
+          "allNativeMethods": 12,
+          "nativeMethodDeclarations": [
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeDecrypt([B)[B",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeDecryptRemoteSeed([B)Ljava/lang/String;",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeDecryptWithRemoteSeed([BLjava/lang/String;)[B",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeDeriveKey([B)[B",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeGetLocalSeed()Ljava/lang/String;",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeGetPassword()Ljava/lang/String;",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeGetPasswordWithRemote(Ljava/lang/String;)Ljava/lang/String;",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeGetSeedUrl(I)Ljava/lang/String;",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeGetSeedUrlCount()I",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeIsDebugging()Z",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeIsRooted()Z",
+              "static": true
+            },
+            {
+              "owner": "Lcom/github/catvod/secure/NativeSecure;",
+              "signature": "nativeIsSafe()Z",
+              "static": true
+            }
+          ],
+          "hasExactInit": true,
+          "hasKillProcess": true,
+          "whitelistAccepted": false,
+          "heuristicProtected": true,
+          "initClasses": [
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$1;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65536,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "e1f303d911cfa57b5fc4fa6620557309f20083ac42cfe91713355ec6d6e81fa5"
+                },
+                {
+                  "signature": "a(Ljava/io/File;)V",
+                  "access": 2,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "f11c4ede28951d6821bae1b40fda9b7b1c65d035421c3fda28d41ba64a5248f6"
+                },
+                {
+                  "signature": "unzip(Ljava/io/File;Ljava/io/File;)V",
+                  "access": 2,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "a748eba6be840e6ceefede3aa2fe56816db2b642f0ba44a26c0bed46fce82ab8"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "a2f0340e253bfeb630bbb2270f6ae58f228ea86fbc15cd99332660b48dbce964"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$2;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65537,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "e1f303d911cfa57b5fc4fa6620557309f20083ac42cfe91713355ec6d6e81fa5"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "0591f9f52f22f84441e4813c5acbf5161d2d57eb52960050ecb4a739ae5ccd79"
+                }
+              ],
+              "killMatches": [
+                {
+                  "method": "run()V",
+                  "codeUnitOffset": 14,
+                  "opcode": 113,
+                  "target": "Landroid/os/Process;->killProcess(I)V"
+                }
+              ],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$Loader;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [
+                {
+                  "name": "a",
+                  "type": "Lcom/github/catvod/spider/Init;",
+                  "access": 72,
+                  "static": true
+                }
+              ],
+              "methods": [
+                {
+                  "signature": "<clinit>()V",
+                  "access": 65544,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "46a3d5bf1f07f95a8453136791b890a74a4ab7e1fe1d81263e47a5d51f06e762"
+                },
+                {
+                  "signature": "<init>()V",
+                  "access": 65538,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "e1f303d911cfa57b5fc4fa6620557309f20083ac42cfe91713355ec6d6e81fa5"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$UP;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [
+                {
+                  "name": "val$context",
+                  "type": "Landroid/content/Context;",
+                  "access": 4112,
+                  "static": false
+                }
+              ],
+              "methods": [
+                {
+                  "signature": "<init>(Landroid/content/Context;)V",
+                  "access": 65536,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "5be43ed66c6fef46030f9475b07290ffdbc0f09c3f885b8ca6bde72a45d7ebed"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "4ed68cbb745a8a5c0152d01ada7516f182a674f9d49e2dd44e6f5ac7d8709dbf"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init-xbdm;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65537,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "e1f303d911cfa57b5fc4fa6620557309f20083ac42cfe91713355ec6d6e81fa5"
+                },
+                {
+                  "signature": "init(Landroid/content/Context;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "2fdddfad518fcde12b1de1d257948fc188b6e978cd848756cc94f31d5478bd2c"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [
+                {
+                  "name": "v",
+                  "type": "Ljava/lang/String;",
+                  "access": 9,
+                  "static": true
+                },
+                {
+                  "name": "a",
+                  "type": "Ljava/util/concurrent/ExecutorService;",
+                  "access": 18,
+                  "static": false
+                },
+                {
+                  "name": "b",
+                  "type": "Landroid/os/Handler;",
+                  "access": 18,
+                  "static": false
+                },
+                {
+                  "name": "c",
+                  "type": "Landroid/app/Application;",
+                  "access": 2,
+                  "static": false
+                }
+              ],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65537,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "7f9011be7ba689e24c455e74acdf97cc1803546e7c6fc403a3edc285ff6cd516"
+                },
+                {
+                  "signature": "a(Landroid/content/Context;)Z",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "a700d81ea63bc949f5e0b35814a35ae996c42f02f07f4f44a361a8c58d11b1ed"
+                },
+                {
+                  "signature": "b(Landroid/content/Context;)Z",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "b214c6491bb9835688edf2ece666fd84c419e0b1363f2ce8779f5be2146391a2"
+                },
+                {
+                  "signature": "c(Landroid/content/Context;)Z",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "53d81ed174518287fb64e3ffec120559eabc967cc5ef810d062d09378f03c17e"
+                },
+                {
+                  "signature": "checkPermission()V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "de8c7553a078dbf097f4b6f7e9171be32c428719faf85933bd5204077cee3b2b"
+                },
+                {
+                  "signature": "context()Landroid/app/Application;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "f4871827ef40d9387e0efd573929b23bfb786dd62df33b0767cd23a9f04cc257"
+                },
+                {
+                  "signature": "d(Ljava/io/File;)Ljava/lang/String;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "7604dbf5eda0d3e8f1614a8fe43165a1d0492f2706803733c36ef87789df8b1c"
+                },
+                {
+                  "signature": "execute(Ljava/lang/Runnable;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "58830ebcea51084c8e3e76a111f33feec3abb3a8921f730ecc57b5bf7d2fad20"
+                },
+                {
+                  "signature": "get()Lcom/github/catvod/spider/Init;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "b32e678042195778372878e7ec001a3507e70d771ab46119bf092e19e3a3b136"
+                },
+                {
+                  "signature": "getActivity()Landroid/app/Activity;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "9f3160bf6b28873770801e74eb6ab5d28a3e2a9e54c167818c99b8a2383f70e9"
+                },
+                {
+                  "signature": "getConfigActivity()Landroid/app/Activity;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "74f92ba6c73c6ebad812196ef4c3381449ebe107e3bb8241857e9b38055ac3e2"
+                },
+                {
+                  "signature": "i(Ljava/lang/String;)Ljava/io/InputStream;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "673bf61bb4d1fcac6b0d458392489f22ea813025db87fa955cef2a29d7318a33"
+                },
+                {
+                  "signature": "init(Landroid/content/Context;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "55f8efee523b9a455d80f473a39a3647d2f603fa6cac388d61b35c12e65bdf2f"
+                },
+                {
+                  "signature": "interceptActivityStart()V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "a0fdf7a99cd5506711a2dc7af634dbe73173627345c3c36b1e000791f65f2bf0"
+                },
+                {
+                  "signature": "post(Ljava/lang/Runnable;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "19969a3dbe72efaa36db31b3bb02f94ceaf52a5e0e64e7f005a55a01da68ad03"
+                },
+                {
+                  "signature": "run(Ljava/lang/Runnable;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "19969a3dbe72efaa36db31b3bb02f94ceaf52a5e0e64e7f005a55a01da68ad03"
+                },
+                {
+                  "signature": "run(Ljava/lang/Runnable;I)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "60183e6e3a98d5cf158c9a5ba424cd92e5c51de0e2a3c6401bc926b539c3e03d"
+                },
+                {
+                  "signature": "saveConfig()V",
+                  "access": 10,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "8f4de053bf73910672fef9989be5c256dffb51d55b2107052a5d06b54193ceb8"
+                },
+                {
+                  "signature": "startFloatBall()V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "f43cfd0ca609dc84dac3877cd9443268d7cac5b7a59b20a4175f8ec6222e5464"
+                },
+                {
+                  "signature": "startGoProxy(Landroid/content/Context;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "46605b0e3ddcbab2ec38e706b91b78937869f8576bf59a52134b245a39a665f8"
+                },
+                {
+                  "signature": "write(Ljava/io/File;Ljava/io/InputStream;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "76deef801469d62ff396d445cd5ca29e707f1a973072a4477847c951279391d9"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            }
+          ],
+          "dexNativeDefined": false,
+          "nativeClasses": [],
+          "scope": "Static fixed-scanner heuristic. A killProcess match does not prove shell protection or that the instruction executes."
+        }
+      ],
+      "fixedSourceScanProtected": true,
+      "parser": [
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$1;",
+          "sha256": "cf8779b7b531ee24545d6a95735ed41355401a748ca5e7cad3a7de94462d58ea",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "7c8ce828e3db786559e9ba8f729cc95b507a0fbafc9911f701d4f3b4bd4d46cf",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "a(Ljava/io/File;)V",
+              "declarationSha256": "65c55743deabe60f043d945fdd14e65330e06c6289c51c290adef81775f9f056",
+              "bodySha256": "884e74d47295ca9dad3ced1e4077e3b731304d54927a8154cd0dbadfd1739857",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "unzip(Ljava/io/File;Ljava/io/File;)V",
+              "declarationSha256": "4516d4aa9252d5fbbc157fc2b7feebc67cf3b3e634035e2f9fa6f9bd7fbc05d1",
+              "bodySha256": "ee01badf9c450ebdd47aa250c9e4655bd04728a22589b92e46794b4d85d2b2ac",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "d962d3c21e596d08605a94e13aaa6431347d29bb39204d4d8c581d4100afee13",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Lorg/json/JSONException;",
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$2;",
+          "sha256": "18e1faf60c38d9a371dfa35ad13d114af337d5893dc3ec720d586cd24c61b495",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "4542805672d8552ebb38c513c6368aeaa3fafed218bb545a1294f2544b9ebb25",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "3c1bd283b893a9dee4fc9fede7e2776e0ac9544451f7fa6ce6f574aa4a17f8f8",
+              "killProcessInvokes": 1,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/InterruptedException;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 1
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$Loader;",
+          "sha256": "9863aeea94c572a7cc61a14e429c7f907136e8e0753d5420eac3d20212030ec4",
+          "methods": [
+            {
+              "signature": "<clinit>()V",
+              "declarationSha256": "4de5bdc23b22f6f3ee2bdddb6d721926ba040d9c7c5179543af3aeb7b3735eaa",
+              "bodySha256": "555d428cbb20568b12e167aead0969bea2c3870bae4661c0ee724d925ff6bd90",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "1007a7ef994a120aaa5502d8aee78d6a2d9ddba375b2ab210a8345f76e640634",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$UP;",
+          "sha256": "bef9302b70ebf60b1c5c74cbe0a9648c8dbe89de31f67d42ae9e4b17a3896093",
+          "methods": [
+            {
+              "signature": "<init>(Landroid/content/Context;)V",
+              "declarationSha256": "421296265b0754fab4403de99492bd5ad76b022bcb4a0c44f29ec5ac4ef70656",
+              "bodySha256": "4cafa1589450ce2aa1580601468b8328cbf06f6531a989eb896a7a8c77c12011",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "f9366ff4860a55e69d794ca7afd97192ffc1be7849372889bec1fec808d7e86a",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init-xbdm;",
+          "sha256": "85f4bdc9c5179f2b047cc7c4f7199c89312d6e077137356ae365fb5de60f71f9",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "4542805672d8552ebb38c513c6368aeaa3fafed218bb545a1294f2544b9ebb25",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "init(Landroid/content/Context;)V",
+              "declarationSha256": "55ff1e315c5a3e5f432056293a53d0486d94c41e54a7123efea946745f65e449",
+              "bodySha256": "c85d22000d61ae7ce009986cc298b05112a5bb42bd438e16c3658de430072962",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init;",
+          "sha256": "1548eccbc16ce4a8ed6834e0f0beecf94222ef57a40615f81cdd35161270359e",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "4542805672d8552ebb38c513c6368aeaa3fafed218bb545a1294f2544b9ebb25",
+              "bodySha256": "799f6fff3c23a0e6b2cb3e71c408848127b3367c4c6545e1a93167427df6fee5",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "a(Landroid/content/Context;)Z",
+              "declarationSha256": "d160257ef6591a3e7a1af5d33b5e6b5ab55c834126e3d27af4a57b71c18a79a8",
+              "bodySha256": "57af0e17bf082e535abcbf6d645ef018f3cfbfbabcf844c4555db02e10095dfc",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "b(Landroid/content/Context;)Z",
+              "declarationSha256": "bce08f8bb77db4779efde6804abd90eb482a0d0c359eea9606ac199076342463",
+              "bodySha256": "bdfee5e2b7ecc90871d77d136e8585dffd9d6361d1232b5d15f19ca633fdf436",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "c(Landroid/content/Context;)Z",
+              "declarationSha256": "b95771e449b0abcaa6c3764278f99bd50d00d7edd21285c5bb89ec31b4028615",
+              "bodySha256": "0e9667dc277b8dd92e9ed626c94ad7ff239dc22a2da20c50d6048adfb294f824",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "checkPermission()V",
+              "declarationSha256": "9f2fe05605a603affdacfee3fe28d480c8cecf7c18e7298519d764f9140f51a3",
+              "bodySha256": "f7e0bf2d254fd61fd1c338561bc56eee5b99195d5ed65817b0ea7f8c73e47d7f",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "context()Landroid/app/Application;",
+              "declarationSha256": "f5fc21c8e45c1d073f009588f16f8451024d32cd738e48cead56ab812feda25d",
+              "bodySha256": "719f12e8dbac594fb5b85f2c2c618e64d503470cf1a48dd1b512d8be906960b3",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "d(Ljava/io/File;)Ljava/lang/String;",
+              "declarationSha256": "7f3da748ebc15ca5d34895929fdf33c259034021f31e74ee4ffc7eb8489d1978",
+              "bodySha256": "fb7aa50469d8cdaa35f60e14fc919aafec009bc393aef6869e0717a6b733b355",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "execute(Ljava/lang/Runnable;)V",
+              "declarationSha256": "2a613ab882a64549e08d92672545928d1fd6096c818cf7f41e96d14e26b89c90",
+              "bodySha256": "90de05c0a1c2fa30fde89805eaf46409db402c34d5b88ae16b71b041803ed965",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "get()Lcom/github/catvod/spider/Init;",
+              "declarationSha256": "fc49d95b7b170e84108fab8fe5a423f1c0d48ada9c01a43f11a219052f364399",
+              "bodySha256": "6ffbb68626a98221b61b745fc7b02ca488e6cabc8b18993a22a571e1f7a77d4f",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "getActivity()Landroid/app/Activity;",
+              "declarationSha256": "585b041cbd14ef39560e4598f94765e1ff1b13d26d53e533002540303d5c6587",
+              "bodySha256": "f85131d4f58420139731477f749b1c77894304603c68d9d78fc3d0b653a856c0",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "getConfigActivity()Landroid/app/Activity;",
+              "declarationSha256": "e44e1bdec1c71dda56f32e9efa4e1414c996c5365eeb9ae6255477d19e7e774a",
+              "bodySha256": "41838565db0720199dfd1e499fac7e28a5a395f31a9adc0122bb85d33b6903df",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "i(Ljava/lang/String;)Ljava/io/InputStream;",
+              "declarationSha256": "86c127ad99066b8edaffdb55061a19b28e463a059fe06f3cb78f4bfa8b275f7a",
+              "bodySha256": "9b6e41aabc556c4f76f30b89503ac6dcf0ea5329b65c2c9fb975839cb7daf72f",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "init(Landroid/content/Context;)V",
+              "declarationSha256": "55ff1e315c5a3e5f432056293a53d0486d94c41e54a7123efea946745f65e449",
+              "bodySha256": "32aebde31172280f0217975aff03a381c5ff7ddbda18f19ae72729f9a9cc5dcb",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "interceptActivityStart()V",
+              "declarationSha256": "88965a3a03873aaf9b955b99665ae334a1f65b125c919ec9f29af27b2405aac5",
+              "bodySha256": "c13ad5370847e12564e7297587c96163d7da05ae3051e5cef37cb76f3d2e6542",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "post(Ljava/lang/Runnable;)V",
+              "declarationSha256": "7ef8269a3942f6cedaa9e6a81645c8e8fe708117a1489926b3fc5c3ec6993c44",
+              "bodySha256": "cc77fd8a34c4239b95758d4428c9268252e6bfb4376971888a3d81bff354c1fc",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run(Ljava/lang/Runnable;)V",
+              "declarationSha256": "bbea7a57a9289c317596045ec4766b4ddd24f7519046a75d364ea792dc0b567e",
+              "bodySha256": "cc77fd8a34c4239b95758d4428c9268252e6bfb4376971888a3d81bff354c1fc",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run(Ljava/lang/Runnable;I)V",
+              "declarationSha256": "c020277ea0129711de464a0d21137944dade91bef8fb680f95e141dc38919a14",
+              "bodySha256": "dcb04b2dea3d4700730d7260110afb15cce8192ac5f4188ae9a970e89b1762c2",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "saveConfig()V",
+              "declarationSha256": "09646cfbc14c641e20a0d799671ae5ccbd493fa2fb12d243a5328ef1b8ed34c8",
+              "bodySha256": "bafa731f358e245080e5f5784ee1036ba8e259fcf914fc289797c39215d1ffcb",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "startFloatBall()V",
+              "declarationSha256": "a27a48febd5220e754e77d6f044b5e210716c852af2bf97994fff7ec1bed7a55",
+              "bodySha256": "0bd5530e5f7eda078f84234932153ac8819861c60f3911ab884ff8b9bc69d860",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "startGoProxy(Landroid/content/Context;)V",
+              "declarationSha256": "c3c10ca5ce99eab605b2d0d6cf120380ea1203a98a8047972872e25618aededf",
+              "bodySha256": "f2071a6971bcebe43c20446698b3a082faa7a473e0e6978b3d18cee4c234bf6f",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "write(Ljava/io/File;Ljava/io/InputStream;)V",
+              "declarationSha256": "194bb4ceb267f4e50c4b70435bb826288932a10fa4a9ec7f704366607bffb2a4",
+              "bodySha256": "15cd496a180ae7c7c7661e050cb4d03e0dd2235e842848b95b4525fb112a4114",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        }
+      ],
+      "nativeLibraries": [
+        {
+          "name": "lib/arm64-v8a/libsecure.so",
+          "bytes": 188840,
+          "sha256": "4dbc992c20b3a6925cc20bf1f9615c4e0876bba16d59140c5d22c3d046f04c6e"
+        },
+        {
+          "name": "lib/armeabi-v7a/libsecure.so",
+          "bytes": 170208,
+          "sha256": "ecabc207941bcec67e5183c0ed2d186095ecc1fca53b7f56382856a90d5ccda3"
+        }
+      ]
+    },
+    {
+      "sha256": "a41f11e12267d0840eb8c949a59e5709d6a6f8fc42c86d845a7dad4be51a4fa1",
+      "bytes": 1909530,
+      "dex": [
+        {
+          "name": "classes.dex",
+          "sha256": "0f84162c75accea48fca337f8af384dfa2b85b8019f42d61ba026a2b0ef803d8",
+          "bytes": 4805528,
+          "classCount": 3772,
+          "allNativeMethods": 0,
+          "nativeMethodDeclarations": [],
+          "hasExactInit": true,
+          "hasKillProcess": true,
+          "whitelistAccepted": false,
+          "heuristicProtected": true,
+          "initClasses": [
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$1;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65536,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "2973fe67f54f9357decb57d7adf0a0d364a0573f4c535a1cce23c135fa96a150"
+                },
+                {
+                  "signature": "a(Ljava/io/File;)V",
+                  "access": 2,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "1b75036f194267025c5b721299624116d6dacd66316692eaaf87c26603395727"
+                },
+                {
+                  "signature": "unzip(Ljava/io/File;Ljava/io/File;)V",
+                  "access": 2,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "8717bdfde33134e81abea1c342b0cb0267a1f8c559c16ad25b7e5f548e194202"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "f9ca7fc1f5641e0c99f6f2bd361ed2a11b3c5ad24001f8606fe6b39195cbc133"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$2;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65537,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "2973fe67f54f9357decb57d7adf0a0d364a0573f4c535a1cce23c135fa96a150"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "2d9cc2c1b06ba80177f9f0a37f843447fe2da02f754d110ea530c30144266ff7"
+                }
+              ],
+              "killMatches": [
+                {
+                  "method": "run()V",
+                  "codeUnitOffset": 14,
+                  "opcode": 113,
+                  "target": "Landroid/os/Process;->killProcess(I)V"
+                }
+              ],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$Loader;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [
+                {
+                  "name": "a",
+                  "type": "Lcom/github/catvod/spider/Init;",
+                  "access": 72,
+                  "static": true
+                }
+              ],
+              "methods": [
+                {
+                  "signature": "<clinit>()V",
+                  "access": 65544,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "604acbbdca344b516d23a29a9bf3a900c7f278cb260058fb57656d34456b8164"
+                },
+                {
+                  "signature": "<init>()V",
+                  "access": 65538,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "2973fe67f54f9357decb57d7adf0a0d364a0573f4c535a1cce23c135fa96a150"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init$UP;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [
+                {
+                  "name": "val$context",
+                  "type": "Landroid/content/Context;",
+                  "access": 4112,
+                  "static": false
+                }
+              ],
+              "methods": [
+                {
+                  "signature": "<init>(Landroid/content/Context;)V",
+                  "access": 65536,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "83a9dc7bbd034611fb84012fce65b003c9311d4c18d4e42ec58b019b769b30fd"
+                },
+                {
+                  "signature": "run()V",
+                  "access": 1,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "c2d89b5cc006a4668fc8e536e61d2020ca4f47a340fb75dd061f1603bf34e49e"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            },
+            {
+              "descriptor": "Lcom/github/catvod/spider/Init;",
+              "superClass": "Ljava/lang/Object;",
+              "fields": [
+                {
+                  "name": "v",
+                  "type": "Ljava/lang/String;",
+                  "access": 9,
+                  "static": true
+                },
+                {
+                  "name": "a",
+                  "type": "Ljava/util/concurrent/ExecutorService;",
+                  "access": 18,
+                  "static": false
+                },
+                {
+                  "name": "b",
+                  "type": "Landroid/os/Handler;",
+                  "access": 18,
+                  "static": false
+                },
+                {
+                  "name": "c",
+                  "type": "Landroid/app/Application;",
+                  "access": 2,
+                  "static": false
+                }
+              ],
+              "methods": [
+                {
+                  "signature": "<init>()V",
+                  "access": 65537,
+                  "static": false,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "d56e142433ba9f43baeb81661c844d40378bf81d7f75f2289eb093ec71a44d83"
+                },
+                {
+                  "signature": "a(Landroid/content/Context;)Z",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "d3d1accc4bc95c53744c5ba5f22101e26d02e47f7f8b28984d9d9a90f8e173fb"
+                },
+                {
+                  "signature": "b(Landroid/content/Context;)Z",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "4dfeda6971d0e9158ceec0551283cd1db0909f18b52526e996969f346e534088"
+                },
+                {
+                  "signature": "c(Landroid/content/Context;)Z",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "94bd3c63bdf26efd260b08f030b934c2637d113f6e339966be7021d5e9f4a847"
+                },
+                {
+                  "signature": "checkPermission()V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "5ada42443ecbcebb867a41a53425eae6269f95c705c50ec732ac1f3b5459bccd"
+                },
+                {
+                  "signature": "context()Landroid/app/Application;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "a0950d106a80a892e0a53f05b2995eaa80c3d6f37cc529aa04f3a17dfd36bb3e"
+                },
+                {
+                  "signature": "d(Ljava/io/File;)Ljava/lang/String;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "4938155bd5709b9034b14ab0af8d8934739bd68199adb8aae94cdf946b0ea867"
+                },
+                {
+                  "signature": "execute(Ljava/lang/Runnable;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "4c89690f7f966663929be60cc83cd0ac4650dfbea370b67affb6a1f0facbac69"
+                },
+                {
+                  "signature": "get()Lcom/github/catvod/spider/Init;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "93903dc4e6ddb695e203158f700deacab740aca43badc2ddc7897edfbe2fab64"
+                },
+                {
+                  "signature": "getActivity()Landroid/app/Activity;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "26a3cd629ead012664ab5cbb5d07fb0cfdbf71a7a49253dbd69bc89d9228f868"
+                },
+                {
+                  "signature": "getConfigActivity()Landroid/app/Activity;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "4e6d42361874ecf7e9b48d7566083ec5e74a08194e136a7f67cd5bdeb8ce777e"
+                },
+                {
+                  "signature": "i(Ljava/lang/String;)Ljava/io/InputStream;",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "6e548313db81c7d3a72c2a959f57dbc1030d45d0c75494a7974e5bc34797d986"
+                },
+                {
+                  "signature": "init(Landroid/content/Context;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "5a48385704069d69de1f2a25959a585f569b83f3fbcc0b595be1dbe58f92c3b9"
+                },
+                {
+                  "signature": "interceptActivityStart()V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "e92d2ed38d12ea795f1377cb61c77d8c46406bdcd638028da552d34a691d5b1e"
+                },
+                {
+                  "signature": "post(Ljava/lang/Runnable;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "b8fa347e9b387d6d61cc41d7d0dc8658f239463074b945a10caa28f8654ea923"
+                },
+                {
+                  "signature": "run(Ljava/lang/Runnable;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "b8fa347e9b387d6d61cc41d7d0dc8658f239463074b945a10caa28f8654ea923"
+                },
+                {
+                  "signature": "run(Ljava/lang/Runnable;I)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "c71d5d5d698e166ab639a3ae64754e4f31255b01883b3df60460a1aa4659d733"
+                },
+                {
+                  "signature": "saveConfig()V",
+                  "access": 10,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "d2a3dd1428d1e4ec86a30bf69549c128b0e57459073ea21721a70a520ffc0bdc"
+                },
+                {
+                  "signature": "startFloatBall()V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "5eb848038fc3b8cf0490b2cefcf934cfcc81ee44c888559ff4917fd0d790b117"
+                },
+                {
+                  "signature": "startGoProxy(Landroid/content/Context;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "c4b840db3d5554f802e6c5e0e4d9a17bcefefb37236f5a687d1c14e954c6934b"
+                },
+                {
+                  "signature": "write(Ljava/io/File;Ljava/io/InputStream;)V",
+                  "access": 9,
+                  "static": true,
+                  "native": false,
+                  "codePresent": true,
+                  "codeSha256": "f9840cc4e485231e22fdeb87501a3f6ca221fa39c739ab4e6712bd6c85e89f5a"
+                }
+              ],
+              "killMatches": [],
+              "whitelistMatches": []
+            }
+          ],
+          "dexNativeDefined": false,
+          "nativeClasses": [],
+          "scope": "Static fixed-scanner heuristic. A killProcess match does not prove shell protection or that the instruction executes."
+        }
+      ],
+      "fixedSourceScanProtected": true,
+      "parser": [
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$1;",
+          "sha256": "cf8779b7b531ee24545d6a95735ed41355401a748ca5e7cad3a7de94462d58ea",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "7c8ce828e3db786559e9ba8f729cc95b507a0fbafc9911f701d4f3b4bd4d46cf",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "a(Ljava/io/File;)V",
+              "declarationSha256": "65c55743deabe60f043d945fdd14e65330e06c6289c51c290adef81775f9f056",
+              "bodySha256": "884e74d47295ca9dad3ced1e4077e3b731304d54927a8154cd0dbadfd1739857",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "unzip(Ljava/io/File;Ljava/io/File;)V",
+              "declarationSha256": "4516d4aa9252d5fbbc157fc2b7feebc67cf3b3e634035e2f9fa6f9bd7fbc05d1",
+              "bodySha256": "ee01badf9c450ebdd47aa250c9e4655bd04728a22589b92e46794b4d85d2b2ac",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "d962d3c21e596d08605a94e13aaa6431347d29bb39204d4d8c581d4100afee13",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Lorg/json/JSONException;",
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$2;",
+          "sha256": "e1c7955ca4be7024b1df1e3cf72edc78867444e8b029d549fde362ec21838752",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "4542805672d8552ebb38c513c6368aeaa3fafed218bb545a1294f2544b9ebb25",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "b11bfcacec0a8c9d0bfdb36a746548122168b5eff8cab9b4c67edf65bc2885b5",
+              "killProcessInvokes": 1,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/InterruptedException;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 1
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$Loader;",
+          "sha256": "9863aeea94c572a7cc61a14e429c7f907136e8e0753d5420eac3d20212030ec4",
+          "methods": [
+            {
+              "signature": "<clinit>()V",
+              "declarationSha256": "4de5bdc23b22f6f3ee2bdddb6d721926ba040d9c7c5179543af3aeb7b3735eaa",
+              "bodySha256": "555d428cbb20568b12e167aead0969bea2c3870bae4661c0ee724d925ff6bd90",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "1007a7ef994a120aaa5502d8aee78d6a2d9ddba375b2ab210a8345f76e640634",
+              "bodySha256": "714bb9800819a88604e0ae3b88d441a11e7214869b8a2b54385e2f78827f1295",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init$UP;",
+          "sha256": "7de5ed4abeedd6acb50bcbd892d8268472549280685f4f90441bbe9196d4e9e4",
+          "methods": [
+            {
+              "signature": "<init>(Landroid/content/Context;)V",
+              "declarationSha256": "421296265b0754fab4403de99492bd5ad76b022bcb4a0c44f29ec5ac4ef70656",
+              "bodySha256": "4cafa1589450ce2aa1580601468b8328cbf06f6531a989eb896a7a8c77c12011",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run()V",
+              "declarationSha256": "9ff01381a46e2d2a8b9db6b0471240eef527a0d1cfac55a9ded81803d21c4877",
+              "bodySha256": "68896ddfda8840398a9ede735e85f32c98d2fbe0e146affe8d6ceb5db4310cc1",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        },
+        {
+          "descriptor": "Lcom/github/catvod/spider/Init;",
+          "sha256": "7be1953c41e5e00579402ba9522abc09af25eab114c516ab408276d1f8f2c880",
+          "methods": [
+            {
+              "signature": "<init>()V",
+              "declarationSha256": "4542805672d8552ebb38c513c6368aeaa3fafed218bb545a1294f2544b9ebb25",
+              "bodySha256": "799f6fff3c23a0e6b2cb3e71c408848127b3367c4c6545e1a93167427df6fee5",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "a(Landroid/content/Context;)Z",
+              "declarationSha256": "d160257ef6591a3e7a1af5d33b5e6b5ab55c834126e3d27af4a57b71c18a79a8",
+              "bodySha256": "fa1f41ae8056679e330c86ca28d92e22eef740d035f57790bc02baffb9428bbc",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "b(Landroid/content/Context;)Z",
+              "declarationSha256": "bce08f8bb77db4779efde6804abd90eb482a0d0c359eea9606ac199076342463",
+              "bodySha256": "98271ba04f4e5fa91bad949a3edec82b5c6e7211bd3cacd6dbdece19c8f64e0a",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "c(Landroid/content/Context;)Z",
+              "declarationSha256": "b95771e449b0abcaa6c3764278f99bd50d00d7edd21285c5bb89ec31b4028615",
+              "bodySha256": "0e9667dc277b8dd92e9ed626c94ad7ff239dc22a2da20c50d6048adfb294f824",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "checkPermission()V",
+              "declarationSha256": "9f2fe05605a603affdacfee3fe28d480c8cecf7c18e7298519d764f9140f51a3",
+              "bodySha256": "2c117913bc665fd111328cbf56ff925b2a21a3a5d9755856b875bcd853a711c4",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "context()Landroid/app/Application;",
+              "declarationSha256": "f5fc21c8e45c1d073f009588f16f8451024d32cd738e48cead56ab812feda25d",
+              "bodySha256": "719f12e8dbac594fb5b85f2c2c618e64d503470cf1a48dd1b512d8be906960b3",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "d(Ljava/io/File;)Ljava/lang/String;",
+              "declarationSha256": "7f3da748ebc15ca5d34895929fdf33c259034021f31e74ee4ffc7eb8489d1978",
+              "bodySha256": "fb7aa50469d8cdaa35f60e14fc919aafec009bc393aef6869e0717a6b733b355",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "execute(Ljava/lang/Runnable;)V",
+              "declarationSha256": "2a613ab882a64549e08d92672545928d1fd6096c818cf7f41e96d14e26b89c90",
+              "bodySha256": "90de05c0a1c2fa30fde89805eaf46409db402c34d5b88ae16b71b041803ed965",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "get()Lcom/github/catvod/spider/Init;",
+              "declarationSha256": "fc49d95b7b170e84108fab8fe5a423f1c0d48ada9c01a43f11a219052f364399",
+              "bodySha256": "6ffbb68626a98221b61b745fc7b02ca488e6cabc8b18993a22a571e1f7a77d4f",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "getActivity()Landroid/app/Activity;",
+              "declarationSha256": "585b041cbd14ef39560e4598f94765e1ff1b13d26d53e533002540303d5c6587",
+              "bodySha256": "f85131d4f58420139731477f749b1c77894304603c68d9d78fc3d0b653a856c0",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "getConfigActivity()Landroid/app/Activity;",
+              "declarationSha256": "e44e1bdec1c71dda56f32e9efa4e1414c996c5365eeb9ae6255477d19e7e774a",
+              "bodySha256": "41838565db0720199dfd1e499fac7e28a5a395f31a9adc0122bb85d33b6903df",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "i(Ljava/lang/String;)Ljava/io/InputStream;",
+              "declarationSha256": "86c127ad99066b8edaffdb55061a19b28e463a059fe06f3cb78f4bfa8b275f7a",
+              "bodySha256": "9b6e41aabc556c4f76f30b89503ac6dcf0ea5329b65c2c9fb975839cb7daf72f",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "init(Landroid/content/Context;)V",
+              "declarationSha256": "55ff1e315c5a3e5f432056293a53d0486d94c41e54a7123efea946745f65e449",
+              "bodySha256": "1d50e1897d38fa34d1a30749ea3c63319a3de3ca2ff08dd4c44dc02e016d6848",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "interceptActivityStart()V",
+              "declarationSha256": "88965a3a03873aaf9b955b99665ae334a1f65b125c919ec9f29af27b2405aac5",
+              "bodySha256": "c13ad5370847e12564e7297587c96163d7da05ae3051e5cef37cb76f3d2e6542",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "post(Ljava/lang/Runnable;)V",
+              "declarationSha256": "7ef8269a3942f6cedaa9e6a81645c8e8fe708117a1489926b3fc5c3ec6993c44",
+              "bodySha256": "cc77fd8a34c4239b95758d4428c9268252e6bfb4376971888a3d81bff354c1fc",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run(Ljava/lang/Runnable;)V",
+              "declarationSha256": "bbea7a57a9289c317596045ec4766b4ddd24f7519046a75d364ea792dc0b567e",
+              "bodySha256": "cc77fd8a34c4239b95758d4428c9268252e6bfb4376971888a3d81bff354c1fc",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "run(Ljava/lang/Runnable;I)V",
+              "declarationSha256": "c020277ea0129711de464a0d21137944dade91bef8fb680f95e141dc38919a14",
+              "bodySha256": "dcb04b2dea3d4700730d7260110afb15cce8192ac5f4188ae9a970e89b1762c2",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "saveConfig()V",
+              "declarationSha256": "09646cfbc14c641e20a0d799671ae5ccbd493fa2fb12d243a5328ef1b8ed34c8",
+              "bodySha256": "bafa731f358e245080e5f5784ee1036ba8e259fcf914fc289797c39215d1ffcb",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "startFloatBall()V",
+              "declarationSha256": "a27a48febd5220e754e77d6f044b5e210716c852af2bf97994fff7ec1bed7a55",
+              "bodySha256": "0bd5530e5f7eda078f84234932153ac8819861c60f3911ab884ff8b9bc69d860",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [
+                "Ljava/lang/Exception;"
+              ],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "startGoProxy(Landroid/content/Context;)V",
+              "declarationSha256": "c3c10ca5ce99eab605b2d0d6cf120380ea1203a98a8047972872e25618aededf",
+              "bodySha256": "f2071a6971bcebe43c20446698b3a082faa7a473e0e6978b3d18cee4c234bf6f",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            },
+            {
+              "signature": "write(Ljava/io/File;Ljava/io/InputStream;)V",
+              "declarationSha256": "194bb4ceb267f4e50c4b70435bb826288932a10fa4a9ec7f704366607bffb2a4",
+              "bodySha256": "15cd496a180ae7c7c7661e050cb4d03e0dd2235e842848b95b4525fb112a4114",
+              "killProcessInvokes": 0,
+              "dexNativeNameConstant": false,
+              "getLoaderNameConstant": false,
+              "catchTypes": [],
+              "classNotFoundCatchHandlerOpcodes": [],
+              "classNotFoundCatchDirectReturns": []
+            }
+          ],
+          "killProcessInvokes": 0
+        }
+      ],
+      "nativeLibraries": []
+    }
+  ],
+  "officialApk": {
+    "sha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+    "declaredSourceCommit": "d5f500677a4da15c5836477352030d9ebb5cb37a",
+    "protectedInitDescriptor": "Lcom/github/catvod/crawler/ProtectedInitJar;",
+    "classes": [
+      {
+        "descriptor": "Lcom/github/catvod/crawler/ProtectedInitJar$Dex;",
+        "sha256": "6837c836c123ee06e87421d294d89894686866baf5abfe30868ec2fd2e3bcbb3",
+        "methods": [
+          {
+            "signature": "<init>([BLjava/lang/String;)V",
+            "declarationSha256": "e13ceedddaea27c68e15dceee0a3af4bdf6ad4df5d4820a32455508fc3dd950b",
+            "bodySha256": "cc1fd71b2bc41a8d53966f4ab6e9d64f343d9392900578be8caed5cd34266481",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "isKillProcess(I)Z",
+            "declarationSha256": "0f8175f0be5b0034e7c99d6969d2d51a00718cbc275cc2c338cab0b9c819d941",
+            "bodySha256": "46292f3c41411771d117d5d1364dcdd4a4d5c3f89085c1d5c4f2d73f449063e7",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "methodClass(I)Ljava/lang/String;",
+            "declarationSha256": "1c8d7e0b1738686ab8773541174b3612f862dce7a0b5a434b1a3754ecd92ca48",
+            "bodySha256": "88650843873eefac5a7492975aee95c75a5b48909a9f93b08b42f7158674673f",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "methodName(I)Ljava/lang/String;",
+            "declarationSha256": "03215ea82e4bba9d0144eced1103008c6240ae3c51546baa8d136c17475bac63",
+            "bodySha256": "cd957ecfa7b8e05fe49a1a805c13615a870be973f01cac5f53a917a5dffb63d7",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "scanInitMethods([II)Z",
+            "declarationSha256": "9a1b4ca6239d0d98f11378f9b1637d7a1e85035ca6c55cd7082c06468cc3ae71",
+            "bodySha256": "de6949754094e70a1064628862942f74c6f628fe80e29df9f201cd67c60689ed",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "scanInitWhitelist(I)Z",
+            "declarationSha256": "48db46f179872c4ce86957b62d3cc2f1acb29b371d8ac402ea2a969626fdd30a",
+            "bodySha256": "48bc7d2365c76a27a16d2be3c5a6d0b7783d7c2a98f5695bb14aa693d045aa70",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "scanKillMethods([II)Z",
+            "declarationSha256": "5cc38733e292909186b52852617ec5f03d156566ddf25081ac0b65a579ff1d27",
+            "bodySha256": "8b326a9164814c1b9dbb7b64a485fdb959ea6487fda4f9ee218cac55e9ae46ba",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "scanKillProcess(I)Z",
+            "declarationSha256": "8cb8816fcdc2f3765cda13954233edb8147cb67519f8bbbec1fbe729bd152544",
+            "bodySha256": "cf3f0c4ee09b131ca4a1fb204e3ec34cdd319d0765ce7f0d4e257d0df2384904",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "scanKillProcessCode(I)Z",
+            "declarationSha256": "a42651d317944aa3f8fab8be4c2bd78505c1491463265b717cf358f4ea533748",
+            "bodySha256": "713c2a1b64eb7a225af93a72f6a5e6534af787eb28425b4eb5e4361033e08261",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "scanWhitelist(I)Z",
+            "declarationSha256": "cd79bd573776c948e1e3ab03da506da9a1a8b4408b0874668c85be63a9fe1280",
+            "bodySha256": "9689bbf522712e354fb04a418e4999dbe29713dfe045851bb3fa160a3951db01",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "skipFields([II)V",
+            "declarationSha256": "c56f14a3f32729f5561303357158380ca50e08f1c4fdf24939a22ba712c94685",
+            "bodySha256": "c402d8ac95593e6610f7a9349fb24dcc4fd33a717dcb4bd8cbe482536d71f29b",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "string(I)Ljava/lang/String;",
+            "declarationSha256": "c2ccfa243e22e9ddb7f9f7026280ff8ea3082ba103dbf9aa4b1b7747ee106c38",
+            "bodySha256": "04d5aaca636fb4085169e1281f51d30e0f4cd7176bacbd78a7ee304f00e7fc57",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "typeDesc(I)Ljava/lang/String;",
+            "declarationSha256": "06a74dcb9cdfa532784df9e0e3a421e169f860fca68184dd5a81ec8958f40bc6",
+            "bodySha256": "73c2dfa0470a3abd690a74d1bc74af7d6ff73eb823c0c7a80aa63d9e86b993aa",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "uint(I)I",
+            "declarationSha256": "4a6e1d0b408d2beeee64fa40b7373c0364ced607e70bc1bbae7bf510bf7ea91d",
+            "bodySha256": "3712fbe969fa847efa7fe46df39d15bf5296642a6cb79285ec846e67ce62640b",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "uleb([I)I",
+            "declarationSha256": "d197ce2f3c5dfc4375ce3775dda5622a293b1923d88086966354e7eb1383d04c",
+            "bodySha256": "29dbf301cd13155c24de64eb8b30a5b1e8cf6023b218ffd6c9c18166b7a12d5e",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "ushort(I)I",
+            "declarationSha256": "56e303f786d997585b2734d55781d1314629b9645dd1d2847be3f1a16409ddcf",
+            "bodySha256": "3d23dd207b0a70a6c9b62398b5e99d7c6bf0165c0533a7616817fb1ec9638fbc",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "isProtected()Z",
+            "declarationSha256": "cacc77cc80281dc19b62e380054fcb16e79657e2955128412ac71af92c007123",
+            "bodySha256": "e88a4f8b8b90348c11b1f2d47dfb728fe62587e7b50bf71d0536c6bf1e145fb8",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          }
+        ],
+        "killProcessInvokes": 0
+      },
+      {
+        "descriptor": "Lcom/github/catvod/crawler/ProtectedInitJar$Whitelist;",
+        "sha256": "9d6946a28fb26ad160c58a0d5716001ff90a57b0705e5acf65fdfa123062453a",
+        "methods": [
+          {
+            "signature": "<init>(Ljava/lang/String;)V",
+            "declarationSha256": "923ef9f3e0373260a55326b021e11acb9c1b93e8e99876100e08bf83799c0f29",
+            "bodySha256": "eac6e7dbbb293703f82809cd88f08cbec1874b2138e12a30584e50e1243cb707",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "containsItem(Ljava/lang/String;)Z",
+            "declarationSha256": "346c822997657a535b26c6056f4b750418428d996dcaeb3144b947a3a93fea63",
+            "bodySha256": "d7b9293a7388f6c8abec57027358c1d277cc2be257abf7c0b44f0e5d325d9d62",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "decrypt(Ljava/lang/String;)Ljava/lang/String;",
+            "declarationSha256": "1e04a98635773fd5fd1d8e58d5a07f3a33ba14a797e536debe21eac642b28d15",
+            "bodySha256": "cc77864a3898df15c2bc0e3fb779605640f08c2cd95215537c545872227b9314",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "isBase64(C)Z",
+            "declarationSha256": "5336cf003529d2616981e3b417fedf07b1339a187673e90dd959a7fd9e8ede9e",
+            "bodySha256": "868e58f3f494f2615d2c63f4dd9779e75fa73f5b2db5825b22751673ac191635",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "isCipherText(Ljava/lang/String;)Z",
+            "declarationSha256": "7d93b0317f3ba5b5bf05a4846bab6238ccd3ee11ac317e0c635432e029a480f2",
+            "bodySha256": "492c23d32d0ee1f62ca99b9b19bd7d581d5ebe74104fed5c351b81b580529e24",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "contains(Ljava/lang/String;)Z",
+            "declarationSha256": "3ce5108916f0880378a09e459fb0db998e890f91999ee503ec51f5fe91fb1883",
+            "bodySha256": "8e0edc563761b53f743436aaf03f072e4c9bb9fe43301c6d16e85747afa5cb7e",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          }
+        ],
+        "killProcessInvokes": 0
+      },
+      {
+        "descriptor": "Lcom/github/catvod/crawler/ProtectedInitJar;",
+        "sha256": "23088a7f88a674b23bc87b7638c474f5bfd1e6043cd686fef4d5ca6def1ae435",
+        "methods": [
+          {
+            "signature": "<clinit>()V",
+            "declarationSha256": "224a6484bab3a2c7dd1bf9ad10d7fabaa7bd82cbb6fb06d8ded89a20e970e415",
+            "bodySha256": "22607099ba910d226d12f512629632d0c90052071001d9909c5676252db0129f",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "<init>()V",
+            "declarationSha256": "4542805672d8552ebb38c513c6368aeaa3fafed218bb545a1294f2544b9ebb25",
+            "bodySha256": "56ca0078ae7314464b41f6f69f951b9c2d8699e261ab07c35ee9a9249b64b365",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "bindContext(Ljava/lang/Class;Ljava/lang/Object;)V",
+            "declarationSha256": "c9be7023f0b16eb0c02016d2f0b8a9132d1d7808f195e65517968a75f424d3b8",
+            "bodySha256": "7e1de22ab5dd9613312c1baa71947b2174705600ed832ea8b08dff238612f28f",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "bindDexLoader(Ljava/lang/Class;Ljava/lang/Object;)Z",
+            "declarationSha256": "daf782607db4e2c530bf6250c6d492f61daf7c6f1a64192d89940795482ff270",
+            "bodySha256": "1935a6a7f2375d5ff9432b58c08a97552f55a5bdde15a49c91dcd9c360874e31",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": true,
+            "getLoaderNameConstant": true,
+            "catchTypes": [
+              "Ljava/lang/ClassNotFoundException;"
+            ],
+            "classNotFoundCatchHandlerOpcodes": [
+              [
+                "return v1"
+              ]
+            ],
+            "classNotFoundCatchDirectReturns": [
+              true
+            ]
+          },
+          {
+            "signature": "checkDex([BLjava/lang/String;)Z",
+            "declarationSha256": "97698123774d65d874de78a9bc697d765d85434dccc4646292227ac4ec6f43ae",
+            "bodySha256": "25c3aea314ff45fbc69cf8197e2966ca7528d672fce54f4ac14f4d35bfece470",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "close(Ljava/io/Closeable;)V",
+            "declarationSha256": "9994b90f3c8bddd15321ae0a9cbf3f0c7d20cf2f08c28368c7db0799b0330fb8",
+            "bodySha256": "ac76c7df8bef7cd5bfc62299be72fa811632b02e7e6d113d36db65d12cc78a94",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "invokeNoArg(Ljava/lang/Class;Ljava/lang/String;)V",
+            "declarationSha256": "180a8a35f8b9fa6172f0dd4f5cb448794a4eb47a4d2398e6b500943c1eaf3bfe",
+            "bodySha256": "55a348a358f1b257f3e8fa887dd6350e1b4ed7be319f7072d34acd89920fdea8",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "invokeStartGoProxy(Ljava/lang/Class;)V",
+            "declarationSha256": "523389de3c339164f0925e71f5a3b683ffcd9fee9cd3ac769ff7b09aead8117f",
+            "bodySha256": "d1dd85f393e4cffa1eea60ef0c8a1adcd94ab33543b0442593c518d95c06067f",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "isDexFile(Ljava/io/File;)Z",
+            "declarationSha256": "4f1f6914d628253a97111b0db7b370f0c73896fcd593dd254ad4ba7db1ca4c21",
+            "bodySha256": "0666b568a6c2f54c14362e3d72a9c5fb44ea9468aaeaf9722e761def54422a45",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "readBytes(Ljava/io/InputStream;)[B",
+            "declarationSha256": "c806da8b9a0e5760e5776cd5c213edce81ce699216bb00a9418e13625bb91171",
+            "bodySha256": "aff34c23f0cc9ee6e4792b553374c5e3e92bcea6b0a43afd06e64598ec1ad0ff",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "scan(Ljava/lang/String;Ljava/lang/String;)Z",
+            "declarationSha256": "6009af4fb4420ab78f7dbe4defd5b493de48556279777002c41cdacda4acdc5c",
+            "bodySha256": "94d233aaa1bdc5805f44eec69671b7c055cddf4a6b2a3c6bf5d6bd15fbcc4715",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "startsWith([B[B)Z",
+            "declarationSha256": "065e784072d431dfaf389ada66b8a577e8ebb8adb04657209228a812151f4ae5",
+            "bodySha256": "2315fd9d9d4a0180567d20cfb6873b630dd1930b9bc0ae4fa55cffb5bed438df",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "check(Ljava/lang/String;)Z",
+            "declarationSha256": "5093b17ea4025ec5afac92f8e2f56b14eb6bc75067738f13b31867265d2199ec",
+            "bodySha256": "05ad9a3346171825eb778c30285510612a1903241db79b1ab3bc41d604c38c18",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "clear()V",
+            "declarationSha256": "b1f139e2213816c27a3f87716b1edfbdd812ffb7a0fb3657457ebd210465627d",
+            "bodySha256": "bb4f02e89807a1aa57726150e88ea639d04dafbe6c1195866dadbf36b14c141f",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          },
+          {
+            "signature": "init(Ljava/lang/Class;)Z",
+            "declarationSha256": "b12c5e3090f26bdc028ef8fbb30289c8b192a12555ec5b399b1afef86a07d87f",
+            "bodySha256": "637c46c45b5840f19ef85b71bdc36ab3173bcb70ef2fd02636d96b4d3022224f",
+            "killProcessInvokes": 0,
+            "dexNativeNameConstant": false,
+            "getLoaderNameConstant": false,
+            "catchTypes": [],
+            "classNotFoundCatchHandlerOpcodes": [],
+            "classNotFoundCatchDirectReturns": []
+          }
+        ],
+        "killProcessInvokes": 0
+      }
+    ],
+    "dexNativeDefined": false,
+    "knownVersionDifference": "Release commit catches ClassNotFoundException in bindDexLoader and returns true; pinned source instead falls through to false"
+  },
+  "cleanup": {
+    "temporaryBuildRemoved": true,
+    "artifactClassesLoaded": false,
+    "thirdPartyNativeExecuted": false,
+    "servicesStarted": false
+  }
+}

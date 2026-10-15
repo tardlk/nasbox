@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "scope": "Exact JAR/API/execution-ext pairs in the last complete matrix; skipped and timeout outcomes are not inferred execution regressions",
+  "matrixReport": "jar-round1-zxing-full-matrix.json",
+  "transitions": {
+    "ready -> ready": 638,
+    "timeout -> timeout": 14,
+    "not-tested -> not-tested": 2380,
+    "failed -> failed": 268,
+    "network -> network": 3,
+    "ready -> timeout": 2,
+    "ready -> not-tested": 22,
+    "failed -> ready": 2,
+    "failed -> not-tested": 28,
+    "timeout -> not-tested": 1,
+    "ready -> failed": 1
+  },
+  "failedToReady": [
+    {
+      "index": 36,
+      "sha256": "62aec35b3a4c3db8346b78404c00bb5eb53dbfd478f30f7697acafbef135340b",
+      "api": "csp_Wogg",
+      "extSha256": "ee6ae6a3629976b222c4adcb412da7c8ab40c72724702e67f567f8d31a0671c1",
+      "before": "failed",
+      "after": "ready"
+    },
+    {
+      "index": 36,
+      "sha256": "62aec35b3a4c3db8346b78404c00bb5eb53dbfd478f30f7697acafbef135340b",
+      "api": "csp_Mogg",
+      "extSha256": "b9bc79f25f6045d3c62a3ef00ee676858c9c198b95ad3b7a666056f0d39f7a53",
+      "before": "failed",
+      "after": "ready"
+    }
+  ],
+  "readyToFailedCandidates": [
+    {
+      "index": 74,
+      "sha256": "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7",
+      "api": "csp_WexbttwoGuard",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "failed"
+    }
+  ],
+  "readyToOther": [
+    {
+      "index": 29,
+      "sha256": "15608f0242933c60a41f3cdf224bfce0ba086ac505e1e9ce21ac7e7249bd9379",
+      "api": "csp_XBPQ",
+      "extSha256": "502339e9328e9136874d4b1ccf6740aa5973de97a72ed3bc4deb1dc8ccaac315",
+      "before": "ready",
+      "after": "timeout"
+    },
+    {
+      "index": 29,
+      "sha256": "15608f0242933c60a41f3cdf224bfce0ba086ac505e1e9ce21ac7e7249bd9379",
+      "api": "csp_Anime1",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 29,
+      "sha256": "15608f0242933c60a41f3cdf224bfce0ba086ac505e1e9ce21ac7e7249bd9379",
+      "api": "csp_Ysj",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 29,
+      "sha256": "15608f0242933c60a41f3cdf224bfce0ba086ac505e1e9ce21ac7e7249bd9379",
+      "api": "csp_Ying",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 29,
+      "sha256": "15608f0242933c60a41f3cdf224bfce0ba086ac505e1e9ce21ac7e7249bd9379",
+      "api": "csp_XPath",
+      "extSha256": "19f234b04c2c076d38a9578430e77ff0a711b6a88972ab173095c0b4834d0815",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_Wogg",
+      "extSha256": "72d443b68694e3b79857d3d101757f4c30b11e10867eba4eb29d00b10c90c334",
+      "before": "ready",
+      "after": "timeout"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_PanWebShare",
+      "extSha256": "edd38e36141bd36f91f7c27e0a8632921b7d18c2eaa7e24514739f015372f4f6",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_PanWebShare123",
+      "extSha256": "e4ee9c9efe6b78b0c77df867f4cd3d5765dbe36bec9c38c234ed14bfe5b65389",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_XBPQ",
+      "extSha256": "a3670d26132e6e34c7382a68caf1340203093f9add28ec20d238ba663b52b02f",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_Duboku",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_Czsapp",
+      "extSha256": "54c82543d630482fbac981bb01e8de0ca9d5de9c227f373f0364e6c205a3f992",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_Jpys",
+      "extSha256": "380c96a050af3c7bb1cf7be313fd965a3ed7a8038384f39b4538949b8ee3a7fa",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_SaoHuo",
+      "extSha256": "cea24d34076fb174b85cbfbd3d4618346d8954a669e471f614ba82c48052c4af",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_Ikanbot",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_Web1905",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_New6v",
+      "extSha256": "4e4becb138797242ed57bd5d0cf6577915bf71dfc1fa205f055d6e2b059a1f67",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_MeijuMi",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_Xunlei8",
+      "extSha256": "a815da99bd78b65d1ff5ccb02f111c24d153110d3dc767222c15ba3af366dccb",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_PanAli",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_PanQuark",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_PanUC",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_PanBaidu",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_Djuu",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 39,
+      "sha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "api": "csp_QingtingFM",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "not-tested"
+    },
+    {
+      "index": 74,
+      "sha256": "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7",
+      "api": "csp_WexbttwoGuard",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "before": "ready",
+      "after": "failed"
+    }
+  ],
+  "diagnosis": {
+    "074": "Both old/new independent runtime reproduce exact Log.e(String,String,Throwable):int missing ABI; pre-existing conditional blocker, original primary mismatch retained."
+  }
+}

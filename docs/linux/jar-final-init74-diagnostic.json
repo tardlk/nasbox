@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent single-entry initialization diagnosis on the same frozen main JAR, API and exact execution ext. No business method call. This supplements and never replaces or edits the original complete-matrix observations.",
+  "classification": "conditional-existing-android-log-abi-gap-reproduced-on-both-images",
+  "newImageRegressionConfirmed": false,
+  "originalCandidatePreserved": true,
+  "input": {
+    "originalManifestBytesSha256": "f16d1f9332d363660c1481ff26e49474de1dc5fa82c8301a85bd128658e0ddc7",
+    "jarSha256": "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7",
+    "role": "main",
+    "api": "csp_WexbttwoGuard",
+    "sourceKeySha256": "9441e7adcc9333f26bb0fe986c05c65671e6a1890a3a117fd62ccb076b673200",
+    "executionExtSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "primaryCandidate": {
+    "index": 74,
+    "oldImage": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+    "newImage": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+    "oldReportSha256": "383c957bf66d5eedadd36f188cfead53128bc480c5ffe1e23d5e2cbd0b8c072a",
+    "newReportSha256": "b7636bd3862ae12446d152f8adf55472d8bce68183f9e57d03d1da441e7a7fc0",
+    "old": {
+      "imageRole": "primary-full-matrix",
+      "mainLoaded": true,
+      "apiReady": true,
+      "initMilliseconds": 306,
+      "initUsedBudgetMs": 10000,
+      "initError": null,
+      "attemptedApis": 56,
+      "readyApis": 52
+    },
+    "new": {
+      "imageRole": "primary-full-matrix",
+      "mainLoaded": true,
+      "apiReady": false,
+      "initMilliseconds": 31,
+      "initUsedBudgetMs": 10000,
+      "initError": {
+        "category": "missing-class-or-member",
+        "type": "Error",
+        "fingerprint": "1400d0f5e866bd85a71e7f28d06c0dde24703b8bb073f992c96a6df001f77ab5"
+      },
+      "attemptedApis": 56,
+      "readyApis": 51
+    },
+    "candidate": "ready-to-failed in the original full matrix",
+    "interpretation": "Keep the original mismatch in full-matrix counts. Independent fresh-runtime reproduction below shows the same exact missing method on the old image, so this is not confirmed as a regression introduced by the ZXing derivative."
+  },
+  "independentDiagnostic": {
+    "runnerSha256": "50438522251c5194594eee9712418f76fdcc41f990fce4cdbc137373c4836b07",
+    "wrapperSha256": "1a1591f9839b0db677364152b7b7dcf8b5e9aa6d873005a6f4477398808eaae1",
+    "budgets": {
+      "loadMs": 90000,
+      "initMs": 10000,
+      "callMs": 10000,
+      "artifactMs": 150000,
+      "closeMs": 5000,
+      "jvmMs": 90000,
+      "maxHomeSites": 1
+    },
+    "resources": {
+      "user": "10001:10001",
+      "readOnlyRoot": true,
+      "inputReadOnly": true,
+      "runReadOnly": true,
+      "cpu": 0.5,
+      "memoryBytes": 2147483648,
+      "pidsLimit": 256,
+      "tmpfsBytes": 402653184,
+      "tmpfsExec": true,
+      "capabilitiesDropped": "ALL",
+      "noNewPrivileges": true,
+      "publishedPorts": 0,
+      "outerSeconds": 175
+    },
+    "old": {
+      "schemaVersion": 1,
+      "scope": "Independent single-init diagnosis; one exact frozen main-role API/ext, no business method calls; does not replace the original full matrix.",
+      "image": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "originalManifestBytesSha256": "f16d1f9332d363660c1481ff26e49474de1dc5fa82c8301a85bd128658e0ddc7",
+      "jarSha256": "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7",
+      "role": "main",
+      "api": "csp_WexbttwoGuard",
+      "sourceKeySha256": "9441e7adcc9333f26bb0fe986c05c65671e6a1890a3a117fd62ccb076b673200",
+      "executionExtSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "limits": {
+        "loadMs": 90000,
+        "initMs": 10000,
+        "callMs": 10000,
+        "artifactMs": 150000,
+        "closeMs": 5000,
+        "jvmMs": 90000,
+        "maxHomeSites": 1
+      },
+      "diagnosticRunnerSha256": "50438522251c5194594eee9712418f76fdcc41f990fce4cdbc137373c4836b07",
+      "report": {
+        "schemaVersion": 1,
+        "id": "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7",
+        "role": "main",
+        "targets": [
+          {
+            "api": "csp_WexbttwoGuard",
+            "sourceKeySha256": "9441e7adcc9333f26bb0fe986c05c65671e6a1890a3a117fd62ccb076b673200",
+            "ready": false,
+            "className": "com.github.catvod.crawler.SpiderNull",
+            "evidence": {
+              "exceptionTypes": [
+                "java.lang.NoSuchMethodError"
+              ],
+              "missingSymbols": [
+                {
+                  "kind": "method",
+                  "owner": "android.util.Log",
+                  "name": "e",
+                  "parameters": [
+                    "java.lang.String",
+                    "java.lang.String",
+                    "java.lang.Throwable"
+                  ],
+                  "returns": "int"
+                }
+              ]
+            }
+          }
+        ],
+        "cleanup": {
+          "closed": true,
+          "temporaryDataRemoved": true
+        },
+        "input": {
+          "sha256": "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7",
+          "bytes": 959300
+        },
+        "load": {
+          "loaded": true,
+          "evidence": {
+            "exceptionTypes": [
+              "java.io.FileNotFoundException",
+              "java.io.IOException",
+              "java.lang.IllegalStateException",
+              "java.lang.RuntimeException"
+            ],
+            "missingSymbols": []
+          }
+        },
+        "milliseconds": 67420
+      }
+    },
+    "new": {
+      "schemaVersion": 1,
+      "scope": "Independent single-init diagnosis; one exact frozen main-role API/ext, no business method calls; does not replace the original full matrix.",
+      "image": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+      "originalManifestBytesSha256": "f16d1f9332d363660c1481ff26e49474de1dc5fa82c8301a85bd128658e0ddc7",
+      "jarSha256": "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7",
+      "role": "main",
+      "api": "csp_WexbttwoGuard",
+      "sourceKeySha256": "9441e7adcc9333f26bb0fe986c05c65671e6a1890a3a117fd62ccb076b673200",
+      "executionExtSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "limits": {
+        "loadMs": 90000,
+        "initMs": 10000,
+        "callMs": 10000,
+        "artifactMs": 150000,
+        "closeMs": 5000,
+        "jvmMs": 90000,
+        "maxHomeSites": 1
+      },
+      "diagnosticRunnerSha256": "50438522251c5194594eee9712418f76fdcc41f990fce4cdbc137373c4836b07",
+      "report": {
+        "schemaVersion": 1,
+        "id": "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7",
+        "role": "main",
+        "targets": [
+          {
+            "api": "csp_WexbttwoGuard",
+            "sourceKeySha256": "9441e7adcc9333f26bb0fe986c05c65671e6a1890a3a117fd62ccb076b673200",
+            "ready": false,
+            "className": "com.github.catvod.crawler.SpiderNull",
+            "evidence": {
+              "exceptionTypes": [
+                "java.lang.NoSuchMethodError"
+              ],
+              "missingSymbols": [
+                {
+                  "kind": "method",
+                  "owner": "android.util.Log",
+                  "name": "e",
+                  "parameters": [
+                    "java.lang.String",
+                    "java.lang.String",
+                    "java.lang.Throwable"
+                  ],
+                  "returns": "int"
+                }
+              ]
+            }
+          }
+        ],
+        "cleanup": {
+          "closed": true,
+          "temporaryDataRemoved": true
+        },
+        "input": {
+          "sha256": "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7",
+          "bytes": 959300
+        },
+        "load": {
+          "loaded": true,
+          "evidence": {
+            "exceptionTypes": [
+              "java.io.FileNotFoundException",
+              "java.io.IOException",
+              "java.lang.RuntimeException"
+            ],
+            "missingSymbols": []
+          }
+        },
+        "milliseconds": 68782
+      }
+    },
+    "containers": {
+      "old": {
+        "name": "tvbox-final-init74-old",
+        "commandExit": 0,
+        "containerExit": 0,
+        "oomKilled": false,
+        "removed": true
+      },
+      "new": {
+        "name": "tvbox-final-init74-new",
+        "commandExit": 0,
+        "containerExit": 0,
+        "oomKilled": false,
+        "removed": true
+      }
+    }
+  },
+  "confirmedMissingContract": {
+    "owner": "android.util.Log",
+    "method": "e",
+    "parameters": [
+      "java.lang.String",
+      "java.lang.String",
+      "java.lang.Throwable"
+    ],
+    "returns": "int",
+    "jvmDescriptor": "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I",
+    "hostSource": "backend/spider-runtime/src/android/util/Log.java",
+    "hostSourceSha256": "7ccaf11ea0cf920f8dadd9c5ec8cc6cdaf0ff274638e33b924bef03e2b0b3ec5",
+    "phase": "Spider initialization",
+    "oldMainLoaded": true,
+    "newMainLoaded": true,
+    "oldReady": false,
+    "newReady": false,
+    "businessMethodsCalled": 0
+  },
+  "limitsOfDiagnosis": [
+    "The old full matrix was ready; both independent single-entry probes fail. The earlier source-call sequence and mutable external state may determine whether the error-handling path is reached.",
+    "The exact missing Log overload is a confirmed existing host ABI gap. Its presence does not establish the earlier network or business exception that selected that path.",
+    "Network is not treated as the complete explanation, and no previously missing method is considered supported.",
+    "No core behavior or image changed; no additional full-matrix pass is claimed."
+  ],
+  "nextRepair": {
+    "scope": "Implement the reached Android Log.e(String,String,Throwable) ABI under an explicit host logging contract.",
+    "ownCaseDesign": "A future owned caller should invoke the exact overload and verify tag/message/throwable handling and absence of raw-output leakage. Compare the relevant Android contract; keep existing logging methods and exception propagation behavior.",
+    "implemented": false
+  },
+  "cleanup": {
+    "taskContainersRemoved": true,
+    "workerDataRemoved": true,
+    "oldRuntimeClosed": true,
+    "newRuntimeClosed": true,
+    "ownedRemoteDirectory": "/tmp/tvbox-frozen-round1.RhIwSi/single-init-diag",
+    "ownedRemoteDirectoryRemoved": true,
+    "originalFullMatrixFilesUnmodified": true,
+    "sharedSshConnectionClosed": false,
+    "newToolsInstalled": 0,
+    "servicesStarted": 0
+  }
+}

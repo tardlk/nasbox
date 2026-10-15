@@ -8,7 +8,13 @@ const [captureArg,fixtureArg,portArg='18765']=process.argv.slice(2);
 if(!captureArg||!fixtureArg)throw Error('Usage: node serve-fixtures.mjs CAPTURE_DIR FIXTURE_DIR [PORT]');
 const capture=resolve(captureArg),fixture=resolve(fixtureArg),plan=JSON.parse(await readFile(resolve(fixture,'oracle-plan.json'),'utf8')),files=new Map();
 for(const name of ['oracle-plan.json','product-config.json'])files.set('/'+name,{path:resolve(fixture,name),type:'application/json'});
-for(const artifact of plan.artifacts)files.set('/artifacts/'+artifact.sha256+'.jar',{path:resolve(capture,artifact.jarPath),type:'application/java-archive',sha256:artifact.sha256});
+for(const artifact of plan.artifacts){
+ files.set('/artifacts/'+artifact.sha256+'.jar',{path:resolve(capture,artifact.jarPath),type:'application/java-archive',sha256:artifact.sha256});
+ for(const site of artifact.sites){
+  const main=site.loaderContext?.main;
+  if(main)files.set('/artifacts/'+main.sha256+'.jar',{path:resolve(capture,main.jarPath),type:'application/java-archive',sha256:main.sha256});
+ }
+}
 try{
  const routes=JSON.parse(await readFile(resolve(fixture,'parse-routes-private.json'),'utf8'));
  files.set('/parse-plan.json',{path:resolve(fixture,'parse-plan.json'),type:'application/json'});

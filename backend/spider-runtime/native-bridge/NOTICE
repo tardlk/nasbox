@@ -40,3 +40,12 @@ pinned in runtime.json and licenses/sardine-android-0.4/provenance.json. The
 JitPack SHA-1 comes from the same repository and is not a separate authenticity
 signature. Simple XML's Maven Central SHA-1 and local SHA-256 are retained.
 The JDK supplies StAX; obsolete optional StAX/XPP3 binaries are not installed.
+
+ZXing core 3.3.0: Apache-2.0. The immutable TVBoxOS reference app/build.gradle
+declares this exact version. It supplies genuine barcode encoding/decoding,
+Reed-Solomon error correction and ReaderException/ChecksumException ABI after an
+observed Wogg initialization reached the missing ChecksumException on NAS.
+The complete Maven Central JAR, published SHA-1, local SHA-256 and byte size are
+pinned in runtime.json. The versioned module/parent POMs, upstream tag LICENSE
+and provenance are retained under licenses. No QR stub or success shortcut is
+introduced; provider execution and final NAS validation are reported separately.

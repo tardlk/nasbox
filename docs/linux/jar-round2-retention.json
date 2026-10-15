@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/jar-round2-evidence-20261015",
+  "purpose": "Private exact ART/NAS params/responses and pinned original APK for unresolved native constructor/JNI/site-coexistence fixes; retain until those fixes and final frozen-input rerun finish",
+  "bytesExcludingLedger": 25478050,
+  "retentionLedgerSha256": "3a8ab1ac07aecf79f42a6172cdf3d744128bbc18a1373bfcd949f2dbf3d748e7",
+  "files": 237,
+  "containsPrivateInputs": true,
+  "service": false,
+  "clearAfter": "Unresolved compatibility fixes and final complete rerun; delete only this exact task directory",
+  "environments": {
+    "sdkAndJdk": "Existing project .tools retained",
+    "newDependencyBytes": 541078
+  },
+  "stopped": {
+    "emulator": true,
+    "adb": true,
+    "fixtureHttp": true,
+    "noAutostartChanges": true,
+    "preExistingAndroidRegularFileHashesUnchanged": true
+  },
+  "removed": {
+    "taskAvdAndAndroidUserHome": true,
+    "temporaryPublicTestSigningKey": true,
+    "temporaryEcjCompiler": true,
+    "taskEmulatorCrashDb": true
+  },
+  "nasFinalMatrix": "Completed 228/228 adjacent runs; both NAS task roots removed, scoped SSH closed"
+}

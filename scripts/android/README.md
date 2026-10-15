@@ -92,9 +92,78 @@ artifact:
 Allowed methods are homeContent, homeVideoContent, categoryContent,
 detailContent, and both Spider searchContent signatures. At most 20 calls are
 accepted. A timeout stops further calls; the host must then force-stop the app.
-The loader uses the captured artifact as the **main JAR** with the original
-default initialization policy. This scope isolates JAR compatibility from
-remote acquisition paths and source-specific cache keys.
+Legacy plans without a loader context use the captured artifact as the main JAR.
+New plans preserve the original role and complete signature on each site:
+
+```json
+{
+  "key": "captured-site", "api": "csp_Example", "ext": "exact final string",
+  "jar": "https://original.invalid/site.jar;md5; original declaration",
+  "loaderContext": {
+    "role": "site",
+    "signature": "https://original.invalid/site.jar;md5; original declaration",
+    "main": {
+      "sha256": "64 hexadecimal characters",
+      "jarPath": "artifacts/main-sha.jar",
+      "jarUrl": "http://10.0.2.2:18765/artifacts/main-sha.jar",
+      "signature": "original complete main JAR signature"
+    }
+  }
+}
+```
+
+`artifact` still identifies the selected JAR. Main-role contexts have `role:
+"main"`, the original main signature, and `jar: ""`; they omit `main`. A
+site-role context has `main` only when its original configuration had a captured
+main JAR. Missing or invalid configured mains belong in the plan's unexecuted
+list; do not turn them into contexts without a main. `prepare-role-fixtures.mjs`
+creates these contexts from verified frozen bindings and records the references
+and omitted variants. The fixture server includes both selected and main bytes.
+
+The build statically audits the exact official APK's original keyed load,
+`jarKey`, `getSpider`, and loader fields, then embeds an APK-hash-bound symbol
+map. Instrumentation hashes the installed APK before using that map. Both JARs
+are downloaded and SHA-verified before either executes. In one original
+JarLoader, the main loads first; the site loads through the original private
+`load(originalKey, File)` and original source-to-key alias is installed before
+initialization. `getSpider` receives the unchanged complete site signature. This
+isolates artifact execution from remote acquisition while preserving main/site
+coexistence and original cache keys. Original downloads, remote MD5 retrieval,
+cache ages and acquisition fallback are outside this probe.
+
+New reports pin `loaderMode`, `jarSignatureSha256`, `jarLoadKey` (main or the
+original Java low-byte MD5 of the complete signature), `mainJarSha256`, and
+`mainSignatureSha256`. Pulling, replay preparation and comparison validate all
+five fields. Legacy no-context main reports remain readable. Original-product
+ProtectedInitJar version differences stay explicit in every new comparison.
+
+Optional plan fields `artBudgets` and `nasBudgets` each accept `caseMs`, `loadMs`,
+`initMs`, and `callMs`; actual values enter reports. ART defaults are 240000,
+30000, 30000, 30000 milliseconds; NAS defaults are 240000, 90000, 30000, 30000.
+New ART context transport budgets are `caseMs + 20000`; legacy runs retain the
+historical 150000 transport deadline unless budgets are specified. Instrumentation
+also accepts `caseTimeoutMs`, `loadTimeoutMs`, and `initTimeoutMs`.
+
+Set `artStatePolicy: "fresh-app-data"` on a plan to clear the task AVD's target
+app before every case. The runner force-stops the target, runs `pm clear`, and
+requires a successful command with exactly `Success` on stdout before invoking
+instrumentation. A failure stops the run. It does not grant permissions or set
+preferences. Omitted policy preserves the historical
+`cold-process-preserve-data` behavior. Both the run summary and instrumentation
+report record `applicationStatePolicy`; pulling verifies the instrumentation
+policy against the launch policy. NAS records `fresh-runtime-data` only after
+creating a new case directory. Comparisons show both states independently;
+old missing state metadata remains `unrecorded`, and matching preferences or
+equivalent host state are not assumed. Use this only with the task-owned AVD.
+
+ART keyed loading and Spider initialization have separate phases. The current
+NAS API combines a site's cold load and initialization in `getCSP`; its report
+marks `site-load-init`, `includesSpiderInit: true`, and the actual load budget.
+Timeouts in these differently scoped phases do not prove the same underlying
+cause. A timed-out site leaves its load state unknown if state cannot be read.
+The existing NAS native worker permits one native artifact; combinations blocked
+by that restriction stay failures or unresolved observations, not split-runtime
+coexistence successes.
 
 `INSTRUMENTATION_RESULT: report` and per-call status contain only metadata,
 counts, class names, argument hashes, response hashes, and exception fingerprints.

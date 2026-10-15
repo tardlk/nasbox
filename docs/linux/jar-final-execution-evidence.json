@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "image": {
+    "tag": "tvbox-core:linux-amd64-zxing-20261015",
+    "id": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+    "bytes": 516639457,
+    "user": "10001:10001",
+    "parent": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+    "addedBytes": 1280127
+  },
+  "offlineDoctor": {
+    "ok": true,
+    "platform": "linux",
+    "architecture": "x64",
+    "node": "v24.22.0",
+    "scope": "Offline synthetic config/QuickJS/DEX and actual ARM machine-code probes; no Android parity or real-source certification",
+    "config": {
+      "sites": 1
+    },
+    "quickjs": {
+      "ready": true,
+      "answer": 42
+    },
+    "dex": {
+      "ready": true,
+      "classes": 1,
+      "resource": "offline-dex-resource"
+    },
+    "arm": [
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      },
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64"
+      },
+      {
+        "value": 43,
+        "bits": 32,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      }
+    ],
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokensRejected": true,
+      "listeners": 0,
+      "dexLoaders": 0
+    },
+    "java": "openjdk version \"17.0.20.1\" 2026-08-18"
+  },
+  "all228ContainersExitedCode0": true,
+  "all228WorkersClosedExitedAndTemporaryDataRemoved": true,
+  "completeValidLoadAttempts": true,
+  "originalFourContainersUnchanged": true,
+  "originalContainers": [
+    {
+      "name": "/dockge-dockge-1",
+      "id": "1434d8807ff98107eb6c65a377161565f689d4b4f49906db14c620ce2ec95e16",
+      "image": "sha256:e85d511b2a8b883da8a1ac2fde39ecddacdc011734e9f89a14b7798d82d5a0d3",
+      "startedAt": "2026-10-12T08:26:19.966740746Z",
+      "restartCount": 0,
+      "running": true
+    },
+    {
+      "name": "/emby",
+      "id": "e7e607d0d1017befb9d0ae482d98d574071b1f302f7e56bfe2143d4259e1eda8",
+      "image": "sha256:3bd1f2ea0b6fd12159467d15b09a78f7605e1a1d143385539d0ee418a4830ef1",
+      "startedAt": "2026-10-12T09:03:09.93328131Z",
+      "restartCount": 0,
+      "running": true
+    },
+    {
+      "name": "/moviepilot",
+      "id": "b943f8f0732592d5b0bed516df83931253ccca6c2eb97f2e39489b185aedf66b",
+      "image": "sha256:d9511187e90725fa8c408ad296eb5f0dbfa8b262cadd6a06b0a49d1b40175d61",
+      "startedAt": "2026-10-14T09:21:29.775684641Z",
+      "restartCount": 0,
+      "running": true
+    },
+    {
+      "name": "/qbittorrent",
+      "id": "921dd7ca2e7196cf81a13928eec4991ec473450633e664cab73ae7b86c03869f",
+      "image": "sha256:3cf724864a09993bc0aaf0d1c6d7e6a60824c098f00c7813b85a64a8bcbceeb6",
+      "startedAt": "2026-10-12T08:28:22.496138741Z",
+      "restartCount": 0,
+      "running": true
+    }
+  ],
+  "noTaskContainersRemain": true,
+  "sourceAndCompilerVerification": {
+    "image": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+    "sourcePins": {
+      "backend/spider-runtime/native-bridge/runtime.json": "460095742b07189333468b590b7f6fd62e2c2e89a0f6b9d82702e35d316acfcf",
+      "backend/spider-runtime/native-bridge/NOTICE": "fbc419871a10f51456d2178f6b5b6c1e0a2bd5ef5025318add1777fb71065e74",
+      ".tools/native-runtime/core-3.3.0.jar": "bba7724e02a997cec38213af77133ee8e24b0d5cf5fa7ecbc16a4fa93f11ee0d",
+      "backend/spider-runtime/native-bridge/src/tvbox/runtime/VerifiedJarRepair.java": "3d842caa0d9eb72a245f229aeb0408d134cbbe01724c2ca00bf37fc9c689f83c",
+      "backend/spider-runtime/native-bridge/src/tvbox/runtime/DynamicNativeSupport.java": "3a530dbb2ec9943d4167f911919a7ef5c6c917a5967c3b8d4d9ca164b9aa8f40"
+    },
+    "compilerAbsent": true,
+    "javacAbsent": true
+  },
+  "matrixReportSha256": "e1077fca3578ef1e4cd408ea35cf216786ec5c9d635fed9ed70bdcb317ff6c6f",
+  "matrixPlanSha256": "f08b93114a9fae4967543d2182195b2b2760602ed79e769b33c28bd06ac84326",
+  "generator": {
+    "file": "scripts/compat/prepare-baseline-run.mjs",
+    "sha256": "15e632e171be169718a0368ce3884d075bee681fe3cca260690771a3f2ff4e67",
+    "bytes": 15314
+  },
+  "remainingTaskServices": [],
+  "autostartChanges": [],
+  "finalCleanupReport": "jar-final-cleanup.json"
+}

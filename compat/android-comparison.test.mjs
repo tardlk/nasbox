@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import {test} from 'node:test';
 import {createHash} from 'node:crypto';
 import {compareArtResults} from '../scripts/android/compare-art-results.mjs';
+import {loaderContextOf,officialOracleApkSha256} from '../scripts/android/loader-context.mjs';
+import {oracleBudgetsOf} from '../scripts/android/run-oracle.mjs';
+import {replayBudgetsOf} from '../scripts/android/replay-nas.mjs';
 
 const sha=value=>createHash('sha256').update(value).digest('hex');
 function fixture(){
@@ -35,6 +38,66 @@ test('rejects JAR, manifest, API, ext and site identity substitutions',()=>{
   const f=fixture();f.nas.report[field]=field.endsWith('Sha256')?sha('other'):'other';
   assert.throws(()=>compare(f),/input identity differs/);
  }
+});
+
+test('role-aware comparison pins original signature, load key and coexisting main input',()=>{
+ const f=fixture(),site=f.plan.artifacts[0].sites[0],artifact=f.plan.artifacts[0];
+ site.jar='https://fixture.invalid/site.jar;md5; declared';
+ site.loaderContext={role:'site',signature:site.jar,main:{sha256:sha('main'),signature:'original main',jarPath:'main.jar',jarUrl:'http://fixture.invalid/main.jar'}};
+ f.options.manifestSha256=sha(JSON.stringify(f.plan));
+ const identity=loaderContextOf(artifact,site).identity;
+ for(const value of [f.art,f.nas])Object.assign(value.report,identity,{manifestSha256:f.options.manifestSha256,jarBytesVerified:true,mainJarBytesVerified:true,targetApkSha256:officialOracleApkSha256});
+ f.art.report.budgets=oracleBudgetsOf(f.plan);
+ const b=replayBudgetsOf(f.plan);f.nas.report.budgets={caseMs:b.caseTimeoutMs,loadMs:b.loadTimeoutMs,initMs:b.initTimeoutMs,callMs:b.callTimeoutMs};f.nas.report.initPolicy='android';
+ f.art.report.symbolMapSha256=sha('audited map');
+ const report=compare(f);
+ assert.equal(report.summary.bothReady,1);assert.equal(report.cases[0].loaderMode,'site');
+ assert.equal(report.cases[0].mainJarSha256,sha('main'));
+ assert.ok(!JSON.stringify(report).includes('fixture.invalid'));
+ for(const field of Object.keys(identity)){
+  const old=f.nas.report[field];f.nas.report[field]='changed';assert.throws(()=>compare(f),/loader context/);f.nas.report[field]=old;
+ }
+ delete f.nas.report.mainJarBytesVerified;assert.throws(()=>compare(f),/loader context/);
+});
+
+function roleFixture(){
+ const f=fixture(),site=f.plan.artifacts[0].sites[0];
+ site.jar='';site.loaderContext={role:'main',signature:'original main signature'};
+ f.plan.artBudgets={caseMs:150000,loadMs:90000,initMs:10000,callMs:10000};f.plan.nasBudgets={...f.plan.artBudgets};
+ f.options.manifestSha256=sha(JSON.stringify(f.plan));
+ for(const result of [f.art,f.nas])Object.assign(result.report,loaderContextOf(f.plan.artifacts[0],site).identity,{manifestSha256:f.options.manifestSha256,jarBytesVerified:true,targetApkSha256:officialOracleApkSha256,budgets:{...f.plan.artBudgets}});
+ f.art.report.symbolMapSha256=sha('audited map');f.nas.report.initPolicy='android';
+ return f;
+}
+
+test('new contexts strictly pin stage budgets and default initialization policy while historical contexts may omit them',()=>{
+ assert.doesNotThrow(()=>compare(fixture()));
+ const f=roleFixture();assert.equal(compare(f).cases[0].nas.initPolicy,'android');
+ for(const host of ['art','nas'])for(const key of ['caseMs','loadMs','initMs','callMs']){
+  const changed=roleFixture();changed[host].report.budgets[key]=1;
+  assert.throws(()=>compare(changed),/stage budgets/);
+ }
+ for(const host of ['art','nas']){const changed=roleFixture();delete changed[host].report.budgets;assert.throws(()=>compare(changed),/stage budgets/);}
+ for(const policy of ['declared',undefined]){const changed=roleFixture();changed.nas.report.initPolicy=policy;assert.throws(()=>compare(changed),/initialization policy/);}
+});
+
+test('known failed loader observation is retained separately from unresolved network causality',()=>{
+ const f=roleFixture();delete f.nas.report.initSuccess;f.nas.privateCalls=[];
+ f.nas.report.loadSuccess=false;f.nas.report.selectedLoad={attempted:true,loaded:false,loaderCount:1};
+ f.nas.report.error={stage:'site-load-init',type:'java.net.ConnectException',category:'network',fingerprint:sha('network evidence')};
+ const report=compare(f),nas=report.cases[0].nas;
+ assert.equal(nas.load,'unknown');assert.equal(nas.loadObserved,'failed');assert.equal(nas.loadCausalCategory,'network');assert.equal(nas.loadCauseResolved,false);
+ assert.equal(report.summary.nasLoadObserved.failed,1);assert.equal(report.summary.bothLoadFailed,0);
+});
+
+test('application state is independently visible and never inferred from absent historical metadata',()=>{
+ const f=fixture();let report=compare(f);
+ assert.equal(report.cases[0].art.applicationStatePolicy,'unrecorded');assert.equal(report.cases[0].nas.applicationStatePolicy,'unrecorded');
+ f.plan.artStatePolicy='fresh-app-data';f.options.manifestSha256=sha(JSON.stringify(f.plan));
+ for(const result of [f.art,f.nas])result.report.manifestSha256=f.options.manifestSha256;
+ f.art.report.applicationStatePolicy='fresh-app-data';f.nas.report.applicationStatePolicy='fresh-runtime-data';
+ report=compare(f);assert.equal(report.cases[0].art.applicationStatePolicy,'fresh-app-data');assert.equal(report.cases[0].nas.applicationStatePolicy,'fresh-runtime-data');
+ f.art.report.applicationStatePolicy='cold-process-preserve-data';assert.throws(()=>compare(f),/state policy/);
 });
 
 test('missing case is explicitly unknown and never a successful comparison',()=>{

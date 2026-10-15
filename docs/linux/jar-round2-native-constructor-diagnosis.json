@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15",
+  "scope": "Controlled diagnosis of a confirmed original-APK ART versus Linux/NAS loading difference. Static DEX/class/ELF metadata only on the host; no captured provider code was defined or executed on the host. This report does not certify JAR business compatibility.",
+  "status": "confirmed-linux-native-constructor-format-blocker-unrepaired",
+  "input": {
+    "jarSha256": "d8517c4cac6ed751c7fab1fe7746629c6f439e37b45fdec533cb7a6da4ada7bc",
+    "jarBytes": 3559269
+  },
+  "android": {
+    "caseId": "0-0",
+    "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+    "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff",
+    "manifestSha256": "fd59dd25afbf06b6aadb1c3556c302eb822b9af416ae09b375eda40c7253bc9b",
+    "loaderMode": "main",
+    "applicationStatePolicy": "fresh-app-data",
+    "loadSuccess": true,
+    "initSuccess": true,
+    "sdk": 30,
+    "abi": "arm64-v8a",
+    "scope": "Original official APK on real ART; load and Spider init succeeded. Native constructor entry was not independently counted.",
+    "observedNativeFrame": {
+      "owner": "com.github.catvod.en.BaseApi",
+      "method": "getDexPathList",
+      "source": "Native Method"
+    },
+    "constructorEntryObserved": false
+  },
+  "linux": {
+    "imageSha256": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+    "role": "main",
+    "phase": "loadMain",
+    "selectedLoadSuccess": false,
+    "exceptionType": "java.lang.ClassFormatError",
+    "reason": "Method <init> in class com/github/catvod/en/BaseApi has illegal modifiers: 0x101",
+    "causeKind": "native-constructor-not-valid-jvm-classfile",
+    "businessMethodsAttempted": 0,
+    "independentNetworkDisabledDiagnostics": 2,
+    "diagnosticLoadBudgetMs": 90000,
+    "diagnosticOuterBudgetSeconds": 115
+  },
+  "staticDex": {
+    "className": "com/github/catvod/en/BaseApi",
+    "superName": "java/lang/Object",
+    "constructor": {
+      "name": "<init>",
+      "descriptor": "()V",
+      "accessHex": "0x10101",
+      "flags": [
+        "PUBLIC",
+        "NATIVE",
+        "DEX_CONSTRUCTOR"
+      ]
+    },
+    "callEdges": [
+      {
+        "callerOwner": "com/github/catvod/en/BaseApi$Loader",
+        "callerMethod": "<clinit>",
+        "callerDescriptor": "()V",
+        "opcode": "invoke-direct",
+        "owner": "com/github/catvod/en/BaseApi",
+        "method": "<init>",
+        "descriptor": "()V"
+      },
+      {
+        "callerOwner": "com/github/catvod/spider/Init",
+        "callerMethod": "g",
+        "callerDescriptor": "(Lcom/github/catvod/spider/Init;)V",
+        "opcode": "invoke-static",
+        "owner": "com/github/catvod/en/BaseApi",
+        "method": "get",
+        "descriptor": "()Lcom/github/catvod/en/BaseApi;"
+      }
+    ],
+    "reachabilityLimit": "These are static edges, not dynamic constructor execution counts.",
+    "dexSha256": "2028a52b8fd7face01e7c9fee7b072251c7086e204ba705d5b8b6b700c84b866",
+    "dexBytes": 5325488
+  },
+  "translatedClass": {
+    "className": "com/github/catvod/en/BaseApi",
+    "superName": "java/lang/Object",
+    "classVersion": 50,
+    "classAccessHex": "0x21",
+    "methodCount": 51,
+    "constructors": [
+      {
+        "name": "<init>",
+        "descriptor": "()V",
+        "accessHex": "0x101",
+        "native": true,
+        "hasCodeAttribute": false
+      }
+    ],
+    "bytes": 9074,
+    "sha256": "c708caee3a090350bbf14705b9fcaf470c6b0872f2b43f9fca9bec2d0464261f"
+  },
+  "nativeLibraries": [
+    {
+      "entry": "assets/libs/arm64-v8a/libstub.so",
+      "bytes": 1622064,
+      "sha256": "8ced0b48da3379008219bf5aaa516e51f7b3b1119cbc0e4db11531b24a49e0e1",
+      "constructorExport": "Java_com_github_catvod_en_BaseApi__0003cinit_0003e__",
+      "jniOnLoadExport": true,
+      "exportScope": "Static ELF dynamic symbols; no library executed on host."
+    },
+    {
+      "entry": "assets/libs/armeabi-v7a/libstub.so",
+      "bytes": 1127352,
+      "sha256": "1e38260c1440382fedf90c5dd6c054d6daed783ea967cc8550ee7427e4603d0b",
+      "constructorExport": "Java_com_github_catvod_en_BaseApi__0003cinit_0003e__",
+      "jniOnLoadExport": true,
+      "exportScope": "Static ELF dynamic symbols; no library executed on host."
+    }
+  ],
+  "ownRegression": {
+    "file": "compat/native-constructor-format.test.mjs",
+    "sha256": "15f943eb499efd99751d75aac625c9cdf80ad72dbd5e55a4c3df12fd85f3b3c2",
+    "passed": 1,
+    "failed": 0,
+    "verification": "JDK17 -Xverify:all; locally generated public native <init>()V fails with the same illegal-modifier ClassFormatError before constructor execution. Ordinary constructor control sets and retains its field side effect.",
+    "compatibilitySuccessClaim": false
+  },
+  "repairBoundary": {
+    "coreRuntimeChanged": false,
+    "fixed": false,
+    "noOpConstructorAllowed": false,
+    "requiredDesign": [
+      "Preserve original <init> identity and descriptor in the ARM/JNI dispatch plan while emitting a verifier-legal JVM constructor.",
+      "Prove the original super-initialization path; do not guess or silently add a parent constructor.",
+      "Invoke the original native constructor with a stable mapping for the actual receiver; preserve instance fields, callbacks, return/exception behavior and two-instance isolation.",
+      "If faithful dispatch cannot be established, throw an explicit unsupported-constructor failure on actual construction; do not return a fabricated initialized object.",
+      "Verify an original-ART constructor/receiver case and a self-owned ARM native fixture before changing admission behavior.",
+      "Retain existing native-owner isolation until mixed-JAR behavior has separate evidence."
+    ],
+    "nextRoundNeed": "The existing ART log proves an instance native method was reached, and the DEX/ELF identify a native constructor implementation. It does not independently prove when that constructor executes. A faithful instance/constructor bridge remains a next-round blocker."
+  },
+  "cleanup": {
+    "containers": [
+      "tvbox-r2-d851-diag"
+    ],
+    "containerRuns": 2,
+    "allContainersExited": true,
+    "allContainersRemoved": true,
+    "workerDataRemoved": true,
+    "remoteOwnedDirectoryRemoved": true,
+    "remoteDirectory": "/tmp/tvbox-frozen-round1.LWyPp6/d851-diag",
+    "newToolsInstalled": 0,
+    "servicesStarted": 0,
+    "autostartChanges": 0,
+    "sharedToolsOrServicesChanged": false,
+    "privateTranslatedClassRetained": {
+      "path": ".cache/jar-round1/diagnostics/d851/BaseApi.class",
+      "bytes": 9074,
+      "purpose": "Private static format evidence until final task cleanup; not committed."
+    },
+    "rawStderrRetention": "Memory only; public output contains validated technical symbols/reasons and hashes.",
+    "compiledScratchRemoved": true,
+    "retainedPrivateEvidenceBytes": 61187
+  },
+  "controlledEvidencePins": [
+    {
+      "file": "load-controlled-output.txt",
+      "sha256": "9f60c684e7798cc0f17309509769502084b68440bfd317b0fe8f9b985549d21f"
+    },
+    {
+      "file": "load-precise-controlled-output.txt",
+      "sha256": "0434e3a17c3ad4ebddc21ffef5d412208465b1c9ab6fd4885c38133c6775ee3f"
+    }
+  ]
+}

@@ -1,0 +1,3882 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T10:53:52.220Z",
+  "manifestSha256": "fd59dd25afbf06b6aadb1c3556c302eb822b9af416ae09b375eda40c7253bc9b",
+  "scope": "Captured JAR and exact ext/API/method inputs; original official APK on real Android/ART versus NAS JVM/DEX/ARM bridge. This compares tested methods, not every source or Android API.",
+  "responseScope": "Business HTTP responses were live, not frozen. Response differences require diagnosis and do not automatically identify runtime defects. Empty JSON success and nonempty content are counted separately.",
+  "loaderScope": "New role contexts preserve original signatures and main/site coexistence over frozen bytes. ART keyed loading and init are separate; NAS site-load-init combines them. Stage timeouts are not directly equivalent causes. Legacy plans default to main.",
+  "applicationStateScope": "Each host records its own applicationStatePolicy. Fresh Android app data and fresh NAS runtime data describe different hosts; equal state or preferences are not inferred. Missing historical state metadata stays unrecorded.",
+  "knownVersionDifference": "Official d5f5006 ProtectedInitJar accepts absent DexNative where pinned ab11d289 returns false; original-product execution does not certify pinned-source ART parity.",
+  "hashScope": "All response and argument hashes are recomputed from private raw files in one Node implementation; producer Java/JS semantic hashes are not trusted as directly comparable.",
+  "summary": {
+    "expectedCases": 23,
+    "artCases": 23,
+    "nasCases": 23,
+    "pairedCases": 23,
+    "recoveredNASManifestMetadata": 0,
+    "missingART": [],
+    "missingNAS": [],
+    "artLoaded": 23,
+    "nasLoaded": 8,
+    "artLoadObserved": {
+      "loaded": 23
+    },
+    "nasLoadObserved": {
+      "failed": 12,
+      "unobserved": 3,
+      "loaded": 8
+    },
+    "bothLoadFailed": 0,
+    "artReady": 23,
+    "nasReady": 6,
+    "bothReady": 6,
+    "bothInitFailed": 0,
+    "testedCalls": 61,
+    "pairedSuccessfulJsonCalls": 9,
+    "semanticMatches": 7,
+    "rawMatches": 7,
+    "nonemptySemanticMatches": 7,
+    "emptyObjectSemanticMatches": 0,
+    "bothCallsFailed": 0,
+    "bothInvalidJsonCalls": 3,
+    "bothInvalidRawMatches": 3,
+    "liveResponseDifferences": 2,
+    "caseObservations": {
+      "init-difference-needs-diagnosis": 12,
+      "unknown-execution": 5,
+      "same-successful-or-failed-behavior": 3,
+      "live-response-difference": 1,
+      "method-results-need-diagnosis": 2
+    },
+    "callObservations": {
+      "unknown-not-replayed": 45,
+      "same-json": 7,
+      "both-invalid-json": 3,
+      "live-response-difference": 2,
+      "execution-or-result-difference": 4
+    }
+  },
+  "cases": [
+    {
+      "caseId": "0-0",
+      "artifactIndex": 0,
+      "siteIndex": 0,
+      "jarSha256": "d8517c4cac6ed751c7fab1fe7746629c6f439e37b45fdec533cb7a6da4ada7bc",
+      "api": "csp_TgYunDouBanPan",
+      "siteKeySha256": "2a668eb32ea36ca40be82c5e31c27cce6d3640183a41677756d68d7e005e7e1c",
+      "extSha256": "a90f7398753ae6ec93c184a68214b939f7472038d2173171e61bd18f6018c489",
+      "loaderMode": "main",
+      "jarSignatureSha256": "1e2084d7e95a14796afaaec95d08024cf34ae203800f7e37a1887e387804b029",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.TgYunDouBanPan",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 88
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "not-reached",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "execution",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "milliseconds": 50596
+        },
+        "mainLoad": null,
+        "error": {
+          "type": "Error",
+          "fingerprint": "933ff3d35d6459aaf898f6e423ec3a4c30c762f6008d897749c3edde4d3d3338",
+          "stage": "load",
+          "category": "execution"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 54306,
+            "sha256": "eb32abf24dee4dd4b36d38b8c2234dbfe94ee6cfb687e61243835625478da093",
+            "state": "json",
+            "semanticSha256": "fe091dae2b9dce7380a2193088fb050724f9c07a37f515eeb56029457bf1fbfd",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 8,
+            "list": 105,
+            "filterGroups": 8,
+            "hasContent": true,
+            "classSha256": "63342edb2436ce019192817d303ff0bc677c4a31b6c9ba402e86c64b40bcbfaf",
+            "filtersSha256": "f32f535579afac98af61a70f74c396f8e2bde90b8482292f72d7981f35bdba72"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "ad485935124a82c3f01f7d0878c2cfa11225d2661304dd45c4b893359dccc18f",
+          "art": {
+            "bytes": 18146,
+            "sha256": "21da55c6b63f6cee95bbf42019f5c27f1344105c9b3b622eb4b0e57b84b08fc1",
+            "state": "json",
+            "semanticSha256": "c6e9cd292c18db22a2e5dfb37d506fa905ff11a1d15b24a75fcba982188ac9d1",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 40,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "9b0e49fc0e73815c1cafb1a192c2cb9e06a00bedd8a778649aff523cc5706a5f",
+          "art": {
+            "state": "failed",
+            "error": {
+              "type": "java.lang.IndexOutOfBoundsException",
+              "fingerprint": "63d76588a3d4675952fd5d8a336386b2f4c63398810dd573697f217b376a6c4f",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "java.lang.IndexOutOfBoundsException",
+              "fingerprint": "63d76588a3d4675952fd5d8a336386b2f4c63398810dd573697f217b376a6c4f",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "933ff3d35d6459aaf898f6e423ec3a4c30c762f6008d897749c3edde4d3d3338",
+          "stage": "load",
+          "category": "execution"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "1-0",
+      "artifactIndex": 1,
+      "siteIndex": 0,
+      "jarSha256": "65be8df8bfa60f59aecb3c170d5cc0fd3feeaa96daad531faa97d49aff81eab4",
+      "api": "csp_Douban",
+      "siteKeySha256": "d442cd087c0f307ca189c278ca5468caf4caf1f86f80c2c203d512596f4b84d6",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "loaderMode": "main",
+      "jarSignatureSha256": "da113d164131f315d93a7c25f1014ec8ae448c417efc81c39816d95eaebab728",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Douban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 45
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "not-reached",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "native-binding",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "milliseconds": 52418
+        },
+        "mainLoad": null,
+        "error": {
+          "type": "Error",
+          "fingerprint": "437da61ef3dbfd6d3ad27815a4f01de632f86f4499be9a3daea401dd51e8ba0c",
+          "stage": "load",
+          "category": "native-binding"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "state": "failed",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "homeContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "homeContent",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "437da61ef3dbfd6d3ad27815a4f01de632f86f4499be9a3daea401dd51e8ba0c",
+          "stage": "load",
+          "category": "native-binding"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "2-0",
+      "artifactIndex": 2,
+      "siteIndex": 0,
+      "jarSha256": "19ca20400ffa9c32fd31d63ba91b1ac2d9809dabfa7b1288b33fe0bfc98625aa",
+      "api": "csp_AppGet",
+      "siteKeySha256": "a82edf73e57f74d51f8eb3ea5489c4e3a3cb746ebdd99a38f7d6cdbaec4fd546",
+      "extSha256": "aab76fcb3bf2118476d062e799509233012064d10af1ce6818e9696c0338c7d6",
+      "loaderMode": "site",
+      "jarSignatureSha256": "214277e0a3279418904bd343a6e2ee3a72f8ad58c79a3a6f90eec017ea0f7b4d",
+      "jarLoadKey": "5cfc7ff1ceb47f0bfa6ff94c778c5cdc",
+      "mainJarSha256": "b2755622dc43d9181b9d1a4bd9e11251fea15048fa2f82b91adafc57f1771551",
+      "mainSignatureSha256": "396dac10b47499de4b158fad918e2d2ecc2327733334f8a0fb4bfd707cd85a41",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.AppGet",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 31
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 58
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "unknown",
+        "init": "unknown",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "network",
+        "loadCauseResolved": false,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "includesSpiderInit": true,
+          "usedBudgetMs": 90000,
+          "milliseconds": 46711,
+          "loaderCount": 1,
+          "loadStateObservedAfterInitError": true
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 26186
+        },
+        "error": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "network"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 39,
+            "sha256": "fd6b0c3805a0795038550ed3030cff756207e5240ad48183c311a6a82bc9b0bb",
+            "state": "json",
+            "semanticSha256": "7965d6e93e8c369d1b74287b2a7272721c7c375e106a1bdaab35034a935ca4a4",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 0,
+            "list": 0,
+            "filterGroups": null,
+            "hasContent": false,
+            "classSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        }
+      ],
+      "spiderClassEqual": false,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "network"
+        }
+      },
+      "observation": "unknown-execution"
+    },
+    {
+      "caseId": "3-0",
+      "artifactIndex": 3,
+      "siteIndex": 0,
+      "jarSha256": "a9dce1158db8c7d469399917468f91fcc9dbdd8260d56f32aa5c1e7a5f293ed6",
+      "api": "csp_Market",
+      "siteKeySha256": "2da3906a24eee4001e24b0a2f3764304886543a2a332935d72d43a4014c468da",
+      "extSha256": "c5e3a18cbf1f3329cb083809bcfafc1c28f77ceacd0d6188d13cb9d3baaf8ce2",
+      "loaderMode": "main",
+      "jarSignatureSha256": "57e23a6aa58b72a9baf9c9290f2605a6d406258aa1dcd5d870e4b579aea6293c",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Market",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 72
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "not-reached",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "native-binding",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "milliseconds": 57976
+        },
+        "mainLoad": null,
+        "error": {
+          "type": "Error",
+          "fingerprint": "437da61ef3dbfd6d3ad27815a4f01de632f86f4499be9a3daea401dd51e8ba0c",
+          "stage": "load",
+          "category": "native-binding"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 1056,
+            "sha256": "ba629518c82c748282c3820fc6b185beab0c25fc71b31f72afa5914b96becee4",
+            "state": "json",
+            "semanticSha256": "a2af83b7f91956cc89e7423d750d14a661295fcddf05c375bc70c55662cfcf72",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 3,
+            "list": 2,
+            "filterGroups": null,
+            "hasContent": true,
+            "classSha256": "468e4e5415c7884ca4ba74de729c2cb0482671b2dbe90f9350a9e1a51a0d7de7"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "b7b8d59fad73313bca51b928e40702414535e8465d726a11956e2f169183e5c7",
+          "art": {
+            "bytes": 1606,
+            "sha256": "40441e3f31738d0225864d4af2badbbd9fa5811949a88f49619b38e59cc97317",
+            "state": "json",
+            "semanticSha256": "4556610ffbcd2daeca6bd5959bfeb8428af8cd730cfa1bd443a2ea1a375c4675",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 5,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "1249ac5a801c145d7aee23842efc203ffdb663f29d313b5d6b5f14d417e7b99b",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "437da61ef3dbfd6d3ad27815a4f01de632f86f4499be9a3daea401dd51e8ba0c",
+          "stage": "load",
+          "category": "native-binding"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "4-0",
+      "artifactIndex": 4,
+      "siteIndex": 0,
+      "jarSha256": "59ca73d4d12758285ad7ce00ba07c4fbf1bf4f3c7e8fca642181f82bc6b68dc5",
+      "api": "csp_Jianpian",
+      "siteKeySha256": "900d9a84b5b70fbed27997639539ff8552befa81132a978d51586efeaed7b855",
+      "extSha256": "736b40b4abd46cd7644404241d716638f4ef7130e950945e32a2c28a19525c27",
+      "loaderMode": "site",
+      "jarSignatureSha256": "f7ea6e472067dfef235c7f75d1f2a4c7af84932bd79b862a416c0d80e0b5fcc4",
+      "jarLoadKey": "3054166d554f043fe457cc5cd7c75a27",
+      "mainJarSha256": "4073c52fd60d9e6c12070577effd4dc1d50a4e5897f535c65d2998485bdae6e2",
+      "mainSignatureSha256": "d2e34ff02b22e6f46067c21814df3ff711c72e582262b48887190d9da689a339",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Jianpian",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 19
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 85
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "execution",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "includesSpiderInit": true,
+          "usedBudgetMs": 90000,
+          "milliseconds": 3306,
+          "loaderCount": 1,
+          "loadStateObservedAfterInitError": true
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 55605
+        },
+        "error": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "execution"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 2887,
+            "sha256": "602c85f783092224564207ab7c7730e8092b021a7a307609bb788265d4b6c05f",
+            "state": "json",
+            "semanticSha256": "ac27d26d5e9e2104330e571437486b5545319d0fc267441610e5ba339effc049",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 6,
+            "list": null,
+            "filterGroups": 4,
+            "hasContent": true,
+            "classSha256": "ab473fe1cf753e31da8ed4f3aeac96824c42d509eb40d575d2c92e445475baaa",
+            "filtersSha256": "6075e4c017dc54d2c171bd245ef5171cecfb56905b1ea44d661b87725c9ee2b3"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "553e16dcb8801e4b83c05dabe199615eaf2e67ca7550b2768c9313adf3853e84",
+          "art": {
+            "bytes": 2352,
+            "sha256": "e11ac52eae6a65624fee37f0118ca0bf751cff86fb3fda0ecb27f28be31fa53c",
+            "state": "json",
+            "semanticSha256": "5231929a7073535f5261cd7549a719aae7ca6f3fd760dfe156505899ffce83eb",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 15,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "e2545ac2154da5b27371d2ca6b609f36f84853ef96d6b503368ad876cc701673",
+          "art": {
+            "bytes": 4363,
+            "sha256": "102ffd8ff65a15793d9b8bb84072ea9abc0e7c8051234e8df28c25e06b1b19b7",
+            "state": "json",
+            "semanticSha256": "a64a6fe80ca4626e81a2b20f4e0ad359dc2a496803da0d77b718c60b70a21d9d",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        }
+      ],
+      "spiderClassEqual": false,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "execution"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "5-0",
+      "artifactIndex": 5,
+      "siteIndex": 0,
+      "jarSha256": "41d3771d1d06f2b9e733df903c2a39726bfab69818636d9302a1a0f94bbc1663",
+      "api": "csp_Gz360",
+      "siteKeySha256": "3e99a9b0c7b5649596130d0a2dcfc1825fa279a073f6c0aa3bf4364a8f0b1c4c",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "loaderMode": "site",
+      "jarSignatureSha256": "9cc91e0126c0daac022423a76709268341e4445a3d1f697abe11ddfb1722c825",
+      "jarLoadKey": "18dc1e2fd93d0d1f16186441b01b855a",
+      "mainJarSha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "mainSignatureSha256": "484e331ada8577d39cb269b8f3c1524e554c949092db8a81a06fc189310799ba",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Gz360",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 30
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 66
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "unknown",
+        "init": "unknown",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "unobserved",
+        "loadCausalCategory": "artifact-timeout",
+        "loadCauseResolved": false,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "includesSpiderInit": true,
+          "usedBudgetMs": 90000
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 62194
+        },
+        "error": {
+          "type": "Error",
+          "fingerprint": "0edb53d63e025d59011a74f62be1f94722e21422aa57d2567ce8c7345077c33b",
+          "stage": "site-load-init",
+          "category": "artifact-timeout"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 427,
+            "sha256": "a7627bbc37295ec3a17258df614b16e41ead98710a24395fcdd5669e8dcdfcdc",
+            "state": "json",
+            "semanticSha256": "7d3224e82a6023f56264641e094a7a91cfc95d0afcdbcd9cf436caac88860d14",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": 10,
+            "list": null,
+            "filterGroups": null,
+            "hasContent": true,
+            "classSha256": "6bab2297afcc14e3ed0d3178b11bc1b4fff4bb61bf8cee177bbb86fa333c4da5"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "553e16dcb8801e4b83c05dabe199615eaf2e67ca7550b2768c9313adf3853e84",
+          "art": {
+            "bytes": 5108,
+            "sha256": "ce859c4a4ea170bc20984ad55cab1cd69c5384487ddbd25acc93cd44d0f383ff",
+            "state": "json",
+            "semanticSha256": "943364e05bc83bfa88ba785d014dc18b9cf8af6c3ed9e880486159216dbad1b5",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 30,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "00d3f4eb52b515df69196e9e7c0f5f40bad50dd4d13d8b9762d2ed8c08c8dea7",
+          "art": {
+            "bytes": 799,
+            "sha256": "b598d5df7717512ea1e0cc730ea2de653d5b59d2f305b9c77ce8638dfd6dbece",
+            "state": "json",
+            "semanticSha256": "c6a9b516f421ff497b70c60b5efd60bba3cbc681153b066a1db15295450d1884",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "0edb53d63e025d59011a74f62be1f94722e21422aa57d2567ce8c7345077c33b",
+          "stage": "site-load-init",
+          "category": "artifact-timeout"
+        }
+      },
+      "observation": "unknown-execution"
+    },
+    {
+      "caseId": "6-0",
+      "artifactIndex": 6,
+      "siteIndex": 0,
+      "jarSha256": "8adcedbd51c3ba467fd16ee3b127224dab0ee904c7975607453f64f5d77b138c",
+      "api": "csp_PianDan",
+      "siteKeySha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+      "extSha256": "c5be10daaae69f61f1ef2b79e2f27c6177052a6c9a0665553a5b2ac87fb1d3a1",
+      "loaderMode": "main",
+      "jarSignatureSha256": "ffe3c0035bc6cbba0d3d32c5dda767acfa61f88a808d0598fc6ff1e4102e70fe",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.PianDan",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 172
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": "missing-class-or-member",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 81724
+        },
+        "mainLoad": null,
+        "error": {
+          "type": "Error",
+          "fingerprint": "1400d0f5e866bd85a71e7f28d06c0dde24703b8bb073f992c96a6df001f77ab5",
+          "stage": "init",
+          "category": "missing-class-or-member"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 14082,
+            "sha256": "942ae46722d810055a0cc462f41b1cc8d08816fe1f09e1685267ac8b2c0748a3",
+            "state": "json",
+            "semanticSha256": "07fd6a4062f27c562a5bd0eeec923de410977cd8df28b1d5fa7088ceba489885",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 11,
+            "list": 20,
+            "filterGroups": 10,
+            "hasContent": true,
+            "classSha256": "738df87efbb03e6b7b7cef2f01b49bc6c639d25a67731ec5d83da38f5c8bb37d",
+            "filtersSha256": "9918efc8cc9bb42aab254285e2b8dcb03c09817a023a373b38c3bef86f719f30"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "582b7a4441c5ac98c13e860d30a7d9c7e34036443fa4c3d7aa72940f30f914fc",
+          "art": {
+            "bytes": 7448,
+            "sha256": "415785af50075f8bbc0d4036e5a07cb0bfc5b0beb434646943816f0161ea600b",
+            "state": "json",
+            "semanticSha256": "f9b27d34e710160c19026051ac80b7b02980281caee559597075a73842c43f79",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "518bff400f3a92eb5476d83bc639fd169e2d33127bc208a86d9b3ddfe0b5170f",
+          "art": {
+            "bytes": 357,
+            "sha256": "91b4f89a6bfe545623b4a702f3ceae04677dc01051bf977ae19c56a0fad14292",
+            "state": "json",
+            "semanticSha256": "ad4188ed9618e5139e52f7d66a16723fd5f86ff464b927723bb76f5d9fd36e63",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        }
+      ],
+      "spiderClassEqual": false,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "1400d0f5e866bd85a71e7f28d06c0dde24703b8bb073f992c96a6df001f77ab5",
+          "stage": "init",
+          "category": "missing-class-or-member"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "7-0",
+      "artifactIndex": 7,
+      "siteIndex": 0,
+      "jarSha256": "2ff484674c512cc9ea6e9d52f54e7154de113e7aee83230e493259655f71b3ec",
+      "api": "csp_AppRJ",
+      "siteKeySha256": "a9cc60e7724d03943c0d93f68d666b7c0718984a46cebbb25b2d327720eafdbb",
+      "extSha256": "82a17e02cdd6e5806b69c101602697a1ec05e1537469f4131be62529936b542f",
+      "loaderMode": "main",
+      "jarSignatureSha256": "15ea06f0d36c9b7e188858418ca8d3c8b0d900224354c31e7cecbaf77c57b77b",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.AppRJ",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 66
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "not-reached",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "execution",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "milliseconds": 67063
+        },
+        "mainLoad": null,
+        "error": {
+          "type": "Error",
+          "fingerprint": "fd62601063093e1e954609790d5f3e26d5452249e2942be78c13c3f56e53bdc0",
+          "stage": "load",
+          "category": "execution"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 18133,
+            "sha256": "b3859bd97116331182320d551fb6a68de56cad955c6fc4e7117da35a21e94024",
+            "state": "json",
+            "semanticSha256": "2b155456aec01fc7135dc1cc6264d9086053904a7b2632a13cf4d4996a188bf6",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 10,
+            "list": 6,
+            "filterGroups": 10,
+            "hasContent": true,
+            "classSha256": "85b23093e6d7958a220f6b23a2b68f0d01db705893affe0978f5a86d68f6291e",
+            "filtersSha256": "db913b2d54c01881acbc92f11d28caf25bb8a174611b0795bc93b74d1a08a6ab"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "bab31dd16f132860c5f01ad96fce4534cb9233d864349b7e6484d10e144d62e9",
+          "art": {
+            "bytes": 2283,
+            "sha256": "49f1b6f26553a7d5ba3b5caf2358f96f634ab676b54ed6269c218f296b874c44",
+            "state": "json",
+            "semanticSha256": "106e85e3c1aed8ea9b13ff1f491d327d2b5ec63611ecf3b5d5d7f700db60c2c7",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 12,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "633c6cecbf5ffc6dd506752b37fd87fe9125067efe75293daff59dc91df107de",
+          "art": {
+            "bytes": 26297,
+            "sha256": "a36f540147d1fd4b96778cba5a9e2fef3fb2c0a5de172bfc3c95f2997a666fd2",
+            "state": "json",
+            "semanticSha256": "42390eaaf826c6a54be8b3b99426f3215e7bf251d33c727a7c11f25b6e251f0a",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "fd62601063093e1e954609790d5f3e26d5452249e2942be78c13c3f56e53bdc0",
+          "stage": "load",
+          "category": "execution"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "8-0",
+      "artifactIndex": 8,
+      "siteIndex": 0,
+      "jarSha256": "cf928d08730247746293ce5878d9d876c4edde9118b5fbd0d6400618cb934cb1",
+      "api": "csp_DoubanCAT",
+      "siteKeySha256": "64c9c9374599042dfbce1f880073c6faaed50721e0c339cc2fa5102d08974c61",
+      "extSha256": "504784aceb61c702ba97173454d0066858b20da07d678367caa17ea92f910af5",
+      "loaderMode": "main",
+      "jarSignatureSha256": "50fcbd2b484cf6df722d57eca20f3d35d8fe1463e8412f35d5f348911ce8cbd6",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.DoubanCAT",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 244
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "not-reached",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "native-binding",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "milliseconds": 45951
+        },
+        "mainLoad": null,
+        "error": {
+          "type": "Error",
+          "fingerprint": "54701d74feca30025420340ad894dc641731391f4b594b7e340b16c451b270db",
+          "stage": "load",
+          "category": "native-binding"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 13394,
+            "sha256": "4ee98c01222a8a48b53e2e6a732f7651a10017ff053916df48b36674f8e21d5c",
+            "state": "json",
+            "semanticSha256": "ffdbf04efad62eeadc3a0a913d12498bfe7f5c17b0061e6098505653a01132ee",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 15,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "9cfe906d7866cdff529eccf7ba4d8112ce3beff9adff10e55039e89042b64135",
+            "filtersSha256": "bc662c577fd3d3064e77b98890e955595c5c16441de2646ceb574925f077a604"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 6379,
+            "sha256": "779a1515a6f5d199f9777d35fa93c327247e7d369bdd3d2e644b114ed321f1fd",
+            "state": "json",
+            "semanticSha256": "d63cea0a265595861fa67e20c1947e503cabf7962f2cd0641f10a0ac0b5c86ef",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 19,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "f7598d4397421b0499ad2eb84e0b4fec97bc487b7ef2018b94017350c40835d8",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "54701d74feca30025420340ad894dc641731391f4b594b7e340b16c451b270db",
+          "stage": "load",
+          "category": "native-binding"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "9-0",
+      "artifactIndex": 9,
+      "siteIndex": 0,
+      "jarSha256": "ee9ff15d1093e999828fabf2a9281cd13646ef17db0d684578388530cf987f61",
+      "api": "csp_Douban",
+      "siteKeySha256": "8dcc854742a2627cdb08aae6f2037dd481cc4d6d969e4074679687be1b223a92",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "loaderMode": "main",
+      "jarSignatureSha256": "2522884328c600b6932b5b0f06c5124c717c346e9d2882fdfc5e66df97a78174",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Douban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 71
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "unknown",
+        "init": "unknown",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "unobserved",
+        "loadCausalCategory": "timeout",
+        "loadCauseResolved": false,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true
+        },
+        "mainLoad": null,
+        "error": {
+          "type": "Error",
+          "fingerprint": "273b512cf19d6bd654b4cd3f12ffdb6decc7e250ea9dc6be0db322026a652ad9",
+          "stage": "load",
+          "category": "timeout"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 13188,
+            "sha256": "1c0ca5633e2586dea9408c6a6db8f8d24908b67e0c8cd33247f5e5ec2d3c1852",
+            "state": "json",
+            "semanticSha256": "32f93f864de89998128d5a8f9a6ffa63aa7d2e06aaa5a96b9468a4349a86a3d7",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "a6b2d0bdebd2ab8f26b457b427901b11818ba6733eef777a6a0e6eb86fda7fa9",
+            "filtersSha256": "d885a8b11da99bdc601a1466478b833ea5be81c481e0bc51d051e178dc7c2f63"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 6746,
+            "sha256": "b9be44abd23be40c1152bf3396e19b4c885e38fe55ffddc2a55e919b253e615e",
+            "state": "json",
+            "semanticSha256": "114ce622b28476d18298647f864ef2e7782bacdc2c38b3674e7413ef25034b75",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "f7598d4397421b0499ad2eb84e0b4fec97bc487b7ef2018b94017350c40835d8",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "273b512cf19d6bd654b4cd3f12ffdb6decc7e250ea9dc6be0db322026a652ad9",
+          "stage": "load",
+          "category": "timeout"
+        }
+      },
+      "observation": "unknown-execution"
+    },
+    {
+      "caseId": "10-0",
+      "artifactIndex": 10,
+      "siteIndex": 0,
+      "jarSha256": "a41f11e12267d0840eb8c949a59e5709d6a6f8fc42c86d845a7dad4be51a4fa1",
+      "api": "csp_Douban",
+      "siteKeySha256": "d442cd087c0f307ca189c278ca5468caf4caf1f86f80c2c203d512596f4b84d6",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "loaderMode": "main",
+      "jarSignatureSha256": "ef6e9d856e97a9e1e1ca8c7f669c0de7f70c900023b1852a9ea31b768c2dc109",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Douban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 76
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "not-reached",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "native-binding",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "milliseconds": 55711
+        },
+        "mainLoad": null,
+        "error": {
+          "type": "Error",
+          "fingerprint": "437da61ef3dbfd6d3ad27815a4f01de632f86f4499be9a3daea401dd51e8ba0c",
+          "stage": "load",
+          "category": "native-binding"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "state": "failed",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "homeContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "homeContent",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "437da61ef3dbfd6d3ad27815a4f01de632f86f4499be9a3daea401dd51e8ba0c",
+          "stage": "load",
+          "category": "native-binding"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "11-0",
+      "artifactIndex": 11,
+      "siteIndex": 0,
+      "jarSha256": "76c7d225a47bea03d2b54203593fe211209122db1b298b2329b7808e7a07b416",
+      "api": "csp_DouDou",
+      "siteKeySha256": "9dc8e15f2ccc81592101924769d107ec519eea1e21cbc36814e98d472dfaec07",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "loaderMode": "site",
+      "jarSignatureSha256": "f1ebf229706b04c950eadb73d74dd962b1ea794d1b5cd8cee92ed2942621868e",
+      "jarLoadKey": "eb298d9b56e4030f8cf5731130c5fcd9",
+      "mainJarSha256": "9432ca67798e032749cf12f6d14d2e2a4682dcf5f8b0349cdb5748d9a6c0771d",
+      "mainSignatureSha256": "1ec21fdcc629a3572e1345050e455182a063330a3c894819fe2a089b5b81d1ff",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.DouDou",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 11
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 23
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "execution",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "includesSpiderInit": true,
+          "usedBudgetMs": 90000,
+          "milliseconds": 9255,
+          "loaderCount": 1,
+          "loadStateObservedAfterInitError": true
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 31364
+        },
+        "error": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "execution"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 12497,
+            "sha256": "ae81dbefe37e39fa889a8c9900ba117d8538b11f5983d2777cb79ac37086c451",
+            "state": "json",
+            "semanticSha256": "ef627294eeaabc52985de73954c319cbd065f28330b584358c4cc61837608389",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+            "filtersSha256": "bc662c577fd3d3064e77b98890e955595c5c16441de2646ceb574925f077a604"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 12060,
+            "sha256": "9eccab85c347b40158c52163e2625271b7064195f00dd54f21650e13d4385d56",
+            "state": "json",
+            "semanticSha256": "fa41d5e2a5d22c2e8ba05843130eaf8a924da97c7cd78f68e7bcce14beeef344",
+            "fields": 2,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "2df845173ca95f85de5ec4e691500a06db314b028417adb1dad2a37d695f4f32",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": false,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "execution"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "12-0",
+      "artifactIndex": 12,
+      "siteIndex": 0,
+      "jarSha256": "92b6747fd42c4bc42fbc06094655ea5ae150d5eef283026d8238f46fb73a88ca",
+      "api": "csp_Douban",
+      "siteKeySha256": "b5443b618c95b0f8d83db7dbc1ed53ce6b97ad78afeee368475a0eae0a4bf6ea",
+      "extSha256": "f595a6d3ca197b36632e19fe55c856a23a770d9e398632d89a9c2055b37a3118",
+      "loaderMode": "site",
+      "jarSignatureSha256": "317ba99a3cd78f8ce04521fbe111cf13ba0187ac3fa81b63a69369a6015a01fe",
+      "jarLoadKey": "b49f23996ab427931a1ff2ee90aceb2e",
+      "mainJarSha256": "64637af0a0dc780cbe58d72904c16b9ff95d16917fed715c2aa6390512d6c49d",
+      "mainSignatureSha256": "55972b9d08d84f64d60252154a65f1cc8faf0e72ca78abde5ad163b06f8ddb38",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Douban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 3226
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 22
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "execution",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "includesSpiderInit": true,
+          "usedBudgetMs": 90000,
+          "milliseconds": 8399,
+          "loaderCount": 1,
+          "loadStateObservedAfterInitError": true
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 27255
+        },
+        "error": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "execution"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 23986,
+            "sha256": "adab00a316cfc0b603855f83f3144b6937436a4da71b941b0779e1dce125086b",
+            "state": "json",
+            "semanticSha256": "cbd041323b08dd54913fb979f696e1e7af5ab988666423dbbebe55cf24037fa4",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 11,
+            "list": 20,
+            "filterGroups": 9,
+            "hasContent": true,
+            "classSha256": "a886a96912056916b24150cebc920ebab9eb4fc47f85754e571a88648af34cef",
+            "filtersSha256": "4b11d46d337074e4ed25dc4294efd67b51db9586ba5590cf9c903343bd77c09d"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "1ea3904b6356dd862ed64a7d2d970a62412cb8b8248b50a06f220ab79bd1b0a9",
+          "art": {
+            "bytes": 305,
+            "sha256": "4cd32a5e20d05a9153d099bc9c34a67bc18980a67f210e7ca52047f7c31be681",
+            "state": "json",
+            "semanticSha256": "6c9fdb3aca61d2ffa605a2e13bbd685170f93c1e188c79c8647df07a65abc03b",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 2,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "5799de01643cb3b118fa6a1d315f06d860298e8ffa9f64747b9a62339064f498",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": false,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "execution"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "13-0",
+      "artifactIndex": 13,
+      "siteIndex": 0,
+      "jarSha256": "713a2c84b2700c25cc8abcc30b76b6c48c641d08b7a0bf2c558ab530e0e22352",
+      "api": "csp_PianDan",
+      "siteKeySha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+      "extSha256": "1d1b5fadf5247f12dfbe02cd382b2d753f47639d2e879ff08a775fd681ae98eb",
+      "loaderMode": "main",
+      "jarSignatureSha256": "388de703681f76fb1b2c782a164bd9aeaac5266aa1e2992a17663a13e8ff0aa9",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.PianDan",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 201
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "unknown",
+        "init": "unknown",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "unobserved",
+        "loadCausalCategory": "timeout",
+        "loadCauseResolved": false,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true
+        },
+        "mainLoad": null,
+        "error": {
+          "type": "Error",
+          "fingerprint": "273b512cf19d6bd654b4cd3f12ffdb6decc7e250ea9dc6be0db322026a652ad9",
+          "stage": "load",
+          "category": "timeout"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 14082,
+            "sha256": "942ae46722d810055a0cc462f41b1cc8d08816fe1f09e1685267ac8b2c0748a3",
+            "state": "json",
+            "semanticSha256": "07fd6a4062f27c562a5bd0eeec923de410977cd8df28b1d5fa7088ceba489885",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 11,
+            "list": 20,
+            "filterGroups": 10,
+            "hasContent": true,
+            "classSha256": "738df87efbb03e6b7b7cef2f01b49bc6c639d25a67731ec5d83da38f5c8bb37d",
+            "filtersSha256": "9918efc8cc9bb42aab254285e2b8dcb03c09817a023a373b38c3bef86f719f30"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "582b7a4441c5ac98c13e860d30a7d9c7e34036443fa4c3d7aa72940f30f914fc",
+          "art": {
+            "bytes": 7448,
+            "sha256": "415785af50075f8bbc0d4036e5a07cb0bfc5b0beb434646943816f0161ea600b",
+            "state": "json",
+            "semanticSha256": "f9b27d34e710160c19026051ac80b7b02980281caee559597075a73842c43f79",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "518bff400f3a92eb5476d83bc639fd169e2d33127bc208a86d9b3ddfe0b5170f",
+          "art": {
+            "bytes": 393,
+            "sha256": "add2b7a07fb932209b3ffba8b65f15b2b3df5b607a342cd795637ee9782eb9a5",
+            "state": "json",
+            "semanticSha256": "c85204278402a93de06250e9ea8e28a15f59b31bac06e1ccff7ce370f4d7670f",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "273b512cf19d6bd654b4cd3f12ffdb6decc7e250ea9dc6be0db322026a652ad9",
+          "stage": "load",
+          "category": "timeout"
+        }
+      },
+      "observation": "unknown-execution"
+    },
+    {
+      "caseId": "14-0",
+      "artifactIndex": 14,
+      "siteIndex": 0,
+      "jarSha256": "b644dc3adc5f8a768938f3c09f75cf6b61530d661a83ddae8ffd2b72ddfa4979",
+      "api": "csp_DouDouGuard",
+      "siteKeySha256": "10d97145118aa2e9a70891d9689f23cfe3c5ecbf3a1c9b27df0caf56cd8822b5",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "loaderMode": "main",
+      "jarSignatureSha256": "f8457882f52d88394238519c5ebd2cc218d8f8feca68d6cae15274859439f20b",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.DouDouGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 129
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.DouDouGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 38864
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 12613,
+            "sha256": "9a10e1a84ff14528b806149b823c8c2ebdf83152eaa2d81a2eb0a9f156a9a1ab",
+            "state": "json",
+            "semanticSha256": "e2caccfb888f22457f7a4c9937a92b1ea010a28bea7dfe2eb94fdfdcf3e7c484",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "00b8d42560c09646768e292c66adc5fd5fa0b71aa1b25810f9530bd7712abcb7",
+            "filtersSha256": "ef122cbd7beaba996378e0540cbeb0ccd6dcedcf6bade22bf33db3f8443f400e"
+          },
+          "nas": {
+            "bytes": 12613,
+            "sha256": "9a10e1a84ff14528b806149b823c8c2ebdf83152eaa2d81a2eb0a9f156a9a1ab",
+            "state": "json",
+            "semanticSha256": "e2caccfb888f22457f7a4c9937a92b1ea010a28bea7dfe2eb94fdfdcf3e7c484",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "00b8d42560c09646768e292c66adc5fd5fa0b71aa1b25810f9530bd7712abcb7",
+            "filtersSha256": "ef122cbd7beaba996378e0540cbeb0ccd6dcedcf6bade22bf33db3f8443f400e"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 12060,
+            "sha256": "9eccab85c347b40158c52163e2625271b7064195f00dd54f21650e13d4385d56",
+            "state": "json",
+            "semanticSha256": "fa41d5e2a5d22c2e8ba05843130eaf8a924da97c7cd78f68e7bcce14beeef344",
+            "fields": 2,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 12060,
+            "sha256": "9eccab85c347b40158c52163e2625271b7064195f00dd54f21650e13d4385d56",
+            "state": "json",
+            "semanticSha256": "fa41d5e2a5d22c2e8ba05843130eaf8a924da97c7cd78f68e7bcce14beeef344",
+            "fields": 2,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "2df845173ca95f85de5ec4e691500a06db314b028417adb1dad2a37d695f4f32",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "stage": "detailContent",
+              "category": "invalid-json"
+            }
+          },
+          "observation": "both-invalid-json",
+          "invalidRawEqual": true,
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "stage": "detailContent",
+              "category": "invalid-json"
+            },
+            "exceptionTypeEqual": false,
+            "fingerprintEqual": false,
+            "fingerprintNote": "Producer-specific fingerprints use different message envelopes; unequal hashes do not establish unequal underlying causes."
+          }
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "same-successful-or-failed-behavior"
+    },
+    {
+      "caseId": "15-0",
+      "artifactIndex": 15,
+      "siteIndex": 0,
+      "jarSha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "api": "csp_NewDouBanGuard",
+      "siteKeySha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+      "extSha256": "cf2e639bfbfaf274a664f82a5efd893e095dbe37813fcc3ac187c39cbdf9d57f",
+      "loaderMode": "main",
+      "jarSignatureSha256": "270cacb9142eaf565cb4b08843ff263ae8895858fbf64c494a1d5fa2d57fb5f8",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.NewDouBanGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 57
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.NewDouBanGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 27027
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 13158,
+            "sha256": "c35b2eafb4f36372d92f7c7d43b9e983aa9722f72413744a8c637895c657d470",
+            "state": "json",
+            "semanticSha256": "ffe3943dabfb74c3ad274414c95f02090ae0bc8bcdad2c4b884d1d1123692530",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+            "filtersSha256": "d885a8b11da99bdc601a1466478b833ea5be81c481e0bc51d051e178dc7c2f63"
+          },
+          "nas": {
+            "bytes": 13158,
+            "sha256": "c35b2eafb4f36372d92f7c7d43b9e983aa9722f72413744a8c637895c657d470",
+            "state": "json",
+            "semanticSha256": "ffe3943dabfb74c3ad274414c95f02090ae0bc8bcdad2c4b884d1d1123692530",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+            "filtersSha256": "d885a8b11da99bdc601a1466478b833ea5be81c481e0bc51d051e178dc7c2f63"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 6746,
+            "sha256": "445d40a57ee8ebff35b7f557c65b4ca60a37b25ba16ba3d6d060cae7d9ff6abb",
+            "state": "json",
+            "semanticSha256": "37a7d2a188832853b0ce3b51dae8f2e5f1dac3ad6fe5e0ed095dd54c3d50a21a",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 6746,
+            "sha256": "445d40a57ee8ebff35b7f557c65b4ca60a37b25ba16ba3d6d060cae7d9ff6abb",
+            "state": "json",
+            "semanticSha256": "37a7d2a188832853b0ce3b51dae8f2e5f1dac3ad6fe5e0ed095dd54c3d50a21a",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "f7598d4397421b0499ad2eb84e0b4fec97bc487b7ef2018b94017350c40835d8",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "stage": "detailContent",
+              "category": "invalid-json"
+            }
+          },
+          "observation": "both-invalid-json",
+          "invalidRawEqual": true,
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "stage": "detailContent",
+              "category": "invalid-json"
+            },
+            "exceptionTypeEqual": false,
+            "fingerprintEqual": false,
+            "fingerprintNote": "Producer-specific fingerprints use different message envelopes; unequal hashes do not establish unequal underlying causes."
+          }
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "same-successful-or-failed-behavior"
+    },
+    {
+      "caseId": "15-1",
+      "artifactIndex": 15,
+      "siteIndex": 1,
+      "jarSha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "api": "csp_PanConfigGuard",
+      "siteKeySha256": "8fa54290572fca5ae4401aa64de38341620033518f2a8ef6665da62922f0213f",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "loaderMode": "main",
+      "jarSignatureSha256": "270cacb9142eaf565cb4b08843ff263ae8895858fbf64c494a1d5fa2d57fb5f8",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.PanConfigGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 55
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.PanConfigGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 27305
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 597,
+            "sha256": "777ff37c973c8f01c50b7a6768d352dc34cb66b7400ecdb5b6b796b1e4d95a6c",
+            "state": "json",
+            "semanticSha256": "7b00b0809a263f3872b0fc5be7e093d699c0e976285227d8257ff7af54436e74",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 12,
+            "list": null,
+            "filterGroups": 0,
+            "hasContent": true,
+            "classSha256": "cbf6ac034494c3ba0fe40ae1c0b304d38c028e6022fa268b05fdc53a5922d63d",
+            "filtersSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "nas": {
+            "bytes": 597,
+            "sha256": "777ff37c973c8f01c50b7a6768d352dc34cb66b7400ecdb5b6b796b1e4d95a6c",
+            "state": "json",
+            "semanticSha256": "7b00b0809a263f3872b0fc5be7e093d699c0e976285227d8257ff7af54436e74",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 12,
+            "list": null,
+            "filterGroups": 0,
+            "hasContent": true,
+            "classSha256": "cbf6ac034494c3ba0fe40ae1c0b304d38c028e6022fa268b05fdc53a5922d63d",
+            "filtersSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "d5310c2519fc688150ae9cd284f7bd0b88de004e0f2a0e1fd222cdf16fd5525f",
+          "art": {
+            "bytes": 54736,
+            "sha256": "f6cd5246706bad3608b7c36b0ee732e23703491babb0e54bd206a07fbfc1e031",
+            "state": "json",
+            "semanticSha256": "293da3bfec514ea08d34576fa781f94e076af1a93acc6c41245b264857498149",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 12,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 44083,
+            "sha256": "8798093b7231ba87d904bea0ed4a5e6a77fe949836a3a275c6091c34c8017068",
+            "state": "json",
+            "semanticSha256": "2955519cbc587c6018f8eb4e278a39118d86c01b243b56cc83efed3b51df4094",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 12,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": false,
+          "semanticEqual": false,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "live-response-difference"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "2a6c8b5a0f52f75346dbf75066870e8d883f1de30c9a75ce9d2e51a2f2221fec",
+          "art": {
+            "bytes": 197,
+            "sha256": "f62bdc49e6ae9150a5a83387a85d3475286e2b3b65384a57b23acb2d73485c30",
+            "state": "json",
+            "semanticSha256": "dda70952f794e083409c865f709ce3c4557591b0498c0fd45e4e86e055be31ed",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 198,
+            "sha256": "fb75e1fa7daec536dfad53267bd154e891446b387b3042f6eff3de5d25587964",
+            "state": "json",
+            "semanticSha256": "fe36a54f23fdb15307e10e99900546bfe8ccdbb51a5b594ac8987b364ad87b58",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": false,
+          "semanticEqual": false,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "live-response-difference"
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "live-response-difference"
+    },
+    {
+      "caseId": "16-0",
+      "artifactIndex": 16,
+      "siteIndex": 0,
+      "jarSha256": "ed56f35b679419275085e89a3c541dadcd404a501b5831dcedc1f09afea04701",
+      "api": "csp_Market",
+      "siteKeySha256": "61f96c6aac6a0745843ec7e914783710191b01fc260d74829fed9e9858567172",
+      "extSha256": "950db355593c5a2742706b55dd1ac6c0e329c847590c0c81eb206983aec2125a",
+      "loaderMode": "site",
+      "jarSignatureSha256": "2ac37d014582923beb9998ef53a5801c4a969d2d413ded5004a536991c05281b",
+      "jarLoadKey": "3b0679fbd71f54cf4e1ba92bc83c5d9f",
+      "mainJarSha256": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+      "mainSignatureSha256": "f9984a9c026389996e91101183b9d2258a7c5003cbc2082ce37242f57f720ff7",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Market",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 9
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 785
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "execution",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "includesSpiderInit": true,
+          "usedBudgetMs": 90000,
+          "milliseconds": 8953,
+          "loaderCount": 1,
+          "loadStateObservedAfterInitError": true
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 37388
+        },
+        "error": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "execution"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 420,
+            "sha256": "e4a6d1d9ed62bbce8698694a9cd94fe2c5e3b9d7ba3a7aa2a3bbf28e584646bb",
+            "state": "json",
+            "semanticSha256": "fc4ca461c48ea6c9af5535c2cee6d11d67424c36f7ca86b167ee0f933e01fe80",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 2,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true,
+            "classSha256": "e6f3eb77e2d16a291e43ce35ef199773f8aa7fed3691b5009b7d36b48569ec5f"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "b6e3ca55e0f7c9508d667a7b5600ad474fc54619c08b3df921b49ff1f82aa114",
+          "art": {
+            "bytes": 897,
+            "sha256": "9887b1135f389c32acdd18ff5408005d70d16fdce4d18995ab57e7b99015018e",
+            "state": "json",
+            "semanticSha256": "77258a6b8fef5c902ce563c0f5231da0a59d72ba9c127f0af5da19da6876d282",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 3,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "98ea6cf281cd0ff27512d6481d227130815a92821c0cbba61237e7801336cf14",
+          "art": {
+            "bytes": 85,
+            "sha256": "be7821c6473d8137dd3d8a1bfebad7488600b0e13d51ca660bd2c0d561845a00",
+            "state": "json",
+            "semanticSha256": "38a98bbbc2316a5e986d8b72a573b40b1a0dbe6b46331c822ed60ad32ca4bc61",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        }
+      ],
+      "spiderClassEqual": false,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "execution"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "17-0",
+      "artifactIndex": 17,
+      "siteIndex": 0,
+      "jarSha256": "6db260446185b55d42251a253f05c2b3e593340ca131d8c6df85b685181e0732",
+      "api": "csp_Huban",
+      "siteKeySha256": "0240f450a64fa3aab2b02ad0ed0bb2bfe4af1397d9de34cd76c2c41a3cc0f280",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "loaderMode": "site",
+      "jarSignatureSha256": "ae3e058032ebe126f70abb903bdef12b984e587282908eb43ef7cfe151df6d90",
+      "jarLoadKey": "8a7b7461c38d93aa4958ddd1c526c99f",
+      "mainJarSha256": "b2755622dc43d9181b9d1a4bd9e11251fea15048fa2f82b91adafc57f1771551",
+      "mainSignatureSha256": "396dac10b47499de4b158fad918e2d2ecc2327733334f8a0fb4bfd707cd85a41",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Huban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 166
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 98
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "unknown",
+        "init": "unknown",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "failed",
+        "loadCausalCategory": "network",
+        "loadCauseResolved": false,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": false,
+          "includesSpiderInit": true,
+          "usedBudgetMs": 90000,
+          "milliseconds": 9103,
+          "loaderCount": 1,
+          "loadStateObservedAfterInitError": true
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 30335
+        },
+        "error": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "network"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 87,
+            "sha256": "8fc46af624412e5e2c65e6413d815d795ee4f8c65860decb1390541289b74e68",
+            "state": "json",
+            "semanticSha256": "8fc34eb360725ab27376c84700393e00c961583cdb1613942353ceb00f237bcb",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 1,
+            "list": 0,
+            "filterGroups": null,
+            "hasContent": true,
+            "classSha256": "6ada351e4747e07c0db5960fb7554ab0ae94f1196c23bcc117e69b98a61bf031"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "553e16dcb8801e4b83c05dabe199615eaf2e67ca7550b2768c9313adf3853e84",
+          "art": {
+            "bytes": 151,
+            "sha256": "1ef8c0cd800948b06f8109a9bfc61ce84cd90759a3da484fa0302b4b11424be4",
+            "state": "json",
+            "semanticSha256": "5667e5c8c226b539e9d4b27f77f7f9d84ebe05e76c3575625da7691ca28579bf",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "cbd2e3478d393c7123e40a540345f8eda20da98edda2ac138489c8a895e4b3ce",
+          "art": {
+            "bytes": 207,
+            "sha256": "944cf6715af9486c4a2f801d4e19dcfb9e518b92cc2ef20e369779c8779fd3f4",
+            "state": "json",
+            "semanticSha256": "bf24823ea8cdcec4a245702cef7f710c409320ab9e26f93bb3d70891fa4d2330",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        }
+      ],
+      "spiderClassEqual": false,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "93aaed504adc6633a40306c4634a5fac96ecbfe3df5a70ac5cfe5ae55a275681",
+          "stage": "site-load-init",
+          "category": "network"
+        }
+      },
+      "observation": "unknown-execution"
+    },
+    {
+      "caseId": "18-0",
+      "artifactIndex": 18,
+      "siteIndex": 0,
+      "jarSha256": "62aec35b3a4c3db8346b78404c00bb5eb53dbfd478f30f7697acafbef135340b",
+      "api": "csp_Wogg",
+      "siteKeySha256": "67c208f3dd830b874b93a2db77cac4a2e0aba0383cb8bd7168ac05842056ddd9",
+      "extSha256": "ee6ae6a3629976b222c4adcb412da7c8ab40c72724702e67f567f8d31a0671c1",
+      "loaderMode": "site",
+      "jarSignatureSha256": "2b36b621dc6ab40b99926dce50ffd220af6d7a48a099b620910c5c46e16bfbc9",
+      "jarLoadKey": "3d94667bcd78d72204efe18686116f7d",
+      "mainJarSha256": "4073c52fd60d9e6c12070577effd4dc1d50a4e5897f535c65d2998485bdae6e2",
+      "mainSignatureSha256": "d2e34ff02b22e6f46067c21814df3ff711c72e582262b48887190d9da689a339",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Wogg",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 146
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 75
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": "missing-class-or-member",
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "includesSpiderInit": true,
+          "usedBudgetMs": 90000,
+          "milliseconds": 26017,
+          "loaderCount": 2,
+          "loadStateObservedAfterInitError": true
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 53122
+        },
+        "error": {
+          "type": "Error",
+          "fingerprint": "1400d0f5e866bd85a71e7f28d06c0dde24703b8bb073f992c96a6df001f77ab5",
+          "stage": "site-load-init",
+          "category": "missing-class-or-member"
+        },
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 39,
+            "sha256": "fd6b0c3805a0795038550ed3030cff756207e5240ad48183c311a6a82bc9b0bb",
+            "state": "json",
+            "semanticSha256": "7965d6e93e8c369d1b74287b2a7272721c7c375e106a1bdaab35034a935ca4a4",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 0,
+            "list": 0,
+            "filterGroups": null,
+            "hasContent": false,
+            "classSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        }
+      ],
+      "spiderClassEqual": false,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "1400d0f5e866bd85a71e7f28d06c0dde24703b8bb073f992c96a6df001f77ab5",
+          "stage": "site-load-init",
+          "category": "missing-class-or-member"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "19-0",
+      "artifactIndex": 19,
+      "siteIndex": 0,
+      "jarSha256": "d8982109de0bc20436012c4dc847401bdddc2595b5888c93ae2482cbb6eda6e1",
+      "api": "csp_XBPQ",
+      "siteKeySha256": "fbee27c3051daa2263d76d9279f881aca4e5a3eeab79aaee778c1492c8598f2c",
+      "extSha256": "bb403540f8f2d62d7a45becf0190710a77c3e31d20bb8b7c894a845b912b7e03",
+      "loaderMode": "site",
+      "jarSignatureSha256": "1c46b83bd191dffdda00c292b6440f779d5208419c6dcc71d5901841a72e49ae",
+      "jarLoadKey": "456f43de3ef2b4c15fc5803f3ebcbdad",
+      "mainJarSha256": "8f84f164e72692ee76112c33f139ac43775b8a5066b9b82771def382eeb4a45c",
+      "mainSignatureSha256": "484e331ada8577d39cb269b8f3c1524e554c949092db8a81a06fc189310799ba",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.XBPQ",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 10
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 79
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.XBPQ",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "includesSpiderInit": true,
+          "usedBudgetMs": 90000,
+          "milliseconds": 14978,
+          "loaderCount": 2
+        },
+        "mainLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 61403
+        },
+        "error": null,
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 2475,
+            "sha256": "9f1c575159952834b81aea211c1f5b719d844854a03cc558825948696a1c771d",
+            "state": "json",
+            "semanticSha256": "31364af5c033c290e92c3df54f6ae640dbd5c4fb08ca1c2d0c8827ac10405857",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": 4,
+            "list": null,
+            "filterGroups": 4,
+            "hasContent": true,
+            "classSha256": "2c661ef9740142a010ff266145d292fa109329b6f367f0064e13d94d37aad4d4",
+            "filtersSha256": "d5150afcb73f332614349d845e035ec48862db11b40c64e8e432320021da2b9e"
+          },
+          "nas": {
+            "state": "failed",
+            "error": {
+              "type": "java.lang.ClassFormatError",
+              "fingerprint": "2c02bdec9aca5a6ef8c56594faee3bb96b1cbede31786d0d04db0b0c97910c89",
+              "stage": "homeContent",
+              "category": "execution"
+            }
+          },
+          "observation": "execution-or-result-difference",
+          "failures": {
+            "art": null,
+            "nas": {
+              "type": "java.lang.ClassFormatError",
+              "fingerprint": "2c02bdec9aca5a6ef8c56594faee3bb96b1cbede31786d0d04db0b0c97910c89",
+              "stage": "homeContent",
+              "category": "execution"
+            }
+          }
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "ad485935124a82c3f01f7d0878c2cfa11225d2661304dd45c4b893359dccc18f",
+          "art": {
+            "bytes": 6234,
+            "sha256": "9fcbf2fd2d5da15f3540b5363be01235838ec7a8409d56161cf344ac97adf7d1",
+            "state": "json",
+            "semanticSha256": "a092ad16dc83ded2bbe5aed47db104c17dd3fbc0969f567bdcb6040c601592ed",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": null,
+            "list": 18,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "failed",
+            "error": {
+              "type": "java.lang.ClassFormatError",
+              "fingerprint": "2c02bdec9aca5a6ef8c56594faee3bb96b1cbede31786d0d04db0b0c97910c89",
+              "stage": "categoryContent",
+              "category": "execution"
+            }
+          },
+          "observation": "execution-or-result-difference",
+          "failures": {
+            "art": null,
+            "nas": {
+              "type": "java.lang.ClassFormatError",
+              "fingerprint": "2c02bdec9aca5a6ef8c56594faee3bb96b1cbede31786d0d04db0b0c97910c89",
+              "stage": "categoryContent",
+              "category": "execution"
+            }
+          }
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "1809de24c50118d8f1e00433e4d4d823bba6c6f65fb3769a6ebfa695aa902d5a",
+          "art": {
+            "bytes": 506,
+            "sha256": "9f6f8d6a4df23e9025ec6eba42a68611853578a532820243e686851151c5c5ba",
+            "state": "json",
+            "semanticSha256": "8d1f7b4bf937d944e339f4a868ded5a16cdcea65370fe2d51d04ca6c5cca4720",
+            "fields": 1,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "failed",
+            "error": {
+              "type": "java.lang.ClassFormatError",
+              "fingerprint": "2c02bdec9aca5a6ef8c56594faee3bb96b1cbede31786d0d04db0b0c97910c89",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "observation": "execution-or-result-difference",
+          "failures": {
+            "art": null,
+            "nas": {
+              "type": "java.lang.ClassFormatError",
+              "fingerprint": "2c02bdec9aca5a6ef8c56594faee3bb96b1cbede31786d0d04db0b0c97910c89",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          }
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "method-results-need-diagnosis"
+    },
+    {
+      "caseId": "20-0",
+      "artifactIndex": 20,
+      "siteIndex": 0,
+      "jarSha256": "0e622ce7b053bedfd476705c2883b608344117c6beac9b3e0dfbea3868c17e2b",
+      "api": "csp_Douban",
+      "siteKeySha256": "d442cd087c0f307ca189c278ca5468caf4caf1f86f80c2c203d512596f4b84d6",
+      "extSha256": "6e092842eebb992dd86f4c5e60cf371f6f79e9da186d27779bbbc77c689614c4",
+      "loaderMode": "main",
+      "jarSignatureSha256": "932cb01b62a06f1ada243c51bd75a39faebd25f4f508dd70fe85a7690d77a38c",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Douban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 3652
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Douban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 49301
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 16079,
+            "sha256": "bbf581e90d79a7ea55c441ccc4f7669fd40b3a79dacc5370fc5989ef39e4d599",
+            "state": "json",
+            "semanticSha256": "7a7a6a81b3fbcf19035394247d891a555f76f36f0025257f9c8102bd279f830e",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 9,
+            "list": 20,
+            "filterGroups": 9,
+            "hasContent": true,
+            "classSha256": "e957bcc80d919839dce8b3b61a7f327315c25f491012812980ca08cf64b0f357",
+            "filtersSha256": "d404e0029c23899c3b9b29f9cf97ba0e5068188b59df9ec704f92741f160a560"
+          },
+          "nas": {
+            "bytes": 16079,
+            "sha256": "bbf581e90d79a7ea55c441ccc4f7669fd40b3a79dacc5370fc5989ef39e4d599",
+            "state": "json",
+            "semanticSha256": "7a7a6a81b3fbcf19035394247d891a555f76f36f0025257f9c8102bd279f830e",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 9,
+            "list": 20,
+            "filterGroups": 9,
+            "hasContent": true,
+            "classSha256": "e957bcc80d919839dce8b3b61a7f327315c25f491012812980ca08cf64b0f357",
+            "filtersSha256": "d404e0029c23899c3b9b29f9cf97ba0e5068188b59df9ec704f92741f160a560"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 6706,
+            "sha256": "e287e513c976d7de0b28472653fde2d12140879af0e7ff0e573e7b05d154e6f6",
+            "state": "json",
+            "semanticSha256": "55495886d9865eb52403e222849996a880a90babcef29647212c490a4fe8b8b0",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 6706,
+            "sha256": "e287e513c976d7de0b28472653fde2d12140879af0e7ff0e573e7b05d154e6f6",
+            "state": "json",
+            "semanticSha256": "55495886d9865eb52403e222849996a880a90babcef29647212c490a4fe8b8b0",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "f7598d4397421b0499ad2eb84e0b4fec97bc487b7ef2018b94017350c40835d8",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "stage": "detailContent",
+              "category": "invalid-json"
+            }
+          },
+          "observation": "both-invalid-json",
+          "invalidRawEqual": true,
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "stage": "detailContent",
+              "category": "invalid-json"
+            },
+            "exceptionTypeEqual": false,
+            "fingerprintEqual": false,
+            "fingerprintNote": "Producer-specific fingerprints use different message envelopes; unequal hashes do not establish unequal underlying causes."
+          }
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "same-successful-or-failed-behavior"
+    },
+    {
+      "caseId": "20-1",
+      "artifactIndex": 20,
+      "siteIndex": 1,
+      "jarSha256": "0e622ce7b053bedfd476705c2883b608344117c6beac9b3e0dfbea3868c17e2b",
+      "api": "csp_Douban",
+      "siteKeySha256": "d442cd087c0f307ca189c278ca5468caf4caf1f86f80c2c203d512596f4b84d6",
+      "extSha256": "707e92349c8c76508abee97aec8637ac50f309a5733468dd74c66f46617d8c8a",
+      "loaderMode": "main",
+      "jarSignatureSha256": "abea108df2dba9fffcf017ffa6f4db28fd2badfc79b7d9d98b7f20b99102b7b3",
+      "jarLoadKey": "main",
+      "mainJarSha256": null,
+      "mainSignatureSha256": null,
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Douban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 3649
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-app-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+        "symbolMapSha256": "de620b2243e33c1b2e9a11954f2fd4c41cf2a7212e379d4e1992ea31337860ff"
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Douban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        },
+        "loadObserved": "loaded",
+        "loadCausalCategory": null,
+        "loadCauseResolved": true,
+        "initPolicy": "android",
+        "budgets": {
+          "caseMs": 150000,
+          "loadMs": 90000,
+          "initMs": 10000,
+          "callMs": 10000
+        },
+        "selectedLoad": {
+          "attempted": true,
+          "loaded": true,
+          "milliseconds": 46726
+        },
+        "mainLoad": null,
+        "error": null,
+        "applicationStatePolicy": "fresh-runtime-data",
+        "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657"
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 16079,
+            "sha256": "bbf581e90d79a7ea55c441ccc4f7669fd40b3a79dacc5370fc5989ef39e4d599",
+            "state": "json",
+            "semanticSha256": "7a7a6a81b3fbcf19035394247d891a555f76f36f0025257f9c8102bd279f830e",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 9,
+            "list": 20,
+            "filterGroups": 9,
+            "hasContent": true,
+            "classSha256": "e957bcc80d919839dce8b3b61a7f327315c25f491012812980ca08cf64b0f357",
+            "filtersSha256": "d404e0029c23899c3b9b29f9cf97ba0e5068188b59df9ec704f92741f160a560"
+          },
+          "nas": {
+            "state": "failed",
+            "error": {
+              "type": "Error",
+              "fingerprint": "273b512cf19d6bd654b4cd3f12ffdb6decc7e250ea9dc6be0db322026a652ad9",
+              "stage": "homeContent",
+              "category": "timeout"
+            }
+          },
+          "observation": "execution-or-result-difference",
+          "failures": {
+            "art": null,
+            "nas": {
+              "type": "Error",
+              "fingerprint": "273b512cf19d6bd654b4cd3f12ffdb6decc7e250ea9dc6be0db322026a652ad9",
+              "stage": "homeContent",
+              "category": "timeout"
+            }
+          }
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 6706,
+            "sha256": "e287e513c976d7de0b28472653fde2d12140879af0e7ff0e573e7b05d154e6f6",
+            "state": "json",
+            "semanticSha256": "55495886d9865eb52403e222849996a880a90babcef29647212c490a4fe8b8b0",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "f7598d4397421b0499ad2eb84e0b4fec97bc487b7ef2018b94017350c40835d8",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "stage": "detailContent",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "method-results-need-diagnosis"
+    }
+  ]
+}

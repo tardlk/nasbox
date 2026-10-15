@@ -7,7 +7,8 @@ import {writeFileSync,existsSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createHash} from 'node:crypto';
-import {pullVerifiedPrivateResult} from '../scripts/android/run-oracle.mjs';
+import {pullVerifiedPrivateResult,invalidateOracleOutputs} from '../scripts/android/run-oracle.mjs';
+import {loaderContextOf,officialOracleApkSha256} from '../scripts/android/loader-context.mjs';
 const sha=value=>createHash('sha256').update(value).digest('hex');
 async function fixture(action){
  const output=await mkdtemp(join(tmpdir(),'tvbox-oracle-collection-'));
@@ -23,6 +24,12 @@ async function fixture(action){
   await action({options,value,output,finalPath});
  }finally{await rm(output,{recursive:true,force:true});}
 }
+test('starting a run invalidates prior summary and every planned private result before transport',async()=>fixture(async({output,finalPath})=>{
+ await writeFile(join(output,'summary-private.json'),'old summary');
+ await writeFile(join(output,'0-1-private.json'),'old unreached case');
+ await invalidateOracleOutputs(output,{artifacts:[{sites:[{},{}]}]});
+ assert.equal(existsSync(finalPath),false);assert.deepEqual(await readdir(output),[]);
+}));
 test('failed adb pull removes stale final result and partial staging file',async()=>fixture(async({options,output,finalPath})=>{
  options.command=args=>{assert.equal(existsSync(finalPath),false);writeFileSync(args[2],'{partial');return{status:1};};
  const result=await pullVerifiedPrivateResult(options);
@@ -47,6 +54,36 @@ test('manifest, JAR, API, ext and site substitutions never reach final result',a
 test('a pulled report must match this instrumentation status report',async()=>fixture(async({options,value,finalPath})=>{
  value.report.initSuccess=false;options.command=args=>{writeFileSync(args[2],JSON.stringify(value));return{status:0};};
  assert.equal((await pullVerifiedPrivateResult(options)).errorCode,'PRIVATE_RESULT_IDENTITY');assert.equal(existsSync(finalPath),false);
+}));
+
+test('new role contexts require matching original loader identity and installed APK provenance',async()=>{
+ for(const changed of [null,'jarLoadKey','jarSignatureSha256','mainJarSha256','mainSignatureSha256','targetApkSha256','symbolMapSha256'])await fixture(async({options,value,finalPath})=>{
+  options.site.jar='https://fixture.invalid/site.jar;md5; original';
+  options.site.loaderContext={role:'site',signature:options.site.jar};
+  Object.assign(value.report,loaderContextOf(options.artifact,options.site).identity,{jarBytesVerified:true,targetApkSha256:officialOracleApkSha256,symbolMapSha256:sha('map')});
+  if(changed)value.report[changed]='wrong';
+  options.instrumentReport=structuredClone(value.report);
+  options.command=args=>{writeFileSync(args[2],JSON.stringify(value));return{status:0};};
+  const result=await pullVerifiedPrivateResult(options);
+  assert.equal(result.ok,changed===null);
+  assert.equal(existsSync(finalPath),changed===null);
+ });
+});
+
+test('role-aware zero-call failure results remain collectable without claiming verified successful input',async()=>fixture(async({options,value,finalPath})=>{
+ options.site.jar='https://fixture.invalid/failing.jar';options.site.loaderContext={role:'site',signature:options.site.jar};
+ Object.assign(value.report,loaderContextOf(options.artifact,options.site).identity,{targetApkSha256:officialOracleApkSha256,symbolMapSha256:sha('map'),loadSuccess:false,initSuccess:false,error:{stage:'site-load',type:'java.lang.IllegalStateException',fingerprint:sha('failure')},calls:[]});
+ value.privateCalls=[];options.instrumentReport=structuredClone(value.report);
+ options.command=args=>{writeFileSync(args[2],JSON.stringify(value));return{status:0};};
+ assert.equal((await pullVerifiedPrivateResult(options)).ok,true);assert.equal(existsSync(finalPath),true);
+}));
+
+test('a collected application state policy must match the policy actually launched',async()=>fixture(async({options,value,finalPath})=>{
+ options.applicationStatePolicy='fresh-app-data';value.report.applicationStatePolicy='cold-process-preserve-data';
+ options.instrumentReport=structuredClone(value.report);options.command=args=>{writeFileSync(args[2],JSON.stringify(value));return{status:0};};
+ assert.equal((await pullVerifiedPrivateResult(options)).errorCode,'PRIVATE_RESULT_STATE_POLICY');assert.equal(existsSync(finalPath),false);
+ value.report.applicationStatePolicy='fresh-app-data';options.instrumentReport=structuredClone(value.report);
+ assert.equal((await pullVerifiedPrivateResult(options)).ok,true);
 }));
 test('invalid JSON, changed response bytes and inconsistent calls are rejected',async()=>{
  for(const mode of ['json','hash','calls'])await fixture(async({options,value,finalPath,output})=>{

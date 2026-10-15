@@ -166,6 +166,14 @@
       "upstreamSha1": "dd91fb744c2ff921407475cb29a1e3fee397d411",
       "bytes": 413197,
       "purpose": "Declared XML serializer for the additional Sardine host library; JDK StAX supplies the XML runtime. No Android XML stub or no-op interface."
+    },
+    {
+      "filename": "core-3.3.0.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/google/zxing/core/3.3.0/core-3.3.0.jar",
+      "sha256": "bba7724e02a997cec38213af77133ee8e24b0d5cf5fa7ecbc16a4fa93f11ee0d",
+      "upstreamSha1": "73c49077166faa4c3c0059c5f583d1d7bd1475fe",
+      "bytes": 541078,
+      "purpose": "Original fixed TVBoxOS app/build.gradle declares com.google.zxing:core:3.3.0. Supplies real barcode codecs and ChecksumException for observed Wogg initialization; no no-op host stub."
     }
   ]
 }
