@@ -81,5 +81,7 @@ HTTP, readonly-database and background class-loading/shutdown diagnostics are
 retained in the report; they are not counted as full API parity. Home data
 is dynamic; counts/hashes describe the recorded run. Category/detail/search/player
 and every native API are not established. The engine-only Docker doctor now passes on a physical Linux x86_64 NAS; see
-`docs/linux/docker-runtime-probe.json`. Real protected-JAR and Android/ART
-comparisons remain outstanding. Automatic JAR resolution and persistent cache quotas remain separate work.
+`docs/linux/docker-runtime-probe.json`. The real protected JAR now also runs on
+NAS; see nas-native-runtime-probe.json. Automatic HTTP JAR resolution and bounded
+download caching are documented in ../ARTIFACTS.md and jar-artifact-cache-probe.json.
+Android/ART and aggregate runtime cache quotas remain outstanding.

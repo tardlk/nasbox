@@ -9,7 +9,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 372 Node tests passed with native profile enabled, including captured-input integrity, comparison failures and worker lifecycle checks |
+| Probe and backend contract tests | Done | 386 Node tests passed with native profile enabled, including automatic artifact/cache/session tests |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
@@ -24,6 +24,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Linux x86_64 Docker core image | Delivered and verified on NAS | docker-runtime-probe.json plus nas-native-runtime-probe.json: non-root/read-only JRE, offline fixtures and real protected JAR |
 | Native/Python and complete JS host parity | Pending | Optional ARM/JNI profile runs this JAR; complete Android services, other native artifacts, Python and ART comparison remain open |
 | Linux container and NAS validation | Scoped validation done | Physical x86_64 NAS; genuine protected JAR init/home and timeout resource release; other architectures and full client unverified |
+| Automatic subscription JAR retrieval/cache | HTTP(S) slice implemented and verified on NAS | jar-artifact-cache-probe.json: 19 fresh-source cache/identity cases; real automatic init/home plus restart with one JAR download; managed JAR quota |
 
 The 65-case audit contains 12 matching observations, 51 differing observations
 and 2 cases where both sides reject but exception/state mapping is unresolved.
@@ -280,3 +281,48 @@ integrity, cache identity/update behavior and bounded persistent disk usage, wir
 into the existing session rather than relying on a research probe. Android/ART
 same-input validation, multiple native artifacts, Linux real JS verification and
 Web API/UI remain outstanding. Player work stays deferred.
+
+
+Automatic JAR artifacts and managed disk quota — 2026-10-15:
+
+The executable session now lazily downloads HTTP(S) global/site JARs, retaining
+explicit mappings as the first choice. It serializes cache access, checks SHA/MD5/
+size sidecars before reuse, writes through temporary files and protects loaded
+files from LRU eviction until successful runtime clear. Identity separates main
+and site namespaces and preserves original string2MD5's UTF-16 low-byte behavior.
+New subscription-cli.mjs and Docker `session` execute a selected source without a
+manually downloaded JAR. Native registration replay forgets automatic paths after
+clear, so later evictions do not break the next worker replacement.
+
+Nineteen successful-load cache/URL-identity cases match fresh unchanged ApiConfig
+loadJar, JarLoader.parseJar, FileUtils.isWeekAgo and MD5.string2MD5. The actual
+expiry threshold is three days, not seven. Global useCache/jarCache and literal
+MD5 rules differ from site remote-digest rules and are preserved. Android mode
+does not uniformly reject a newly downloaded MD5 mismatch; strict mode explicitly
+adds that check before execution. These are separate modes, not claimed parity.
+
+Defaults are 64 MiB/artifact, 128 MiB/managed cache and 25 seconds/HTTP request.
+Quota accounting includes JAR/sidecar pairs and temporary replacement peaks;
+loaded and replaced files remain protected. Corruption recovery, remote failures,
+strict mismatch, malformed JAR bounded retry, actual HTTP limits, restart/update
+and native replay after eviction are tested. 386 tests pass with native enabled.
+
+On the physical x86_64 NAS, a source-only derived core image automatically imports
+the supplied 48-source subscription, downloads the advertised-MD5-matching real
+protected JAR and executes Aid home. A new disk-cache session returns the same
+eight classifications with one total JAR fetch. No manual JAR mapping is used.
+The image's offline doctor also passes. jar-artifact-cache-probe.json records the
+image lineage, exact Node source hashes, policy extraction and real run metadata.
+
+Scope remains HTTP(S) binary JAR/DEX retrieval; img+/assets/file/clan still require
+explicit mappings. Failed site downloads are surfaced rather than executing a
+partial file; invalid-age global load refresh is bounded instead of upstream
+recursion. SHA/atomicity/transport/quotas are explicit host additions. Crash-left
+cache locks require confirming the previous owner has stopped before manual
+removal; cross-container stale-lock recovery is not implemented. The quota is for
+downloaded artifacts, not DEX/module/native/plugin files or the whole data volume.
+
+Next runtime item: robust crash/restart cache ownership and aggregate DEX/module
+cache limits, then the remaining artifact schemes and isolated native-artifact
+workers. Android/ART same-input evidence, Linux real JS and broader source calls
+remain necessary before full TVBox parity; Web API/UI and player are still pending.

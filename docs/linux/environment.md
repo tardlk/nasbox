@@ -348,3 +348,48 @@ and no task JVM, HTTP server or proxy remains. NAS Docker and its four existing
 containers continue running unchanged. Task services still running: none.
 Autostart changes: none. No shared tool, global SSH file or NAS service setting
 was modified. Connection credentials are not retained in project files or Git.
+
+
+## Automatic subscription JAR/cache batch — 2026-10-15
+
+Inspected and reused the existing Node 24/JDK 17/clang, pinned project dependencies,
+SSH/SCP and NAS Docker. No tool, library, VM, SDK, npm package, global environment
+or autostart item was installed. .tools remains about 404 MiB, retained for ongoing
+development. Fresh Android cache-policy oracle classes were compiled in owned
+temporary directories and deleted in finally; snapshots/hashes remain unchanged.
+
+Local transport, smoke, regression and fixture material used project .cache:
+backend/compat/container builds, nas-artifacts and scoped SSH host/control files.
+These were removed after verification. Synthetic HTTP servers, JVMs and cache
+owners were closed; live subscription/config/JAR, decrypted native payloads and
+raw diagnostics were temporary and are not committed. The metadata-only
+jar-artifact-cache-probe.json contains source hashes, counts and image lineage.
+
+NAS work used one task-owned /tmp/tvbox-auto-jar.* directory, now removed. Temporary
+layer containers were never started and were removed after copying five Node
+modules onto the verified existing image. Intermediate images from local checks
+were removed by exact ID; no shared builder/image prune or new builder was used.
+Real-source and offline-doctor containers used --rm, UID 10001, read-only root,
+exec tmpfs, dropped capabilities, pids 256 and 2 GiB memory, with no published port.
+Both real-source sessions closed and released their exclusive disk-cache lock.
+The existing four NAS containers remain unchanged.
+
+Retained NAS artifact: tvbox-core:linux-amd64-artifacts-20261015,
+sha256:0ecfc269a233b3293749fabcbe00ba96e5c0d4323fb240ff29bae8a1deb06f1d,
+506,160,765 bytes (about 483 MiB) of uncompressed layers. Purpose: runnable automatic
+subscription/JAR session and subsequent port work. It shares the previous retained
+core image layers; the new source-only layer adds 26,310 uncompressed bytes, rather
+than another full independent 483 MiB copy. No source code from subscriptions,
+credentials, caches or compile outputs were added to this layer. Exactly five
+in-image Node file hashes match the checked-out sources; compiled engines and
+dependency/license pins remain the previous image's. Current Dockerfile builds
+those modules normally; this local derivative used create/copy/commit without
+downloads or build-cache creation. No public image was pushed.
+
+386 host tests and final-image NAS real JAR/cache restart plus offline doctor pass.
+Temporary files, test containers, SSH shell/control master and task services were
+removed/stopped. Task services still running: none. NAS Docker and pre-existing
+containers continue. No new named data volume was retained; future CLI --data or
+Docker volume use is caller-owned. Downloaded-JAR cache quota defaults to 128 MiB;
+runtime DEX/module/plugin data has no aggregate cap yet. Unclean-exit lock recovery
+is explicit/manual until the next ownership batch. Autostart changes: none.

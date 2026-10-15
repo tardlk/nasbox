@@ -5,7 +5,8 @@ JVM class JARs, translated DEX artifacts and the Android dependency's actual Qui
 GPL-3.0-only with the separate component licenses described in NOTICE.md.
 
 Authority is TVBoxOS ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1. Current evidence is
-macOS ARM64 host JVM, not Android/ART, Linux x86_64, Docker or NAS execution.
+selected-method comparisons on macOS ARM64 JVM, with separate Linux x86_64 NAS
+init/home evidence below. Android/ART equivalence remains unverified.
 136 fixed source-method observations match the independent committed runtime.
 Real HTTP fixtures, native bytecode, worker restart, cleanup and deadline tests
 are additional integration checks. This is an initial executable contract slice,
@@ -35,8 +36,7 @@ Packaged .so/.dll/.dylib and native library search paths are explicitly unavaila
 The dalvik.system adapters implement translation and ownership only: they are not
 ART, a full Android classloader or an ARM/JNI emulator. Native-only protected init
 fails instead of returning a ready Spider. Python is unavailable. Referenced
-remote JARs are not automatically fetched; remote JS modules are fetched only in the explicit module mode below. Artifact lookup, Android's
-MD5/week cache behavior, full Android asset APIs, remaining crypto/translation globals, cookies, browser APIs,
+remote JARs are fetched only with the explicit remoteJars session option; remote JS modules are fetched only in the explicit module mode below. Remaining artifact schemes, full Android asset APIs, remaining crypto/translation globals, cookies, browser APIs,
 subscription hosts/proxy/DOH application and live-script config effects remain
 separate work. Java plugin execution uses a real JVM; it is not a security sandbox.
 
@@ -52,8 +52,8 @@ The JNI bridge is built from quickjs-wrapper tag 2.1.0, commit
 cba8438a941254f28be5d706ae15bf70c286d045. Its Maven sources match the tag's Java
 sources. The exact QuickJS submodule is c46516996da53eaf2f9aca516264870e25719d76
 (VERSION 2024-02-14), with CONFIG_BIGNUM and the original CONFIG_VERSION flags.
-Source hashes/licenses are in native/vendor/manifest.json. Linux build code is
-provided but has not been run on Linux. The local library is macOS ARM64 only.
+Source hashes/licenses are in native/vendor/manifest.json. The local development library is macOS ARM64; the Linux build and runtime have
+separately passed the NAS Docker checks described below.
 
 Java/native build outputs are atomic, cached under .cache/backend/spider-runtime
 and .cache/backend/spider-native, and may be removed after validation. Vendor
@@ -249,7 +249,7 @@ Android/ART, Linux x86_64, Docker and NAS execution remain unverified.
 Caller-owned data retains module-cache/qjscache_<md5>.js JSON (data/expires) and
 js.local/DEX state. Default temporary worker data is removed on close or timeout.
 Persistent module-cache aggregate disk quota/eviction is pending, like DEX cache.
-No automatic JAR resolver, HTTP listener or autostart is added.
+The automatic session JAR resolver is described below; no HTTP listener or autostart is added.
 
 
 ## ARM native JAR profile — 2026-10-15
@@ -278,7 +278,8 @@ XPathGuard. Real registered native methods returned a DexClassLoader and 44
 underlying Spider objects. Clear/reload changes the worker PID and releases its
 listener. All 365 tests pass with native verification enabled. This is host macOS
 ARM64 evidence, not Android parity certification or Linux/NAS/Docker validation.
-Automatic production JAR retrieval, persistent quotas and full API parity remain.
+That Mac-only batch preceded the automatic retrieval work below. Aggregate
+runtime cache quotas and full API parity remain outstanding.
 
 
 ## Linux x86_64 Docker core image — 2026-10-15
@@ -289,4 +290,24 @@ passed on a physical x86_64 NAS with read-only root, no network and no compilers
 The synthetic doctor exercises config/QuickJS/DEX plus real ARM64 and ARM32
 machine-code backends and worker replacement. Runtime outputs must be prebuilt;
 missing outputs fail closed. See docker-runtime-probe.json for the image ID and
-limits. Real protected subscription JAR and Android comparisons remain next.
+limits. Real protected subscription JAR execution also passes on NAS; see
+nas-native-runtime-probe.json and jar-artifact-cache-probe.json. Android/ART
+comparison remains pending.
+
+
+## Automatic subscription JAR cache — 2026-10-15
+
+The session now supports lazy HTTP(S) global/site JAR retrieval and bounded,
+SHA-verified persistent caching. [Artifact guide](ARTIFACTS.md) explains the pinned
+three-day age behavior, distinct global/site rules, Android/strict MD5 modes,
+active-file protection, CLI usage and limits. The optional native profile works
+with this resolver; manual JAR mappings are no longer required for HTTP sources.
+
+386 tests pass with native integration enabled. Nineteen cache choices match
+fresh unchanged Android methods; real class-JAR HTTP/session tests cover update,
+restart, failure and native-worker replay after eviction. The physical NAS also
+imports the supplied 48-source subscription, automatically downloads and strictly
+checks its JAR, executes Aid home, then reproduces it from disk cache in a new
+session with one total JAR fetch. See jar-artifact-cache-probe.json. This does not
+certify other source methods, unsupported schemes, aggregate runtime cache quotas
+or Android/ART behavior.

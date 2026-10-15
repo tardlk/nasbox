@@ -33,8 +33,8 @@ docker run --rm --read-only --tmpfs /tmp:rw,exec,nosuid,nodev,size=256m \
 其他命令：`help`、`config`（用 `-i` 输入 JSON-lines）、`subscription`、`spider`、
 `native-source-probe SUBSCRIPTION_URL /data/report.json`。最后一个命令是显式执行
 真实订阅代码的研究探针，会下载全局 JAR 并校验声明的 MD5，报告初始化/首页和
-清理结果；临时订阅、JAR 和解密载荷在退出时清理。生产订阅会话的自动 JAR
-下载/更新管理仍未实现，不能把研究探针当作完整生产解析流程。
+清理结果；临时订阅、JAR 和解密载荷在退出时清理。正式订阅会话的自动 JAR
+下载/缓存入口见下方 `session` 命令；研究探针仅用于记录实测结果。
 
 镜像默认 UID/GID 为 10001，运行时只有 JRE 和 Node，没有 javac、clang 或 npm。
 预编译输出缺失时立即报错；不会在 NAS 上临时安装编译工具。源码、依赖和原始
@@ -95,3 +95,25 @@ docker run --rm --read-only --tmpfs /tmp:rw,exec,nosuid,nodev,size=256m \
 和哈希，不保存首页正文或解密代码。`--deadline` 在真实 JAR 初始化后用独立的合成
 死循环触发超时；端口释放检查依赖 Linux `/proc`。清理/重载/超时检查失败会返回
 非零退出码；个别 CSP 的 ready=false 仍保留在报告中，不把它伪装成成功。
+
+自动 JAR 会话现已交付到 NAS 标签 `tvbox-core:linux-amd64-artifacts-20261015`。
+给出订阅和源键即可调用，无需手工提供 JAR：
+
+```sh
+docker run --rm --read-only --tmpfs /tmp:rw,exec,nosuid,nodev,size=256m \
+  --cap-drop ALL --security-opt no-new-privileges --pids-limit 256 --memory 2g \
+  -v tvbox-core-data:/data tvbox-core:linux-amd64-artifacts-20261015 \
+  session --native --url 'http://www.饭太硬.net/tv' --source Aid \
+  --method homeContent --args '[true]' --strict-md5
+```
+
+再次运行可加 `--cache` 复用配置与 JAR。默认下载缓存配额128MiB、单文件64MiB，
+支持 `--jar-cache-bytes BYTES`。本次 NAS 两个独立会话都返回 Aid 首页8个分类，
+JAR仅下载一次；严格MD5、SHA缓存校验及退出解锁通过。
+[缓存规则与边界](../backend/spider-runtime/ARTIFACTS.md) 区分安卓默认行为与
+`--strict-md5`，并说明残留锁恢复、暂不自动处理的制品类型和配额范围。
+
+该NAS镜像是基于已验证核心镜像，仅复制5个Node模块生成的本地增量镜像；
+JRE、原生依赖和预编译运行时没有改变，也没有公共推送。正常从当前源码构建
+Dockerfile同样包含这些模块。此配额仅约束下载JAR及其元数据，运行时DEX/模块/
+插件数据另存于 `/data/session/runtime`，尚无统一总额限制。命名卷由用户长期保留。

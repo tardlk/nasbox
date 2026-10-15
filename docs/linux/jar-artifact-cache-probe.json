@@ -1,0 +1,353 @@
+{
+  "date": "2026-10-15T00:40:19.058Z",
+  "scope": "Production session HTTP(S) artifact resolver and bounded managed JAR cache; fresh Android method fixture gate plus actual NAS Docker strict real-JAR init/home/restart. No ART/full-client parity.",
+  "policy": {
+    "cases": 19,
+    "matched": 19,
+    "scope": "Unchanged ApiConfig.loadJar/JarLoader.parseJar/FileUtils.isWeekAgo on fresh JVM fixture bindings; successful loader/network paths only; no ART",
+    "extraction": [
+      "8846785b25c4fdb13a46cca765776cf1ac57bf900d1b5898dfb1e4ba93e62561",
+      "be25d9cf2d63df77b31bdc6bb96cd21b3bf38a84aefbd96a8597de3ba40c9fb1",
+      "5b868f7617c724b57a23e2f82b8990527a6d48d40fe6f339c9545e1ae4dcbdbb",
+      "0c17c9761399088fa3bc67de86a980132c550d7349bc9f45618afbd7ca1e910a"
+    ],
+    "rows": [
+      {
+        "id": "main-exact-age-boundary",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-expired",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "download",
+        "downloads": 1,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-future-mtime",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-cache-disabled",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "download",
+        "downloads": 1,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-case-true",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-blank-true",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "download",
+        "downloads": 1,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-md5-match",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-md5-change",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "download",
+        "downloads": 1,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-forced-mismatch",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-md5-is-literal-url",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "download",
+        "downloads": 1,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-no-cache",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "download",
+        "downloads": 1,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "site-age-ignores-global-switch",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "site-expired",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "download",
+        "downloads": 1,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "site-forced-does-not-override-md5",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "download",
+        "downloads": 1,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "site-md5-url",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "site-empty-md5-url-age-fallback",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "site-md5-match-expired",
+        "cacheKey": "a5b5ee9c3f1aef87eafe91f18008da92",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "main-unicode-url-identity",
+        "cacheKey": "48f98802b36ae591ae08528cf33cf9f8",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      },
+      {
+        "id": "site-surrogate-url-identity",
+        "cacheKey": "ccde701c78048d816e798bb1d9720855",
+        "origin": "cache",
+        "downloads": 0,
+        "loads": 1,
+        "outcome": "success"
+      }
+    ],
+    "identity": "Pinned MD5.string2MD5 UTF-16 low-byte cast, not UTF-8",
+    "defaultIntegrity": "android",
+    "strictMode": "Explicit stronger post-download and fallback MD5 checks; not identical to Android",
+    "expiryMilliseconds": 259200000
+  },
+  "regression": {
+    "host": "macOS ARM64",
+    "passed": 386,
+    "failed": 0,
+    "nativeEnabled": true
+  },
+  "image": {
+    "tag": "tvbox-core:linux-amd64-artifacts-20261015",
+    "id": "sha256:0ecfc269a233b3293749fabcbe00ba96e5c0d4323fb240ff29bae8a1deb06f1d",
+    "size": 506160765,
+    "parent": "sha256:62910f7fbcbe3503895d1ac07f5ddb29da23fb5da6fe4b819856e6f59520f907",
+    "architecture": "linux/amd64",
+    "method": "Local docker create/copy/commit of exactly the five Node source files onto the previous verified core image; no new dependencies or compiled outputs",
+    "addedUncompressedLayerBytes": 26310,
+    "sources": [
+      {
+        "path": "backend/spider-runtime/artifact-cache.mjs",
+        "sha256": "9832fdf8540ccb171fcf523f0bd196d7661879a65bef6afe4d005790125b3da6"
+      },
+      {
+        "path": "backend/spider-runtime/session.mjs",
+        "sha256": "2f4fe08e40a6b8727eecf9debc954a8311d3a7dca829f1ef696deb6471e66c48"
+      },
+      {
+        "path": "backend/spider-runtime/subscription-cli.mjs",
+        "sha256": "44d10075394fb3e0d37495aca03bd88ea014b0f8826196516e15b5e4ebffc245"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/session.mjs",
+        "sha256": "6eb00770dd864ca6dec2125edbe664a1908f0df45e15b5d28ca08331eae6a2a1"
+      },
+      {
+        "path": "docker/cli.mjs",
+        "sha256": "45d8155d80fa7c3f68d61d4eb60c2861ed6d17711184e7e180d4f481b211e144"
+      }
+    ]
+  },
+  "constraints": {
+    "uid": 10001,
+    "readOnlyRoot": true,
+    "capabilities": "ALL dropped",
+    "noNewPrivileges": true,
+    "pids": 256,
+    "memoryBytes": 2147483648,
+    "tmpfs": "/tmp:rw,exec,nosuid,nodev,size=256m",
+    "network": "bridge for source requests; no published ports; offline doctor uses network none"
+  },
+  "real": {
+    "date": "2026-10-15T00:38:31.611Z",
+    "host": {
+      "platform": "linux",
+      "architecture": "x64"
+    },
+    "scope": "Real automatic subscription HTTP JAR retrieval, strict advertised MD5 verification, native init/Aid home and disk-cache restart on NAS Docker; no manual JAR mapping and no ART",
+    "runs": [
+      {
+        "useCache": false,
+        "sourceCount": 48,
+        "ready": true,
+        "home": {
+          "keys": [
+            "class"
+          ],
+          "classes": 8,
+          "sha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5"
+        },
+        "artifacts": {
+          "scope": "downloaded JAR pairs only; excludes runtime DEX/module/plugin data",
+          "integrity": "strict",
+          "maxBytes": 134217728,
+          "bytes": 1279773,
+          "entries": 1,
+          "pinned": 1,
+          "persistent": true
+        },
+        "downloads": 1,
+        "lockReleased": true
+      },
+      {
+        "useCache": true,
+        "sourceCount": 48,
+        "ready": true,
+        "home": {
+          "keys": [
+            "class"
+          ],
+          "classes": 8,
+          "sha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5"
+        },
+        "artifacts": {
+          "scope": "downloaded JAR pairs only; excludes runtime DEX/module/plugin data",
+          "integrity": "strict",
+          "maxBytes": 134217728,
+          "bytes": 1279773,
+          "entries": 1,
+          "pinned": 1,
+          "persistent": true
+        },
+        "downloads": 1,
+        "lockReleased": true
+      }
+    ],
+    "metadata": [
+      {
+        "version": 1,
+        "sha256": "eba70fffdb728dd0657ef27b22d97de7530d96160e31bef6c08ccca21e479ab0",
+        "md5": "25f4460aed52987f02865f02a1e83aa8",
+        "bytes": 1279598,
+        "downloadedAt": 1792024681405
+      }
+    ],
+    "downloads": 1,
+    "passed": true
+  },
+  "doctor": {
+    "ok": true,
+    "platform": "linux",
+    "architecture": "x64",
+    "node": "v24.22.0",
+    "scope": "Offline synthetic config/QuickJS/DEX and actual ARM machine-code probes; no Android parity or real-source certification",
+    "config": {
+      "sites": 1
+    },
+    "quickjs": {
+      "ready": true,
+      "answer": 42
+    },
+    "dex": {
+      "ready": true,
+      "classes": 1,
+      "resource": "offline-dex-resource"
+    },
+    "arm": [
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      },
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64"
+      },
+      {
+        "value": 43,
+        "bits": 32,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      }
+    ],
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokensRejected": true,
+      "listeners": 0,
+      "dexLoaders": 0
+    },
+    "java": "openjdk version \"17.0.20.1\" 2026-08-18"
+  },
+  "probeScriptSha256": "83e8432ff070b9de8e48994588080f9bcab18df2c363f4b8d9f10b3e7873511d",
+  "limits": [
+    "Only HTTP(S) binary JAR/DEX retrieval; img+/assets/file/clan need explicit mappings",
+    "Managed JAR and sidecar quota excludes DEX/module/native/plugin data and NAS volume total",
+    "Cache ownership is exclusive; stale lock after unclean termination requires operator recovery after confirming previous owner stopped",
+    "SHA/atomicity/limits/bounded retries and site download-failure handling are explicit host additions; the 19-case source gate covers successful cache/identity choices only",
+    "No interception of dynamically requested helper JARs; multiple protected native artifacts still need isolated workers",
+    "Real-source check covers Aid init/home and cache restart; other methods/sources/Android ART remain unverified"
+  ],
+  "cleanup": {
+    "temporaryFilesRemoved": true,
+    "taskServicesRunning": false,
+    "autostartChanges": false,
+    "existingNasContainersModified": false,
+    "retainedProjectToolsApproxMiB": 404,
+    "retainedNasImages": [
+      "tvbox-core:linux-amd64-20261015",
+      "tvbox-core:linux-amd64-artifacts-20261015"
+    ],
+    "newTools": [],
+    "temporaryContainersRemoved": true,
+    "sshControlMasterClosed": true
+  }
+}
