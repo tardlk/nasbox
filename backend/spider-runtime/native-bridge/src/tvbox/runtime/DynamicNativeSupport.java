@@ -41,24 +41,36 @@ public final class DynamicNativeSupport {
  private static void validClass(String entry,String name)throws IOException{
   if(name.startsWith("/")||name.contains("\\")||Arrays.asList(name.split("/")).contains("..")||!entry.equals(name+".class"))throw new IOException("DYNAMIC_NATIVE_CLASS_PATH");
  }
- private record Target(String name,Set<String> natives){}
+ private record Target(String name,Set<String> natives,Set<String> instanceNatives,boolean loads,String unsupported){}
  private static List<Target> targets(Path jar,boolean strict)throws IOException{
   List<Target> result=new ArrayList<>();int count=0;
   try(JarFile archive=new JarFile(jar.toFile())){var entries=archive.entries();while(entries.hasMoreElements()){
    JarEntry entry=entries.nextElement();if(++count>8192)throw new IOException("DYNAMIC_NATIVE_ENTRY_LIMIT");if(entry.isDirectory()||!entry.getName().endsWith(".class"))continue;
-   byte[] data;try(InputStream input=archive.getInputStream(entry)){data=read(input);}ClassReader reader=new ClassReader(data);validClass(entry.getName(),reader.getClassName());
-   Set<String> natives=new HashSet<>();boolean[] load={false};String[] unsupported={null};
+   byte[] data;try(InputStream input=archive.getInputStream(entry)){data=read(input);}
+   // A .class suffix may name an encrypted resource or malformed decoy. Only
+   // ASM-unreadable entries are excluded from analysis; the original archive
+   // remains intact, so requesting that class still fails in the JVM. Size,
+   // I/O, class-path and supported-native checks stay outside this classifier.
+   if(!VerifiedJarRepair.isReadableClass(data))continue;
+   ClassReader reader=new ClassReader(data);validClass(entry.getName(),reader.getClassName());
+   Set<String> natives=new HashSet<>(),instanceNatives=new HashSet<>();boolean[] load={false};String[] unsupported={null};
    reader.accept(new ClassVisitor(Opcodes.ASM9){
     public MethodVisitor visitMethod(int access,String name,String descriptor,String signature,String[] exceptions){
-     if((access&Opcodes.ACC_NATIVE)!=0){natives.add(name+descriptor);if((access&Opcodes.ACC_STATIC)==0)unsupported[0]="instance native";}
+     if((access&Opcodes.ACC_NATIVE)!=0){if((access&Opcodes.ACC_STATIC)==0)instanceNatives.add(name+descriptor);else natives.add(name+descriptor);}
      return new MethodVisitor(Opcodes.ASM9){public void visitMethodInsn(int opcode,String owner,String name,String descriptor,boolean itf){
       if(loadCall(owner,name)){load[0]=true;if(!name.equals("load")||!descriptor.equals("(Ljava/lang/String;)V")||(opcode!=Opcodes.INVOKESTATIC&&opcode!=Opcodes.INVOKEVIRTUAL))unsupported[0]="library-name load";}
      }};
     }
    },ClassReader.SKIP_DEBUG|ClassReader.SKIP_FRAMES);
-   if(strict&&unsupported[0]!=null)throw new IOException("DYNAMIC_NATIVE_UNSUPPORTED: "+unsupported[0]);
-   if(load[0]||!natives.isEmpty())result.add(new Target(reader.getClassName(),natives));
-  }}return result;
+   if(load[0]||!natives.isEmpty())result.add(new Target(reader.getClassName(),natives,instanceNatives,load[0],unsupported[0]));
+  }}
+  // A native declaration alone does not load a library. Bundled SDK classes
+  // with unused instance JNI methods must not reject an otherwise Java JAR.
+  // Without an actual System/Runtime library-load instruction, leave every
+  // method untouched: invoking an unresolved native still fails in the JVM.
+  if(result.stream().noneMatch(Target::loads))return List.of();
+  if(strict)for(Target target:result)if(target.unsupported()!=null)throw new IOException("DYNAMIC_NATIVE_UNSUPPORTED: "+target.unsupported());
+  return result;
  }
  public static boolean needsBridge(Path jar)throws IOException{return !targets(jar,false).isEmpty();}
  private static Path directory(Path path)throws IOException{
@@ -77,12 +89,37 @@ public final class DynamicNativeSupport {
   ownedRoot=HostServices.directory.toPath().toRealPath();workDirectory=directory(work);
   try{
    patchedDirectory=Files.createTempDirectory(workDirectory,"dynamic-patched-");libraryDirectory=Files.createTempDirectory(workDirectory,"dynamic-so-");
-   int patched=NativePatcher.patchDynamic(jar.toFile(),patchedDirectory.toFile(),resolver);
+   // The reference patcher scans every native declaration. Feed it only the
+   // selected classes, while retaining the original JAR for actual class and
+   // resource loading. Instance-only SDK classes are not patch targets.
+   Path scan=Files.createTempFile(workDirectory,"dynamic-scan-",".jar");int patched;
+   try(JarFile archive=new JarFile(jar.toFile())){
+    try(JarOutputStream output=new JarOutputStream(Files.newOutputStream(scan))){for(Target target:targets){
+     String name=target.name()+".class";JarEntry entry=archive.getJarEntry(name);if(entry==null)throw new IOException("DYNAMIC_NATIVE_TARGET_MISSING");
+     output.putNextEntry(new JarEntry(name));try(InputStream input=archive.getInputStream(entry)){
+      byte[] bytes=read(input);
+      if(!target.instanceNatives().isEmpty()){
+       // This scan-only copy is never a class-loading source. Remove instance
+       // declarations from the static-only patcher's plan, then restore their
+       // complete original declarations into the verified output below.
+       ClassWriter scanWriter=new ClassWriter(0);new ClassReader(bytes).accept(new ClassVisitor(Opcodes.ASM9,scanWriter){
+        public MethodVisitor visitMethod(int access,String method,String descriptor,String signature,String[] exceptions){
+         return target.instanceNatives().contains(method+descriptor)?null:super.visitMethod(access,method,descriptor,signature,exceptions);
+        }
+       },0);bytes=scanWriter.toByteArray();
+      }
+      output.write(bytes);
+     }output.closeEntry();
+    }}
+    patched=NativePatcher.patchDynamic(scan.toFile(),patchedDirectory.toFile(),resolver);
+   }finally{Files.deleteIfExists(scan);}
    if(patched!=targets.size())throw new IOException("DYNAMIC_NATIVE_PATCH_INCOMPLETE");
    for(Target target:targets){Path path=patchedDirectory.resolve(target.name()+".class");if(!Files.isRegularFile(path,LinkOption.NOFOLLOW_LINKS))throw new IOException("DYNAMIC_NATIVE_PATCH_MISSING");
-    ClassReader reader=new ClassReader(Files.readAllBytes(path));ClassWriter writer=new ClassWriter(reader,0);Set<String> found=new HashSet<>();boolean[] unsafe={false};
+    byte[] original;try(JarFile archive=new JarFile(jar.toFile());InputStream input=archive.getInputStream(archive.getJarEntry(target.name()+".class"))){original=read(input);}
+    ClassReader reader=new ClassReader(Files.readAllBytes(path));ClassWriter writer=new ClassWriter(reader,0);Set<String> found=new HashSet<>(),restored=new HashSet<>();boolean[] unsafe={false};
     reader.accept(new ClassVisitor(Opcodes.ASM9,writer){
      public MethodVisitor visitMethod(int access,String name,String descriptor,String signature,String[] exceptions){
+      if(target.instanceNatives().contains(name+descriptor))return null;
       if((access&Opcodes.ACC_NATIVE)!=0)unsafe[0]=true;if(target.natives().contains(name+descriptor))found.add(name+descriptor);
       return new MethodVisitor(Opcodes.ASM9,super.visitMethod(access,name,descriptor,signature,exceptions)){
        public void visitMethodInsn(int opcode,String owner,String name,String descriptor,boolean itf){
@@ -93,8 +130,21 @@ public final class DynamicNativeSupport {
        }
       };
      }
+     public void visitEnd(){
+      // The bridge supports static JNI calls. Preserve instance declarations
+      // exactly, including annotations; never turn them into static-style
+      // forwarding stubs or successful empty bodies.
+      new ClassReader(original).accept(new ClassVisitor(Opcodes.ASM9){
+       public MethodVisitor visitMethod(int access,String name,String descriptor,String signature,String[] exceptions){
+        if(!target.instanceNatives().contains(name+descriptor))return null;
+        if((access&Opcodes.ACC_NATIVE)==0||(access&Opcodes.ACC_STATIC)!=0)throw new IllegalStateException("DYNAMIC_NATIVE_INSTANCE_CONTRACT");
+        restored.add(name+descriptor);return writer.visitMethod(access,name,descriptor,signature,exceptions);
+       }
+      },ClassReader.SKIP_DEBUG|ClassReader.SKIP_FRAMES);
+      super.visitEnd();
+     }
     },0);
-    if(unsafe[0]||!found.equals(target.natives()))throw new IOException("DYNAMIC_NATIVE_PATCH_UNSAFE");Files.write(path,writer.toByteArray());
+    if(unsafe[0]||!found.equals(target.natives())||!restored.equals(target.instanceNatives()))throw new IOException("DYNAMIC_NATIVE_PATCH_UNSAFE");Files.write(path,writer.toByteArray());
    }
    NativeBridgeMain.arm(jar.toFile(),workDirectory.toFile(),resolver);return patchedDirectory;
   }catch(Exception|Error failure){close();throw failure;}

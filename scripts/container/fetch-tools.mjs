@@ -17,7 +17,7 @@ export async function provisionTools(){
   // Extract only pinned archive members, never a whole untrusted path tree.
   for(const item of dex.files){const path=join(base,item.path);if(existsSync(path))continue;const r=spawnSync('unzip',['-p',archive,'dex-tools-v2.4/'+item.path],{maxBuffer:64*1024*1024});if(r.error||r.status!==0||r.stdout.length!==item.bytes||sha(r.stdout)!==item.sha256)throw new Error('Pinned DEX extraction failed: '+item.path);writeVerified(path,r.stdout);}
  }finally{rmSync(temporary,{recursive:true,force:true});}}
- await import('../../backend/spider-runtime/native-bridge/fetch-runtime.mjs');
+await (await import('../../backend/spider-runtime/native-bridge/fetch-runtime.mjs')).provisionNativeRuntime();
  return{coreJars:core.length,dexFiles:dex.files.length};
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url))console.log(JSON.stringify(await provisionTools()));

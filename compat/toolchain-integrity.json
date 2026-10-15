@@ -84,9 +84,27 @@
   },
   "nativeBridge": {
     "manifest": "backend/spider-runtime/native-bridge/runtime.json",
-    "files": 20,
-    "bytes": 67798245,
-    "verification": "Official Maven Central published SHA-1 checked; all artifact SHA-256 pinned; no native JARs committed",
-    "licenses": "backend/spider-runtime/native-bridge/NOTICE"
+    "files": 22,
+    "bytes": 68312801,
+    "verification": "Per-artifact HTTPS repository SHA-1 and local SHA-256 pins. Maven Central artifacts retain published SHA-1; the host Sardine AAR uses JitPack-published SHA-1 (same trust origin, not an independent authenticity signature), pinned whole-archive SHA-256 and separately pinned extracted classes.jar.",
+    "licenses": "backend/spider-runtime/native-bridge/NOTICE",
+    "hostWebDav": {
+      "sardineVersion": "0.4",
+      "simpleXmlVersion": "2.7.1",
+      "absentFromAuditedOfficialApk": true,
+      "scope": "Additional real JVM host dependency; no claim of official APK dependency parity",
+      "files": [
+        {
+          "filename": "sardine-android-0.4.jar",
+          "sha256": "8b4256a3b400618dfc1389e48bdbcd77d63d30755e3ded72b3dde97ec9c8e999",
+          "bytes": 101359
+        },
+        {
+          "filename": "simple-xml-2.7.1.jar",
+          "sha256": "7a43d2d5e488e0dac57a6de0284df4413a4733365239649309c4b693f4e429f9",
+          "bytes": 413197
+        }
+      ]
+    }
   }
 }

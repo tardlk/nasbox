@@ -7,7 +7,14 @@
     "apkHash": null,
     "androidRuntimeVerified": false,
     "gson": "2.10.1",
-    "quickjsWrapper": "2.1.0"
+    "quickjsWrapper": "2.1.0",
+    "officialProductRuntimeVerification": {
+      "apkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+      "declaredSourceCommit": "d5f500677a4da15c5836477352030d9ebb5cb37a",
+      "runtime": "Android 11 API30 ARM64 emulator, actual ART",
+      "report": "docs/linux/android-runtime-probe.json",
+      "scope": "6 fixed-input parser cases, 12 JAR/API/ext cases, controlled settings/home/category UI smoke; official product source differs from pinned commit"
+    }
   },
   "winbox": {
     "repository": "https://github.com/yagami-hue/Win-box",
@@ -24,6 +31,6 @@
     "media decoding",
     "transcoding"
   ],
-  "nasVerificationScope": "Linux amd64 Docker core and original-role JAR route fixtures; selected real protected JAR init/home; not complete Android/ART parity",
-  "nasVerificationReport": "docs/linux/artifact-routes-probe.json"
+  "nasVerificationScope": "Physical Linux amd64 NAS: 114 fixed captured artifacts old/new bounded matrix plus explicit repaired subsets; original official APK/ART comparison separately scoped. No complete parity claim.",
+  "nasVerificationReport": "docs/linux/post-repair-catalog-comparison.json"
 }

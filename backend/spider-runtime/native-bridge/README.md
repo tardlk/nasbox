@@ -76,7 +76,7 @@ signal/eventfd/epoll/proc/nanosleep syscall probes; POSIX shared-file/symlink bo
 SQLite transactions/reopen; typed preference process restart; queued callbacks;
 real accept-thread shutdown; and worker exit. Real source report:
 `docs/linux/native-runtime-probe.json`: 44/45 Spider instances, five JSON homes,
-real DexClassLoader and clear/reload. `cc` references absent XPathGuard. Remaining
+real DexClassLoader and clear/reload. `cc` returned SpiderNull in the later unchanged official APK/ART check as well; this is not by itself a Linux missing-class finding. Remaining
 HTTP, readonly-database and background class-loading/shutdown diagnostics are
 retained in the report; they are not counted as full API parity. Home data
 is dynamic; counts/hashes describe the recorded run. Category/detail/search/player
@@ -84,7 +84,7 @@ and every native API are not established. The engine-only Docker doctor now pass
 `docs/linux/docker-runtime-probe.json`. The real protected JAR now also runs on
 NAS; see nas-native-runtime-probe.json. Automatic HTTP JAR resolution and bounded
 download caching are documented in ../ARTIFACTS.md and jar-artifact-cache-probe.json.
-Android/ART remains outstanding. Managed runtime cache quotas are described in
+Bounded original-product ART evidence is now in docs/linux/android-runtime-probe.json; full parity remains outstanding. Managed runtime cache quotas are described in
 ../CACHE.md; native/plugin data remains outside those budgets.
 
 ## Captured failure repairs — 2026-10-15
@@ -113,3 +113,16 @@ See docs/linux/jar-repairs-probe.json for fixed-input NAS evidence and the defau
 Android versus explicit declared initializer policy. The final recorded workers
 exit with code0 and no signal. Complete Android rendering and general SDK/ART
 semantics remain open. Managed cache budgets are described in ../CACHE.md.
+
+
+## Original-product ART findings — 2026-10-15
+
+Unreadable or unsupported `.class` entries are preserved byte-for-byte as opaque resources. They cannot prove constructor ancestry and are not passed to native patch planning. If requested as classes, they still fail normal JVM definition/verification. Only syntactically readable classes participate in the checked repairs.
+
+A native declaration without a library-load instruction does not activate the dynamic bridge. When a path load is present, only static-native/load classes are patched. Instance-only SDK classes remain in the original archive; mixed classes retain their original instance native declarations, including annotations. Invoking unresolved instance JNI still throws `UnsatisfiedLinkError`. No successful empty native bodies are substituted.
+
+Observed headless graphics calls now use actual Java2D ARGB rasterization and in-memory PNG encoding. The supported subset includes vector paths, basic shapes, linear gradients, host-font glyphs and the Paint return descriptors needed by Android-compiled callers. Legacy TextPaint descriptors are preserved. Each bitmap is limited to 16 million pixels (64 MiB pixel storage); that is not an aggregate worker-memory bound. Unsupported bitmap configurations, compression formats, shaders and custom font mappings fail explicitly. Font metrics, antialiasing, pixels and PNG bytes are host behavior and are not asserted to match Android Skia. No rendering/player UI is provided by these adapters.
+
+See docs/linux/android-art-comparison-probe.json for the fixed JAR/API/ext and exact method-parameter comparison. The official APK source differs from the pinned Android snapshot, notably ProtectedInitJar; those observations are separate from exact pinned-source ART certification.
+
+The PanConfig continuation also binds the real Sardine Android 0.4 and Simple XML 2.7.1 libraries for JVM resolution of WebDAV helper signatures. These are supplemental host dependencies; static auditing found no Sardine definitions in the official APK. Existing OkHttp/Okio are reused. Pinned complete AAR and extracted classes.jar hashes, licenses and genuine authenticated loopback PROPFIND/XML/GET/PUT/MKCOL tests cover this addition. It is not certification of every WebDAV provider or Android dependency version.

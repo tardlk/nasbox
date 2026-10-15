@@ -68,7 +68,16 @@ public class TextPaint extends android.graphics.Paint {
     }
 
     public void setTypeface(android.graphics.Typeface tf) {
-        this.typeface = tf;
+        writeRasterTypeface(tf);
+    }
+
+    @Override protected void writeRasterTypeface(android.graphics.Typeface tf) { this.typeface = tf; }
+    @Override protected float readRasterStrokeWidth() { return strokeWidth; }
+    @Override protected void writeRasterStyle(android.graphics.Paint.Style value) { style = value.ordinal(); }
+    @Override protected android.graphics.Paint.Style readRasterStyle() {
+        android.graphics.Paint.Style[] values = android.graphics.Paint.Style.values();
+        if (style < 0 || style >= values.length) throw new UnsupportedOperationException("Unsupported legacy paint style: " + style);
+        return values[style];
     }
 
     public android.graphics.Typeface getTypeface() {

@@ -38,9 +38,26 @@ public final class VerifiedJarRepair {
         return new VerifiedJarRepair().rewrite(jar);
     }
 
+    /** A static parsing predicate, not a claim that JVM verification will pass.
+     * Some protected artifacts contain opaque or unsupported .class entries.
+     * They remain byte-for-byte resources; defining them still fails normally.
+     */
+    public static boolean isReadableClass(byte[] bytes) {
+        return readableInfo(bytes) != null;
+    }
+
+    private static Info readableInfo(byte[] bytes) {
+        // ASM does not itself require the classfile magic before parsing.
+        if (bytes.length < 10 || bytes[0] != (byte) 0xca || bytes[1] != (byte) 0xfe
+                || bytes[2] != (byte) 0xba || bytes[3] != (byte) 0xbe) return null;
+        try { return inspect(bytes); }
+        catch (IllegalArgumentException | IndexOutOfBoundsException malformedOrUnsupported) { return null; }
+    }
+
     private int rewrite(Path jar) throws IOException {
         Map<String, byte[]> entries = new LinkedHashMap<>();
         Map<String, Long> times = new HashMap<>();
+        Set<String> readableEntries = new HashSet<>();
         long total = 0;
         try (ZipFile zip = new ZipFile(jar.toFile())) {
             Enumeration<? extends ZipEntry> en = zip.entries();
@@ -54,16 +71,24 @@ public final class VerifiedJarRepair {
                     if (entries.putIfAbsent(e.getName(), bytes) != null) throw new IOException("CONSTRUCTOR_REPAIR_DUPLICATE_ENTRY");
                     times.put(e.getName(), e.getTime());
                     if (e.getName().endsWith(".class")) {
-                        Info info = inspect(bytes);
-                        classes.put(info.name, info);
-                        artifactClasses.add(info.name);
+                        String entryType = e.getName().substring(0, e.getName().length() - 6);
+                        Info info = readableInfo(bytes);
+                        // Only canonical entries can receive synthesized methods.
+                        // An unreadable local definition must not be substituted
+                        // with a same-named host class when proving an ancestor.
+                        if (info == null) classes.put(entryType, null);
+                        else if (entryType.equals(info.name)) {
+                            classes.put(info.name, info);
+                            artifactClasses.add(info.name);
+                            readableEntries.add(e.getName());
+                        }
                     }
                 }
             }
         }
         int[] changed = { 0 };
         for (Map.Entry<String, byte[]> entry : entries.entrySet()) {
-            if (!entry.getKey().endsWith(".class")) continue;
+            if (!readableEntries.contains(entry.getKey())) continue;
             ClassReader reader = new ClassReader(entry.getValue());
             Map<String, Map<Integer, String>> plans = new HashMap<>();
             int before = changed[0];
@@ -173,7 +198,18 @@ public final class VerifiedJarRepair {
                 result.name = name; result.parent = parent; result.access = access;
             }
             public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-                if (!name.equals("<init>")) return null;
+                Type.getArgumentTypes(descriptor); Type.getReturnType(descriptor);
+                if (!name.equals("<init>")) return new MethodVisitor(Opcodes.ASM9) {
+                    public void visitMethodInsn(int op, String owner, String name, String desc, boolean itf) {
+                        Type.getArgumentTypes(desc); Type.getReturnType(desc);
+                    }
+                    public void visitInvokeDynamicInsn(String name, String desc, Handle handle, Object... args) {
+                        Type.getArgumentTypes(desc); Type.getReturnType(desc);
+                    }
+                    public void visitFieldInsn(int op, String owner, String name, String desc) { Type.getType(desc).getSize(); }
+                    public void visitMultiANewArrayInsn(String desc, int dimensions) { Type.getType(desc); }
+                    public void visitLdcInsn(Object value) { if (value instanceof ConstantDynamic) ((ConstantDynamic) value).getSize(); }
+                };
                 List<String> expected = new ArrayList<>(); expected.add("v" + Opcodes.ALOAD + ":0");
                 int local = 1;
                 for (Type arg : Type.getArgumentTypes(descriptor)) {
@@ -186,16 +222,17 @@ public final class VerifiedJarRepair {
                     public void visitInsn(int op) { event("i" + op); }
                     public void visitVarInsn(int op, int var) { event("v" + op + ":" + var); }
                     public void visitMethodInsn(int op, String owner, String method, String desc, boolean itf) {
+                        Type.getArgumentTypes(desc); Type.getReturnType(desc);
                         if (op != Opcodes.INVOKESPECIAL || !method.equals("<init>")) valid = false;
                         event("m" + owner + desc);
                     }
                     public void visitIntInsn(int op, int value) { valid = false; }
                     public void visitTypeInsn(int op, String value) { valid = false; }
-                    public void visitFieldInsn(int op, String owner, String field, String desc) { valid = false; }
-                    public void visitLdcInsn(Object value) { valid = false; }
+                    public void visitFieldInsn(int op, String owner, String field, String desc) { Type.getType(desc).getSize(); valid = false; }
+                    public void visitLdcInsn(Object value) { if (value instanceof ConstantDynamic) ((ConstantDynamic) value).getSize(); valid = false; }
                     public void visitJumpInsn(int op, Label label) { valid = false; }
                     public void visitIincInsn(int var, int amount) { valid = false; }
-                    public void visitInvokeDynamicInsn(String name, String desc, Handle handle, Object... args) { valid = false; }
+                    public void visitInvokeDynamicInsn(String name, String desc, Handle handle, Object... args) { Type.getArgumentTypes(desc); Type.getReturnType(desc); valid = false; }
                     public void visitTableSwitchInsn(int min, int max, Label label, Label... labels) { valid = false; }
                     public void visitLookupSwitchInsn(Label label, int[] keys, Label[] labels) { valid = false; }
                     public void visitMultiANewArrayInsn(String desc, int dimensions) { valid = false; }
@@ -203,7 +240,7 @@ public final class VerifiedJarRepair {
                     public void visitEnd() { result.constructors.put(descriptor, new Constructor(access, valid && index == expected.size() ? result.parent : null)); }
                 };
             }
-        }, ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+        }, 0);
         return result;
     }
 

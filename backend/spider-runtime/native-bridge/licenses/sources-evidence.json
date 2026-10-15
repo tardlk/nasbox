@@ -58,5 +58,17 @@
     "url": "https://repo.maven.apache.org/maven2/com/google/android/android/4.1.1.4/android-4.1.1.4-sources.jar",
     "sha256": "eb97415c84d456012f1be6c5d1b1a35d054b7f054c5b544ee5bd12c9fce4866f",
     "retained": []
+  },
+  {
+    "url": "https://jitpack.io/com/github/thegrizzlylabs/sardine-android/0.4/sardine-android-0.4-sources.jar",
+    "sha256": "9ca09f15ee7b9739edd71706ef741faf689b09a7eabe7d87bc34800575aefa6b",
+    "bytes": 92376,
+    "retained": []
+  },
+  {
+    "url": "https://repo.maven.apache.org/maven2/org/simpleframework/simple-xml/2.7.1/simple-xml-2.7.1-sources.jar",
+    "sha256": "56d20ec7d809ad58b685d13d980d83ca6a2e78b5104f9f039480f2d98c66dc86",
+    "bytes": 645316,
+    "retained": []
   }
 ]

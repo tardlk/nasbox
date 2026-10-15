@@ -26,3 +26,17 @@ provide their required source/attribution when producing Docker/release images.
 The Android API artifact supplies symbols and throwing SDK stubs. It is not an
 Android operating system or an ART runtime. No subscribed JAR, decrypted code,
 remote scripts, credentials or runtime databases are included in source control.
+
+Additional JVM host WebDAV libraries (not dependencies found in the audited
+official TVBox APK): sardine-android 0.4 and Simple XML 2.7.1, Apache-2.0.
+Sardine's v0.4 Gradle declaration uses OkHttp 3.11.0; this host reuses its already
+pinned OkHttp 3.12.11 and Okio 2.8.0 instead of adding a second HTTP stack. The
+provider helper signatures match the real library. This binding supplies actual
+WebDAV operations for JVM class resolution; it is not a claim that the APK
+contains this version, or that Android and host WebDAV behavior is identical.
+Sardine's JitPack AAR is verified before its exact classes.jar is extracted;
+the archive, extracted JAR, POM and source/license provenance are independently
+pinned in runtime.json and licenses/sardine-android-0.4/provenance.json. The
+JitPack SHA-1 comes from the same repository and is not a separate authenticity
+signature. Simple XML's Maven Central SHA-1 and local SHA-256 are retained.
+The JDK supplies StAX; obsolete optional StAX/XPP3 binaries are not installed.

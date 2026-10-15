@@ -144,7 +144,6 @@ for (const [name, options, expected] of [
 });
 for (const [name, body] of [
  ['library names', 'static {System.loadLibrary("owned-missing-library");} public static native int value();'],
- ['instance native methods', 'public native int value();'],
 ]) test('unsupported dynamic ' + name + ' remain explicit failures', { skip: !enabled, timeout: 90000 }, () => {
  setup(); const staging = mkdtempSync(join(directory, 'unsupported-')), source = join(staging, 'Dynamic.java'), classes = join(staging, 'classes'); mkdirSync(classes);
  writeFileSync(source, 'package com.github.catvod.spider;public class Dynamic {' + body + '}');

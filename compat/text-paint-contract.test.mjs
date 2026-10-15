@@ -116,6 +116,7 @@ test('TextPaint keeps legacy ABI and verifies an Android-compiled Paint consumer
     assert.match(bytecode, /android\/graphics\/Paint\.measureText:\(Ljava\/lang\/String;\)F/);
     run(join(javaHome, 'bin/javac'), ['--release', '17', '-encoding', 'UTF-8', '-cp', current, '-d', current,
       join(root, local, 'graphics/Paint.java'), join(root, local, 'text/TextPaint.java'), typeface,
+      join(root, local, 'graphics/Shader.java'), join(root, local, 'graphics/Path.java'),
       write('TextView.java', fixture), write('TextPaintContractProbe.java', probe)]);
     assert.match(run(join(javaHome, 'bin/java'), ['-Xverify:all', '-cp', current, 'TextPaintContractProbe', previous]), /text-paint-contract-ok/);
   } finally {

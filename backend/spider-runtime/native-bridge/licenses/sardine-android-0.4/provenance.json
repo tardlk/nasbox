@@ -1,0 +1,33 @@
+{
+  "sardineTag": "v0.4",
+  "tagObject": "2e44b76996466c373ee8f49f2ec7fed2c9f20406",
+  "sourceCommit": "cbc23e8afcb8f5a3261e5f822000e9bc61f114e7",
+  "artifacts": [
+    {
+      "filename": "sardine-android-0.4.jar",
+      "url": "https://jitpack.io/com/github/thegrizzlylabs/sardine-android/0.4/sardine-android-0.4.aar",
+      "sha256": "8b4256a3b400618dfc1389e48bdbcd77d63d30755e3ded72b3dde97ec9c8e999",
+      "sha1": "5f764dee58b85752e8a1667b70665801061fa28e",
+      "bytes": 101359,
+      "archive": {
+        "entry": "classes.jar",
+        "sha256": "ac99a86b1d7211f83aefd88a6b71be109d088f455b10dfb9d456ffd2ed331c1b",
+        "upstreamSha1": "ca571cef12379fb892c723084e73f798901d3132",
+        "bytes": 84025
+      },
+      "purpose": "Additional real host WebDAV implementation for JVM resolution of provider helper signatures. Absent from audited official APK; not an original-product dependency or a parity claim. 0.4 selected for provider ABI and existing OkHttp 3.x compatibility."
+    },
+    {
+      "filename": "simple-xml-2.7.1.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/simpleframework/simple-xml/2.7.1/simple-xml-2.7.1.jar",
+      "sha256": "7a43d2d5e488e0dac57a6de0284df4413a4733365239649309c4b693f4e429f9",
+      "upstreamSha1": "dd91fb744c2ff921407475cb29a1e3fee397d411",
+      "bytes": 413197,
+      "purpose": "Declared XML serializer for the additional Sardine host library; JDK StAX supplies the XML runtime. No Android XML stub or no-op interface."
+    }
+  ],
+  "officialApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+  "officialApkSardineClassDefinitions": 0,
+  "scope": "Additional real JVM host library; source APK has no Sardine definitions or declared dependency. Provider WebDAV helper ABI matches this library; current actual source execution remains a separate NAS validation.",
+  "license": "Apache-2.0; LICENSE from upstream v0.4 and published Simple XML POM"
+}

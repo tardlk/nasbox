@@ -33,6 +33,27 @@ function bridgeGate(source){
  const initialized='        if (inited) return;';unique(initialized);source=source.replace(initialized,initialized+'\n        if (lazyJar == null || lazyWork == null || lazyResolver == null) throw new IllegalStateException("NATIVE_BRIDGE_CLOSED");');
  return source;
 }
+function patchPaintAbi(javaHome,classes,classpath,stage){
+ // Java source cannot express both legacy TextPaint's void setter and the real
+ // Android Paint return descriptor. JVM method descriptors include return types.
+ const helper=join(stage,'PaintAbiPatch.java');
+ writeFileSync(helper,`import java.nio.file.*;import org.objectweb.asm.*;
+public class PaintAbiPatch {
+ public static void main(String[] args)throws Exception {
+  Path path=Path.of(args[0]);byte[] bytes=Files.readAllBytes(path);ClassReader reader=new ClassReader(bytes);ClassWriter writer=new ClassWriter(0);int[] found={0};
+  reader.accept(new ClassVisitor(Opcodes.ASM9,writer){public MethodVisitor visitMethod(int access,String name,String desc,String signature,String[] exceptions){
+   if(name.equals("setTypefaceForRaster")){if(!desc.equals("(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;"))throw new IllegalStateException("Paint ABI source descriptor differs");found[0]++;name="setTypeface";}
+   else if(name.equals("setTypeface"))throw new IllegalStateException("Unexpected preexisting Paint setter");
+   return super.visitMethod(access,name,desc,signature,exceptions);
+  }},0);
+  if(found[0]!=1)throw new IllegalStateException("Paint ABI patch expected exactly one method");
+  Files.write(path,writer.toByteArray());
+ }
+}`);
+ const run=(command,args)=>{const result=spawnSync(join(javaHome,'bin',command),args,{encoding:'utf8',timeout:30000,maxBuffer:1024*1024});if(result.error||result.status!==0)throw new Error('Paint ABI patch failed: '+(result.error||result.stderr));};
+ run('javac',['--release','17','-cp',classpath,'-d',stage,helper]);
+ run('java',['-Xverify:all','-cp',[stage,classpath].join(delimiter),'PaintAbiPatch',join(classes,'android/graphics/Paint.class')]);
+}
 export function buildNativeProfile(base){
  const tool=nativeToolchain(),manifest=JSON.parse(readFileSync(join(here,'source-manifest.json'),'utf8'));
  for(const item of manifest.files)if(hash(readFileSync(join(root,item.path)))!==item.sha256)throw new Error('WinBox native reference checksum differs: '+item.path);
@@ -111,6 +132,7 @@ export function buildNativeProfile(base){
   }
   for(const path of local.filter(p=>p.endsWith('.java'))){const target=join(src,path.slice(join(here,'src').length+1));mkdirSync(dirname(target),{recursive:true});copyFileSync(path,target);sources.push(target);}
   const r=spawnSync(join(base.javaHome,'bin/javac'),['--release','17','-encoding','UTF-8','-cp',cp,'-d',classes,...sources],{encoding:'utf8',timeout:60000,maxBuffer:2*1024*1024});if(r.error||r.status!==0)throw new Error('Native profile compile failed: '+(r.error||r.stderr));
+  patchPaintAbi(base.javaHome,classes,cp,stage);
   writeFileSync(join(classes,'complete'),fingerprint);try{renameSync(classes,build);}catch(e){if(!existsSync(join(build,'complete')))throw e;}
  }finally{rmSync(stage,{recursive:true,force:true});}}
  return{...base,build,classpath:[build,cp].join(delimiter),nativeToolchain:tool,fingerprint};
