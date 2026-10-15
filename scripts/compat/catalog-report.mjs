@@ -172,6 +172,30 @@ export async function catalogReport(directory, passes = []) {
   };
 }
 
+export function renderCatalogReport(report) {
+  const { catalog: c, retrieval: r, inventory: i, execution: e } = report;
+  const cell = value => String(value ?? '').replaceAll('|', '\\|').replace(/[\r\n]+/g, ' ');
+  const lines = [
+    '# 公开订阅目录与 JAR 兼容性测试', '',
+    `记录日期：${report.date.slice(0, 10)}。目录 ${c.entries} 条，完整导入 ${c.accepted} 条，另有 ${c.partial} 条保留部分解析状态。`, '',
+    `完整导入包含 ${c.acceptedSourceReferences} 个源引用；部分配置另有 ${c.partialSourceReferences} 个。JAR 获取 ${r.successful}/${r.requestedSignatures} 项成功，按下载后解码内容去重为 ${i.artifacts} 份，其中 ${i.validZip} 份是有效 ZIP。其余内容、HTTP 获取失败和引擎执行失败分开记录。`, '',
+    `已尝试 ${e.uniqueArtifactsAttempted} 份制品，${e.loadedAtLeastOnce} 份取得明确加载成功证据，${e.readyAtLeastOnce} 份取得至少一个 Spider。${e.homeWithContentAtLeastOnce} 份有非空首页，${e.categoryWithContentAtLeastOnce} 份有非空分类，${e.detailWithContentAtLeastOnce} 份有非空详情。`, '',
+    `捕获的 ${i.sourceVariants} 个 API/ext 变体中，实际初始化尝试 ${e.initializedVariantsAttempted} 个，成功 ${e.readyVariants} 个，${e.variantsNotInitialized} 个尚未初始化。每份制品仅抽取有限首页、分类和详情，数字不能解释为所有源的兼容率。`, '',
+    '第一轮测试器的站点 JAR 首次调用包括 DEX 转换，却使用了较短的初始化预算；补测已将首次调用改用加载预算。两轮记录及脚本哈希分别保留，初轮超时不作为不兼容定论。', '',
+    `有效 ZIP 中 ${i.native} 份含原生库，${i.protectedPayloads} 份含 guard 载荷。${i.helperOnly} 份只有 JS/Python 辅助库引用，不能用独立 CSP 首页判断其脚本能力。`, '',
+    `成功获取记录中，声明 MD5 匹配 ${r.advertisedMd5.matched} 项、不匹配 ${r.advertisedMd5.mismatched} 项、未声明或不可得 ${r.advertisedMd5.unavailable} 项。本轮保留 Android 默认获取语义；SHA-256 固定实际输入，不代表全部发布方完整性通过。`, '',
+    '下表按同一 JAR 的多轮正面证据合并；“未证实”包含加载失败和超时等未决情况，具体阶段在 JSON 报告中。未混用不同 JAR 来补某个源缺少的类。', '',
+    '| JAR SHA 前12位 | 关联订阅 | ZIP | 加载 | 成功 Spider 变体 | 非空首页/分类/详情 | 尚未初始化变体 |',
+    '| --- | --- | --- | --- | ---: | ---: | ---: |',
+  ];
+  for (const a of report.artifacts) {
+    const x = a.execution, names = a.catalogNames.join('、');
+    lines.push(`| ${a.sha256.slice(0, 12)} | ${cell(names.length > 75 ? names.slice(0, 75) + '…' : names)} | ${a.inspection.ok ? '有效' : '非 JAR 内容'} | ${x.loadedAtLeastOnce ? '成功' : '未证实'} | ${x.readyVariants} | ${x.homeVariantsWithContent}/${x.categoryVariantsWithContent}/${x.detailVariantsWithContent} | ${x.variantsNotInitialized} |`);
+  }
+  lines.push('', '尚待处理的范围包括更多 ext 变体、混合 main/site 加载角色、动态辅助 JAR、多个原生 JAR 在正式会话中的独立 worker，以及 Android/ART 同输入对照。直播、播放与解码不在这批测试中。', '');
+  return lines.join('\n');
+}
+
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const [directory, output, ...inputs] = process.argv.slice(2);
   if (!directory || !output) throw new Error('Usage: node catalog-report.mjs CAPTURE_DIR OUTPUT [NAME[@RUNNER_SHA256]=REPORT ...]');
@@ -184,5 +208,6 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const report = await catalogReport(directory, passes);
   await mkdir(dirname(resolve(output)), { recursive: true });
   await writeFile(resolve(output), JSON.stringify(report, null, 2) + '\n');
+  if (/\.json$/i.test(output)) await writeFile(resolve(output.replace(/\.json$/i, '.md')), renderCatalogReport(report));
   console.log(JSON.stringify({ catalog: report.catalog.accepted, inventory: report.inventory, execution: report.execution }));
 }

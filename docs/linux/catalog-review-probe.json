@@ -1,0 +1,1171 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-15T03:08:17.485Z",
+  "scope": "Offline catalogue metadata/static byte inspection and verified unchanged pinned full-parser host-JVM comparison only. No remote fetch, spider execution, NAS operation, or Android/ART evidence in this review.",
+  "inputHashes": {
+    "inventory.json": "62d9c1311edc30f0669d52baac8320e1f79eddbc5175cc1a426c5e41553c4602",
+    "artifact-inventory.json": "a5c5e91aa6e5503e8f11b75926f7a8a9d78dd24ab75c502ba504c98bcab4170c",
+    "input-manifest.json": "715531e5657bd600f56cb787409703fe17c4e1b841f5218dff2b0a5585de3281"
+  },
+  "catalog": {
+    "entries": 87,
+    "acceptedEntries": 84,
+    "partialEntries": 1,
+    "otherRejectedEntries": 2,
+    "acceptedSourceReferences": 8401,
+    "partialSourceReferences": 99,
+    "customCatalogAccepted": false,
+    "customCatalogCandidates": 0,
+    "customCatalogResponseKind": "html",
+    "customCatalogResponseSha256": "4bcdfb1c06ebd86d00e3774a9d071085bc34c2f9d52c0b6b02df34c5ef311822"
+  },
+  "retrieval": {
+    "requestedSignatures": 204,
+    "successfulRetrievals": 141,
+    "failedRetrievals": 63,
+    "failedRoles": {
+      "main": 7,
+      "site": 56
+    },
+    "failedCategories": {
+      "timeout": 3,
+      "JAR_HTTP_401": 7,
+      "JAR_HTTP_403": 12,
+      "JAR_HTTP_404": 17,
+      "TypeError": 4,
+      "JAR_HTTP_423": 20
+    },
+    "allFailedSourcesAbsoluteHttp": true,
+    "sameSignatureSuccessfulOtherRole": 0,
+    "failedReferenceKinds": {
+      "jar-csp": 619,
+      "py-helper": 4,
+      "unused-main": 1
+    },
+    "failedSignaturesWithWhitespacePath": 2,
+    "md5States": {
+      "matches": 46,
+      "differs": 6,
+      "notAdvertisedOrUnavailable": 89
+    },
+    "md5MismatchUniqueArtifacts": 5,
+    "conclusion": "No relative-URL or role-selection failure found in captured metadata. HTTP access responses, fetch failures and 15-second capture timeouts are acquisition observations, not JAR engine failures. Node/Android HTTP/DNS/TLS/header equivalence is unverified. Generic fetch TypeError lacks preserved cause."
+  },
+  "artifacts": {
+    "uniqueSha256": 115,
+    "uniqueSha256Count": 115,
+    "allLocalHashesMatch": true,
+    "manifestMatchesInventory": true,
+    "validZipArtifacts": 112,
+    "nativeArtifacts": 17,
+    "guardArtifacts": 10,
+    "invalidZipArtifacts": [
+      {
+        "sha256": "4bcdfb1c06ebd86d00e3774a9d071085bc34c2f9d52c0b6b02df34c5ef311822",
+        "bytes": 60419,
+        "bodyKind": "html",
+        "sourceVariants": 133,
+        "sourceReferences": 270,
+        "catalogEntries": 2,
+        "roles": [
+          "main",
+          "site"
+        ]
+      },
+      {
+        "sha256": "6dc9c7fc93bb488bb0520a6c780a8d3c0fb5486a4711aca49b4c53fac7393023",
+        "bytes": 114,
+        "bodyKind": "html",
+        "sourceVariants": 9,
+        "sourceReferences": 9,
+        "catalogEntries": 1,
+        "roles": [
+          "site"
+        ]
+      },
+      {
+        "sha256": "bcd5f1ae18c04eb61053372546512a21960ec48f2495413c8d1c4ac0a95a37c4",
+        "bytes": 398,
+        "bodyKind": "svg",
+        "sourceVariants": 1,
+        "sourceReferences": 1,
+        "catalogEntries": 1,
+        "roles": [
+          "main"
+        ]
+      }
+    ],
+    "helperOnlyArtifacts": [
+      {
+        "sha256": "71789158668dd26dd1949da9d7e3708c3fbd07ecbcfbdba88d4e6c3c05c46170",
+        "referenceKinds": {
+          "js-helper": 1
+        }
+      },
+      {
+        "sha256": "d5750c1d6067189ae6cb6c753d392061c5d836dfcc0c2681011b23e1e2279eaf",
+        "referenceKinds": {
+          "py-helper": 1
+        }
+      }
+    ],
+    "sourceReferences": 4690,
+    "sourceVariants": 3423,
+    "nonCspPrefixJarRouteVariants": 6,
+    "crossRoleArtifacts": 7,
+    "mixedSelectedRoleArtifacts": 6,
+    "siteVariantsWithinChosenMainArtifacts": 47,
+    "limits": [
+      "Three captured responses are HTML/SVG, not executable JARs; report them as invalid acquisitions.",
+      "Two artifacts contain only JS/Python helper references and have no CSP site to initialize.",
+      "Current matrix samples only csp_-prefixed APIs; six captured JAR-route variants have another API shape.",
+      "SHA deduplication merges seven artifacts referenced in both roles; execution of a chosen main role is not proof of both role paths.",
+      "Android-compatible download policy accepted six advertised-MD5 differences; 89 successful retrievals have no resolved advertised digest. Captured SHA256 pins bytes but does not prove publisher integrity."
+    ]
+  },
+  "fullParserComparison": {
+    "captureId": "catalog-025-9ccab55621",
+    "inputSha256": "9eaa36d58762cbf646a0112d731a69a8a28889f9fcd58cc7db78e72b324bb540",
+    "preparedHashMatchesInventory": true,
+    "capturedRows": 100,
+    "uniqueRowsAfterPinnedKeySemantics": 99,
+    "baselineCommit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+    "verifiedParseJsonMethodSha256": "9426026826680c1d482db8109a0d19225e73dc8daf934212f66696c35a486f24",
+    "comparisons": [
+      {
+        "variant": "captured",
+        "inputSha256": "9eaa36d58762cbf646a0112d731a69a8a28889f9fcd58cc7db78e72b324bb540",
+        "original": {
+          "ok": true,
+          "accepted": false,
+          "errorType": "java.lang.IndexOutOfBoundsException",
+          "sites": 99
+        },
+        "current": {
+          "ok": true,
+          "accepted": false,
+          "errorType": "java.lang.IndexOutOfBoundsException",
+          "sites": 99
+        },
+        "equal": true
+      },
+      {
+        "variant": "captured-without-lives",
+        "inputSha256": "eee5d156b8b5e07c175c8984478955ab6a96866fe8b94e29fa5031f03ce9225c",
+        "original": {
+          "ok": true,
+          "accepted": true,
+          "errorType": null,
+          "sites": 99
+        },
+        "current": {
+          "ok": true,
+          "accepted": true,
+          "errorType": null,
+          "sites": 99
+        },
+        "equal": true
+      },
+      {
+        "variant": "minimal-empty-lives",
+        "inputSha256": "7fefd16071b5d2c27eaf2c9fba3d79266a7c5995537817b756702236bfb62f90",
+        "original": {
+          "ok": true,
+          "accepted": false,
+          "errorType": "java.lang.IndexOutOfBoundsException",
+          "sites": 0
+        },
+        "current": {
+          "ok": true,
+          "accepted": false,
+          "errorType": "java.lang.IndexOutOfBoundsException",
+          "sites": 0
+        },
+        "equal": true
+      },
+      {
+        "variant": "minimal-no-lives",
+        "inputSha256": "513fdc8241fade2061d052926a77b70a6fdbde74593d9f3265eb137f5f770d66",
+        "original": {
+          "ok": true,
+          "accepted": true,
+          "errorType": null,
+          "sites": 0
+        },
+        "current": {
+          "ok": true,
+          "accepted": true,
+          "errorType": null,
+          "sites": 0
+        },
+        "equal": true
+      },
+      {
+        "variant": "minimal-one-live",
+        "inputSha256": "9c8fb42ca6159d2bc7c0fbaf07740a796f59e24e2269b53e162fa9f78c79bcf0",
+        "original": {
+          "ok": true,
+          "accepted": true,
+          "errorType": null,
+          "sites": 0
+        },
+        "current": {
+          "ok": true,
+          "accepted": true,
+          "errorType": null,
+          "sites": 0
+        },
+        "equal": true
+      }
+    ],
+    "minimalTrigger": {
+      "sites": [],
+      "lives": []
+    },
+    "control": {
+      "sites": []
+    },
+    "conclusion": "Both unchanged fresh pinned source parser and current backend reject an empty lives array with IndexOutOfBoundsException. Removing lives from the captured input accepts its 99 unique sites in both. This is a pinned host-source baseline limitation, not evidence of a Linux-only parser regression. No Android/ART execution was performed."
+  },
+  "cleanup": {
+    "temporaryOracleBuildRemoved": true,
+    "configWorkerClosed": true,
+    "externalCodeExecuted": false,
+    "networkAccess": false,
+    "newTools": [],
+    "newServices": [],
+    "autostartChanges": []
+  },
+  "phase1RuntimeReview": {
+    "reviewedAt": "2026-10-15",
+    "scope": "Read-only saved Linux/NAS phase-one metadata review. No live NAS access, network request or JAR execution by this reviewer. Retry results are excluded.",
+    "inputReportSha256": {
+      "matrix-0-report.json": "6916a68a663a154818f82b04cd790b086b23df128c478e63db86912c3284e19c",
+      "matrix-1-report.json": "2944e276f725cb4e2a1b34b76487a6938a46dfbf2dadfe06ac7ffc7fe25e675d",
+      "matrix-2-report.json": "e0afe6abfb1cfe9cb7e740dc8d4c16ce43f85f41d8c64d60fe2a46a1865cd965"
+    },
+    "runnerSha256": "e33cb53c9c2f6baf97b10487540c543e6a6ee36ec4b914b7d6c54b6b4b968cd7",
+    "hosts": [
+      [
+        "linux",
+        "x64"
+      ]
+    ],
+    "counts": {
+      "artifacts": 115,
+      "distinctArtifactIds": 115,
+      "loadedTrue": 35,
+      "explicitLoadedFalse": 7,
+      "loadedFalseInvalidHtmlSvg": 3,
+      "loadedFalseValidZip": 4,
+      "deferredNull": 52,
+      "noLoadRecord": 21,
+      "attemptedApis": 562,
+      "readyApis": 350,
+      "successfulHomeObjects": 20,
+      "homesWithContent": 20,
+      "categoriesWithContent": 13,
+      "detailsWithContent": 5,
+      "closedWorkers": 115
+    },
+    "artifactErrors": {
+      "count": 21,
+      "categories": {
+        "timeout": 21
+      },
+      "stages": {
+        "load": 21
+      }
+    },
+    "methodFailures": {
+      "init": {
+        "failures": 212,
+        "categories": {
+          "missing-class-or-member": 138,
+          "timeout": 55,
+          "execution": 1,
+          "spider-not-ready": 16,
+          "network": 2
+        },
+        "returnedErrorTypes": {
+          "Error": 212
+        }
+      },
+      "homeContent": {
+        "failures": 5,
+        "categories": {
+          "invalid-json": 4,
+          "execution": 1
+        },
+        "returnedErrorTypes": {
+          "SyntaxError": 4,
+          "java.lang.NullPointerException": 1
+        }
+      },
+      "categoryContent": {
+        "failures": 7,
+        "categories": {
+          "missing-class-or-member": 3,
+          "execution": 1,
+          "invalid-json": 2,
+          "timeout": 1
+        },
+        "returnedErrorTypes": {
+          "java.lang.NoClassDefFoundError": 3,
+          "org.json.JSONException": 1,
+          "SyntaxError": 2,
+          "Error": 1
+        }
+      },
+      "detailContent": {
+        "failures": 7,
+        "categories": {
+          "invalid-json": 7
+        },
+        "returnedErrorTypes": {
+          "SyntaxError": 7
+        }
+      }
+    },
+    "diagnostics": {
+      "reportedMentions": 728,
+      "reportedLabels": 30,
+      "actualExceptionOrErrorTypeMentions": 712,
+      "actualExceptionOrErrorTypes": 28,
+      "types": [
+        {
+          "type": "java.net.ConnectException",
+          "mentions": 206,
+          "artifacts": 4
+        },
+        {
+          "type": "java.lang.NoClassDefFoundError",
+          "mentions": 96,
+          "artifacts": 8
+        },
+        {
+          "type": "java.lang.ClassNotFoundException",
+          "mentions": 78,
+          "artifacts": 16
+        },
+        {
+          "type": "java.lang.NullPointerException",
+          "mentions": 72,
+          "artifacts": 5
+        },
+        {
+          "type": "java.lang.RuntimeException",
+          "mentions": 67,
+          "artifacts": 3
+        },
+        {
+          "type": "java.lang.ExceptionInInitializerError",
+          "mentions": 66,
+          "artifacts": 2
+        },
+        {
+          "type": "java.net.UnknownHostException",
+          "mentions": 34,
+          "artifacts": 3
+        },
+        {
+          "type": "org.json.JSONException",
+          "mentions": 23,
+          "artifacts": 14
+        },
+        {
+          "type": "java.lang.VerifyError",
+          "mentions": 12,
+          "artifacts": 5
+        },
+        {
+          "type": "java.lang.NoSuchMethodError",
+          "mentions": 8,
+          "artifacts": 3
+        },
+        {
+          "type": "java.io.IOException",
+          "mentions": 6,
+          "artifacts": 2
+        },
+        {
+          "type": "java.lang.IllegalArgumentException",
+          "mentions": 6,
+          "artifacts": 4
+        },
+        {
+          "type": "java.lang.StringIndexOutOfBoundsException",
+          "mentions": 5,
+          "artifacts": 5
+        },
+        {
+          "type": "android.database.sqlite.SQLiteException",
+          "mentions": 4,
+          "artifacts": 2
+        },
+        {
+          "type": "java.lang.reflect.InvocationTargetException",
+          "mentions": 4,
+          "artifacts": 4
+        },
+        {
+          "type": "java.util.concurrent.ExecutionException",
+          "mentions": 4,
+          "artifacts": 2
+        },
+        {
+          "type": "org.sqlite.SQLiteException",
+          "mentions": 4,
+          "artifacts": 2
+        },
+        {
+          "type": "java.lang.ClassFormatError",
+          "mentions": 3,
+          "artifacts": 1
+        },
+        {
+          "type": "java.io.InterruptedIOException",
+          "mentions": 2,
+          "artifacts": 2
+        },
+        {
+          "type": "java.lang.ArrayIndexOutOfBoundsException",
+          "mentions": 2,
+          "artifacts": 2
+        },
+        {
+          "type": "java.lang.IllegalStateException",
+          "mentions": 2,
+          "artifacts": 2
+        },
+        {
+          "type": "java.lang.NoSuchMethodException",
+          "mentions": 2,
+          "artifacts": 1
+        },
+        {
+          "type": "java.io.FileNotFoundException",
+          "mentions": 1,
+          "artifacts": 1
+        },
+        {
+          "type": "java.lang.NoSuchFieldError",
+          "mentions": 1,
+          "artifacts": 1
+        },
+        {
+          "type": "java.lang.NoSuchFieldException",
+          "mentions": 1,
+          "artifacts": 1
+        },
+        {
+          "type": "java.lang.UnsupportedOperationException",
+          "mentions": 1,
+          "artifacts": 1
+        },
+        {
+          "type": "javax.net.ssl.SSLHandshakeException",
+          "mentions": 1,
+          "artifacts": 1
+        },
+        {
+          "type": "javax.net.ssl.SSLPeerUnverifiedException",
+          "mentions": 1,
+          "artifacts": 1
+        }
+      ],
+      "excludedStackMethodLabels": {
+        "org.json.JSONTokener.syntaxError": 8,
+        "org.sqlite.core.DB.newSQLException": 8
+      },
+      "limits": "Mentions are stderr occurrences, not unique exceptions or failed calls. Caught exceptions, causes and repeated initialization errors can all be logged; the regex also captured two stack method names."
+    },
+    "confirmedLoadFailureCodes": [
+      {
+        "sha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+        "publicNames": [
+          "王二小",
+          "王二小2线"
+        ],
+        "chosenRole": "main",
+        "loaded": false,
+        "sourceVariants": 98,
+        "attemptedApis": 0,
+        "readyApis": 0,
+        "successfulHomeObjects": 0,
+        "diagnosticTypes": {
+          "java.lang.VerifyError": 2,
+          "java.lang.NoSuchMethodError": 1,
+          "java.lang.reflect.InvocationTargetException": 1,
+          "java.lang.UnsupportedOperationException": 1
+        },
+        "reportedFailure": {
+          "category": "missing-class-or-member",
+          "type": "Error",
+          "fingerprint": "dd03c174fea93ec8926f5f4870fcd270ccc37dc1525f2895a033ba996eacbb1f"
+        },
+        "fixedFailureCode": "NATIVE_GET_LOADER_NOT_READY",
+        "fixedMessageFingerprintMatches": true,
+        "evidence": "The deterministic fingerprint of the fixed runtime message equals the saved load failure fingerprint. No source response or private exception message retained."
+      },
+      {
+        "sha256": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+        "publicNames": [
+          "宝盒2线"
+        ],
+        "chosenRole": "main",
+        "loaded": false,
+        "sourceVariants": 48,
+        "attemptedApis": 0,
+        "readyApis": 0,
+        "successfulHomeObjects": 0,
+        "diagnosticTypes": {},
+        "reportedFailure": {
+          "category": "native-binding",
+          "type": "Error",
+          "fingerprint": "b0482d1bc653d4a42304c16e439b6aa495005b639064ef9cf92118b25907b41c"
+        },
+        "fixedFailureCode": "PROTECTED_INIT_UNBOUND",
+        "fixedMessageFingerprintMatches": true,
+        "evidence": "The deterministic fingerprint of the fixed runtime message equals the saved load failure fingerprint. No source response or private exception message retained."
+      },
+      {
+        "sha256": "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317",
+        "publicNames": [
+          "夏夏影视"
+        ],
+        "chosenRole": "main",
+        "loaded": false,
+        "sourceVariants": 1,
+        "attemptedApis": 0,
+        "readyApis": 0,
+        "successfulHomeObjects": 0,
+        "diagnosticTypes": {},
+        "reportedFailure": {
+          "category": "execution",
+          "type": "Error",
+          "fingerprint": "dc5c2de46d25a5982ea95343d625b91d0bb3509e4c45903f41a484a45e2e3397"
+        },
+        "fixedFailureCode": "DEX_CONVERSION_FAILED",
+        "fixedMessageFingerprintMatches": true,
+        "evidence": "The deterministic fingerprint of the fixed runtime message equals the saved load failure fingerprint. No source response or private exception message retained."
+      }
+    ],
+    "explicitFailedValidZipWithoutFixedCode": [
+      {
+        "sha256": "59ca73d4d12758285ad7ce00ba07c4fbf1bf4f3c7e8fca642181f82bc6b68dc5",
+        "publicNames": [
+          "星微Vip"
+        ],
+        "chosenRole": "site",
+        "loaded": false,
+        "sourceVariants": 1,
+        "attemptedApis": 1,
+        "readyApis": 0,
+        "successfulHomeObjects": 0,
+        "diagnosticTypes": {}
+      }
+    ],
+    "readonlyInputAssessment": {
+      "confirmedAccessDeniedFailures": 0,
+      "accessDeniedTypeMentions": 0,
+      "limitation": "Saved reports omit exception messages/paths/inner causes and the old failure classifier has no filesystem-access category. java.nio.file.AccessDeniedException would be captured if printed to stderr, but the JAR load catcher can return only generic metadata without printing the underlying exception. Absence of its diagnostic label does not prove filesystem access succeeded.",
+      "runtimeBoundary": "Inspected core DEX conversion writes to the owned worker dex-cache and RuntimeCache staging directory; NativeHost uses the owned worker native/work, native/patched and payload-cache directories. Captured JAR bytes are read. Arbitrary plugin writes can still target other paths.",
+      "conclusion": "No saved metadata establishes a read-only /input permission failure. DEX_CONVERSION_FAILED and generic execution/IOException failures remain unresolved until inner filesystem and conversion causes are separately identified; do not count a confirmed packaging/access failure as JAR semantic incompatibility."
+    },
+    "diagnosticSuccessCounterexamples": [
+      {
+        "publicNames": [
+          "菜妮丝",
+          "饭太硬4线"
+        ],
+        "sha256": [
+          "d9e77852563eb609bff49158e698fbf895764d78ce176bab1cac06b6148f7840",
+          "86a7833c15207b5a74d5cfae52a038c0ae9e0efe0407d9db8d5744506e90ec6a"
+        ],
+        "observedTypes": [
+          "android.database.sqlite.SQLiteException",
+          "org.sqlite.SQLiteException"
+        ],
+        "readyApis": [
+          25,
+          34
+        ],
+        "homesWithContent": [
+          1,
+          1
+        ],
+        "meaning": "SQLite diagnostic presence coexists with successful init/home; it does not establish a failed matrix method."
+      },
+      {
+        "publicNames": [
+          "王二小3线"
+        ],
+        "sha256": [
+          "703ff3315dcb3c74713cd666667b7e181da64bba54530d6ef15104cfe85a84f7"
+        ],
+        "observedTypes": [
+          "java.lang.NoSuchMethodError"
+        ],
+        "readyApis": [
+          51
+        ],
+        "homesWithContent": [
+          1
+        ],
+        "meaning": "A NoSuchMethodError diagnostic was caught or occurred on another path; do not label all Spider methods incompatible."
+      }
+    ],
+    "priorityInvestigations": [
+      {
+        "priority": 1,
+        "mechanism": "Native protected loader initialization",
+        "artifacts": [
+          {
+            "sha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+            "publicNames": [
+              "王二小",
+              "王二小2线"
+            ],
+            "chosenRole": "main",
+            "loaded": false,
+            "sourceVariants": 98,
+            "attemptedApis": 0,
+            "readyApis": 0,
+            "successfulHomeObjects": 0,
+            "diagnosticTypes": {
+              "java.lang.VerifyError": 2,
+              "java.lang.NoSuchMethodError": 1,
+              "java.lang.reflect.InvocationTargetException": 1,
+              "java.lang.UnsupportedOperationException": 1
+            },
+            "reportedFailure": {
+              "category": "missing-class-or-member",
+              "type": "Error",
+              "fingerprint": "dd03c174fea93ec8926f5f4870fcd270ccc37dc1525f2895a033ba996eacbb1f"
+            },
+            "fixedFailureCode": "NATIVE_GET_LOADER_NOT_READY",
+            "fixedMessageFingerprintMatches": true,
+            "evidence": "The deterministic fingerprint of the fixed runtime message equals the saved load failure fingerprint. No source response or private exception message retained."
+          }
+        ],
+        "nextCheck": "Inspect the getLoader return/loader handoff and preceding VerifyError/NoSuchMethodError chain. The saved missing-member category is influenced by diagnostic text; the direct load failure is NATIVE_GET_LOADER_NOT_READY. Do not count this merely as a missing Spider class."
+      },
+      {
+        "priority": 2,
+        "mechanism": "Protected Init contract admission",
+        "artifacts": [
+          {
+            "sha256": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+            "publicNames": [
+              "宝盒2线"
+            ],
+            "chosenRole": "main",
+            "loaded": false,
+            "sourceVariants": 48,
+            "attemptedApis": 0,
+            "readyApis": 0,
+            "successfulHomeObjects": 0,
+            "diagnosticTypes": {},
+            "reportedFailure": {
+              "category": "native-binding",
+              "type": "Error",
+              "fingerprint": "b0482d1bc653d4a42304c16e439b6aa495005b639064ef9cf92118b25907b41c"
+            },
+            "fixedFailureCode": "PROTECTED_INIT_UNBOUND",
+            "fixedMessageFingerprintMatches": true,
+            "evidence": "The deterministic fingerprint of the fixed runtime message equals the saved load failure fingerprint. No source response or private exception message retained."
+          }
+        ],
+        "nextCheck": "Determine which Init binding is required. This DEX archive has no embedded .so in the static inventory; native-binding is a runtime contract result and does not establish ARM execution failure."
+      },
+      {
+        "priority": 3,
+        "mechanism": "DEX conversion failure before initialization",
+        "artifacts": [
+          {
+            "sha256": "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317",
+            "publicNames": [
+              "夏夏影视"
+            ],
+            "chosenRole": "main",
+            "loaded": false,
+            "sourceVariants": 1,
+            "attemptedApis": 0,
+            "readyApis": 0,
+            "successfulHomeObjects": 0,
+            "diagnosticTypes": {},
+            "reportedFailure": {
+              "category": "execution",
+              "type": "Error",
+              "fingerprint": "dc5c2de46d25a5982ea95343d625b91d0bb3509e4c45903f41a484a45e2e3397"
+            },
+            "fixedFailureCode": "DEX_CONVERSION_FAILED",
+            "fixedMessageFingerprintMatches": true,
+            "evidence": "The deterministic fingerprint of the fixed runtime message equals the saved load failure fingerprint. No source response or private exception message retained."
+          }
+        ],
+        "nextCheck": "Capture sanitized converter failure code/exception class and inspect the owned converter staging path before modifying class compatibility. Conversion failure also permits host file/permission causes; this record does not identify the inner exception."
+      },
+      {
+        "priority": 4,
+        "mechanism": "Verification/static initializer or dynamic Java loader failure",
+        "artifacts": [
+          {
+            "sha256": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+            "publicNames": [
+              "嗷呜",
+              "嗷呜2线",
+              "嗷呜3线",
+              "南风",
+              "南风2线",
+              "周J"
+            ],
+            "chosenRole": "main",
+            "loaded": true,
+            "sourceVariants": 77,
+            "attemptedApis": 59,
+            "readyApis": 0,
+            "successfulHomeObjects": 0,
+            "diagnosticTypes": {
+              "java.util.concurrent.ExecutionException": 2,
+              "java.lang.VerifyError": 4,
+              "java.lang.reflect.InvocationTargetException": 1,
+              "java.lang.ExceptionInInitializerError": 60,
+              "java.lang.RuntimeException": 60,
+              "java.lang.NullPointerException": 61,
+              "java.lang.NoClassDefFoundError": 59
+            }
+          },
+          {
+            "sha256": "291c75e13b7df2c651446d64f253e8181f1996a36fa989d3e5d1b54aa61b63bc",
+            "publicNames": [
+              "星微Vip"
+            ],
+            "chosenRole": "site",
+            "loaded": true,
+            "sourceVariants": 8,
+            "attemptedApis": 5,
+            "readyApis": 0,
+            "successfulHomeObjects": 0,
+            "diagnosticTypes": {
+              "java.util.concurrent.ExecutionException": 2,
+              "java.lang.VerifyError": 4,
+              "java.lang.reflect.InvocationTargetException": 1,
+              "java.lang.ExceptionInInitializerError": 6,
+              "java.lang.RuntimeException": 6,
+              "java.lang.NullPointerException": 7,
+              "java.lang.NoClassDefFoundError": 5
+            }
+          }
+        ],
+        "nextCheck": "Both outer JAR loads succeed but all 64 attempted APIs remain unready. Shared VerifyError/ExceptionInInitializerError/NoClassDefFoundError patterns point to an initialization chain worth tracing. Repeated diagnostics and swallowed initializer errors are not 64 independent root causes."
+      },
+      {
+        "priority": 5,
+        "mechanism": "Android host class availability after successful Spider init/home",
+        "artifacts": [
+          {
+            "sha256": "64637af0a0dc780cbe58d72904c16b9ff95d16917fed715c2aa6390512d6c49d",
+            "publicNames": [
+              "雷蒙"
+            ],
+            "chosenRole": "main",
+            "loaded": true,
+            "sourceVariants": 324,
+            "attemptedApis": 1,
+            "readyApis": 1,
+            "successfulHomeObjects": 1,
+            "diagnosticTypes": {}
+          },
+          {
+            "sha256": "3d530a7d545fffb38df667606b10b2314b9dc71cb3bd2aef0f39dc6c4121f346",
+            "publicNames": [
+              "菜妮丝"
+            ],
+            "chosenRole": "site",
+            "loaded": true,
+            "sourceVariants": 1,
+            "attemptedApis": 1,
+            "readyApis": 1,
+            "successfulHomeObjects": 1,
+            "diagnosticTypes": {}
+          },
+          {
+            "sha256": "aa7bb1f1af9f5b91a2770e497c5c109b64e2c5bb73410319144ed7f685b05f16",
+            "publicNames": [
+              "星微Vip"
+            ],
+            "chosenRole": "site",
+            "loaded": true,
+            "sourceVariants": 1,
+            "attemptedApis": 1,
+            "readyApis": 1,
+            "successfulHomeObjects": 1,
+            "diagnosticTypes": {}
+          }
+        ],
+        "nextCheck": "These sources pass home and throw an actual java.lang.NoClassDefFoundError at categoryContent (csp_XBPQ, csp_Local, csp_Bili respectively). Obtain the specific missing type before adding an API binding. Remote response failures and caught diagnostic text must remain separate."
+      }
+    ],
+    "additionalScopeLimits": [
+      "52 deferred loaded:null results are unknown/unattempted outcomes, including two helper-only artifacts, and 21 artifacts have no completed load record; these 73 are not 73 JAR failures.",
+      "The first site initialization in this pass included DEX conversion under an 8-second init budget. This acknowledged harness limit contaminates timeout outcomes and is being retested by the parent task with a 90-second initial site-load budget.",
+      "A runtime timeout makes later API/home calls unavailable in that worker. No home result after an earlier init timeout means unattempted, not home failure.",
+      "Phase-one loader/query failure categories may be influenced by earlier stderr diagnostics. Use direct fixed failure codes and actual returned error types when available.",
+      "All 115 saved runtime cleanup.closed flags are true; process exit and temporary directory evidence should still be assessed using the parent execution ledger.",
+      "No Android/ART same-input execution, complete per-ext coverage, helper-runtime execution or complete method coverage is claimed."
+    ]
+  },
+  "finalRuntimeReview": {
+    "reviewedDate": "2026-10-15",
+    "scope": "Independent read-only review of saved phase-one and corrected phase-two reports and final metadata. No JAR execution, network request, NAS operation, or runtime modification by this reviewer. Runtime cleanup and the planned retention of four diagnostic artifacts are handled by the parent task and are not certified here.",
+    "reviewedFinalJsonSha256BeforeParentCleanupEdits": "b011ff5fe8b667f35f557417eb191f519857c7af2d4e3877ed081ab40110597f",
+    "reviewedFinalMarkdownSha256BeforeParentCleanupEdits": "f9d7688a797c27358d6825af602d0bc15c092cbc9d4823be40675a9af2d06ecb",
+    "executionReportSha256": {
+      "matrix-0-report.json": "6916a68a663a154818f82b04cd790b086b23df128c478e63db86912c3284e19c",
+      "matrix-1-report.json": "2944e276f725cb4e2a1b34b76487a6938a46dfbf2dadfe06ac7ffc7fe25e675d",
+      "matrix-2-report.json": "e0afe6abfb1cfe9cb7e740dc8d4c16ce43f85f41d8c64d60fe2a46a1865cd965",
+      "retry-0-report.json": "5bdf3de30f98b09bba325ea76e8b03edd13d4e474c339db074da308d1e13fc8a",
+      "retry-1-report.json": "5d9d7269156fdf7d6006436b917ee62f27fa625998fd472b56d51b01b5fa87d1",
+      "retry-2-report.json": "1b7d6afd105a7069344ce725920cd14f55810b15a4a15aa28124683d31383f33"
+    },
+    "unionKey": [
+      "artifactSha256",
+      "api",
+      "extSha256"
+    ],
+    "independentUnionCounts": {
+      "uniqueArtifactsAttempted": 115,
+      "initializedVariantsAttempted": 889,
+      "readyVariants": 542,
+      "variantsNotInitialized": 2534,
+      "homeVariantsWithContent": 58,
+      "categoryVariantsWithContent": 29,
+      "detailVariantsWithContent": 15,
+      "loadedAtLeastOnce": 91,
+      "readyAtLeastOnce": 74,
+      "homeWithContentAtLeastOnce": 51,
+      "categoryWithContentAtLeastOnce": 29,
+      "detailWithContentAtLeastOnce": 15
+    },
+    "allAggregateCountsMatch": true,
+    "all115PerArtifactCountsMatch": true,
+    "allExecutedVariantsPresentInCapturedManifest": true,
+    "allSixPublishedPassHashesMatch": true,
+    "phaseOneArtifacts": 115,
+    "correctedArtifacts": 75,
+    "validZipLoadEvidence": {
+      "validZip": 112,
+      "positiveAtLeastOnce": 91,
+      "noPositiveEvidence": 21,
+      "explicitLoadedFalse": 14,
+      "unknown": 7,
+      "unknownBreakdown": {
+        "main-load-timeout": 4,
+        "deferred-site-init-timeout": 1,
+        "helper-only-no-csp-attempt": 2
+      },
+      "unprovenValidArtifacts": [
+        {
+          "sha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+          "publicNames": [
+            "王二小",
+            "王二小2线"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 1,
+          "helperOnly": false,
+          "failureCodes": []
+        },
+        {
+          "sha256": "a9dce1158db8c7d469399917468f91fcc9dbdd8260d56f32aa5c1e7a5f293ed6",
+          "publicNames": [
+            "天神"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "PROTECTED_INIT_UNBOUND"
+          ]
+        },
+        {
+          "sha256": "cf928d08730247746293ce5878d9d876c4edde9118b5fbd0d6400618cb934cb1",
+          "publicNames": [
+            "小虎斑",
+            "虎斑"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "NATIVE_GET_LOADER_NOT_READY"
+          ]
+        },
+        {
+          "sha256": "ee9ff15d1093e999828fabf2a9281cd13646ef17db0d684578388530cf987f61",
+          "publicNames": [
+            "小米"
+          ],
+          "validZip": true,
+          "classification": "unknown",
+          "attempts": 2,
+          "helperOnly": false,
+          "reason": "main-load-timeout"
+        },
+        {
+          "sha256": "18939df38112ffa989e837230bb65800db9262104a503fec942041c77ac73a0b",
+          "publicNames": [
+            "哈吉米"
+          ],
+          "validZip": true,
+          "classification": "unknown",
+          "attempts": 2,
+          "helperOnly": false,
+          "reason": "deferred-site-init-timeout"
+        },
+        {
+          "sha256": "d5750c1d6067189ae6cb6c753d392061c5d836dfcc0c2681011b23e1e2279eaf",
+          "publicNames": [
+            "幸福年年"
+          ],
+          "validZip": true,
+          "classification": "unknown",
+          "attempts": 2,
+          "helperOnly": true,
+          "reason": "helper-only-no-csp-attempt"
+        },
+        {
+          "sha256": "76c7d225a47bea03d2b54203593fe211209122db1b298b2329b7808e7a07b416",
+          "publicNames": [
+            "黄金"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "JAR_LOAD_FAILED"
+          ]
+        },
+        {
+          "sha256": "59ca73d4d12758285ad7ce00ba07c4fbf1bf4f3c7e8fca642181f82bc6b68dc5",
+          "publicNames": [
+            "星微Vip"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "JAR_LOAD_FAILED"
+          ]
+        },
+        {
+          "sha256": "41d3771d1d06f2b9e733df903c2a39726bfab69818636d9302a1a0f94bbc1663",
+          "publicNames": [
+            "幸福年年"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "JAR_LOAD_FAILED"
+          ]
+        },
+        {
+          "sha256": "71789158668dd26dd1949da9d7e3708c3fbd07ecbcfbdba88d4e6c3c05c46170",
+          "publicNames": [
+            "幸福年年"
+          ],
+          "validZip": true,
+          "classification": "unknown",
+          "attempts": 2,
+          "helperOnly": true,
+          "reason": "helper-only-no-csp-attempt"
+        },
+        {
+          "sha256": "713a2c84b2700c25cc8abcc30b76b6c48c641d08b7a0bf2c558ab530e0e22352",
+          "publicNames": [
+            "摸鱼2线",
+            "摸鱼4线"
+          ],
+          "validZip": true,
+          "classification": "unknown",
+          "attempts": 2,
+          "helperOnly": false,
+          "reason": "main-load-timeout"
+        },
+        {
+          "sha256": "8adcedbd51c3ba467fd16ee3b127224dab0ee904c7975607453f64f5d77b138c",
+          "publicNames": [
+            "摸鱼3线",
+            "摸鱼5线",
+            "摸鱼6线",
+            "摸鱼"
+          ],
+          "validZip": true,
+          "classification": "unknown",
+          "attempts": 2,
+          "helperOnly": false,
+          "reason": "main-load-timeout"
+        },
+        {
+          "sha256": "65be8df8bfa60f59aecb3c170d5cc0fd3feeaa96daad531faa97d49aff81eab4",
+          "publicNames": [
+            "潇洒"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "PROTECTED_INIT_UNBOUND"
+          ]
+        },
+        {
+          "sha256": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+          "publicNames": [
+            "宝盒2线"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 1,
+          "helperOnly": false,
+          "failureCodes": []
+        },
+        {
+          "sha256": "19ca20400ffa9c32fd31d63ba91b1ac2d9809dabfa7b1288b33fe0bfc98625aa",
+          "publicNames": [
+            "小马"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "JAR_LOAD_FAILED"
+          ]
+        },
+        {
+          "sha256": "0c2579f7af90fb002d6babf61ed3b945825469b6b3a0559343bffe3465b14fec",
+          "publicNames": [
+            "哈吉米"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "JAR_LOAD_FAILED"
+          ]
+        },
+        {
+          "sha256": "a41f11e12267d0840eb8c949a59e5709d6a6f8fc42c86d845a7dad4be51a4fa1",
+          "publicNames": [
+            "月光宝盒"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "PROTECTED_INIT_UNBOUND"
+          ]
+        },
+        {
+          "sha256": "d8517c4cac6ed751c7fab1fe7746629c6f439e37b45fdec533cb7a6da4ada7bc",
+          "publicNames": [
+            "南风",
+            "南风2线"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": []
+        },
+        {
+          "sha256": "2ff484674c512cc9ea6e9d52f54e7154de113e7aee83230e493259655f71b3ec",
+          "publicNames": [
+            "宝盒"
+          ],
+          "validZip": true,
+          "classification": "unknown",
+          "attempts": 2,
+          "helperOnly": false,
+          "reason": "main-load-timeout"
+        },
+        {
+          "sha256": "92b6747fd42c4bc42fbc06094655ea5ae150d5eef283026d8238f46fb73a88ca",
+          "publicNames": [
+            "雷蒙"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 2,
+          "helperOnly": false,
+          "failureCodes": [
+            "JAR_LOAD_FAILED"
+          ]
+        },
+        {
+          "sha256": "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317",
+          "publicNames": [
+            "夏夏影视"
+          ],
+          "validZip": true,
+          "classification": "explicit-false",
+          "attempts": 1,
+          "helperOnly": false,
+          "failureCodes": []
+        }
+      ],
+      "nonZipInputsWithExplicitFalse": 3,
+      "meaning": "An explicit false means this captured artifact failed to load on at least one observed route and never supplied positive load evidence in these runs. It does not establish permanent incompatibility or identify a sole root cause. Unknown includes timeouts and helper-only artifacts with no independent CSP entry."
+    },
+    "runnerPins": {
+      "executedCorrectedCommit": "243b5a4",
+      "executedCorrectedGitBlobSha256": "646a82d67a028be5cf0911830acff04d3b174d899769d5406da36259d10440ea",
+      "correctedPinMatchesFinal": true,
+      "diagnosticHelperSha256": "50438522251c5194594eee9712418f76fdcc41f990fce4cdbc137373c4836b07",
+      "diagnosticHelperMatchesFinal": true,
+      "currentLocalRunnerSha256": "2248164816796c2aaecbc6cd6ab1a07b6780cc0693b6f9669af492568c7bca49",
+      "localDifferenceFromExecutedCorrectedOnlyDiagnosticRegex": true,
+      "runtimeSourcePinsAllMatch": true,
+      "fourTargetedDiagnosticReportPinsMatch": true
+    },
+    "privacyReview": {
+      "forbiddenRawPayloadKeys": 0,
+      "urlStringPaths": [
+        "/catalog/publicOrigin"
+      ],
+      "onlyUrlIsUserProvidedPublicCatalogOrigin": true,
+      "rawBodyOrCredentialShapedValues": 0,
+      "conclusion": "No raw subscription URL, JAR download signature, ext body, provider response body or credential-shaped value found. The user-provided public catalog origin is intentionally retained. Public names, CSP API identifiers, class symbols, hashes and bounded metadata are retained."
+    },
+    "scopeAssessment": {
+      "approvedFor": "Bounded Linux/NAS JAR execution evidence with deduplicated positive outcomes and explicit untested variants.",
+      "notEstablished": [
+        "Android/ART behavioral equivalence",
+        "all 3423 variants initialized",
+        "all methods or scripts validated",
+        "sole-cause attribution to Activity.isFinishing",
+        "role parity for every shared main/site artifact",
+        "production session multi-native-artifact isolation"
+      ],
+      "remarks": [
+        "The report correctly distinguishes 58 successful home variants across 51 artifacts; per-artifact and per-variant denominators are both preserved.",
+        "The six report union does not count targeted diagnostic replays as additional source coverage.",
+        "The report acknowledges the initial site-conversion budget defect, corrected retest, live provider responses, helper-only artifacts, and caught diagnostics.",
+        "Cleanup/retention fields are undergoing parent edits; this review must not be used to claim every original JAR was deleted."
+      ]
+    },
+    "conclusion": "All requested numerical unions and execution pins match. No aggregate deduplication defect or sensitive raw payload leak found. Of the 21 valid ZIP artifacts without positive load evidence, 14 have explicit false results and 7 remain unknown (4 main-load timeouts, 1 deferred-site timeout, 2 helper-only artifacts)."
+  }
+}

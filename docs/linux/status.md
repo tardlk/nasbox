@@ -9,7 +9,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 393 Node tests passed with native profile enabled, including crash ownership and aggregate cache limits |
+| Probe and backend contract tests | Done | 425 Node tests passed with native profile enabled, including isolated matrix, coverage accounting and metadata/privacy gates |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
 | Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
@@ -24,8 +24,9 @@ Priority: subscription links and script execution behavior; player work deferred
 | Linux x86_64 Docker core image | Delivered and verified on NAS | docker-runtime-probe.json plus nas-native-runtime-probe.json: non-root/read-only JRE, offline fixtures and real protected JAR |
 | Native/Python and complete JS host parity | Pending | Optional ARM/JNI profile runs this JAR; complete Android services, other native artifacts, Python and ART comparison remain open |
 | Linux container and NAS validation | Scoped validation done | Physical x86_64 NAS; genuine protected JAR init/home and timeout resource release; other architectures and full client unverified |
-| Automatic subscription JAR retrieval/cache | HTTP(S) slice implemented and verified on NAS | jar-artifact-cache-probe.json: 19 fresh-source cache/identity cases; real automatic init/home plus restart with one JAR download; managed JAR quota |
+| Automatic subscription JAR retrieval/cache | Original-role routes implemented and verified on NAS | artifact-routes-probe.json: HTTP/image/assets/file/clan, cache identity/integrity/quota, real automatic init/home |
 | Crash recovery and combined DEX/module cache quota | Implemented and verified on NAS | cache-lifecycle-probe.json: kernel leases, active-JVM guards, parent-death containment, cross-container PID-1 recovery, quota/pin/eviction checks |
+| Broad real JAR catalogue matrix | First bounded matrix complete on NAS | catalog-matrix-probe.json: 115 captured SHA artifacts, 112 valid ZIP, 91 loaded, 74 with at least one Spider; partial call/variant coverage, not a compatibility percentage |
 
 The 65-case audit contains 12 matching observations, 51 differing observations
 and 2 cases where both sides reject but exception/state mapping is unresolved.
@@ -420,3 +421,61 @@ real Linux JS/Python and category/search/detail calls with Android/ART same-inpu
 comparisons. Dynamic helper JARs remain outside automatic interception. The existing
 cc/XPathGuard failure and two prior full-home-response differences remain open.
 Web and player remain deferred.
+
+
+Public catalogue compatibility matrix — 2026-10-15:
+
+The supplied public catalogue has 87 entries. Captured all of them, with 84 complete
+imports and 8,401 accepted source references; one partial import retains 99 sites.
+Its empty lives:[] failure is reproduced unchanged by the pinned Android parser,
+including a minimal failing case. Two other rejected entries contain homepage/
+retirement text. The separate custom catalogue endpoint also returns HTML.
+
+204 role/signature retrievals produce 141 successful responses and 63 failures:
+56 HTTP 401/403/404/423, four fetch failures and three 15-second timeouts. These
+are acquisition observations, not JAR engine failures. Of 115 decoded SHA-unique
+responses, 112 are valid ZIP/JAR; three are HTML/HTML/SVG. Seventeen contain native
+libraries and ten contain guard payloads, spanning multiple fty/wex/secure/fish/
+cat/stub variants. Six successful retrieval records advertise a different MD5;
+Android-mode acceptance and captured SHA identity remain explicit, not strict
+publisher-integrity success. No source code or raw provider home is committed.
+
+All 115 artifacts were attempted in an independent-runtime NAS matrix. A corrected
+75-artifact pass gives the first site initialization its cold-conversion budget
+and covers six non-csp_ JAR-route variants. Initial 8-second site conversion
+failures and 30-second main-load cutoffs are preserved as budget observations;
+they are not classified as permanent incompatibility. Original bytes stay fixed
+between passes. Both executed runner commits/hashes and actual per-artifact limits
+are retained. Each SHA uses a chosen main/site loader role, not every mixed role.
+
+Across both passes, 91 SHA artifacts have a confirmed loaded state, 74 have at
+least one ready Spider, 51 return a nonempty home, 29 a nonempty category and 15
+a nonempty detail. Distinct (JAR,API,ext) initialization attempts total 889, of
+which 542 are ready. The captured inventory has 3,423 variants, so 2,534 remain
+uninitialized, besides wider source-method/network/ART coverage. Two artifacts
+are JS/Python helper-only and cannot be judged by a standalone CSP home. Among
+112 valid inputs without positive load evidence, 14 explicitly fail this path
+and seven remain unknown (timeouts or helper-only no CSP); this is not a general
+incompatibility rate. Captured/live network and deadline effects remain separate.
+
+Four targeted diagnostics confirm unresolved native getLoader readiness,
+PROTECTED_INIT_UNBOUND, DEX_CONVERSION_FAILED and mixed/obfuscated JVM VerifyError
+initialization chains. One protected sample also calls absent
+android.app.Activity.isFinishing(); it has not been proven the sole root cause.
+Diagnostics save only validated Java symbols/counts/hashes. Caught log exceptions
+are not failed-source counts; two stack method names from the initial regex were
+excluded by independent review and the local runner regex is corrected.
+
+Reports: catalog-matrix-probe.md (all-JAR summary), catalog-matrix-probe.json
+(metadata, exact passes/hashes/budgets) and catalog-review-probe.json (independent
+inventory/parser/runtime audit). All 425 native-enabled host tests pass. The
+matrix reused the existing routes image unchanged and introduced no permanent
+service or compiler. Four unresolved original regression JARs plus a minimal
+manifest are explicitly retained privately under .data/compat-regressions/
+catalog-20261015 (2,189,517 bytes, about 2.09 MiB) for the next fixes; they are
+ignored by Git. All other raw captures and task transport/build caches are removed.
+
+Next compatibility work should target these reproducible protection/verification/
+missing-API/DEX failures, then the remaining variants and Android/ART same-input
+runs. Production multi-native-artifact worker scheduling, dynamic helper jars,
+real Linux JS/Python and Web/API remain open. Player work stays deferred.

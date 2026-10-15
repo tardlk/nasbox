@@ -510,3 +510,55 @@ lifecycle were not changed. The scoped SSH control master, script and host-key
 bundle were stopped/removed; local project .cache is absent. Task services still
 running: none. NAS Docker and the original four containers continue. Autostart
 changes: none. No shared image/builder/cache prune was used.
+
+
+## Public source catalogue matrix — completed, 2026-10-15
+
+Checked/reused shared Node, project JDK/libraries and system Python/curl/SSH/SCP/
+tar, plus the existing NAS routes JRE image. No tool, dependency, VM, Android SDK,
+global environment, builder, image, daemon configuration or autostart was added.
+The existing .tools development environment remains about 404 MiB for continued
+migration; shared Codex tools were not modified. Public catalogue snapshots,
+prepared/partial subscriptions, raw provider responses, 115 downloaded files,
+JAR cache, transport manifests/logs and generated test/build outputs were owned
+by .cache/source-matrix and the project .cache. The matrix bundle peaked at about
+380 MiB and project cache at about 398 MiB during inspection. They are removed
+at completion after report/hash verification; no unrelated cache/tool was pruned.
+
+NAS work used exactly /tmp/tvbox-source-matrix.PePqXj. Broad task containers
+were tvbox-matrix-20261015-0/1/2; corrected tasks were
+ tvbox-matrix-retry-20261015-0/1/2. They ran three at a time, UID10001, read-only
+root, dropped capabilities, no-new-privileges, pids256, memory2GiB, exec owned
+/tmp tmpfs384MiB, read-only fixed input mount and writable metadata-only output.
+No port or persistent data volume was created. An additional diagnostic container
+(tvbox-matrix-diagnostic-20261015) was capped at 0.5 CPU and 1536MiB, otherwise
+under the same filesystem/process restrictions. It retained only validated Java
+symbols, hashes and counts; original logs stayed in memory. No raw source home,
+decrypted payload or database is retained. Calls used normal Docker networking.
+
+All 190 matrix artifact attempts (115 broad +75 corrected) and four targeted
+runs verified worker close and owned temporary-data removal. All seven exact
+task containers exited and were removed; the exact NAS directory, captured input
+archives/JARs, mounted probe scripts and output bundle were removed. The scoped
+SSH control master was stopped and its project host-key/control/script material
+removed. The final NAS inventory still contains exactly moviepilot, qbittorrent,
+emby and dockge-dockge-1; their lifecycle/configuration was not changed. The
+existing image remains sha256:b6e3df0f9f7a9e2fa71bd040551899b1cfebe811dc1034d69a2a133ddbaf534a,
+about488MiB uncompressed with shared layers. No new image or public push was made.
+
+Purposeful retained regression inputs: .data/compat-regressions/catalog-20261015
+under this project, 2,189,517 bytes (about2.09MiB). Four original SHA-pinned JARs
+and a minimal three-site initialization manifest reproduce the four specific
+unresolved native/protection/DEX/verification failures. This is ignored private
+project test data, not a tool/environment/service. It contains no full subscription,
+provider response, decrypted code, database or credential. Reuse these fixed bytes
+for the next fixes and Android comparison, then delete these exact inputs after
+regression verification; avoid refetching mutable artifacts to claim identical
+inputs. The report records file hashes, purpose and retention policy. No other
+user asset root or project data was removed.
+
+Retained deliverables are the probe/collector/aggregator/diagnostic source and
+metadata-only catalogue/review reports. 425 native-enabled local tests pass;
+115 real captured artifacts and the corrected follow-up ran on the physical NAS.
+Task services still running: none. Original NAS Docker/four containers continue.
+Autostart changes: none. Local project .cache is absent after final verification.

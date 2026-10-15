@@ -251,7 +251,7 @@ export async function probeJarArtifact(artifact, {
       nativeBridge: true, timeoutMs: limits.jvmMs, dataDir: join(directory, 'runtime'),
       onStderr: chunk => {
         diagnosticText = (diagnosticText + String(chunk)).slice(-65536);
-        for (const match of String(chunk).matchAll(/\b((?:java|javax|android|org|com)\.[\w.$]*(?:Exception|Error))\b/g)) diagnostics[match[1]] = (diagnostics[match[1]] || 0) + 1;
+        for (const match of String(chunk).matchAll(/\b((?:java|javax|android|org|com)\.(?:[\w$]+\.)*[A-Z][\w$]*(?:Exception|Error))\b/g)) diagnostics[match[1]] = (diagnostics[match[1]] || 0) + 1;
       },
     });
     report.nativeBefore = await readState();
