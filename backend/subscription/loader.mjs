@@ -6,12 +6,12 @@ import { MemorySubscriptionStore } from './store.mjs';
 import { fetchSubscriptionText } from './transport.mjs';
 
 export function createSourceSubscriptionLoader({ core, store = new MemorySubscriptionStore(),
-  fetchText = fetchSubscriptionText, parseConfig, readConfig, parseScope = 'source-fields', onEvent = () => {}, maxHops = 32 } = {}) {
+  fetchText = fetchSubscriptionText, parseConfig, readConfig, parseScope = 'source-fields', onEvent = () => {}, maxHops = 32, localAddress } = {}) {
   const owned = !core;
   core ||= createConfigCore();
   let closed = false;
   async function run(stage, request) {
-    const result = await core.query(request);
+    const result = await core.query({ ...request, ...(localAddress === undefined ? {} : { localAddress }) });
     if (!result.ok) throw new SubscriptionPreparationError(stage, result);
     return result.value;
   }

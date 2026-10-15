@@ -1,0 +1,25 @@
+{
+  "scope": "ApiConfig.getImgJar plus the pinned original AOSP Base64.DEFAULT decoder, with UTF-8 host JVM default charset",
+  "cases": [
+    { "id": "no-marker", "body": "prefix UEsDBAAA/w==", "expectedHex": "" },
+    { "id": "empty-body", "body": "", "expectedHex": "" },
+    { "id": "binary-payload", "body": "image-prefix A1b2C3d4**UEsDBAAA/w==", "expectedHex": "504b03040000ff" },
+    { "id": "no-padding", "body": "ABCDEFGH**UEsDBAAA/w", "expectedHex": "504b03040000ff" },
+    { "id": "whitespace", "body": "ABCDEFGH**UEsD\nBAAA /w==\r\n", "expectedHex": "504b03040000ff" },
+    { "id": "ignored-punctuation", "body": "ABCDEFGH**U!E@s#D$B%A^A&A*/w==", "expectedHex": "504b03040000ff" },
+    { "id": "url-safe-symbols-skipped", "body": "ABCDEFGH**A-__A==", "expectedHex": "00" },
+    { "id": "unicode-skipped", "body": "ABCDEFGH**U中E文s=", "expectedHex": "504b" },
+    { "id": "digits-marker", "body": "12345678**QQ==", "expectedHex": "41" },
+    { "id": "more-than-eight-marker-characters", "body": "zABCDEFGH**QQ==", "expectedHex": "41" },
+    { "id": "seven-character-marker", "body": "ABCDEFG**QQ==", "expectedHex": "" },
+    { "id": "non-alnum-marker", "body": "ABC_DEFH**QQ==", "expectedHex": "" },
+    { "id": "one-star-marker", "body": "ABCDEFGH*QQ==", "expectedHex": "" },
+    { "id": "marker-empty-payload", "body": "ABCDEFGH**", "expectedHex": "" },
+    { "id": "marker-symbols-only", "body": "ABCDEFGH**!!\n", "expectedHex": "" },
+    { "id": "one-base64-character", "body": "ABCDEFGH**A", "expectedError": "IllegalArgumentException" },
+    { "id": "single-padding-for-one-byte", "body": "ABCDEFGH**QQ=", "expectedError": "IllegalArgumentException" },
+    { "id": "too-much-padding", "body": "ABCDEFGH**QQ===", "expectedError": "IllegalArgumentException" },
+    { "id": "data-after-padding", "body": "ABCDEFGH**QQ==Qg==", "expectedError": "IllegalArgumentException" },
+    { "id": "first-marker-wins", "body": "ABCDEFGH**QQ==later123**Qg==", "expectedError": "IllegalArgumentException" }
+  ]
+}

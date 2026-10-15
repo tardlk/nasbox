@@ -1,0 +1,290 @@
+{
+  "date": "2026-10-15T02:29:58.333958+00:00",
+  "scope": "Original-source route/Base64 fixture comparison, macOS integration and actual Linux amd64 NAS JRE-only Docker execution; no Android/ART or full source-method parity",
+  "regression": {
+    "host": "macOS ARM64",
+    "passed": 405,
+    "failed": 0,
+    "skipped": 0,
+    "nativeEnabled": true,
+    "logSha256": "b0abb5bfd4a0ada692f1898f6baae07993784a7fb17f8dae34d35fa2a0d0a5af"
+  },
+  "image": {
+    "tag": "tvbox-core:linux-amd64-routes-20261015",
+    "id": "sha256:b6e3df0f9f7a9e2fa71bd040551899b1cfebe811dc1034d69a2a133ddbaf534a",
+    "size": 511654302,
+    "user": "10001:10001",
+    "parent": "sha256:74c75480ee1f1a92cf3974b853af17f3a3f3338b31d39d5b973f4338c540511a",
+    "incrementalUncompressedLayerBytes": 56865,
+    "architecture": "linux/amd64",
+    "compilerAdded": false,
+    "method": "Source-only docker create/copy/commit derivative of the previously verified JRE image; no library or Java class duplication, public push or reproducibility claim",
+    "sources": [
+      {
+        "path": "backend/spider-runtime/artifact-cache.mjs",
+        "sha256": "99ca61dd41023c7d590330fea1922d8bf7b000f776b8853ee83fc5743187d209"
+      },
+      {
+        "path": "backend/spider-runtime/artifact-source.mjs",
+        "sha256": "a63fbfb1b0364285ddf8b4eca1bf5efdfe169d5f89f40d323719c5fec59ae9ea"
+      },
+      {
+        "path": "backend/spider-runtime/index.mjs",
+        "sha256": "7f04843505d8c18bc3bbc1fd3e43d0ddce4755974ea3dd121c00fec7321605f5"
+      },
+      {
+        "path": "backend/spider-runtime/native-bridge/session.mjs",
+        "sha256": "74564b94e7c22b5845cf64d3a90eaa96f4a9824907d7200b813606689cc2ded4"
+      },
+      {
+        "path": "backend/spider-runtime/session.mjs",
+        "sha256": "b538261adcaab9ad6a95e434f6079dfe7fc48e0c54611d519ab4701cef97ee01"
+      },
+      {
+        "path": "backend/spider-runtime/subscription-cli.mjs",
+        "sha256": "24a8bb1106fd96bbcd529b3a16b08e1211f9248ad2f75784048eb43fcaeab238"
+      },
+      {
+        "path": "backend/subscription/loader.mjs",
+        "sha256": "efbf9a350663cd9b0a149b382234472ab67d266a30d7683ae86cdc2ec78b5097"
+      },
+      {
+        "path": "scripts/container/artifact-routes-probe.mjs",
+        "sha256": "dc99ece2f3fc2945c9b63dd28308654013bd8c29797eec5cd2eac74cf832929f"
+      }
+    ]
+  },
+  "constraints": {
+    "user": "10001:10001",
+    "readOnlyRoot": true,
+    "tmpfs": "/tmp:rw,exec,nosuid,nodev,size=256m",
+    "network": "none for offline doctor/route fixture; default Docker network for explicitly requested real subscription",
+    "capabilities": "ALL dropped",
+    "noNewPrivileges": true,
+    "pidsLimit": 256,
+    "memoryBytes": 2147483648,
+    "noPublishedPorts": true,
+    "realCliData": "64MiB exec tmpfs /data owned by 10001; native JNI extracts in runtime/tmp under the selected data root"
+  },
+  "fixture": {
+    "version": 1,
+    "ok": true,
+    "fixture": {
+      "bytes": 8210,
+      "sha256": "02bd0589019f7bca0bd9ed45515e749ac2466e7ba740cdbfae5a9b6f5b59a5fb"
+    },
+    "downloads": {
+      "image": 1,
+      "clan": 1,
+      "config": 3,
+      "unexpected": 0
+    },
+    "initial": {
+      "image": {
+        "ready": true,
+        "homeSha256": "d26d9d225b49910ee518ab157d9ccc277a295a14866f69497440cd28c754caba",
+        "resource": "fixture-resource"
+      },
+      "assets": {
+        "ready": true,
+        "homeSha256": "eb04c3494b251b2dad96c47e4eb01dd442c015d0708e2960e25bb5b2e1ac1e74",
+        "resource": "fixture-resource"
+      },
+      "external": {
+        "ready": true,
+        "homeSha256": "7fafecacffd4718f068a169bd61bc27db2f0bd7a1bec537227ed9abb10e4fd27",
+        "resource": "fixture-resource"
+      },
+      "fileFallback": {
+        "ready": true,
+        "homeSha256": "f56d53dad0850c58e07ec6ed35e003e947fc334611cdd7f9df64e8f8315c8791",
+        "resource": "fixture-resource"
+      },
+      "clan": {
+        "ready": true,
+        "homeSha256": "df304870281569d6e855b20687bdf5d54be1ce1b80e5460301c7e2efd2c8c704",
+        "resource": "fixture-resource"
+      },
+      "cache": {
+        "entries": 3,
+        "pinned": 3,
+        "bytes": 25146,
+        "maxBytes": 134217728
+      }
+    },
+    "reimport": {
+      "image": {
+        "ready": true,
+        "homeSha256": "ae4589886f60319ca5bad77cd514408221021b6cc71f1247364a75580619e833",
+        "resource": "fixture-resource"
+      },
+      "assets": {
+        "ready": true,
+        "homeSha256": "f8bb71db29fbde08eb975d2f8b1c90b838b1ec95e58212c988eca067a29d8872",
+        "resource": "fixture-resource"
+      },
+      "external": {
+        "ready": true,
+        "homeSha256": "74444e0ca908c9836808c9dc7c950d765938a28a8b9d4caff3cb594d506da364",
+        "resource": "fixture-resource"
+      },
+      "fileFallback": {
+        "ready": true,
+        "homeSha256": "fe8401ae3c802c2a1840bdc4034f872372669e3c89ce4191eb7e1dc647d0405a",
+        "resource": "fixture-resource"
+      },
+      "clan": {
+        "ready": true,
+        "homeSha256": "3d4804bbdf18fd8451eab5c7ada3e5987eb96f3ef2cec8f2dbac553e54f9a62f",
+        "resource": "fixture-resource"
+      },
+      "cache": {
+        "entries": 3,
+        "pinned": 3,
+        "bytes": 25146,
+        "maxBytes": 134217728
+      }
+    },
+    "restart": {
+      "image": {
+        "ready": true,
+        "homeSha256": "ae4589886f60319ca5bad77cd514408221021b6cc71f1247364a75580619e833",
+        "resource": "fixture-resource"
+      },
+      "assets": {
+        "ready": true,
+        "homeSha256": "f8bb71db29fbde08eb975d2f8b1c90b838b1ec95e58212c988eca067a29d8872",
+        "resource": "fixture-resource"
+      },
+      "external": {
+        "ready": true,
+        "homeSha256": "74444e0ca908c9836808c9dc7c950d765938a28a8b9d4caff3cb594d506da364",
+        "resource": "fixture-resource"
+      },
+      "fileFallback": {
+        "ready": true,
+        "homeSha256": "fe8401ae3c802c2a1840bdc4034f872372669e3c89ce4191eb7e1dc647d0405a",
+        "resource": "fixture-resource"
+      },
+      "clan": {
+        "ready": true,
+        "homeSha256": "3d4804bbdf18fd8451eab5c7ada3e5987eb96f3ef2cec8f2dbac553e54f9a62f",
+        "resource": "fixture-resource"
+      },
+      "cache": {
+        "entries": 3,
+        "pinned": 3,
+        "bytes": 25146,
+        "maxBytes": 134217728
+      }
+    },
+    "lifecycle": {
+      "oldTokensRejected": 5,
+      "oldRegistrationsReady": 0,
+      "changedTokens": 5
+    },
+    "cleanup": {
+      "ready": true
+    }
+  },
+  "doctor": {
+    "ok": true,
+    "platform": "linux",
+    "architecture": "x64",
+    "node": "v24.22.0",
+    "scope": "Offline synthetic config/QuickJS/DEX and actual ARM machine-code probes; no Android parity or real-source certification",
+    "config": {
+      "sites": 1
+    },
+    "quickjs": {
+      "ready": true,
+      "answer": 42
+    },
+    "dex": {
+      "ready": true,
+      "classes": 1,
+      "resource": "offline-dex-resource"
+    },
+    "arm": [
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      },
+      {
+        "value": 42,
+        "bits": 64,
+        "backend": "com.github.unidbg.arm.backend.dynarmic.DynarmicBackend64"
+      },
+      {
+        "value": 43,
+        "bits": 32,
+        "backend": "com.github.unidbg.arm.backend.Unicorn2Backend"
+      }
+    ],
+    "lifecycle": {
+      "workerReplaced": true,
+      "oldTokensRejected": true,
+      "listeners": 0,
+      "dexLoaders": 0
+    },
+    "java": "openjdk version \"17.0.20.1\" 2026-08-18"
+  },
+  "realSource": {
+    "sourceKey": "Aid",
+    "ready": true,
+    "classificationCount": 8,
+    "homeSha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+    "artifacts": {
+      "scope": "downloaded JAR pairs only; excludes runtime DEX/module/plugin data",
+      "integrity": "strict",
+      "maxBytes": 134217728,
+      "bytes": 1279773,
+      "entries": 1,
+      "pinned": 1,
+      "persistent": true
+    },
+    "runtimeCache": {
+      "maxBytes": 268435456,
+      "bytes": 3724425,
+      "dexBytes": 3724425,
+      "moduleBytes": 0,
+      "entries": 2,
+      "pinnedDexEntries": 2,
+      "evictedEntries": 0,
+      "rejectedWrites": 0
+    },
+    "strictMd5": true,
+    "rawHomeRetained": false
+  },
+  "oracleReport": "docs/linux/artifact-routes-oracle-probe.json",
+  "limits": [
+    "Oracle runs unchanged methods with explicit host-JVM asset/network/File constructor bindings, not Android/ART",
+    "Image route belongs to global spider; assets/file/clan dedicated branches belong to site JARs; subscription preprocessing may turn file/clan into HTTP first",
+    "Caller roots and path/size/transport limits are explicit Linux host bindings, not Android storage services",
+    "Local JARs load directly outside managed quota; caller must use atomic replacement and reimport instead of truncating an active file",
+    "Main requests match original okhttp/3.15 user-agent; complete OkHttp charset/DNS/TLS/cookie equivalence is unverified",
+    "This real-source run covers current Aid init/home only; earlier cc failure and full-JSON response differences are unresolved",
+    "Dynamic helper-JAR interception, multiple native-artifact isolation, real Linux JS/Python and broader Android/ART same-input calls remain open",
+    "Native runtime temporary extraction under explicit persistent data requires a filesystem permitting execution; the NAS fixture used /tmp exec tmpfs and real CLI used a separate bounded exec /data tmpfs"
+  ],
+  "cleanup": {
+    "temporaryFilesRemoved": true,
+    "taskServicesRunning": false,
+    "newPermanentTools": [],
+    "retainedProjectToolsApproxMiB": 404,
+    "retainedNasImageTag": "tvbox-core:linux-amd64-routes-20261015",
+    "autostartChanges": false,
+    "existingNasContainersModified": false,
+    "verifiedAt": "2026-10-15T02:31:58.615070+00:00",
+    "nasExistingContainers": [
+      "dockge-dockge-1",
+      "emby",
+      "moviepilot",
+      "qbittorrent"
+    ],
+    "sshMasterStopped": true,
+    "projectCacheRemoved": true,
+    "retainedNasImagePurpose": "Continue runtime migration and rollback comparison; shared prior image layers plus 56,865 bytes"
+  }
+}

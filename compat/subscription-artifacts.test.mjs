@@ -10,6 +10,7 @@ import { createHash } from 'node:crypto';
 import { buildSpiderFixtures } from '../scripts/compat/spider-fixtures.mjs';
 import { createExecutableSubscriptionSession } from '../backend/spider-runtime/session.mjs';
 import { JarArtifactCache } from '../backend/spider-runtime/artifact-cache.mjs';
+import { createSpiderRuntime } from '../backend/spider-runtime/index.mjs';
 const fixtures = buildSpiderFixtures(), bytes = readFileSync(fixtures.jar);
 const md5 = value => createHash('md5').update(value).digest('hex');
 const root = join(import.meta.dirname, '..');
@@ -111,16 +112,26 @@ test('native worker replacement forgets automatic registrations before old JARs 
     if (req.url.startsWith('/jar')) { res.end(bytes); return; }
     res.end(JSON.stringify({ sites: [{ key: 'site', type: 3, api: 'csp_Contract', jar: base + '/jar?generation=' + generation }] }));
   }); base = http.base;
-  const session = await createExecutableSubscriptionSession({ nativeBridge: true, remoteJars: true, artifactCacheDir: directory, jarCacheOptions: { maxBytes: 3 * bytes.length + 1024 } });
+  const runtime = createSpiderRuntime({ nativeBridge: true });
+  const cache = new JarArtifactCache({ directory, maxBytes: 3 * bytes.length + 1024 });
+  const session = await createExecutableSubscriptionSession({ runtime, artifactCache: cache, remoteJars: true });
   try {
+    await runtime.registerJar('explicit://fixture', fixtures.jar);
     let previous;
     for (generation = 0; generation < 5; generation++) {
       assert.equal((await session.load({ apiUrl: base + '/config' })).ok, true);
+      if (generation) {
+        await assert.rejects(runtime.call(previous, 'action', ['resource']), /Unknown or cleared Spider token/);
+        const old = await runtime.getCSP({ key: 'old-' + generation, type: 3, api: 'csp_Contract', jar: base + '/jar?generation=' + (generation - 1) });
+        assert.equal(old.ready, false, 'new worker must not replay an automatically retrieved old registration');
+      }
+      const explicit = await runtime.getCSP({ key: 'explicit-' + generation, type: 3, api: 'csp_Contract', jar: 'explicit://fixture' });
+      assert.equal(explicit.ready, true, 'caller-owned explicit mappings still replay');
       const result = await session.call('site', 'action', ['resource']);
       assert.equal(result.value, 'fixture-resource'); assert.notEqual(result.spider.token, previous);
       previous = result.spider.token;
     }
     const state = (await session.getState()).artifacts;
     assert.equal(state.pinned, 1); assert.ok(state.entries < 5); assert.ok(state.bytes <= state.maxBytes);
-  } finally { await session.close(); await http.close(); rmSync(directory, { recursive: true, force: true }); }
+  } finally { await session.close(); await runtime.close(); await cache.close(); await http.close(); rmSync(directory, { recursive: true, force: true }); }
 });

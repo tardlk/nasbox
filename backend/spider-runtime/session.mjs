@@ -4,7 +4,7 @@ import { createFullSubscriptionLoader } from '../subscription/full-loader.mjs';
 import { RuntimeCleanup } from '../subscription/runtime-cleanup.mjs';
 import { JarArtifactCache } from './artifact-cache.mjs';
 
-/** Full config → lazy type=3 execution. Automatic HTTP(S) JAR retrieval is opt-in. */
+/** Full config → lazy type=3 execution. Automatic source-backed JAR retrieval is opt-in. */
 export async function createExecutableSubscriptionSession(options = {}) {
   const owned = !options.runtime;
   if (!owned && options.remoteJars && !options.artifactCache) throw new Error('Borrowed runtime requires a caller-owned artifactCache for remote JARs');
@@ -13,7 +13,7 @@ export async function createExecutableSubscriptionSession(options = {}) {
   let cache, loader, mainSignature, closed = false, queue = Promise.resolve(), closing, jarUseCache = false;
   const ownedCache = !options.artifactCache;
   try {
-    cache = options.artifactCache || (options.remoteJars ? new JarArtifactCache({ ...options.jarCacheOptions, directory: options.artifactCacheDir }) : null);
+    cache = options.artifactCache || (options.remoteJars ? new JarArtifactCache({ localAddress: options.localAddress, ...options.jarCacheOptions, directory: options.artifactCacheDir }) : null);
     if (cache) { await cache.getState(); await runtime.request({operation:'artifactLease',guard:cache.guardPath}); }
     loader = createFullSubscriptionLoader({ ...options, runtimeCleanup: cleanup, beforeRuntimeClear: () => runtime.request({ operation: 'resetKeys' }) });
     if (options.modules || options.moduleRoot || options.remoteModules || options.androidModules) await runtime.setModules({ modules: options.modules, root: options.moduleRoot, android: !!options.androidModules || !!options.remoteModules, remote: !!options.remoteModules });
@@ -30,7 +30,7 @@ export async function createExecutableSubscriptionSession(options = {}) {
     registrations.clear(); resolved.clear(); mainSignature = undefined;
     await cache?.releaseAll();
   }
-  async function clearJar() { await runtime.clear('jar'); await releaseArtifacts(); }
+  async function clearJar() { await runtime.clear('jar', { forgetRegistrations: [...registrations] }); await releaseArtifacts(); }
   function track(kind) {
     if (tracked.has(kind)) return;
     tracked.add(kind);
@@ -89,7 +89,7 @@ export async function createExecutableSubscriptionSession(options = {}) {
     return runtime.getCSP(source);
   }
   return {
-    scope: 'config-state + lazy host-jvm/dex/quickjs-source; optional HTTP JAR cache',
+    scope: 'config-state + lazy host-jvm/dex/quickjs-source; optional routed JAR retrieval',
     load: (request = {}) => serialize(async () => { const result = await loader.load(request); jarUseCache = !!request.useCache; return result; }),
     getCSP: key => serialize(() => resolveSpider(key)),
     call: (key, method, args = []) => serialize(async () => { const spider = await resolveSpider(key); return { spider, value: await runtime.call(spider.token, method, args) }; }),

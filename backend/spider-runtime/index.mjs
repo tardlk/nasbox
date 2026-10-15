@@ -52,7 +52,7 @@ function createWorker({built=buildSpiderRuntime(),timeoutMs=10000,maxBytes=8*102
   registerJar:(signature,path)=>request({operation:'registerJar',signature,path:resolve(path)}),
   setModules:options=>request({operation:'modules',...options}),
   call:(token,method,args=[])=>request({operation:'call',token,method,args}),
-  clear:kind=>request({operation:'clear',kind}),
+  clear:(kind,options={})=>request({...options,operation:'clear',kind}),
   getState:()=>request({operation:'state'}),
   close(){
    closing||=(async()=>{

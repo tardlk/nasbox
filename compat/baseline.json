@@ -24,6 +24,6 @@
     "media decoding",
     "transcoding"
   ],
-  "nasVerificationScope": "Linux amd64 Docker core, native/DEX/QuickJS fixtures and selected real JAR init/home; not complete Android/ART parity",
-  "nasVerificationReport": "docs/linux/cache-lifecycle-probe.json"
+  "nasVerificationScope": "Linux amd64 Docker core and original-role JAR route fixtures; selected real protected JAR init/home; not complete Android/ART parity",
+  "nasVerificationReport": "docs/linux/artifact-routes-probe.json"
 }

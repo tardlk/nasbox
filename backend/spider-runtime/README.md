@@ -325,3 +325,20 @@ loops, block live takeover, recover abandoned staging, exercise combined quota
 eviction/pins and run actual module/DEX quota rejection. The physical NAS passes
 the same boundaries, cross-container PID-1 contention/kill recovery, real protected
 Aid home across restart and offline doctor. See cache-lifecycle-probe.json.
+
+
+## Image, asset, local-file and clan artifacts — 2026-10-15
+
+[Artifact routes](ARTIFACTS.md) now preserve the distinct original global/site
+branches: image-wrapped global JARs, copied site assets, direct local site files
+and HTTP clan conversion. Storage roots and local file-service address are
+explicit caller bindings. A fresh original-method oracle covers 34 route cases,
+20 image vectors and 341 Base64 state combinations. Native import drops automatic
+registrations before replacement-worker replay while retaining explicit mappings.
+
+405 native-enabled host tests pass. The actual Linux amd64 NAS JRE image executes
+five fixture routes through home/resource calls, reimport and restart; image/clan
+download once, all five old tokens fail and no old automatic registration survives.
+The same image's real strict-MD5 subscription CLI obtains Aid home with eight
+classes; its offline doctor also passes. See artifact-routes-probe.json.
+These are route and selected-call checks, not Android/ART or complete source parity.

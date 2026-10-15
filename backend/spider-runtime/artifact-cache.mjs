@@ -4,6 +4,7 @@ import { join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { createHash, randomUUID } from 'node:crypto';
 import { acquireDirectoryLease } from './directory-lease.mjs';
+import { planJarSource, decodeImageJar, resolveJarFile } from './artifact-source.mjs';
 
 export const JAR_CACHE_AGE_MS = 3 * 24 * 60 * 60 * 1000; // Pinned FileUtils.isWeekAgo, despite its name.
 const hash = (bytes, algorithm = 'sha256') => createHash(algorithm).update(bytes).digest('hex');
@@ -37,12 +38,12 @@ export function jarCacheRule({ role, useCache = false, jarCache = 'true', expect
 }
 
 /** Bounded Node transport; HTTP/DNS/TLS/cookie parity with Android remains unverified. */
-export async function fetchArtifactBytes(url, { timeoutMs = 25000, maxBytes = 64 * 1024 * 1024, signal, allowEmpty = false } = {}) {
+export async function fetchArtifactBytes(url, { timeoutMs = 25000, maxBytes = 64 * 1024 * 1024, signal, allowEmpty = false, responseText = false, userAgent = 'okhttp/3.12.11' } = {}) {
   let parsed;
   try { parsed = new URL(url); } catch { throw new ArtifactError('JAR_URL_INVALID'); }
   if (!['http:', 'https:'].includes(parsed.protocol)) throw new ArtifactError('JAR_SCHEME_UNAVAILABLE');
   const deadline = AbortSignal.timeout(timeoutMs);
-  const response = await fetch(parsed, { headers: { 'User-Agent': 'okhttp/3.12.11' }, signal: signal ? AbortSignal.any([signal, deadline]) : deadline });
+  const response = await fetch(parsed, { headers: { 'User-Agent': userAgent }, signal: signal ? AbortSignal.any([signal, deadline]) : deadline });
   try {
     if (!response.ok) throw new ArtifactError('JAR_HTTP_' + response.status);
     if (Number(response.headers.get('content-length')) > maxBytes) throw new ArtifactError('JAR_SIZE_LIMIT');
@@ -53,7 +54,14 @@ export async function fetchArtifactBytes(url, { timeoutMs = 25000, maxBytes = 64
       chunks.push(Buffer.from(chunk));
     }
     if (!size && !allowEmpty) throw new ArtifactError('EMPTY_JAR');
-    return Buffer.concat(chunks);
+    const bytes = Buffer.concat(chunks);
+    if (!responseText) return bytes;
+    let encoding = /charset\s*=\s*["']?([^\s;"']+)/i.exec(response.headers.get('content-type') || '')?.[1] || 'utf-8';
+    if (bytes[0] === 0xef && bytes[1] === 0xbb && bytes[2] === 0xbf) encoding = 'utf-8';
+    else if (bytes[0] === 0xff && bytes[1] === 0xfe) encoding = 'utf-16le';
+    else if (bytes[0] === 0xfe && bytes[1] === 0xff) encoding = 'utf-16be';
+    try { return new TextDecoder(encoding).decode(bytes); }
+    catch { return new TextDecoder('utf-8').decode(bytes); }
   } finally { await response.body?.cancel().catch(() => {}); }
 }
 
@@ -62,10 +70,11 @@ export class JarArtifactCache {
   #ready; #queue = Promise.resolve(); #closed = false; #closing; #lease;
   #pins = new Set(); #controller = new AbortController(); #root; #owned;
   constructor({ directory, maxBytes = 128 * 1024 * 1024, maxArtifactBytes = 64 * 1024 * 1024,
+    maxImageBytes = Math.ceil(maxArtifactBytes * 4 / 3) + 1024 * 1024, assetRoot, externalRoot, fileRoot, localAddress,
     timeoutMs = 25000, integrity = 'android', fetchBytes = fetchArtifactBytes, now = Date.now, recoverLegacyLock = false } = {}) {
-    for (const value of [maxBytes, maxArtifactBytes, timeoutMs]) if (!Number.isSafeInteger(value) || value <= 0) throw new ArtifactError('INVALID_JAR_LIMIT');
+    for (const value of [maxBytes, maxArtifactBytes, maxImageBytes, timeoutMs]) if (!Number.isSafeInteger(value) || value <= 0) throw new ArtifactError('INVALID_JAR_LIMIT');
     if (!['android', 'strict'].includes(integrity)) throw new ArtifactError('INVALID_JAR_INTEGRITY_POLICY');
-    Object.assign(this, { maxBytes, maxArtifactBytes, timeoutMs, integrity, fetchBytes, now });
+    Object.assign(this, { maxBytes, maxArtifactBytes, maxImageBytes, assetRoot, externalRoot, fileRoot, localAddress, timeoutMs, integrity, fetchBytes, now });
     this.#owned = !directory;
     this.#ready = (async () => {
       this.#root = directory ? resolve(directory, 'jar-artifacts-v1') : await mkdtemp(join(tmpdir(), 'tvbox-jar-cache-'));
@@ -130,8 +139,7 @@ export class JarArtifactCache {
   async #resolve(signature, { role = 'site', useCache = false, jarCache = 'true', force = false } = {}) {
     if (!['main', 'site'].includes(role)) throw new ArtifactError('INVALID_JAR_ROLE');
     const { source, md5 } = jarSignature(signature, { role }), key = role + '-' + jarUrlKey(source);
-    if (source.startsWith('img+')) throw new ArtifactError('IMAGE_JAR_REQUIRES_EXPLICIT_MAPPING');
-    if (!/^https?:\/\//.test(source)) throw new ArtifactError('JAR_SCHEME_REQUIRES_EXPLICIT_MAPPING');
+    const plan = planJarSource(source, { role, localAddress: this.localAddress });
     let expectedMd5 = md5;
     // Only JarLoader.parseJar resolves a remote MD5. ApiConfig.loadJar uses literal text.
     if (role === 'site' && md5.startsWith('http')) {
@@ -146,9 +154,22 @@ export class JarArtifactCache {
     const acceptable = entry && (this.integrity !== 'strict' || !expectedMd5 || entry.md5 === expectedMd5.toLowerCase());
     const rule = !force && acceptable ? jarCacheRule({ role, useCache, jarCache, expectedMd5, entry, now: this.now() }) : null;
     if (rule) { await utimes(join(this.#root, key + '.json'), new Date(), new Date(this.now())); return { ...entry, origin: 'cache', rule, md5Matches: expectedMd5 ? entry.md5 === expectedMd5.toLowerCase() : null }; }
+    if (plan.kind === 'unsupported') throw new ArtifactError('JAR_SCHEME_UNSUPPORTED_FOR_ROLE');
     if (this.#pins.has(key)) throw new ArtifactError('JAR_UPDATE_REQUIRES_RUNTIME_CLEAR');
-    let bytes;
-    try { bytes = Buffer.from(await this.fetchBytes(source, { timeoutMs: this.timeoutMs, maxBytes: this.maxArtifactBytes, signal: this.#controller.signal })); }
+    let bytes, localPath;
+    try {
+      if (plan.kind === 'assets' || plan.kind === 'file') {
+        const local = await resolveJarFile(plan, { assetRoot: this.assetRoot, externalRoot: this.externalRoot, fileRoot: this.fileRoot, maxBytes: this.maxArtifactBytes, signal: this.#controller.signal });
+        bytes = local.bytes; localPath = local.path;
+      } else {
+        const image = plan.kind === 'image', limit = image ? this.maxImageBytes : this.maxArtifactBytes;
+        const fetched = await this.fetchBytes(plan.requestUrl, { timeoutMs: this.timeoutMs, maxBytes: limit, signal: this.#controller.signal, responseText: image, ...(role === 'main' ? { userAgent: 'okhttp/3.15' } : {}) });
+        if ((typeof fetched === 'string' ? Buffer.byteLength(fetched) : fetched.length) > limit) throw new ArtifactError('JAR_SIZE_LIMIT');
+        bytes = image ? decodeImageJar(fetched) : Buffer.from(fetched);
+      }
+      if (!bytes.length) throw new ArtifactError('EMPTY_JAR');
+      if (bytes.length > this.maxArtifactBytes) throw new ArtifactError('JAR_SIZE_LIMIT');
+    }
     catch (error) {
       if (role !== 'main' || !acceptable || this.#controller.signal.aborted || error.code === 'JAR_SIZE_LIMIT') throw error;
       return { ...entry, origin: 'fallback', rule: 'network-failure', md5Matches: expectedMd5 ? entry.md5 === expectedMd5.toLowerCase() : null };
@@ -157,6 +178,7 @@ export class JarArtifactCache {
     if (bytes.length > this.maxArtifactBytes) throw new ArtifactError('JAR_SIZE_LIMIT');
     const actualMd5 = hash(bytes, 'md5'), md5Matches = expectedMd5 ? actualMd5 === expectedMd5.toLowerCase() : null;
     if (this.integrity === 'strict' && md5Matches === false) throw new ArtifactError('JAR_MD5_MISMATCH');
+    if (plan.kind === 'file') return { path: localPath, origin: 'local', retrieval: 'file', sha256: hash(bytes), md5: actualMd5, bytes: bytes.length, md5Matches };
     const metadata = { version: 1, sha256: hash(bytes), md5: actualMd5, bytes: bytes.length, downloadedAt: this.now() }, json = JSON.stringify(metadata);
     await this.#reserve(bytes.length + Buffer.byteLength(json), key);
     const prefix = join(this.#root, 'pending-' + randomUUID()), jarTemp = prefix + '.jar', metaTemp = prefix + '.json';
@@ -167,10 +189,10 @@ export class JarArtifactCache {
       await rename(metaTemp, join(this.#root, key + '.json'));
       await utimes(join(this.#root, key + '.json'), new Date(), new Date(this.now()));
     } finally { await unlink(jarTemp).catch(ignoreMissing); await unlink(metaTemp).catch(ignoreMissing); }
-    return { ...metadata, key, path: join(this.#root, key + '.jar'), origin: 'download', rule: 'download', md5Matches };
+    return { ...metadata, key, path: join(this.#root, key + '.jar'), origin: 'download', rule: 'download', retrieval: plan.kind, md5Matches };
   }
   resolve(signature, options) { return this.#serialize(() => this.#resolve(signature, options)); }
-  acquire(signature, options) { return this.#serialize(async () => { const entry = await this.#resolve(signature, options); this.#pins.add(entry.key); return entry; }); }
+  acquire(signature, options) { return this.#serialize(async () => { const entry = await this.#resolve(signature, options); if (entry.key) this.#pins.add(entry.key); return entry; }); }
   pin(key) { return this.#serialize(async () => { if (!(await this.#read(key))) throw new ArtifactError('JAR_CACHE_MISSING'); this.#pins.add(key); }); }
   releaseAll() { return this.#serialize(() => { this.#pins.clear(); }); }
   invalidate(key) { return this.#serialize(async () => { if (this.#pins.has(key)) throw new ArtifactError('JAR_UPDATE_REQUIRES_RUNTIME_CLEAR'); await this.#remove(key); }); }

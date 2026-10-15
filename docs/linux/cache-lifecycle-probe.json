@@ -250,7 +250,7 @@
     "retainedProjectToolsApproxMiB": 404,
     "retainedNasImageTag": "tvbox-core:linux-amd64-cache-20261015",
     "newPermanentTools": [],
-    "notes": "Cache-lifecycle local transport/compiler/log bundle and exact NAS temporary directory removed on resumption; build/reference caches regenerate during subsequent development. Temporary SSH master is scoped to active work and closed at task end."
+    "notes": "Interrupted batch bundle and exact NAS temporary directory removed on resumption. Subsequent route batch also completed and removed generated build/reference caches and its temporary SSH master; see artifact-routes-probe.json."
   },
   "resumptionVerification": {
     "date": "2026-10-15T02:10:44.837539+00:00",

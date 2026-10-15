@@ -454,3 +454,59 @@ caches regenerate during the next development batch and are removed at its end.
 No persistent data volume was created. Existing NAS Docker/four containers remain
 unchanged. A temporary scoped SSH control master serves the active continuation
 and is closed at task end; no app service or autostart was added.
+
+
+## Remaining artifact routes and final resumption cleanup — 2026-10-15
+
+Reused the existing shared Node, project JDK/Gson/Android snapshots, system SSH/
+SCP/tar/Python/mkfifo and the NAS Docker/JRE image. No package, toolchain, VM,
+Android SDK, global environment, library or autostart item was installed. The
+project development environment remains .tools, approximately 404 MiB, retained
+for ongoing reference/runtime compilation. Shared Codex tools were untouched.
+
+Fresh original-method route/image oracles create tvbox-artifact-routes-oracle-*
+directories only under the OS temporary directory and delete them in finally.
+Integration tests used owned tvbox-artifact-* directories, FIFOs, fixture JARs,
+ephemeral loopback HTTP listeners and Java/lease workers. Their finally/after hooks
+remove owned files and close every server/runtime. Generated backend/reference/
+fixture/container outputs plus task transport/test logs occupied about 91 MiB
+under .cache at final inspection; the entire known project cache was then removed.
+No .data directory, user asset root or persistent subscription volume was created.
+Caller-supplied future assetRoot/externalRoot/fileRoot directories are never deleted
+by the runtime; direct local JARs remain outside managed disk-cache quotas.
+
+The NAS used exactly one new /tmp/tvbox-artifact-routes.* directory for an owned
+synthetic fixture, eight source files, source archive, metadata and temporary raw
+home output. It was removed after hashes and aggregate results were recorded.
+A stopped create/copy/commit container built the source-only image and was removed
+by exact name; it was never used as a running app service. Every actual probe/CLI
+container used --rm, UID10001, read-only root, dropped capabilities, pids256, 2GiB
+memory and exec /tmp tmpfs256MiB. Offline doctor/fixture runs used network-none;
+the explicit real Aid CLI used normal Docker networking and a separate ephemeral
+64MiB exec /data tmpfs owned by UID10001. No port was published. An initial CLI
+check without a writable data mount was corrected; a noexec data tmpfs also could
+not initialize the native JAR. The selected runtime's JNI temporary extraction is
+under data/runtime/tmp, so the successful native CLI used the bounded exec mount.
+No real subscription/JAR/home payload, credential or temporary compiler is retained.
+
+Retained NAS image: tvbox-core:linux-amd64-routes-20261015,
+sha256:b6e3df0f9f7a9e2fa71bd040551899b1cfebe811dc1034d69a2a133ddbaf534a,
+511,654,302 uncompressed bytes (about 488 MiB). Purpose: run the new artifact routes
+and continue multi-artifact/runtime migration. It shares all previous layers and
+adds 56,865 bytes (about 56KiB), with no duplicated Java/native dependency or class
+directory. Existing images remain for rollback/reference. This local tested
+derivative is not a public push or a reproducible release build. The existing
+Dockerfile already copies the new backend/container sources for normal builds.
+
+405 native-enabled host tests pass; the NAS verifies five route executions through
+home/resource/reimport/restart, old token/registration invalidation, offline doctor
+and the real strict-MD5 Aid home (eight classes). Eight in-image Node source hashes
+match the checkout. Reports contain hashes/counts/fixture outputs, not subscription
+configuration or raw source homes. Android/ART remains unverified.
+
+Final check: no task container or stopped build container remains; NAS still has
+exactly moviepilot, qbittorrent, emby and dockge-dockge-1. Their configuration and
+lifecycle were not changed. The scoped SSH control master, script and host-key
+bundle were stopped/removed; local project .cache is absent. Task services still
+running: none. NAS Docker and the original four containers continue. Autostart
+changes: none. No shared image/builder/cache prune was used.

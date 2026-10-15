@@ -83,8 +83,50 @@ executing the upstream downloader's potentially partial file. These failure path
 are not included in the 19 successful-load reference choices and are integration
 tested separately. Node HTTP/DNS/TLS/charset behavior is not certified OkHttp parity.
 
-Automatic retrieval currently supports HTTP(S) binary JAR/DEX only. `img+`, assets,
-file and clan artifacts still require explicit mappings and fail clearly otherwise.
+Automatic retrieval follows the original role-specific dispatch:
+
+| Input | Global spider | Site JAR |
+| --- | --- | --- |
+| HTTP(S) | Binary bytes; removes all literal `img+` substrings before requesting | Binary bytes |
+| `img+http…` | First eight-alphanumeric-plus-`**` marker, then original Android Base64.DEFAULT semantics | Unsupported by original site loader |
+| `assets://…` / `assets/…` | No dedicated route | Copies from explicit `assetRoot` into the managed cache |
+| `file:/…` | No dedicated route | Direct caller file: `externalRoot` first, then `fileRoot` |
+| `clan://…` | No dedicated route | Original localhost/remote address conversion, then HTTP |
+
+The subscription's existing original-source preprocessing can convert file/clan
+strings to HTTP before this dispatch. An unsupported main scheme fails before
+the HTTP adapter instead of pretending the main loader has site-only branches.
+The `img+` identity stays the original source string; downloaded payload SHA/MD5,
+size and cache quota apply to decoded JAR bytes. The encoded response has a
+separate `maxImageBytes` cap (default ceil(maxArtifactBytes × 4/3) + 1 MiB).
+Missing/empty/invalid payloads never publish a partial pair. Main HTTP requests
+use the original `okhttp/3.15` user-agent. Image text uses declared charset and
+UTF-8/UTF-16 BOM handling; full OkHttp charset/network equivalence is unverified.
+
+Pass `jarCacheOptions:{assetRoot,externalRoot,fileRoot}` to bind Android storage
+namespaces to explicit directories. These roots must already exist. Paths cannot
+escape their root through `..` or a symlink; nonregular inputs, including FIFOs,
+are rejected without blocking. These are host filesystem bounds, not a claim of
+identical Android storage services. `fileRoot` represents the Android absolute/
+relative file fallback namespace; leading slashes are interpreted within it.
+Local file JARs are size/digest checked, then loaded directly; they are neither
+copied into nor counted against the managed cache. Avoid truncating an active
+JAR in place: atomically replace the caller file and reimport before using its
+new generation. Caller files are never evicted or removed by the session.
+
+Set top-level `localAddress:'http://your-file-service/'` for both subscription
+preprocessing and the cache's clan localhost route. This binds to an existing
+file service; the CLI does not start one. `jarCacheOptions.localAddress` can
+override just the artifact binding. CLI equivalents are `--asset-root DIR`,
+`--external-root DIR`, `--file-root DIR` and `--local-address URL`.
+
+Fresh unchanged ApiConfig/JarLoader methods cover 34 dispatch cases and 20 image
+vectors; an additional 341 Base64 state combinations use original AOSP decoding
+as the oracle. These are host-JVM fixture comparisons, not Android/ART tests.
+Native clear discards automatic registrations before replaying the replacement
+worker's settings; explicit caller mappings still replay. Old automatic files
+can then be evicted without leaving a stale worker mapping.
+
 Dynamically requested helper JARs from inside scripts are not intercepted. Multiple
 protected native artifacts still need independent-worker design. The quota covers
 this downloaded-JAR cache. A separate 256 MiB aggregate DEX/module budget is now

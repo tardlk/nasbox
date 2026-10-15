@@ -131,3 +131,29 @@ PID锁需先停止旧客户端，再显式使用一次 `--recover-legacy-lock` �
 保留到JVM退出。转换工作目录位于 `/tmp`，另受256MiB tmpfs约束。原生补丁、
 rootfs、插件文件及NAS全盘不在上述配额中。[实测记录](../docs/linux/cache-lifecycle-probe.json)
 包含最终镜像、崩溃/限额/真实首页和离线自检结果。新版仍无常驻Web服务或自启动项。
+
+最新路径适配镜像为 `tvbox-core:linux-amd64-routes-20261015`。全局 spider 支持
+`img+http…` 包装；站点 JAR 支持 assets、file、clan 的原安卓路由。显式绑定目录：
+
+```sh
+docker run --rm --read-only --tmpfs /tmp:rw,exec,nosuid,nodev,size=256m \
+  --cap-drop ALL --security-opt no-new-privileges --pids-limit 256 --memory 2g \
+  -v tvbox-core-data:/data -v "$PWD/input:/input:ro" \
+  tvbox-core:linux-amd64-routes-20261015 \
+  session --native --url 'http://www.饭太硬.net/tv' --source Aid \
+  --method homeContent --args '[true]' --strict-md5 \
+  --asset-root /input/assets --external-root /input/sdcard --file-root /input/files
+```
+
+这些目录由调用方准备，用于订阅实际指定 assets/file 时查找。assets 复制到受限缓存，
+file 直接使用调用方文件；更新活动本地 JAR 时使用原子替换并重新导入。需要现有
+clan 本地文件服务时可传 `--local-address http://服务地址/`，CLI 不会另起文件服务。
+全局与站点分支不同，订阅原始预处理也可能先把 file/clan 字符串转成 HTTP。
+
+使用显式数据目录时，原生后端可能在其 `runtime/tmp` 下解压 JNI 库，该目录所在
+挂载必须允许执行；仅把 `/tmp` 设为 exec 不能改变另一个 noexec 数据挂载。本次
+真实 CLI 检查使用退出即销毁的 64MiB exec `/data` tmpfs，日常持久化仍使用数据卷。
+
+NAS 已验证五种路径的实际 Spider 调用、重导入与缓存重启，及真实 Aid 首页。
+该增量镜像约488MiB，仅新增约56KiB共享层；没有加入编译器、发布端口或常驻服务。
+[路径实测报告](../docs/linux/artifact-routes-probe.json) 保留镜像、源码哈希与验证边界。

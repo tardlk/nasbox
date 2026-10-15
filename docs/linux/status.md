@@ -379,3 +379,44 @@ its offline doctor. Corrected the stale nasVerified flag with a bounded scope;
 Android/ART remains unverified. Removed the interrupted batch's local ECJ/log
 bundle and exact 19 MiB NAS temporary directory. The original four NAS containers
 remain running, with no task container. See the report's resumptionVerification.
+
+
+Remaining artifact routes — 2026-10-15:
+
+Added original-role dispatch for image-wrapped main JARs and site assets/file/clan.
+Image bytes follow the first original marker and AOSP DEFAULT Base64 states;
+payload integrity/quota use decoded bytes, with a separate encoded-response cap.
+Assets use the managed snapshot cache; local files remain caller-owned direct
+paths, with external-storage precedence and explicit file-root fallback. Roots
+cannot be escaped via traversal/symlinks, and nonregular files/FIFOs fail promptly.
+Subscription and clan resolution share the caller's localAddress binding.
+
+Fresh unchanged pinned ApiConfig/JarLoader/AOSP methods verify 34 route cases,
+20 image vectors and 341 Base64 state combinations. 405 native-enabled host tests
+pass, including actual HTTP charset/BOM responses, strict decoded digest, limits,
+asset/file updates, file priority/FIFO rejection and complete session calls.
+The new native regression removes automatic registrations before replacement
+replay: old tokens and old auto-JAR mappings are invalid, explicit mappings remain.
+
+NAS JRE image tvbox-core:linux-amd64-routes-20261015 passes offline doctor and runs
+five fixture paths through home/resource calls, reimport and a fresh session.
+Image and clan download only once; all five old tokens are rejected, and zero old
+automatic registrations can instantiate a Spider after reset. The exact eight
+executed Node source hashes match this checkout. The real strict-MD5 CLI also
+downloads the current protected JAR and runs Aid home with eight classifications.
+That CLI uses a bounded exec /data tmpfs because JNI extraction beneath explicit
+runtime data needs execution permission. No user persistent volume was created.
+See artifact-routes-probe.json and artifact-routes-oracle-probe.json.
+
+This source-only NAS derivative adds 56,865 uncompressed bytes on the retained
+cache image; its Java/native libraries and prebuilt classes are unchanged. It is
+not a public/reproducible release. No main assets/file/clan-only branches or site
+img+ branch are invented. Caller roots, path/size/transport guards and strict MD5
+are explicit host policies, not Android filesystem/OkHttp/ART certification.
+Local active JARs must be atomically replaced and reimported, not truncated in place.
+
+Next: isolate multiple protected native artifacts in separate workers, then expand
+real Linux JS/Python and category/search/detail calls with Android/ART same-input
+comparisons. Dynamic helper JARs remain outside automatic interception. The existing
+cc/XPathGuard failure and two prior full-home-response differences remain open.
+Web and player remain deferred.

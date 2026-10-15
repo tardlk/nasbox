@@ -157,7 +157,7 @@ test('close cancels an active download and removes owned cache; unavailable sche
   await assert.rejects(stat(directory), error => error.code === 'ENOENT');
   const unsupported = new JarArtifactCache();
   try {
-    await assert.rejects(unsupported.resolve('img+http://fixture.invalid/a'), rejected('IMAGE_JAR_REQUIRES_EXPLICIT_MAPPING'));
-    await assert.rejects(unsupported.resolve('clan://localhost/a'), rejected('JAR_SCHEME_REQUIRES_EXPLICIT_MAPPING'));
+    await assert.rejects(unsupported.resolve('img+http://fixture.invalid/a'), rejected('JAR_SCHEME_UNSUPPORTED_FOR_ROLE'));
+    await assert.rejects(unsupported.resolve('assets://a'), rejected('JAR_ASSET_ROOT_REQUIRED'));
   } finally { await unsupported.close(); }
 });

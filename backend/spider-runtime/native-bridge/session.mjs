@@ -12,7 +12,10 @@ export function createNativeSession(options,createWorker,RuntimeError){
   const action=async()=>{
    if(captured.operation==='clear'&&captured.kind==='jar'){
     previousStderr=(previousStderr+worker.getDiagnostics().stderr).slice(-16384);
-    await worker.close();worker=createWorker(workerOptions);generation++;
+    await worker.close();
+    const forgotten=new Set(Array.isArray(captured.forgetRegistrations)?captured.forgetRegistrations:[]);
+    for(let i=settings.length-1;i>=0;i--)if(settings[i].operation==='registerJar'&&forgotten.has(settings[i].signature))settings.splice(i,1);
+    worker=createWorker(workerOptions);generation++;
     for(const setting of settings)await worker.request(setting);
     return{ok:true,value:await worker.getState()};
    }
@@ -38,7 +41,7 @@ export function createNativeSession(options,createWorker,RuntimeError){
   registerJar:(signature,path)=>request({operation:'registerJar',signature,path:resolve(path)}),setModules:options=>request({operation:'modules',...options}),
   // The session owner calls this after a successful clear, before evicting auto-fetched files.
   forgetJarRegistrations(signatures){for(let i=settings.length-1;i>=0;i--)if(settings[i].operation==='registerJar'&&signatures.has(settings[i].signature))settings.splice(i,1);},
-  call:(token,method,args=[])=>request({operation:'call',token,method,args}),clear:kind=>request({operation:'clear',kind}),getState:()=>request({operation:'state'}),
+  call:(token,method,args=[])=>request({operation:'call',token,method,args}),clear:(kind,options={})=>request({...options,operation:'clear',kind}),getState:()=>request({operation:'state'}),
   close(){closing||=(async()=>{closed=true;await queue;try{await worker.close();}finally{if(owned)rmSync(directory,{recursive:true,force:true});}})();return closing;},
  };
 }

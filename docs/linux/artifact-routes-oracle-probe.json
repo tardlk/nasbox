@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "scope": "Fresh unchanged ApiConfig/JarLoader methods and original AOSP Base64 on host JVM; constructor/asset/network/loader fixture bindings, no Android storage, OkHttp or ART",
+  "android": {
+    "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+    "originalFilesVerified": 20,
+    "extraFilesVerified": 34,
+    "platformFilesVerified": 10
+  },
+  "extraction": [
+    {
+      "name": "ApiConfig.loadJar",
+      "sha256": "8846785b25c4fdb13a46cca765776cf1ac57bf900d1b5898dfb1e4ba93e62561"
+    },
+    {
+      "name": "JarLoader.parseJar",
+      "sha256": "be25d9cf2d63df77b31bdc6bb96cd21b3bf38a84aefbd96a8597de3ba40c9fb1"
+    },
+    {
+      "name": "JarLoader.copyAsset",
+      "sha256": "299f88a4ccf12f07fad17d6cc917d6df1af5c83c361b2e113e23c6ddf40499d6"
+    },
+    {
+      "name": "JarLoader.local",
+      "sha256": "98f8fe5504fd6854784e46ff1adf1ad289deb53b2ebd11953c953bf69a2a9e29"
+    },
+    {
+      "name": "JarLoader.clanToAddress",
+      "sha256": "a7fc03991ddc9145d9e3548175bbdf3679e4142556408672079126d3a62f86c9"
+    },
+    {
+      "name": "ApiConfig.getImgJar",
+      "sha256": "d9dfada54551904f7c2ae6e74ecc8a91d75d7f8c52e0fdf0308c39969ae33ea2"
+    },
+    {
+      "name": "MD5.string2MD5",
+      "sha256": "0c17c9761399088fa3bc67de86a980132c550d7349bc9f45618afbd7ca1e910a"
+    },
+    {
+      "name": "android.util.Base64",
+      "sha256": "bd7b1e83953dda51fda1b96b5211cf43e375105db8f7f5a6dd678efb57fb3364"
+    }
+  ],
+  "fixtures": [
+    {
+      "path": "compat/fixtures/artifact-routes.json",
+      "sha256": "125ead0400988a55af224e917c29c169104c55cef7e3115575d1b9e262d7e521"
+    },
+    {
+      "path": "compat/fixtures/image-jar.json",
+      "sha256": "3490dd835ac2c82d1b8c8b225d3b0e2ffd3477c90110fa316d3970e1c0558eae"
+    }
+  ],
+  "counts": {
+    "routes": 34,
+    "imageVectors": 20,
+    "base64StateCombinations": 341
+  },
+  "routeObservations": [
+    {
+      "id": "main-http",
+      "kind": "http",
+      "requestUrl": "http://fixture.invalid/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "main-https",
+      "kind": "http",
+      "requestUrl": "https://fixture.invalid/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "main-image",
+      "kind": "image",
+      "requestUrl": "https://fixture.invalid/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "main-image-removes-all",
+      "kind": "image",
+      "requestUrl": "http://fixture.invalid/bundle.jar?x=",
+      "loads": 1
+    },
+    {
+      "id": "main-binary-removes-embedded-marker",
+      "kind": "http",
+      "requestUrl": "http://fixture.invalid/bundle.jar",
+      "loads": 1
+    },
+    {
+      "id": "main-assets-attempts-http",
+      "kind": "http",
+      "requestUrl": "assets://a.jar",
+      "loads": 1
+    },
+    {
+      "id": "main-file-attempts-http",
+      "kind": "http",
+      "requestUrl": "file:///box/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "main-clan-attempts-http",
+      "kind": "http",
+      "requestUrl": "clan://localhost/box/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "main-uppercase-prefix",
+      "kind": "http",
+      "requestUrl": "IMG+http://fixture.invalid/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-http",
+      "kind": "http",
+      "requestUrl": "http://fixture.invalid/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-https",
+      "kind": "http",
+      "requestUrl": "https://fixture.invalid/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-http-prefix-only",
+      "kind": "http",
+      "requestUrl": "httpish",
+      "loads": 1
+    },
+    {
+      "id": "site-keeps-embedded-image-marker",
+      "kind": "http",
+      "requestUrl": "http://fixture.invalid/img+bundle.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-image-unsupported",
+      "kind": "unsupported",
+      "loads": 0
+    },
+    {
+      "id": "site-assets-uri",
+      "kind": "assets",
+      "path": "box/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-assets-short",
+      "kind": "assets",
+      "path": "box/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-assets-replaces-all",
+      "kind": "assets",
+      "path": "box/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-assets-prefix-only",
+      "kind": "assets",
+      "path": "assetsOdd.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-file-three-slashes-external",
+      "kind": "file",
+      "path": "//box/a.jar",
+      "storage": "external",
+      "loads": 1
+    },
+    {
+      "id": "site-file-three-slashes-fallback",
+      "kind": "file",
+      "path": "//box/a.jar",
+      "storage": "fallback",
+      "loads": 1
+    },
+    {
+      "id": "site-file-two-slashes",
+      "kind": "file",
+      "path": "/box/a.jar",
+      "storage": "fallback",
+      "loads": 1
+    },
+    {
+      "id": "site-file-one-slash",
+      "kind": "file",
+      "path": "box/a.jar",
+      "storage": "fallback",
+      "loads": 1
+    },
+    {
+      "id": "site-file-replaces-all",
+      "kind": "file",
+      "path": "box/a.jar",
+      "storage": "fallback",
+      "loads": 1
+    },
+    {
+      "id": "site-file-prefix-only",
+      "kind": "file",
+      "path": "fileOdd.jar",
+      "storage": "fallback",
+      "loads": 1
+    },
+    {
+      "id": "site-clan-local-default",
+      "kind": "http",
+      "requestUrl": "http://127.0.0.1:9978/file/box/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-clan-local-injected",
+      "kind": "http",
+      "requestUrl": "http://fixture.invalid:9980/file/box/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-clan-local-replaces-all",
+      "kind": "http",
+      "requestUrl": "http://fixture.invalid/file/a/http://fixture.invalid/file/b.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-clan-remote",
+      "kind": "http",
+      "requestUrl": "http://192.0.2.5:9900/file/box/a.jar?x=1",
+      "loads": 1
+    },
+    {
+      "id": "site-clan-no-path",
+      "kind": "http",
+      "requestUrl": "clan://example.invalid",
+      "loads": 1
+    },
+    {
+      "id": "site-clan-empty-host",
+      "kind": "http",
+      "requestUrl": "clan:///box/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-clan-uppercase-localhost",
+      "kind": "http",
+      "requestUrl": "http://LOCALHOST/file/box/a.jar",
+      "loads": 1
+    },
+    {
+      "id": "site-uppercase-http-unsupported",
+      "kind": "unsupported",
+      "loads": 0
+    },
+    {
+      "id": "site-content-unsupported",
+      "kind": "unsupported",
+      "loads": 0
+    },
+    {
+      "id": "site-relative-unsupported",
+      "kind": "unsupported",
+      "loads": 0
+    }
+  ],
+  "imageObservations": [
+    {
+      "id": "no-marker",
+      "hex": "",
+      "bytes": 0
+    },
+    {
+      "id": "empty-body",
+      "hex": "",
+      "bytes": 0
+    },
+    {
+      "id": "binary-payload",
+      "hex": "504b03040000ff",
+      "bytes": 7
+    },
+    {
+      "id": "no-padding",
+      "hex": "504b03040000ff",
+      "bytes": 7
+    },
+    {
+      "id": "whitespace",
+      "hex": "504b03040000ff",
+      "bytes": 7
+    },
+    {
+      "id": "ignored-punctuation",
+      "hex": "504b03040000ff",
+      "bytes": 7
+    },
+    {
+      "id": "url-safe-symbols-skipped",
+      "hex": "00",
+      "bytes": 1
+    },
+    {
+      "id": "unicode-skipped",
+      "hex": "504b",
+      "bytes": 2
+    },
+    {
+      "id": "digits-marker",
+      "hex": "41",
+      "bytes": 1
+    },
+    {
+      "id": "more-than-eight-marker-characters",
+      "hex": "41",
+      "bytes": 1
+    },
+    {
+      "id": "seven-character-marker",
+      "hex": "",
+      "bytes": 0
+    },
+    {
+      "id": "non-alnum-marker",
+      "hex": "",
+      "bytes": 0
+    },
+    {
+      "id": "one-star-marker",
+      "hex": "",
+      "bytes": 0
+    },
+    {
+      "id": "marker-empty-payload",
+      "hex": "",
+      "bytes": 0
+    },
+    {
+      "id": "marker-symbols-only",
+      "hex": "",
+      "bytes": 0
+    },
+    {
+      "id": "one-base64-character",
+      "errorType": "IllegalArgumentException",
+      "errorMessage": "bad base-64"
+    },
+    {
+      "id": "single-padding-for-one-byte",
+      "errorType": "IllegalArgumentException",
+      "errorMessage": "bad base-64"
+    },
+    {
+      "id": "too-much-padding",
+      "errorType": "IllegalArgumentException",
+      "errorMessage": "bad base-64"
+    },
+    {
+      "id": "data-after-padding",
+      "errorType": "IllegalArgumentException",
+      "errorMessage": "bad base-64"
+    },
+    {
+      "id": "first-marker-wins",
+      "errorType": "IllegalArgumentException",
+      "errorMessage": "bad base-64"
+    }
+  ],
+  "base64StateOutcomes": {
+    "success": 113,
+    "invalidPadding": 228
+  },
+  "limitations": [
+    "No ART, actual Android filesystem, APK AssetManager, OkHttp transport or NAS execution in this oracle.",
+    "File fixture preserves constructor path arguments and explicitly selects external-existing versus fallback; Linux storage roots are caller bindings.",
+    "Main unsupported schemes are observed as raw HTTP download attempts, then rejected early by the Linux route planner; no main assets/file/clan loader is invented."
+  ],
+  "environment": {
+    "newTools": [],
+    "newEnvironments": [],
+    "backgroundServicesStarted": [],
+    "retainedTemporaryDirectories": [],
+    "temporaryDirectoryPolicy": "Each tvbox-artifact-routes-oracle-* directory is removed in finally after javac/java completion.",
+    "reusedNode": "/Users/coke/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "reusedJava": ".tools/jdk17/bin/java"
+  },
+  "validation": {
+    "command": "node --test compat/artifact-routes.test.mjs",
+    "tests": 4,
+    "passed": 4,
+    "failed": 0,
+    "sourceFiles": [
+      {
+        "path": "backend/spider-runtime/artifact-source.mjs",
+        "sha256": "a63fbfb1b0364285ddf8b4eca1bf5efdfe169d5f89f40d323719c5fec59ae9ea"
+      },
+      {
+        "path": "scripts/compat/artifact-routes-oracle.mjs",
+        "sha256": "65109bd29332b683c32ea2b1d04689a59dcbb7ab905bcadd485d95f4049a2b73"
+      },
+      {
+        "path": "compat/artifact-routes.test.mjs",
+        "sha256": "40db4c3f1c5565915aba085d3c4bbc975facdd1cdfa6541b7fc0530b0e71b981"
+      }
+    ]
+  }
+}
