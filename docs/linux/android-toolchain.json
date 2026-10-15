@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-15",
+  "purpose": "Retained project-local Android/ART verification tools, no global installation",
+  "archives": [
+    {
+      "id": "platforms;android-33",
+      "url": "https://dl.google.com/android/repository/platform-33-ext3_r03.zip",
+      "bytes": 67334237,
+      "sha1": "394bc86d8d3452aa4d419b67743025a6fb2cd9d0",
+      "revision": "3",
+      "sha256": "b32b10f787867987f03ae8e101d217e053a9065b7136379fb353b388379aed1d",
+      "installedPath": ".tools/android-sdk/platforms/android-33",
+      "installedBytes": 104020408
+    },
+    {
+      "id": "build-tools;35.0.0",
+      "url": "https://dl.google.com/android/repository/build-tools_r35_macosx.zip",
+      "bytes": 76857898,
+      "sha1": "93ab8ce91230e067b5add4bfa79919c52b27f072",
+      "revision": "35.0.0",
+      "sha256": "530cdbd1ec315e1477624d7ed2f0f2962108d69f36eddba5894cef9ea2cedb48",
+      "installedPath": ".tools/android-sdk/build-tools/35.0.0",
+      "installedBytes": 194712447
+    },
+    {
+      "id": "platform-tools",
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-darwin.zip",
+      "bytes": 16110554,
+      "sha1": "6ae73f4de6452dc57e62ec02b68eed92a4c21661",
+      "revision": "37.0.1",
+      "sha256": "ee39ad5967e95c2a07f04dbcbde96b1a0c916ba376096db5d2f498b7727a5d1d",
+      "installedPath": ".tools/android-sdk/platform-tools",
+      "installedBytes": 38814256
+    },
+    {
+      "id": "emulator",
+      "url": "https://dl.google.com/android/repository/emulator-darwin_aarch64-16428233.zip",
+      "bytes": 416112708,
+      "sha1": "3af4fe44ce82b3d88ae5678a53735f27ad729c15",
+      "revision": "37.2.12",
+      "sha256": "f4c4a142bda54fcec064bdb32b51f19e25bae0a45ad019197ef968bf7a48979b",
+      "installedPath": ".tools/android-sdk/emulator",
+      "installedBytes": 1309740864
+    },
+    {
+      "id": "system-images;android-30;google_apis;arm64-v8a",
+      "url": "https://dl.google.com/android/repository/sys-img/google_apis/arm64-v8a-30_r16.zip",
+      "bytes": 1244324730,
+      "sha1": "0e66987d6b4db2e278af83d453ce5d74a7e6ced3",
+      "revision": "16",
+      "sha256": "097c2808a738ba4c19038b75a085750dd61a7178c0234b14ac5f8270dd8cff54",
+      "installedPath": ".tools/android-sdk/system-images/android-30/google_apis/arm64-v8a",
+      "installedBytes": 3360036656
+    }
+  ]
+}

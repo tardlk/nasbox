@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T08:29:07.233Z",
+  "manifestSha256": "7f5ba3aa7434fbd82c0ac5da45082eb4a281c6fba7952c5ea0554cac6052c5f5",
+  "targetApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+  "scope": "Original official APK preparation and parseJson on Android/ART versus NAS config core using fixed captured raw bytes and original API URLs. Full configuration and UI behavior are outside this comparison.",
+  "hashScope": "Prepared text and normalized JSON are recomputed from private files by one Node implementation; producer semantic hashes are not compared.",
+  "comparisonFields": {
+    "globals": [
+      "spider",
+      "jarCache",
+      "danmaku",
+      "wallpaper"
+    ],
+    "sourceRows": "Every observed row and field, preserving values, types and insertion order",
+    "excluded": [
+      "sites[].filterable"
+    ],
+    "exclusionReason": "Exact audited official APK R8 build removed SourceBean.filterable storage/getter. No Android runtime observation is available; the field is excluded only from NAS projection."
+  },
+  "summary": {
+    "expectedCases": 6,
+    "artCases": 6,
+    "nasCases": 6,
+    "pairedCases": 6,
+    "artAccepted": 5,
+    "nasAccepted": 5,
+    "pairedAccepted": 5,
+    "preparedMatches": 6,
+    "normalizedMatches": 5,
+    "matchedCases": 5,
+    "matchedSourceRows": 342,
+    "bothRejected": 1,
+    "bothRejectedMatchingPartial": 1,
+    "harnessFailures": 0,
+    "missingART": [],
+    "missingNAS": [],
+    "observations": {
+      "matched-observable-parser-output": 5,
+      "both-rejected": 1
+    }
+  },
+  "cases": [
+    {
+      "configIndex": 0,
+      "idSha256": "47fa85724e0516de76b6b32b199eb5e43e3a4f4d4b81c156f09053bfc2a20ffe",
+      "apiUrlSha256": "1e2ecf1770dfa4e8fe12aae4b8851b245c072c57c7019b87666fbcab3db8de24",
+      "rawSha256": "717c0c509cfc000e7cceb13e81efed9292b18206a2bf368c7ae8c2a3366b75e6",
+      "art": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "717c0c509cfc000e7cceb13e81efed9292b18206a2bf368c7ae8c2a3366b75e6",
+        "configBytes": 17834,
+        "sourceCount": 48,
+        "sourceRowsSha256": "8a696ef0cc7076c96b77ecf5c3a70d883e4ec371421cac63b9f53bad6170db74",
+        "globalsSha256": "ba26302890ba1d53cd9f138a51b7f3077442afe44093d7a87e13722eec86c44d",
+        "normalizedSha256": "d16511a1f0cf143c463cba1338ea11a65fe50e410b4d3c0a53ecc3b3c745b28c"
+      },
+      "nas": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "717c0c509cfc000e7cceb13e81efed9292b18206a2bf368c7ae8c2a3366b75e6",
+        "configBytes": 17834,
+        "sourceCount": 48,
+        "sourceRowsSha256": "8a696ef0cc7076c96b77ecf5c3a70d883e4ec371421cac63b9f53bad6170db74",
+        "globalsSha256": "ba26302890ba1d53cd9f138a51b7f3077442afe44093d7a87e13722eec86c44d",
+        "normalizedSha256": "d16511a1f0cf143c463cba1338ea11a65fe50e410b4d3c0a53ecc3b3c745b28c"
+      },
+      "preparedEqual": true,
+      "globalsEqual": true,
+      "sourceRowsEqual": true,
+      "normalizedEqual": true,
+      "observation": "matched-observable-parser-output"
+    },
+    {
+      "configIndex": 1,
+      "idSha256": "745388ad56ff3f44e3b2c9533bf274d453e51c10a0ea50e90d65d047258e67a5",
+      "apiUrlSha256": "b455777c50a61ce109016e726eae4078596d758b188e3927cb044e9cfa3776b8",
+      "rawSha256": "7f4477e37474b10e643c7db2cf496ee2b0033284fcfabd95b66be015c56332d1",
+      "art": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "7f4477e37474b10e643c7db2cf496ee2b0033284fcfabd95b66be015c56332d1",
+        "configBytes": 21783,
+        "sourceCount": 76,
+        "sourceRowsSha256": "2a3ac617455da63107b3ae261ebb3fb32884457c5205d7672699117170065cd1",
+        "globalsSha256": "f950315b12890b1f61b4fa117193d84b0575d8b42289d46ac01340025edaba40",
+        "normalizedSha256": "51d6cf22aa594f4c1cf37352507c59d6916287bf3ea636b479211ae0a474bd1b"
+      },
+      "nas": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "7f4477e37474b10e643c7db2cf496ee2b0033284fcfabd95b66be015c56332d1",
+        "configBytes": 21783,
+        "sourceCount": 76,
+        "sourceRowsSha256": "2a3ac617455da63107b3ae261ebb3fb32884457c5205d7672699117170065cd1",
+        "globalsSha256": "f950315b12890b1f61b4fa117193d84b0575d8b42289d46ac01340025edaba40",
+        "normalizedSha256": "51d6cf22aa594f4c1cf37352507c59d6916287bf3ea636b479211ae0a474bd1b"
+      },
+      "preparedEqual": true,
+      "globalsEqual": true,
+      "sourceRowsEqual": true,
+      "normalizedEqual": true,
+      "observation": "matched-observable-parser-output"
+    },
+    {
+      "configIndex": 2,
+      "idSha256": "85700e251efd6ecc47dd1284ed8ede6f73a0a54bbebd129425e270596b63ccdc",
+      "apiUrlSha256": "870f9a2b13f53324402e3fe10c8f6ab571395df5535408e6a4b72568f8e1e5e4",
+      "rawSha256": "0605844d2c2e065e986b9c6b1bcb3cd8b43db9b344105ece7861a9734c17354d",
+      "art": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "0605844d2c2e065e986b9c6b1bcb3cd8b43db9b344105ece7861a9734c17354d",
+        "configBytes": 26449,
+        "sourceCount": 99,
+        "sourceRowsSha256": "1c44dfd43c19d52fd4c1d29bfd11a52d846f462ca85de7a7ebede5fc2a1d5aa5",
+        "globalsSha256": "08dd5b195d14ec8a766e3370b75225be01b3ac6e43a309cf6038c809103e5f4b",
+        "normalizedSha256": "ac0403beec86880236fabce120364c421b0428fafb69540af9101d5067a52152"
+      },
+      "nas": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "0605844d2c2e065e986b9c6b1bcb3cd8b43db9b344105ece7861a9734c17354d",
+        "configBytes": 26449,
+        "sourceCount": 99,
+        "sourceRowsSha256": "1c44dfd43c19d52fd4c1d29bfd11a52d846f462ca85de7a7ebede5fc2a1d5aa5",
+        "globalsSha256": "08dd5b195d14ec8a766e3370b75225be01b3ac6e43a309cf6038c809103e5f4b",
+        "normalizedSha256": "ac0403beec86880236fabce120364c421b0428fafb69540af9101d5067a52152"
+      },
+      "preparedEqual": true,
+      "globalsEqual": true,
+      "sourceRowsEqual": true,
+      "normalizedEqual": true,
+      "observation": "matched-observable-parser-output"
+    },
+    {
+      "configIndex": 3,
+      "idSha256": "de36e551e6c966a579c0f98afe50c42b6f5573301823d91dedb2c7f93ab2f219",
+      "apiUrlSha256": "b00a3a2246d0fdf9e96c22395f893355f9808aef1c71ce1880f1f6aca9458efb",
+      "rawSha256": "6a18486e67ecb3ceb003753043633dd41c87b4905c458fda98812719296a4f64",
+      "art": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "6a18486e67ecb3ceb003753043633dd41c87b4905c458fda98812719296a4f64",
+        "configBytes": 16202,
+        "sourceCount": 43,
+        "sourceRowsSha256": "d694704a08c7ae52cd4d482aac4159b40ad40adfa107782dab8b6c69f79ea9c6",
+        "globalsSha256": "cd745f5700aabf1a1fd13aba2b81cf2e81660e8639df9a2e6f0fc33720ef1195",
+        "normalizedSha256": "7e52544e830fbcb46962936b52c0587e31827773b82a6dbd1fc03dd7b13b574e"
+      },
+      "nas": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "6a18486e67ecb3ceb003753043633dd41c87b4905c458fda98812719296a4f64",
+        "configBytes": 16202,
+        "sourceCount": 43,
+        "sourceRowsSha256": "d694704a08c7ae52cd4d482aac4159b40ad40adfa107782dab8b6c69f79ea9c6",
+        "globalsSha256": "cd745f5700aabf1a1fd13aba2b81cf2e81660e8639df9a2e6f0fc33720ef1195",
+        "normalizedSha256": "7e52544e830fbcb46962936b52c0587e31827773b82a6dbd1fc03dd7b13b574e"
+      },
+      "preparedEqual": true,
+      "globalsEqual": true,
+      "sourceRowsEqual": true,
+      "normalizedEqual": true,
+      "observation": "matched-observable-parser-output"
+    },
+    {
+      "configIndex": 4,
+      "idSha256": "300df7b6c3e972a611fc3a0a4c9d068e92811f9a9c8282cc68580fc9a013814a",
+      "apiUrlSha256": "54372b0299d348805052f310f41e25f78a289efec53526e83b33c832e6e29dbb",
+      "rawSha256": "2c8f7f135d56b3416dd12ab14847d0a07616ff2a89c7f8ea6aa62f6d385c86bc",
+      "art": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "2c8f7f135d56b3416dd12ab14847d0a07616ff2a89c7f8ea6aa62f6d385c86bc",
+        "configBytes": 22770,
+        "sourceCount": 76,
+        "sourceRowsSha256": "34892d8ced235cfdcc1c07a9de958e58a3d4fba665a9d229ba979f7b3f22ed24",
+        "globalsSha256": "b2125237c1d3ab5a4d28d2740bba89ca43b122e10ca44dc544783d7c0827695b",
+        "normalizedSha256": "eb58f2088f9751e7c19994cafd0609c5c15ec82a9f1c5e0c08d0bd49ca52706d"
+      },
+      "nas": {
+        "present": true,
+        "state": "accepted",
+        "configSha256": "2c8f7f135d56b3416dd12ab14847d0a07616ff2a89c7f8ea6aa62f6d385c86bc",
+        "configBytes": 22770,
+        "sourceCount": 76,
+        "sourceRowsSha256": "34892d8ced235cfdcc1c07a9de958e58a3d4fba665a9d229ba979f7b3f22ed24",
+        "globalsSha256": "b2125237c1d3ab5a4d28d2740bba89ca43b122e10ca44dc544783d7c0827695b",
+        "normalizedSha256": "eb58f2088f9751e7c19994cafd0609c5c15ec82a9f1c5e0c08d0bd49ca52706d"
+      },
+      "preparedEqual": true,
+      "globalsEqual": true,
+      "sourceRowsEqual": true,
+      "normalizedEqual": true,
+      "observation": "matched-observable-parser-output"
+    },
+    {
+      "configIndex": 5,
+      "idSha256": "90fac41b7fa345c0f75f35c8e8d1ee5a74ddaf5c710edb95f95240acd8f7f1c9",
+      "apiUrlSha256": "992e9e9125ac784dda077db5c7569eafcab27cd1e45eb45f9bea1bafd3816326",
+      "rawSha256": "9eaa36d58762cbf646a0112d731a69a8a28889f9fcd58cc7db78e72b324bb540",
+      "art": {
+        "present": true,
+        "state": "rejected",
+        "configSha256": "9eaa36d58762cbf646a0112d731a69a8a28889f9fcd58cc7db78e72b324bb540",
+        "configBytes": 35442,
+        "sourceCount": 99,
+        "sourceRowsSha256": "9fc8a9a52c42c77e27746b6a58f7894d9baf97245ef541086a57efdb35965265",
+        "globalsSha256": "5d2c2c53282e4fbf31a2802b43efba89fb9942fdb926f3f6b74dc0c70253cbe7",
+        "normalizedSha256": "0672eaa0cd84c69d301c096eeb432b3e1edf3c4090e2c0a3878bb806411ed7b1",
+        "error": {
+          "type": "java.lang.IndexOutOfBoundsException",
+          "fingerprint": "63d76588a3d4675952fd5d8a336386b2f4c63398810dd573697f217b376a6c4f"
+        }
+      },
+      "nas": {
+        "present": true,
+        "state": "rejected",
+        "configSha256": "9eaa36d58762cbf646a0112d731a69a8a28889f9fcd58cc7db78e72b324bb540",
+        "configBytes": 35442,
+        "sourceCount": 99,
+        "sourceRowsSha256": "9fc8a9a52c42c77e27746b6a58f7894d9baf97245ef541086a57efdb35965265",
+        "globalsSha256": "5d2c2c53282e4fbf31a2802b43efba89fb9942fdb926f3f6b74dc0c70253cbe7",
+        "normalizedSha256": "0672eaa0cd84c69d301c096eeb432b3e1edf3c4090e2c0a3878bb806411ed7b1",
+        "error": {
+          "type": "java.lang.IndexOutOfBoundsException",
+          "fingerprint": "55676efed9256f7deab8d6e1147083c46c7114a69d7bcd2275f7968183364c15"
+        }
+      },
+      "preparedEqual": true,
+      "observation": "both-rejected",
+      "exceptionTypeEqual": true,
+      "partialGlobalsEqual": true,
+      "partialSourceRowsEqual": true,
+      "partialNormalizedEqual": true
+    }
+  ],
+  "execution": {
+    "nasImage": {
+      "tag": "tvbox-core:linux-amd64-art-parity-20261015",
+      "immutableId": "sha256:0e10b9cd25ffbf0598bcec5b9ff127bbfccf192eddbdec5572c1331eb788cd15"
+    },
+    "runPins": {
+      "schemaVersion": 1,
+      "manifestSha256": "7f5ba3aa7434fbd82c0ac5da45082eb4a281c6fba7952c5ea0554cac6052c5f5",
+      "replayScriptSha256": "49051ab078eedb2f61b6dc865bf44ef5550b65f0536c5ea1924bd5a2304d3a89",
+      "modules": {
+        "backend/config-core/index.mjs": "15ac1922880aee9309617be07fa8cd682e2480cded3f56b5c1df22689033737c",
+        "backend/config-core/runtime.json": "ba80e9fcc92798f4f866a837c0c82d18064b0755474dc7c99df9b2ea0116db6f",
+        "backend/subscription/prepare.mjs": "9209761ac37c5ef96c76273b0ecabd2167905243ab675221becbf9cb429c176f",
+        "backend/config-core/src/tvbox/config/ConfigWorker.java": "fd6dbfa80ea6691151a00e60b40ab6adfebe53f9ee48fbfbe821233d4468f2bf",
+        "backend/config-core/src/tvbox/config/ConfigParser.java": "97072fd5bacfe4d77e9a9e628729b0289fa4547932ea11d28e08515f3c1c6ab2",
+        "backend/config-core/src/tvbox/config/FullConfig.java": "22f1cf2db522158225b99e8287f29502cb6c1947e5e83d1c29563787c18236cb"
+      },
+      "builtConfigWorkerSha256": "6a328afad1b5d092597c6a8ca2a9cd13e9c4f78b38a2230872dfe26287d6e5fd",
+      "environment": {
+        "platform": "linux",
+        "arch": "x64",
+        "node": "v24.22.0"
+      },
+      "inputs": [
+        {
+          "configIndex": 0,
+          "rawSha256": "717c0c509cfc000e7cceb13e81efed9292b18206a2bf368c7ae8c2a3366b75e6",
+          "rawBytes": 17834,
+          "originalArtPrivateSha256": "e2afeec8b27f3511aaef2f2f94cf6df96081c831fbbdab3d98f505abd5080c45"
+        },
+        {
+          "configIndex": 1,
+          "rawSha256": "7f4477e37474b10e643c7db2cf496ee2b0033284fcfabd95b66be015c56332d1",
+          "rawBytes": 21783,
+          "originalArtPrivateSha256": "db1ffec404f0441328490be533affeea89227a3278a45c5ff9a05ca234a3be41"
+        },
+        {
+          "configIndex": 2,
+          "rawSha256": "0605844d2c2e065e986b9c6b1bcb3cd8b43db9b344105ece7861a9734c17354d",
+          "rawBytes": 26449,
+          "originalArtPrivateSha256": "a6df7d417abf594f85d3447e7539056bdb4c1890402db27d4ceb8e943758bcdd"
+        },
+        {
+          "configIndex": 3,
+          "rawSha256": "6a18486e67ecb3ceb003753043633dd41c87b4905c458fda98812719296a4f64",
+          "rawBytes": 16202,
+          "originalArtPrivateSha256": "5d200286732f98ac2a20913ae427f81abe5dd382a9a031bdf0ead0fe132755d3"
+        },
+        {
+          "configIndex": 4,
+          "rawSha256": "2c8f7f135d56b3416dd12ab14847d0a07616ff2a89c7f8ea6aa62f6d385c86bc",
+          "rawBytes": 22770,
+          "originalArtPrivateSha256": "6d7fa120881b6fb129df0dc94de9758c5c1e76fe539a615e40e4a6b1593afa76"
+        },
+        {
+          "configIndex": 5,
+          "rawSha256": "9eaa36d58762cbf646a0112d731a69a8a28889f9fcd58cc7db78e72b324bb540",
+          "rawBytes": 35442,
+          "originalArtPrivateSha256": "fb02b33b78b5a044b369fbddc666a922e66f66d85233bec1b7e19c592a68674d"
+        }
+      ],
+      "startedAt": "2026-10-15T08:28:01.632Z",
+      "completedAt": "2026-10-15T08:28:18.606Z"
+    },
+    "comparisonScriptSha256": "dd787ff8724d3a615122dfb3acfca4f8fbbdcf1e3faf6797df33c9fd5ccd39b5",
+    "inputBundleSha256": "8a1dc7378995326ebcfbafe4647a44345cafcfe242420581c1d1e711710adc46",
+    "privateResultSha256": [
+      {
+        "configIndex": 0,
+        "nasPrivateSha256": "7645bcd660bb845f2d59712ce4dd399153dbfb9c06df553dd0986b1ccdc12262"
+      },
+      {
+        "configIndex": 1,
+        "nasPrivateSha256": "d1254e6b661a7b25ab6be40645eedcc6aa1520b458a80811bda15689daaeef1a"
+      },
+      {
+        "configIndex": 2,
+        "nasPrivateSha256": "6f476cf41f1fb75cdafd1a717288c4ac150b034ce4b30ec385764f6ec0fc7535"
+      },
+      {
+        "configIndex": 3,
+        "nasPrivateSha256": "20f2d01aed842b063c7cf68c64aebaf439168a9fb37f3143d72fea2094d3cc7a"
+      },
+      {
+        "configIndex": 4,
+        "nasPrivateSha256": "f6ffd638a8b2f1cc7017e0e03bd48ff52b318df6c0e65970dce4342525fb67b8"
+      },
+      {
+        "configIndex": 5,
+        "nasPrivateSha256": "ad1c50cf011382ae06b5c43953ad0b196490fc3d78d4b8b87ed3a0178525d801"
+      }
+    ],
+    "deployedModuleHashesMatchCurrentSources": true,
+    "network": "Docker --network none; only mounted fixed captured bytes were read",
+    "resources": {
+      "readOnlyRoot": true,
+      "user": "1000:1000",
+      "memoryMiB": 512,
+      "cpus": 1,
+      "pidsLimit": 128,
+      "capabilities": "ALL dropped",
+      "noNewPrivileges": true
+    }
+  },
+  "validationLimits": [
+    "Only globals and observable source rows are compared; complete live state, preferences and executor effects are not certified.",
+    "Original homeApi, defaultParse and liveApiUrl were restored before each fresh NAS worker. Other Android preference values were not captured.",
+    "Original APK source commit differs from the pinned source baseline. ApiConfig, SourceBean and DefaultConfig source hashes match; this is separately labeled original-product ART evidence."
+  ],
+  "cleanup": {
+    "nasTemporaryContainerAbsent": true,
+    "nasTemporaryDirectoryRemoved": true,
+    "allSixConfigWorkersClosed": true,
+    "sharedSshLeftRunning": true,
+    "otherContainersUntouched": true,
+    "newToolsInstalled": [],
+    "newPersistentServices": [],
+    "autostartChanges": [],
+    "localPrivateReplayDirectory": ".cache/android-parity/parser-replay-nas",
+    "localPrivateReplayPurpose": "Retained temporarily for root-agent audit and final cleanup; raw captured input/output is not committed"
+  }
+}

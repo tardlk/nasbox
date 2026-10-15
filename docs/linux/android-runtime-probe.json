@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-15T08:37:29.633346+00:00",
+  "originalApk": {
+    "sha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+    "installedApkSha256Matches": true,
+    "modified": false,
+    "resigned": false,
+    "signatureVerificationReport": "docs/linux/android-apk-baseline-probe.json"
+  },
+  "runtime": {
+    "kind": "Actual Android/ART in ARM64 hardware-accelerated emulator",
+    "androidVersion": "11",
+    "api": 30,
+    "abi": "arm64-v8a",
+    "emulatorVersion": "37.2.12",
+    "buildFingerprint": "google/sdk_gphone_arm64/emulator_arm64:11/RSR1.240422.006/12134477:userdebug/dev-keys",
+    "testsRunAsApplicationUid": true,
+    "adbdRootUsedOnlyForPrivateResultTransport": true,
+    "adbdReturnedToNonRoot": true,
+    "toolchainReport": "docs/linux/android-toolchain.json"
+  },
+  "productUI": {
+    "scope": "Original installed product settings import, home and first category, no player execution",
+    "fixtureSha256": "ce4dee1c09649c27d2a6d01e8a2c9e0ff7ae501e1662da52ed4c8dab6e1c7677",
+    "fixtureTransform": "Controlled one-site product fixture from normalized original source. Only JAR URL points to the local hash-checked capture; exact API/key/ext preserved. Not the original subscription body.",
+    "import": "Original settings config dialog and stock POST /action do=api, then confirmation",
+    "homeClasses": 7,
+    "categoryListItems": 10,
+    "homeUiHierarchySha256": "5e35d2ea3551346e7a78b7a7511e8c2f9ba2bbbf1373ebc7e1f680c6bddc2e94",
+    "categoryUiHierarchySha256": "41b1d863a27617cdaa81114438eddf23994cb6a1e4b24b8c10453d121c93ea50",
+    "categoryScreenshotSha256": "92572d3ddfdae0ab54446efae0ff25f68159d32ee83e60c782a3b1b783ba9ba1",
+    "rawEvidenceRetention": "Temporary private UI captures removed after metadata verification"
+  },
+  "parser": {
+    "report": "docs/linux/android-parser-comparison-probe.json",
+    "caseCount": 6,
+    "originalAPKMethods": true,
+    "successes": 5,
+    "matchedSourceRows": 342,
+    "matchingFailurePartialRows": 99
+  },
+  "jarCalls": {
+    "report": "docs/linux/android-art-comparison-probe.json",
+    "artifactFamilies": 5,
+    "caseCount": 12,
+    "originalAPKMethods": true,
+    "scope": "Separate same-certificate instrumentation invokes original installed classloader methods, not UI responses",
+    "repairFollowupReport": "docs/linux/android-panconfig-repair-probe.json"
+  },
+  "baselineBoundary": "Official release declares d5f500677a4da15c5836477352030d9ebb5cb37a; exact pinned ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1 has no matching published APK in audited releases. ProtectedInitJar differs. Official ART observations are separately scoped; pinned-source ART parity is not certified.",
+  "jarInstrumentation": {
+    "packageName": "com.github.tvbox.parity.oracle",
+    "targetPackage": "com.github.tvbox.osc.jun",
+    "source": {
+      "javaSha256": "3c866f3db8f2b5aed17cb28327148fe857d1592162ca1cd9eb9903c9eacf4531",
+      "manifestSha256": "f699b673790160082db56873ba442c90a3f92dbab21661f6b3076a8bf0fdde87",
+      "buildScriptSha256": "7ae34cccf6f68e3e8c1e470b6e9a49926f5c0471ff72c93294b316362cd6ee1f"
+    },
+    "apk": {
+      "sha256": "be31b35b54e0221f7748167953259076ae1c1a0cdd1caba4e0a82953701a58a3",
+      "bytes": 20889
+    },
+    "certificateSha256": "4b9421de6d46778f6280b180179413fa6973845f0a0132c00f6800c06464e051"
+  },
+  "parserInstrumentation": {
+    "packageName": "com.github.tvbox.parity.parseroracle",
+    "targetPackage": "com.github.tvbox.osc.jun",
+    "source": {
+      "javaSha256": "08a0467c70cffb175bccbf54455ef9fbc5ca16462a45abcdaa5efb91d0f43ba2",
+      "manifestSha256": "36144c7e1c74532a921e8f8c3b5632e99ec66bfa35d48c60b0bd94f1231bfdeb",
+      "buildScriptSha256": "25f642d79f3f773ac3f34887ecd60934a9bdaefe1feac4dae85e5978cfd54bac",
+      "symbolInspectorSha256": "88e6aa7f440de21b0a68bfdcd9820eac39fc954dc820c67009dec78a61d975df"
+    },
+    "apk": {
+      "sha256": "ec629cc98b0b4c0ecf4524ec983fbe8e694e9cb1c6a10e40e36d68cebe62a44b",
+      "bytes": 20963
+    },
+    "certificateSha256": "4b9421de6d46778f6280b180179413fa6973845f0a0132c00f6800c06464e051",
+    "symbolMap": {
+      "sha256": "82f1164833ff24266d23a12510899008a7d2b2d998a5acb277028641283b2cdc",
+      "apkHashBound": true,
+      "optimizedOut": [
+        "filterable"
+      ],
+      "staticEvidence": {
+        "methodBodySha256": {
+          "configUrl": "9331a4b8e1ae047e13f5fd80c48b4dfe2da1d49fce9aa598cda3c2876821b10c",
+          "findResult": "13060dada738909f250574e0ca353b9b3055dde57af29f1a2af88e279f7683a1",
+          "parseJson": "c4c1e3ebb4a91fea4695792e24b06c5980c7f825fdc070659f4bf7de49f4b6a4",
+          "fixContentPath": "b9d1a8cf96fc06d2b432f7acb9c0af89d1cf75657c14a1e19c882b9765c86e42",
+          "getSources": "a4836773232b49f9e2341c9f6dac2f46ebdda317c0e4d59ca726389fe3092a7d",
+          "singleton": "178f0d0c3056af4337ac568fc2a236f8c5ff96bf066e34c181b58860e17fa493",
+          "playTimeoutSeconds": "4dcb916bb1ef6d19172147962508395608f8bf98208d377c71fe439feab01579",
+          "fetchPreparation": "de4ae52c6624f62c60208799b5849283fb1b5cdfcd674b637bf4608fc7243e88"
+        },
+        "disassemblySha256": {
+          "Landroidx/base/j0;": "e223ddb90734f385c9b84913e30073a0201b56e1452497c2a3991d17243be1f6",
+          "Landroidx/base/t90;": "a92d02513c2e4d954809def209d694787f37f84990eb4155ae9e0d2761b2e77d",
+          "Landroidx/base/k0;": "4c368648492ed43386d2b4e748ac85b91bdbe5277d5fb387c2dec8859c363fc1",
+          "Landroidx/base/j0$g;": "b846835e6d8c17664cd620c900dccbc2f5354c7d10494dde30eb03c776be57c7",
+          "Landroidx/base/k0$a;": "21b2133d539844845920ea87fab1db9f6af1eb0f63d40bd80fe22f0330742e26"
+        },
+        "staticOnly": true,
+        "artifactClassesLoaded": false,
+        "dexToolchainFingerprint": "08f26fef504209640719e5ea99391d49f027b24c1d322c76ab56c4ce60cb3418"
+      }
+    }
+  },
+  "tests": {
+    "nativeEnabled": true,
+    "passed": 497,
+    "failed": 0,
+    "skipped": 0
+  },
+  "cleanup": {
+    "verified": true,
+    "containers": [
+      {
+        "id": "b943f8f0732592d5b0bed516df83931253ccca6c2eb97f2e39489b185aedf66b",
+        "name": "/moviepilot",
+        "image": "sha256:d9511187e90725fa8c408ad296eb5f0dbfa8b262cadd6a06b0a49d1b40175d61",
+        "startedAt": "2026-10-14T09:21:29.775684641Z",
+        "restartCount": "0",
+        "running": "true"
+      },
+      {
+        "id": "921dd7ca2e7196cf81a13928eec4991ec473450633e664cab73ae7b86c03869f",
+        "name": "/qbittorrent",
+        "image": "sha256:3cf724864a09993bc0aaf0d1c6d7e6a60824c098f00c7813b85a64a8bcbceeb6",
+        "startedAt": "2026-10-12T08:28:22.496138741Z",
+        "restartCount": "0",
+        "running": "true"
+      },
+      {
+        "id": "e7e607d0d1017befb9d0ae482d98d574071b1f302f7e56bfe2143d4259e1eda8",
+        "name": "/emby",
+        "image": "sha256:3bd1f2ea0b6fd12159467d15b09a78f7605e1a1d143385539d0ee418a4830ef1",
+        "startedAt": "2026-10-12T09:03:09.93328131Z",
+        "restartCount": "0",
+        "running": "true"
+      },
+      {
+        "id": "1434d8807ff98107eb6c65a377161565f689d4b4f49906db14c620ce2ec95e16",
+        "name": "/dockge-dockge-1",
+        "image": "sha256:e85d511b2a8b883da8a1ac2fde39ecddacdc011734e9f89a14b7798d82d5a0d3",
+        "startedAt": "2026-10-12T08:26:19.966740746Z",
+        "restartCount": "0",
+        "running": "true"
+      }
+    ],
+    "temporaryNasDirectoriesRemoved": true,
+    "temporaryTaskContainersRemoved": true,
+    "candidateImageTagsRemoved": true,
+    "finalImage": {
+      "id": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+      "bytes": 515359330,
+      "tag": "tvbox-core:linux-amd64-art-complete-20261015",
+      "purpose": "Retained tested core runtime for continuing Linux/NAS migration; local derivative, not a public reproducible release"
+    },
+    "servicesStillRunning": [
+      "Original NAS Docker",
+      "moviepilot",
+      "qbittorrent",
+      "emby",
+      "dockge-dockge-1"
+    ],
+    "taskServicesStillRunning": [],
+    "autostartChanges": [],
+    "completedAt": "2026-10-15T09:12:11.469749+00:00",
+    "localFixtureServerStopped": true,
+    "emulatorStopped": true,
+    "adbServerStopped": true,
+    "adbPortForwardRemoved": true,
+    "sshControlMasterClosed": true,
+    "temporaryAvdRemoved": true,
+    "temporaryAndroidHomeRemoved": true,
+    "downloadArchivesRemoved": true,
+    "temporaryEmulatorCrashDbRemoved": true,
+    "ownedAdbCrashReportsRemoved": 10,
+    "unrelatedOlderAdbCrashReportsPreserved": true,
+    "originalAndroidKeysUnmodified": true,
+    "sdkRetained": {
+      "path": ".tools/android-sdk",
+      "logicalBytes": 5007324631,
+      "allocatedKiB": 4923592,
+      "purpose": "Repeat original official APK/ART validation during continued Linux/NAS migration"
+    },
+    "newHostDependenciesRetained": {
+      "sardine-android-0.4.jar": 101359,
+      "simple-xml-2.7.1.jar": 413197
+    },
+    "temporaryRawEvidenceRemoved": true,
+    "projectCacheRemoved": true
+  }
+}

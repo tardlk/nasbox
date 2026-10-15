@@ -621,3 +621,116 @@ The SSH control master and its host-key/script files were stopped/removed; local
 project .cache is absent. NAS final inventory is exactly moviepilot, qbittorrent,
 emby and dockge-dockge-1, plus the retained images. Task services still running:
 none. Autostart changes:none. .tools remains about404MiB for continued development.
+
+
+## Official APK / real ART comparison — completed, 2026-10-15
+
+Inspected PATH, /Applications, ~/Library/Android and ~/.android before installing.
+No adb/emulator/Android Studio/AVD/SDK executable was present. Existing ~/.android
+adb keys/debug keystore and the empty ~/Library/Android directory are unrelated
+shared user state and remain untouched. Reused existing shared Node, project
+JDK17, Python/curl/SSH, macOS Hypervisor.Framework and installed Rosetta.
+
+Installed five checksum-verified official Google archives under project-local
+.tools/android-sdk (about4.7GiB): stable macOS ARM emulator37.2.12,
+platform-tools37.0.1, build-tools35.0.0, Android33 platform and Google APIs Android30
+ARM64-v8a system image revision16. Existing JDK and libraries were reused. No
+global PATH/package-manager change, Android Studio or new JDK was installed.
+Archive SHA1 matches official repository metadata; SHA256 and sizes are recorded
+in the active .cache/android-parity/tool-installation.json. These tools enable
+repeated real ART/product verification; final retention and exact footprint will
+be documented after validation. Download archives/caches will be removed.
+
+The official unchanged release APK and a separately signed test instrumentation
+APK are temporary test inputs. The task AVD/user-home, adb server and fixture HTTP
+listener are isolated under .cache/android-parity and stopped/removed at completion.
+No autostart item or external notification is created. Official APK source differs
+from the pinned Android snapshot, so product results and pinned-source parity are
+separately scoped. New/repaired NAS matrix uses fixed current captured bytes.
+
+
+Final Android retention: `/Users/coke/Desktop/Projects/tvbox-linux/.tools/android-sdk`
+contains 5,007,324,631 logical regular-file bytes; `du -sk` reports 4,923,592 KiB
+(about 4.7 GiB allocated). Retained purpose: repeat unchanged official APK/ART
+verification during the continuing port. Versions, archive hashes and installed
+paths are preserved in `docs/linux/android-toolchain.json`; the temporary download
+archives are removed. The whole existing project `.tools` tree is 5,430,878,657
+logical regular-file bytes / 5,338,260 KiB allocated, about 5.1 GiB. No shared tool,
+user Android key/debug keystore, system PATH, SDK location or autostart was changed.
+The SDK and existing JDK/native tools are reusable project development environments,
+not running services. No task AVD or installed-app data is retained.
+
+Two supplemental host libraries remain in `.tools/native-runtime`:
+`sardine-android-0.4.jar` (101,359 bytes) and `simple-xml-2.7.1.jar` (413,197 bytes),
+514,556 bytes total (about 503 KiB). Existing OkHttp/Okio are reused. Official APK
+static audit found no Sardine definitions; these are Linux host bindings for JVM
+resolution of WebDAV helper references, not an assertion about original APK
+library versions. Complete JitPack AAR and extracted classes.jar have separate
+pins; its SHA1 is same-origin integrity evidence, not an independent signature.
+Simple XML is checked against Maven Central SHA1 plus retained SHA256. Source,
+license/POM notices and provenance are committed. Authenticated loopback real
+PROPFIND/XML/GET/PUT/MKCOL tests ran and closed their servers in finally. Java2D
+uses the pre-existing JDK/JRE java.desktop, DejaVu fonts/fontconfig on the NAS and
+macOS font bindings; no rendering or font package was installed. PNG encoding
+uses a memory stream, avoiding ImageIO disk cache. Bitmap's 64 MiB pixel limit
+is per bitmap, not total worker memory. Unsupported formats still fail explicitly.
+
+Official original APK SHA256 5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657
+was independently apksigner-verified (v1/v2/v3) and the installed base.apk hash
+matched. Separate same-certificate instrumentation APKs called the original
+installed methods; the product binary was neither edited nor re-signed. The
+public upstream signing-key copy, APK/test APKs, disassembly/symbol-map builds,
+fixed private raw configs/JARs/ext/results, screenshots and diagnostic temporary
+payloads are removed at completion. Reports preserve only metadata/hashes/counts.
+Root adbd was briefly used only to transport private results from Android/data;
+tests ran under the normal application UID, and adbd returned to non-root.
+ADB 37.0.1 mDNS crashed on this network; session-only ADB_MDNS=0 resolved it.
+The ten matching task-generated adb crash reports were removed after checking
+the exact Mach-O UUID/date, preserving older unrelated adb crash reports. The
+owned /tmp/android-coke/emu-crash-37.2.12.db was removed after emulator shutdown.
+
+Temporary local services were the project AVD emulator (5554), owned adb server
+(5037), explicit loopback fixture server (18765), local adb forward (19978→9978)
+and scoped NAS SSH control master. All are stopped/removed. The isolated AVD and
+Android user/home directories, download archives and compiler/fixture/build caches
+are removed. No global Android Studio, Gradle, Maven, Node package or new JDK was
+installed. Native/JVM test workers and test-owned loopback servers all exited.
+
+Final NAS image retained: `tvbox-core:linux-amd64-art-complete-20261015`,
+`sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318`,
+515,359,330 uncompressed bytes (about 491.5 MiB). It shares existing base layers
+and adds 1,553,103 bytes (about 1.48 MiB) above the prior jarfix image. Purpose:
+execute the repaired core and continue Linux/NAS development. UID10001,
+prebuilt-only JRE runtime and offline doctor pass; temporary ECJ/javac and provider
+inputs are absent. Twelve executed runtime source pins match the checkout. This
+is a local tested derivative; normal Docker multi-stage build provisions the new
+pinned dependencies, and no public/reproducible release claim is made.
+
+The NAS temporary compiler reused ECJ 3.38.0 with the existing pinned SHA256
+97c566b120009c203a2fc8b291f4a9adbc171cf1ccb70f06f6b4e1828c00ce8e.
+Only the three exact owned directories /tmp/tvbox-parity-matrix.tX9KJn,
+/tmp/tvbox-art-replay.BBo3kl and /tmp/tvbox-opaque-fix.IbOb4n were deleted (the
+parser agent separately cleaned /tmp/tvbox-parser-parity.k1sq0v). All named probe,
+compiler and stopped packaging containers are gone. Four intermediate image tags
+(art-parity, art-engine, art-engine-fixed and art-final) were deleted; earlier
+rollback/reference images remain. No shared image, builder or cache prune ran.
+NAS provider calls used non-root, dropped capabilities, no-new-privileges,
+read-only root, bounded PID/memory/CPU, read-only inputs and owned exec tmpfs.
+No port or persistent data volume was published. Parser comparison used network
+none and original fixed raw bytes. Business HTTP responses for JAR methods were
+live and their differences are labelled as observations or diagnosed host output.
+
+497/497 native-enabled Node tests passed, original snapshot hashes verified,
+228 old/new NAS matrix attempts completed and four repaired fixed artifacts
+replayed on the final image. PanConfigGuard's final exact-parameter subset now
+returns home/category/detail JSON (12 category rows); generated PNG/state fields
+still differ and exact Skia/method parity is not claimed. Final-image subset
+results and the full earlier matrix remain distinct. All local project `.cache`
+material (about 539 MiB at final inspection, with earlier Android archives/AVD
+already removed) is deleted after verification; no private `.data` input remains.
+
+Final services still running: only the pre-existing NAS Docker and moviepilot,
+qbittorrent, emby and dockge-dockge-1. Their full IDs, images, StartedAt,
+RestartCount and running state equal the pre-test inventory. Task services still
+running: none. Autostart changes: none. Retained environments: project `.tools`
+for continued development and the final/earlier rollback NAS images only.

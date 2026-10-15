@@ -1,0 +1,1494 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T08:09:09.716Z",
+  "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+  "scope": "Captured JAR and exact ext/API/method inputs; original official APK on real Android/ART versus NAS JVM/DEX/ARM bridge. This compares tested methods, not every source or Android API.",
+  "responseScope": "Business HTTP responses were live, not frozen. Response differences require diagnosis and do not automatically identify runtime defects. Empty JSON success and nonempty content are counted separately.",
+  "hashScope": "All response and argument hashes are recomputed from private raw files in one Node implementation; producer Java/JS semantic hashes are not trusted as directly comparable.",
+  "replayProvenance": {
+    "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+    "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062",
+    "source": "captured-launch-input",
+    "validationScope": "Caller separately verified the captured launch manifest and executed runner hashes. Missing NAS output metadata is recovered from that launch evidence; original reports and response values remain unchanged."
+  },
+  "summary": {
+    "expectedCases": 12,
+    "artCases": 12,
+    "nasCases": 12,
+    "pairedCases": 12,
+    "recoveredNASManifestMetadata": 12,
+    "missingART": [],
+    "missingNAS": [],
+    "artLoaded": 12,
+    "nasLoaded": 10,
+    "bothLoadFailed": 0,
+    "artReady": 10,
+    "nasReady": 8,
+    "bothReady": 8,
+    "bothInitFailed": 2,
+    "testedCalls": 26,
+    "pairedSuccessfulJsonCalls": 17,
+    "semanticMatches": 15,
+    "rawMatches": 15,
+    "nonemptySemanticMatches": 14,
+    "emptyObjectSemanticMatches": 0,
+    "bothCallsFailed": 1,
+    "bothInvalidJsonCalls": 2,
+    "bothInvalidRawMatches": 2,
+    "liveResponseDifferences": 2,
+    "caseObservations": {
+      "matched-tested-methods": 3,
+      "both-init-failed": 2,
+      "same-successful-or-failed-behavior": 3,
+      "live-response-difference": 1,
+      "method-results-need-diagnosis": 1,
+      "init-difference-needs-diagnosis": 2
+    },
+    "callObservations": {
+      "same-json": 15,
+      "both-invalid-json": 2,
+      "live-response-difference": 2,
+      "execution-or-result-difference": 1,
+      "both-failed": 1,
+      "unknown-not-replayed": 5
+    }
+  },
+  "cases": [
+    {
+      "caseId": "0-0",
+      "artifactIndex": 0,
+      "siteIndex": 0,
+      "jarSha256": "b644dc3adc5f8a768938f3c09f75cf6b61530d661a83ddae8ffd2b72ddfa4979",
+      "api": "csp_AiDjGuard",
+      "siteKeySha256": "0737511526af3d6256937dd59a1c7749191cf3bb755dbc2b64ca31659877ac0a",
+      "extSha256": "f95a208c476780235d63bac07259bb3de0723167b9dce84287340aa16c4041c7",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.AiDjGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.AiDjGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 25,
+            "sha256": "2c92aab71b4aa381fa8b0808ef4fc7975e64ef8a43e2c67c9db59a12f30d000f",
+            "state": "json",
+            "semanticSha256": "8b0a017f921226525490c6d89133abf210f7f1f56c47d5242c19f8f3c7148389",
+            "fields": 2,
+            "emptyObject": false,
+            "classes": 0,
+            "list": 0,
+            "filterGroups": null,
+            "hasContent": false,
+            "classSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "nas": {
+            "bytes": 25,
+            "sha256": "2c92aab71b4aa381fa8b0808ef4fc7975e64ef8a43e2c67c9db59a12f30d000f",
+            "state": "json",
+            "semanticSha256": "8b0a017f921226525490c6d89133abf210f7f1f56c47d5242c19f8f3c7148389",
+            "fields": 2,
+            "emptyObject": false,
+            "classes": 0,
+            "list": 0,
+            "filterGroups": null,
+            "hasContent": false,
+            "classSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": null,
+          "observation": "same-json"
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "matched-tested-methods"
+    },
+    {
+      "caseId": "0-1",
+      "artifactIndex": 0,
+      "siteIndex": 1,
+      "jarSha256": "b644dc3adc5f8a768938f3c09f75cf6b61530d661a83ddae8ffd2b72ddfa4979",
+      "api": "csp_FirstAidGuard",
+      "siteKeySha256": "9d328997de3d9633634785a0327a2eabbc624e5b4c39bd30a44093d557de2699",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.FirstAidGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.FirstAidGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 403,
+            "sha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+            "state": "json",
+            "semanticSha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+            "fields": 1,
+            "emptyObject": false,
+            "classes": 8,
+            "list": null,
+            "filterGroups": null,
+            "hasContent": true,
+            "classSha256": "1761a114ab2ea55df4bc584166a65c79ee4430a0cd207685b685222b964a391c"
+          },
+          "nas": {
+            "bytes": 403,
+            "sha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+            "state": "json",
+            "semanticSha256": "9ed1e732c2cf13ee3533dd45fc32d5e36afeb857c69874b8c77947fba25321e5",
+            "fields": 1,
+            "emptyObject": false,
+            "classes": 8,
+            "list": null,
+            "filterGroups": null,
+            "hasContent": true,
+            "classSha256": "1761a114ab2ea55df4bc584166a65c79ee4430a0cd207685b685222b964a391c"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": null,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "31d3686149a91d0cf1dc78c2eb6571922b4352418eee606c458a08ef584f9d0f",
+          "art": {
+            "bytes": 3745,
+            "sha256": "61d93616875abb2bd7fd79989e8ae467b6f4a8335a83887d2934f5cdf254f689",
+            "state": "json",
+            "semanticSha256": "42568f60c77cd1f050547bd820a10eee0db2b9715ae7a253f137ca8644d42e24",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": null,
+            "list": 19,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 3745,
+            "sha256": "61d93616875abb2bd7fd79989e8ae467b6f4a8335a83887d2934f5cdf254f689",
+            "state": "json",
+            "semanticSha256": "42568f60c77cd1f050547bd820a10eee0db2b9715ae7a253f137ca8644d42e24",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": null,
+            "list": 19,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "8d16df0268f83ede3cdf49cf520a64205343a75941e257eec527a09a2ea03250",
+          "art": {
+            "bytes": 3576,
+            "sha256": "8be2d06f0b1b5ec13ddbaebe0c0474d0e1524a1f0468410a048d540357c55d23",
+            "state": "json",
+            "semanticSha256": "047b230d2b5abc2bdc0ea576b5d2187374f3bf8240e8e7053ce09fb75389d9f5",
+            "fields": 1,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 3576,
+            "sha256": "8be2d06f0b1b5ec13ddbaebe0c0474d0e1524a1f0468410a048d540357c55d23",
+            "state": "json",
+            "semanticSha256": "047b230d2b5abc2bdc0ea576b5d2187374f3bf8240e8e7053ce09fb75389d9f5",
+            "fields": 1,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "matched-tested-methods"
+    },
+    {
+      "caseId": "0-2",
+      "artifactIndex": 0,
+      "siteIndex": 2,
+      "jarSha256": "b644dc3adc5f8a768938f3c09f75cf6b61530d661a83ddae8ffd2b72ddfa4979",
+      "api": "csp_XPathGuard",
+      "siteKeySha256": "355b1bbfc96725cdce8f4a2708fda310a80e6d13315aec4e5eed2a75fe8032ce",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": {
+          "type": "java.lang.IllegalStateException",
+          "fingerprint": "e511f625a98a924650edfabe2f6d19523c55c177d4f85ccdc76bd749afb6f452",
+          "category": "execution"
+        },
+        "nas": {
+          "type": "Error",
+          "fingerprint": "1400d0f5e866bd85a71e7f28d06c0dde24703b8bb073f992c96a6df001f77ab5",
+          "category": "missing-class-or-member"
+        },
+        "exceptionTypeEqual": false,
+        "fingerprintEqual": false,
+        "fingerprintNote": "Producer-specific fingerprints use different message envelopes; unequal hashes do not establish unequal underlying causes."
+      },
+      "observation": "both-init-failed"
+    },
+    {
+      "caseId": "1-0",
+      "artifactIndex": 1,
+      "siteIndex": 0,
+      "jarSha256": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+      "api": "csp_DoubanAmns",
+      "siteKeySha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+      "extSha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.DoubanAmns",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.DoubanAmns",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 13398,
+            "sha256": "16a7a10e1245eba9ab3cbff92e08d3fc30a4c8778685b683dc6ddfa1bd49265d",
+            "state": "json",
+            "semanticSha256": "64283ebecff2a757bf85a50422a17f99d8ca432a97ad3568eba531ebfb401fd2",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+            "filtersSha256": "d885a8b11da99bdc601a1466478b833ea5be81c481e0bc51d051e178dc7c2f63"
+          },
+          "nas": {
+            "bytes": 13398,
+            "sha256": "16a7a10e1245eba9ab3cbff92e08d3fc30a4c8778685b683dc6ddfa1bd49265d",
+            "state": "json",
+            "semanticSha256": "64283ebecff2a757bf85a50422a17f99d8ca432a97ad3568eba531ebfb401fd2",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+            "filtersSha256": "d885a8b11da99bdc601a1466478b833ea5be81c481e0bc51d051e178dc7c2f63"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 6986,
+            "sha256": "78790fd7103a9a1e338df9e6ad3a91a46989ad0223c4c86aff88d48ea1d7e6db",
+            "state": "json",
+            "semanticSha256": "0cead16a10e505823e7993a7ca81305be6d02594b35d888249ba27c28b1226c7",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 6986,
+            "sha256": "78790fd7103a9a1e338df9e6ad3a91a46989ad0223c4c86aff88d48ea1d7e6db",
+            "state": "json",
+            "semanticSha256": "0cead16a10e505823e7993a7ca81305be6d02594b35d888249ba27c28b1226c7",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "f7598d4397421b0499ad2eb84e0b4fec97bc487b7ef2018b94017350c40835d8",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "category": "invalid-json"
+            }
+          },
+          "observation": "both-invalid-json",
+          "invalidRawEqual": true,
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "category": "execution"
+            },
+            "nas": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "category": "invalid-json"
+            },
+            "exceptionTypeEqual": false,
+            "fingerprintEqual": false,
+            "fingerprintNote": "Producer-specific fingerprints use different message envelopes; unequal hashes do not establish unequal underlying causes."
+          }
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "same-successful-or-failed-behavior"
+    },
+    {
+      "caseId": "1-1",
+      "artifactIndex": 1,
+      "siteIndex": 1,
+      "jarSha256": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+      "api": "csp_Y360Amns",
+      "siteKeySha256": "7a49b045dbfa0f8427a0d1cbf67835028778f5a90c8f08b86b5f495cdec31bfd",
+      "extSha256": "7a49b045dbfa0f8427a0d1cbf67835028778f5a90c8f08b86b5f495cdec31bfd",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Y360Amns",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Y360Amns",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 6485,
+            "sha256": "97affca938a665d15014c9a3587d0a33d9f4ef3298b8de4cf6899cebfec3b4bb",
+            "state": "json",
+            "semanticSha256": "97affca938a665d15014c9a3587d0a33d9f4ef3298b8de4cf6899cebfec3b4bb",
+            "fields": 2,
+            "emptyObject": false,
+            "classes": 4,
+            "list": null,
+            "filterGroups": 4,
+            "hasContent": true,
+            "classSha256": "bd27c2c72c65cb0dec78a3b4615753494d092ff52f46c4865cd574115c755b4d",
+            "filtersSha256": "bb6b48699a1831ffbf5c4d8ddb72153cba3f42d29d3abeb8789ce10ab9733dc3"
+          },
+          "nas": {
+            "bytes": 6485,
+            "sha256": "97affca938a665d15014c9a3587d0a33d9f4ef3298b8de4cf6899cebfec3b4bb",
+            "state": "json",
+            "semanticSha256": "97affca938a665d15014c9a3587d0a33d9f4ef3298b8de4cf6899cebfec3b4bb",
+            "fields": 2,
+            "emptyObject": false,
+            "classes": 4,
+            "list": null,
+            "filterGroups": 4,
+            "hasContent": true,
+            "classSha256": "bd27c2c72c65cb0dec78a3b4615753494d092ff52f46c4865cd574115c755b4d",
+            "filtersSha256": "bb6b48699a1831ffbf5c4d8ddb72153cba3f42d29d3abeb8789ce10ab9733dc3"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "202d6c4f0c744aa2247e7a0bbc3feb3d7e69f95fc08a7307c3a551048be8dc00",
+          "art": {
+            "bytes": 5883,
+            "sha256": "bd1475d2d0434758be94a589c08aafe29f7efc2e87d1a36d19b7414319aac705",
+            "state": "json",
+            "semanticSha256": "5a571cbc9003281b336071ea136f1770d8e93e7a6705cf81bc2c9873fa9fc6cf",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 35,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 5883,
+            "sha256": "bd1475d2d0434758be94a589c08aafe29f7efc2e87d1a36d19b7414319aac705",
+            "state": "json",
+            "semanticSha256": "5a571cbc9003281b336071ea136f1770d8e93e7a6705cf81bc2c9873fa9fc6cf",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 35,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "334a7e5ab23320b95ac673dcbe24e9c4394bbbd6b625dd7b4aa2ed1ca553d6e2",
+          "art": {
+            "bytes": 1722,
+            "sha256": "320fd7430287891c11d8e392a28dc30ab38a2921b5302d0ec70a7ce8d2b8b68f",
+            "state": "json",
+            "semanticSha256": "44630e3a2ef9534eb13701a8bb10fa29f69e903f38953e2d6f71b7ff9ac205ba",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 1722,
+            "sha256": "320fd7430287891c11d8e392a28dc30ab38a2921b5302d0ec70a7ce8d2b8b68f",
+            "state": "json",
+            "semanticSha256": "44630e3a2ef9534eb13701a8bb10fa29f69e903f38953e2d6f71b7ff9ac205ba",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "matched-tested-methods"
+    },
+    {
+      "caseId": "1-2",
+      "artifactIndex": 1,
+      "siteIndex": 2,
+      "jarSha256": "198d4d2860bda7a82ee2732ec4bd0ba0f6568612caeef85256decc5f3279feef",
+      "api": "csp_HgdhAmns",
+      "siteKeySha256": "e47f059aaef9ebc6a6defedd0aab2eef79f859fa64f5790ff14cdcea33fa6aaa",
+      "extSha256": "e47f059aaef9ebc6a6defedd0aab2eef79f859fa64f5790ff14cdcea33fa6aaa",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.HgdhAmns",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.HgdhAmns",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 1513,
+            "sha256": "86e0dcbf409dc91fc39dbcc7b30b3246a74101fb3ea04b156cd6072902ed0263",
+            "state": "json",
+            "semanticSha256": "c99edd6dcf79d47909a837d4081f41582495e0deacb2eb956163a72a0d4fc57d",
+            "fields": 2,
+            "emptyObject": false,
+            "classes": 6,
+            "list": null,
+            "filterGroups": 5,
+            "hasContent": true,
+            "classSha256": "2dab5ef2042efae4ca4e114a7984eb8f2bd325a14462fbb659b482d48a05e098",
+            "filtersSha256": "9a9321a3547671bf0091cfeb835d6a6bb5bebffdda4c6d1763e3fbb60cfa40c6"
+          },
+          "nas": {
+            "bytes": 1513,
+            "sha256": "86e0dcbf409dc91fc39dbcc7b30b3246a74101fb3ea04b156cd6072902ed0263",
+            "state": "json",
+            "semanticSha256": "c99edd6dcf79d47909a837d4081f41582495e0deacb2eb956163a72a0d4fc57d",
+            "fields": 2,
+            "emptyObject": false,
+            "classes": 6,
+            "list": null,
+            "filterGroups": 5,
+            "hasContent": true,
+            "classSha256": "2dab5ef2042efae4ca4e114a7984eb8f2bd325a14462fbb659b482d48a05e098",
+            "filtersSha256": "9a9321a3547671bf0091cfeb835d6a6bb5bebffdda4c6d1763e3fbb60cfa40c6"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "b9d33a9ed633449d2d5b02a146f97a0ecafe06e270159d8a921b5a8329055fff",
+          "art": {
+            "bytes": 2023,
+            "sha256": "8b50c3fc78017d2500c3e32b039fe5899cbf194da224226cb50633d00f652514",
+            "state": "json",
+            "semanticSha256": "14b93702200b8abaaacaf5c01586614bac0b9a69b3691a4ef441c003c5ad62a5",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 10,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 2052,
+            "sha256": "e1fa56a086e82b906109e0a3d011c4c14465ee79e34b8b213684ce2941370aa2",
+            "state": "json",
+            "semanticSha256": "0a38aa9ca00c92b9f32ebd6b12005eb2c614b5261f6562b109a66f4583c26857",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 10,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": false,
+          "semanticEqual": false,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "live-response-difference"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "fd0aecf9e63ca86848fc36157b95e2e077da6458983dcd380523506f7b532345",
+          "art": {
+            "bytes": 12601,
+            "sha256": "ae951611bc49c36edabc3aafed7fb2dbd58cbed3d995e5adcefbd5e85bd1b810",
+            "state": "json",
+            "semanticSha256": "a777b4f60a50c843ca7debc2804985ade9315e218c681d2ce1c14301a3e23156",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 12601,
+            "sha256": "ae951611bc49c36edabc3aafed7fb2dbd58cbed3d995e5adcefbd5e85bd1b810",
+            "state": "json",
+            "semanticSha256": "a777b4f60a50c843ca7debc2804985ade9315e218c681d2ce1c14301a3e23156",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "live-response-difference"
+    },
+    {
+      "caseId": "2-0",
+      "artifactIndex": 2,
+      "siteIndex": 0,
+      "jarSha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "api": "csp_NewDouBanGuard",
+      "siteKeySha256": "60b7e45d1ffd8207dd4ea8f2e7733b2babf0f536dc71fd97f572856791278b52",
+      "extSha256": "cf2e639bfbfaf274a664f82a5efd893e095dbe37813fcc3ac187c39cbdf9d57f",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.NewDouBanGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.NewDouBanGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 13158,
+            "sha256": "c0fd2e0ed968b95bdb6732ef6010e2cb4b6ea6c48b4d328567fd12fbe4829df5",
+            "state": "json",
+            "semanticSha256": "22df891eb5812d330f6995b1bf3c221d64987de5200ac9f519afe0bc013afc6e",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+            "filtersSha256": "d885a8b11da99bdc601a1466478b833ea5be81c481e0bc51d051e178dc7c2f63"
+          },
+          "nas": {
+            "bytes": 13158,
+            "sha256": "c0fd2e0ed968b95bdb6732ef6010e2cb4b6ea6c48b4d328567fd12fbe4829df5",
+            "state": "json",
+            "semanticSha256": "22df891eb5812d330f6995b1bf3c221d64987de5200ac9f519afe0bc013afc6e",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 7,
+            "hasContent": true,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+            "filtersSha256": "d885a8b11da99bdc601a1466478b833ea5be81c481e0bc51d051e178dc7c2f63"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 6746,
+            "sha256": "445d40a57ee8ebff35b7f557c65b4ca60a37b25ba16ba3d6d060cae7d9ff6abb",
+            "state": "json",
+            "semanticSha256": "37a7d2a188832853b0ce3b51dae8f2e5f1dac3ad6fe5e0ed095dd54c3d50a21a",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 6746,
+            "sha256": "445d40a57ee8ebff35b7f557c65b4ca60a37b25ba16ba3d6d060cae7d9ff6abb",
+            "state": "json",
+            "semanticSha256": "37a7d2a188832853b0ce3b51dae8f2e5f1dac3ad6fe5e0ed095dd54c3d50a21a",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "same-json"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "f7598d4397421b0499ad2eb84e0b4fec97bc487b7ef2018b94017350c40835d8",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "category": "invalid-json"
+            }
+          },
+          "observation": "both-invalid-json",
+          "invalidRawEqual": true,
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "category": "execution"
+            },
+            "nas": {
+              "type": "SyntaxError",
+              "fingerprint": "4a6eccd7f65fecd273ed1a6cad8a2958d6538e3021284ff88eb1f18fd0f35251",
+              "category": "invalid-json"
+            },
+            "exceptionTypeEqual": false,
+            "fingerprintEqual": false,
+            "fingerprintNote": "Producer-specific fingerprints use different message envelopes; unequal hashes do not establish unequal underlying causes."
+          }
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "same-successful-or-failed-behavior"
+    },
+    {
+      "caseId": "2-1",
+      "artifactIndex": 2,
+      "siteIndex": 1,
+      "jarSha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "api": "csp_PanConfigGuard",
+      "siteKeySha256": "8fa54290572fca5ae4401aa64de38341620033518f2a8ef6665da62922f0213f",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.PanConfigGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.PanConfigGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 597,
+            "sha256": "777ff37c973c8f01c50b7a6768d352dc34cb66b7400ecdb5b6b796b1e4d95a6c",
+            "state": "json",
+            "semanticSha256": "7b00b0809a263f3872b0fc5be7e093d699c0e976285227d8257ff7af54436e74",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 12,
+            "list": null,
+            "filterGroups": 0,
+            "hasContent": true,
+            "classSha256": "cbf6ac034494c3ba0fe40ae1c0b304d38c028e6022fa268b05fdc53a5922d63d",
+            "filtersSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "nas": {
+            "bytes": 597,
+            "sha256": "777ff37c973c8f01c50b7a6768d352dc34cb66b7400ecdb5b6b796b1e4d95a6c",
+            "state": "json",
+            "semanticSha256": "7b00b0809a263f3872b0fc5be7e093d699c0e976285227d8257ff7af54436e74",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 12,
+            "list": null,
+            "filterGroups": 0,
+            "hasContent": true,
+            "classSha256": "cbf6ac034494c3ba0fe40ae1c0b304d38c028e6022fa268b05fdc53a5922d63d",
+            "filtersSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "d5310c2519fc688150ae9cd284f7bd0b88de004e0f2a0e1fd222cdf16fd5525f",
+          "art": {
+            "bytes": 54750,
+            "sha256": "88b7da6b0fbb836acd60b129932a7a1940bc13f305298e82a6f09505fae01214",
+            "state": "json",
+            "semanticSha256": "eb138048e09373f5f6279c7321b85782cbd5f38d8ae92070ab3abbdf156bb2cf",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 12,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "failed",
+            "error": {
+              "type": "java.lang.RuntimeException",
+              "fingerprint": "102c4da316ecfe824a076ae1f6e9fd1b5f127bfd9749ee042c0d45c2bbed7e01",
+              "category": "execution"
+            }
+          },
+          "observation": "execution-or-result-difference",
+          "failures": {
+            "art": null,
+            "nas": {
+              "type": "java.lang.RuntimeException",
+              "fingerprint": "102c4da316ecfe824a076ae1f6e9fd1b5f127bfd9749ee042c0d45c2bbed7e01",
+              "category": "execution"
+            }
+          }
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "2a6c8b5a0f52f75346dbf75066870e8d883f1de30c9a75ce9d2e51a2f2221fec",
+          "art": {
+            "bytes": 197,
+            "sha256": "f62bdc49e6ae9150a5a83387a85d3475286e2b3b65384a57b23acb2d73485c30",
+            "state": "json",
+            "semanticSha256": "dda70952f794e083409c865f709ce3c4557591b0498c0fd45e4e86e055be31ed",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "bytes": 198,
+            "sha256": "468f7cfa39f8bd5fbc5cd88bd0df4b532212a699e81de760583e1f376526998c",
+            "state": "json",
+            "semanticSha256": "08f01300b59325943dd34d044324a8f5a62b1dac7f1e007133d7add6c69eba8c",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": null,
+            "list": 1,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "rawEqual": false,
+          "semanticEqual": false,
+          "classesEqual": null,
+          "filtersEqual": null,
+          "observation": "live-response-difference"
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "method-results-need-diagnosis"
+    },
+    {
+      "caseId": "2-2",
+      "artifactIndex": 2,
+      "siteIndex": 2,
+      "jarSha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+      "api": "csp_MyPanGuard",
+      "siteKeySha256": "c75bcb376f5255e0167eb03a9f4b03b548b073662e72cec774c65bb26557ac1a",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.MyPanGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.MyPanGuard",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 594,
+            "sha256": "85d2d16ef1e1a0e294f7648f63ce2cbe7c5987d8bdecd8468bbf928959db6432",
+            "state": "json",
+            "semanticSha256": "4b2c20281821700cac3ede2688e11be386e3188d6527203cdb5bf2e41131c220",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 9,
+            "list": null,
+            "filterGroups": 0,
+            "hasContent": true,
+            "classSha256": "5a6cd303a9f4d9aae861a8eddbeb28d24e0dfc316cf488ae4ee96cf162d8977d",
+            "filtersSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "nas": {
+            "bytes": 594,
+            "sha256": "85d2d16ef1e1a0e294f7648f63ce2cbe7c5987d8bdecd8468bbf928959db6432",
+            "state": "json",
+            "semanticSha256": "4b2c20281821700cac3ede2688e11be386e3188d6527203cdb5bf2e41131c220",
+            "fields": 4,
+            "emptyObject": false,
+            "classes": 9,
+            "list": null,
+            "filterGroups": 0,
+            "hasContent": true,
+            "classSha256": "5a6cd303a9f4d9aae861a8eddbeb28d24e0dfc316cf488ae4ee96cf162d8977d",
+            "filtersSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          },
+          "rawEqual": true,
+          "semanticEqual": true,
+          "classesEqual": true,
+          "filtersEqual": true,
+          "observation": "same-json"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "ac845ba2fb42aab37c74e2f5b45a1e53f8b38b78f188d2a8677b28a3be01a9e5",
+          "art": {
+            "state": "failed",
+            "error": {
+              "type": "java.lang.Exception",
+              "fingerprint": "00f3f0a98360e4e644bbf8d59ff3effcdfb98b5e42085517e6610471b5acda3d",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "failed",
+            "error": {
+              "type": "java.lang.Exception",
+              "fingerprint": "32afdec61311ab801c2e6201586b46b9b3bcf4a74705af4e3a480092bc0acea2",
+              "category": "execution"
+            }
+          },
+          "observation": "both-failed",
+          "failures": {
+            "art": {
+              "type": "java.lang.Exception",
+              "fingerprint": "00f3f0a98360e4e644bbf8d59ff3effcdfb98b5e42085517e6610471b5acda3d",
+              "category": "execution"
+            },
+            "nas": {
+              "type": "java.lang.Exception",
+              "fingerprint": "32afdec61311ab801c2e6201586b46b9b3bcf4a74705af4e3a480092bc0acea2",
+              "category": "execution"
+            },
+            "exceptionTypeEqual": true,
+            "fingerprintEqual": false,
+            "fingerprintNote": "Producer-specific fingerprints use different message envelopes; unequal hashes do not establish unequal underlying causes."
+          }
+        }
+      ],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": null
+      },
+      "observation": "same-successful-or-failed-behavior"
+    },
+    {
+      "caseId": "3-0",
+      "artifactIndex": 3,
+      "siteIndex": 0,
+      "jarSha256": "402f95d10cae7c88dc14f95a631b4b58a5f7afd5a9ed937e378dd8638c607317",
+      "api": "csp_Baiku",
+      "siteKeySha256": "65ec628073ec6383ddc9751e5b4bcba9d3cb8e6cd1a971461f08d34f4d3056c5",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "loaded",
+        "init": "failed",
+        "spiderClass": "com.github.catvod.crawler.SpiderNull",
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [],
+      "spiderClassEqual": true,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": {
+          "type": "java.lang.IllegalStateException",
+          "fingerprint": "e511f625a98a924650edfabe2f6d19523c55c177d4f85ccdc76bd749afb6f452",
+          "category": "execution"
+        },
+        "nas": {
+          "type": "Error",
+          "fingerprint": "1400d0f5e866bd85a71e7f28d06c0dde24703b8bb073f992c96a6df001f77ab5",
+          "category": "missing-class-or-member"
+        },
+        "exceptionTypeEqual": false,
+        "fingerprintEqual": false,
+        "fingerprintNote": "Producer-specific fingerprints use different message envelopes; unequal hashes do not establish unequal underlying causes."
+      },
+      "observation": "both-init-failed"
+    },
+    {
+      "caseId": "4-0",
+      "artifactIndex": 4,
+      "siteIndex": 0,
+      "jarSha256": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+      "api": "csp_Douban",
+      "siteKeySha256": "b5443b618c95b0f8d83db7dbc1ed53ce6b97ad78afeee368475a0eae0a4bf6ea",
+      "extSha256": "f17ea8c8f6c732df2ffbc094fdc049bb88d98c198ff4d93b2c020b51e8bb4e7f",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Douban",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "not-reached",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 16031,
+            "sha256": "543fffe525133a402a85e0810a5b2689ba503398555429c1bbd58b69bda7114f",
+            "state": "json",
+            "semanticSha256": "0ac517adb8f6e965c689d8a0dfe2ae8aadf9d412fc4852584646e7ba36d25151",
+            "fields": 5,
+            "emptyObject": false,
+            "classes": 7,
+            "list": 20,
+            "filterGroups": 9,
+            "hasContent": true,
+            "classSha256": "4eb3a52d592700f69663def203a2f08302db23fb0100ec34439cde51d3b7dd39",
+            "filtersSha256": "de7a0658c18870ab44ce416274225b91f70760ee1b213c1e8eb38725e33c6a85"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "730839ef6932a2950e7a1fe7174803b3f3485b9b262ac89b212769b790eeab28",
+          "art": {
+            "bytes": 6706,
+            "sha256": "b56f5285849d3546c4a824376f94562178ea58fed8a35b7a031ed7c768df360f",
+            "state": "json",
+            "semanticSha256": "4392ab41b058079d64972147b634a27c2547a47487d63c6370abc69041fa5784",
+            "fields": 7,
+            "emptyObject": false,
+            "classes": null,
+            "list": 20,
+            "filterGroups": null,
+            "hasContent": true
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 2,
+          "method": "detailContent",
+          "paramsSha256": "f7598d4397421b0499ad2eb84e0b4fec97bc487b7ef2018b94017350c40835d8",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "892390d1b80494d7a3d1e8022817a3c493396f83f21e31115928b5c192d08958",
+          "category": "execution"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    },
+    {
+      "caseId": "4-1",
+      "artifactIndex": 4,
+      "siteIndex": 1,
+      "jarSha256": "1ac653e6140a9f81e84afb4d67c05dc2ff6ef1d79c61df8e38c0efbdee32af6c",
+      "api": "csp_Local",
+      "siteKeySha256": "bf4ad761840fcd0af8f7f4df6e2084f907e3b23d35220a1c63b3ad9136a9b777",
+      "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "art": {
+        "present": true,
+        "load": "loaded",
+        "init": "ready",
+        "spiderClass": "com.github.catvod.spider.Local",
+        "inputProvenance": {
+          "originalManifestFieldMissing": false,
+          "recoveredMetadataFromVerifiedInput": false,
+          "source": "execution-report"
+        }
+      },
+      "nas": {
+        "present": true,
+        "load": "failed",
+        "init": "not-reached",
+        "spiderClass": null,
+        "inputProvenance": {
+          "originalManifestFieldMissing": true,
+          "recoveredMetadataFromVerifiedInput": true,
+          "source": "captured-launch-input",
+          "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+          "runnerSha256": "b0d3b5e7a5406c15c0cda042af229be2720a274b5681560a2454962f519ce062"
+        }
+      },
+      "calls": [
+        {
+          "index": 0,
+          "method": "homeContent",
+          "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+          "art": {
+            "bytes": 105,
+            "sha256": "7f06e8b27e59e290eaa3376774a000adebfa13b1881f981f42f295e40c03cae5",
+            "state": "json",
+            "semanticSha256": "b7c6ebbd608d48ddbdeec1b799674d812a57437d00a7fa5c004f4fdada3f3ed4",
+            "fields": 3,
+            "emptyObject": false,
+            "classes": 1,
+            "list": null,
+            "filterGroups": null,
+            "hasContent": true,
+            "classSha256": "88c6d008df6d2c9647287e855bf69276b69835e843612faf40d25449c6e8d89d"
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed"
+        },
+        {
+          "index": 1,
+          "method": "categoryContent",
+          "paramsSha256": "9df1bbb73e1093ffa94e133849e1d2d9d0361e06a69247b6b0f000eeede86d88",
+          "art": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "state": "invalid-json",
+            "error": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "category": "execution"
+            }
+          },
+          "nas": {
+            "state": "not-replayed"
+          },
+          "observation": "unknown-not-replayed",
+          "failures": {
+            "art": {
+              "type": "org.json.JSONException",
+              "fingerprint": "533ba197b7f68dc3948f73c8d253c31ae14066bcccb27d25647f9f3d39c95609",
+              "category": "execution"
+            },
+            "nas": null
+          }
+        }
+      ],
+      "spiderClassEqual": null,
+      "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+      "failures": {
+        "art": null,
+        "nas": {
+          "type": "Error",
+          "fingerprint": "892390d1b80494d7a3d1e8022817a3c493396f83f21e31115928b5c192d08958",
+          "category": "execution"
+        }
+      },
+      "observation": "init-difference-needs-diagnosis"
+    }
+  ],
+  "environment": {
+    "report": "docs/linux/android-runtime-probe.json",
+    "apkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+    "art": {
+      "androidVersion": 11,
+      "api": 30,
+      "abi": "arm64-v8a",
+      "originalBinaryUnmodified": true
+    },
+    "nasOriginalImage": {
+      "tag": "tvbox-core:linux-amd64-jarfix-20261015",
+      "id": "sha256:5360eb501bc10ec76fa41c5023484bfc0514d9cc70cea2a495d6d06a95aa93b6"
+    },
+    "baselineDifferenceReport": "docs/linux/android-apk-baseline-probe.json"
+  },
+  "followup": {
+    "report": "docs/linux/android-panconfig-repair-probe.json",
+    "caseIds": [
+      "2-1"
+    ],
+    "scope": "Separate repaired-image subset; original comparison summary remains unchanged.",
+    "result": "Home/category/detail now all return JSON; category has 12 rows. Rendering and status/content fields differ, so exact equivalence is not claimed."
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "inspectedAt": "2026-10-15T07:00:20.355Z",
+  "apk": {
+    "path": ".cache/android-parity/apk/TVBox_q215613905_20260924-2341-java64.apk",
+    "bytes": 20771782,
+    "sha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+    "packageName": "com.github.tvbox.osc.jun",
+    "versionName": "20260924-2341",
+    "versionCode": 1,
+    "minSdk": "21",
+    "targetSdk": "28",
+    "compileSdk": "33",
+    "applicationClass": "com.github.tvbox.osc.base.App",
+    "debuggable": false,
+    "debuggableDeclared": false,
+    "testOnly": false,
+    "usesCleartextTraffic": "true",
+    "launchers": [
+      {
+        "category": "android.intent.category.LAUNCHER",
+        "exported": "true",
+        "activity": "com.github.tvbox.osc.ui.activity.HomeActivity"
+      },
+      {
+        "category": "android.intent.category.LEANBACK_LAUNCHER",
+        "exported": "true",
+        "activity": "com.github.tvbox.osc.ui.activity.HomeActivity"
+      }
+    ],
+    "abis": [
+      "arm64-v8a"
+    ],
+    "nativeLibraries": [
+      "lib/arm64-v8a/libconceal.so",
+      "lib/arm64-v8a/libcronet.101.0.4951.41.so",
+      "lib/arm64-v8a/libffmpegJNI.so",
+      "lib/arm64-v8a/libijkffmpeg.so",
+      "lib/arm64-v8a/libijksdl.so",
+      "lib/arm64-v8a/libp2p.so",
+      "lib/arm64-v8a/libplayer.so",
+      "lib/arm64-v8a/libquickjs-android-wrapper.so",
+      "lib/arm64-v8a/librtmp-jni.so",
+      "lib/arm64-v8a/libxl_stat.so",
+      "lib/arm64-v8a/libxl_thunder_sdk.so"
+    ],
+    "dexFiles": [
+      {
+        "version": "035",
+        "name": "classes.dex",
+        "bytes": 9359404,
+        "sha256": "379ef257e0b448fcbbf5fdc044f4f77e1ab14cc051734e652ba042c9164d9ab9"
+      },
+      {
+        "version": "035",
+        "name": "classes2.dex",
+        "bytes": 3052708,
+        "sha256": "43b0708323f5b00fd4179562feea894e366288a840204b42feca0a4ac437f68e"
+      }
+    ],
+    "v2CertificateExtractionError": "java.lang.IllegalArgumentException: newPosition > limit: (1609608794 > 12264)",
+    "signerCertificates": [
+      {
+        "sha256": "4b9421de6d46778f6280b180179413fa6973845f0a0132c00f6800c06464e051",
+        "subject": "CN=TVBoxOSC,OU=TVBoxOSC,O=TVBoxOSC,L=TVBoxOSC,ST=TVBoxOSC,C=TVBoxOSC",
+        "issuer": "CN=TVBoxOSC,OU=TVBoxOSC,O=TVBoxOSC,L=TVBoxOSC,ST=TVBoxOSC,C=TVBoxOSC",
+        "signatureAlgorithm": "SHA256withRSA",
+        "validFrom": "2022-06-24T03:53:08Z",
+        "validUntil": "2032-06-21T03:53:08Z"
+      }
+    ]
+  },
+  "tools": {
+    "javaHome": ".tools/jdk17",
+    "parser": {
+      "version": "2.6.10",
+      "sha256": "4e07ef65005c0d7e7149f6e903828fdaa031f542ad3956f0d827197a5ccac640"
+    },
+    "gson": {
+      "version": "2.10.1",
+      "sha256": "4241c14a7727c34feea6507ec801318a3d4a90f070e4525681079fb94ee4c593"
+    }
+  },
+  "signatureVerification": {
+    "performed": true,
+    "tool": "Android build-tools 35.0.0 apksigner",
+    "verifiedSchemes": [
+      "v1",
+      "v2",
+      "v3"
+    ],
+    "certificateSha256": "4b9421de6d46778f6280b180179413fa6973845f0a0132c00f6800c06464e051",
+    "verificationOutputSha256": "22d2b365a556b7d47ceb6df086a96cafe89f2a3d04ed63d57b3a06141e0334e6",
+    "originalApkSha256Unchanged": true
+  },
+  "acquisition": {
+    "repository": "https://github.com/q215613905/TVBoxOSCRelease",
+    "releaseTag": "20260924-2341",
+    "releaseUrl": "https://github.com/q215613905/TVBoxOSCRelease/releases/tag/20260924-2341",
+    "publishedAt": "2026-09-25T04:05:56Z",
+    "assetId": 587480113,
+    "downloadUrl": "https://github.com/q215613905/TVBoxOSCRelease/releases/download/20260924-2341/TVBox_q215613905_20260924-2341-java64.apk",
+    "upstreamDigest": "sha256:5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+    "upstreamBytes": 20771782,
+    "digestMatches": true,
+    "originalBinaryUnmodified": true,
+    "declaredSourceRepository": "https://github.com/q215613905/TVBoxOS",
+    "declaredSourceCommit": "d5f500677a4da15c5836477352030d9ebb5cb37a",
+    "sourceCommitEvidence": "Commit field in official release body; not a reproducible-build assertion",
+    "latestReleaseCheckedAt": "2026-10-15T07:03:36.665Z"
+  },
+  "baselineScope": {
+    "pinnedCommit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+    "exactPinnedReleaseFound": false,
+    "officialReleasesSearched": 109,
+    "oldestReleaseSearched": "20250221-1642",
+    "matchesPinnedCommit": false,
+    "purpose": "Original upstream product validation on Android/ART; results must be reported separately from exact pinned-source parity",
+    "sourceFileComparison": [
+      {
+        "path": "app/src/main/java/com/github/tvbox/osc/api/ApiConfig.java",
+        "baselineSha256": "b54072e7df16691b807f5a2b527bcbdf05a25a34a747b01f3d20aa0f50814529",
+        "apkDeclaredCommitSha256": "b54072e7df16691b807f5a2b527bcbdf05a25a34a747b01f3d20aa0f50814529",
+        "identical": true
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/Spider.java",
+        "baselineSha256": "353720772b646372755e1ac71698bc018845ef9c54f7eda7bef29aee54c33484",
+        "apkDeclaredCommitSha256": "353720772b646372755e1ac71698bc018845ef9c54f7eda7bef29aee54c33484",
+        "identical": true
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/SpiderApi.java",
+        "baselineSha256": "d91e9fd3be2175df752468afd8a28d620741f6e2e8cdf8a86618f8e0ccf6b413",
+        "apkDeclaredCommitSha256": "d91e9fd3be2175df752468afd8a28d620741f6e2e8cdf8a86618f8e0ccf6b413",
+        "identical": true
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/JarLoader.java",
+        "baselineSha256": "7dae5314c08223e86bd2aa6082195cfc925a12416b0fad98d01f6abfc59f951d",
+        "apkDeclaredCommitSha256": "7dae5314c08223e86bd2aa6082195cfc925a12416b0fad98d01f6abfc59f951d",
+        "identical": true
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/js/JsSpider.java",
+        "baselineSha256": "51d2ce02c08645cbf9a90d766e829cef1596637be4696d9aa1d467817d5032aa",
+        "apkDeclaredCommitSha256": "51d2ce02c08645cbf9a90d766e829cef1596637be4696d9aa1d467817d5032aa",
+        "identical": true
+      },
+      {
+        "path": "app/src/main/java/com/github/catvod/crawler/ProtectedInitJar.java",
+        "baselineSha256": "86a31da8a7e8e573f957a157cafe0b3c0e74b7f8af937a6aa02b133a9973a250",
+        "apkDeclaredCommitSha256": "1785af125250c2722b19aaf8b4a7c8478e8632f2ec91979344cb04903664c0bf",
+        "identical": false
+      },
+      {
+        "path": "app/src/main/java/com/github/tvbox/osc/bean/SourceBean.java",
+        "baselineSha256": "f293d6580eb290b4bdd3a42ea1f5c6bfbaab2cbeff517e2d5718841f9407a410",
+        "apkDeclaredCommitSha256": "f293d6580eb290b4bdd3a42ea1f5c6bfbaab2cbeff517e2d5718841f9407a410",
+        "identical": true
+      },
+      {
+        "path": "app/src/main/java/com/github/tvbox/osc/util/DefaultConfig.java",
+        "baselineSha256": "62fec1029eace657d32d0edc96a4f337ba4799c69c8de2eaa5b846b1c19d51c7",
+        "apkDeclaredCommitSha256": "62fec1029eace657d32d0edc96a4f337ba4799c69c8de2eaa5b846b1c19d51c7",
+        "identical": true
+      }
+    ],
+    "knownRelevantDifference": {
+      "path": "app/src/main/java/com/github/catvod/crawler/ProtectedInitJar.java",
+      "behavior": "Release commit catches ClassNotFoundException in bindDexLoader and returns true; pinned source instead falls through to false",
+      "evidenceUrl": "https://api.github.com/repos/q215613905/TVBoxOS/compare/ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1...d5f500677a4da15c5836477352030d9ebb5cb37a"
+    }
+  },
+  "retention": {
+    "updatedAt": "2026-10-15T09:12:11.469749+00:00",
+    "apkPurpose": "Temporary original-product emulator/instrumentation input; no APK retained at completion",
+    "apkBytes": 20771782,
+    "apkRemovedAtCompletion": true,
+    "temporaryInspectionBuildsRemoved": true,
+    "temporarySigningKeyCopyRemovedAtCompletion": true,
+    "retainedToolchainReport": "docs/linux/android-toolchain.json",
+    "runtimeAndCleanupReport": "docs/linux/android-runtime-probe.json",
+    "backgroundTaskServicesAtCompletion": [],
+    "autostartChanges": []
+  }
+}

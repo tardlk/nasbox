@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T09:06:23.889Z",
+  "scope": "One exact captured PanConfigGuard case repaired and replayed against the existing unchanged official APK/ART observation. This is not a rerun of all 12 ART cases or 114 catalogue artifacts.",
+  "originalComparisonReport": "docs/linux/android-art-comparison-probe.json",
+  "manifestSha256": "e55ea0352a58b9da406e59a4ca8db379d22ce5fac885969e4a93280afe8de2b1",
+  "apkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+  "image": {
+    "tag": "tvbox-core:linux-amd64-art-complete-20261015",
+    "id": "sha256:f2f6208a737bd3cfb1826a5059623e1c59d57ce8687590af869d5168bded9318",
+    "bytes": 515359330,
+    "user": "10001:10001",
+    "prebuiltOnly": true,
+    "compilerIncluded": false,
+    "offlineDoctorPassed": true,
+    "sources": {
+      "backend/spider-runtime/native-bridge/build.mjs": "42857d0c4f08d0f69a1f1c3a4abd2315cc58cfc65db4c8da231db53a38987ef4",
+      "backend/spider-runtime/native-bridge/runtime.json": "42d12649974d96cd71a9e6f96bb0f1f8e4e05abe9a23ba3adb3a00add0337262",
+      "backend/spider-runtime/native-bridge/src/tvbox/runtime/VerifiedJarRepair.java": "3d842caa0d9eb72a245f229aeb0408d134cbbe01724c2ca00bf37fc9c689f83c",
+      "backend/spider-runtime/native-bridge/src/tvbox/runtime/DynamicNativeSupport.java": "3a530dbb2ec9943d4167f911919a7ef5c6c917a5967c3b8d4d9ca164b9aa8f40",
+      "backend/spider-runtime/native-bridge/src/android/graphics/Bitmap.java": "c36aef2683118b3baac7e9c4f6d3806368cd69ec1adb7923880cf77eaf5728a6",
+      "backend/spider-runtime/native-bridge/src/android/graphics/Canvas.java": "f81b944a4de1045c6105e9b3f2cef8710d00f3931c565f8bdcbd988d908f425d",
+      "backend/spider-runtime/native-bridge/src/android/graphics/Paint.java": "2596fc9ae80d40c6ea5b0753def988e0fe0cbd5374c21dbd44647a3a2616f88b",
+      "backend/spider-runtime/native-bridge/src/android/graphics/Path.java": "545945f2f7269ca008807acae3ffb1aae9954c85fdb66368bffa4cf21ae74d3e",
+      "backend/spider-runtime/native-bridge/src/android/graphics/RectF.java": "95111877a6db560ef167cc92c6ed582475280fb44b719412b096f6d1bb8d5822",
+      "backend/spider-runtime/native-bridge/src/android/graphics/Shader.java": "747d1d89975309e0a4be4810bbeacf2f5c564e9d27df669502bfba33c454b346",
+      "backend/spider-runtime/native-bridge/src/android/graphics/LinearGradient.java": "2a932af8a6b2c28a821dec394b23d4a60de9ad0ae30591ea51bc5c4877de3917",
+      "backend/spider-runtime/native-bridge/src/android/text/TextPaint.java": "7f846a29811cd73d34cc2cdd857296e82242fa4e9e57a965aa74b763d4700e3a"
+    }
+  },
+  "execution": {
+    "replayScriptSha256": "c09c457f7515ba754a7ffcc12347cd1ddcd9af17641c894ac5266beeec0390ad",
+    "artPrivateEvidenceSha256": "b980e978569a5c81edb1ad4d6b2c7e395423e2cf770a980ca99bd173b7325a7c",
+    "nasPrivateEvidenceSha256": "76a7a640bce341b4837c8cb628f0508f64e33d27af558e2d04a6f928789ce52f",
+    "limits": {
+      "loadMs": 90000,
+      "callMs": 30000,
+      "caseMs": 240000
+    },
+    "restrictions": {
+      "readOnlyRoot": true,
+      "capDropAll": true,
+      "noNewPrivileges": true,
+      "pids": 256,
+      "memoryBytes": 2147483648,
+      "cpus": 1,
+      "noPublishedPorts": true,
+      "temporaryExecTmpfsBytes": 402653184
+    },
+    "cleanup": {
+      "closed": true,
+      "workerExited": true,
+      "temporaryDataRemoved": true
+    }
+  },
+  "repairs": [
+    {
+      "cause": "Bitmap.createBitmap called a throwing Android SDK stub",
+      "fix": "Observed Bitmap/Canvas/Paint/Path/gradient operations use actual bounded Java2D rasters and in-memory PNG encoding. Android return descriptors and legacy TextPaint ABI are preserved.",
+      "boundary": "Host fonts, antialiasing, pixels and PNG bytes are not Android Skia parity; unsupported operations still fail."
+    },
+    {
+      "cause": "After rendering, JVM resolved a missing com.thegrizzlylabs.sardineandroid.Sardine reference while ART had not required that class in this call",
+      "fix": "Real Sardine Android 0.4 and Simple XML 2.7.1 host libraries, with ABI and authenticated loopback WebDAV protocol tests",
+      "boundary": "The official APK defines no Sardine classes. These are supplemental Linux host dependencies, not copied or same-version official APK dependencies."
+    }
+  ],
+  "comparison": {
+    "caseId": "2-1",
+    "artifactIndex": 2,
+    "siteIndex": 1,
+    "jarSha256": "0e0158a66f88876a0ad58e32128caf242b4b95854fe255f5ea980c2afa4a9622",
+    "api": "csp_PanConfigGuard",
+    "siteKeySha256": "8fa54290572fca5ae4401aa64de38341620033518f2a8ef6665da62922f0213f",
+    "extSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "art": {
+      "present": true,
+      "load": "loaded",
+      "init": "ready",
+      "spiderClass": "com.github.catvod.spider.PanConfigGuard",
+      "inputProvenance": {
+        "originalManifestFieldMissing": false,
+        "recoveredMetadataFromVerifiedInput": false,
+        "source": "execution-report"
+      }
+    },
+    "nas": {
+      "present": true,
+      "load": "loaded",
+      "init": "ready",
+      "spiderClass": "com.github.catvod.spider.PanConfigGuard",
+      "inputProvenance": {
+        "originalManifestFieldMissing": false,
+        "recoveredMetadataFromVerifiedInput": false,
+        "source": "execution-report"
+      }
+    },
+    "calls": [
+      {
+        "index": 0,
+        "method": "homeContent",
+        "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+        "art": {
+          "bytes": 597,
+          "sha256": "777ff37c973c8f01c50b7a6768d352dc34cb66b7400ecdb5b6b796b1e4d95a6c",
+          "state": "json",
+          "semanticSha256": "7b00b0809a263f3872b0fc5be7e093d699c0e976285227d8257ff7af54436e74",
+          "fields": 4,
+          "emptyObject": false,
+          "classes": 12,
+          "list": null,
+          "filterGroups": 0,
+          "hasContent": true,
+          "classSha256": "cbf6ac034494c3ba0fe40ae1c0b304d38c028e6022fa268b05fdc53a5922d63d",
+          "filtersSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+        },
+        "nas": {
+          "bytes": 597,
+          "sha256": "777ff37c973c8f01c50b7a6768d352dc34cb66b7400ecdb5b6b796b1e4d95a6c",
+          "state": "json",
+          "semanticSha256": "7b00b0809a263f3872b0fc5be7e093d699c0e976285227d8257ff7af54436e74",
+          "fields": 4,
+          "emptyObject": false,
+          "classes": 12,
+          "list": null,
+          "filterGroups": 0,
+          "hasContent": true,
+          "classSha256": "cbf6ac034494c3ba0fe40ae1c0b304d38c028e6022fa268b05fdc53a5922d63d",
+          "filtersSha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+        },
+        "rawEqual": true,
+        "semanticEqual": true,
+        "classesEqual": true,
+        "filtersEqual": true,
+        "observation": "same-json"
+      },
+      {
+        "index": 1,
+        "method": "categoryContent",
+        "paramsSha256": "d5310c2519fc688150ae9cd284f7bd0b88de004e0f2a0e1fd222cdf16fd5525f",
+        "art": {
+          "bytes": 54750,
+          "sha256": "88b7da6b0fbb836acd60b129932a7a1940bc13f305298e82a6f09505fae01214",
+          "state": "json",
+          "semanticSha256": "eb138048e09373f5f6279c7321b85782cbd5f38d8ae92070ab3abbdf156bb2cf",
+          "fields": 7,
+          "emptyObject": false,
+          "classes": null,
+          "list": 12,
+          "filterGroups": null,
+          "hasContent": true
+        },
+        "nas": {
+          "bytes": 44083,
+          "sha256": "8798093b7231ba87d904bea0ed4a5e6a77fe949836a3a275c6091c34c8017068",
+          "state": "json",
+          "semanticSha256": "2955519cbc587c6018f8eb4e278a39118d86c01b243b56cc83efed3b51df4094",
+          "fields": 7,
+          "emptyObject": false,
+          "classes": null,
+          "list": 12,
+          "filterGroups": null,
+          "hasContent": true
+        },
+        "rawEqual": false,
+        "semanticEqual": false,
+        "classesEqual": null,
+        "filtersEqual": null,
+        "observation": "host-rendering-and-state-difference",
+        "initialAutomatedObservation": "live-response-difference"
+      },
+      {
+        "index": 2,
+        "method": "detailContent",
+        "paramsSha256": "2a6c8b5a0f52f75346dbf75066870e8d883f1de30c9a75ce9d2e51a2f2221fec",
+        "art": {
+          "bytes": 197,
+          "sha256": "f62bdc49e6ae9150a5a83387a85d3475286e2b3b65384a57b23acb2d73485c30",
+          "state": "json",
+          "semanticSha256": "dda70952f794e083409c865f709ce3c4557591b0498c0fd45e4e86e055be31ed",
+          "fields": 3,
+          "emptyObject": false,
+          "classes": null,
+          "list": 1,
+          "filterGroups": null,
+          "hasContent": true
+        },
+        "nas": {
+          "bytes": 198,
+          "sha256": "fb75e1fa7daec536dfad53267bd154e891446b387b3042f6eff3de5d25587964",
+          "state": "json",
+          "semanticSha256": "fe36a54f23fdb15307e10e99900546bfe8ccdbb51a5b594ac8987b364ad87b58",
+          "fields": 3,
+          "emptyObject": false,
+          "classes": null,
+          "list": 1,
+          "filterGroups": null,
+          "hasContent": true
+        },
+        "rawEqual": false,
+        "semanticEqual": false,
+        "classesEqual": null,
+        "filtersEqual": null,
+        "observation": "state-content-difference",
+        "initialAutomatedObservation": "live-response-difference"
+      }
+    ],
+    "spiderClassEqual": true,
+    "spiderClassNote": "Wrapper and payload class names can differ; class-name equality is not a compatibility gate.",
+    "failures": {
+      "art": null,
+      "nas": null
+    },
+    "observation": "host-rendering-and-state-differences",
+    "initialAutomatedObservation": "live-response-difference"
+  },
+  "diagnosis": {
+    "home": "Raw and semantic JSON equal.",
+    "category": {
+      "artRows": 12,
+      "nasRows": 12,
+      "rawAndSemanticEqual": false,
+      "changedFieldCounts": {
+        "vod_pic": 12,
+        "vod_remarks": 2
+      },
+      "allOtherCategoryFieldsAndRowsEqual": true,
+      "projectionPurpose": "Diagnosis only; removing differing fields does not turn this method into an exact-parity pass.",
+      "generatedImages": {
+        "art": {
+          "decodedPNGs": 12,
+          "width": 128,
+          "height": 128,
+          "nonTransparentPixelsPerImage": 13365
+        },
+        "nas": {
+          "decodedPNGs": 12,
+          "width": 128,
+          "height": 128,
+          "nonTransparentPixelsPerImage": 13380
+        },
+        "observation": "All logos decode to nonblank real PNGs. Java2D versus Skia pixel/encoding differences are expected and remain explicitly unequal."
+      },
+      "statusRemarks": "Two rows differ in status text; environment/preference/live state is not frozen and their exact equivalence remains unverified."
+    },
+    "detail": "Both methods return one row; vod_content differs. Its context/state has not been frozen, so no exact method parity is claimed.",
+    "classificationNote": "Generic first-pass response-difference labels are replaced here by the scoped diagnosis; the unequal raw/semantic hashes remain unchanged."
+  },
+  "tests": {
+    "allNativeEnabledNodeTests": 497,
+    "passed": 497,
+    "failed": 0,
+    "skipped": 0,
+    "command": "TVBOX_TEST_NATIVE=1 node --import ./scripts/compat/typescript-loader.mjs --test compat/*.test.mjs"
+  }
+}

@@ -9,10 +9,10 @@ Priority: subscription links and script execution behavior; player work deferred
 | Historical Win-Box APK/version identification | Unconfirmed | Source method references match named files/line ranges; no unified APK pin found |
 | Executable original-source reference probe | Done for selected methods | scripts/compat/oracle.mjs |
 | Synthetic reference observations | Done | 65 config + 75 subscription + 39 state + 23 source load + 51 VOD + 10 VOD load + 85 full-state/query cases/scenarios |
-| Probe and backend contract tests | Done | 445 Node tests passed with native profile enabled, including DEX/constructor/Android ABI/dynamic ARM and cross-VM shutdown regressions |
+| Probe and backend contract tests | Done | 497 Node tests passed with native profile enabled, including DEX/constructor/Android ABI/dynamic ARM and cross-VM shutdown regressions |
 | Win-Box comparison | Initial audit done | config-comparison.json |
 | Explicit backend core and scoped loaders | Initial modules implemented | 348/348 selected-method/scenario results match; actual platform bindings and Android async execution pending |
-| Real Android/ART validation | Pending | No APK/device/emulator runtime verification |
+| Real Android/ART validation | Bounded original-product validation complete | android-runtime-probe.json: unchanged official ARM64 APK on Android 11 ART; 6 parser and 12 JAR cases plus UI import/category smoke; exact pinned APK unavailable |
 | Subscription preparation/decrypt | Core stages implemented | URL/key, original FindResult/AES, AOSP JSON/Base64, clan/relative paths; Android network/provider parity pending |
 | Source-scope collection/history/cache loading | Implemented and compared within stated scope | Original switching/history methods; new file store and CLI; 23 loadConfig scenarios use source-fields parse stub |
 | Expanded VOD configuration prefix | Implemented as optional mode | Globals/spider, home/search sources, flags/parses/default selection; 51 prefix + 10 load scenarios; VOD mode intentionally ends before live |
@@ -22,7 +22,7 @@ Priority: subscription links and script execution behavior; player work deferred
 | Real subscription JS/module/HTML slice | Verified on host JVM | Three real JS sources init/home, exact fresh-source and live replays; original HTML globals, assets and module/cache routing |
 | ARM native protected JAR | Executed on Mac and NAS | nas-native-runtime-probe.json: same captured JAR/config, 44/45 ready CSPs, five JSON homes, clear/reload and deadline cleanup; ART unverified |
 | Linux x86_64 Docker core image | Delivered and verified on NAS | docker-runtime-probe.json plus nas-native-runtime-probe.json: non-root/read-only JRE, offline fixtures and real protected JAR |
-| Native/Python and complete JS host parity | Pending | Optional ARM/JNI profile runs this JAR; complete Android services, other native artifacts, Python and ART comparison remain open |
+| Native/Python and complete JS host parity | Pending | Optional ARM/JNI profile runs this JAR; complete Android services, other native artifacts, Python and complete ART comparison remain open |
 | Linux container and NAS validation | Scoped validation done | Physical x86_64 NAS; genuine protected JAR init/home and timeout resource release; other architectures and full client unverified |
 | Automatic subscription JAR retrieval/cache | Original-role routes implemented and verified on NAS | artifact-routes-probe.json: HTTP/image/assets/file/clan, cache identity/integrity/quota, real automatic init/home |
 | Crash recovery and combined DEX/module cache quota | Implemented and verified on NAS | cache-lifecycle-probe.json: kernel leases, active-JVM guards, parent-death containment, cross-container PID-1 recovery, quota/pin/eviction checks |
@@ -537,3 +537,14 @@ The full115-artifact matrix has not been repeated after these fixes. Remaining
 API/ext combinations, original provider configuration, indirect/native patterns,
 formal multi-artifact workers and Android/ART same-input coverage remain necessary.
 This records fixed causes and actual calls, not universal TVBox compatibility.
+
+
+## Official APK and fixed-input continuation — 2026-10-15
+
+The unchanged official ARM64 release APK was installed on an Android 11 ARM64 emulator. Separate same-certificate instrumentation called its original parser/JarLoader/Spider methods. Six captured raw configurations produced identical prepared bytes. Five accepted configurations matched all 342 observable source rows and four selected globals; the sixth failed on both hosts with the same exception type and identical 99-row partial state. Only `filterable` is excluded because this exact R8 APK eliminated its storage. Full configuration state and asynchronous UI lifecycle are outside that parser comparison.
+
+Original settings imported a controlled one-source, hash-pinned Aid fixture. The original UI showed seven home classes and ten first-category items. Player execution remains deferred. The official APK declares a newer source commit than the pinned baseline, with a known ProtectedInitJar difference; original-product ART results do not certify the exact pinned source version. See android-runtime-probe.json and android-parser-comparison-probe.json.
+
+The refreshed catalogue captured 114 exact SHA artifacts and ran 228 adjacent old/new NAS attempts. Four confirmed load regressions were repaired and all four replayed on the final image. The combined evidence across the complete earlier matrix and later subsets shows 93 loaded artifacts and 609 ready API/ext entries; these are different units, and this is not a complete 114-artifact run on the final image. Independent timeout checks recovered four previously hidden anime entries and Ddyy; XBPQ remains an unresolved timeout even under a separately labelled 30-second diagnostic.
+
+The original ART comparison covers 12 cases across five JAR families and 26 observed methods. Its initial NAS replay had 17 paired successful JSON calls, of which 15 were byte/semantic identical; failures, invalid JSON and unreplayed methods are separately counted. The one confirmed executed-method blocker, PanConfigGuard.categoryContent, is repaired: final NAS home/category/detail all return JSON, including 12 category rows. Java2D logo PNGs differ from Android Skia, two status remarks and one detail content field also differ, so exact method equivalence remains unverified. The release-specific ProtectedInitJar change explains two additional initialization differences without changing the pinned Android default policy. See android-panconfig-repair-probe.json and post-repair-catalog-comparison.json.
