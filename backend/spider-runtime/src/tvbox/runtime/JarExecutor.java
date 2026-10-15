@@ -47,7 +47,7 @@ public final class JarExecutor {
   JvmJarClassLoader loader=null;
   try{
    loader=new JvmJarClassLoader(file.toPath());
-   if(!invokeInit(loader,file.getAbsolutePath())){lastFailure="PROTECTED_INIT_UNBOUND";loader.close();return false;}
+   if(!initializeJar(loader,file.getAbsolutePath())){if(lastFailure==null)lastFailure="PROTECTED_INIT_UNBOUND";loader.close();return false;}
    NativeHooks.afterInit(loader);
    invokeProxy(key,loader);invokeDanmaku(key,loader);injectProxyPort(loader);loaders.put(key,loader);return true;
   }catch(Throwable e){lastFailure=e.getClass().getSimpleName()+": "+e.getMessage();try{if(loader!=null)loader.close();}catch(Exception ignored){}HostServices.log("JAR loading failed: "+e.getClass().getName());return false;}
@@ -127,6 +127,22 @@ public void loadLiveJar(String jar) {
         parseJar(key, jar);
         setRecentJarKey(key);
     }
+private boolean initializeJar(JvmJarClassLoader loader, String jar) {
+        if (!HostServices.jarInitPolicy.equals("declared")) return invokeInit(loader, jar);
+        try {
+            Class<?> type = loader.loadClass("com.github.catvod.spider.Init");
+            if (protectedInitJar.check(jar) && hasDirectInitContract(loader, type)) {
+                Log.i(TAG, "JAR_INIT_POLICY declared: ordinary Init contract without a protected loader");
+                type.getMethod("init", Context.class).invoke(null, App.getInstance());
+                return true;
+            }
+        } catch (Throwable failure) {
+            failure.printStackTrace();
+            lastFailure = "DECLARED_INIT_FAILED";
+            return false;
+        }
+        return invokeInit(loader, jar);
+    }
 private boolean invokeInit(JvmJarClassLoader loader, String jar) {
         boolean protectedJar = false;
         try {
@@ -143,6 +159,19 @@ private boolean invokeInit(JvmJarClassLoader loader, String jar) {
             e.printStackTrace();
         }
         return !protectedJar;
+    }
+/** Explicit host policy for a false-positive killProcess heuristic. Never used
+ * when a shell/DexClassLoader contract exists, and never bypasses plugin init. */
+private boolean hasDirectInitContract(ClassLoader loader, Class<?> type) throws Exception {
+        try { loader.loadClass("com.github.catvod.spider.DexNative"); return false; }
+        catch (ClassNotFoundException absent) { /* An ordinary init may contain app restart code. */ }
+        for (Class<?> current = type; current != null; current = current.getSuperclass()) {
+            for (Field field : current.getDeclaredFields()) {
+                if (dalvik.system.DexClassLoader.class.isAssignableFrom(field.getType())) return false;
+            }
+        }
+        Method method = type.getMethod("init", Context.class);
+        return Modifier.isStatic(method.getModifiers()) && method.getReturnType() == void.class;
     }
 private void invokeProxy(String key, JvmJarClassLoader loader) {
         try {

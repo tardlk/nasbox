@@ -20,14 +20,14 @@ function createWorker({built=buildSpiderRuntime(),timeoutMs=10000,maxBytes=8*102
  const owned=!dataDir;const directory=dataDir?resolve(dataDir):mkdtempSync(join(tmpdir(),'tvbox-spider-'));mkdirSync(directory,{recursive:true,mode:0o700});
  const nativeFlags=nativeBridge?['-Xmx768m','-Dtvbox.native.enabled=true','-Dtvbox.native.fingerprint='+built.fingerprint,'-Dtvbox.native.backend='+nativeBackend,'-Dtvbox.native.data='+join(directory,'android'),'-Dtvbox.spiderCacheDir='+join(directory,'android'),'-Djava.io.tmpdir='+join(directory,'tmp'),...['java.lang','java.lang.reflect','java.lang.invoke','java.util','java.util.concurrent','java.io','java.net','java.nio','java.security','java.text','sun.net.www.protocol.jar'].map(p=>'--add-opens=java.base/'+p+'=ALL-UNNAMED')]:['-Xmx256m'];
  mkdirSync(join(directory,'tmp'),{recursive:true});if(nativeBridge)mkdirSync(join(directory,'android'),{recursive:true});
- let child,lines,lease,exitCode,resolveExit;
+ let child,lines,lease,exitCode,exitSignal,resolveExit;
  const pending=new Map();let nextId=0,closed=false,failure,stderr='';
  const exit=new Promise(done=>{resolveExit=done;});
  const boot=(async()=>{
   lease=await acquireDirectoryLease(directory);
   child=spawn(built.java,[...nativeFlags,'-Dtvbox.cache.workspace='+tmpdir(),'-Dtvbox.owner.pid='+process.pid,'-Dtvbox.cache.maxBytes='+cacheMaxBytes,'-Djava.io.tmpdir='+join(directory,'tmp'),...(dex?['-Dtvbox.dex.classpath='+dex.classpath,'-Dtvbox.dex.fingerprint='+dex.fingerprint]:[]),'-Dfile.encoding=UTF-8','-cp',built.classpath,'tvbox.runtime.SpiderWorker',built.library,directory],{stdio:['pipe','pipe','pipe']});
   lines=createInterface({input:child.stdout});
-  child.once('close',code=>{exitCode=code;resolveExit();});
+  child.once('close',(code,signal)=>{exitCode=code;exitSignal=signal;resolveExit();});
   child.stderr.on('data',chunk=>{stderr=(stderr+chunk.toString()).slice(-16384);if(onStderr)try{onStderr(chunk.toString());}catch(error){fail(error);}});child.on('error',fail);child.stdin.on('error',fail);
   child.on('close',(code,signal)=>{if(!closed||pending.size)fail(new Error(`Spider worker exited (${code??signal}): ${stderr}`));lines.close();});
   lines.on('line',line=>{try{
@@ -46,7 +46,7 @@ function createWorker({built=buildSpiderRuntime(),timeoutMs=10000,maxBytes=8*102
  async function request(spec){const result=await query(spec);if(!result.ok)throw new SpiderRuntimeError(result);return result.value;}
  let closing;
  return{
-  get workerPid(){return child?.pid;},scope:nativeBridge?'host-jvm/dex/unidbg-arm/headless-android':'host-jvm-class-jar/dex-translation/quickjs-source',dataDirectory:directory,query,request,getDiagnostics:()=>({stderr}),
+  get workerPid(){return child?.pid;},scope:nativeBridge?'host-jvm/dex/unidbg-arm/headless-android':'host-jvm-class-jar/dex-translation/quickjs-source',dataDirectory:directory,query,request,getDiagnostics:()=>({stderr,exitCode,exitSignal}),
   getCSP:source=>request({operation:'get',source}),
   loadMain:path=>request({operation:'loadMain',path:resolve(path)}),
   registerJar:(signature,path)=>request({operation:'registerJar',signature,path:resolve(path)}),
@@ -57,7 +57,7 @@ function createWorker({built=buildSpiderRuntime(),timeoutMs=10000,maxBytes=8*102
   close(){
    closing||=(async()=>{
     closed=true;try{await boot;}catch{}if(child)child.stdin.end();const timer=setTimeout(()=>fail(new Error('Spider worker shutdown timed out')),timeoutMs);
-    try{await exit;if(!failure&&exitCode!==0)throw new Error(`Spider worker shutdown failed (${exitCode}): ${stderr}`);}
+    try{await exit;if(!failure&&exitCode!==0)throw new Error(`Spider worker shutdown failed (${exitCode??exitSignal??'unknown'}): ${stderr}`);}
     finally{clearTimeout(timer);if(lease)await lease.close();if(owned)rmSync(directory,{recursive:true,force:true});}
    })();return closing;
   },

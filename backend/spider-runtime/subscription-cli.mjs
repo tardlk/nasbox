@@ -6,7 +6,7 @@ const options = {}, args = process.argv.slice(2);
 for (let i = 0; i < args.length; i++) {
   const flag = args[i];
   if (['--native', '--cache', '--strict-md5', '--remote-modules', '--recover-legacy-lock'].includes(flag)) { options[flag.slice(2)] = true; continue; }
-  if (!['--url', '--source', '--method', '--args', '--data', '--timeout', '--jar-cache-bytes', '--runtime-cache-bytes', '--asset-root', '--external-root', '--file-root', '--local-address'].includes(flag) || args[i + 1] === undefined) throw new Error('Invalid session CLI option');
+  if (!['--url', '--source', '--method', '--args', '--data', '--timeout', '--jar-cache-bytes', '--runtime-cache-bytes', '--asset-root', '--external-root', '--file-root', '--local-address', '--jar-init-policy'].includes(flag) || args[i + 1] === undefined) throw new Error('Invalid session CLI option');
   options[flag.slice(2)] = args[++i];
 }
 if (!options.url || !options.source || !options.method) throw new Error('Usage: session --url URL --source KEY --method METHOD [--args JSON] [--native] [--cache] [--strict-md5] [--data DIR] [--asset-root DIR] [--external-root DIR] [--file-root DIR] [--local-address URL]');
@@ -18,6 +18,7 @@ const session = await createExecutableSubscriptionSession({
   runtimeDataDir: data ? join(data, 'runtime') : undefined,
   artifactCacheDir: data ? join(data, 'artifacts') : undefined,
   localAddress: options['local-address'],
+  jarInitPolicy: options['jar-init-policy'],
   store: data ? new FileSubscriptionStore(join(data, 'subscription')) : undefined,
   jarCacheOptions: { assetRoot: options['asset-root'], externalRoot: options['external-root'], fileRoot: options['file-root'], recoverLegacyLock: !!options['recover-legacy-lock'], integrity: options['strict-md5'] ? 'strict' : 'android', ...(options['jar-cache-bytes'] ? { maxBytes: Number(options['jar-cache-bytes']) } : {}) },
 });

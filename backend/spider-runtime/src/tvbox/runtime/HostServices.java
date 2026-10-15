@@ -10,11 +10,13 @@ public final class HostServices {
  public static String packageName="com.github.tvbox.osc.jun";
  public static String localAddress="http://127.0.0.1:9978/", remoteAddress="http://127.0.0.1:9978/";
  public static boolean addressUnavailable=false,networkDisabled=false;
+ public static String jarInitPolicy="android";
  public static final JsonArray logs=new JsonArray();
  public static final OkHttpClient client=new OkHttpClient.Builder().addInterceptor(chain->{if(networkDisabled)throw new java.io.IOException("HOST_NETWORK_DISABLED");return chain.proceed(chain.request());}).connectTimeout(20,TimeUnit.SECONDS).readTimeout(20,TimeUnit.SECONDS).writeTimeout(20,TimeUnit.SECONDS).build();
  public static String address(boolean local){if(addressUnavailable)throw new UnsupportedOperationException("Unbound control address");return local?localAddress:remoteAddress;}
  public static synchronized void log(String message){if(logs.size()>=128)logs.remove(0);logs.add(message);}
  public static void configure(JsonObject object){
+  if(object.has("jarInitPolicy")){String policy=object.get("jarInitPolicy").getAsString();if(!policy.equals("android")&&!policy.equals("declared"))throw new IllegalArgumentException("Unknown JAR init policy");jarInitPolicy=policy;}
   if(object.has("networkDisabled"))networkDisabled=object.get("networkDisabled").getAsBoolean();
   if(object.has("packageName"))packageName=object.get("packageName").getAsString();
   if(object.has("localAddress"))localAddress=object.get("localAddress").getAsString();

@@ -2,6 +2,37 @@
 import{readFileSync,readdirSync,mkdirSync,mkdtempSync,writeFileSync,copyFileSync,existsSync,renameSync,rmSync}from'node:fs';import{resolve,dirname,join,delimiter}from'node:path';import{fileURLToPath}from'node:url';import{createHash}from'node:crypto';import{spawnSync}from'node:child_process';import{nativeToolchain}from'./toolchain.mjs';
 const here=dirname(fileURLToPath(import.meta.url)),root=resolve(here,'../../..'),hash=b=>createHash('sha256').update(b).digest('hex');
 const files=p=>readdirSync(p,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(join(p,e.name)):[join(p,e.name)]).sort();
+function bridgeGate(source){
+ const unique=(text)=>{const i=source.indexOf(text);if(i<0||source.indexOf(text,i+text.length)>=0)throw new Error('Native bridge gate patch location differs: '+text);return i;};
+ // Keep separate VM locks: the guard may wait for a Java thread whose payload
+ // native call must run concurrently. Lifecycle tracking only excludes close.
+ const signatures=[
+  'static synchronized void ensureInit() throws Exception',
+  'public static synchronized void init(File jar, File workDir, ClassLoader resolver) throws Exception',
+  'private static synchronized void initWithSo(File jar, File workDir, ClassLoader resolver, File dynamicSo) throws Exception',
+  'public static Object invoke(String className, String method, String desc, Object[] args)',
+  'public static Object invokePayload(String className, String method, String desc, Object[] args)',
+  'private static synchronized String payloadLibsSummary()',
+  'private static synchronized void payloadLoad(String path) throws Exception',
+  'private static synchronized void ensurePayloadVm() throws Exception',
+ ];
+ for(const signature of signatures){
+  const start=unique(signature+' {'),open=start+signature.length+1;let depth=1,state='code',end=-1;
+  for(let i=open+1;i<source.length;i++){
+   const c=source[i],n=source[i+1];
+   if(state==='line'){if(c==='\n')state='code';continue;}
+   if(state==='block'){if(c==='*'&&n==='/'){state='code';i++;}continue;}
+   if(state==='string'||state==='char'){if(c==='\\')i++;else if(c===(state==='string'?'"':"'"))state='code';continue;}
+   if(c==='/'&&n==='/'){state='line';i++;}else if(c==='/'&&n==='*'){state='block';i++;}
+   else if(c==='"')state='string';else if(c==="'")state='char';
+   else if(c==='{')depth++;else if(c==='}'&&--depth===0){end=i;break;}
+  }
+  if(end<0)throw new Error('Native bridge gate method end differs: '+signature);
+  source=source.slice(0,open+1)+' tvbox.runtime.NativeLifecycle.enter(); try {'+source.slice(open+1,end)+'} finally { tvbox.runtime.NativeLifecycle.leave(); } '+source.slice(end);
+ }
+ const initialized='        if (inited) return;';unique(initialized);source=source.replace(initialized,initialized+'\n        if (lazyJar == null || lazyWork == null || lazyResolver == null) throw new IllegalStateException("NATIVE_BRIDGE_CLOSED");');
+ return source;
+}
 export function buildNativeProfile(base){
  const tool=nativeToolchain(),manifest=JSON.parse(readFileSync(join(here,'source-manifest.json'),'utf8'));
  for(const item of manifest.files)if(hash(readFileSync(join(root,item.path)))!==item.sha256)throw new Error('WinBox native reference checksum differs: '+item.path);
@@ -68,6 +99,7 @@ export function buildNativeProfile(base){
     source=source.slice(0,a)+'                boolean readable=file.canRead(),writable=file.state.value!=CounterFile.MAX;\n                long readNow=file.state.readEpoch,writeNow=file.state.writeEpoch;\n'+source.slice(b);
    }
    if(relative.endsWith('/NativeBridge.java')){
+    source=bridgeGate(source);
     const a=source.indexOf('        // ★★ 2026-09-28（实测'),b=source.indexOf('        File src = new File(key);',a);
     if(a<0||b<0)throw new Error('Native payload policy patch location differs');
     source=source.slice(0,a)+source.slice(b);

@@ -36,7 +36,7 @@ export function createNativeSession(options,createWorker,RuntimeError){
  async function request(spec){const result=await query(spec);if(!result.ok)throw new RuntimeError(result);return result.value;}
  return{
   scope:worker.scope,dataDirectory:directory,query,request,
-  getDiagnostics:()=>({stderr:(previousStderr+worker.getDiagnostics().stderr).slice(-16384),generation}),
+  getDiagnostics:()=>({...worker.getDiagnostics(),stderr:(previousStderr+worker.getDiagnostics().stderr).slice(-16384),generation}),
   getCSP:source=>request({operation:'get',source}),loadMain:path=>request({operation:'loadMain',path:resolve(path)}),
   registerJar:(signature,path)=>request({operation:'registerJar',signature,path:resolve(path)}),setModules:options=>request({operation:'modules',...options}),
   // The session owner calls this after a successful clear, before evicting auto-fetched files.

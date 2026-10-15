@@ -13,6 +13,7 @@ export async function createExecutableSubscriptionSession(options = {}) {
   let cache, loader, mainSignature, closed = false, queue = Promise.resolve(), closing, jarUseCache = false;
   const ownedCache = !options.artifactCache;
   try {
+    if (options.jarInitPolicy !== undefined) await runtime.request({operation:'host',jarInitPolicy:options.jarInitPolicy});
     cache = options.artifactCache || (options.remoteJars ? new JarArtifactCache({ localAddress: options.localAddress, ...options.jarCacheOptions, directory: options.artifactCacheDir }) : null);
     if (cache) { await cache.getState(); await runtime.request({operation:'artifactLease',guard:cache.guardPath}); }
     loader = createFullSubscriptionLoader({ ...options, runtimeCleanup: cleanup, beforeRuntimeClear: () => runtime.request({ operation: 'resetKeys' }) });
