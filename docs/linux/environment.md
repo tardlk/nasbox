@@ -970,3 +970,77 @@ pre-existing NAS Docker, moviepilot, qbittorrent, emby and dockge-dockge-1.
 Task services still running:none. Exact cleanup/footprint evidence is
 `working-sources-cleanup-20261016.json`; scope and results are in
 `working-sources-summary-20261016.md` and the separate primary/supplemental reports.
+
+## Real JavaScript business validation — completed, 2026-10-16
+
+User requested the next non-JAR milestone. Rechecked and reused the bundled Node,
+project JDK17/SDK/QuickJS dependencies and the existing NAS image808d15d8. No
+installation, package upgrade, JAR compatibility change or player dependency.
+The prior frozen87-capture input is read-only; three original pure-JS sources
+from its matching historical subscription are selected. New exact script,
+rule and dependency inputs use `.data/js-business-inputs-20261016`; capture,
+tests and transport use `.cache/js-business`.
+
+Original NAS application services and image were inspected first. Task-only NAS
+root is `/tmp/tvbox-js-business.v3WLKD`; scoped SSH/known-host state stays in the
+task cache. A separate Java17 test binding will freeze only exact code/rule GET
+responses while retaining the original source key/API/ext and live business HTTP.
+It is a labelled test adapter, not a production image/core change. A separate
+original-image observation without the adapter retains live rule loading. New
+compiler outputs, task containers, optional ART emulator/ADB/fixture services
+and retained evidence footprints will be recorded and cleaned after validation.
+
+Completed three-source production-host NAS observations plus three separate
+frozen-code/rule research-host observations, all on unchanged final image808d15d8.
+Each track has28 nonempty/1 empty/1 not-tested business slots. Three additional
+NAS containers replay the exact original-product ART parameters: both hosts
+25 nonempty/3 empty/2 not-tested,18 equal JSON and10 differing responses under
+live business HTTP. All nine NAS containers exit0 and all runtime workers close,
+exit and remove their temporary directories. Player returns may be parse=1 and
+page/ID passthrough; media was not downloaded or played. No runtime/core repair
+or image rebuild occurred.
+
+Android11 ARM64 reused the existing SDK/system image in task AVD `JsBusiness`.
+Independent JS instrumentation ran under ordinary application UID after verified
+same-certificate signing. Modules and rule bodies were checksum-verified and
+source API/key/ext retained. The initial collection failed AOSP slash-escaped
+source-hash validation, and its missing original configuration startup context
+invalidated later observations. Those three initial records remain separate;
+they are not provider failures. The corrected fresh run first initializes the
+audited original local ApiConfig defaults, requests no subscription/JAR, and
+pulls all three private results with byte/identity checks.
+
+Task instrumentation is uninstalled, official app stopped and adbd returned to
+non-root before emulator shutdown. Emulator/ADB and127.0.0.1:18766 fixture HTTP
+are stopped. Task AVD (7,127,242,297 logical bytes, including sparse disk lengths),
+Android home7,714bytes, temporary public upstream signing key2,258bytes and crash
+database40bytes are removed. Shared `~/.android` file set and hashes are unchanged.
+No SDK/JDK, Python environment, package, service or autostart was installed.
+
+NAS root `/tmp/tvbox-js-business.v3WLKD` (4,576KiB allocated) and all task containers
+are removed; scoped SSH is closed. The original four application containers'
+IDs/images/StartedAt/RestartCount/running state match the initial inventory.
+Task services still running:none. Pre-existing NAS Docker, moviepilot,
+qbittorrent, emby and dockge-dockge-1 continue running unchanged.
+
+683 native-enabled host tests pass, zero failures/skips. Both structured JS
+reports were rebuilt exactly from retained evidence. The new eight HTTP resource
+bodies total444,172bytes; static input directory
+`.data/js-business-inputs-20261016` is478,596 logical bytes /488KiB allocated.
+Exact raw ART/NAS calls, response bodies, emitted APKs, source/module/binding
+snapshots and initial failed records are retained privately at
+`.data/js-business-evidence-20261016`:340 pinned files,5,939,687 logical bytes /
+6,568KiB allocated. Retention manifest SHA256 is
+`77b3c3b236fb7323e3de84d8040a973c9ad530bf3572fcd6dd8469b8c08e0d46`.
+Keep these test inputs for response-difference investigation and regression;
+delete after those issues and final verification finish. No transport credentials,
+SSH state, signing key, AVD or original NAS application environment dump is retained.
+
+Removed34,500,986 logical bytes of task design, transport, host-binding build and
+host-test caches after evidence verification. Old JAR input656 files and prior
+237+585 ART/NAS evidence pins match. Existing shared `.tools` remains
+5,431,419,735 logical bytes /5,338,792KiB allocated (about5.1GiB) for continued
+development; final image remains516,639,457 uncompressed bytes. No other project
+tools or rollback images were deleted. Exact cleanup/retention/footprints are in
+`js-business-cleanup-20261016.json`; scoped results are in
+`js-business-delivery-20261016.md` and its NAS/ART reports.

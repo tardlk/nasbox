@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "sourceInputSetSha256": "8e9c80c557c5703ff70f8c44fb5a71aaaf3c89d3e0e0d39cdba94cbdaa42a3d3",
+  "inputSetSha256": "81bcbfea0d063d818ec8307d4aa2a02bf2fdc1f50ba6052932cea1423c1a5235",
+  "freezeFileSha256": "e664e049b08965a2d4ea6fdcc54265aa94eb9dbd58b1280d1aeda0c56ae300e1",
+  "inputPlanSha256": "c1d7d0966eacf2bae166fdf3efa17bd0c67161fbe35aeb380fca8884f9453858",
+  "capturePreparerSha256": "256facbf737bf1b1f929e302ba31bea8ada206301ab812682e66ba9fe55282b7",
+  "dependencyScannerSha256": "af2fa8ac2af5d8945c662d15c59f44e6617d0e784c1071ea6c9309bc28b668ca",
+  "scope": "Read-only static dependency rescan of the eight already frozen HTTP bodies; no provider code evaluation, no new fetches, no runtime or business compatibility inference.",
+  "originalFreezePreserved": true,
+  "initialDiscoveryLimit": "Initial capture recorded two builtin assets as unsupported URLs and two complex regex-based modules as lexical scan failures. This rescan resolves the fixed assets and inspects those modules without adding or changing HTTP input bytes.",
+  "summary": {
+    "httpResources": 8,
+    "allBodiesVerified": true,
+    "bundledAssets": 5,
+    "unresolvedLiteralDependencies": 0,
+    "unresolvedComputedExpressions": 0
+  },
+  "dynamicScope": "Zero unresolved expressions in this static scan does not establish that future dynamic requests/imports or evaluated/generated module names cannot occur. Business HTTP endpoints remain live and are outside these code/rule input fixtures.",
+  "resources": [
+    {
+      "urlSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+      "role": "module",
+      "status": 200,
+      "bytes": 67381,
+      "sha256": "1fd5ecd4077f106dfd3952c208d7d0a25762ca90d1ae416dde996065e1507ab9",
+      "bodyVerified": true,
+      "dependencies": [
+        {
+          "kind": "bundled-asset",
+          "specifierSha256": "07117a031f0a6a704471c5c863d4fc8e10f93f1e25c1adacb1f97ff4ef38bb98",
+          "urlSha256": "07117a031f0a6a704471c5c863d4fc8e10f93f1e25c1adacb1f97ff4ef38bb98",
+          "resolution": "pinned-android-asset",
+          "resolvedSha256": "10cf39856c496ed2c681c00b6a245b2306a119041591c35d1e31b6bf0a9e6901",
+          "assetName": "cheerio.min.js"
+        },
+        {
+          "kind": "bundled-asset",
+          "specifierSha256": "a21e521b9f3e9495ad7b802999dd057795f21e193d05026c4c8ca54a859893fd",
+          "urlSha256": "a21e521b9f3e9495ad7b802999dd057795f21e193d05026c4c8ca54a859893fd",
+          "resolution": "pinned-android-asset",
+          "resolvedSha256": "e888d4276fa167121c6fca26dbc9821a8a79b66ae9b192e5a33c6a5bb2056e53",
+          "assetName": "crypto-js.js"
+        },
+        {
+          "kind": "static-import",
+          "specifierSha256": "9095af8bcf22e1fa6ef4f7b40548ffd10412f5a1350aed02631dc607af1edf06",
+          "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+          "resolution": "captured-http-resource",
+          "resolvedSha256": "b2e1d9c402ce06c19d08e1659624bfbbda91994d06339300970c395977e6d37c"
+        },
+        {
+          "kind": "static-import",
+          "specifierSha256": "ec14366ec1247041f5ec80ed163caeec2b6b0dbb50760885e5b35c66832351d1",
+          "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+          "resolution": "captured-http-resource",
+          "resolvedSha256": "7b7a3b8db4d7b65846b807f1309688a8955961dbde5538694862a6c5cbc932cf"
+        },
+        {
+          "kind": "static-import",
+          "specifierSha256": "5596b2180c0a3f612cb806d75fc44e8f707d5d450c9b6af30c1aeccbc5774245",
+          "urlSha256": "0b6859264d4a3dd31565be016b59575e4f56c844ebae06c5ae09ded45e5a6a4d",
+          "resolution": "pinned-android-asset",
+          "resolvedSha256": "1da00bdcb30ab1a7875a84ee6fc82256e705330b6cc9d84144f163df68b665cb",
+          "assetName": "模板.js"
+        },
+        {
+          "kind": "static-import",
+          "specifierSha256": "1e3c45e09f6855ff713583b42aa2b213b0b246fb18b908cb0cbd6913050997e0",
+          "urlSha256": "9e04e9ff907b8dd456fa24ef058f1465151a31fad36258bc37e41abeb8038d82",
+          "resolution": "pinned-android-asset",
+          "resolvedSha256": "a002c29e9722e123f9ccea98e30d7207531e404f6b3351759a6b0bb4090f8f41",
+          "assetName": "gbk.js"
+        },
+        {
+          "kind": "static-import",
+          "specifierSha256": "f8b2825e8c4769b465266e716bb368ecede02ddc6f00e0c86686ea23ef852de6",
+          "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+          "resolution": "captured-http-resource",
+          "resolvedSha256": "1b3d54f76b9106641e540b6561dc950ffe281590f8546b88f26fc7a91c225e10"
+        },
+        {
+          "kind": "static-import",
+          "specifierSha256": "45b3ba8231d81c53cd17b9fee6ce5033690ba518e988e83907d071343336c03b",
+          "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+          "resolution": "captured-http-resource",
+          "resolvedSha256": "6cf1781f0c32206236049d392383dbc558b530244926d93762dfa3362967bff2"
+        }
+      ],
+      "unresolved": []
+    },
+    {
+      "urlSha256": "57d3bfb3bcb776729729e6cce979c8933c1fa178363d32ad59175ea864864bd1",
+      "role": "rule",
+      "status": 200,
+      "bytes": 46047,
+      "sha256": "efe1013ec759d66767d356f6769d79a697cb9ecdac44deb682a38b32f83e01fc",
+      "bodyVerified": true,
+      "dependencies": [],
+      "unresolved": []
+    },
+    {
+      "urlSha256": "d61878a65b9327cf82651cf9e1ac836c890c34c0c1e532ac38286d2ffad6e1de",
+      "role": "rule",
+      "status": 200,
+      "bytes": 32258,
+      "sha256": "114a5ec86e6d48545ce0a99b1a5552380d735998737166e8fa3887479e04d64d",
+      "bodyVerified": true,
+      "dependencies": [],
+      "unresolved": []
+    },
+    {
+      "urlSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+      "role": "rule",
+      "status": 200,
+      "bytes": 1009,
+      "sha256": "7173a949be786609d3c16cd02d9797889c6086a485aeff2f29bc77c602dc4676",
+      "bodyVerified": true,
+      "dependencies": [],
+      "unresolved": []
+    },
+    {
+      "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+      "role": "module",
+      "status": 200,
+      "bytes": 167481,
+      "sha256": "b2e1d9c402ce06c19d08e1659624bfbbda91994d06339300970c395977e6d37c",
+      "bodyVerified": true,
+      "dependencies": [],
+      "unresolved": []
+    },
+    {
+      "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+      "role": "module",
+      "status": 200,
+      "bytes": 46859,
+      "sha256": "7b7a3b8db4d7b65846b807f1309688a8955961dbde5538694862a6c5cbc932cf",
+      "bodyVerified": true,
+      "dependencies": [],
+      "unresolved": []
+    },
+    {
+      "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+      "role": "module",
+      "status": 200,
+      "bytes": 60431,
+      "sha256": "1b3d54f76b9106641e540b6561dc950ffe281590f8546b88f26fc7a91c225e10",
+      "bodyVerified": true,
+      "dependencies": [],
+      "unresolved": []
+    },
+    {
+      "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+      "role": "module",
+      "status": 200,
+      "bytes": 22706,
+      "sha256": "6cf1781f0c32206236049d392383dbc558b530244926d93762dfa3362967bff2",
+      "bodyVerified": true,
+      "dependencies": [],
+      "unresolved": []
+    }
+  ],
+  "bundledAssets": [
+    {
+      "name": "cheerio.min.js",
+      "sha256": "10cf39856c496ed2c681c00b6a245b2306a119041591c35d1e31b6bf0a9e6901",
+      "bytes": 356592,
+      "runtimePath": "js/lib/cheerio.min.js",
+      "source": "pinned-android-asset"
+    },
+    {
+      "name": "crypto-js.js",
+      "sha256": "e888d4276fa167121c6fca26dbc9821a8a79b66ae9b192e5a33c6a5bb2056e53",
+      "bytes": 198120,
+      "runtimePath": "js/lib/crypto-js.js",
+      "source": "pinned-android-asset"
+    },
+    {
+      "name": "gbk.js",
+      "sha256": "a002c29e9722e123f9ccea98e30d7207531e404f6b3351759a6b0bb4090f8f41",
+      "bytes": 56203,
+      "runtimePath": "js/lib/gbk.js",
+      "source": "pinned-android-asset"
+    },
+    {
+      "name": "模板.js",
+      "sha256": "1da00bdcb30ab1a7875a84ee6fc82256e705330b6cc9d84144f163df68b665cb",
+      "bytes": 15300,
+      "runtimePath": "js/lib/模板.js",
+      "source": "pinned-android-asset"
+    },
+    {
+      "name": "cat.js",
+      "sha256": "49bcc6c6ade5fcbfce98875f51bafc010ebb015f7e8db2a9fc2e22a4575ac046",
+      "bytes": 486451,
+      "runtimePath": "js/lib/cat.js",
+      "source": "pinned-android-asset"
+    }
+  ],
+  "verification": {
+    "ok": true,
+    "inputSetSha256": "81bcbfea0d063d818ec8307d4aa2a02bf2fdc1f50ba6052932cea1423c1a5235",
+    "files": 10,
+    "bytes": 476037
+  }
+}

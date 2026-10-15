@@ -3,11 +3,24 @@
 Priority: subscription links and script execution behavior; player work deferred.
 
 Current user direction: pause JAR compatibility work and continue non-JAR
-sources. [Non-JAR status and next work](non-jar-status-20261016.md) distinguishes
-implemented JS execution from the missing real-source NAS business validation,
-unimplemented Python, and CMS/type4 execution not wired into the Linux backend.
-Start with real JS source/module/ext freezing and NAS business calls. Preserve
-all JAR reports/private inputs and resume those repairs only when requested.
+sources. The first real-JS milestone is complete:
+[JS business delivery](js-business-delivery-20261016.md). Huya/Douyu each return
+nonempty data for ten NAS business slots; TuXiaoBei returns eight, recommendation
+is empty and filters lack parameters. Production and frozen-rule diagnostic
+tracks are separate. Three original-product ART cases and exact-parameter NAS
+replays also complete; status matches,18 JSON match and10 response differences
+remain, with two untested slots. Media playback and full Android equivalence
+are not claimed. Next work is Linux JSON CMS, then XML CMS execution;
+Python/type4 remain unimplemented. [Prior non-JAR inventory](non-jar-status-20261016.md)
+is preserved as the pre-execution record. Preserve all JAR reports/private inputs
+and resume JAR repairs only when requested.
+
+This JS milestone passes683 native-enabled host tests with no skips. All task
+services/caches are stopped/removed; the existing NAS services, shared tools and
+final image are unchanged. Exact frozen JS input and private evidence are retained
+at `.data/js-business-inputs-20261016` and `.data/js-business-evidence-20261016`
+for unresolved response differences and regression, about6.1MiB logical combined.
+See `js-business-cleanup-20261016.json` and environment.md.
 
 Historical JAR execution plan: [JAR compatibility continuation](jar-next-phase-plan.md).
 

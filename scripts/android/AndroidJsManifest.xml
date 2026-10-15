@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.tvbox.parity.jsoracle"
+    android:versionCode="1"
+    android:versionName="1">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application android:label="TVBox ART parity instrumentation"
+        android:usesCleartextTraffic="true" android:debuggable="false" />
+    <instrumentation
+        android:name="com.github.tvbox.parity.jsoracle.JsOracleInstrumentation"
+        android:targetPackage="com.github.tvbox.osc.jun"
+        android:functionalTest="true"
+        android:handleProfiling="false" />
+</manifest>

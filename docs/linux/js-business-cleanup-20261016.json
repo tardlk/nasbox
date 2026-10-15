@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "task": "First three pure JavaScript real-source business validation; JAR repairs paused",
+  "taskServicesStillRunning": [],
+  "originalNasServicesStillRunning": [
+    "Docker",
+    "moviepilot",
+    "qbittorrent",
+    "emby",
+    "dockge-dockge-1"
+  ],
+  "originalContainersUnchanged": true,
+  "nativeEnabledTests": {
+    "tests": 683,
+    "pass": 683,
+    "fail": 0,
+    "skipped": 0
+  },
+  "newToolsInstalled": [],
+  "autostartChanges": [],
+  "nasCleanup": {
+    "temporaryNasRoot": "/tmp/tvbox-js-business.v3WLKD",
+    "allocatedKiBBeforeRemoval": 4576,
+    "taskContainersRemoved": 9,
+    "allZeroExitAndWorkerCleanup": true,
+    "originalServicesUnchanged": true,
+    "ownedTaskRootRemoved": true
+  },
+  "androidCleanup": {
+    "date": "2026-10-16",
+    "emulatorStopped": true,
+    "adbServerStopped": true,
+    "fixtureHttpStopped": true,
+    "adbdRestoredNonRoot": true,
+    "instrumentationUninstalled": true,
+    "temporaryFilesRemoved": {
+      ".cache/js-business/art/avd": 7127242297,
+      ".cache/js-business/art/android-user": 7714,
+      ".cache/js-business/art/build-key": 2258,
+      "/tmp/android-coke/emu-crash-37.2.12.db": 40
+    },
+    "sharedAndroidFilesUnchanged": true
+  },
+  "scopedSSHClosed": true,
+  "temporaryCachesRemovedLogicalBytes": {
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/js-business": 5195093,
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/js-art-design": 169455,
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/backend": 3228765,
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/compat": 25907673
+  },
+  "cacheRemovalComplete": true,
+  "retainedInputsAndEvidence": [
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/js-business-inputs-20261016",
+      "logicalBytes": 478596,
+      "allocatedKiB": 488
+    },
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/js-business-evidence-20261016",
+      "logicalBytes": 5939687,
+      "allocatedKiB": 6568
+    }
+  ],
+  "newPrivateEvidencePins": 340,
+  "evidenceRetentionSha256": "77b3c3b236fb7323e3de84d8040a973c9ad530bf3572fcd6dd8469b8c08e0d46",
+  "retentionPurpose": "Frozen actual JS modules, rules, exact configuration and ART/NAS params/responses retained for future regression and unresolved response differences. Delete after those issues and final verification finish.",
+  "retainedEnvironment": {
+    "path": "/Users/coke/Desktop/Projects/tvbox-linux/.tools",
+    "logicalBytes": 5431419735,
+    "allocatedKiB": 5338792
+  },
+  "sharedEnvironmentPurpose": "Existing SDK/JDK/QuickJS/DEX/native development tools; no installed or shared tool changed",
+  "retainedFinalImage": {
+    "tag": "tvbox-core:linux-amd64-zxing-20261015",
+    "id": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+    "bytes": 516639457,
+    "changedThisTask": false
+  },
+  "priorInputsAndEvidenceUnchanged": {
+    "frozenJARFiles": 656,
+    "priorARTPins": 237,
+    "priorWorkingSourceEvidencePins": 585
+  },
+  "retainedEvidenceReproducesBothStructuredReportsExactly": true,
+  "reports": [
+    "js-business-delivery-20261016.md",
+    "js-business-nas-20261016.json",
+    "js-business-art-20261016.json",
+    "js-static-dependency-audit-20261016.json"
+  ]
+}

@@ -296,3 +296,28 @@ Cleanup: remove the separate test APK and oracle app data or destroy the
 task-specific AVD; stop the fixture HTTP server. Remove temporary source design
 downloads, keystore copies and build outputs after verification. Record any
 retained SDK/AVD/tool paths, purpose, sizes and services in the environment ledger.
+
+## Independent JavaScript source comparison
+
+`build-js-oracle.mjs`, `js-apk-symbol-map.mjs`, `JsOracleInstrumentation.java`
+and `run-js-oracle.mjs` form the separate JS oracle. They use the unchanged
+official APK, same verified public certificate and audited original JsLoader,
+JsSpider, FileUtils/cache and client symbols. No JAR fixture is admitted. The
+original local ApiConfig singleton is initialized before creating a JS source,
+matching the product's state ownership; it clears prior registries but does not
+fetch a subscription or load a JAR. Original key/API/ext values are unchanged.
+
+The input plan comes from `prepare-js-source-inputs.mjs`. Static modules are
+placed through the original cache identity, read back and hash-checked. Exact
+captured code/rule GETs use a temporary interceptor; unmatched business requests
+retain the original client behavior and SSL policy. Every fixture/cache/client
+change is restored on ordinary completion. Each case has fresh app data and
+normal app UID; transport can use adbd root solely to pull private results.
+
+The collector verifies the AOSP slash-escaped source hash separately from Node's
+canonical identity, raw response bytes and the current instrumentation report.
+Null/empty/invalid JSON/default/unexecuted methods stay separate. Raw calls are
+private and may be replayed verbatim through `js-source-probe.mjs` on NAS. See
+`js-business-art-20261016.json` for the executed APK/hash, exact cases and limits.
+This first batch's initial rejected collection/context attempt remains retained
+separately from its corrected cold runs.

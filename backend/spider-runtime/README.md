@@ -12,6 +12,17 @@ Real HTTP fixtures, native bytecode, worker restart, cleanup and deadline tests
 are additional integration checks. This is an initial executable contract slice,
 not completion of all TVBox scripts or Android host services.
 
+Real-JS follow-up (2026-10-16): the unchanged final Linux x86_64 NAS image now
+executes Huya/Douyu/TuXiaoBei through selected home, recommendation, category,
+page/filter, search, detail and player-return calls. Huya/Douyu have ten nonempty
+slots; TuXiaoBei has eight nonempty, empty recommendation and no filter input.
+Separate frozen-rule research binding and original-production-host observations
+are retained. Original official APK/ART plus exact-parameter NAS replay records
+18 equal JSON responses,10 response differences and two untested slots. This is
+finite live-business evidence, not all-source or full Android parity. Player URLs
+may be passthrough pages (`parse:1`); media playback was not tested. See
+`docs/linux/js-business-delivery-20261016.md` and its strict source/method reports.
+
 | Area | Implemented boundary |
 | --- | --- |
 | Spider / SpiderApi ABI | Original classes and original method/default/overload behavior |

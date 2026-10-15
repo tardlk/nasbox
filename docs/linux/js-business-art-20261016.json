@@ -1,0 +1,3090 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T23:05:08.598Z",
+  "scope": "Three exact configured pure-JS sources, finite sampled methods and arguments; no helper JAR or media execution, no full Android API parity claim",
+  "sourceScope": "Original API/key/ext strings unchanged. Both hosts use captured static code/rules; business HTTP remains live. This ART run is distinct from independently derived NAS discovery groups.",
+  "startupContext": "Original audited ApiConfig singleton/default local IJK and advertisement defaults initialized synchronously before source JsLoader creation; no config subscription or JAR load requested. This prevents the first lazy networking access from clearing an already active original JS instance.",
+  "hashScope": "AOSP source/argument producer hashes verify AOSP slash-escaped canonical serialization; Node identities and response semantic hashes are recomputed independently. Producer semantic hashes are not compared across hosts.",
+  "playerScope": "playerContent JSON only. parse=1 requests further parsing; returned URL equal to input ID is pass-through, not a confirmed media URL or playback result.",
+  "manifestSha256": "c1d7d0966eacf2bae166fdf3efa17bd0c67161fbe35aeb380fca8884f9453858",
+  "originalApkSha256": "5fb63e491f280c0e271091da5490fcdf0923d6c2f8773ef03553b20a333db657",
+  "instrumentationApkSha256": "1f41d62cfcd4f10a42f60d6fc702389cbbe036be5426dae4081e387a8351db4c",
+  "buildMetadataSha256": "ba8eb1d0e228e0c61696726b7b2ff756a74114bb8b79569fa7f2808144148050",
+  "symbolMapSha256": "0636299a7c78d63b41119b331ee0d99ced5c169e89a42e143a6b58a9c1c2e0f6",
+  "artifactBytes": 29153,
+  "buildSource": {
+    "javaSha256": "4f65ac81128c29884abc7f439d6665c3bca2335a4fe72bfb66b880f430a361d9",
+    "manifestSha256": "8a22729ec1eee0facbfd6a5ce67a317984b8b777932cda79997b38734401a471",
+    "buildScriptSha256": "b32ee136812250965693a1c522f6c510667d5f41d8f357ede085842c874b4716",
+    "symbolInspectorSha256": "3ba96c0bb77b7fa7ba3619ebe41f8fd54cc1d789aa397ae133984dbc6004a037"
+  },
+  "collectorSha256": "b6f51e36872b2cbca36edede5b5fdba4d4d43f2d21e1e17f039fc04f78665722",
+  "collectionSha256": "26f52dc5b8e7539c59d2bc8be34220a86071343eb78401551a52a180fc574a6d",
+  "modules": [
+    {
+      "urlSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+      "sha256": "1fd5ecd4077f106dfd3952c208d7d0a25762ca90d1ae416dde996065e1507ab9",
+      "bytes": 67381
+    },
+    {
+      "urlSha256": "57d3bfb3bcb776729729e6cce979c8933c1fa178363d32ad59175ea864864bd1",
+      "sha256": "efe1013ec759d66767d356f6769d79a697cb9ecdac44deb682a38b32f83e01fc",
+      "bytes": 46047
+    },
+    {
+      "urlSha256": "d61878a65b9327cf82651cf9e1ac836c890c34c0c1e532ac38286d2ffad6e1de",
+      "sha256": "114a5ec86e6d48545ce0a99b1a5552380d735998737166e8fa3887479e04d64d",
+      "bytes": 32258
+    },
+    {
+      "urlSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+      "sha256": "7173a949be786609d3c16cd02d9797889c6086a485aeff2f29bc77c602dc4676",
+      "bytes": 1009
+    },
+    {
+      "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+      "sha256": "b2e1d9c402ce06c19d08e1659624bfbbda91994d06339300970c395977e6d37c",
+      "bytes": 167481
+    },
+    {
+      "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+      "sha256": "7b7a3b8db4d7b65846b807f1309688a8955961dbde5538694862a6c5cbc932cf",
+      "bytes": 46859
+    },
+    {
+      "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+      "sha256": "1b3d54f76b9106641e540b6561dc950ffe281590f8546b88f26fc7a91c225e10",
+      "bytes": 60431
+    },
+    {
+      "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+      "sha256": "6cf1781f0c32206236049d392383dbc558b530244926d93762dfa3362967bff2",
+      "bytes": 22706
+    }
+  ],
+  "httpFixtures": [
+    {
+      "urlSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+      "method": "GET",
+      "status": 200,
+      "sha256": "1fd5ecd4077f106dfd3952c208d7d0a25762ca90d1ae416dde996065e1507ab9",
+      "bytes": 67381
+    },
+    {
+      "urlSha256": "57d3bfb3bcb776729729e6cce979c8933c1fa178363d32ad59175ea864864bd1",
+      "method": "GET",
+      "status": 200,
+      "sha256": "efe1013ec759d66767d356f6769d79a697cb9ecdac44deb682a38b32f83e01fc",
+      "bytes": 46047
+    },
+    {
+      "urlSha256": "d61878a65b9327cf82651cf9e1ac836c890c34c0c1e532ac38286d2ffad6e1de",
+      "method": "GET",
+      "status": 200,
+      "sha256": "114a5ec86e6d48545ce0a99b1a5552380d735998737166e8fa3887479e04d64d",
+      "bytes": 32258
+    },
+    {
+      "urlSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+      "method": "GET",
+      "status": 200,
+      "sha256": "7173a949be786609d3c16cd02d9797889c6086a485aeff2f29bc77c602dc4676",
+      "bytes": 1009
+    },
+    {
+      "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+      "method": "GET",
+      "status": 200,
+      "sha256": "b2e1d9c402ce06c19d08e1659624bfbbda91994d06339300970c395977e6d37c",
+      "bytes": 167481
+    },
+    {
+      "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+      "method": "GET",
+      "status": 200,
+      "sha256": "7b7a3b8db4d7b65846b807f1309688a8955961dbde5538694862a6c5cbc932cf",
+      "bytes": 46859
+    },
+    {
+      "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+      "method": "GET",
+      "status": 200,
+      "sha256": "1b3d54f76b9106641e540b6561dc950ffe281590f8546b88f26fc7a91c225e10",
+      "bytes": 60431
+    },
+    {
+      "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+      "method": "GET",
+      "status": 200,
+      "sha256": "6cf1781f0c32206236049d392383dbc558b530244926d93762dfa3362967bff2",
+      "bytes": 22706
+    }
+  ],
+  "art": {
+    "sources": [
+      {
+        "sourceIndex": 0,
+        "name": "虎牙js",
+        "sourceIdentitySha256": "59e729b154b61a83a6d648eae759e47a7488fd297e36d36935bfb1c5455f47a7",
+        "nodeCanonicalSourceSha256": "1b5a526f8c60938fb5d348c1c163cc5bfc015a3044fe5628793053dc0438a422",
+        "aospCanonicalSourceSha256": "2ab8b558d840744ac946c1067a3b4fa121343911071f64c8a8d6f7f01f729147",
+        "sourceKeySha256": "3ba174b56f3f1e7ec6ddee4f6bf81ef911cfd618a74ab8b9683bd715314a6153",
+        "apiSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+        "extSha256": "443a722da52fef9490aa0d757c97f60c90c754cfeeb679165f78afbf270cb915",
+        "privateResultSha256": "56477c47ebd96f49b47f622ddb142f138f5bb6d8fcf2db6194b771a68cc84f3b",
+        "ready": true,
+        "applicationUid": 10166,
+        "androidSdk": 30,
+        "abi": "arm64-v8a",
+        "modules": [
+          {
+            "urlSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+            "sha256": "1fd5ecd4077f106dfd3952c208d7d0a25762ca90d1ae416dde996065e1507ab9",
+            "bytes": 67381
+          },
+          {
+            "urlSha256": "57d3bfb3bcb776729729e6cce979c8933c1fa178363d32ad59175ea864864bd1",
+            "sha256": "efe1013ec759d66767d356f6769d79a697cb9ecdac44deb682a38b32f83e01fc",
+            "bytes": 46047
+          },
+          {
+            "urlSha256": "d61878a65b9327cf82651cf9e1ac836c890c34c0c1e532ac38286d2ffad6e1de",
+            "sha256": "114a5ec86e6d48545ce0a99b1a5552380d735998737166e8fa3887479e04d64d",
+            "bytes": 32258
+          },
+          {
+            "urlSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+            "sha256": "7173a949be786609d3c16cd02d9797889c6086a485aeff2f29bc77c602dc4676",
+            "bytes": 1009
+          },
+          {
+            "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+            "sha256": "b2e1d9c402ce06c19d08e1659624bfbbda91994d06339300970c395977e6d37c",
+            "bytes": 167481
+          },
+          {
+            "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+            "sha256": "7b7a3b8db4d7b65846b807f1309688a8955961dbde5538694862a6c5cbc932cf",
+            "bytes": 46859
+          },
+          {
+            "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+            "sha256": "1b3d54f76b9106641e540b6561dc950ffe281590f8546b88f26fc7a91c225e10",
+            "bytes": 60431
+          },
+          {
+            "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+            "sha256": "6cf1781f0c32206236049d392383dbc558b530244926d93762dfa3362967bff2",
+            "bytes": 22706
+          }
+        ],
+        "staticFixtureHits": [
+          {
+            "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+            "hits": 0
+          },
+          {
+            "urlSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+            "hits": 0
+          },
+          {
+            "urlSha256": "57d3bfb3bcb776729729e6cce979c8933c1fa178363d32ad59175ea864864bd1",
+            "hits": 1
+          },
+          {
+            "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+            "hits": 0
+          },
+          {
+            "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+            "hits": 0
+          },
+          {
+            "urlSha256": "d61878a65b9327cf82651cf9e1ac836c890c34c0c1e532ac38286d2ffad6e1de",
+            "hits": 0
+          },
+          {
+            "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+            "hits": 0
+          },
+          {
+            "urlSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+            "hits": 0
+          }
+        ],
+        "unmatchedBusinessHTTP": [
+          {
+            "urlSha256": "7fcb67628412076f6fcd6b0769bdee56e44c35dfae39e6c709012cde1d246ef0",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "7e136b60f30b18cec015471bc09051ad13a4c9b8ff677211b4f36e195c31f9dc",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "075a540a38d0221cbfb3a53dd939e6e61aec9f5a2de2bdb51c966a19cb7e834a",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "36a43d9f495f80f155ad6928a0b8ae529311b62fcd075f66444528c1cb580ef1",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "a912dbd513cc3282f24b488fcfe656a24d719147d5c90aaaab86b965b6c7c5f1",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "a912dbd513cc3282f24b488fcfe656a24d719147d5c90aaaab86b965b6c7c5f1",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          }
+        ],
+        "cleanup": {
+          "restoredFixturesAndCaches": true,
+          "forceStopRequired": false
+        },
+        "calls": [
+          {
+            "method": "homeContent",
+            "discoveryStep": "home",
+            "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+            "status": "nonempty",
+            "response": {
+              "bytes": 18206,
+              "sha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+              "semanticSha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+              "fields": 2,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": 4,
+              "list": null,
+              "filterGroups": 4,
+              "classSha256": "34be80bcd5de7f19b916c57e334a59ca97f1c8e78601ca10672ba72107abbec2",
+              "filtersSha256": "b3eb1ed037e4f3056e664e66be5ddc281e5978fde0f8e720e64f0ee9a1a40e96"
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "homeVideoContent",
+            "discoveryStep": "home-video",
+            "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "nonempty",
+            "response": {
+              "bytes": 1868,
+              "sha256": "5b52f3502d01602a6a5a4780eb661601b3e09dcb2fe5f9cf06ecb6e93fc67574",
+              "semanticSha256": "2250869ce1386a32eca41933740c5d157a6d0afd2e80b8692d2b79a22c710f1d",
+              "fields": 1,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 7,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page1",
+            "paramsSha256": "1b25f6d5ac922040771106dd6d7c88d38a84b5293140f7825f44fe9ccb2f3bcc",
+            "status": "nonempty",
+            "response": {
+              "bytes": 41390,
+              "sha256": "7c2ba64a2d05d2ed565df6a95664cc202813d42620e18372c9f835cc5283d8c1",
+              "semanticSha256": "52f6305c539baeb076cd779a54d7edb66a88ebfb8636422c8740dbdd24a5fa9e",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 120,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page2",
+            "paramsSha256": "f63c680ce56777f2dab18318e378646b29a5f6ca09c3a263ed6ad356b680deee",
+            "status": "nonempty",
+            "response": {
+              "bytes": 39297,
+              "sha256": "127e6abb4df0dc68f0030b5d85d9e7b8b208ccc436cd8fc615a01f06ea4322ab",
+              "semanticSha256": "9805ce8bf160cb670c60c4fa89ffa332857d0555fd73c2b712936715baaf2c2c",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 120,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-filter",
+            "paramsSha256": "172df05e9629113178bb29266a6bab7b8099a85d662efa29bc5dde607b7958f5",
+            "status": "nonempty",
+            "response": {
+              "bytes": 34286,
+              "sha256": "b32b4966bb82ce1ea954d507ab42169b6055961bf4bf3b20594b5c15f06597ae",
+              "semanticSha256": "5cf17d84217b8ecd4b3dc3cb75aaab487e295f6b663ab09fbb5598e1829b5b08",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 118,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "detail",
+            "paramsSha256": "fcd218d44930379d67f81d9710d7fac985e877e44e4833ae5b506fd1e39d11c7",
+            "status": "nonempty",
+            "response": {
+              "bytes": 372,
+              "sha256": "a98d41876b5994a3a58ea93fd8c24b0979b913bb40133983703be74a928770dc",
+              "semanticSha256": "23f708d256853ece36a2619ce1ebf089612e54054cf79bffcaae9f6f676276ea",
+              "fields": 1,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 1,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search",
+            "paramsSha256": "91e712027e2db6a19f3e35a07527ec43335694a46a5310857a364694264084f8",
+            "status": "nonempty",
+            "response": {
+              "bytes": 429,
+              "sha256": "f9d24d1d12f29fe8eab784ce92c4d7ee0d0139d494a364996b7d587a56ecb589",
+              "semanticSha256": "0b6ea20e50e4473e2f461f9194822759f38473d98e953668c6baa001a58cb429",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 1,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search-page1",
+            "paramsSha256": "fcd78cbd8dfb1b9413da63c833bc800a66768eaca0561d207f5e3558882067d4",
+            "status": "nonempty",
+            "response": {
+              "bytes": 429,
+              "sha256": "20fbcee88cf6ebc8274c5d9551d46e37b07d02ba92b59339518bbe9ff93d000f",
+              "semanticSha256": "71c0774fb811c90cac7a4c4048762d8bf1c185bd85a3b84ab345c6a11b85f1a7",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 1,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "com.github.catvod.crawler.Spider",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": true
+            }
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "search-detail",
+            "paramsSha256": "01c0e2bb7cf10369e933a1bd9cac9cadb3b7e52916befaf0c088876cdbec3ced",
+            "status": "nonempty",
+            "response": {
+              "bytes": 634,
+              "sha256": "cad231e1a89d27dd2540cd09fdf9e4e0f58925603c5dad077924eef61e036b57",
+              "semanticSha256": "6694b889b280ad5ddb2c50c460b0b44468351762c4ec11bf696af46e61fdbd49",
+              "fields": 1,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 1,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "playerContent",
+            "discoveryStep": "player",
+            "paramsSha256": "05caa4fa04ce2f8184637a2998c2dcbcfe4d5f67b4b35b16606abbe0c164fd70",
+            "status": "nonempty",
+            "response": {
+              "bytes": 76,
+              "sha256": "888d6df828327590a190be568f27edf4eabd99a3ec943a016367de78359bb21f",
+              "semanticSha256": "621783e918f492c47958cdfc5aed97b60e4074335e139be24ec808abc181a839",
+              "fields": 4,
+              "emptyObject": false,
+              "hasContent": false,
+              "classes": null,
+              "list": null,
+              "filterGroups": null
+            },
+            "playbackUrlPresent": true,
+            "returnedInputIdSame": true,
+            "parse": 1,
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          }
+        ]
+      },
+      {
+        "sourceIndex": 1,
+        "name": "斗鱼js",
+        "sourceIdentitySha256": "117a645b2f7c101b9d0c1a3e6bfbf9d23a403a5c8bedd0a454e7404ec4b04d9a",
+        "nodeCanonicalSourceSha256": "b7dedf1815d31d539d5924236eaedfe36f0aebd66babf59badf0915b7bd5451e",
+        "aospCanonicalSourceSha256": "8f4c4d81c27ff9cbbc542404dff01650350fbeae678e9883b7527707fd0c4831",
+        "sourceKeySha256": "26bef2f6655f13e355bceeb0be6476cde27840056b31ae62fffc59babdf538b9",
+        "apiSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+        "extSha256": "b8f74fc65355c4e1664e127554dc79aa59f5bed5c2dc4de22fa2f79ff638c008",
+        "privateResultSha256": "658335a44c7ac04c31c6e5bd8ec6f4c68cb34cb617dcc7633c78ce58ebc2c707",
+        "ready": true,
+        "applicationUid": 10166,
+        "androidSdk": 30,
+        "abi": "arm64-v8a",
+        "modules": [
+          {
+            "urlSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+            "sha256": "1fd5ecd4077f106dfd3952c208d7d0a25762ca90d1ae416dde996065e1507ab9",
+            "bytes": 67381
+          },
+          {
+            "urlSha256": "57d3bfb3bcb776729729e6cce979c8933c1fa178363d32ad59175ea864864bd1",
+            "sha256": "efe1013ec759d66767d356f6769d79a697cb9ecdac44deb682a38b32f83e01fc",
+            "bytes": 46047
+          },
+          {
+            "urlSha256": "d61878a65b9327cf82651cf9e1ac836c890c34c0c1e532ac38286d2ffad6e1de",
+            "sha256": "114a5ec86e6d48545ce0a99b1a5552380d735998737166e8fa3887479e04d64d",
+            "bytes": 32258
+          },
+          {
+            "urlSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+            "sha256": "7173a949be786609d3c16cd02d9797889c6086a485aeff2f29bc77c602dc4676",
+            "bytes": 1009
+          },
+          {
+            "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+            "sha256": "b2e1d9c402ce06c19d08e1659624bfbbda91994d06339300970c395977e6d37c",
+            "bytes": 167481
+          },
+          {
+            "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+            "sha256": "7b7a3b8db4d7b65846b807f1309688a8955961dbde5538694862a6c5cbc932cf",
+            "bytes": 46859
+          },
+          {
+            "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+            "sha256": "1b3d54f76b9106641e540b6561dc950ffe281590f8546b88f26fc7a91c225e10",
+            "bytes": 60431
+          },
+          {
+            "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+            "sha256": "6cf1781f0c32206236049d392383dbc558b530244926d93762dfa3362967bff2",
+            "bytes": 22706
+          }
+        ],
+        "staticFixtureHits": [
+          {
+            "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+            "hits": 0
+          },
+          {
+            "urlSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+            "hits": 0
+          },
+          {
+            "urlSha256": "57d3bfb3bcb776729729e6cce979c8933c1fa178363d32ad59175ea864864bd1",
+            "hits": 0
+          },
+          {
+            "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+            "hits": 0
+          },
+          {
+            "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+            "hits": 0
+          },
+          {
+            "urlSha256": "d61878a65b9327cf82651cf9e1ac836c890c34c0c1e532ac38286d2ffad6e1de",
+            "hits": 1
+          },
+          {
+            "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+            "hits": 0
+          },
+          {
+            "urlSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+            "hits": 0
+          }
+        ],
+        "unmatchedBusinessHTTP": [
+          {
+            "urlSha256": "463a15b487e4e8bdf985c566ed0f5ab43e3c254a9b933facfaf05c0889363a25",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "8735a0ead29d3b7896da115927931d8777c42f5296f5dab5a7aea9968974fbf6",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "1cda078c5b9a6b7bad3e2f94b186d8d40ea2edc8ff6c09c9cc9fd9499e5e821f",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "da70705120bd6697aa738a21e210bf5e802fdeb9bf25efa519d8e29ebfc79459",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "110a839936009642aa6c7004437cc70dbf18205aece3fcf914a73baea3becd7d",
+            "method": "POST",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "110a839936009642aa6c7004437cc70dbf18205aece3fcf914a73baea3becd7d",
+            "method": "POST",
+            "status": 200,
+            "declaredBytes": -1
+          }
+        ],
+        "cleanup": {
+          "restoredFixturesAndCaches": true,
+          "forceStopRequired": false
+        },
+        "calls": [
+          {
+            "method": "homeContent",
+            "discoveryStep": "home",
+            "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+            "status": "nonempty",
+            "response": {
+              "bytes": 33754,
+              "sha256": "a17f96c8839e9eff0c9ce9a2578f2a9d90651de843d473594698e972b136fc68",
+              "semanticSha256": "6c4f498ccdcf3b49c2900e550b2d35cf7fb3b407b1c2fb6390029533c3a51826",
+              "fields": 2,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": 9,
+              "list": null,
+              "filterGroups": 7,
+              "classSha256": "a85bc3d7b39aa6067fee5e8af71bc941b0a32ecc584179db4fa077c7eb4fc600",
+              "filtersSha256": "67c9cb6e71f4c16ce6736cfb1e016f534df1aae38321d8d57930d859b670c7d1"
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "homeVideoContent",
+            "discoveryStep": "home-video",
+            "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "nonempty",
+            "response": {
+              "bytes": 9603,
+              "sha256": "063a27faef5f1045e68a19b60a4c690e813a22fe4f572991382353f19ead6f96",
+              "semanticSha256": "a03e9f89082806daef1046701f9d4e466c1e7a4f379c3bcd2e7b3f4431e7dda0",
+              "fields": 1,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 44,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page1",
+            "paramsSha256": "6e7049d95218ae7f0f3919ec72ccb5aae2f32aa9e303945d4bd2044e819b120d",
+            "status": "nonempty",
+            "response": {
+              "bytes": 1767,
+              "sha256": "c96c932fe87d922de6e9be7502e5909b852d1811873e2183fe34ef3ad944f771",
+              "semanticSha256": "9bce07927b3ba88adc7228104f5880e7f6e53177836648a9e3617771d6a616d0",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 8,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page2",
+            "paramsSha256": "ac161d59d13a077616e2c50eb7b173e4ae10e22322fdb4e1b94f00dd9b12616d",
+            "status": "nonempty",
+            "response": {
+              "bytes": 1699,
+              "sha256": "161929e9317afe642fddf4f1d3149e419bfb88b24b4806fdae4782a02a640797",
+              "semanticSha256": "cd7d290aad80292ff4ca4f6287d2e403c5d1572d61c95451ee3667199eb08913",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 8,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-filter",
+            "paramsSha256": "094ea3006a161678070e08d66f64176e5c9ac4e1f37c70ce79ab1fb3afe5ee12",
+            "status": "nonempty",
+            "response": {
+              "bytes": 1793,
+              "sha256": "3a2c01d743a1eb85081816e0291fb7e4b6f3f984a9b48ad751dc39e0929a4bda",
+              "semanticSha256": "3183ed663bcc9593c44a6c46376d2a578124a2b62324160cd9ad57af88140052",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 8,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "detail",
+            "paramsSha256": "80bb46371f180b594ed73ad67e2e320cc8519e07bd30baed862a0734c49bf65c",
+            "status": "nonempty",
+            "response": {
+              "bytes": 476,
+              "sha256": "7ea9563b4610d8b40a66d4769ae7550678871a6ac714503d18cf809d140c6827",
+              "semanticSha256": "825008e906a2c6c1b3b016cb48f4a5d0527bebff274709947bced1363ed42585",
+              "fields": 1,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 1,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search",
+            "paramsSha256": "5490a033ad8b1aa4f069268dca147c74607aee7fb21463177a20b9dc0cb772ec",
+            "status": "empty",
+            "response": {
+              "bytes": 58,
+              "sha256": "d7e96db0b17f38ed937932a5438e56789b21ade3b1c3feabd20d987df2c84986",
+              "semanticSha256": "a0d5fc4a0776e14e595d8f93e36a5e475b50c556bf0bcd3dce8d8edb74a84c7f",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": false,
+              "classes": null,
+              "list": 0,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search-page1",
+            "paramsSha256": "a792f28403223bb846023def7ac3706d949d4080988c6d766b67301caf56e0cb",
+            "status": "empty",
+            "response": {
+              "bytes": 58,
+              "sha256": "d7e96db0b17f38ed937932a5438e56789b21ade3b1c3feabd20d987df2c84986",
+              "semanticSha256": "a0d5fc4a0776e14e595d8f93e36a5e475b50c556bf0bcd3dce8d8edb74a84c7f",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": false,
+              "classes": null,
+              "list": 0,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "com.github.catvod.crawler.Spider",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": true
+            }
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "search-detail",
+            "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "not-tested",
+            "reason": "no-derived-search-video-id"
+          },
+          {
+            "method": "playerContent",
+            "discoveryStep": "player",
+            "paramsSha256": "4fea37a962856cdeadf035182bf663a94b13c5ea6f772d1613c0ffa67ecd1160",
+            "status": "nonempty",
+            "response": {
+              "bytes": 129,
+              "sha256": "856d52b7f29451e5add34c48b7027e16959fc2bdbd4b89ee01f4906db50e5ecd",
+              "semanticSha256": "1b37c943a9f460ec6ac6e81be88ce417a656fff229f3f34ae52d5924b9fbca92",
+              "fields": 4,
+              "emptyObject": false,
+              "hasContent": false,
+              "classes": null,
+              "list": null,
+              "filterGroups": null
+            },
+            "playbackUrlPresent": true,
+            "returnedInputIdSame": true,
+            "parse": 1,
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          }
+        ]
+      },
+      {
+        "sourceIndex": 2,
+        "name": "dr_兔小贝",
+        "sourceIdentitySha256": "64da72ac4c2dfbe23e01012fb61351377e53b4f6599c49beec322d7483cada7a",
+        "nodeCanonicalSourceSha256": "a3131467428aef7d7c2d59cccd718afbf7f5ff958aaa506a77c17e8fa147b2de",
+        "aospCanonicalSourceSha256": "65237a15ed755ca1b96de076a6ec59e5cca6557bd062a1b9872297d778dd8fb0",
+        "sourceKeySha256": "7c150b37e85999b3de285e93ccd99fc92fb4eb95a913edf43a70835b5b216863",
+        "apiSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+        "extSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+        "privateResultSha256": "7b39bb232279dce35f633ce19fa907687a1c7f93d5bd71ba91557b538be09cfc",
+        "ready": true,
+        "applicationUid": 10166,
+        "androidSdk": 30,
+        "abi": "arm64-v8a",
+        "modules": [
+          {
+            "urlSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+            "sha256": "1fd5ecd4077f106dfd3952c208d7d0a25762ca90d1ae416dde996065e1507ab9",
+            "bytes": 67381
+          },
+          {
+            "urlSha256": "57d3bfb3bcb776729729e6cce979c8933c1fa178363d32ad59175ea864864bd1",
+            "sha256": "efe1013ec759d66767d356f6769d79a697cb9ecdac44deb682a38b32f83e01fc",
+            "bytes": 46047
+          },
+          {
+            "urlSha256": "d61878a65b9327cf82651cf9e1ac836c890c34c0c1e532ac38286d2ffad6e1de",
+            "sha256": "114a5ec86e6d48545ce0a99b1a5552380d735998737166e8fa3887479e04d64d",
+            "bytes": 32258
+          },
+          {
+            "urlSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+            "sha256": "7173a949be786609d3c16cd02d9797889c6086a485aeff2f29bc77c602dc4676",
+            "bytes": 1009
+          },
+          {
+            "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+            "sha256": "b2e1d9c402ce06c19d08e1659624bfbbda91994d06339300970c395977e6d37c",
+            "bytes": 167481
+          },
+          {
+            "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+            "sha256": "7b7a3b8db4d7b65846b807f1309688a8955961dbde5538694862a6c5cbc932cf",
+            "bytes": 46859
+          },
+          {
+            "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+            "sha256": "1b3d54f76b9106641e540b6561dc950ffe281590f8546b88f26fc7a91c225e10",
+            "bytes": 60431
+          },
+          {
+            "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+            "sha256": "6cf1781f0c32206236049d392383dbc558b530244926d93762dfa3362967bff2",
+            "bytes": 22706
+          }
+        ],
+        "staticFixtureHits": [
+          {
+            "urlSha256": "fddc7895fc3fbedb374de7aa2a0474dda37c39226858e8981e9151e89cb3b170",
+            "hits": 0
+          },
+          {
+            "urlSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+            "hits": 0
+          },
+          {
+            "urlSha256": "57d3bfb3bcb776729729e6cce979c8933c1fa178363d32ad59175ea864864bd1",
+            "hits": 0
+          },
+          {
+            "urlSha256": "081f64472f297ad0136f1986896ab2050d66d979d8aac45a13b375ee5b87c0be",
+            "hits": 0
+          },
+          {
+            "urlSha256": "fd8bf34cd91bc9bd413ba4aafee1be7d7e01451ea89cf50e564867cc1aaa9a45",
+            "hits": 0
+          },
+          {
+            "urlSha256": "d61878a65b9327cf82651cf9e1ac836c890c34c0c1e532ac38286d2ffad6e1de",
+            "hits": 0
+          },
+          {
+            "urlSha256": "e9552afa8ffe9493265a9bb165456cc6721b9174ba820a8d156b7b6ba9212325",
+            "hits": 0
+          },
+          {
+            "urlSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+            "hits": 1
+          }
+        ],
+        "unmatchedBusinessHTTP": [
+          {
+            "urlSha256": "401f05a76515ee86f8aba640f257bd134383c47eaf7ad8bb9e716d92cdbd834d",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "0a069f923624d8dfca3fc758b0634356918248ecf8c311c4ef157b40a378d78d",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "dfb4c491a8417f0c66f980fb2318bae0e1546724cde8ebaa39136bd7f1641447",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "2c8cce471f9ef5be0c52b43e790724e908dea254e5235d50c3ecff439878da21",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "2c8cce471f9ef5be0c52b43e790724e908dea254e5235d50c3ecff439878da21",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          },
+          {
+            "urlSha256": "6a51ebae9445c3bb428faeaa0ee24c4d7ade6ec14e35e746610c8678c66f70e1",
+            "method": "GET",
+            "status": 200,
+            "declaredBytes": -1
+          }
+        ],
+        "cleanup": {
+          "restoredFixturesAndCaches": true,
+          "forceStopRequired": false
+        },
+        "calls": [
+          {
+            "method": "homeContent",
+            "discoveryStep": "home",
+            "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+            "status": "nonempty",
+            "response": {
+              "bytes": 160,
+              "sha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+              "semanticSha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+              "fields": 1,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": 4,
+              "list": null,
+              "filterGroups": null,
+              "classSha256": "fa11482298dbc41ce57bbf8d60e48d99c4c9e12abbb7f28effa2cf42f8673c7f"
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "homeVideoContent",
+            "discoveryStep": "home-video",
+            "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "empty",
+            "response": {
+              "bytes": 11,
+              "sha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+              "semanticSha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+              "fields": 1,
+              "emptyObject": false,
+              "hasContent": false,
+              "classes": null,
+              "list": 0,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page1",
+            "paramsSha256": "202d6c4f0c744aa2247e7a0bbc3feb3d7e69f95fc08a7307c3a551048be8dc00",
+            "status": "nonempty",
+            "response": {
+              "bytes": 7460,
+              "sha256": "d47ed4c9a2448ccb338f3db5732b0c49f1b4e900ab7c39340298f1c04f2bc80a",
+              "semanticSha256": "3477b0b6759cf4422f44ea74e4e5ad4239e2909b242c90ae8d6bc7d32f9e844f",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 30,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page2",
+            "paramsSha256": "2b35156477fb12c60c580b02b3a631515f54cfb0fe0c1f67103c271154306c4c",
+            "status": "nonempty",
+            "response": {
+              "bytes": 7361,
+              "sha256": "31dd1c4f0b035398ad2b47f0a22fdd465ef22b4f033219210d7c61330c866356",
+              "semanticSha256": "4c07244044cdf36a1d368363ac374b983549c9cc873d9c41ae34f6eb3a2b6599",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 30,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-filter",
+            "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "status": "not-tested",
+            "reason": "no-derived-filter-values"
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "detail",
+            "paramsSha256": "4ccb289f469fd350db3db7abce748b36e4d0dc05af2715d5fbaf337be50a3d41",
+            "status": "nonempty",
+            "response": {
+              "bytes": 550,
+              "sha256": "5e405a88918396ee085941a9bee6e4241952fc43c279ecea8595e162b83bbd0e",
+              "semanticSha256": "619b770da019d6bbc3a17d853cb5c55f0eaedc358782de3d5c093fd9d098130c",
+              "fields": 1,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 1,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search",
+            "paramsSha256": "a4704f354328fc17f4f61d6c692268618a437e5ec8a3fe650bdbe4d7881b484d",
+            "status": "nonempty",
+            "response": {
+              "bytes": 395,
+              "sha256": "2c588f18e38e807e5064c6dd18eb55ab5060de47ee0385085544642e2f1c86db",
+              "semanticSha256": "92a0d1a37bf9a90f75a2e11228844ae48f41912a4ac5bfa613428b2dc14f4fd9",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 1,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search-page1",
+            "paramsSha256": "fde7fd2de46ef1d4c969e3c2771f6215582051cbac9c97fde3528e32d1dfb5ff",
+            "status": "nonempty",
+            "response": {
+              "bytes": 395,
+              "sha256": "2c588f18e38e807e5064c6dd18eb55ab5060de47ee0385085544642e2f1c86db",
+              "semanticSha256": "92a0d1a37bf9a90f75a2e11228844ae48f41912a4ac5bfa613428b2dc14f4fd9",
+              "fields": 5,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 1,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "com.github.catvod.crawler.Spider",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": true
+            }
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "search-detail",
+            "paramsSha256": "be6d8447ccc77360d1cc53324913727879d9846a58436ba0d40a2eae14625507",
+            "status": "nonempty",
+            "response": {
+              "bytes": 634,
+              "sha256": "e0ef70d73d61607990f00084c953137db4c68d70a2fcd767fc90b37ec1423c6c",
+              "semanticSha256": "c70e57dc20f9b7b5f1e0cbe69aa07914fa7d5428a7a8662def11e21568f9dea6",
+              "fields": 1,
+              "emptyObject": false,
+              "hasContent": true,
+              "classes": null,
+              "list": 1,
+              "filterGroups": null
+            },
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          },
+          {
+            "method": "playerContent",
+            "discoveryStep": "player",
+            "paramsSha256": "274530d3705e173fea0d76ab25ae86fb184cbef51709554187dc9b55e7fc03fd",
+            "status": "nonempty",
+            "response": {
+              "bytes": 110,
+              "sha256": "8a84278d1c609aef1a3ef3af18de1693deab568507c3368e19ae17cb71355e23",
+              "semanticSha256": "a790ba228bca7d8db6b90f0a6d56582188fd4cb49c07a6e591ab9ae1c1839e05",
+              "fields": 3,
+              "emptyObject": false,
+              "hasContent": false,
+              "classes": null,
+              "list": null,
+              "filterGroups": null
+            },
+            "playbackUrlPresent": true,
+            "returnedInputIdSame": false,
+            "parse": 1,
+            "javaMethodProvenance": {
+              "declaringClass": "androidx.base.rr",
+              "baseSpiderClass": "com.github.catvod.crawler.Spider",
+              "inheritedBaseDefault": false,
+              "baseDelegatingOverload": false
+            }
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "sources": 3,
+      "ready": 3,
+      "methodStatuses": {
+        "nonempty": 25,
+        "empty": 3,
+        "not-implemented": 0,
+        "invalid-json": 0,
+        "network": 0,
+        "failed": 0,
+        "timeout": 0,
+        "not-tested": 2
+      },
+      "cleanupPassed": 3
+    }
+  },
+  "nasReplay": {
+    "runPlanSha256": "2ce7476ee318e01ce0fd8d94a640e693f6e942dd476fbd123886d7ee82ffb1f1",
+    "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+    "probeSha256": "3893582625b881471d45d54bd7d834728459b212f15f38e52d649796e6fd4ae0",
+    "hostBinding": {
+      "sourceSha256": "d3e5f7037043f7a2ba53bc1c3c3b683a162e82a99a18132f811963e2f70841e2",
+      "manifestSha256": "8717c758027bf932aedbe6f6bcae73b6a45b92eab68b21e4b8596530f97db6a4",
+      "sha256": "e17273383782712a3cd7ae81d341a833dca825e9bf574762ea80df4a7292a455"
+    },
+    "sources": [
+      {
+        "sourceIndex": 0,
+        "name": "虎牙js",
+        "sourceIdentitySha256": "59e729b154b61a83a6d648eae759e47a7488fd297e36d36935bfb1c5455f47a7",
+        "artPrivateSha256": "56477c47ebd96f49b47f622ddb142f138f5bb6d8fcf2db6194b771a68cc84f3b",
+        "nasPrivateSha256": "9ad65922ba8f5bc9eebc10ab081d6389878119d30ccb5363507d3de2c1d87a50",
+        "wrapperSHA256": "3357fc4faf0e88ce43c8b0f2a18c3e294adae7b5be941dd41af7364730e0f590",
+        "container": {
+          "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+          "user": "10001:10001",
+          "exitCode": 0,
+          "running": false,
+          "containerId": "ec233ef6b8625ec0eb7077a6c4eae61e44c35092a5152d5c48bcbaf62124b835"
+        },
+        "cleanup": {
+          "closed": true,
+          "workerExited": true,
+          "temporaryDataRemoved": true
+        },
+        "calls": [
+          {
+            "method": "homeContent",
+            "discoveryStep": "home",
+            "art": {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "status": "nonempty",
+              "response": {
+                "bytes": 18206,
+                "sha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+                "semanticSha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+                "fields": 2,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 4,
+                "list": null,
+                "filterGroups": 4,
+                "classSha256": "34be80bcd5de7f19b916c57e334a59ca97f1c8e78601ca10672ba72107abbec2",
+                "filtersSha256": "b3eb1ed037e4f3056e664e66be5ddc281e5978fde0f8e720e64f0ee9a1a40e96"
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "response": {
+                "bytes": 18206,
+                "sha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+                "semanticSha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+                "fields": 2,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 4,
+                "list": null,
+                "filterGroups": 4,
+                "classSha256": "34be80bcd5de7f19b916c57e334a59ca97f1c8e78601ca10672ba72107abbec2",
+                "filtersSha256": "b3eb1ed037e4f3056e664e66be5ddc281e5978fde0f8e720e64f0ee9a1a40e96"
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 1621,
+              "logs": {
+                "count": 2,
+                "sha256": "faf834187a8b697d1cb86ff34c9d6008de1db7604f0fcd2a1109a2ab2d88ad9f",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "homeVideoContent",
+            "discoveryStep": "home-video",
+            "art": {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "status": "nonempty",
+              "response": {
+                "bytes": 1868,
+                "sha256": "5b52f3502d01602a6a5a4780eb661601b3e09dcb2fe5f9cf06ecb6e93fc67574",
+                "semanticSha256": "2250869ce1386a32eca41933740c5d157a6d0afd2e80b8692d2b79a22c710f1d",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 7,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "response": {
+                "bytes": 1864,
+                "sha256": "d2bf352b2a915b6ab46ec694a28a7168ef222babe8ed808f926302c8b0d8aafe",
+                "semanticSha256": "495ba6cd8f388957705b798361013aad74d03169e9fe0a9a8c7c2381646ed44c",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 7,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 454,
+              "logs": {
+                "count": 8,
+                "sha256": "888ac312dc2363f91488fe77d6500447621671b7082c269f6d2fa4897ddce9fd",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page1",
+            "art": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "paramsSha256": "1b25f6d5ac922040771106dd6d7c88d38a84b5293140f7825f44fe9ccb2f3bcc",
+              "status": "nonempty",
+              "response": {
+                "bytes": 41390,
+                "sha256": "7c2ba64a2d05d2ed565df6a95664cc202813d42620e18372c9f835cc5283d8c1",
+                "semanticSha256": "52f6305c539baeb076cd779a54d7edb66a88ebfb8636422c8740dbdd24a5fa9e",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1b25f6d5ac922040771106dd6d7c88d38a84b5293140f7825f44fe9ccb2f3bcc",
+              "response": {
+                "bytes": 42245,
+                "sha256": "20867c82f96f75e16ba839153141a6615dfeb42ab39bfc7aafbe5e09efce3a1f",
+                "semanticSha256": "8dc42ee28f93894a34fb0bfb76e841716d22618169acd8b5bccf16ffe7c8a233",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 278,
+              "logs": {
+                "count": 6,
+                "sha256": "11c2a93848348e94dde8d73c3f3c75bf636a79ec38e9a81b76a90736ca620d4b",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "1b25f6d5ac922040771106dd6d7c88d38a84b5293140f7825f44fe9ccb2f3bcc",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page2",
+            "art": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "paramsSha256": "f63c680ce56777f2dab18318e378646b29a5f6ca09c3a263ed6ad356b680deee",
+              "status": "nonempty",
+              "response": {
+                "bytes": 39297,
+                "sha256": "127e6abb4df0dc68f0030b5d85d9e7b8b208ccc436cd8fc615a01f06ea4322ab",
+                "semanticSha256": "9805ce8bf160cb670c60c4fa89ffa332857d0555fd73c2b712936715baaf2c2c",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "f63c680ce56777f2dab18318e378646b29a5f6ca09c3a263ed6ad356b680deee",
+              "response": {
+                "bytes": 39561,
+                "sha256": "f417bcdc87f6127d6a37e0da5dce3a1a4d86b612be3a5fb07feb92cae47eed9d",
+                "semanticSha256": "f72c29376b9c4873bf6b5c9d828a212b8b030e665a45b3226d32fb83fe27a2c3",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 278,
+              "logs": {
+                "count": 6,
+                "sha256": "d7c34a8f023c620bd943f4c48ff5da4d471d8e0b433a9e5f4d9063b648d48a9e",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "f63c680ce56777f2dab18318e378646b29a5f6ca09c3a263ed6ad356b680deee",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-filter",
+            "art": {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "paramsSha256": "172df05e9629113178bb29266a6bab7b8099a85d662efa29bc5dde607b7958f5",
+              "status": "nonempty",
+              "response": {
+                "bytes": 34286,
+                "sha256": "b32b4966bb82ce1ea954d507ab42169b6055961bf4bf3b20594b5c15f06597ae",
+                "semanticSha256": "5cf17d84217b8ecd4b3dc3cb75aaab487e295f6b663ab09fbb5598e1829b5b08",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 118,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "172df05e9629113178bb29266a6bab7b8099a85d662efa29bc5dde607b7958f5",
+              "response": {
+                "bytes": 34286,
+                "sha256": "e8bd6c7ef269a405fe73d3342bbe2ba6138aae30eada18f95930ea1dd391bb6f",
+                "semanticSha256": "a41eaccec72dbaece8428835eb5b44ab7e5e45e595858173e68502567f5d4e49",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 118,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 351,
+              "logs": {
+                "count": 6,
+                "sha256": "e833d2e1ff7d71731b72040ac6658513d761e85fe34f93b6ba444ac9c8f33ac1",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "172df05e9629113178bb29266a6bab7b8099a85d662efa29bc5dde607b7958f5",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "detail",
+            "art": {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "paramsSha256": "fcd218d44930379d67f81d9710d7fac985e877e44e4833ae5b506fd1e39d11c7",
+              "status": "nonempty",
+              "response": {
+                "bytes": 372,
+                "sha256": "a98d41876b5994a3a58ea93fd8c24b0979b913bb40133983703be74a928770dc",
+                "semanticSha256": "23f708d256853ece36a2619ce1ebf089612e54054cf79bffcaae9f6f676276ea",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "fcd218d44930379d67f81d9710d7fac985e877e44e4833ae5b506fd1e39d11c7",
+              "response": {
+                "bytes": 372,
+                "sha256": "a98d41876b5994a3a58ea93fd8c24b0979b913bb40133983703be74a928770dc",
+                "semanticSha256": "23f708d256853ece36a2619ce1ebf089612e54054cf79bffcaae9f6f676276ea",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 3,
+              "logs": {
+                "count": 2,
+                "sha256": "35b01d3872f900ded903a3af7fa2aed2774f9df510ff1c266e61ef055d864181",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "fcd218d44930379d67f81d9710d7fac985e877e44e4833ae5b506fd1e39d11c7",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search",
+            "art": {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "paramsSha256": "91e712027e2db6a19f3e35a07527ec43335694a46a5310857a364694264084f8",
+              "status": "nonempty",
+              "response": {
+                "bytes": 429,
+                "sha256": "f9d24d1d12f29fe8eab784ce92c4d7ee0d0139d494a364996b7d587a56ecb589",
+                "semanticSha256": "0b6ea20e50e4473e2f461f9194822759f38473d98e953668c6baa001a58cb429",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "91e712027e2db6a19f3e35a07527ec43335694a46a5310857a364694264084f8",
+              "response": {
+                "bytes": 429,
+                "sha256": "f66c07042fae0f9f4f5cf1afa7c6c6f677f11d6ccb22cf473dcdc53717f36be8",
+                "semanticSha256": "326bb1bb8eb5d0bbbb6aa48f9e00723b0c7b3ba6f2196316f275efb1a0abe138",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 501,
+              "logs": {
+                "count": 6,
+                "sha256": "5607b425cb4300dea409432203b3b76270c2a5b29758557a82cd267027dc3018",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "91e712027e2db6a19f3e35a07527ec43335694a46a5310857a364694264084f8",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search-page1",
+            "art": {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "paramsSha256": "fcd78cbd8dfb1b9413da63c833bc800a66768eaca0561d207f5e3558882067d4",
+              "status": "nonempty",
+              "response": {
+                "bytes": 429,
+                "sha256": "20fbcee88cf6ebc8274c5d9551d46e37b07d02ba92b59339518bbe9ff93d000f",
+                "semanticSha256": "71c0774fb811c90cac7a4c4048762d8bf1c185bd85a3b84ab345c6a11b85f1a7",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "com.github.catvod.crawler.Spider",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": true
+              }
+            },
+            "nas": {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "fcd78cbd8dfb1b9413da63c833bc800a66768eaca0561d207f5e3558882067d4",
+              "response": {
+                "bytes": 429,
+                "sha256": "f66c07042fae0f9f4f5cf1afa7c6c6f677f11d6ccb22cf473dcdc53717f36be8",
+                "semanticSha256": "326bb1bb8eb5d0bbbb6aa48f9e00723b0c7b3ba6f2196316f275efb1a0abe138",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 368,
+              "logs": {
+                "count": 6,
+                "sha256": "c9d2638a1d3761f15243ab057f8db4cc9dcce1b24e6e346011481e60ea0c1989",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "fcd78cbd8dfb1b9413da63c833bc800a66768eaca0561d207f5e3558882067d4",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "search-detail",
+            "art": {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "paramsSha256": "01c0e2bb7cf10369e933a1bd9cac9cadb3b7e52916befaf0c088876cdbec3ced",
+              "status": "nonempty",
+              "response": {
+                "bytes": 634,
+                "sha256": "cad231e1a89d27dd2540cd09fdf9e4e0f58925603c5dad077924eef61e036b57",
+                "semanticSha256": "6694b889b280ad5ddb2c50c460b0b44468351762c4ec11bf696af46e61fdbd49",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "01c0e2bb7cf10369e933a1bd9cac9cadb3b7e52916befaf0c088876cdbec3ced",
+              "response": {
+                "bytes": 634,
+                "sha256": "cad231e1a89d27dd2540cd09fdf9e4e0f58925603c5dad077924eef61e036b57",
+                "semanticSha256": "6694b889b280ad5ddb2c50c460b0b44468351762c4ec11bf696af46e61fdbd49",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 3,
+              "logs": {
+                "count": 2,
+                "sha256": "82118d8ad06645bdfdeb613ffb77866c467c68bff65fe5450bd4cb60e507a110",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "01c0e2bb7cf10369e933a1bd9cac9cadb3b7e52916befaf0c088876cdbec3ced",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "playerContent",
+            "discoveryStep": "player",
+            "art": {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "paramsSha256": "05caa4fa04ce2f8184637a2998c2dcbcfe4d5f67b4b35b16606abbe0c164fd70",
+              "status": "nonempty",
+              "response": {
+                "bytes": 76,
+                "sha256": "888d6df828327590a190be568f27edf4eabd99a3ec943a016367de78359bb21f",
+                "semanticSha256": "621783e918f492c47958cdfc5aed97b60e4074335e139be24ec808abc181a839",
+                "fields": 4,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "returnedInputIdSame": true,
+              "parse": 1,
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "05caa4fa04ce2f8184637a2998c2dcbcfe4d5f67b4b35b16606abbe0c164fd70",
+              "response": {
+                "bytes": 76,
+                "sha256": "888d6df828327590a190be568f27edf4eabd99a3ec943a016367de78359bb21f",
+                "semanticSha256": "621783e918f492c47958cdfc5aed97b60e4074335e139be24ec808abc181a839",
+                "fields": 4,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "parse": 1,
+              "returnedInputIdSame": true,
+              "runtimeGeneration": 1,
+              "elapsedMs": 4,
+              "logs": {
+                "count": 3,
+                "sha256": "d93ae3e535a8904dd6f985083ab2ea10d544a1dca6f060e08af700e28eaf62c9",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "05caa4fa04ce2f8184637a2998c2dcbcfe4d5f67b4b35b16606abbe0c164fd70",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          }
+        ]
+      },
+      {
+        "sourceIndex": 1,
+        "name": "斗鱼js",
+        "sourceIdentitySha256": "117a645b2f7c101b9d0c1a3e6bfbf9d23a403a5c8bedd0a454e7404ec4b04d9a",
+        "artPrivateSha256": "658335a44c7ac04c31c6e5bd8ec6f4c68cb34cb617dcc7633c78ce58ebc2c707",
+        "nasPrivateSha256": "45bc836f04c641f8e23698b512a01986b15f43db647a987fd1d3574b3380e026",
+        "wrapperSHA256": "52cfc2e7d18a55e83cd3bb2adbe5160b0c6569c5bba0eb2ed66af14836b8615d",
+        "container": {
+          "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+          "user": "10001:10001",
+          "exitCode": 0,
+          "running": false,
+          "containerId": "76c4f767b940de250471a1e20cb7ef618a5c9293de744a818f7ba8054d10a74c"
+        },
+        "cleanup": {
+          "closed": true,
+          "workerExited": true,
+          "temporaryDataRemoved": true
+        },
+        "calls": [
+          {
+            "method": "homeContent",
+            "discoveryStep": "home",
+            "art": {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "status": "nonempty",
+              "response": {
+                "bytes": 33754,
+                "sha256": "a17f96c8839e9eff0c9ce9a2578f2a9d90651de843d473594698e972b136fc68",
+                "semanticSha256": "6c4f498ccdcf3b49c2900e550b2d35cf7fb3b407b1c2fb6390029533c3a51826",
+                "fields": 2,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 9,
+                "list": null,
+                "filterGroups": 7,
+                "classSha256": "a85bc3d7b39aa6067fee5e8af71bc941b0a32ecc584179db4fa077c7eb4fc600",
+                "filtersSha256": "67c9cb6e71f4c16ce6736cfb1e016f534df1aae38321d8d57930d859b670c7d1"
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "response": {
+                "bytes": 33754,
+                "sha256": "a17f96c8839e9eff0c9ce9a2578f2a9d90651de843d473594698e972b136fc68",
+                "semanticSha256": "6c4f498ccdcf3b49c2900e550b2d35cf7fb3b407b1c2fb6390029533c3a51826",
+                "fields": 2,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 9,
+                "list": null,
+                "filterGroups": 7,
+                "classSha256": "a85bc3d7b39aa6067fee5e8af71bc941b0a32ecc584179db4fa077c7eb4fc600",
+                "filtersSha256": "67c9cb6e71f4c16ce6736cfb1e016f534df1aae38321d8d57930d859b670c7d1"
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 1763,
+              "logs": {
+                "count": 2,
+                "sha256": "e62e5602454ce3d11d9b1fb4e74178c7d2205cde8dfb6d3c2a73d43dd55b7b4c",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "homeVideoContent",
+            "discoveryStep": "home-video",
+            "art": {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "status": "nonempty",
+              "response": {
+                "bytes": 9603,
+                "sha256": "063a27faef5f1045e68a19b60a4c690e813a22fe4f572991382353f19ead6f96",
+                "semanticSha256": "a03e9f89082806daef1046701f9d4e466c1e7a4f379c3bcd2e7b3f4431e7dda0",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 44,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "response": {
+                "bytes": 9603,
+                "sha256": "063a27faef5f1045e68a19b60a4c690e813a22fe4f572991382353f19ead6f96",
+                "semanticSha256": "a03e9f89082806daef1046701f9d4e466c1e7a4f379c3bcd2e7b3f4431e7dda0",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 44,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 435,
+              "logs": {
+                "count": 8,
+                "sha256": "566d76e2bcda76dac44deec32da6c5c82d80df023b75276710b26512f134ad84",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page1",
+            "art": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "paramsSha256": "6e7049d95218ae7f0f3919ec72ccb5aae2f32aa9e303945d4bd2044e819b120d",
+              "status": "nonempty",
+              "response": {
+                "bytes": 1767,
+                "sha256": "c96c932fe87d922de6e9be7502e5909b852d1811873e2183fe34ef3ad944f771",
+                "semanticSha256": "9bce07927b3ba88adc7228104f5880e7f6e53177836648a9e3617771d6a616d0",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "6e7049d95218ae7f0f3919ec72ccb5aae2f32aa9e303945d4bd2044e819b120d",
+              "response": {
+                "bytes": 1767,
+                "sha256": "c96c932fe87d922de6e9be7502e5909b852d1811873e2183fe34ef3ad944f771",
+                "semanticSha256": "9bce07927b3ba88adc7228104f5880e7f6e53177836648a9e3617771d6a616d0",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 104,
+              "logs": {
+                "count": 6,
+                "sha256": "66d25936dcb83c23b393e6bbc03b1114617bf569b431cdb7825910d8811ab640",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "6e7049d95218ae7f0f3919ec72ccb5aae2f32aa9e303945d4bd2044e819b120d",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page2",
+            "art": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "paramsSha256": "ac161d59d13a077616e2c50eb7b173e4ae10e22322fdb4e1b94f00dd9b12616d",
+              "status": "nonempty",
+              "response": {
+                "bytes": 1699,
+                "sha256": "161929e9317afe642fddf4f1d3149e419bfb88b24b4806fdae4782a02a640797",
+                "semanticSha256": "cd7d290aad80292ff4ca4f6287d2e403c5d1572d61c95451ee3667199eb08913",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "ac161d59d13a077616e2c50eb7b173e4ae10e22322fdb4e1b94f00dd9b12616d",
+              "response": {
+                "bytes": 1699,
+                "sha256": "b2b99b0549dc38d6a6462d525a3ada9adc69c9408e60696ddb52c730a6a13aa1",
+                "semanticSha256": "c0c4745f5ab50bf06e2438c6bf75cd0d734244c9f8364fb7be4260546771a561",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 91,
+              "logs": {
+                "count": 6,
+                "sha256": "95caddab9beae18734d4e25c95917f4b4be52c7bc38b00029f1adc4597c4813c",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "ac161d59d13a077616e2c50eb7b173e4ae10e22322fdb4e1b94f00dd9b12616d",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-filter",
+            "art": {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "paramsSha256": "094ea3006a161678070e08d66f64176e5c9ac4e1f37c70ce79ab1fb3afe5ee12",
+              "status": "nonempty",
+              "response": {
+                "bytes": 1793,
+                "sha256": "3a2c01d743a1eb85081816e0291fb7e4b6f3f984a9b48ad751dc39e0929a4bda",
+                "semanticSha256": "3183ed663bcc9593c44a6c46376d2a578124a2b62324160cd9ad57af88140052",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "094ea3006a161678070e08d66f64176e5c9ac4e1f37c70ce79ab1fb3afe5ee12",
+              "response": {
+                "bytes": 1793,
+                "sha256": "510364e048b639f40d80ef64c29b67e37d4f5aa821179cebee3492890b28c326",
+                "semanticSha256": "95d3248553d134c1b136911cc57eda7a41f26c62a36b92bbd5fe752a6777cc05",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 95,
+              "logs": {
+                "count": 6,
+                "sha256": "92c0fdee3057de88889a5b566e1ff5c65abaa3e1c03e0b15dbf6774efd01bc13",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "094ea3006a161678070e08d66f64176e5c9ac4e1f37c70ce79ab1fb3afe5ee12",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "detail",
+            "art": {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "paramsSha256": "80bb46371f180b594ed73ad67e2e320cc8519e07bd30baed862a0734c49bf65c",
+              "status": "nonempty",
+              "response": {
+                "bytes": 476,
+                "sha256": "7ea9563b4610d8b40a66d4769ae7550678871a6ac714503d18cf809d140c6827",
+                "semanticSha256": "825008e906a2c6c1b3b016cb48f4a5d0527bebff274709947bced1363ed42585",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "80bb46371f180b594ed73ad67e2e320cc8519e07bd30baed862a0734c49bf65c",
+              "response": {
+                "bytes": 476,
+                "sha256": "7ea9563b4610d8b40a66d4769ae7550678871a6ac714503d18cf809d140c6827",
+                "semanticSha256": "825008e906a2c6c1b3b016cb48f4a5d0527bebff274709947bced1363ed42585",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 4,
+              "logs": {
+                "count": 2,
+                "sha256": "4947d0a6d99ac563a92276611107a2688c1267f8833229000b3d972bd8b625bc",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "80bb46371f180b594ed73ad67e2e320cc8519e07bd30baed862a0734c49bf65c",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search",
+            "art": {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "paramsSha256": "5490a033ad8b1aa4f069268dca147c74607aee7fb21463177a20b9dc0cb772ec",
+              "status": "empty",
+              "response": {
+                "bytes": 58,
+                "sha256": "d7e96db0b17f38ed937932a5438e56789b21ade3b1c3feabd20d987df2c84986",
+                "semanticSha256": "a0d5fc4a0776e14e595d8f93e36a5e475b50c556bf0bcd3dce8d8edb74a84c7f",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": 0,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "status": "empty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "5490a033ad8b1aa4f069268dca147c74607aee7fb21463177a20b9dc0cb772ec",
+              "response": {
+                "bytes": 58,
+                "sha256": "d7e96db0b17f38ed937932a5438e56789b21ade3b1c3feabd20d987df2c84986",
+                "semanticSha256": "a0d5fc4a0776e14e595d8f93e36a5e475b50c556bf0bcd3dce8d8edb74a84c7f",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": 0,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 87,
+              "logs": {
+                "count": 4,
+                "sha256": "b1ae34e99b1b4c43006de0d5db523d3e5ac3b6ad76f4c6d3017100b54db837dd",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "5490a033ad8b1aa4f069268dca147c74607aee7fb21463177a20b9dc0cb772ec",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search-page1",
+            "art": {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "paramsSha256": "a792f28403223bb846023def7ac3706d949d4080988c6d766b67301caf56e0cb",
+              "status": "empty",
+              "response": {
+                "bytes": 58,
+                "sha256": "d7e96db0b17f38ed937932a5438e56789b21ade3b1c3feabd20d987df2c84986",
+                "semanticSha256": "a0d5fc4a0776e14e595d8f93e36a5e475b50c556bf0bcd3dce8d8edb74a84c7f",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": 0,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "com.github.catvod.crawler.Spider",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": true
+              }
+            },
+            "nas": {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "status": "empty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "a792f28403223bb846023def7ac3706d949d4080988c6d766b67301caf56e0cb",
+              "response": {
+                "bytes": 58,
+                "sha256": "d7e96db0b17f38ed937932a5438e56789b21ade3b1c3feabd20d987df2c84986",
+                "semanticSha256": "a0d5fc4a0776e14e595d8f93e36a5e475b50c556bf0bcd3dce8d8edb74a84c7f",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": 0,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 112,
+              "logs": {
+                "count": 4,
+                "sha256": "b1ae34e99b1b4c43006de0d5db523d3e5ac3b6ad76f4c6d3017100b54db837dd",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "a792f28403223bb846023def7ac3706d949d4080988c6d766b67301caf56e0cb",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "search-detail",
+            "art": {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "status": "not-tested",
+              "reason": "no-derived-search-video-id"
+            },
+            "nas": {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "status": "not-tested",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "reason": "reference-parameters-not-derived"
+            },
+            "observation": "not-tested"
+          },
+          {
+            "method": "playerContent",
+            "discoveryStep": "player",
+            "art": {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "paramsSha256": "4fea37a962856cdeadf035182bf663a94b13c5ea6f772d1613c0ffa67ecd1160",
+              "status": "nonempty",
+              "response": {
+                "bytes": 129,
+                "sha256": "856d52b7f29451e5add34c48b7027e16959fc2bdbd4b89ee01f4906db50e5ecd",
+                "semanticSha256": "1b37c943a9f460ec6ac6e81be88ce417a656fff229f3f34ae52d5924b9fbca92",
+                "fields": 4,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "returnedInputIdSame": true,
+              "parse": 1,
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4fea37a962856cdeadf035182bf663a94b13c5ea6f772d1613c0ffa67ecd1160",
+              "response": {
+                "bytes": 129,
+                "sha256": "856d52b7f29451e5add34c48b7027e16959fc2bdbd4b89ee01f4906db50e5ecd",
+                "semanticSha256": "1b37c943a9f460ec6ac6e81be88ce417a656fff229f3f34ae52d5924b9fbca92",
+                "fields": 4,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "parse": 1,
+              "returnedInputIdSame": true,
+              "runtimeGeneration": 1,
+              "elapsedMs": 6,
+              "logs": {
+                "count": 1,
+                "sha256": "3fac4e01e4645a3e100ccebbcc6c6b88de54824362ae953ef06d16d0781e9d60",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "4fea37a962856cdeadf035182bf663a94b13c5ea6f772d1613c0ffa67ecd1160",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          }
+        ]
+      },
+      {
+        "sourceIndex": 2,
+        "name": "dr_兔小贝",
+        "sourceIdentitySha256": "64da72ac4c2dfbe23e01012fb61351377e53b4f6599c49beec322d7483cada7a",
+        "artPrivateSha256": "7b39bb232279dce35f633ce19fa907687a1c7f93d5bd71ba91557b538be09cfc",
+        "nasPrivateSha256": "df426ee441a7db42cbf2db9c80f9c0f2d58b51898c6fb2bbfde164fd496fd954",
+        "wrapperSHA256": "a8125800435c2d3016d7fd659ed524a8d81fc105240398c2e02ac3b1b018427c",
+        "container": {
+          "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+          "user": "10001:10001",
+          "exitCode": 0,
+          "running": false,
+          "containerId": "f35b4d2a014d1a57e05e17655972e2a8d59bf2df3ce37137341f6882e959b810"
+        },
+        "cleanup": {
+          "closed": true,
+          "workerExited": true,
+          "temporaryDataRemoved": true
+        },
+        "calls": [
+          {
+            "method": "homeContent",
+            "discoveryStep": "home",
+            "art": {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "status": "nonempty",
+              "response": {
+                "bytes": 160,
+                "sha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+                "semanticSha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 4,
+                "list": null,
+                "filterGroups": null,
+                "classSha256": "fa11482298dbc41ce57bbf8d60e48d99c4c9e12abbb7f28effa2cf42f8673c7f"
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "response": {
+                "bytes": 160,
+                "sha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+                "semanticSha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 4,
+                "list": null,
+                "filterGroups": null,
+                "classSha256": "fa11482298dbc41ce57bbf8d60e48d99c4c9e12abbb7f28effa2cf42f8673c7f"
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 1668,
+              "logs": {
+                "count": 2,
+                "sha256": "20f6b03c93aa6c63497d1b3d40bdc60f181a99cf893b2622d64c73fb3a44a438",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "homeVideoContent",
+            "discoveryStep": "home-video",
+            "art": {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "status": "empty",
+              "response": {
+                "bytes": 11,
+                "sha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+                "semanticSha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": 0,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "status": "empty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "response": {
+                "bytes": 11,
+                "sha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+                "semanticSha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": 0,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 3101,
+              "logs": {
+                "count": 9,
+                "sha256": "24bdd9170b123f1dae9ea12d1891a9ec25a830382ce836ceae521adbbb06829e",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page1",
+            "art": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "paramsSha256": "202d6c4f0c744aa2247e7a0bbc3feb3d7e69f95fc08a7307c3a551048be8dc00",
+              "status": "nonempty",
+              "response": {
+                "bytes": 7460,
+                "sha256": "d47ed4c9a2448ccb338f3db5732b0c49f1b4e900ab7c39340298f1c04f2bc80a",
+                "semanticSha256": "3477b0b6759cf4422f44ea74e4e5ad4239e2909b242c90ae8d6bc7d32f9e844f",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 30,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "202d6c4f0c744aa2247e7a0bbc3feb3d7e69f95fc08a7307c3a551048be8dc00",
+              "response": {
+                "bytes": 7484,
+                "sha256": "0f914afd7d88cf4f060bf2a53d74581cfcae2aa7537540b799b633af9d46074d",
+                "semanticSha256": "9fa6d2c1e7b554693ddad2ede970f15e407d3284c52995d6631c8d26f553e579",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 30,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 314,
+              "logs": {
+                "count": 5,
+                "sha256": "ea60ab5af94757a6e5b1343961341a370f3fe1fbdccda04375cdc843ebc376cd",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "202d6c4f0c744aa2247e7a0bbc3feb3d7e69f95fc08a7307c3a551048be8dc00",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-page2",
+            "art": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "paramsSha256": "2b35156477fb12c60c580b02b3a631515f54cfb0fe0c1f67103c271154306c4c",
+              "status": "nonempty",
+              "response": {
+                "bytes": 7361,
+                "sha256": "31dd1c4f0b035398ad2b47f0a22fdd465ef22b4f033219210d7c61330c866356",
+                "semanticSha256": "4c07244044cdf36a1d368363ac374b983549c9cc873d9c41ae34f6eb3a2b6599",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 30,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "2b35156477fb12c60c580b02b3a631515f54cfb0fe0c1f67103c271154306c4c",
+              "response": {
+                "bytes": 7448,
+                "sha256": "b2a08a6ac1e811fba81ad19ef12b45b8325a9b8ae900f7369ef2d14a8c8eb390",
+                "semanticSha256": "f02aeff6078ba1759066c6ae2ab0e6d48014711ba08d00ddab9a4925cd477d03",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 30,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 217,
+              "logs": {
+                "count": 5,
+                "sha256": "0e9ab76784e83227f7d8a26f3bb668a6d4c2a2d04a11e1d3ee9a4f704f5fede8",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "2b35156477fb12c60c580b02b3a631515f54cfb0fe0c1f67103c271154306c4c",
+            "semanticEqual": false,
+            "rawEqual": false,
+            "observation": "same-params-live-response-difference"
+          },
+          {
+            "method": "categoryContent",
+            "discoveryStep": "category-filter",
+            "art": {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "status": "not-tested",
+              "reason": "no-derived-filter-values"
+            },
+            "nas": {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "status": "not-tested",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "reason": "reference-parameters-not-derived"
+            },
+            "observation": "not-tested"
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "detail",
+            "art": {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "paramsSha256": "4ccb289f469fd350db3db7abce748b36e4d0dc05af2715d5fbaf337be50a3d41",
+              "status": "nonempty",
+              "response": {
+                "bytes": 550,
+                "sha256": "5e405a88918396ee085941a9bee6e4241952fc43c279ecea8595e162b83bbd0e",
+                "semanticSha256": "619b770da019d6bbc3a17d853cb5c55f0eaedc358782de3d5c093fd9d098130c",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4ccb289f469fd350db3db7abce748b36e4d0dc05af2715d5fbaf337be50a3d41",
+              "response": {
+                "bytes": 550,
+                "sha256": "5e405a88918396ee085941a9bee6e4241952fc43c279ecea8595e162b83bbd0e",
+                "semanticSha256": "619b770da019d6bbc3a17d853cb5c55f0eaedc358782de3d5c093fd9d098130c",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2,
+              "logs": {
+                "count": 2,
+                "sha256": "8c0d852c8cf83bb40cdeab9466398a1cf223f22c2e03308cd58daa625613db96",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "4ccb289f469fd350db3db7abce748b36e4d0dc05af2715d5fbaf337be50a3d41",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search",
+            "art": {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "paramsSha256": "a4704f354328fc17f4f61d6c692268618a437e5ec8a3fe650bdbe4d7881b484d",
+              "status": "nonempty",
+              "response": {
+                "bytes": 395,
+                "sha256": "2c588f18e38e807e5064c6dd18eb55ab5060de47ee0385085544642e2f1c86db",
+                "semanticSha256": "92a0d1a37bf9a90f75a2e11228844ae48f41912a4ac5bfa613428b2dc14f4fd9",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "a4704f354328fc17f4f61d6c692268618a437e5ec8a3fe650bdbe4d7881b484d",
+              "response": {
+                "bytes": 395,
+                "sha256": "2c588f18e38e807e5064c6dd18eb55ab5060de47ee0385085544642e2f1c86db",
+                "semanticSha256": "92a0d1a37bf9a90f75a2e11228844ae48f41912a4ac5bfa613428b2dc14f4fd9",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 560,
+              "logs": {
+                "count": 5,
+                "sha256": "599a45b0354df5c60cb933e9359a930fdd9f4547bc2508414708e485de804365",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "a4704f354328fc17f4f61d6c692268618a437e5ec8a3fe650bdbe4d7881b484d",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "searchContent",
+            "discoveryStep": "search-page1",
+            "art": {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "paramsSha256": "fde7fd2de46ef1d4c969e3c2771f6215582051cbac9c97fde3528e32d1dfb5ff",
+              "status": "nonempty",
+              "response": {
+                "bytes": 395,
+                "sha256": "2c588f18e38e807e5064c6dd18eb55ab5060de47ee0385085544642e2f1c86db",
+                "semanticSha256": "92a0d1a37bf9a90f75a2e11228844ae48f41912a4ac5bfa613428b2dc14f4fd9",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "com.github.catvod.crawler.Spider",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": true
+              }
+            },
+            "nas": {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "fde7fd2de46ef1d4c969e3c2771f6215582051cbac9c97fde3528e32d1dfb5ff",
+              "response": {
+                "bytes": 395,
+                "sha256": "2c588f18e38e807e5064c6dd18eb55ab5060de47ee0385085544642e2f1c86db",
+                "semanticSha256": "92a0d1a37bf9a90f75a2e11228844ae48f41912a4ac5bfa613428b2dc14f4fd9",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 448,
+              "logs": {
+                "count": 5,
+                "sha256": "599a45b0354df5c60cb933e9359a930fdd9f4547bc2508414708e485de804365",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "fde7fd2de46ef1d4c969e3c2771f6215582051cbac9c97fde3528e32d1dfb5ff",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "detailContent",
+            "discoveryStep": "search-detail",
+            "art": {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "paramsSha256": "be6d8447ccc77360d1cc53324913727879d9846a58436ba0d40a2eae14625507",
+              "status": "nonempty",
+              "response": {
+                "bytes": 634,
+                "sha256": "e0ef70d73d61607990f00084c953137db4c68d70a2fcd767fc90b37ec1423c6c",
+                "semanticSha256": "c70e57dc20f9b7b5f1e0cbe69aa07914fa7d5428a7a8662def11e21568f9dea6",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "be6d8447ccc77360d1cc53324913727879d9846a58436ba0d40a2eae14625507",
+              "response": {
+                "bytes": 634,
+                "sha256": "e0ef70d73d61607990f00084c953137db4c68d70a2fcd767fc90b37ec1423c6c",
+                "semanticSha256": "c70e57dc20f9b7b5f1e0cbe69aa07914fa7d5428a7a8662def11e21568f9dea6",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2,
+              "logs": {
+                "count": 2,
+                "sha256": "cae075b552da9cc7b19eae2dfd17918c3eae494e072f79401caf9330a2c0ee69",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "be6d8447ccc77360d1cc53324913727879d9846a58436ba0d40a2eae14625507",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          },
+          {
+            "method": "playerContent",
+            "discoveryStep": "player",
+            "art": {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "paramsSha256": "274530d3705e173fea0d76ab25ae86fb184cbef51709554187dc9b55e7fc03fd",
+              "status": "nonempty",
+              "response": {
+                "bytes": 110,
+                "sha256": "8a84278d1c609aef1a3ef3af18de1693deab568507c3368e19ae17cb71355e23",
+                "semanticSha256": "a790ba228bca7d8db6b90f0a6d56582188fd4cb49c07a6e591ab9ae1c1839e05",
+                "fields": 3,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "returnedInputIdSame": false,
+              "parse": 1,
+              "javaMethodProvenance": {
+                "declaringClass": "androidx.base.rr",
+                "baseSpiderClass": "com.github.catvod.crawler.Spider",
+                "inheritedBaseDefault": false,
+                "baseDelegatingOverload": false
+              }
+            },
+            "nas": {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "274530d3705e173fea0d76ab25ae86fb184cbef51709554187dc9b55e7fc03fd",
+              "response": {
+                "bytes": 110,
+                "sha256": "8a84278d1c609aef1a3ef3af18de1693deab568507c3368e19ae17cb71355e23",
+                "semanticSha256": "a790ba228bca7d8db6b90f0a6d56582188fd4cb49c07a6e591ab9ae1c1839e05",
+                "fields": 3,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "parse": 1,
+              "returnedInputIdSame": false,
+              "runtimeGeneration": 1,
+              "elapsedMs": 555,
+              "logs": {
+                "count": 5,
+                "sha256": "0a92ea1216782c3ca4f32c32e20e61a4020b290eba0d5c11b1539fb5b63f017d",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            "paramsEqual": true,
+            "paramsSha256": "274530d3705e173fea0d76ab25ae86fb184cbef51709554187dc9b55e7fc03fd",
+            "semanticEqual": true,
+            "rawEqual": true,
+            "observation": "same-params-same-json"
+          }
+        ]
+      }
+    ]
+  },
+  "replaySummary": {
+    "sources": 3,
+    "exactAttemptedPairs": 28,
+    "artStatuses": {
+      "nonempty": 25,
+      "empty": 3,
+      "not-implemented": 0,
+      "invalid-json": 0,
+      "network": 0,
+      "failed": 0,
+      "timeout": 0,
+      "not-tested": 2
+    },
+    "nasStatuses": {
+      "nonempty": 25,
+      "empty": 3,
+      "not-implemented": 0,
+      "invalid-json": 0,
+      "network": 0,
+      "failed": 0,
+      "timeout": 0,
+      "not-tested": 2
+    },
+    "sameJSON": 18,
+    "liveJSONDifferences": 10,
+    "statusDifferences": 0
+  },
+  "initialAttempt": {
+    "summarySha256": "b1196418689a40f1a3d96763f5bb01171372f05dba3a8c8071318b276105e859",
+    "status": "collector-hash-serialization-and-startup-context-incomplete",
+    "providerFailureClaim": false,
+    "explanation": "First collection rejected the correct source because Node and AOSP slash escaping differed. The initial direct-loader process also lazily initialized original ApiConfig during first business HTTP, clearing original JS instances. Original results remain unchanged; corrected execution is a separate fresh run.",
+    "evidence": [
+      {
+        "sourceIndex": 0,
+        "instrumentSha256": "5211705be956bf12f277ab0b3bd797622553d5dcf51b77b96c44244f21976b90",
+        "logcatSha256": "d6f92204af3fdad94d8e5b29bdccaf41abdd2086528ba5fc53542cf0438543eb",
+        "privateResultVerified": false,
+        "providerFailureClaim": false
+      },
+      {
+        "sourceIndex": 1,
+        "instrumentSha256": "bd89897fc223e1a7ac08a9a64b36bed016ccc5b0fea168da158f05d6275808b7",
+        "logcatSha256": "6808ee70f69fa18bf6ecb52c1f5827488b43dc80592e17cc98a49cd6e210eeb7",
+        "privateResultVerified": false,
+        "providerFailureClaim": false
+      },
+      {
+        "sourceIndex": 2,
+        "instrumentSha256": "e1b46d5c63e316842fa7ce0c5012a64af6aecc6c102e0bed3820d3c5fe91e641",
+        "logcatSha256": "f6424cfb3eb1ad782c815a0957fb499e13e465449cafea9e158617cc2a05009f",
+        "privateResultVerified": false,
+        "providerFailureClaim": false
+      }
+    ]
+  },
+  "reportDependencies": [
+    {
+      "file": "scripts/compat/js-source-report.mjs",
+      "sha256": "978bd2e9d49822ca27ddccc10afcfaa5839d5ad0c6e8e40b9a6ffb2ecbea1480"
+    },
+    {
+      "file": "scripts/container/js-source-probe.mjs",
+      "sha256": "3893582625b881471d45d54bd7d834728459b212f15f38e52d649796e6fd4ae0"
+    },
+    {
+      "file": "scripts/android/run-js-oracle.mjs",
+      "sha256": "b6f51e36872b2cbca36edede5b5fdba4d4d43f2d21e1e17f039fc04f78665722"
+    }
+  ],
+  "reporterSha256": "20851500a3b42bcdae867a2ff5f79a17f2fce14266fae567a21f98f4d7a2d952"
+}

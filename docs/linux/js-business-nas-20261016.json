@@ -1,0 +1,2741 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-15T22:53:06.410Z",
+  "preview": false,
+  "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+  "runnerSha256": "3893582625b881471d45d54bd7d834728459b212f15f38e52d649796e6fd4ae0",
+  "runPlanSha256": "04a7307ad4d7c513ffef01fca88189151dbfd7039179377c8c44d08d8231564d",
+  "inputFreezeSha256": "e664e049b08965a2d4ea6fdcc54265aa94eb9dbd58b1280d1aeda0c56ae300e1",
+  "capturedInputSetSha256": "81bcbfea0d063d818ec8307d4aa2a02bf2fdc1f50ba6052932cea1423c1a5235",
+  "originalInputPlanSha256": "c1d7d0966eacf2bae166fdf3efa17bd0c67161fbe35aeb380fca8884f9453858",
+  "scope": "Selected real JS sources and finite observed arguments; no JAR execution, Android parity or all-script compatibility claim",
+  "playbackScope": "playerContent return values only. A nonempty returned URL may be the unchanged episode input or a page requiring further parsing; it does not establish resolved media or playback. parse and equality with the input ID are reported without exposing URLs. Media is never downloaded or played.",
+  "continuationScope": "After timeout, later derivable methods run in a new source runtime once; mutable state from the previous instance is not restored.",
+  "logScope": "Anchored host diagnostic marker observations in captured log snapshots. Repeated or colliding strings may occur; counts are not exact HTTP request counts, a packet trace, or proof against provider-generated log text.",
+  "inputScope": "Source key/API/ext unchanged; registered modules frozen in both tracks. Production rule URL and business HTTP live; frozen track uses an explicit test-only host overlay for captured code/rule GETs and leaves business HTTP live.",
+  "sourcePins": [
+    {
+      "file": "scripts/after-pack.mjs",
+      "sha256": "14b8fd596bc69e81cce10f257e3f706c54d48ced42eabdf665c647ee698e37a2"
+    },
+    {
+      "file": "scripts/android/AndroidFixedMethodManifest.xml",
+      "sha256": "2175a7b0127d84e1910d9dcd03e710b538e2e7db4a86c62393d6ec6bd92030b1"
+    },
+    {
+      "file": "scripts/android/AndroidManifest.xml",
+      "sha256": "f699b673790160082db56873ba442c90a3f92dbab21661f6b3076a8bf0fdde87"
+    },
+    {
+      "file": "scripts/android/AndroidParserManifest.xml",
+      "sha256": "36144c7e1c74532a921e8f8c3b5632e99ec66bfa35d48c60b0bd94f1231bfdeb"
+    },
+    {
+      "file": "scripts/android/FixedMethodInstrumentation.java",
+      "sha256": "4a47dcd4b6b2981671622198dc94f30893345acdf6a16ee3cfb9e065e15a392c"
+    },
+    {
+      "file": "scripts/android/JsOracleInstrumentation.java",
+      "sha256": "491eed470b39964290d03e910721c6051e3bebb440bbfc7158f20ad10ef534bc"
+    },
+    {
+      "file": "scripts/android/OracleInstrumentation.java",
+      "sha256": "d3f09e741463f7ae3472d545f8f62c4103026a89c20a8cb2ee9fe7135a067185"
+    },
+    {
+      "file": "scripts/android/ParserInstrumentation.java",
+      "sha256": "08a0467c70cffb175bccbf54455ef9fbc5ca16462a45abcdaa5efb91d0f43ba2"
+    },
+    {
+      "file": "scripts/android/README.md",
+      "sha256": "505fb37ef3812c489d8d8047283b0a1184f7ca7335524bbf49e4ceeb0140b8c9"
+    },
+    {
+      "file": "scripts/android/apk-symbol-map.mjs",
+      "sha256": "bce358b3ebe25b78656f8b3f3a0d70a8094b0176a44b815aadf8b92bfece00ef"
+    },
+    {
+      "file": "scripts/android/build-fixed-method-probe.mjs",
+      "sha256": "64e7d2ea2743e6d4c65f526e77eadf1730ee2bb9eb0a49887d50b52ee460cacf"
+    },
+    {
+      "file": "scripts/android/build-oracle.mjs",
+      "sha256": "a5baed6eae63b4e50daa6bf03d80cd863a96cc0e8718ac89995b7827ba323c80"
+    },
+    {
+      "file": "scripts/android/build-parser-oracle.mjs",
+      "sha256": "25f642d79f3f773ac3f34887ecd60934a9bdaefe1feac4dae85e5978cfd54bac"
+    },
+    {
+      "file": "scripts/android/compare-art-results.mjs",
+      "sha256": "d51cc142f88097a8f596932f845f527afca88fe9d6d81a726c653c6fdea982e6"
+    },
+    {
+      "file": "scripts/android/compare-parser-results.mjs",
+      "sha256": "dd787ff8724d3a615122dfb3acfca4f8fbbdcf1e3faf6797df33c9fd5ccd39b5"
+    },
+    {
+      "file": "scripts/android/js-apk-symbol-map.mjs",
+      "sha256": "998b0142b89a020893eab19ea8b7f3b0f2996bde874b2916d7e8720089dd3f65"
+    },
+    {
+      "file": "scripts/android/loader-context.mjs",
+      "sha256": "2375f711f8781258ee1d38fb8892e3345e40d6844779ed949f4bea6db2224cb4"
+    },
+    {
+      "file": "scripts/android/prepare-fixtures.mjs",
+      "sha256": "c956bd533876c0d23538ed14a9fc975c51ea1856b6bb8caa3e1868f2bc146c4a"
+    },
+    {
+      "file": "scripts/android/prepare-parser-fixtures.mjs",
+      "sha256": "bf31c2838e03b25a3e54c0a7699074bf3240e9e55231d8e430e98abbdf399bdc"
+    },
+    {
+      "file": "scripts/android/prepare-role-fixtures.mjs",
+      "sha256": "4aa2f868c93914ffde2268d777ecbcefbcf43a2bd571e90101d31fd0058514f5"
+    },
+    {
+      "file": "scripts/android/replay-nas.mjs",
+      "sha256": "ebd41d5807c6c73465b7fdb3da314ee3a646e176536cc201a87060a856d457e6"
+    },
+    {
+      "file": "scripts/android/replay-parser-nas.mjs",
+      "sha256": "49051ab078eedb2f61b6dc865bf44ef5550b65f0536c5ea1924bd5a2304d3a89"
+    },
+    {
+      "file": "scripts/android/run-fixed-method-probe.mjs",
+      "sha256": "1bc02d1715605ca579210d51f05436e94f745af614e08cab9db48c224f70d3db"
+    },
+    {
+      "file": "scripts/android/run-oracle.mjs",
+      "sha256": "ad6189f44014dfc6d239bd1927e06d9236228b1a9ce5105de8c81ede832ed67c"
+    },
+    {
+      "file": "scripts/android/serve-fixtures.mjs",
+      "sha256": "7b6ca912b68d9b9e357a36a02d458b6e8db21200bfbf093ddccc08084156927b"
+    },
+    {
+      "file": "scripts/build-main.mjs",
+      "sha256": "1ba0941f1f30ce29eaa8ca9aa28b7606dffba47c15803c12f7fb098ab2ea6300"
+    },
+    {
+      "file": "scripts/build-release.mjs",
+      "sha256": "8137db2979dfaafc6170fa36059c4bb69b2dbf902cf1defa19cb7b123ab52dd3"
+    },
+    {
+      "file": "scripts/compat/artifact-inspect.mjs",
+      "sha256": "dec4e231964ad847cfff496b5a063e2cb6341cfd5b5db93cdc44c311010e4476"
+    },
+    {
+      "file": "scripts/compat/artifact-routes-oracle.mjs",
+      "sha256": "65109bd29332b683c32ea2b1d04689a59dcbb7ab905bcadd485d95f4049a2b73"
+    },
+    {
+      "file": "scripts/compat/backend-report.mjs",
+      "sha256": "ee0101caca7c68940753fe2ced28e034154dbaac06385a5f9ab7229d9a911e79"
+    },
+    {
+      "file": "scripts/compat/build-js-fixture-host.mjs",
+      "sha256": "9fe6b5d39f31d158f30ca99b223b5376c3c5f43e2be29f987f069cfa8eb84faa"
+    },
+    {
+      "file": "scripts/compat/capture-catalog.mjs",
+      "sha256": "161e0b15abdd4e51fc0f92d7d004843747a98c8d1fb6cb85fd1a0d238375c83d"
+    },
+    {
+      "file": "scripts/compat/capture-full.mjs",
+      "sha256": "3dcf0d09bf88261636adacf34215d0ee6635a314b86f101b1dbc6f8fd0ab7ba8"
+    },
+    {
+      "file": "scripts/compat/capture-spider.mjs",
+      "sha256": "8463b7fdd1126a167238e11f2f1724ae59fc08407f6a24f0d366323278cf236e"
+    },
+    {
+      "file": "scripts/compat/capture-state.mjs",
+      "sha256": "c14792b86c681ed0885a44808c129b376298f6749b3c1285156de5b9603e163c"
+    },
+    {
+      "file": "scripts/compat/capture-subscription.mjs",
+      "sha256": "17d899f3163b58c93bb4b5c359b7bedd573621eb7ec17117af4936edc9cda28b"
+    },
+    {
+      "file": "scripts/compat/capture-vod.mjs",
+      "sha256": "9e2045d087720634adfff680c158e8b574f0f0dd324838ced90c37a6ed36ed46"
+    },
+    {
+      "file": "scripts/compat/capture.mjs",
+      "sha256": "4eb8f0a5a7b6c2460a0609a13ff8a1285f6e263e3f4d165d2a9359281fa1f22d"
+    },
+    {
+      "file": "scripts/compat/catalog-report.mjs",
+      "sha256": "31fad9866f158c74befce6310f7ba9bcb371bbbf5a5c4911b9b508f5dcc11853"
+    },
+    {
+      "file": "scripts/compat/compare-jar-matrix.mjs",
+      "sha256": "faf5c68608e5fbb5953a6c6b564f3e5d1a6ce8c4a33183ab530ddf44ac44ef60"
+    },
+    {
+      "file": "scripts/compat/compare.mjs",
+      "sha256": "13b704ecac59595b45727e9994399cdd8561d93ab8d658318db077722326bf30"
+    },
+    {
+      "file": "scripts/compat/dex-fixtures.mjs",
+      "sha256": "ae7b2e73fa996a481b673a3732c2f2c3879dae072079d789f563dc5517aa56ea"
+    },
+    {
+      "file": "scripts/compat/dex-report.mjs",
+      "sha256": "2582de6fd3807a2bf19f1139b15f0f2bef038bc17d7f8f0701e7ea9ba132b3ef"
+    },
+    {
+      "file": "scripts/compat/freeze-catalog.mjs",
+      "sha256": "8f6c35f15dc17ab3cb060e2a11256318c78e33b1cabe41931a3260d38367394b"
+    },
+    {
+      "file": "scripts/compat/full-cases.mjs",
+      "sha256": "997e2f9114c719d6f9bd63c169d847fc0cf8ea780e5c9eda8e797a7fbfaeb8de"
+    },
+    {
+      "file": "scripts/compat/full-config-adapters.java.txt",
+      "sha256": "0535e7fc3b5b9b54a3899f6a58ba949d51e8b471d8532c8a64fc9f92706b8998"
+    },
+    {
+      "file": "scripts/compat/full-config-reference.mjs",
+      "sha256": "fa2a640986026230c60e61d9cc802b37eb59db66606cd77e7544ca2bba1fd9ae"
+    },
+    {
+      "file": "scripts/compat/full-oracle.mjs",
+      "sha256": "1d6129cffecbb51f32cb889bb464559a6eb3f5b8f15fed019b7c4e42719a98b6"
+    },
+    {
+      "file": "scripts/compat/inspect-apk.mjs",
+      "sha256": "8a3b4094dd8947eba8c54c64d3a069cf6f497625815ac47a65fd1df7d94ebadb"
+    },
+    {
+      "file": "scripts/compat/inspect.mjs",
+      "sha256": "126c1b3b0992d27a7e87927012a998078bc927d42140a107e9028ce2a6f2068e"
+    },
+    {
+      "file": "scripts/compat/inventory-working-spiders.mjs",
+      "sha256": "dace5b8899bd408e84308478a652c26241ad3377eb4f077bb0718853093aaa89"
+    },
+    {
+      "file": "scripts/compat/jar-adapters.java.txt",
+      "sha256": "0ca1182b2b5e10ec579c8fdeff69fe02f378ac99378d9803bd78431188c5bcad"
+    },
+    {
+      "file": "scripts/compat/jar-policy-cases.mjs",
+      "sha256": "b57cd74fabc3b8aa015e7c7c7cb0b613448de930312a584af460403549f1e88f"
+    },
+    {
+      "file": "scripts/compat/jar-policy-oracle.mjs",
+      "sha256": "2f40df3b93b982819f3ff8726b8c13fa9f64ce0c20896ccd4ac737c9ea89f576"
+    },
+    {
+      "file": "scripts/compat/jar-reference.mjs",
+      "sha256": "13349a9f8d71cd877bde8bee2ba02d6b36e6664a0be21969163497bde597f8f5"
+    },
+    {
+      "file": "scripts/compat/js-adapters.java.txt",
+      "sha256": "667bcc136828bde0bc2c5a025d8dd3776ad0eb67c9f9d44e100cf89290385d05"
+    },
+    {
+      "file": "scripts/compat/js-fixture-host/tvbox/runtime/HostServices.java",
+      "sha256": "d3e5f7037043f7a2ba53bc1c3c3b683a162e82a99a18132f811963e2f70841e2"
+    },
+    {
+      "file": "scripts/compat/js-reference.mjs",
+      "sha256": "07ce465940b155e8ffab7e1647a089d607693100263170eb73e0c9c14dbbd2b4"
+    },
+    {
+      "file": "scripts/compat/load-runner.mjs",
+      "sha256": "32c15a26066cc25bf0d115d78bc6d51f06a4dc18b30bcdc574e459277753ff48"
+    },
+    {
+      "file": "scripts/compat/module-adapters.java.txt",
+      "sha256": "00d53d75669745330699211b760f01b023ac711880078a682c1f4fa06df9b9d2"
+    },
+    {
+      "file": "scripts/compat/module-reference.mjs",
+      "sha256": "2561fccbcc3e506da30e354b778cc870b589c400a75d61f1b26d2071a90f2b8a"
+    },
+    {
+      "file": "scripts/compat/native-source-probe.mjs",
+      "sha256": "9e45e3406eabd6fb2bbd357762ec19f27ae90a1eca47d482668db7a318cb23ad"
+    },
+    {
+      "file": "scripts/compat/oracle.mjs",
+      "sha256": "a3fbec0968b0bb05918315a687a342bda9a9424639a3670b056458d638fdf4c0"
+    },
+    {
+      "file": "scripts/compat/platform-reference.mjs",
+      "sha256": "d41dcd99e7b9dc519965365553ee98a432ac2d6f2abbea49382219b20fd1e9fb"
+    },
+    {
+      "file": "scripts/compat/prepare-baseline-run.mjs",
+      "sha256": "15e632e171be169718a0368ce3884d075bee681fe3cca260690771a3f2ff4e67"
+    },
+    {
+      "file": "scripts/compat/prepare-js-source-inputs.mjs",
+      "sha256": "256facbf737bf1b1f929e302ba31bea8ada206301ab812682e66ba9fe55282b7"
+    },
+    {
+      "file": "scripts/compat/prepare-working-followups.mjs",
+      "sha256": "1cc42ca1eab2ea2a01e8403405547279e611fe1d285df8aedd85f9fb25f29d29"
+    },
+    {
+      "file": "scripts/compat/prepare-working-source-plan.mjs",
+      "sha256": "b92bb0ae984b066e8aca666eeb59d6623876e2d822ca64b150298bf0aab9cb48"
+    },
+    {
+      "file": "scripts/compat/prepare-working-standalone-controls.mjs",
+      "sha256": "8bff849763d9b28be1f4ea43c77186e51090cbd785cc8dc34e10c31551672922"
+    },
+    {
+      "file": "scripts/compat/protected-init-static.mjs",
+      "sha256": "fe6234edf55dbbdf0d5c76de347a449e4613a6332089bc9f155abcaa1c4689ee"
+    },
+    {
+      "file": "scripts/compat/real-source-probe.mjs",
+      "sha256": "1a48b729b125e9940f3af008849f09ad3990a173aaa52d20b37f963fa53c0d1e"
+    },
+    {
+      "file": "scripts/compat/reference.mjs",
+      "sha256": "0c850852a924bb8c9f0239797ed34f4ab759dba8e936af4058a0683803a099c6"
+    },
+    {
+      "file": "scripts/compat/report.mjs",
+      "sha256": "d3616c586e0a98c2eca359e8589813151370875d40c65c206e4f1cc589654c2d"
+    },
+    {
+      "file": "scripts/compat/round-baseline-report.mjs",
+      "sha256": "83b2e614a0662ae773575dba6666d0bc3c16b1fa29078096a682b6339618577e"
+    },
+    {
+      "file": "scripts/compat/spider-cases.mjs",
+      "sha256": "9240c6a2f5222c8b54bf7f1135414935c4ec8c98f34d6d32cfae00b151f64a81"
+    },
+    {
+      "file": "scripts/compat/spider-fixtures.mjs",
+      "sha256": "db7a3d8fe376bdec3e9b517eea1cece217c2dc1b97d679e701f97caa6d323c4c"
+    },
+    {
+      "file": "scripts/compat/spider-oracle.mjs",
+      "sha256": "b7cd285d387a2f79c238c5597afb00547b065504fd0521b7941d53e22f80cb22"
+    },
+    {
+      "file": "scripts/compat/spider-report.mjs",
+      "sha256": "73801de70987450c450fdcf6dae5b8411d8f698fa2463ea6ad59dea7e3137ac4"
+    },
+    {
+      "file": "scripts/compat/spider-runner.mjs",
+      "sha256": "6ea38c4fc53cae91c669c85e21762614afdc2a526a80e6cc7a0bcd662e7e02e5"
+    },
+    {
+      "file": "scripts/compat/state-reference.mjs",
+      "sha256": "0d5fcd57070bdda51de507b3d8f52b9ed349848b6d14bfbb2eb6b60a4f6d05f7"
+    },
+    {
+      "file": "scripts/compat/subscription-probe.mjs",
+      "sha256": "66a5cd2ac8d5d33568ef6169cb508f06532fc147d784e15615be7bb129e034dd"
+    },
+    {
+      "file": "scripts/compat/typescript-loader.mjs",
+      "sha256": "12711a819ae222fc6c91178d26e80448ffdefb3276d102bcaee7e4e7b3ed6d04"
+    },
+    {
+      "file": "scripts/compat/verify-all.mjs",
+      "sha256": "fb2a89e754c76a1581596653bed36969bcaa8eed7a7cd4371ff08be1df6e0786"
+    },
+    {
+      "file": "scripts/compat/vod-reference.mjs",
+      "sha256": "a0557a9b2212f3b4925c41538e19461d9ace8d5cc0871406bcd66f52b4f1f055"
+    },
+    {
+      "file": "scripts/compat/working-source-report.mjs",
+      "sha256": "324d5a6ab0284393a6c7679633aceb5cfabc45250193961fbca158c66015acff"
+    },
+    {
+      "file": "scripts/compat/working-supplemental-report.mjs",
+      "sha256": "8836d9183a43a32a2aed4f9af38851de645af57b8eba8e8b1fb29e4db25c1d8e"
+    },
+    {
+      "file": "scripts/container/artifact-routes-probe.mjs",
+      "sha256": "dc99ece2f3fc2945c9b63dd28308654013bd8c29797eec5cd2eac74cf832929f"
+    },
+    {
+      "file": "scripts/container/build.mjs",
+      "sha256": "4faf3ad4bcd4e11b52ed0bd63276aaacdc30492f9973bcbabb858df7c1c92d35"
+    },
+    {
+      "file": "scripts/container/doctor.mjs",
+      "sha256": "fdb7decce94a4fa86de745bfaee5249d450b954b227d15eb7917fa1799097858"
+    },
+    {
+      "file": "scripts/container/fetch-tools.mjs",
+      "sha256": "e952625bdbb4555b18ba2c51a2a6633f96c5f4314760f70e3b1e3351d4f61d4c"
+    },
+    {
+      "file": "scripts/container/jar-failure-diagnostics.mjs",
+      "sha256": "50438522251c5194594eee9712418f76fdcc41f990fce4cdbc137373c4836b07"
+    },
+    {
+      "file": "scripts/container/jar-matrix-probe.mjs",
+      "sha256": "df53c8f20d0c33e2d6ccfbcee1201440de40c89d196b288854ff27aaf4cc98af"
+    },
+    {
+      "file": "scripts/container/jar-repair-probe.mjs",
+      "sha256": "c58b542e9bf1b0c0e2d6ce1966be1b8a5669b38c715d50d5dc302a584c9f0356"
+    },
+    {
+      "file": "scripts/container/js-source-probe.mjs",
+      "sha256": "3893582625b881471d45d54bd7d834728459b212f15f38e52d649796e6fd4ae0"
+    },
+    {
+      "file": "scripts/container/verify.sh",
+      "sha256": "9c5209dd388694cc1b0293cd5dab6a434704270b71f56fa16d50baa9be17d048"
+    },
+    {
+      "file": "scripts/container/working-source-probe.mjs",
+      "sha256": "606bd2c2697dd17f22ef7e127a6085b4e9e9378a0093ae34d27e95c8943d3814"
+    },
+    {
+      "file": "scripts/encrypt-tmdb.mjs",
+      "sha256": "61fb738298ebe2ce5ffb2364b232ce1946c5f02bd5f422494cc97d7ee4741c03"
+    },
+    {
+      "file": "scripts/make-incremental.mjs",
+      "sha256": "18ecd5b61cc536416465b5d227aedca2bebe032ce128b9f75ca78dc5f4c85e01"
+    },
+    {
+      "file": "scripts/pack-0.100.0.ps1",
+      "sha256": "f6262e8336404d301f6d3a6eb1d2987da69474de9c0edb97b52b8340a9b0b569"
+    },
+    {
+      "file": "scripts/pack-1.0.0.ps1",
+      "sha256": "e21236b39e6e9650941db24e3509ce4223a141091354d5ac1cebe9924e3d588e"
+    },
+    {
+      "file": "scripts/pack-1.1.0.ps1",
+      "sha256": "5a9eec028d84fefbf70f1ea93049e86fe8b4f6bd36c5f37fc3e13aebc9afcb41"
+    },
+    {
+      "file": "scripts/pack-1.11.0.ps1",
+      "sha256": "0d43ffa78429438a52fb363758f750f5e19626a9c01b9afa5995efc700bf06e3"
+    },
+    {
+      "file": "scripts/pack-1.12.0.ps1",
+      "sha256": "4537517fb708d85ef451bc019e4ec7bc7f9012445a0a178135592550e4128c70"
+    },
+    {
+      "file": "scripts/pack-1.13.0.ps1",
+      "sha256": "3b67edc5149c21394bc83e69024f0ccd69b0fc6c9adb21a33e81e234f872baa3"
+    },
+    {
+      "file": "scripts/sanitize-sqlite-jar.d.mts",
+      "sha256": "d256faaf3702199fe20d382388abcf274cb066e9665f7a50d98b253d17de3967"
+    },
+    {
+      "file": "scripts/sanitize-sqlite-jar.mjs",
+      "sha256": "23a2baf4224f7d86146bed4dae1bf39e31199512a00d637110fd18fde6c9fc40"
+    },
+    {
+      "file": "scripts/upload-release.mjs",
+      "sha256": "d1216a2e6ba18a2e7c57aa69641bd2f88db269815bf8146ad98eecd62a927d67"
+    }
+  ],
+  "tracks": [
+    {
+      "name": "production",
+      "planSha256": "ce99ce870a0130522d4f315cb2ef651d887e967d78b188d98d31c0245958d78b",
+      "executionInputSetSha256": "e6951cced0a5f894d5913dadbbf5b84bf0f2d16dbef189d20ba87491dd23d48a",
+      "usesResearchHostBinding": false,
+      "sources": [
+        {
+          "sourceIndex": 0,
+          "name": "虎牙js",
+          "sourceIdentitySha256": "59e729b154b61a83a6d648eae759e47a7488fd297e36d36935bfb1c5455f47a7",
+          "sourceKeySha256": "3ba174b56f3f1e7ec6ddee4f6bf81ef911cfd618a74ab8b9683bd715314a6153",
+          "apiSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+          "extSha256": "443a722da52fef9490aa0d757c97f60c90c754cfeeb679165f78afbf270cb915",
+          "present": true,
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "response": {
+                "bytes": 18206,
+                "sha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+                "semanticSha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+                "fields": 2,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 4,
+                "list": null,
+                "filterGroups": 4,
+                "classSha256": "34be80bcd5de7f19b916c57e334a59ca97f1c8e78601ca10672ba72107abbec2",
+                "filtersSha256": "b3eb1ed037e4f3056e664e66be5ddc281e5978fde0f8e720e64f0ee9a1a40e96"
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2677,
+              "logs": {
+                "count": 2,
+                "sha256": "faf834187a8b697d1cb86ff34c9d6008de1db7604f0fcd2a1109a2ab2d88ad9f",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "response": {
+                "bytes": 1593,
+                "sha256": "014c51d021a012761876dbb731f31ba369a88d3ce1c18c90af20d0de59f64ac6",
+                "semanticSha256": "e5161df8c2890da8628597b1ed6d6b19421793cb96aea1ec9b3ec8ed08812e45",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 6,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 297,
+              "logs": {
+                "count": 7,
+                "sha256": "4b8cae8b8eb6ac560dd78bedd846be732e7428c0623a0a9fe44a729d753cadc1",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1b25f6d5ac922040771106dd6d7c88d38a84b5293140f7825f44fe9ccb2f3bcc",
+              "response": {
+                "bytes": 42279,
+                "sha256": "175f32dc3fc6d5ae90e27b67406a72fda9c85f1995973628a489955dde590b75",
+                "semanticSha256": "3f5d24177ab3ef7b34c0a194ae5dc21c9f6449efb2c67b6ec34170394e15e700",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 155,
+              "logs": {
+                "count": 5,
+                "sha256": "8fdcd015c8062c894b3687cb82a950b2a83894d3b4fae2a5576d6d0fab0a2fd4",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "f63c680ce56777f2dab18318e378646b29a5f6ca09c3a263ed6ad356b680deee",
+              "response": {
+                "bytes": 39833,
+                "sha256": "032a9b61df2990d79c3dc641efdb205a002d7701ca2922ff829c2d0061173092",
+                "semanticSha256": "b337715f9387637aa477a2cdf7ea4824b1f2e8d79539eebc448880590c298ff3",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 200,
+              "logs": {
+                "count": 5,
+                "sha256": "71ea64d37c8f0e95a20a17f7dcff53f7608267dacc8c29e1b9c5b6b328ddd074",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "172df05e9629113178bb29266a6bab7b8099a85d662efa29bc5dde607b7958f5",
+              "response": {
+                "bytes": 34725,
+                "sha256": "72b462ed8c329ec5cf6cd4301d12128eb23c82964cbff3467e38a0c49ca2c965",
+                "semanticSha256": "6c6cd75c5113d97b1c4f2068b8d4d10de39530d8905e4baa3a4a8c012441daba",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 238,
+              "logs": {
+                "count": 5,
+                "sha256": "e4dd54af15516bcc7360a365798bb1e20722336e879b3088c312425cae776cca",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "fcd218d44930379d67f81d9710d7fac985e877e44e4833ae5b506fd1e39d11c7",
+              "response": {
+                "bytes": 372,
+                "sha256": "a98d41876b5994a3a58ea93fd8c24b0979b913bb40133983703be74a928770dc",
+                "semanticSha256": "23f708d256853ece36a2619ce1ebf089612e54054cf79bffcaae9f6f676276ea",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2,
+              "logs": {
+                "count": 2,
+                "sha256": "35b01d3872f900ded903a3af7fa2aed2774f9df510ff1c266e61ef055d864181",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c0e03d4350d3eb3fca41e65776cf12246043d37c0188315d75f97f86e6259b6",
+              "response": {
+                "bytes": 429,
+                "sha256": "d69a44bebe0abfe7ce4c2fa08dda18dce8336b40f40fa70af30a3637601e2a60",
+                "semanticSha256": "434d64f626771b69511c26aa3499815f37f5838945fab2fc8cb5aa8e07d48b16",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 1589,
+              "logs": {
+                "count": 5,
+                "sha256": "3930c0ea9245aa3f0d386de999825e76f54ab39c5e9a6132697349a530f42898",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "676587d15accfc5b6ee25b6b168985c9f2f3514378069960e37381663ce4cfd2",
+              "response": {
+                "bytes": 429,
+                "sha256": "bf408bcc8e9dc57e24d49acb83f07d74215bbe270d65da4ade70c1f5c8aa47c2",
+                "semanticSha256": "cbf26b03bde7e3647b5d90dcb993bd136763c0576097f3f7db793d1e8e327a02",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 675,
+              "logs": {
+                "count": 5,
+                "sha256": "f970e01d28771d56765889baa17e9ccb8883f1debb99f2a85049df66c627dba7",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "3871f0e82d3084146336d980ca8e4a901c398a74d24e054d44d8851842d1ed04",
+              "response": {
+                "bytes": 634,
+                "sha256": "b8cedd7a7dbbe473d96049678db4079a663b49fed3d39a0db3866f6e6a60518a",
+                "semanticSha256": "5c108bc052d0fd7b9f482e3be262cbfc349b0163025ce82859321c0e1087c7e9",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 3,
+              "logs": {
+                "count": 2,
+                "sha256": "49e72681c0d39b940d1a4ec963b19e21dc96af1849d9d35fa289aad1f3687d1b",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "05caa4fa04ce2f8184637a2998c2dcbcfe4d5f67b4b35b16606abbe0c164fd70",
+              "response": {
+                "bytes": 76,
+                "sha256": "888d6df828327590a190be568f27edf4eabd99a3ec943a016367de78359bb21f",
+                "semanticSha256": "621783e918f492c47958cdfc5aed97b60e4074335e139be24ec808abc181a839",
+                "fields": 4,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "parse": 1,
+              "returnedInputIdSame": true,
+              "runtimeGeneration": 1,
+              "elapsedMs": 6,
+              "logs": {
+                "count": 3,
+                "sha256": "d93ae3e535a8904dd6f985083ab2ea10d544a1dca6f060e08af700e28eaf62c9",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            }
+          ],
+          "runtimes": [
+            {
+              "generation": 1,
+              "reason": "initial",
+              "initReady": true,
+              "spiderClass": "com.github.catvod.crawler.js.JsSpider",
+              "initLogs": {
+                "count": 17,
+                "sha256": "2a6a92a52403bb4912a8be584d6cc94621fc99e59679e0744d83b6168e09241c",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              },
+              "cleanup": {
+                "closed": true,
+                "workerExited": true,
+                "temporaryDataRemoved": true
+              }
+            }
+          ],
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "exited": true,
+            "oomKilled": false,
+            "errorPresent": false,
+            "id": "856540b882d941fd04473a4ae50a8e66f28b3bcc1665bbbbbb3f96b4cf942bf2"
+          },
+          "privateResultSha256": "98ee7f1c0e31cbdfcb4ba07282ca18b2054a371440561d618b8c7208bb2d8609"
+        },
+        {
+          "sourceIndex": 1,
+          "name": "斗鱼js",
+          "sourceIdentitySha256": "117a645b2f7c101b9d0c1a3e6bfbf9d23a403a5c8bedd0a454e7404ec4b04d9a",
+          "sourceKeySha256": "26bef2f6655f13e355bceeb0be6476cde27840056b31ae62fffc59babdf538b9",
+          "apiSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+          "extSha256": "b8f74fc65355c4e1664e127554dc79aa59f5bed5c2dc4de22fa2f79ff638c008",
+          "present": true,
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "response": {
+                "bytes": 33754,
+                "sha256": "a17f96c8839e9eff0c9ce9a2578f2a9d90651de843d473594698e972b136fc68",
+                "semanticSha256": "6c4f498ccdcf3b49c2900e550b2d35cf7fb3b407b1c2fb6390029533c3a51826",
+                "fields": 2,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 9,
+                "list": null,
+                "filterGroups": 7,
+                "classSha256": "a85bc3d7b39aa6067fee5e8af71bc941b0a32ecc584179db4fa077c7eb4fc600",
+                "filtersSha256": "67c9cb6e71f4c16ce6736cfb1e016f534df1aae38321d8d57930d859b670c7d1"
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2695,
+              "logs": {
+                "count": 2,
+                "sha256": "e62e5602454ce3d11d9b1fb4e74178c7d2205cde8dfb6d3c2a73d43dd55b7b4c",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "response": {
+                "bytes": 9603,
+                "sha256": "063a27faef5f1045e68a19b60a4c690e813a22fe4f572991382353f19ead6f96",
+                "semanticSha256": "a03e9f89082806daef1046701f9d4e466c1e7a4f379c3bcd2e7b3f4431e7dda0",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 44,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 301,
+              "logs": {
+                "count": 7,
+                "sha256": "b694f04680114caa8e096bd4e99b8268f2499f553c792b04311651f03894cd52",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "6e7049d95218ae7f0f3919ec72ccb5aae2f32aa9e303945d4bd2044e819b120d",
+              "response": {
+                "bytes": 1767,
+                "sha256": "81d382ee9f8e285739d437f78fd39c79be0e0767832e4af276ce5f4a2e1524a0",
+                "semanticSha256": "05ee8e20ebdf8191f71b05bf44406b2dc32b9a0ba8fbccace6d1754855762e12",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 94,
+              "logs": {
+                "count": 5,
+                "sha256": "2a217f4d3cfae8f8280c06486fdd40050bc66cbb786e7323d2df0ce9e87c1b58",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "ac161d59d13a077616e2c50eb7b173e4ae10e22322fdb4e1b94f00dd9b12616d",
+              "response": {
+                "bytes": 1695,
+                "sha256": "52a68e62f6eca1abe9e0327f725c284dd064db3da9bb2f77444b4d04dd28457a",
+                "semanticSha256": "b01b2181fff33e99403e1b617c676a4e3bb1104ff50e80dd9f50ada3423f5682",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 93,
+              "logs": {
+                "count": 5,
+                "sha256": "da38c50242bba93e6f797730e0cf1e6d9ebad789d5b83602bb1790d7c7fd15cd",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "094ea3006a161678070e08d66f64176e5c9ac4e1f37c70ce79ab1fb3afe5ee12",
+              "response": {
+                "bytes": 1789,
+                "sha256": "1d1a719b7d1eaa3034a88d5d84f074a9801c1fe296a2e6aa66dbabb35648e4c3",
+                "semanticSha256": "a1afc2750f099c507951a76d678e994befe62a13ae0999eb774038fc2202bc3d",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 95,
+              "logs": {
+                "count": 5,
+                "sha256": "22cbd66cc1cdd928acd15544ea8321c5396413273ecbf6a146a9e8f91a4df514",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "615308753defa11ad7a759a15b7db4a072f09a7c38625654c23b9ea29ffe04b6",
+              "response": {
+                "bytes": 476,
+                "sha256": "3e49b0d128b407a09baefa4d726d6ec376af29db92cef5641f9157d2ca19072e",
+                "semanticSha256": "3aedfe4cc22de82a7d893a352a1723d8ce7c67c2422f3352a02df77aae23e4b9",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 1,
+              "logs": {
+                "count": 2,
+                "sha256": "8b2625bb37ce53d3ae97de81e5acd3151d53beff8de74c84fe94125527d00ada",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "8dde9e8616434a2d5bc7d78dc6cde36fcb86e36e55457ac76933afb7a3ff5fed",
+              "response": {
+                "bytes": 4263,
+                "sha256": "4b3b2abf86eee7e9044b117e804ecf56d9300726e86a7df1e0adddb038af2269",
+                "semanticSha256": "d19fc9dd85592516699170c7c70f405ed994b4d3648c2fb31ed95d64addcd261",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 20,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 189,
+              "logs": {
+                "count": 3,
+                "sha256": "9a7658ac5585776634f076b7063198f81aa5bb9cfff228e3aaf9fe728940eab6",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "fe5fe32cd7d3a4c9190d5ce1f5affbf14b3e5705ede47c16f4a7a337ccb58733",
+              "response": {
+                "bytes": 4263,
+                "sha256": "4b3b2abf86eee7e9044b117e804ecf56d9300726e86a7df1e0adddb038af2269",
+                "semanticSha256": "d19fc9dd85592516699170c7c70f405ed994b4d3648c2fb31ed95d64addcd261",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 20,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 114,
+              "logs": {
+                "count": 3,
+                "sha256": "9a7658ac5585776634f076b7063198f81aa5bb9cfff228e3aaf9fe728940eab6",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "db3fb9cf61440567bf7cb643d8911cceead1074205d3544a59cf440c641d4b0b",
+              "response": {
+                "bytes": 476,
+                "sha256": "13d59fc4d88c5e8fc28d88f97ed2e806afa4a60eeb331613766f18bc1b3533ae",
+                "semanticSha256": "bc29f94c5ea89b0f274724d94b2b072e51a349b7dfc5c331a8f5edb25a7ca113",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 3,
+              "logs": {
+                "count": 2,
+                "sha256": "9b487809454de9eb7ec54465338ef2813102eb324dc05f111e6e1d28dc9c14b6",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "3b297b0a067f82573b54584c59af5cb3eb2706b9a520fc185f0a4bf0572b1e8f",
+              "response": {
+                "bytes": 129,
+                "sha256": "2fb826378c6a3d32c56f0bf4b7247d3f1a8e87b12cb8804084cb1415026fa282",
+                "semanticSha256": "d4aad0ee90dc47989582d6e21bf35a93a4c54987844e4bd62a23c4d5497675cb",
+                "fields": 4,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "parse": 1,
+              "returnedInputIdSame": true,
+              "runtimeGeneration": 1,
+              "elapsedMs": 4,
+              "logs": {
+                "count": 1,
+                "sha256": "e9b081077a1ad04e6889fdc198ff259ad3b172e677f34597142da84a7e4e3d89",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            }
+          ],
+          "runtimes": [
+            {
+              "generation": 1,
+              "reason": "initial",
+              "initReady": true,
+              "spiderClass": "com.github.catvod.crawler.js.JsSpider",
+              "initLogs": {
+                "count": 17,
+                "sha256": "8351d5187c9d5e2447edf74fd48d463570b7302ed1e73b0fed68616ab2487671",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              },
+              "cleanup": {
+                "closed": true,
+                "workerExited": true,
+                "temporaryDataRemoved": true
+              }
+            }
+          ],
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "exited": true,
+            "oomKilled": false,
+            "errorPresent": false,
+            "id": "7600c14784a64efe2e7be4d5e61f37b4b64d6ad7c260b44e7c11b6e2dd2bfec5"
+          },
+          "privateResultSha256": "b148a865afa9c368a4ddf42805ec70a59f62f07d73fb5e32b0498137840d24e7"
+        },
+        {
+          "sourceIndex": 2,
+          "name": "dr_兔小贝",
+          "sourceIdentitySha256": "64da72ac4c2dfbe23e01012fb61351377e53b4f6599c49beec322d7483cada7a",
+          "sourceKeySha256": "7c150b37e85999b3de285e93ccd99fc92fb4eb95a913edf43a70835b5b216863",
+          "apiSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+          "extSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+          "present": true,
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "response": {
+                "bytes": 160,
+                "sha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+                "semanticSha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 4,
+                "list": null,
+                "filterGroups": null,
+                "classSha256": "fa11482298dbc41ce57bbf8d60e48d99c4c9e12abbb7f28effa2cf42f8673c7f"
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2679,
+              "logs": {
+                "count": 2,
+                "sha256": "20f6b03c93aa6c63497d1b3d40bdc60f181a99cf893b2622d64c73fb3a44a438",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "status": "empty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "response": {
+                "bytes": 11,
+                "sha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+                "semanticSha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": 0,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2659,
+              "logs": {
+                "count": 8,
+                "sha256": "0f3208fe0d57c6d58ee49340c1a10fb6ffaf2c4fa13030aa64de036975f47bbe",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "202d6c4f0c744aa2247e7a0bbc3feb3d7e69f95fc08a7307c3a551048be8dc00",
+              "response": {
+                "bytes": 7538,
+                "sha256": "f2cc13d8fc09528e3ebe00d268dff5cbb260c2a7d294c569c08ac0b6005a3b5c",
+                "semanticSha256": "4eb3a1df3f7a655ec37a1630a91ccd9cbc28f97aa25f7f5d2f2db1b4b47d9aa1",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 30,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 205,
+              "logs": {
+                "count": 4,
+                "sha256": "2ad6bbefb5ec2eda48fc4d0ca8490da1eaec831f1f9e433fc68690ca65128cad",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "2b35156477fb12c60c580b02b3a631515f54cfb0fe0c1f67103c271154306c4c",
+              "response": {
+                "bytes": 7420,
+                "sha256": "be3e931d7a59b9e9fade7d6a7625f141c62d66c133d0f20dba483b30c7cd5407",
+                "semanticSha256": "0ed289e8bae68e637e2d6d6fa5c8a952f93a097e836b880a892535b2e749ea31",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 30,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 207,
+              "logs": {
+                "count": 4,
+                "sha256": "1bc96e171c4b31f0ca8b058b62847309fc96749b3425db7ba2ac8db15cd6d2af",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "status": "not-tested",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "reason": "no-real-filter-option"
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "551cf0b73247abf9f2c590ae5ed93e57533a253babd165300282dc664cf9a82a",
+              "response": {
+                "bytes": 556,
+                "sha256": "018d577bc0b0ca4fca7662024a736c6680af364e770e207b455495759db9d40e",
+                "semanticSha256": "49d61f0da1edd1c521a0414009c586481951bacc3688f7930f70c4f24cd3190d",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 6,
+              "logs": {
+                "count": 2,
+                "sha256": "616f695a8639492ca508e098d44905205c47afeec659392ddeb2f0997d22cc88",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4769085f7f474dd9fb59427b570fadd328e967a0ebf2f4d8a01aad97248f7275",
+              "response": {
+                "bytes": 387,
+                "sha256": "912e0055cc155b9bed120adb4f3b499168725246d044bcb5e00d361d91947cb5",
+                "semanticSha256": "dcb88f822331750300012a11d6d6badf3c0d9c7c386b1a734a474febf557961e",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 398,
+              "logs": {
+                "count": 4,
+                "sha256": "751211000ec0dc184206aa1662cd9d8ac8026519cdb27bca6e233e359f30cd81",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "f45b259ecde3e36e5785093e10a848bf24bbdcb9b79786cf4f914cc7dd090362",
+              "response": {
+                "bytes": 387,
+                "sha256": "912e0055cc155b9bed120adb4f3b499168725246d044bcb5e00d361d91947cb5",
+                "semanticSha256": "dcb88f822331750300012a11d6d6badf3c0d9c7c386b1a734a474febf557961e",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 332,
+              "logs": {
+                "count": 4,
+                "sha256": "751211000ec0dc184206aa1662cd9d8ac8026519cdb27bca6e233e359f30cd81",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "cdebb67d08e916a2b99e755723b18b8a4382454cb67a5f543a775be1daa5d950",
+              "response": {
+                "bytes": 626,
+                "sha256": "c231718fcc51c9c6b69640e6e08b5bfa485085e6b0642b73910c9bb267498886",
+                "semanticSha256": "72eedd089f2d7e0ec15a11106e2413193b782d7100efd7419a2af7568ffc0158",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2,
+              "logs": {
+                "count": 2,
+                "sha256": "511c1f0d07af7044decd51e3f51282b13d35b946d8b7665cac8d1a4eee15a273",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "c1c207c229ac1040e90d5b2e87366b5a21269f1c463b24fa2486e20b89b25034",
+              "response": {
+                "bytes": 110,
+                "sha256": "8284eb9d341ec617fb37e580e62c83de93cdaaf3bd81dd4df900994ace9a4a40",
+                "semanticSha256": "e18a1b49ab9bbcf5b9533b04715bc4dcb16deba519ae7a02e116653c88503318",
+                "fields": 3,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "parse": 1,
+              "returnedInputIdSame": false,
+              "runtimeGeneration": 1,
+              "elapsedMs": 480,
+              "logs": {
+                "count": 4,
+                "sha256": "3834150b378fcc3fd4c8db67928555e7d126a134aa30af506a19df19802b2cb8",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            }
+          ],
+          "runtimes": [
+            {
+              "generation": 1,
+              "reason": "initial",
+              "initReady": true,
+              "spiderClass": "com.github.catvod.crawler.js.JsSpider",
+              "initLogs": {
+                "count": 17,
+                "sha256": "426a837728364ddd85b24ff4d7a93dc00668191409e4ec88f573b0b33786f8c6",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              },
+              "cleanup": {
+                "closed": true,
+                "workerExited": true,
+                "temporaryDataRemoved": true
+              }
+            }
+          ],
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "exited": true,
+            "oomKilled": false,
+            "errorPresent": false,
+            "id": "5e571752d0aead0de83d09cf3d29ffcfbe954545dbde6b4bda61016214ab9bd7"
+          },
+          "privateResultSha256": "870c79f4ba60e14e42da9d7d979ca31f417cd0e68fa8c10f4e2de3627b345a32"
+        }
+      ],
+      "summary": {
+        "sources": 3,
+        "present": 3,
+        "expectedMethodSlots": 30,
+        "recordedCalls": 30,
+        "methodStatuses": {
+          "nonempty": 28,
+          "empty": 1,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 0,
+          "not-tested": 1
+        },
+        "initializedSources": 3,
+        "sourcesWithNonemptyResponses": 3,
+        "allTenNonemptySingleRuntime": 2,
+        "returnedNulls": 0,
+        "independentContinuations": 0,
+        "playerNonemptyReturns": 3,
+        "playerReturnedInputIds": 2,
+        "playerParseRequested": 3,
+        "fixtureHitMarkers": 0,
+        "liveHttpMarkers": 0,
+        "cleanupPassed": 3,
+        "containerZeroExit": 3
+      }
+    },
+    {
+      "name": "frozen",
+      "planSha256": "c1d7d0966eacf2bae166fdf3efa17bd0c67161fbe35aeb380fca8884f9453858",
+      "executionInputSetSha256": "500e6a05057589d896480eb0c891eeaac5b842fe0325a07ccec3f7a8a5055c1c",
+      "usesResearchHostBinding": true,
+      "sources": [
+        {
+          "sourceIndex": 0,
+          "name": "虎牙js",
+          "sourceIdentitySha256": "59e729b154b61a83a6d648eae759e47a7488fd297e36d36935bfb1c5455f47a7",
+          "sourceKeySha256": "3ba174b56f3f1e7ec6ddee4f6bf81ef911cfd618a74ab8b9683bd715314a6153",
+          "apiSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+          "extSha256": "443a722da52fef9490aa0d757c97f60c90c754cfeeb679165f78afbf270cb915",
+          "present": true,
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "response": {
+                "bytes": 18206,
+                "sha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+                "semanticSha256": "f9e34a4bed28281898f5493a01c8961592c8c1e4fb9f63441b6765b61bc86609",
+                "fields": 2,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 4,
+                "list": null,
+                "filterGroups": 4,
+                "classSha256": "34be80bcd5de7f19b916c57e334a59ca97f1c8e78601ca10672ba72107abbec2",
+                "filtersSha256": "b3eb1ed037e4f3056e664e66be5ddc281e5978fde0f8e720e64f0ee9a1a40e96"
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2114,
+              "logs": {
+                "count": 2,
+                "sha256": "faf834187a8b697d1cb86ff34c9d6008de1db7604f0fcd2a1109a2ab2d88ad9f",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "response": {
+                "bytes": 1593,
+                "sha256": "bac38afb8b88cac9ece9765b98632aa437834b1c3d647774ea57f6710b79c0d9",
+                "semanticSha256": "7df7bdb54c40c1233994a2951e48d687024e16d21c0ebb984c2a43284e9b8811",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 6,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 572,
+              "logs": {
+                "count": 8,
+                "sha256": "b5a97352befe82b56c6a7e1885522206d370670402955b25b1bc765aa014602f",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1b25f6d5ac922040771106dd6d7c88d38a84b5293140f7825f44fe9ccb2f3bcc",
+              "response": {
+                "bytes": 42279,
+                "sha256": "175f32dc3fc6d5ae90e27b67406a72fda9c85f1995973628a489955dde590b75",
+                "semanticSha256": "3f5d24177ab3ef7b34c0a194ae5dc21c9f6449efb2c67b6ec34170394e15e700",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 213,
+              "logs": {
+                "count": 6,
+                "sha256": "213ac51f5687511de21314fce1ff5333a37ee02ba4934bd41ffebb61c640a5e2",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "f63c680ce56777f2dab18318e378646b29a5f6ca09c3a263ed6ad356b680deee",
+              "response": {
+                "bytes": 39833,
+                "sha256": "032a9b61df2990d79c3dc641efdb205a002d7701ca2922ff829c2d0061173092",
+                "semanticSha256": "b337715f9387637aa477a2cdf7ea4824b1f2e8d79539eebc448880590c298ff3",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 176,
+              "logs": {
+                "count": 6,
+                "sha256": "3d950d63d7cc10db86aef23301750d6df4234d48c0d12c27c29a9fc3a9ea1091",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "172df05e9629113178bb29266a6bab7b8099a85d662efa29bc5dde607b7958f5",
+              "response": {
+                "bytes": 34725,
+                "sha256": "72b462ed8c329ec5cf6cd4301d12128eb23c82964cbff3467e38a0c49ca2c965",
+                "semanticSha256": "6c6cd75c5113d97b1c4f2068b8d4d10de39530d8905e4baa3a4a8c012441daba",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 120,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 169,
+              "logs": {
+                "count": 6,
+                "sha256": "062d57dca93b0d611b9f2702296ae8fe8c6f749dd8bdaa0de2ab66a0ff33f539",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "fcd218d44930379d67f81d9710d7fac985e877e44e4833ae5b506fd1e39d11c7",
+              "response": {
+                "bytes": 372,
+                "sha256": "a98d41876b5994a3a58ea93fd8c24b0979b913bb40133983703be74a928770dc",
+                "semanticSha256": "23f708d256853ece36a2619ce1ebf089612e54054cf79bffcaae9f6f676276ea",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2,
+              "logs": {
+                "count": 2,
+                "sha256": "35b01d3872f900ded903a3af7fa2aed2774f9df510ff1c266e61ef055d864181",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c0e03d4350d3eb3fca41e65776cf12246043d37c0188315d75f97f86e6259b6",
+              "response": {
+                "bytes": 429,
+                "sha256": "d69a44bebe0abfe7ce4c2fa08dda18dce8336b40f40fa70af30a3637601e2a60",
+                "semanticSha256": "434d64f626771b69511c26aa3499815f37f5838945fab2fc8cb5aa8e07d48b16",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 886,
+              "logs": {
+                "count": 6,
+                "sha256": "e0c77a3450d20bb50638ad53a082ee23907e9fda9b5d9040a4bfce37e300cb17",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "676587d15accfc5b6ee25b6b168985c9f2f3514378069960e37381663ce4cfd2",
+              "response": {
+                "bytes": 429,
+                "sha256": "bf408bcc8e9dc57e24d49acb83f07d74215bbe270d65da4ade70c1f5c8aa47c2",
+                "semanticSha256": "cbf26b03bde7e3647b5d90dcb993bd136763c0576097f3f7db793d1e8e327a02",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 740,
+              "logs": {
+                "count": 6,
+                "sha256": "ffa3ba7f8a2e2ede256c64e78f3004f89945ad2e36b8e1dd65b01af718dc40ca",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "3871f0e82d3084146336d980ca8e4a901c398a74d24e054d44d8851842d1ed04",
+              "response": {
+                "bytes": 634,
+                "sha256": "b8cedd7a7dbbe473d96049678db4079a663b49fed3d39a0db3866f6e6a60518a",
+                "semanticSha256": "5c108bc052d0fd7b9f482e3be262cbfc349b0163025ce82859321c0e1087c7e9",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 5,
+              "logs": {
+                "count": 2,
+                "sha256": "49e72681c0d39b940d1a4ec963b19e21dc96af1849d9d35fa289aad1f3687d1b",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "05caa4fa04ce2f8184637a2998c2dcbcfe4d5f67b4b35b16606abbe0c164fd70",
+              "response": {
+                "bytes": 76,
+                "sha256": "888d6df828327590a190be568f27edf4eabd99a3ec943a016367de78359bb21f",
+                "semanticSha256": "621783e918f492c47958cdfc5aed97b60e4074335e139be24ec808abc181a839",
+                "fields": 4,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "parse": 1,
+              "returnedInputIdSame": true,
+              "runtimeGeneration": 1,
+              "elapsedMs": 9,
+              "logs": {
+                "count": 3,
+                "sha256": "d93ae3e535a8904dd6f985083ab2ea10d544a1dca6f060e08af700e28eaf62c9",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            }
+          ],
+          "runtimes": [
+            {
+              "generation": 1,
+              "reason": "initial",
+              "initReady": true,
+              "spiderClass": "com.github.catvod.crawler.js.JsSpider",
+              "initLogs": {
+                "count": 18,
+                "sha256": "28a03cfd8c70144107764ec0dbdddbec120b7baaccf9b7d93fbab4b0a6a52e1d",
+                "fixtureHits": 1,
+                "liveHttp": 0
+              },
+              "cleanup": {
+                "closed": true,
+                "workerExited": true,
+                "temporaryDataRemoved": true
+              }
+            }
+          ],
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "exited": true,
+            "oomKilled": false,
+            "errorPresent": false,
+            "id": "13b9cf929494a819a3949ca2c101617c105bcbad06d44d9ec5f8391a5023e2a9"
+          },
+          "privateResultSha256": "c183f03c8a1e1c0a0b9ba06a63b044a439f453cb6438d09170e46271bd32fc5e"
+        },
+        {
+          "sourceIndex": 1,
+          "name": "斗鱼js",
+          "sourceIdentitySha256": "117a645b2f7c101b9d0c1a3e6bfbf9d23a403a5c8bedd0a454e7404ec4b04d9a",
+          "sourceKeySha256": "26bef2f6655f13e355bceeb0be6476cde27840056b31ae62fffc59babdf538b9",
+          "apiSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+          "extSha256": "b8f74fc65355c4e1664e127554dc79aa59f5bed5c2dc4de22fa2f79ff638c008",
+          "present": true,
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "response": {
+                "bytes": 33754,
+                "sha256": "a17f96c8839e9eff0c9ce9a2578f2a9d90651de843d473594698e972b136fc68",
+                "semanticSha256": "6c4f498ccdcf3b49c2900e550b2d35cf7fb3b407b1c2fb6390029533c3a51826",
+                "fields": 2,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 9,
+                "list": null,
+                "filterGroups": 7,
+                "classSha256": "a85bc3d7b39aa6067fee5e8af71bc941b0a32ecc584179db4fa077c7eb4fc600",
+                "filtersSha256": "67c9cb6e71f4c16ce6736cfb1e016f534df1aae38321d8d57930d859b670c7d1"
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2708,
+              "logs": {
+                "count": 2,
+                "sha256": "e62e5602454ce3d11d9b1fb4e74178c7d2205cde8dfb6d3c2a73d43dd55b7b4c",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "response": {
+                "bytes": 9603,
+                "sha256": "063a27faef5f1045e68a19b60a4c690e813a22fe4f572991382353f19ead6f96",
+                "semanticSha256": "a03e9f89082806daef1046701f9d4e466c1e7a4f379c3bcd2e7b3f4431e7dda0",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 44,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 546,
+              "logs": {
+                "count": 8,
+                "sha256": "5368f3006044dff488c9580f08ccccf63b498309897fc0060fa0901f8bf93aeb",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "6e7049d95218ae7f0f3919ec72ccb5aae2f32aa9e303945d4bd2044e819b120d",
+              "response": {
+                "bytes": 1767,
+                "sha256": "e8e7bf2320ab3805627aaadc076a8b9fe6bb79053c10ccb0f80afb1be3c1e68c",
+                "semanticSha256": "70e9c72c3f8b9f5071bd2c0bedd849768a7ad4c7ba8e7d95d263b5796ebacc6d",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 85,
+              "logs": {
+                "count": 6,
+                "sha256": "b9d5b474de9cc49082b8a529f88fa461f1ad815715ab2544f81fabaff883e19f",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "ac161d59d13a077616e2c50eb7b173e4ae10e22322fdb4e1b94f00dd9b12616d",
+              "response": {
+                "bytes": 1695,
+                "sha256": "52a68e62f6eca1abe9e0327f725c284dd064db3da9bb2f77444b4d04dd28457a",
+                "semanticSha256": "b01b2181fff33e99403e1b617c676a4e3bb1104ff50e80dd9f50ada3423f5682",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 69,
+              "logs": {
+                "count": 6,
+                "sha256": "22b3894e3f0e70eca817cdec4647e3c7dc4c210b293e9c8fe6e16646870a2178",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "094ea3006a161678070e08d66f64176e5c9ac4e1f37c70ce79ab1fb3afe5ee12",
+              "response": {
+                "bytes": 1789,
+                "sha256": "67e8e976a47f6996392ef2b3a5e0a48e6647c631fa27d1851e0f9a862ddbac33",
+                "semanticSha256": "92aff69791830bd13089edfe2b2ed0d40fe5b0c84baff5bf7992a266f0c1b915",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 8,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 77,
+              "logs": {
+                "count": 6,
+                "sha256": "c3539026cd08b479a3a65efecd6ece4df9927d087243d8ab3ca44e093de8b57c",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "00642f5ad8671abfe9f2cc050ef987afca66f268291dc4c905c2ff18501b69d8",
+              "response": {
+                "bytes": 480,
+                "sha256": "36127c36ee66b9855499eb1654ff8214f194465fd07758b36bf1d7f302f79e97",
+                "semanticSha256": "d9509d9fd78fe8bf71e587f50ba70a6a87f04ccc0789045bf2b6be22dfdfe0ee",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 3,
+              "logs": {
+                "count": 2,
+                "sha256": "50b9c324ebe2404177e73b25a883e88e4d4cdcff50daecf0b9cebf8ebbd78d0b",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "59c9197724b7cb8bda2e8bd8bad4355626366405d30e8f78de215c58dadb821d",
+              "response": {
+                "bytes": 270,
+                "sha256": "3ad71404099a5d8a71c4d348b080b15c301d905f1a8efac17792e2d67977e759",
+                "semanticSha256": "2395b9f7c271120fd0cdd8ec5cbcbc0594be98015b1cf1995d18419aac1f68f6",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 185,
+              "logs": {
+                "count": 4,
+                "sha256": "deb5b9765c7b21e0d813d843297a30ac0503c7be9cb45a60c98ec915aaa4eb72",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "792c810ca5229d584f12268511f3b83377ea3443d19952f0a8e5bd5f1a466ef9",
+              "response": {
+                "bytes": 270,
+                "sha256": "3ad71404099a5d8a71c4d348b080b15c301d905f1a8efac17792e2d67977e759",
+                "semanticSha256": "2395b9f7c271120fd0cdd8ec5cbcbc0594be98015b1cf1995d18419aac1f68f6",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 99,
+              "logs": {
+                "count": 4,
+                "sha256": "deb5b9765c7b21e0d813d843297a30ac0503c7be9cb45a60c98ec915aaa4eb72",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "00642f5ad8671abfe9f2cc050ef987afca66f268291dc4c905c2ff18501b69d8",
+              "response": {
+                "bytes": 480,
+                "sha256": "36127c36ee66b9855499eb1654ff8214f194465fd07758b36bf1d7f302f79e97",
+                "semanticSha256": "d9509d9fd78fe8bf71e587f50ba70a6a87f04ccc0789045bf2b6be22dfdfe0ee",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2,
+              "logs": {
+                "count": 2,
+                "sha256": "50b9c324ebe2404177e73b25a883e88e4d4cdcff50daecf0b9cebf8ebbd78d0b",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "f833788949dea33572b9253f84dd41b9652ad20132cf4cadde0252eb2c17432c",
+              "response": {
+                "bytes": 130,
+                "sha256": "8351b302cd1360bd609e757eb8da866d71e818263a7cc172c1c6e110962e591a",
+                "semanticSha256": "1fe443f85b004c6f0801819d4fe8f07b44eb20042857552538f938ed6188fc87",
+                "fields": 4,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "parse": 1,
+              "returnedInputIdSame": true,
+              "runtimeGeneration": 1,
+              "elapsedMs": 3,
+              "logs": {
+                "count": 1,
+                "sha256": "af8a95703a98a4307b6b0bc8bfceff67d735392c52943ab4c69f394b49bbc564",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            }
+          ],
+          "runtimes": [
+            {
+              "generation": 1,
+              "reason": "initial",
+              "initReady": true,
+              "spiderClass": "com.github.catvod.crawler.js.JsSpider",
+              "initLogs": {
+                "count": 18,
+                "sha256": "b11834c6eeebab07aca7873170963153209fcb71139200339ef9adf442ad1fb3",
+                "fixtureHits": 1,
+                "liveHttp": 0
+              },
+              "cleanup": {
+                "closed": true,
+                "workerExited": true,
+                "temporaryDataRemoved": true
+              }
+            }
+          ],
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "exited": true,
+            "oomKilled": false,
+            "errorPresent": false,
+            "id": "e9335fa4b089f9b6123743161fe089a46bc505045c1910787c5960b6cd67e7dc"
+          },
+          "privateResultSha256": "9658c8eac6029707fe31b54e7ba5f843dc2a776f668e9d765b2651873dffe8d7"
+        },
+        {
+          "sourceIndex": 2,
+          "name": "dr_兔小贝",
+          "sourceIdentitySha256": "64da72ac4c2dfbe23e01012fb61351377e53b4f6599c49beec322d7483cada7a",
+          "sourceKeySha256": "7c150b37e85999b3de285e93ccd99fc92fb4eb95a913edf43a70835b5b216863",
+          "apiSha256": "2057a84710494cc40874bebc1eb656409f1b7b6447604c2920dc484f0499cfe8",
+          "extSha256": "399e094f777d4f440f73ea1df75bfb1aa52e8a5d7bc2beec604593e61efbef75",
+          "present": true,
+          "calls": [
+            {
+              "method": "homeContent",
+              "discoveryStep": "home",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9",
+              "response": {
+                "bytes": 160,
+                "sha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+                "semanticSha256": "23db2b9872348f0ee949f59217d24d4345244ca7196d0f4461227f95d031abcf",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": 4,
+                "list": null,
+                "filterGroups": null,
+                "classSha256": "fa11482298dbc41ce57bbf8d60e48d99c4c9e12abbb7f28effa2cf42f8673c7f"
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2151,
+              "logs": {
+                "count": 2,
+                "sha256": "20f6b03c93aa6c63497d1b3d40bdc60f181a99cf893b2622d64c73fb3a44a438",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "homeVideoContent",
+              "discoveryStep": "home-video",
+              "status": "empty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "response": {
+                "bytes": 11,
+                "sha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+                "semanticSha256": "6d355a642ffed28c2afbda550638c33deb10c7f463ea5f2ce79a5ee5a8e15a4c",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": 0,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 2911,
+              "logs": {
+                "count": 9,
+                "sha256": "f68311421c8f83bfb25dff2f1aede8084644d26f9758fc60fbd75d2dac40b14b",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "202d6c4f0c744aa2247e7a0bbc3feb3d7e69f95fc08a7307c3a551048be8dc00",
+              "response": {
+                "bytes": 7526,
+                "sha256": "64f964fd7a30b22211133bce219087d927b7faab764c7410d795ee3650c0f1d3",
+                "semanticSha256": "66e5ba66dd8ad5e9441dc28050c977a98b8924107d6eba616ff1c430c760621a",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 30,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 191,
+              "logs": {
+                "count": 5,
+                "sha256": "016ea33e980ee113e6d88060d6bd8b7d9b713cd2d0c1cff6d7b6fc5ca9f0bfe6",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-page2",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "2b35156477fb12c60c580b02b3a631515f54cfb0fe0c1f67103c271154306c4c",
+              "response": {
+                "bytes": 7432,
+                "sha256": "0bb6be7838a0cd9cccf43cbc840f73f630531683a908c0fbab9060bcb6de092b",
+                "semanticSha256": "608b918b30f714926a43ea7913df0ffd2bcb232299a14f9486bb93dc4878bd95",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 30,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 194,
+              "logs": {
+                "count": 5,
+                "sha256": "0f04ffd10a9ec33e12dee37a9f1c2039193140cccb95f2897deb2702d156f344",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "categoryContent",
+              "discoveryStep": "category-filter",
+              "status": "not-tested",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "reason": "no-real-filter-option"
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "5026bfa514d21e1066d8a5a1827f0074eaca1606886ed2621b2ee49be7a75640",
+              "response": {
+                "bytes": 556,
+                "sha256": "5ec3f997e84181c705dd332c099a07d497af0436d66e07d6ded66076c93c9830",
+                "semanticSha256": "38fa8afed880355c9636d9daeeb21b81884890bf331d4e23f2a8d5b66fcda158",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 3,
+              "logs": {
+                "count": 2,
+                "sha256": "ec0bf10c86ef1a9c597c0498256c61f2917c81fccfe0899eae250ac78f828ede",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "5b585905a87878afea148709a604d793d6eb3965f6cfa117e4babaff663a7a02",
+              "response": {
+                "bytes": 399,
+                "sha256": "18b79d5b21b44e454005f90fd9a51370609bb59845c16a7a90668a9847498551",
+                "semanticSha256": "c04d4ad7757d48fc5d53e3e3fd549170ccef5a3d4ce22aeb6fc01bf01046e03e",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 356,
+              "logs": {
+                "count": 5,
+                "sha256": "6c9a3d8db298bc2f19670d9d9aeede2db8051c9e7c0f0f1611c5a5db502a7939",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "searchContent",
+              "discoveryStep": "search-page1",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "6937461e4c791fed82549763b5bed52b7295b69a11a0d24cf0bcc615d8a4acdb",
+              "response": {
+                "bytes": 399,
+                "sha256": "18b79d5b21b44e454005f90fd9a51370609bb59845c16a7a90668a9847498551",
+                "semanticSha256": "c04d4ad7757d48fc5d53e3e3fd549170ccef5a3d4ce22aeb6fc01bf01046e03e",
+                "fields": 5,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 365,
+              "logs": {
+                "count": 5,
+                "sha256": "6c9a3d8db298bc2f19670d9d9aeede2db8051c9e7c0f0f1611c5a5db502a7939",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            },
+            {
+              "method": "detailContent",
+              "discoveryStep": "search-detail",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "8c7ed1257bf267c0b9a4ecb72a4f61d5928e393fab91756a6209a9cd8b2e0560",
+              "response": {
+                "bytes": 638,
+                "sha256": "f23e2336738d95dcc9e21bda5f2b5e16c1fa7b86057477459d9c086eebd73bf8",
+                "semanticSha256": "86ee04b018739eac8d10d61bd135efc9498ebbd2e333aca1aab46131d122c8f3",
+                "fields": 1,
+                "emptyObject": false,
+                "hasContent": true,
+                "classes": null,
+                "list": 1,
+                "filterGroups": null
+              },
+              "runtimeGeneration": 1,
+              "elapsedMs": 3,
+              "logs": {
+                "count": 2,
+                "sha256": "982223aac2876c89d5565428b2b982d84e936f18a8ba5f192059f50eee11e513",
+                "fixtureHits": 0,
+                "liveHttp": 0
+              }
+            },
+            {
+              "method": "playerContent",
+              "discoveryStep": "player",
+              "status": "nonempty",
+              "recordPresent": true,
+              "implementation": "unknown",
+              "paramsSha256": "673b3ba3d1660d56ac21dd14d24787ddee6f50ab6e4f04a07ebfeae7cc8fc546",
+              "response": {
+                "bytes": 110,
+                "sha256": "1f4983c8d9448550b5278212a03aca9028770086117ac6fabcba4c94d53860de",
+                "semanticSha256": "a6eb9d0449cde98513c2090890439e39a0f4217936fde3753874464399cd803e",
+                "fields": 3,
+                "emptyObject": false,
+                "hasContent": false,
+                "classes": null,
+                "list": null,
+                "filterGroups": null
+              },
+              "playbackUrlPresent": true,
+              "parse": 1,
+              "returnedInputIdSame": false,
+              "runtimeGeneration": 1,
+              "elapsedMs": 455,
+              "logs": {
+                "count": 5,
+                "sha256": "881cd2bfb522dc50f439b2d5b176c524b32ab11186d571fd0a6ed08b83caa96d",
+                "fixtureHits": 0,
+                "liveHttp": 1
+              }
+            }
+          ],
+          "runtimes": [
+            {
+              "generation": 1,
+              "reason": "initial",
+              "initReady": true,
+              "spiderClass": "com.github.catvod.crawler.js.JsSpider",
+              "initLogs": {
+                "count": 18,
+                "sha256": "dedbf063616edb069f9ba478dd654088984acc0271a683707a40ce5ea32ee344",
+                "fixtureHits": 1,
+                "liveHttp": 0
+              },
+              "cleanup": {
+                "closed": true,
+                "workerExited": true,
+                "temporaryDataRemoved": true
+              }
+            }
+          ],
+          "cleanup": {
+            "closed": true,
+            "workerExited": true,
+            "temporaryDataRemoved": true
+          },
+          "container": {
+            "imageId": "sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7",
+            "user": "10001:10001",
+            "exitCode": 0,
+            "exited": true,
+            "oomKilled": false,
+            "errorPresent": false,
+            "id": "9337a04484220540ab6592372a36d2d64f0475ee6990e64be76ec86f46641e56"
+          },
+          "privateResultSha256": "41f5d98cff6d004c1d4d086d60851804a61fb5ba877996e74f05ddb672d72487"
+        }
+      ],
+      "summary": {
+        "sources": 3,
+        "present": 3,
+        "expectedMethodSlots": 30,
+        "recordedCalls": 30,
+        "methodStatuses": {
+          "nonempty": 28,
+          "empty": 1,
+          "not-implemented": 0,
+          "invalid-json": 0,
+          "network": 0,
+          "failed": 0,
+          "timeout": 0,
+          "not-tested": 1
+        },
+        "initializedSources": 3,
+        "sourcesWithNonemptyResponses": 3,
+        "allTenNonemptySingleRuntime": 2,
+        "returnedNulls": 0,
+        "independentContinuations": 0,
+        "playerNonemptyReturns": 3,
+        "playerReturnedInputIds": 2,
+        "playerParseRequested": 3,
+        "fixtureHitMarkers": 3,
+        "liveHttpMarkers": 18,
+        "cleanupPassed": 3,
+        "containerZeroExit": 3
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "sourceIndex": 0,
+      "name": "虎牙js",
+      "sourceIdentitySha256": "59e729b154b61a83a6d648eae759e47a7488fd297e36d36935bfb1c5455f47a7",
+      "calls": [
+        {
+          "discoveryStep": "home",
+          "method": "homeContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "home-video",
+          "method": "homeVideoContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": false,
+          "semanticEqual": false,
+          "observation": "same-params-live-response-difference"
+        },
+        {
+          "discoveryStep": "category-page1",
+          "method": "categoryContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "category-page2",
+          "method": "categoryContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "category-filter",
+          "method": "categoryContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "detail",
+          "method": "detailContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "search",
+          "method": "searchContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "search-page1",
+          "method": "searchContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "search-detail",
+          "method": "detailContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "player",
+          "method": "playerContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        }
+      ]
+    },
+    {
+      "sourceIndex": 1,
+      "name": "斗鱼js",
+      "sourceIdentitySha256": "117a645b2f7c101b9d0c1a3e6bfbf9d23a403a5c8bedd0a454e7404ec4b04d9a",
+      "calls": [
+        {
+          "discoveryStep": "home",
+          "method": "homeContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "home-video",
+          "method": "homeVideoContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "category-page1",
+          "method": "categoryContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": false,
+          "semanticEqual": false,
+          "observation": "same-params-live-response-difference"
+        },
+        {
+          "discoveryStep": "category-page2",
+          "method": "categoryContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "category-filter",
+          "method": "categoryContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": false,
+          "semanticEqual": false,
+          "observation": "same-params-live-response-difference"
+        },
+        {
+          "discoveryStep": "detail",
+          "method": "detailContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        },
+        {
+          "discoveryStep": "search",
+          "method": "searchContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        },
+        {
+          "discoveryStep": "search-page1",
+          "method": "searchContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        },
+        {
+          "discoveryStep": "search-detail",
+          "method": "detailContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        },
+        {
+          "discoveryStep": "player",
+          "method": "playerContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        }
+      ]
+    },
+    {
+      "sourceIndex": 2,
+      "name": "dr_兔小贝",
+      "sourceIdentitySha256": "64da72ac4c2dfbe23e01012fb61351377e53b4f6599c49beec322d7483cada7a",
+      "calls": [
+        {
+          "discoveryStep": "home",
+          "method": "homeContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "home-video",
+          "method": "homeVideoContent",
+          "productionStatus": "empty",
+          "frozenStatus": "empty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": true,
+          "semanticEqual": true,
+          "observation": "same-params-same-json"
+        },
+        {
+          "discoveryStep": "category-page1",
+          "method": "categoryContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": false,
+          "semanticEqual": false,
+          "observation": "same-params-live-response-difference"
+        },
+        {
+          "discoveryStep": "category-page2",
+          "method": "categoryContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": true,
+          "rawEqual": false,
+          "semanticEqual": false,
+          "observation": "same-params-live-response-difference"
+        },
+        {
+          "discoveryStep": "category-filter",
+          "method": "categoryContent",
+          "productionStatus": "not-tested",
+          "frozenStatus": "not-tested",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "observation": "not-tested"
+        },
+        {
+          "discoveryStep": "detail",
+          "method": "detailContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        },
+        {
+          "discoveryStep": "search",
+          "method": "searchContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        },
+        {
+          "discoveryStep": "search-page1",
+          "method": "searchContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        },
+        {
+          "discoveryStep": "search-detail",
+          "method": "detailContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        },
+        {
+          "discoveryStep": "player",
+          "method": "playerContent",
+          "productionStatus": "nonempty",
+          "frozenStatus": "nonempty",
+          "argumentScope": "Each group independently derived its arguments from its own live responses",
+          "paramsEqual": false,
+          "observation": "different-derived-params-not-comparable"
+        }
+      ]
+    }
+  ],
+  "comparisonSummary": {
+    "expectedMethodPairs": 30,
+    "sameParams": 19,
+    "differentDerivedParams": 10,
+    "sameParamsSameJson": 14,
+    "sameParamsLiveResponseDifference": 5,
+    "notTested": 1
+  },
+  "reporterSha256": "978bd2e9d49822ca27ddccc10afcfaa5839d5ad0c6e8e40b9a6ffb2ecbea1480"
+}
