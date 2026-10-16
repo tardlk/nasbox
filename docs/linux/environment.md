@@ -1,5 +1,37 @@
 # Environment ledger — 2026-10-14
 
+## Latest lifecycle state — local removal requested, 2026-10-16
+
+The user explicitly requested removing all local project content, development
+environments and related services. This supersedes the older retention purposes
+recorded below. Verified both GitHub branches at0bbb2fc before deleting the
+project-only `.tools` (JDK17, Android SDK/emulator/system image, dependency jars
+and dex2jar), all `.data` private configurations/artifacts/APK/responses/evidence,
+and `.cache`. Also removed the project planning document outside the checkout,
+two owned `/tmp/tvbox-*-test.log` files, emulator netsim logs in the user temp
+directory and the empty `/tmp/android-coke` folder. No project process, listener
+or autostart entry was present before cleanup; none was started.
+
+Removed5,782,580,676 logical bytes /5,687,176KiB allocated before the final source
+checkout deletion. The original checkout occupied5,763,396KiB allocated total
+(about5.5GiB). The remainder is source/Git history and is deleted only after this
+updated cleanup/handoff commit reaches both remote branches and is verified.
+Exact removed paths and sizes: `local-removal-20261016.json`.
+
+Shared Codex Node, system Python/git/curl/clang, GitHub CLI/authentication and
+pre-existing user Android key files are preserved; their ownership extends
+beyond this project. Shared Android files were hash-checked unchanged. No remote
+NAS connection was opened: remote Docker images and original NAS application
+services are outside this local deletion and remain as previously recorded.
+
+There is no locally retained project SDK/JDK, cache or private input after this
+cleanup. Earlier snapshot hashes/public reports remain in GitHub, but the actual
+private bytes were never uploaded and cannot be recovered from that repository.
+For future work clone anew, prepare tools and explicitly recapture missing input
+as a new dataset. Do not assert that old private frozen bytes still exist.
+
+## Historical environment records
+
 Existing tools were inspected before installing anything. The system java/javac
 entries were macOS launcher stubs with no registered Java runtime. Docker, adb,
 Maven and Gradle were not available on PATH.

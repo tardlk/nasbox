@@ -1,5 +1,10 @@
 # Linux migration scope
 
+The original local checkout/environment/private inputs were explicitly removed
+at the user's request on2026-10-16 after source publication. Old environment and
+retention reports are historical. On a fresh clone inspect existing tools first;
+missing private inputs must be acquired as new bytes, never assumed present.
+
 Start continuation work by reading HANDOFF.md, docs/linux/README.md and the
 current top section of docs/linux/status.md. Preserve historical reports and
 their exact input/image identities. JAR compatibility work is paused by the user;

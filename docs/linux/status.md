@@ -1,5 +1,13 @@
 # Migration status — 2026-10-16
 
+Local lifecycle update: user requested complete local project removal. Project
+SDK/JDK/libraries, all private frozen inputs/evidence and caches have been deleted;
+the source checkout is removed as the final step after pushing/verifying this
+record. Historical retention statements below describe earlier checkpoints,
+not currently available local bytes. GitHub retains source/public reports only;
+deleted private inputs cannot be restored from it. Remote NAS images/application
+services were not accessed or removed. See `local-removal-20261016.json`.
+
 Priority: subscription links and script execution behavior; player work deferred.
 
 Repository entry and handoff: [HANDOFF.md](../../HANDOFF.md),

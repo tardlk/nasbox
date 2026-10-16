@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "userRequestedFullLocalProjectCleanup": true,
+  "sourceBackupVerifiedCommit": "0bbb2fc3c23d289bd9bfbdb74b7950014aae0b71",
+  "remoteRepository": "tardlk/nasbox",
+  "remoteBranchesVerified": [
+    "main",
+    "codex/linux-core"
+  ],
+  "projectRoot": "/Users/coke/Desktop/Projects/tvbox-linux",
+  "projectAllocatedKiBBeforeCleanup": 5763396,
+  "projectLogicalBytesBeforeCleanup": 5853384752,
+  "removedProjectEnvironmentPrivateDataAndTemporaryArtifacts": [
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.tools",
+      "logicalBytes": 5431419735,
+      "allocatedKiB": 5338792,
+      "removed": true
+    },
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data",
+      "logicalBytes": 351118951,
+      "allocatedKiB": 348328,
+      "removed": true
+    },
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.cache",
+      "logicalBytes": 2016,
+      "allocatedKiB": 4,
+      "removed": true
+    },
+    {
+      "path": "/Users/coke/Desktop/Projects/TVBox-Linux-NAS-implementation-plan-2026-10-14.md",
+      "logicalBytes": 31128,
+      "allocatedKiB": 32,
+      "removed": true
+    },
+    {
+      "path": "/tmp/tvbox-lease-test.log",
+      "logicalBytes": 1862,
+      "allocatedKiB": 4,
+      "removed": true
+    },
+    {
+      "path": "/tmp/tvbox-runtime-cache-test.log",
+      "logicalBytes": 3777,
+      "allocatedKiB": 4,
+      "removed": true
+    },
+    {
+      "path": "/var/folders/92/c9qf76_d0m5dgv0802m_68rm0000gn/T/android-coke",
+      "logicalBytes": 3207,
+      "allocatedKiB": 12,
+      "removed": true
+    },
+    {
+      "path": "/tmp/android-coke",
+      "logicalBytes": 0,
+      "allocatedKiB": 0,
+      "removed": true
+    }
+  ],
+  "privateInputsStillRetainedLocally": false,
+  "privateInputsRecoverableFromGitHub": false,
+  "projectDevelopmentEnvironmentRetained": false,
+  "projectSourceRemoval": "Remove entire checkout after this cleanup record and updated handoff are pushed and verified.",
+  "projectServicesObservedRunningBeforeCleanup": [],
+  "projectAutostartEntriesObserved": [],
+  "newServicesStarted": [],
+  "taskServicesStillRunning": [],
+  "sharedAndroidKeyFilesPreservedUnchanged": true,
+  "sharedToolsPreserved": [
+    "Codex shared Node runtime",
+    "system Python/git/curl/clang",
+    "GitHub CLI/authentication",
+    "pre-existing user Android keys"
+  ],
+  "remoteNasAccessedOrChangedThisCleanup": false,
+  "remoteNasScope": "NAS images and pre-existing Docker/application services are remote and outside this local cleanup; see prior cleanup record for their status.",
+  "priorRetentionInstructionsSuperseded": "User explicitly requested deleting all local project data and project-specific development environments; historical retained paths in older reports no longer exist."
+}

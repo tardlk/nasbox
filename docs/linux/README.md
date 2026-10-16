@@ -2,6 +2,8 @@
 
 接手先读根目录 [HANDOFF.md](../../HANDOFF.md)，再看本页。这里保留各轮原报告，不把旧数字或镜像换成最新版本。
 
+本机已执行用户要求的项目环境／私有输入清理；旧保留路径仅作历史记录。见 [本机清理](local-removal-20261016.json)，私有字节不在GitHub中。
+
 | 当前需要 | 入口 |
 | --- | --- |
 | 最新状态与待办 | [status.md](status.md)、[roadmap.md](roadmap.md) |
