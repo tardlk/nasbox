@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "taskServicesStillRunning": [],
+  "originalNasServicesStillRunning": [
+    "Docker",
+    "moviepilot",
+    "qbittorrent",
+    "emby",
+    "dockge-dockge-1"
+  ],
+  "originalContainersUnchanged": true,
+  "newToolsInstalled": [],
+  "autostartChanges": [],
+  "nativeEnabledTests": {
+    "tests": 698,
+    "pass": 698,
+    "fail": 0,
+    "skipped": 0
+  },
+  "strictReportTestsAfterAdditionalOriginPinChecks": {
+    "tests": 3,
+    "pass": 3
+  },
+  "nasCleanup": {
+    "date": "2026-10-16",
+    "originalServicesUnchanged": true,
+    "ownedNasRoot": "/tmp/tvbox-cms-business.gdRN0u",
+    "allocatedKiBBeforeRemoval": 22884,
+    "ownedNasRootRemoved": true,
+    "taskContainersRemoved": 25,
+    "taskContainersStillRunning": [],
+    "discardedCandidateImageRemoved": "sha256:87ee5b62afc596101e7b17321ade2c046c1740e1c8a332f97374b3efaf0e6e8e",
+    "finalImageRetained": "sha256:e8680fa72a2e8db9b9db8518ec970508946a16f8f30081a95f08f89d31e0429c",
+    "baseAndOtherRollbackImagesRetained": true
+  },
+  "scopedSshClosed": true,
+  "taskCachesRemovedLogicalBytes": {
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/cms-business": 23190827,
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/backend": 3290895,
+    "/Users/coke/Desktop/Projects/tvbox-linux/.cache/compat": 17271782
+  },
+  "cacheRemovalComplete": true,
+  "retainedInputsAndEvidence": [
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/cms-business-inputs-20261016",
+      "logicalBytes": 4477,
+      "allocatedKiB": 12
+    },
+    {
+      "path": "/Users/coke/Desktop/Projects/tvbox-linux/.data/cms-business-evidence-20261016",
+      "logicalBytes": 23758164,
+      "allocatedKiB": 24508
+    }
+  ],
+  "retainedEvidencePins": 582,
+  "retentionSha256": "fbeddceafa79cd698f84fdb624d74313fa98076fb7e72fb8868832b916bd41d0",
+  "retentionPurpose": "Exact CMS configurations and HTTP/parsed/parameter evidence for server/XML differences, failed transport-event replay and regression; retain until those fixes and final verification finish. Preserve previous JAR/JS inputs unchanged.",
+  "retainedEnvironment": {
+    "path": "/Users/coke/Desktop/Projects/tvbox-linux/.tools",
+    "logicalBytes": 5431419735,
+    "allocatedKiB": 5338792
+  },
+  "environmentPurpose": "Existing shared JDK/SDK/Gson/QuickJS/DEX/native development tools; no duplicate installs",
+  "finalImage": {
+    "tag": "tvbox-core:linux-amd64-cms-20261016",
+    "id": "sha256:e8680fa72a2e8db9b9db8518ec970508946a16f8f30081a95f08f89d31e0429c",
+    "bytes": 517826084,
+    "addedBytesAboveBase": 1186627
+  },
+  "priorJARAndJSInputsUnchanged": true,
+  "structuredReportExactlyRebuiltFromRetainedEvidence": true,
+  "androidEmulatorADBAndFixtureServiceStartedThisTask": false,
+  "observationScope": {
+    "finalLiveSources": 4,
+    "separateSupplementalLiveSources": 4,
+    "finalCompleteSourceReplayCases": 7,
+    "incompleteHarnessReplayCases": 1,
+    "offlineOwnedDoctorPassed": true,
+    "oldCandidateSourceCasesKeptSeparate": 8
+  }
+}

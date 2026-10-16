@@ -3,9 +3,11 @@ import { createSpiderRuntime } from './index.mjs';
 import { createFullSubscriptionLoader } from '../subscription/full-loader.mjs';
 import { RuntimeCleanup } from '../subscription/runtime-cleanup.mjs';
 import { JarArtifactCache } from './artifact-cache.mjs';
+import { createCmsRuntime } from '../cms-runtime/index.mjs';
 
 /** Full config → lazy type=3 execution. Automatic source-backed JAR retrieval is opt-in. */
 export async function createExecutableSubscriptionSession(options = {}) {
+  const cms = createCmsRuntime(options.cmsOptions);
   const owned = !options.runtime;
   if (!owned && options.remoteJars && !options.artifactCache) throw new Error('Borrowed runtime requires a caller-owned artifactCache for remote JARs');
   const runtime = options.runtime || createSpiderRuntime({ dataDir: options.runtimeDataDir, timeoutMs: options.runtimeTimeoutMs ?? (options.nativeBridge ? 45000 : 10000), nativeBridge: options.nativeBridge ?? false, nativeBackend: options.nativeBackend ?? 'dynarmic', cacheMaxBytes: options.runtimeCacheMaxBytes });
@@ -16,10 +18,10 @@ export async function createExecutableSubscriptionSession(options = {}) {
     if (options.jarInitPolicy !== undefined) await runtime.request({operation:'host',jarInitPolicy:options.jarInitPolicy});
     cache = options.artifactCache || (options.remoteJars ? new JarArtifactCache({ localAddress: options.localAddress, ...options.jarCacheOptions, directory: options.artifactCacheDir }) : null);
     if (cache) { await cache.getState(); await runtime.request({operation:'artifactLease',guard:cache.guardPath}); }
-    loader = createFullSubscriptionLoader({ ...options, runtimeCleanup: cleanup, beforeRuntimeClear: () => runtime.request({ operation: 'resetKeys' }) });
+    loader = createFullSubscriptionLoader({ ...options, runtimeCleanup: cleanup, beforeRuntimeClear: async () => { await cms.clear(); return runtime.request({ operation: 'resetKeys' }); } });
     if (options.modules || options.moduleRoot || options.remoteModules || options.androidModules) await runtime.setModules({ modules: options.modules, root: options.moduleRoot, android: !!options.androidModules || !!options.remoteModules, remote: !!options.remoteModules });
   } catch (error) {
-    try { await loader?.close(); } finally { try { if (owned) await runtime.close(); } finally { if (ownedCache) await cache?.close(); } }
+    try { await cms.close(); await loader?.close(); } finally { try { if (owned) await runtime.close(); } finally { if (ownedCache) await cache?.close(); } }
     throw error;
   }
   const serialize = action => {
@@ -74,6 +76,8 @@ export async function createExecutableSubscriptionSession(options = {}) {
   async function resolveSpider(key) {
     const config = await loader.getConfig(), source = config.sites.find(s => s.key === key);
     if (!source) throw new Error('Source key does not exist');
+    if ([0, 1].includes(source.type)) return cms.descriptor(source);
+    if (source.type !== 3) throw new Error('Source type execution is not implemented: ' + source.type);
     const kind = await runtime.request({ operation: 'route', api: source.api });
     if (kind === 'py') return runtime.getCSP(source);
     if (source.jar) track('jar');
@@ -90,16 +94,21 @@ export async function createExecutableSubscriptionSession(options = {}) {
     return runtime.getCSP(source);
   }
   return {
-    scope: 'config-state + lazy host-jvm/dex/quickjs-source; optional routed JAR retrieval',
+    scope: 'config-state + CMS XML/JSON HTTP + lazy host-jvm/dex/quickjs-source; optional routed JAR retrieval',
     load: (request = {}) => serialize(async () => { const result = await loader.load(request); jarUseCache = !!request.useCache; return result; }),
     getCSP: key => serialize(() => resolveSpider(key)),
-    call: (key, method, args = []) => serialize(async () => { const spider = await resolveSpider(key); return { spider, value: await runtime.call(spider.token, method, args) }; }),
+    call: (key, method, args = []) => serialize(async () => {
+      const config = await loader.getConfig(), source = config.sites.find(s => s.key === key);
+      if (!source) throw new Error('Source key does not exist');
+      if ([0, 1].includes(source.type)) return { spider: cms.descriptor(source), value: await cms.call(source, method, args) };
+      const spider = await resolveSpider(key); return { spider, value: await runtime.call(spider.token, method, args) };
+    }),
     getConfig: () => serialize(() => loader.getConfig()),
-    getState: () => serialize(async () => ({ subscription: await loader.getState(), runtime: await runtime.getState(), ...(cache ? { artifacts: await cache.getState() } : {}), runtimeCache: await runtime.request({operation:'cacheState'}) })),
+    getState: () => serialize(async () => ({ subscription: await loader.getState(), runtime: await runtime.getState(), cms: cms.getState(), ...(cache ? { artifacts: await cache.getState() } : {}), runtimeCache: await runtime.request({operation:'cacheState'}) })),
     close() {
       closing ||= (async () => {
         closed = true; await queue;
-        try { await loader.close(); }
+        try { await cms.close(); await loader.close(); }
         finally { try { if (owned) await runtime.close(); } finally { if (ownedCache) await cache?.close(); } }
       })(); return closing;
     },

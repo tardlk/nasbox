@@ -1,5 +1,11 @@
 # Spider contract and executable host runtime
 
+The subscription session also supports type0 XML/type1 JSON CMS HTTP sources
+through `backend/cms-runtime`, without routing them to a Spider or loading their
+global JAR. Use the same `session.call(key,method,args)` API. See the CMS module
+README and `docs/linux/cms-delivery-20261016.md` for request rules, wire projection,
+NAS results and limitations. The direct Spider worker remains type3-only.
+
 This module adds a working type=3 subscription → getCSP → method-call path using
 JVM class JARs, translated DEX artifacts and the Android dependency's actual QuickJS engine. It is
 GPL-3.0-only with the separate component licenses described in NOTICE.md.

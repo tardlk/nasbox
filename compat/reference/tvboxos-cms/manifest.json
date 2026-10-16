@@ -1,0 +1,41 @@
+{
+  "commit": "ab11d289e09963a9daf65ca7f6b7a9a8cbe184e1",
+  "repository": "q215613905/TVBoxOS",
+  "files": [
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/viewmodel/SourceViewModel.java",
+      "sha256": "3789b15510792cd229b1c235188c0638762c36b14ddd0260fef980fafdcd1362",
+      "bytes": 93763
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/AbsJson.java",
+      "sha256": "090941f8d28115fc93193306e2c7c74fe15634b38c121353f7e2d06a01cdc709",
+      "bytes": 10167
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/AbsSortJson.java",
+      "sha256": "611333b420e0bfd61b023a7699b41fd9731ef3b3846f929cddbc9e7550c3b9b7",
+      "bytes": 1800
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/AbsXml.java",
+      "sha256": "0f86093267955f1ba7db5041a1874891bca93487723f82de629b491949d34018",
+      "bytes": 417
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/AbsSortXml.java",
+      "sha256": "c1559c42cd72d83a3c2d8b2bde4f47b75c1fab0ed2f565228f65d1bda8c2a071",
+      "bytes": 461
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/Movie.java",
+      "sha256": "b16dd9e59d592a71601ac5871586816daa937e03767ee3bc12e0edc82b44dbde",
+      "bytes": 3427
+    },
+    {
+      "path": "app/src/main/java/com/github/tvbox/osc/bean/MovieSort.java",
+      "sha256": "171c4e07070bf756e26c23ada078573194d1486ba5c627c81ce2e91cbd5ae711",
+      "bytes": 2717
+    }
+  ]
+}

@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-only
 import{mkdirSync,mkdtempSync,writeFileSync,rmSync}from'node:fs';import{join,resolve,dirname}from'node:path';import{fileURLToPath}from'node:url';import{spawnSync}from'node:child_process';
 import{buildSpiderRuntime}from'../../backend/spider-runtime/build.mjs';import{buildNativeProfile}from'../../backend/spider-runtime/native-bridge/build.mjs';import{dexToolchain}from'../../backend/spider-runtime/dex/toolchain.mjs';
+import { buildCmsParser } from '../../backend/cms-runtime/parser.mjs';
 export function prepareContainerRuntime(){
+ buildCmsParser();
  const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..'),built=buildSpiderRuntime();buildNativeProfile(built);const dex=dexToolchain({required:true}),directory=join(root,'.cache/container');mkdirSync(directory,{recursive:true});const stage=mkdtempSync(join(directory,'build-'));
  const run=(command,args)=>{const r=spawnSync(command,args,{encoding:'utf8',timeout:60000,maxBuffer:2*1024*1024});if(r.error||r.status!==0)throw new Error('Container preparation failed: '+(r.error||r.stderr));};
  try{

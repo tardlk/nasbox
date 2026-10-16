@@ -1,3 +1,6 @@
 
 # Third-party license/POM snapshots retain their original byte formatting.
 backend/spider-runtime/native-bridge/licenses/** -whitespace
+# Immutable CMS authority and byte-derived model copies keep upstream formatting.
+compat/reference/tvboxos-cms/** -whitespace
+backend/cms-runtime/src/com/github/tvbox/osc/bean/** -whitespace

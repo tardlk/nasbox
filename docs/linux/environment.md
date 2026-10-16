@@ -1044,3 +1044,67 @@ development; final image remains516,639,457 uncompressed bytes. No other project
 tools or rollback images were deleted. Exact cleanup/retention/footprints are in
 `js-business-cleanup-20261016.json`; scoped results are in
 `js-business-delivery-20261016.md` and its NAS/ART reports.
+
+## JSON/XML CMS execution — completed, 2026-10-16
+
+Rechecked existing Node, JDK17, Gson, SDK and NAS Docker before implementation.
+No package, compiler, Python/Android environment, daemon or autostart was installed.
+Added the repo-owned `backend/cms-runtime` source module and portable Java17
+parser classes using the existing JDK/Gson. Seven immutable upstream CMS source
+files are pinned under `compat/reference/tvboxos-cms`; license/attribution and the
+six JSON-model conversion bodies are preserved. XML is a bounded JDK DOM host
+binding, not an installed XStream runtime. No Electron/player dependency or JAR
+compatibility fix was added.
+
+Temporary local work used `.cache/cms-business`; NAS task root was
+`/tmp/tvbox-cms-business.gdRN0u`, recorded exactly in
+`cms-cleanup-20261016.json`. The scoped
+SSH control/known-host/askpass state remained in the task cache. Askpass read the
+existing user-provided credential without retaining the literal. No original NAS
+application environment dump is retained in the final evidence.
+
+The final derivative image is `tvbox-core:linux-amd64-cms-20261016`, ID
+`sha256:e8680fa72a2e8db9b9db8518ec970508946a16f8f30081a95f08f89d31e0429c`,
+517,826,084 uncompressed bytes, adding1,186,627bytes above the retained808d15d8
+base. Builds reused that local base with network disabled and did not provision
+new dependencies. Existing native/QuickJS/config outputs are unchanged; portable
+CMS classes are prebuilt for the JRE-only final image. The stopped first candidate
+87ee5b62 image was removed by exact ID after its source context/results were
+retained. No shared image/cache prune. Base and other rollback images remain.
+
+Four exact sources ran on the final image, each with live HTTP and separate
+network-none replay; four additional recommendation-derived category cases and
+their replay remain supplemental. A standalone network-none loopback HTTP doctor
+passed both types through the actual production subscription session. All25 task
+containers (eight first-candidate observations,16 final observations and doctor)
+exited0 and were removed. Exit0 is container lifecycle evidence, not source
+success: HTTP403, invalid source bodies, empty results and untested calls remain;
+one supplemental response-sequence replay lacks a pre-response network failure
+event and is explicitly incomplete harness input, never a compatibility pass.
+
+698 native-enabled host tests passed with zero skipped/failed tests; strict
+report checks subsequently passed3/3 and the structured report was rebuilt
+exactly from retained evidence. No emulator, ADB or fixture service was started.
+Owned unit-test HTTP servers closed in finally, and all NAS task shard scripts
+ended. Scoped SSH is closed; owned NAS directory is removed. Original four
+application container IDs/images/StartedAt/RestartCount/running state match.
+Task services still running:none. Pre-existing Docker, moviepilot, qbittorrent,
+emby and dockge-dockge-1 continue unchanged.
+
+New private source selection `.data/cms-business-inputs-20261016` occupies4,477
+logical bytes /12KiB allocated. Raw HTTP/calls, failed observations, offline replay,
+emitted image/source/class contexts and lifecycle evidence are privately retained
+at `.data/cms-business-evidence-20261016`:582 pinned files,23,758,164 logical bytes /
+24,508KiB allocated. Retention manifest SHA256 is
+`fbeddceafa79cd698f84fdb624d74313fa98076fb7e72fb8868832b916bd41d0`.
+Retain for CMS regressions, XML/server response issues and transport-failure replay
+until those fixes and final verification complete; then remove the private input.
+Original656 JAR frozen files,10 JS frozen files and237+585+340 earlier private
+evidence pins were verified unchanged.
+
+Removed43,753,504 logical bytes of task transport/design/build/test caches after
+verification. Existing `.tools` remains5,431,419,735 logical bytes /5,338,792KiB
+allocated (about5.1GiB), retained for ongoing SDK/JDK/QuickJS/DEX/native work.
+No other project/shared environment was deleted. Exact directory, footprint and
+service evidence is in `cms-cleanup-20261016.json`; source/method outcomes and
+limits are in `cms-delivery-20261016.md` and `cms-business-20261016.{json,md}`.

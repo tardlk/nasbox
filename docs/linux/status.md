@@ -10,7 +10,12 @@ is empty and filters lack parameters. Production and frozen-rule diagnostic
 tracks are separate. Three original-product ART cases and exact-parameter NAS
 replays also complete; status matches,18 JSON match and10 response differences
 remain, with two untested slots. Media playback and full Android equivalence
-are not claimed. Next work is Linux JSON CMS, then XML CMS execution;
+are not claimed. The next JSON/XML CMS milestone is now complete:
+[CMS delivery](cms-delivery-20261016.md). Type0/1 dispatch, bounded HTTP,
+original Gson JSON conversion, secure XML binding, recommendations, category,
+search, detail and player metadata are wired into the Linux subscription session.
+Four exact live source configurations and response replay are recorded; actual
+HTTP/response failures and one incomplete supplemental replay remain explicit.
 Python/type4 remain unimplemented. [Prior non-JAR inventory](non-jar-status-20261016.md)
 is preserved as the pre-execution record. Preserve all JAR reports/private inputs
 and resume JAR repairs only when requested.
@@ -21,6 +26,18 @@ final image are unchanged. Exact frozen JS input and private evidence are retain
 at `.data/js-business-inputs-20261016` and `.data/js-business-evidence-20261016`
 for unresolved response differences and regression, about6.1MiB logical combined.
 See `js-business-cleanup-20261016.json` and environment.md.
+
+Current CMS image: `tvbox-core:linux-amd64-cms-20261016`, ID
+`e8680fa72a2e8db9b9db8518ec970508946a16f8f30081a95f08f89d31e0429c`.
+It passes698 native-enabled host tests and actual offline NAS CMS/session fixtures.
+Original first-category observations are kept separate from recommendation-type
+category diagnostics. JSON sources return two real content pages in diagnostics;
+XML has successful content calls plus HTTP403 / wrong-format source responses.
+Seven of eight final source replay cases are complete and byte-equal; one
+pre-response transport failure lacks a replayable failure event and is not a
+compatibility outcome. No ART CMS comparison, media playback or full-JAR rerun
+on this new image is claimed. Prior full JAR matrices retain image808d15d8 and
+remain historical evidence. See `cms-business-20261016.{json,md}`.
 
 Historical JAR execution plan: [JAR compatibility continuation](jar-next-phase-plan.md).
 
