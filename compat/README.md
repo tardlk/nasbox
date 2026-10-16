@@ -1,5 +1,13 @@
 # Android behavior baseline
 
+Current handoff: [HANDOFF.md](../HANDOFF.md); current evidence:
+[Linux/NAS index](../docs/linux/README.md). The first-probe statements below are
+the preserved initial scope. Later backend work now includes real JS and CMS
+NAS business calls and separately scoped official-product ART probes. Current
+full suite is698 native-enabled tests, not the observation count of any one
+historical report. Fixed reference snapshots and captured expectations remain
+immutable; private real-source inputs are not shipped in Git.
+
 This directory is the first migration deliverable: a pinned source baseline,
 an executable reference probe, observations and a Win-Box comparison runner.
 It is **not yet a production subscription loader or a complete script runtime**.

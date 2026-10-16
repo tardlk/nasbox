@@ -2,6 +2,9 @@
 
 Priority: subscription links and script execution behavior; player work deferred.
 
+Repository entry and handoff: [HANDOFF.md](../../HANDOFF.md),
+[document index](README.md), [maintenance roadmap](roadmap.md).
+
 Current user direction: pause JAR compatibility work and continue non-JAR
 sources. The first real-JS milestone is complete:
 [JS business delivery](js-business-delivery-20261016.md). Huya/Douyu each return
@@ -40,6 +43,13 @@ on this new image is claimed. Prior full JAR matrices retain image808d15d8 and
 remain historical evidence. See `cms-business-20261016.{json,md}`.
 
 Historical JAR execution plan: [JAR compatibility continuation](jar-next-phase-plan.md).
+
+## Preserved JAR-stage history
+
+The following round/stage text records its original checkpoint. Active/pending
+wording there is historical; the current user direction and final CMS/JS status
+above take precedence. Original reports are preserved without changing their
+input/image identities.
 
 Round 1 is complete: fresh capture/freeze (87 subscriptions, 204 role/signature
 retrievals, 114 SHA artifacts: 111 valid and 3 invalid content) and 228 adjacent

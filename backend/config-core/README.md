@@ -1,5 +1,11 @@
 # Android-compatible configuration core
 
+Project status and current usage: [handoff](../../HANDOFF.md),
+[evidence index](../../docs/linux/README.md). This document retains the original
+configuration-method contract scope below. Later runtime/NAS/ART work is recorded
+separately; its results do not expand every configuration method into full
+Android equivalence. The Linux session now also has JS and type0/1 CMS execution.
+
 An explicit backend module for the Linux migration. It runs Java 17+ and the
 Android baseline's Gson 2.10.1 without Electron. It currently covers safe field
 conversion, source definitions, JSON parsing, object trimming and relative-path

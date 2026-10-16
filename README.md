@@ -1,78 +1,69 @@
-# Win-Box
+# NASBox
 
-把安卓 TVBox（CatVod 引擎）移植为 **Windows 桌面应用** —— Electron + React + TypeScript + Vite。
+面向 Linux／NAS 的 TVBox 订阅与脚本执行后端。当前交付是 **命令行与 Docker 核心**；Web 服务、播放器、解码和转码尚未接入。
 
-纯 Vibe coding 项目：本人 0 代码基础，包括开源与发布流程均由 AI 协助完成。
+由 Win-Box 源码继续演进，优先验证固定 Android TVBoxOS 的订阅协议和脚本行为。原 Windows 项目说明保存在 [README-UPSTREAM.md](README-UPSTREAM.md)，上游历史、作者署名和各组件许可保留。
 
-> 本项目是**个人学习 / 研究性质的开源实现**，与安卓版及任何第三方站点、平台无隶属关系。
-> 仓库仅包含**核心源码**，不含任何第三方私有蜘蛛 jar、JVM 运行时、逆向壳或专有产物。
+## 当前能力
 
-**链接**：[GitHub 主页](https://github.com/yagami-hue/Win-box) · [爱发电 · 赞助](https://afdian.com/a/WinBox)（自愿，见文末说明）
+| 类型 | 已实现及验证 | 边界 |
+| --- | --- | --- |
+| 订阅 | 解密、相对路径、集合、配置状态、持久缓存与切换 | Android 网络状态和完整异步 UI 行为未完全复现 |
+| JS／DRPY | QuickJS、模块依赖、部分 HTTP／HTML 宿主；3个真实源完成 NAS 业务与原版 ART 同参数观察 | 有在线响应差异；解析返回不代表可播放 |
+| JSON／XML CMS | 正式订阅分发：首页、推荐、分类／筛选、搜索、详情及播放元数据；4个真实源 NAS 实测 | 部分源 HTTP403／响应格式错误；1例补充重放记录不足 |
+| JAR | JVM／DEX转换、部分Android宿主与ARM/JNI执行；历史完整矩阵和独立业务报告保留 | **当前暂停推进**；新CMS镜像没有重跑全JAR矩阵，不能声称全部兼容 |
+| Python、type4 | 能解析配置 | 执行器尚未实现 |
 
-**当前版本：1.21.2** · [下载](https://github.com/yagami-hue/Win-box/releases/tag/release1.21.2) · [更新记录](CHANGELOG.md)
+最近完整检查：**698项 native-enabled 测试通过，0失败、0跳过**。这是项目测试数，不是脚本兼容数量。
 
----
+## 从这里开始
 
-## ⚠️ 免责声明（请务必阅读）
+- 接手开发：[HANDOFF.md](HANDOFF.md)
+- 当前状态与报告：[文档索引](docs/linux/README.md)
+- 后续工作：[路线图](docs/linux/roadmap.md)
+- Docker构建与运行：[docker/README.md](docker/README.md)
+- 环境路径、占用和清理：[environment.md](docs/linux/environment.md)
+- 组件许可：[LICENSES.md](LICENSES.md)
 
-1. **软件性质**：Win-Box 是开源学习项目，本质上只是一个**通用影片播放工具**（播放器外壳）；不含任何盈利行为，不提供服务、**不存储、不推送任何影视资源与内容**。
-2. **不提供内容**：本项目**不内置任何资源索引、不运营任何内容服务器**。你在使用中自行配置 / 导入的播放源、直播源、弹幕与字幕接口、网盘凭据与内容，全部来自**第三方**，与本软件及作者无关；软件内的本地代理（`127.0.0.1`）仅用于你自己设备上的本机播放转发。
-3. **无隶属关系**：与任何影视平台、内容站点、网盘服务、TVBox / CatVod 及其发行方**均无隶属、合作、代理或授权关系**；相关名称与商标归各自权利人所有。
-4. **使用者责任**：请确保你导入的第三方源与使用行为**符合所在地法律法规**，且不得用于传播、观看任何违法或侵权内容；因使用第三方来源引发的一切后果（含版权、侵权、内容合法性）由用户与第三方自行承担，作者免责。
-5. **权利通知**：本软件不对任何第三方内容主张权利，也未从第三方内容中获利。若权利人认为本项目某项行为可能侵权，请通过 [Issues](https://github.com/yagami-hue/Win-box/issues) 联系，作者将及时核实并配合处理（移除相关内容 / 停止分发）。
-6. **无担保**：软件按**「现状」**提供，不附带任何明示或默示担保；作者不对使用或无法使用本软件造成的任何直接或间接损失负责。不接受上述约定请立即停止使用并删除本软件。
+## Linux／NAS 快速开始
 
-> 应用内「说明」页（侧栏最后一项）提供同一份声明的完整版。
+使用现有 Docker 构建 Linux amd64 镜像；首次构建需要下载固定依赖并校验摘要：
 
+```sh
+docker buildx build --platform linux/amd64 --load \
+  -f docker/Dockerfile -t nasbox:local .
 
-## 快速开始
-
-```bash
-pnpm install              # 依赖（node_modules 不入库）
-pnpm test                 # Vitest 引擎单测
-pnpm run typecheck        # 双 tsc 类型检查
-pnpm run dev              # 开发（vite + esbuild watch + electron）
-pnpm run build            # 构建（主进程 + 渲染层）
+docker run --rm --network none --read-only \
+  --tmpfs /tmp:rw,exec,nosuid,nodev,size=256m nasbox:local
 ```
 
-运行时依赖（**不入库**，按需自行准备）：JDK / JRE、`stubs.jar` 桥、嵌入式 CPython、shell-shim、unidbg 运行时等。
+默认命令是一次性离线自检，输出 `ok:true` 后退出，不创建常驻服务或Web端口。`/tmp` 需要 `exec` 以供JNI库加载。
 
-## 发布附件
+导入自己的订阅并调用实际源：
 
-当前更新器下载完整安装包，不使用 `.blockmap`；NSIS 配置已关闭差分包生成。
-发布时仅上传当前版本的 `.exe` 安装包，不上传 `.blockmap` 或构建元数据，也不要使用整个输出目录的通配符上传。
-
-```bash
-pnpm run release:upload -- --dry-run  # 预览当前版本的上传文件，不执行上传
-pnpm run release:upload              # 上传到已创建的 release<版本号>
+```sh
+docker run --rm --read-only --tmpfs /tmp:rw,exec,nosuid,nodev,size=256m \
+  -v nasbox-data:/data nasbox:local \
+  session --url 'https://example.invalid/config.json' \
+  --source 'YOUR_SOURCE_KEY' --method homeContent --args '[true]' --remote-modules
 ```
 
-上传脚本默认使用本机 `127.0.0.1:7897` HTTPS 代理加速 GitHub CLI；可用 `GH_UPLOAD_PROXY` 指定代理，设置为 `direct`（或 `none`）则直连。
+把示例URL和source key换成自己配置中的实际值。JSON／XML CMS不需要 `--native`；需要ARM原生桥的JAR才使用该选项。`--remote-modules` 用于显式允许JS模块获取。数据卷保存订阅状态和缓存，不会随容器退出自动删除。
 
-上传命令读取 `package.json` 的版本和输出目录，只选择当前版本的 Setup / 可选 portable `.exe`；不自动创建 Release、修改正文或覆盖已有附件。
-electron-builder 会规范化安装包文件名中的数字版本；上传脚本兼容规范化后的安装包文件名，Release 标签使用 `package.json` 的版本号。
+当前已在物理NAS实测的镜像是本地标签 `tvbox-core:linux-amd64-cms-20261016`，详见交接文档；**尚未发布镜像到镜像仓库或GitHub Release**。从本源码构建的新镜像不保证与报告中的本地镜像ID相同。当前只验证Linux amd64，不能直接承诺ARM NAS支持。
 
-源码仓库的支持作者图片为纯空白占位图。正式发行构建可设置 `WINBOX_SUPPORT_IMAGE` 为本机图片路径；原图放在已忽略的 `.tmp/` 中，不提交到源码仓库，也不单独上传为 Release 附件。
+本地运行兼容测试需 Node24+、现有JDK17和已固定的开发依赖：
 
-## 目录结构
-
-```
-tvbox-win/
-├── src/            # 四层：shared / engine / main / renderer
-├── tests/          # 引擎单测（Vitest）
-├── scripts/        # 构建与打包脚本
-├── resources/      # js-lib + jvm 宿主源码（*.java，含 native-bridge 原生桥）
+```sh
+TVBOX_TEST_NATIVE=1 node --disable-warning=ExperimentalWarning \
+  --import ./scripts/compat/typescript-loader.mjs \
+  --test --test-reporter=spec compat/*.test.mjs
 ```
 
+Linux后端测试不依赖安装Electron。依赖准备和fresh-clone限制见交接文档；不要为了运行后端而重复安装桌面环境。
 
-## 赞助支持（完全自愿）
+## 数据与许可
 
-如果你认可这个项目、愿意支持作者持续维护，欢迎通过 **[爱发电](https://afdian.com/a/WinBox)** 赞助。
+仓库提供源码、固定参考源码、自有测试和允许公开的报告；实际订阅、第三方脚本／JAR、APK、原始响应、凭据、SDK/JDK和构建缓存不随Git提交。本机 `.data/`、`.tools/`、`.cache/` 均被忽略；跨机器交接时公开报告不能替代缺失的原输入字节。
 
-- 赞助**完全自愿**，仅用于支持作者在开发与维护上投入的时间与精力；
-- **不会获得任何额外功能、内容、权限或服务**，也不会改变软件的任何行为 —— 不赞助同样可以使用全部功能；
-- 本项目**不含任何付费内容、会员或解锁机制**；赞助与任何第三方内容、平台无关联，不构成对任何内容的购买或授权。
-
-## 许可
-
-代码采用 MIT 许可证（见 [LICENSE](LICENSE)）。请遵守第三方软件（蜘蛛 jar、运行时、壳等）各自的版权与许可。
+原Win-Box部分按MIT许可保留。TVBoxOS衍生后端／参考及相关工具采用GPL-3.0-only，第三方组件另有许可，**不能把整个NASBox简单称为MIT**。具体适用范围及NOTICE见 [LICENSES.md](LICENSES.md)。本项目不内置内容服务或第三方私有源。

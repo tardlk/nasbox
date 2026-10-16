@@ -1,7 +1,18 @@
-# Linux x86_64 核心运行镜像
+# NASBox Linux x86_64 核心运行镜像
 
 本阶段交付命令行后端镜像：订阅配置解析、QuickJS、DEX 转换和 ARM/JNI 执行。
 默认命令是一次性离线自检，执行成功后容器退出。Web 服务和播放器后续开发。
+
+2026-10-16 当前最新实测为 `tvbox-core:linux-amd64-cms-20261016`，
+ID `sha256:e8680fa72a2e8db9b9db8518ec970508946a16f8f30081a95f08f89d31e0429c`。
+新增JSON／XML CMS正式订阅分发，4个真实源完成首分类与内容分类观察；
+7/8源重放完整，1例工具记录不足，错误和未测试单列。此镜像没有重跑全JAR矩阵。
+[CMS交付](../docs/linux/cms-delivery-20261016.md) 和
+[项目交接](../HANDOFF.md) 是当前入口。当前镜像只在本地NAS保留，没有发布到registry。
+
+JSON／XML CMS可以直接使用下方 `session` 命令，不需要 `--native`。
+完整Docker构建会预编译CMS解析器；默认doctor额外验证JSON／XML解析样例。
+下列JAR矩阵及后续旧标签属于各自历史版本，保留原镜像归属。
 
 2026-10-15 本轮最新实测镜像为 `tvbox-core:linux-amd64-zxing-20261015`，
 ID `sha256:808d15d8ac47fed98670eda0e33ffcb00a12b637114690b94536e53e40e447e7`。
@@ -27,7 +38,7 @@ QuickJS 运算、DEX 爬虫与资源读取、ARM64 Unicorn2/Dynarmic 和 ARM32 U
 运行已有的订阅导入入口：
 
 ```sh
-docker run --rm -v tvbox-core-data:/data tvbox-core:local subscription --config 'http://www.饭太硬.net/tv'
+docker run --rm -v tvbox-core-data:/data tvbox-core:local subscription --config 'https://example.invalid/config.json'
 ```
 
 运行手动准备的 JAR（`input` 目录包含文件，实际 CSP/API 和 ext 以配置为准）：

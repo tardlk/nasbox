@@ -1,5 +1,10 @@
 # Linux migration scope
 
+Start continuation work by reading HANDOFF.md, docs/linux/README.md and the
+current top section of docs/linux/status.md. Preserve historical reports and
+their exact input/image identities. JAR compatibility work is paused by the user;
+Python/type4, CMS follow-ups and deferred player work are scoped in the roadmap.
+
 Prioritize subscription parsing and script execution parity with the pinned
 Android TVBoxOS baseline. Player UI, media decoding and transcoding are deferred.
 Win-Box is an implementation reference, not the behavioral authority.
